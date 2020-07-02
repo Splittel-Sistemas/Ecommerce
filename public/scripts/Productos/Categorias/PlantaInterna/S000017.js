@@ -1,0 +1,1282 @@
+// [OP] OPTONICS
+var Marca = "OP"
+// [CP] CABLE PRECONECTORIZADOS
+var Familia = "CP"
+var Clave = document.getElementById('Clave');
+// propierties
+let TipoTermiacion      = document.getElementById("TipoTerminacion");
+let ConectorLadoA       = document.getElementById("conec_lad_a");
+let ConectorLadoB       = document.getElementById("conec_lad_b");
+let TipoCubierta        = document.getElementById("TipoCubierta");
+let TipoFibra           = document.getElementById("TipoFibra");
+let NoHilos             = document.getElementById("NoHilos");
+let Longitud            = document.getElementById("Longitud");
+let NoHilos_label       = document.getElementById("NoHilos_label");
+let Longitud_label      = document.getElementById("Longitud_label");
+let Adicionales         = document.getElementById("Adicionales");
+let CodigoGenerado = ""
+var ContConectorLAMon   = 0
+var ContConectorLBMon   = 0
+var ContConectorLAMul   = 0
+var ContConectorLBMul   = 0
+var ContConectorLAMon1  = 0
+var ContConectorLBMon1  = 0
+var ContConectorLAMul1  = 0
+var ContConectorLBMul1  = 0
+
+var ContConectorLadoA_1 = 0
+var ContConectorLadoA_2 = 0
+
+var ConectoresPosicion = [
+  'AR',
+  'AT',
+  'AU',
+  'AX',
+  'AY',
+  'BA',
+  'BI',
+  'AS',
+  'AV',
+  'AW',
+  'AZ',
+  'AA',
+  'AB',
+  'AC',
+  'AD',
+  'AI',
+  'AJ',
+  'AL',
+  'BJ',
+  'AE',
+  'AF',
+  'AG',
+  'AH',
+  'AK'
+]
+
+var verificarCosto = function(CablesPreconId, CablesPreconNumeroHilos, CablesPreconLongitud, CablesPreconTipoFibra){
+  document.getElementById('Costo').innerHTML = "$"   
+  document.getElementById('CostoProducto').value = ""
+    ajax_(
+    '../../models/Productos/Precios/CablesPreconectorizados.php', 
+    'post', 
+    'json', 
+    { 
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: CablesPreconId,
+      CablesPreconNumeroHilos: CablesPreconNumeroHilos,
+      CablesPreconLongitud: CablesPreconLongitud,
+      CablesPreconTipoFibra: CablesPreconTipoFibra
+    }, 
+    function(response){
+      console.log(response)
+      $('#span-leyenda').remove()
+      document.getElementById('Costo').innerHTML = "$"   
+      document.getElementById('CostoProducto').value = ""
+      if(response.error!=true){
+        if(response.records.costo>0){
+          document.getElementById('Costo').innerHTML = "$"+response.records.costo   
+          document.getElementById('CostoProducto').value = response.records.costo
+        }else{
+          ProductoEspecial()
+        }
+      }
+      
+    })
+
+}
+
+var verificarCostoFigura0 = function(CablesPreconLongitud, CablesPreconConA, CablesPreconConB){
+ 
+  ajax_(
+  '../../models/Productos/Precios/CablesPreconectorizadosF0.php', 
+  'post', 
+  'json', 
+  { 
+    Action: 'calculo',
+    ActionPrecioPreconectorizados: true,
+    CablesPreconLongitud: CablesPreconLongitud,
+    CablesPreconConA: CablesPreconConA,
+    CablesPreconConB: CablesPreconConB,
+  }, 
+  function(response){
+    $('#span-leyenda').remove()
+    document.getElementById('Costo').innerHTML = "$"   
+    document.getElementById('CostoProducto').value = ""
+    if(response.error!=true){
+      if(response.records.costo>0){
+        document.getElementById('Costo').innerHTML = "$"+response.records.costo   
+        document.getElementById('CostoProducto').value = response.records.costo
+      }else{
+        ProductoEspecial()
+      }
+    }
+    
+  })
+
+}
+
+
+var cable_IE = function(){
+  StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    
+
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(2, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+    
+  }else if(TipoTermiacion.value == '2MM'){
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      if( NoHilos.value >= 6 && NoHilos.value <= 12 ){
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,1,2]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [3]);
+          Adicionales[3].selected=true
+       
+      }else if(NoHilos.value >= 1 && NoHilos.value <= 5 ){
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+          Adicionales[1].selected=true
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [11,12,13,14,15,16,17,18]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,7,8,9,10,19,20,21,22,23]);
+      // activar elementos lado b
+      if(ConectorLadoA.selectedIndex == 13){
+        if(ConectorLadoB.selectedIndex != 14 && ConectorLadoB.selectedIndex != 0){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+          ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block',[14]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24]);
+      }else{
+        if(ConectorLadoB.selectedIndex == 14 ){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+          ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block',[12,13,15,16,17,18,19]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,14,20,21,22,23,24]);
+      }
+      //ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+      //ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon1++
+      ContConectorLBMon1++
+
+    }else{
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [19,20,21,22,23]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]);
+      // activar elementos lado b
+
+      if(ConectorLadoA.selectedIndex == 20){
+        if(ConectorLadoB.selectedIndex != 21 && ConectorLadoB.selectedIndex != 0){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+          ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [21]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24]);
+      
+      }else{
+        if(ConectorLadoB.selectedIndex == 21 ){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+          ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [20,22,23,24]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21]);
+      
+      }
+      //StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [20,21,22,23,24]);
+      //StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]);
+      //ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+      //ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul1++
+      ContConectorLBMul1++
+    }
+    let x = 0
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+      x = 1
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+      x = 2
+    }
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 12";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(2, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+      
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Interior-Exterior "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "IE/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "IE")
+  ListProductoAdicional(Marca + Familia + "IE")
+}
+var cable_CI = function(){
+  StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(1, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }else if(TipoTermiacion.value == '2MM'){
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      if( NoHilos.value >= 6 && NoHilos.value <= 12 ){
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,1,2]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [3]);
+          Adicionales[3].selected=true
+       
+      }else if(NoHilos.value >= 1 && NoHilos.value <= 5 ){
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+          Adicionales[1].selected=true
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [11,12,13,14,15,16,17,18]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,7,8,9,10,19,20,21,22,23]);
+      // activar elementos lado b
+      if(ConectorLadoA.selectedIndex == 13){
+        if(ConectorLadoB.selectedIndex != 14 && ConectorLadoB.selectedIndex != 0){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+          ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block',[14]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24]);
+      }else{
+        if(ConectorLadoB.selectedIndex == 14 ){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+          ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block',[12,13,15,16,17,18,19]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,14,20,21,22,23,24]);
+      }
+
+     // ContConectorLAMon1 == 0 ? ConectorLadoA.selectedIndex = 11 : "";
+     // ContConectorLBMon1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon1++
+      ContConectorLBMon1++
+
+    }else{
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [19,20,21,22,23]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]);
+      // activar elementos lado b}
+
+      if(ConectorLadoA.selectedIndex == 20){
+        if(ConectorLadoB.selectedIndex != 21 && ConectorLadoB.selectedIndex != 0){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+          ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [21]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,22,23,24]);
+      
+      }else{
+        if(ConectorLadoB.selectedIndex == 21 ){
+          ConectorLadoB.selectedIndex = 0
+        }else{
+          ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+          ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+        }
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [20,22,23,24]);
+        StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21]);
+      
+      }
+      //StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [20,21,22,23,24]);
+      //StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]);
+      //ContConectorLAMul1 == 0 ? ConectorLadoA.selectedIndex = 19 : "";
+      //ContConectorLBMul1 == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul1++
+      ContConectorLBMul1++
+    }
+    let x = 0
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+      x = 1
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+      x = 2
+    }
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 12";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(1, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado de Distribucion "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+    CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+
+  let DirectorioImgProducto = Marca + Familia + "CI/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "CI")
+      ListProductoAdicional(Marca + Familia + "CI")
+  //console.log(descripcion_cable)
+}
+var cable_SA = function(){
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(6, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado ADSS"+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "SA/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "SA")
+      ListProductoAdicional(Marca + Familia + "SA")
+}
+var cable_D0 = function(){
+  // alert(TipoTermiacion.value);
+  Adicionales[1].selected=true
+  StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0]);
+  StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+if((ConectorLadoA.value=='BH'|| ConectorLadoA.value=='BG') && ConectorLadoB.value=='BL'){
+  ConAuxLadoA=ConectorLadoB.value;
+  ConAuxLadoB=ConectorLadoA.value;
+}
+else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
+  ConAuxLadoA=ConectorLadoB.value;
+  ConAuxLadoB=ConectorLadoA.value;
+}else{
+  ConAuxLadoA=ConectorLadoA.value;
+  ConAuxLadoB=ConectorLadoB.value;
+}
+
+  if(TipoTermiacion.value == '3MM'){
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 1 - 1";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,1,1) && ValidInputRange(Longitud,1,999)){
+      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+      verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
+
+      let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+      let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+      let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+      let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+      let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+      let descripcion_cable = "Cable preconectorizado Drop Figura 0 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+      
+      if(CodigoGenerado!=''){
+        CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      }
+      
+    }else{
+      verificarCostoFigura0('','','')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+
+ 
+
+
+  let DirectorioImgProducto = Marca + Familia + "D0/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "D0")
+  ListProductoAdicional(Marca + Familia + "D0")
+}
+var cable_S8 = function(){
+  StyleDisplayNoneOrBlock_2(TipoFibra, 'none', [3,4]);
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+    if (TipoFibra.value == "09") {
+      // mostrar rango de hilos valido
+      NoHilos_label.innerHTML = " 2 - 48";
+      // mostrar longitud valida
+      Longitud_label.innerHTML = " 1 - 999";
+      if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value)
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        showClave(CodigoGenerado);
+      }else{
+        verificarCosto('', '', '', '')
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
+    }
+    if (TipoFibra.value == "62") {
+      // mostrar rango de hilos valido
+      NoHilos_label.innerHTML = " 2 - 12";
+      // mostrar longitud valida
+      Longitud_label.innerHTML = " 1 - 999";
+      if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
+        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value)
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        showClave(CodigoGenerado);
+      }else{
+        verificarCosto('', '', '', '')
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
+    }
+    if (TipoFibra.value == "50") {
+      // mostrar rango de hilos valido
+      NoHilos_label.innerHTML = " 2 - 24";
+      // mostrar longitud valida
+      Longitud_label.innerHTML = " 1 - 999";
+      if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
+        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value)
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        showClave(CodigoGenerado);
+      }else{
+        verificarCosto('', '', '', '')
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado figura 8 sin armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "S8/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "S8")
+  ListProductoAdicional(Marca + Familia + "S8")
+  
+}
+var cable_M8 = function(){
+  StyleDisplayNoneOrBlock_2(TipoFibra, 'none', [4]);
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 12";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(8, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Exterior Mini-Figura 8 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "M8/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "M8")
+  ListProductoAdicional(Marca + Familia + "M8")
+}
+var cable_DI = function(){
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(5, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "DI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Exterior Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "DI/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "DI")
+  ListProductoAdicional(Marca + Familia + "DI")
+}
+var cable_AR = function(){
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(4, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "AR" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Exterior Armado "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "AR/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "AR")
+  ListProductoAdicional(Marca + Familia + "AR")
+}
+
+var cable_AD = function(){
+  VideoProductosCofigurables('https://www.youtube.com/embed/odGihvIVljU?autoplay=1')
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 48";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(3, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "AD" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Exterior Armado Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "AD/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "AD")
+  ListProductoAdicional(Marca + Familia + "AD")
+}
+var cable_F8 = function(){
+  StyleDisplayNoneOrBlock_2(TipoFibra, 'none', [4]);
+  let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
+  let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
+  // alert(TipoTermiacion.value);
+  if(TipoTermiacion.value == '9UM'){
+      ContConectorLAMul1 = 0
+      ContConectorLBMul1 = 0
+      ContConectorLAMon1 = 0
+      ContConectorLBMon1 = 0
+      if(NoHilos.value>=2 && NoHilos.value<=24){
+        Adicionales[1].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+      }
+      if(NoHilos.value>24){
+        Adicionales[0].selected=true
+        StyleDisplayNoneOrBlock_2(Adicionales, 'none', [1,2,3]);
+        StyleDisplayNoneOrBlock_2(Adicionales, 'block', [0]);
+      }
+    if (TipoFibra.value == "09") {
+      ContConectorLAMul = 0
+      ContConectorLBMul = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [0,1,2,3,4,5,6]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [1,2,3,4,5,6,7]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+      
+      ContConectorLAMon == 0 ? ConectorLadoA.selectedIndex = 0 : "";
+      ContConectorLBMon == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMon++
+      ContConectorLBMon++
+
+    }else{
+      ContConectorLAMon = 0
+      ContConectorLBMon = 0
+      // activar elementos lado a
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'block', [7,8,9,10]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoA, 'none', [0,1,2,3,4,5,6,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+      // activar elementos lado b
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [8,9,10,11]);
+      StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [1,2,3,4,5,6,7,12,13,14,15,16,17,18,19,20,21,22,23,24]);
+
+      ContConectorLAMul == 0 ? ConectorLadoA.selectedIndex = 7 : "";
+      ContConectorLBMul == 0 ? ConectorLadoB.selectedIndex = 0 : "";
+      ContConectorLAMul++
+      ContConectorLBMul++
+    }
+    if (parseInt(PosicionConector1) < parseInt(PosicionConector2)) {
+      NewConector1 = ConectorLadoA.value
+      NewConector2 = ConectorLadoB.value
+    }else{
+      NewConector1 = ConectorLadoB.value
+      NewConector2 = ConectorLadoA.value
+    }
+    if (TipoFibra.value == "09") {
+      // mostrar rango de hilos valido
+      NoHilos_label.innerHTML = " 2 - 48";
+      // mostrar longitud valida
+      Longitud_label.innerHTML = " 1 - 999";
+      if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+        verificarCosto(7, NoHilos.value, Longitud.value, TipoFibra.value)
+        CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        showClave(CodigoGenerado);
+      }else{
+        verificarCosto('', '', '', '')
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
+  }else{
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 24";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
+      verificarCosto(7, NoHilos.value, Longitud.value, TipoFibra.value)
+      CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+    }else{
+      verificarCosto('', '', '', '')
+      CodigoGenerado='';
+      showClave(CodigoGenerado);
+    }
+  }
+
+  }
+    let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+    let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+    let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+    let descripcion_cable = "Cable preconectorizado Figura 8 con armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    if(CodigoGenerado!=''){
+      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+    }
+
+  let DirectorioImgProducto = Marca + Familia + "F8/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "F8")
+      ListProductoAdicional(Marca + Familia + "F8")
+}
+
+var CableNombreCodigoConfigurable = function(data){
+  if(document.getElementById('CodeConfigurable')){
+    let descripcion = data.descripcion_cable
+    ajax_(
+    '../../models/Productos/ProductoConfigurable.Route.php', 
+    'post', 
+    'json', 
+    { 
+      Action: 'create',
+      Codigo: data.codigo,
+      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
+      Descripcion: descripcion
+    }, 
+    function(response){
+      console.log(response)
+    })
+  }else{
+    console.log('NoCodeCofig');
+  }
+}
+
+var interior_exterior_cable = function() {
+    let Cable = document.getElementById('Cable')
+    switch(Cable.value){
+      case 'IE' : // Cable Interior Exterior
+        cable_IE()
+        break;
+      case 'CI' : // Cable Distribución
+        cable_CI()
+        break;
+      case 'SA' : // Cable ADDS
+        cable_SA()
+        break;
+      case 'D0' : // Cable Drop Figura 0
+        cable_D0()
+        break;
+      case 'S8' : // Cable figura 8 sin armadura
+        cable_S8()
+        break;
+      case 'M8' : // Cable Exterior  mini figura 8
+        cable_M8()
+        break;
+      case 'DI' : // Cable Exterior Dielectrico
+        cable_DI()
+        break;
+      case 'AR' : // Cable Exterior Armado
+        cable_AR()
+        break;
+      case 'AD' : // Cable Exterior Armado Dielectrico
+        cable_AD()
+        break;
+      case 'F8' : // Cable Exterior Figura 8 con armadura
+        cable_F8()
+        break;
+      default:
+        templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")
+        console.log("No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo")
+    }
+  }
+  
+  interior_exterior_cable()
