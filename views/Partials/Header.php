@@ -153,7 +153,7 @@
           <?php if(!isset($_SESSION['Ecommerce-ClienteNombre'])): ?>
           <p class="text-xs mb-3 pt-2">Inicie sesión en su cuenta o registre una nueva para tener control total sobre sus pedidos.</p>
           <a class="btn btn-primary btn-sm btn-block" href="../Login/">Iniciar Sesión</a>
-          <p class="text-xs text-muted mb-2">Nuevo Cliente?&nbsp;<a href="../Login/">Registrar</a></p>
+          <p class="text-xs text-muted mb-2">Nuevo Cliente?&nbsp;<a href="../Login/registro.php">Registrar</a></p>
           <?php else: ?>
             <a class="list-group-item" href="../Cuenta/index.php?menu=1"><i class="icon-user"></i>Mi cuenta</a>
             <a class="btn btn-outline-primary btn-sm btn-block" href="../Login/logout.php">Salir</a>
