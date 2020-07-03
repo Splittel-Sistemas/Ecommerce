@@ -1,8 +1,8 @@
 <?php
   if (!class_exists('DetalleController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Detalle.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
   }if (!class_exists('PedidoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
   $DetalleController = new DetalleController();
   $DetalleController->filter = "WHERE pedidokey = ".$_POST['CotizacionKey']." ";
@@ -25,7 +25,7 @@
               $Pedido = $PedidoController->getBy();
 
               if (!class_exists('DatosEnvioController')) {
-                include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosEnvio.Controller.php';
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
               }
               $DatosEnvioController = new DatosEnvioController();
               $DatosEnvioController->filter = "WHERE id = ".$Pedido->GetDatosEnvioKey()." "; 
@@ -41,7 +41,7 @@
           <?php
             if(!empty($Pedido->GetDatosFacturacionKey())){
               if (!class_exists('DatosFacturacionController')) {
-                include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosFacturacion.Controller.php';
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
               }
               $DatosFacturacionController = new DatosFacturacionController();
               $DatosFacturacionController->filter = "WHERE id = ".$Pedido->GetDatosFacturacionKey()." ";

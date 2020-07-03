@@ -5,9 +5,9 @@
    */
   @session_start();
   if (!class_exists("Connection")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
   }if (!class_exists("Functions_tools")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
   }
   class Personal{
     private $conn;
@@ -127,14 +127,14 @@
           # envio de correo 
           if (!$result['error']) {
             if (!class_exists("Email")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/Email.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
             }if (!class_exists("EmailTest")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/EmailTest.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailTest.php';
             }
               $Email = new Email();
               $EmailTest = new EmailTest();
               $Email->MailerSubject = utf8_decode("¡Gracias por registrarse!");
-              $Email->MailerEmbeddedImagePath = $_SERVER['DOCUMENT_ROOT'].'/store/public/images/Otros/welcome.jpg';
+              $Email->MailerEmbeddedImagePath = $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/public/images/Otros/welcome.jpg';
               $Email->MailerEmbeddedImageId = "welcome";
               $Email->MailerEmbeddedImageTitle = "registrado";
               $Email->MailerListTo = [$this->PersonalEmail];

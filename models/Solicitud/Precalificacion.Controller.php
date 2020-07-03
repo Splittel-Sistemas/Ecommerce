@@ -2,19 +2,19 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("Precalificacion")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Solicitud/Precalificacion.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Solicitud/Precalificacion.Model.php';
 }if (!class_exists("Precalificacion_")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Solicitud/Precalificacion_.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Solicitud/Precalificacion_.Model.php';
 }if (!class_exists("Email")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/Email.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
 }if (!class_exists("TemplatePrecalificacion")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/views/Templates/Email/Precalificacion.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Precalificacion.php';
 }if (!class_exists('File')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/Files/File.Model.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Files/File.Model.php';
 }
 
   /**

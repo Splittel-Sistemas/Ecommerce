@@ -2,15 +2,15 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("PCDefinicionesController")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Configurables/Definiciones.Controller.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Configurables/Definiciones.Controller.php';
 }if (!class_exists("PCSubdefinicionesController")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Configurables/Subdefiniciones.Controller.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Configurables/Subdefiniciones.Controller.php';
 }if (!class_exists("PCSubdefiniciones_Controller")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Configurables/Subdefiniciones_.Controller.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Configurables/Subdefiniciones_.Controller.php';
 }
 
   /**

@@ -1,7 +1,7 @@
 <html lang="es">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
     <style>
       a::after{
           float:left;
@@ -15,12 +15,12 @@
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
      if (!class_exists("CatalogoProductos")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Catalogos/Productos.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Productos.php';
       }if (!class_exists("CatalogoFichasTecnicas")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Catalogos/FichasTecnicas.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/FichasTecnicas.php';
       }
     ?>
     <!-- Page Title-->
@@ -52,7 +52,7 @@
           <nav class="list-group" id="components-list">
           <?php 
             if (!class_exists("CategoriaController")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
             } 
             $CategoriaKey = isset($_GET['id']) ? $_GET['id'] : "";
             $CategoriaController = new CategoriaController();
@@ -112,9 +112,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>

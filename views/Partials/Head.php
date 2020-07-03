@@ -82,7 +82,7 @@
   $_SESSION['Ecommerce-CostoEnvio']  = !isset($_SESSION['Ecommerce-CostoEnvio']) || $_SESSION['Ecommerce-CostoEnvio'] > 1 ? 2 : $_SESSION['Ecommerce-CostoEnvio'];
 
   // if (!class_exists("Seguridad")) {
-  //   include $_SERVER["DOCUMENT_ROOT"].'/store/models/Seguridad/Seguridad.Controller.php';
+  //   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   // }
 
   // $SeguridadController = new SeguridadController();

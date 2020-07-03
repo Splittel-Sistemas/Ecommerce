@@ -8,8 +8,8 @@
 <html lang="en">
   <head>
     <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Login/seguridad.php'; 
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; 
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Login/seguridad.php'; 
     ?>
   </head>
   <!-- Body-->
@@ -57,7 +57,7 @@
       </div>
     </div>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
     <script type="text/javascript" src="../../public/scripts/Login/index.js?id="<?php echo rand(); ?>></script>
   </body>

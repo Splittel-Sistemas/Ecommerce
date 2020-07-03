@@ -3,7 +3,7 @@
   if(isset($_SESSION['Ecommerce-ClienteKey']))
   {
     if (!class_exists('PedidoController')) {
-      include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+      include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
     }
     $PedidoController = new PedidoController();
     $PedidoController->filter = "WHERE estatus = 'C' AND total > 0 AND fecha >= DATE_ADD(CURDATE(), INTERVAL -10 DAY) AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
@@ -58,6 +58,6 @@
 </div>
 <?php
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
   }
 ?>

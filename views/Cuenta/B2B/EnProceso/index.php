@@ -10,7 +10,7 @@
     @session_start();
     if(isset($_SESSION['Ecommerce-ClienteKey'])){
         if (!class_exists("EnProceso")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/EnProceso.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/EnProceso.php';
         }
         $EnProceso = new EnProceso();
         try {
@@ -123,11 +123,11 @@
         </div>
 <?php
         }else{
-            include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
         }
         unset($EnProceso);
         unset($ResponseEnProceso);
     }else{
-        include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
     }
 ?>

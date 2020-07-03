@@ -419,7 +419,7 @@ var EmailCatalogo = function(Elem){
       $('.catalogo').val('')
       templateAlert(response.typeError, '', 'En breve iniciará tu descarga', 'topRight', 'check-circle')
       var a = document.createElement('a');
-      var url = 'https://fibremex.com/store/public/catalogos/Fibremex-Catálogo 2020.pdf';
+      var url = 'https://fibremex.com/fibra-optica/public/catalogos/Fibremex-Catálogo 2020.pdf';
       a.href = url;
       a.download = 'Fibremex-Catálogo 2020.pdf';
       document.body.append(a);

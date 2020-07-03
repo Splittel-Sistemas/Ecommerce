@@ -3,7 +3,7 @@
 if(isset($_SESSION['Ecommerce-ClienteKey']))
 {
   if (!class_exists("GetBillToAdress")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetBillToAdress.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetBillToAdress.php';
   }
   
     $GetBillToAdress = new GetBillToAdress();
@@ -93,10 +93,10 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
 <?php     
     }
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';    
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';    
   }
 }
 else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
 }
  ?>

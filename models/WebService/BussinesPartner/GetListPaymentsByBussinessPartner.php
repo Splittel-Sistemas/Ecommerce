@@ -5,11 +5,11 @@
  */
   @session_start();
   if (!class_exists("WebService")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.php';
   }if (!class_exists("Personal")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/B2C/Cuenta/Personal.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/B2C/Cuenta/Personal.php';
   }
 
   class GetListPaymentsByBussinessPartner

@@ -17,7 +17,7 @@
     <tbody>
       <?php 
         if (!class_exists('DatosFacturacionController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosFacturacion.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
         }
 
         $DatosFacturacionController = new DatosFacturacionController();

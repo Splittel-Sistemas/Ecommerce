@@ -18,9 +18,9 @@
     <tbody>
       <?php 
         if (!class_exists('DatosEnvioController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosEnvio.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
         }if (!class_exists('Estados')) {
-          include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Estados.php';
+          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Estados.php';
         } 
 
         $Estado = new Estados();

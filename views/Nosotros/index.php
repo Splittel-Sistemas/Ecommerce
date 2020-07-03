@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
     <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; 
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; 
 
       if (!class_exists("NosotrosController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Nosotros/Nosotros.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Nosotros/Nosotros.Controller.php';
       }
       $NosotrosController = new NosotrosController();
       $Nosotros = $NosotrosController->getBy();
@@ -108,9 +108,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
   </body>
 </html>
 <?php 

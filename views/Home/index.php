@@ -11,20 +11,20 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <div id="customizer-backdrop" class="customizer-backdrop"></div>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
 
     <!-- Main Slider -->
     <section class="hero-slider" style="background-image: url(../../public/images/img/hero-slider/main-bg1.jpg);">
       <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
         <?php
           if (!class_exists('SlideController')) {
-            include $_SERVER['DOCUMENT_ROOT'].'/store/models/Home/Slide.Controller.php';
+            include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Home/Slide.Controller.php';
           }        
           $SlideController = new SlideController();
           $ResultSlide = $SlideController->get();
@@ -64,7 +64,7 @@
         <div class="row col-md-12 col-lg-12 col-12">
           <?php
             if (!class_exists("CategoriaController")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
             } 
             $CategoriaController = new CategoriaController();
             $CategoriaController->filter = "";
@@ -100,7 +100,7 @@
       <div class="row">
       <?php
         if (!class_exists('MiniBannerController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Home/MiniBanner.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Home/MiniBanner.Controller.php';
         }        
         $MiniBannerController = new MiniBannerController();
         $MiniBannerController->filter = "WHERE t38_pk01=1";
@@ -145,7 +145,7 @@
       <div class="row">
       <?php
         if (!class_exists("SubcategoriasN1Controller")) {
-          include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/SubcategoriasN1.Controller.php';
+          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/SubcategoriasN1.Controller.php';
         } 
         $SubcategoriasN1Controller = new SubcategoriasN1Controller();
         $SubcategoriasN1Controller->filter = "WHERE codigo='C1' OR codigo='C2' OR codigo='C3' OR codigo='C4' OR codigo='C5' OR codigo='C6' OR codigo='C7' OR codigo='C8' OR codigo='C9' OR codigo='C10' OR codigo='C11' OR codigo='C12' OR codigo='C13' OR codigo='C14' OR codigo='C38' ";
@@ -195,9 +195,9 @@
           <div  class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
             <?php
               if (!class_exists("ProductoController")) {
-                include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Producto.Controller.php';
+                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
               }if (!class_exists('ComentariosController')) {
-                include $_SERVER['DOCUMENT_ROOT'].'/store/models/Productos/Comentarios.Controller.php';
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
               }
 
               $ProductoController = new ProductoController();
@@ -590,9 +590,9 @@
     </section>
 
      <!-- Footer -->
-     <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script type="text/javascript">
       // altura('.featured_products_card')
       altura('.featured_products_card_1')

@@ -4,7 +4,7 @@
   if(empty($_SERVER['DOCUMENT_ROOT'])){
     $_SERVER['DOCUMENT_ROOT'] = "/home/fibremex/public_html";
   }if (!class_exists('PedidoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
 
   $PedidoController = new PedidoController();

@@ -2,7 +2,7 @@
 <html lang="en">
   <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
     <link href="../../public/fonts/Roboto/Roboto.css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style type="text/css">
       .styleClave{
@@ -13,10 +13,10 @@
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
       if (!class_exists("ProductoController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Producto.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
       }
       $ProductoController = new ProductoController();
       $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
@@ -54,7 +54,7 @@
     
     <!-- Page Content-->
     <div class="container padding-bottom-3x">
-      <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Productos/Fijos/index.php' ?>
+      <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Productos/Fijos/index.php' ?>
     </div>
     <!-- Description CEO-->
     <?php 
@@ -81,7 +81,7 @@
     if($Obj->ProductoCategoriaKey!='A8'){
     ?>
       <div class="container padding-bottom-3x mb-2">
-        <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Productos/Fijos/detalle.php' ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Productos/Fijos/detalle.php' ?>
       </div>
     <?php
     }
@@ -94,9 +94,9 @@
     </div>
     <?php } ?>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script type="text/javascript" src="../../public/scripts/Productos/Comentarios.js?id=<?php echo rand() ?>"></script>
   </body>
 </html>

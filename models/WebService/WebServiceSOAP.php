@@ -1,7 +1,7 @@
 <?php
 
 if (!class_exists("EncrypData_")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/EncrypData.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/EncrypData.php';
 }
 class WebService{
     protected $WS_Usuario;

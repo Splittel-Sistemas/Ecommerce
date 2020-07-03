@@ -4,37 +4,37 @@
     [
       'descripcion' => 'Datos Generales', 
       'icon' => 'icon-user', 
-      'file' => '/store/views/Cuenta/B2C/Generales/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/Generales/index.php'
     ],
     [
       'descripcion' => 'Dashboard 360', 
       'icon' => 'icon-bar-chart-2', 
-      'file' => '/store/views/Cuenta/B2C/Dashboard/dashboard_360.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/Dashboard/dashboard_360.php'
     ],
     [
       'descripcion' => 'Cotizaciones', 
       'icon' => 'icon-file-text', 
-      'file' => '/store/views/Cuenta/B2C/Cotizaciones/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/Cotizaciones/index.php'
     ],
     [
       'descripcion' => 'Pendientes de autorización', 
       'icon' => 'icon-file-text', 
-      'file' => '/store/views/Cuenta/B2C/Pendientes/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/Pendientes/index.php'
     ],
     [
       'descripcion' => 'Pedidos', 
       'icon' => 'icon-folder', 
-      'file' => '/store/views/Cuenta/B2C/Pedidos/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/Pedidos/index.php'
     ],
     [
       'descripcion' => 'Datos de Envío', 
       'icon' => 'icon-map-pin', 
-      'file' => '/store/views/Cuenta/B2C/DatosEnvio/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/DatosEnvio/index.php'
     ],
     [
       'descripcion' => 'Datos de Facturación', 
       'icon' => 'icon-globe', 
-      'file' => '/store/views/Cuenta/B2C/DatosFacturacion/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2C/DatosFacturacion/index.php'
     ],
   ];
   

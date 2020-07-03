@@ -14,13 +14,13 @@
 <html lang="es">
   <head>
     <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php';     
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php';     
     ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>     
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>     
    <!-- Page Title-->
     <div class="page-title">
       <div class="container">
@@ -59,20 +59,20 @@
           <div id="PartialCheckout-1" class="PartialCheckout">
             <?php
               if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-                include $_SERVER['DOCUMENT_ROOT'].'/store/views/Checkout/B2B/datos_envio.php'; 
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Checkout/B2B/datos_envio.php'; 
               }else{
-                include $_SERVER['DOCUMENT_ROOT'].'/store/views/Checkout/B2C/datos_envio.php'; 
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Checkout/B2C/datos_envio.php'; 
               } 
             ?>
           </div>
           <div id="PartialCheckout-2" class="PartialCheckout" style="display: none">
-            <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Checkout/Paqueteria.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Checkout/Paqueteria.php'; ?>
           </div>
           <div id="PartialCheckout-3" class="PartialCheckout" style="display: none">
-            <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Checkout/Pago.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Checkout/Pago.php'; ?>
           </div>
           <div id="PartialCheckout-4" class="PartialCheckout" style="display: none">
-            <?php # include $_SERVER['DOCUMENT_ROOT'].'/store/views/Checkout/resumen.php'; ?>
+            <?php # include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Checkout/resumen.php'; ?>
           </div>
         </div>
       </div>
@@ -88,11 +88,11 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/public/scripts/Checkout/Pago/OpenPayConfig.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/public/scripts/Checkout/Pago/OpenPayConfig.php'; ?>
     <!--  -->
     <script type="text/javascript" src="../../public/scripts/Checkout/index.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Datos/B2C/datos_envio.js?id=<?php echo rand() ?>"></script>

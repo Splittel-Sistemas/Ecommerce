@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
     <!--  -->
     <link href="../../public/fonts/Roboto/Roboto.css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style type="text/css">
@@ -15,10 +15,10 @@
   <body>
     <?php 
       #Header
-      include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; 
+      include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; 
 
       if (!class_exists("CategoriaController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
       }
 
       $CategoriaController = new CategoriaController();
@@ -85,7 +85,7 @@
             <?php 
               $FileUbicacionTemplate = $Obj->CategoriaFolderName.'/'.$Obj->SubcategoriaFolderName;
               $FileUbicacionJs = $Obj->CategoriaFolderName.'/'.$Obj->SubcategoriaN1Key;
-              include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Productos/Categorias/'.$FileUbicacionTemplate.'/index.php';             
+              include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Categorias/'.$FileUbicacionTemplate.'/index.php';             
             ?>  
           <div class="row align-items-end pb-4">
             <div class="col-sm-4">
@@ -151,7 +151,7 @@
             </div>
             <div class="tab-pane fade" id="inf4" role="tabpanel">
              <!-- Reviews-->
-              <?php include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Productos/Informacion/Comentarios/index.php'; ?>
+              <?php include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Informacion/Comentarios/index.php'; ?>
             </div>
             <div class="tab-pane fade show " id="inf5" role="tabpanel">
               <!-- <iframe height="500px" src="../../public/images/img_spl/productos/OPEFEMPANU04001/360/PRUEBAOKOKOK.html"></iframe>  -->
@@ -161,9 +161,9 @@
       </div>
     </div>   
     <!-- Footer -->
-    <?php include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script type="text/javascript" src="../../public/scripts/Productos/Comentarios.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Productos/Categorias/CategoriasGlobal.js?id=<?php echo rand();?>"></script>
     <script type="text/javascript" src="../../public/scripts/Productos/Categorias/<?php echo $FileUbicacionJs ?>.js?id=<?php echo rand();?>"></script>

@@ -1,10 +1,10 @@
 <?php 
   if (isset($_POST["Descripcion"])){
   if (!class_exists("ProductoController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Producto.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
   }
   if (!class_exists("SubcategoriasController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Subcategorias/Subcategorias.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
   }
 
   $SubcategoriasController = new SubcategoriasController();

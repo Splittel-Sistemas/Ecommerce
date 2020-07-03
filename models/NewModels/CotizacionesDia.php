@@ -4,14 +4,14 @@
         $_SERVER['DOCUMENT_ROOT'] = "/home/fibremex/public_html";
     }
     if (!class_exists("Connection")) {
-        require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+        require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
     }
     if (!class_exists("Email")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/EmailAux.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailAux.php';
     }
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/NewModels/Usuario.Model.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/NewModels/PedidoDetalle.Model.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/NewModels/EmailTemplate.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/NewModels/Usuario.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/NewModels/PedidoDetalle.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/NewModels/EmailTemplate.php';
     use Models\Usuario as UsuarioModel;
     use Models\Detalle as DetalleModel;
     use EmailTemplates\EmailTemplate as EmailTemplate;

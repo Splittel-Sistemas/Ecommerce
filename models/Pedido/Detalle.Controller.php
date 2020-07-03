@@ -1,13 +1,13 @@
 <?php
 @session_start();
 if (!class_exists('Connection')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists('Detalle_')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Detalle.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Model.php';
 }if (!class_exists('Pedido_')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
 }
 
 class DetalleController{

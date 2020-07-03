@@ -7,7 +7,7 @@
    * [400]
    */
   if (!class_exists("GetListDocumentosByBussinessPartner")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetListDocumentosByBussinessPartner.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetListDocumentosByBussinessPartner.php';
   }
   // echo "hola";
   $GetListDocumentosByBussinessPartner = new GetListDocumentosByBussinessPartner();
@@ -65,6 +65,6 @@
 <?php
     }
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
   }
  ?>

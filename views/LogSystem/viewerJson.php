@@ -1,13 +1,13 @@
 <?php
     if (!class_exists("LogSystem")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Logs/LogSystem.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/LogSystem.php';
         // include '../../models/Logs/LogSystem.php ';
     }
 
     $LogSystem = new LogSystem();
     $Log = $LogSystem->List_Log(" where t99_pk01 = '".$_REQUEST['logID']."' ","",false)->records[0];
     // print_r($Log);
-    // echo $_SERVER["DOCUMENT_ROOT"].'/store/models/Logs/LogSystem.php';
+    // echo $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/LogSystem.php';
 ?>
 
 <!DOCTYPE html>

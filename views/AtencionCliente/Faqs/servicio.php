@@ -2,7 +2,7 @@
   <div class="accordion" id="accordion1" role="tablist">
     <?php 
       if (!class_exists('CatalogoFaqs')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/Faqs.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/Faqs.php';
       }
       $CatalogoFaqs = new CatalogoFaqs();
       $responseCatalogoFaqs = (object)$CatalogoFaqs->get("WHERE id=".$_GET['idc'], "", false);

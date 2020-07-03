@@ -1,9 +1,9 @@
 <?php
 @session_start();
 if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists('ProductoConfigurableController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Productos/ProductoConfigurable.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/ProductoConfigurable.Controller.php';
 }
 
 class ProductoConfigurableRoute{

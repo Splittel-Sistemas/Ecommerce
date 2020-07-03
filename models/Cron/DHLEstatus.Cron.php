@@ -4,7 +4,7 @@
   if(empty($_SERVER['DOCUMENT_ROOT'])){
     $_SERVER['DOCUMENT_ROOT'] = "/home/fibremex/public_html";
   }if (!class_exists("NumeroGuiaEstatusController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Paqueteria/DHL/NumeroGuiaEstatus.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Paqueteria/DHL/NumeroGuiaEstatus.Controller.php';
   }
 
   $NumeroGuiaEstatusController = new NumeroGuiaEstatusController();

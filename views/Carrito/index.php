@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>		
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>		
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
@@ -39,7 +39,7 @@
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
         <?php 
           if (!class_exists("ProductoController")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Producto.Controller.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
           }
           $ProductoController = new ProductoController();
           $ProductoController->order = "ORDER BY RAND() LIMIT 12 ";
@@ -85,9 +85,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
      <!--  -->
      <script type="text/javascript" src="../../public/scripts/Carrito/CostoEnvio/CostoEnvioGlobal.js?id=<?php echo rand() ?>"></script>
      <script type="text/javascript" src="../../public/scripts/Carrito/CostoEnvio/datos_envio.js?id=<?php echo rand() ?>"></script>

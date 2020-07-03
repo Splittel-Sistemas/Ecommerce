@@ -1,8 +1,8 @@
 <?php
 if (!class_exists("Email")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/Email.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
 }if (!class_exists("EmailTest")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Email/EmailTest.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailTest.php';
 }
   class ComentariosBlog{
 

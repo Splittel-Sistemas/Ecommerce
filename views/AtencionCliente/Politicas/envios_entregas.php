@@ -3,7 +3,7 @@
   <div class="accordion" id="accordion1" role="tablist">
     <?php 
       if (!class_exists('CatalogoEnviosEntrega')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/EnviosEntrega.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/EnviosEntrega.php';
       }
       $CatalogoEnviosEntrega = new CatalogoEnviosEntrega();
       $responseCatalogoEnviosEntrega = (object)$CatalogoEnviosEntrega->get("", "", false);

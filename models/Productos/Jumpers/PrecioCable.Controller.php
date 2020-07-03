@@ -2,11 +2,11 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-	include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+	include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-	include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+	include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("PrecioCable")) {
-	include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Jumpers/PrecioCable.Model.php';
+	include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Jumpers/PrecioCable.Model.php';
 }
 
 	/**

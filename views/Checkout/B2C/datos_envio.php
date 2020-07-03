@@ -4,9 +4,9 @@
 <hr class="padding-bottom-1x">
 <?php 
   if (!class_exists("DatosEnvioController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cuenta/B2C/DatosEnvio.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
   }if (!class_exists('Estados')) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Estados.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Estados.php';
   } 
 
   $Estado = new Estados();
@@ -31,7 +31,7 @@
     <tbody>
       <?php 
         if (!class_exists('PedidoController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
         }
         if(isset($_SESSION["Ecommerce-PedidoKey"])){
           $PedidoController = new PedidoController;
@@ -91,7 +91,7 @@
 
 <?php 
   if (!class_exists("CFDIUserController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Catalogos/CFDIUser.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/CFDIUser.Controller.php';
   }
   $CFDIUserController = new CFDIUserController();
   $ResultCFDIUserController = $CFDIUserController->get();
@@ -127,7 +127,7 @@
     <?php } ?>
 <?php 
   if (!class_exists("DatosFacturacionController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cuenta/B2C/DatosFacturacion.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
   }
 
   $DatosFacturacionController = new DatosFacturacionController();

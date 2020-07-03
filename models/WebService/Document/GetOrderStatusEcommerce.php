@@ -5,13 +5,13 @@
  */
   @session_start();
   if (!class_exists("WebService")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.php';
   }if (!class_exists("Personal")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/B2C/Cuenta/Personal.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/B2C/Cuenta/Personal.php';
   }if (!class_exists("Functions_tools")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
   }
 
   class GetOrderStatusEcommerce

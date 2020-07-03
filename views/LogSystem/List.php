@@ -1,6 +1,6 @@
 <?php
     if (!class_exists("LogSystem")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Logs/LogSystem.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/LogSystem.php';
     }
 
     $LogSystem = new LogSystem();

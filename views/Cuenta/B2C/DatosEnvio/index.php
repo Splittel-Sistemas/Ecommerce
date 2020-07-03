@@ -1,6 +1,6 @@
 
 <div id="List-datosEnvio">
-  <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Cuenta/B2C/DatosEnvio/List.php' ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2C/DatosEnvio/List.php' ?>
 </div>
 
 <!-- Modal -->

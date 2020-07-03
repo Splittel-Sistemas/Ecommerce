@@ -2,7 +2,7 @@
   <div class="accordion" id="accordion1" role="tablist">
     <?php 
       if (!class_exists('CatalogoDevoluciones')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/Devoluciones.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/Devoluciones.php';
       }
       $CatalogoDevoluciones = new CatalogoDevoluciones();
       $responseCatalogoDevoluciones = (object)$CatalogoDevoluciones->get("", "", false);
