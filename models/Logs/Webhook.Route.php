@@ -38,5 +38,5 @@
 	}
 
 	$WebhookRoute = new WebhookRoute();
-	$WebhookRoute->Action = "version";
+	$WebhookRoute->Action = "webhook";
 	$WebhookRoute->Controller();
