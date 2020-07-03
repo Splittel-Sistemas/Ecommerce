@@ -185,7 +185,7 @@
       </div>
     </section>
     <a class="d-block position-relative mx-auto mb-5 mb-md-0" href="#" style="max-width: 882px; margin-top: -300px; z-index: 10;">
-    <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.png" alt="Empalmadora"></a>
+    <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.webp" alt="Empalmadora"></a>
     <!-- Banner 3-->
     <div class="container padding-bottom-3x mb-md-2 mt-5 mt-md-0 pt-5 pt-md-0">
       <div class="row">
