@@ -27,6 +27,9 @@ class PedidoController{
     protected $Tool;
     protected $PedidoModel;
 
+    public $filter;
+    public $order;
+
     public function __construct(){
         $this->Connection = new Connection();
         $this->Tool = new Functions_tools();

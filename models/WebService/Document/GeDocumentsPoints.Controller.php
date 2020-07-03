@@ -14,6 +14,8 @@
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Model.php';
   }if (!class_exists("Cliente")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
+  }if (!class_exists('PedidoController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
 
   class GeDocumentsPointsController{
@@ -52,10 +54,18 @@
                 "http://fibremex.com.mx/"
               );
 
-              $GeDocumentsPoints['GeDocumentsPoints']['Folios'] = ['int' => 1286];
+              $PedidoController = new PedidoController();
+              $PedidoController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']."  AND estatus = 'P' AND metodo_pago = 99 ";
+              $PedidoController->order = "";
+              $ResultPedido = $PedidoController->get();
+
+              foreach ($ResultPedido->records as $key => $Pedido) {
+                $Folios[] = ['int' => $Pedido->Key];
+              }
+              
+              $GeDocumentsPoints['GeDocumentsPoints']['Folios'] = $Folios;
 
               $result = $WebServiceSOAP->ExecuteSoap("GeDocumentsPoints", $GeDocumentsPoints, false);
-              print_r($result);
 
               unset($WebServiceSOAP);
               unset($ContactoModel);
@@ -84,6 +94,3 @@
       }
     }
   }
-
-  $GeDocumentsPointsController = new GeDocumentsPointsController();
-  $GeDocumentsPointsController->get();
