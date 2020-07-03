@@ -136,7 +136,7 @@
       </div>
     </section>
     <!-- Banner 1 -->
-    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
+    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products -->
@@ -315,7 +315,7 @@
       </div>
     </div>
     <!-- Distribuidores -->
-    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.png);">
+    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products-->
@@ -381,7 +381,7 @@
       </div>
     </section>
     <!-- Sistema de canalización -->
-    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.png);">
+    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products-->
