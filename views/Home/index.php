@@ -103,7 +103,7 @@
           include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Home/MiniBanner.Controller.php';
         }        
         $MiniBannerController = new MiniBannerController();
-        $MiniBannerController->filter = "WHERE t38_pk01=1";
+        $MiniBannerController->filter = "WHERE t38_pk01=6";
         $MiniBannerController->order = "ORDER BY t39_f003 ASC";
         $ResultMinibanner = $MiniBannerController->get();
         foreach ($ResultMinibanner->records as $key => $MiniBanner) {
