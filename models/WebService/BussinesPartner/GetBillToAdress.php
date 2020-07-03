@@ -6,11 +6,11 @@
   @session_start();
   ini_set('default_socket_timeout', 6000);
   if (!class_exists("WebService")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.php';
   }if (!class_exists("Personal")) {
-    require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/B2C/Cuenta/Personal.php';
+    require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/B2C/Cuenta/Personal.php';
   }
 
   class GetBillToAdress
@@ -101,8 +101,8 @@
     }
     // public function Example(){
       
-    //   require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Librerias/nusoap/lib/nusoap.php';
-    //   require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/EncrypData.php';
+    //   require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Librerias/nusoap/lib/nusoap.php';
+    //   require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/EncrypData.php';
       
     //   $cliente = new nusoap_client('http://201.116.205.21:64616/WS_BussinesPartner.asmx?WSDL');
     //   $cliente->namespaces['fib'] = 'http://fibremex.com.mx/';

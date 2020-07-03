@@ -17,11 +17,11 @@
       <tr>
       <?php 
         if (!class_exists('DetalleController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Detalle.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
         }if (!class_exists("SubcategoriasN1Controller")) {
-          include $_SERVER["DOCUMENT_ROOT"].'/store/models/Subcategorias/SubcategoriasN1.Controller.php';
+          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
         }if (!class_exists('PedidoController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
         }
 
         $DetalleController = new DetalleController();

@@ -5,9 +5,9 @@
  */
   @session_start();
   if (!class_exists("WebService")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto_")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Controller.php';
   }
 
   class UpdatePasswordController

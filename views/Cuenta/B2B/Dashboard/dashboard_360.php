@@ -8,7 +8,7 @@
     @session_start();
     if(isset($_SESSION['Ecommerce-ClienteKey'])){
         if (!class_exists("GetDataDasboard360")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetDataDasboard360.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetDataDasboard360.php';
         }
         $GetDataDasboard360 = new GetDataDasboard360();
         try {
@@ -150,10 +150,10 @@
 <?php
 
         }else{
-            include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
         }
         unset($GetDataDasboard360);
     }else{
-        include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
     }
 ?>

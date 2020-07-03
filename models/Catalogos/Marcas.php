@@ -5,9 +5,9 @@
  */
 @session_start();
 if (!class_exists("Connection")) {
-  require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+  require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  require_once $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+  require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }
 
 class CatalogoMarcas

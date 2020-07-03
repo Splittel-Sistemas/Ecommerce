@@ -2,17 +2,17 @@
 <html lang="es">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
 	date_default_timezone_set("America/Mexico_City");
 	setlocale(LC_TIME, "spanish");
       if (!class_exists("Blog")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Blog/Blog.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Blog/Blog.php';
       }
       $Blog = new Blog();
       $range1 = ($_GET['pag'] - 1) * $Blog->elem_totales_pagination;
@@ -104,9 +104,9 @@
       </nav>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
   </body>
 </html>
 

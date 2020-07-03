@@ -4,52 +4,52 @@
     [
       'descripcion' => 'Datos Generales', 
       'icon' => 'icon-user', 
-      'file' => '/store/views/Cuenta/B2B/Generales/datos_generales.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Generales/datos_generales.php'
     ],
     [
       'descripcion' => 'Dashboard 360', 
       'icon' => 'icon-bar-chart-2', 
-      'file' => '/store/views/Cuenta/B2B/Dashboard/dashboard_360.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Dashboard/dashboard_360.php'
     ],
     [
       'descripcion' => 'Cotizaciones', 
       'icon' => 'icon-file-text', 
-      'file' => '/store/views/Cuenta/B2B/Cotizaciones/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Cotizaciones/index.php'
     ],
     [
       'descripcion' => 'Pendientes de autorización', 
       'icon' => 'icon-edit-3', 
-      'file' => '/store/views/Cuenta/B2B/Pendientes/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Pendientes/index.php'
     ],
     [
       'descripcion' => 'Pedidos en proceso', 
       'icon' => 'icon-activity', 
-      'file' => '/store/views/Cuenta/B2B/EnProceso/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/EnProceso/index.php'
     ],
     [
       'descripcion' => 'Histórico de pedidos', 
       'icon' => 'icon-folder', 
-      'file' => '/store/views/Cuenta/B2B/HistoricoPedidos/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/HistoricoPedidos/index.php'
     ],
     [
       'descripcion' => 'Rechazados', 
       'icon' => 'icon-trash', 
-      'file' => '/store/views/Cuenta/B2B/Rechazados/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Rechazados/index.php'
     ],
     [
       'descripcion' => 'Pagos', 
       'icon' => 'icon-dollar-sign', 
-      'file' => '/store/views/Cuenta/B2B/Pagos/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/Pagos/index.php'
     ],
     [
       'descripcion' => 'Datos de Envío', 
       'icon' => 'icon-map-pin', 
-      'file' => '/store/views/Cuenta/B2B/DatosEnvio/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/DatosEnvio/index.php'
     ],
     [
       'descripcion' => 'Datos de Facturación', 
       'icon' => 'icon-globe', 
-      'file' => '/store/views/Cuenta/B2B/DatosFacturacion/index.php'
+      'file' => '/fibra-optica/views/Cuenta/B2B/DatosFacturacion/index.php'
     ],
 
   ];

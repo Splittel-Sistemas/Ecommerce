@@ -1,6 +1,6 @@
 <?php
   if (!class_exists("EstructuraController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Configurables/Estructura.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Configurables/Estructura.Controller.php';
   }
   $EstructuraController = new EstructuraController();
   $ResultEstructura = $EstructuraController->Estructura();

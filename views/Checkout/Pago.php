@@ -106,9 +106,9 @@
   <?php 
     if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
       if (!class_exists("GetBussinesPartnerController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';
       }if (!class_exists("Functions_tools")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
       }
       
       try {

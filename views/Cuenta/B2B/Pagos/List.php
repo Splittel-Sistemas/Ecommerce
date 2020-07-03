@@ -1,6 +1,6 @@
 <?php
   if (!class_exists("GetListPaymentsByBussinessPartner")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetListPaymentsByBussinessPartner.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetListPaymentsByBussinessPartner.php';
   }
 
   try {
@@ -64,7 +64,7 @@
 <?php      
     }
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
   }
   unset($GetListPaymentsByBussinessPartner);
   unset($ResponseGetListPaymentsByBussinessPartner);

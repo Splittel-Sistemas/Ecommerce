@@ -17,14 +17,14 @@
                 <div class="form-group col-lg-6">
                     <label for="">URL</label>
                     <select name="" id="url" class="form-control">
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/Generales/datos_generales.php">Datos generales**</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/Dashboard/dashboard_360.php">dashboard 360</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/EnProceso/">En proceso</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/HistoricoPedidos">Historico de pedidos</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/Rechazados">Rechazados</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/Pagos">Pagos</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/DatosEnvio">DatosEnvio</option>
-                        <option value="http://fibremex.co/store/views/Cuenta/B2B/DatosFacturacion">DatosFacturacion</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/Generales/datos_generales.php">Datos generales**</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/Dashboard/dashboard_360.php">dashboard 360</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/EnProceso/">En proceso</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/HistoricoPedidos">Historico de pedidos</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/Rechazados">Rechazados</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/Pagos">Pagos</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/DatosEnvio">DatosEnvio</option>
+                        <option value="http://fibremex.co/fibra-optica/views/Cuenta/B2B/DatosFacturacion">DatosFacturacion</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-3">

@@ -1,6 +1,6 @@
 <?php
   if (!class_exists('PedidoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
 
   $PedidoController = new PedidoController();

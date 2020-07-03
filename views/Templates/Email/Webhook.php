@@ -1,6 +1,6 @@
 <?php
   if (!class_exists("TemplatePrincipal")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Templates/Principal.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Principal.php';
   }
 
   class TemplateWebhook{

@@ -2,15 +2,15 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists('Pedido_')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Model.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
 }if (!class_exists('PedidoController')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
 }if (!class_exists('GetOrderInprocesIDController')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/WebService/Document/GetOrderInprocesID.Controller.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/WebService/Document/GetOrderInprocesID.Controller.php';
 }
   /**
    * 

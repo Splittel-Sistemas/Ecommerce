@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
       if (!class_exists("Catalogo")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Biblioteca/Catalogo/Catalogo.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Biblioteca/Catalogo/Catalogo.php';
       }if (!class_exists("Historia")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Biblioteca/Catalogo/Historia.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Biblioteca/Catalogo/Historia.php';
       }
       $Catalogo = new Catalogo();
       $response = $Catalogo->get("", "", false)->records[0];
@@ -86,9 +86,9 @@
       </section>   
     <?php $HistoriaCont++; endforeach ?>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
   </body>
 </html>
 

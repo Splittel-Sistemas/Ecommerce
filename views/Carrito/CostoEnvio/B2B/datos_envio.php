@@ -4,7 +4,7 @@
 <hr class="padding-bottom-1x">
 <?php 
   if (!class_exists("GetShipToAdressController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
   }
   
   try {

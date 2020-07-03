@@ -1,7 +1,7 @@
 
     <?php 
       if (!class_exists('NumeroGuiaEstatus_Controller')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Paqueteria/PaqueteExpress/NumeroGuiaEstatus_.Controller.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Paqueteria/PaqueteExpress/NumeroGuiaEstatus_.Controller.php';
       }
       $NumeroGuiaEstatus_Controller = new NumeroGuiaEstatus_Controller();
       $NumeroGuiaEstatus_Controller->PedidoKey = $_GET['PedidoKey'];

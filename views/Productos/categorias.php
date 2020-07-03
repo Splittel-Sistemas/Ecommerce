@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <?php 
       # Header
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php';
 
       if (!class_exists("CategoriaController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
       }if (!class_exists("SubcategoriasController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Subcategorias/Subcategorias.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
       }if (!class_exists("SubcategoriasN1Controller")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Subcategorias/SubcategoriasN1.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
       }if (!class_exists("ProductoController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Producto.Controller.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
       }if (!class_exists('ComentariosController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Productos/Comentarios.Controller.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
       }
     ?>
     <!-- Page Title-->
@@ -283,9 +283,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script>
       altura('.featured_products_card')
       altura('.featured_products_content')

@@ -1,10 +1,10 @@
 <?php
 	if (!class_exists("TemplatePrincipal")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/store/views/Templates/Principal.php';
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Principal.php';
 	}if (!class_exists("PrecalificacionController")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/store/models/Login/Solicitud/Precalificacion.Controller.php';
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Login/Solicitud/Precalificacion.Controller.php';
 	}if (!class_exists("Precalificacion_")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/store/models/Login/Solicitud/Precalificacion_.Model.php';
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Login/Solicitud/Precalificacion_.Model.php';
 	}
 
 	class TemplatePrecalificacion{

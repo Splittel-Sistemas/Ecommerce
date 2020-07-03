@@ -8,7 +8,7 @@
 				<!-- <p>El registro solo te llevara algunos minutos para obtener el control de tus ordenes.</p> -->
 				<?php 
 				 	if (!class_exists('DatosFacturacionController')) {
-						include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosFacturacion.Controller.php';
+						include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
 					}
 					$DatosFacturacionController = new DatosFacturacionController();
 					$DatosFacturacionController->filter = isset($_POST['DatosFacturacionKey']) ? "WHERE id = '".$_POST['DatosFacturacionKey']."' " : "WHERE id = 0 "; 
@@ -44,7 +44,7 @@
 							<select class="form-control form-control-pill" id="Estado" name="Estado" onchange="showMunicipios(this, 'Municipio')">
 							<?php 
 								if (!class_exists('Estados')) {
-									include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Estados.php';
+									include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Estados.php';
 								}
 								$Estado = new Estados();
 								foreach ($Estado->CountryWithCitys['Mexico'] as $Ciudad) {

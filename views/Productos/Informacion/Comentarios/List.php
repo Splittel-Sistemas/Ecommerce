@@ -17,7 +17,7 @@
   }
 
   if (!class_exists('ComentariosController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Productos/Comentarios.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
   }
 
   $Where = empty($IdProducto) ? "WHERE IdCategoria = '".$IdCategoria."' " : "WHERE IdProducto = '".$IdProducto."' ";

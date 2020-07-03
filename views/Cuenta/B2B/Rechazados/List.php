@@ -1,6 +1,6 @@
 <?php
   if (!class_exists("GetOrdersRejected")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/Document/GetOrdersRejected.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Document/GetOrdersRejected.php';
   }
 
   try {
@@ -62,7 +62,7 @@
   <?php
     }
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
   } 
 ?>
 

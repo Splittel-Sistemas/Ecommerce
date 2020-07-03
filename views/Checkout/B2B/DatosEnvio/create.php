@@ -2,7 +2,7 @@
 <?php 
 
 if (!class_exists("GetShipToAdressByAddressName")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetShipToAdressByAddressName.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetShipToAdressByAddressName.php';
 }
 
 $GetShipToAdressByAddressName = new GetShipToAdressByAddressName();
@@ -62,7 +62,7 @@ if (isset($_POST['AddressName'])) {
               <!-- <label>Estado <strong class="text-danger">*</strong></label> -->
               <select class="form-control form-control-pill" id="Estado" name="Estado" onchange="showMunicipios(this, 'Delegacion')">
                 <?php 
-                  include $_SERVER["DOCUMENT_ROOT"]."/store/models/Tools/Estados.php";
+                  include $_SERVER["DOCUMENT_ROOT"]."/fibra-optica/models/Tools/Estados.php";
 
                   $Estado = new Estados();
                   foreach ($Estado->CountryWithCitys['Mexico'] as $city) {
@@ -80,7 +80,7 @@ if (isset($_POST['AddressName'])) {
                 if (isset($_POST['AddressName'])) {
                   $_POST['CiudadKey'] = $obj->State;
                   $_POST['MunicipioDescripcion'] = $obj->County;
-                  include  $_SERVER["DOCUMENT_ROOT"].'/store/views/Config/Municipios.php'; 
+                  include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Config/Municipios.php'; 
                 }
               ?>
               </select>

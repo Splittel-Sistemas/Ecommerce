@@ -1,5 +1,5 @@
 <?php
-    // C:\xampp3\htdocs/store/public/images/img_spl/productos/OPEFEMPANU04001
+    // C:\xampp3\htdocs/fibra-optica/public/images/img_spl/productos/OPEFEMPANU04001
     
     
     header('Access-Control-Allow-Credentials: true');
@@ -93,15 +93,15 @@
                 }
                 if($_GET['Process'] == 'unzip')
                 {
-                    $this->PathZip = $_SERVER["DOCUMENT_ROOT"].'/store/public/images/img_spl/productos/'.$_GET['ItemCode'].'/360.zip';
-                    $this->PathExtractTo = $_SERVER["DOCUMENT_ROOT"].'/store/public/images/img_spl/productos/'.$_GET['ItemCode'];
+                    $this->PathZip = $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/public/images/img_spl/productos/'.$_GET['ItemCode'].'/360.zip';
+                    $this->PathExtractTo = $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/public/images/img_spl/productos/'.$_GET['ItemCode'];
                     $this->DeleteFileAfter = true;
                     http_response_code(200);
                     echo $this->Unzip();
                 }
                 else if($_GET['Process'] == 'delete')
                 {
-                    $this->PathExtractTo = $_SERVER["DOCUMENT_ROOT"].'/store/public/images/img_spl/productos/'.$_GET['ItemCode'].'/360';
+                    $this->PathExtractTo = $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/public/images/img_spl/productos/'.$_GET['ItemCode'].'/360';
                     if (is_dir($this->PathExtractTo)) {
                         $this->deleteDirectory($this->PathExtractTo);
                         http_response_code(200);

@@ -2,7 +2,7 @@
   <div class="accordion" id="accordion1" role="tablist">
     <?php 
       if (!class_exists('CatalogoGarantias')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/Garantias.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/Garantias.php';
       }
       $CatalogoGarantias = new CatalogoGarantias();
       $responseCatalogoGarantias = (object)$CatalogoGarantias->get("", "", false);

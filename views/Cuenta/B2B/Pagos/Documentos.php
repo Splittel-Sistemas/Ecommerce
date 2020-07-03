@@ -3,7 +3,7 @@
 if(isset($_SESSION['Ecommerce-ClienteKey']))
 {
   if (!class_exists("GetDocumentsPayment")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/Payment/GetDocumentsPayment.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Payment/GetDocumentsPayment.php';
   }
 
   try {
@@ -69,6 +69,6 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
   unset($ResponseGetDocumentsPayment);
 }
 else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
 }
  ?>

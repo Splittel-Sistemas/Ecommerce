@@ -9,7 +9,7 @@
     @session_start();
     if(isset($_SESSION['Ecommerce-ClienteKey'])){
         if (!class_exists("GetOrdersByCustomer")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetOrdersByCustomer.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetOrdersByCustomer.php';
         }
         $GetOrdersByCustomer = new GetOrdersByCustomer();
         try {
@@ -109,10 +109,10 @@
             </div>
 <?php
         }else{
-            include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
         }
     }else{
-        include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
     }
 
 

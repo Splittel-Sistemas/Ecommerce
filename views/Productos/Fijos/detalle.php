@@ -65,7 +65,7 @@
             <tbody>
             <?php 
               if (!class_exists("RelacionadosController")) {
-                include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Relacionados.Controller.php';
+                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Relacionados.Controller.php';
               }
               $RelacionadosController = new RelacionadosController();
               $RelacionadosController->filter = "WHERE tipo='fijo' AND id_codigo = '".$Obj->ProductoRelacionados."' ";
@@ -105,7 +105,7 @@
       </div>
       <!-- Comentarios -->
       <div class="tab-pane fade" id="inf4" role="tabpanel">
-        <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Productos/Informacion/Comentarios/index.php'; ?>
+        <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Informacion/Comentarios/index.php'; ?>
       </div>
       <?php
         $fichero_360 = "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/360/".$Obj->ProductoCodigo.".html";

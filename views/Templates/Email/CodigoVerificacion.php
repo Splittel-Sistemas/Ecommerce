@@ -1,8 +1,8 @@
 <?php
   if (!class_exists("TemplatePrincipal")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Templates/Principal.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Principal.php';
   }if (!class_exists('CodigoVerificacionController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tokens/CodigoVerificacion.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tokens/CodigoVerificacion.Controller.php';
 }
 
   class TemplateCodigoVerificacion{

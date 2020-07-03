@@ -5,19 +5,19 @@
  */
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("Cliente")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cliente/Cliente.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
 }if (!class_exists('OpenPay_')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/OpenPay/OpenPay.Model.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Model.php';
 }if (!class_exists('DetalleController')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Detalle.Controller.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
 }if (!class_exists("GetSegmentController")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetSegment.Controller.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetSegment.Controller.php';
 }if (!class_exists('PedidoController')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
 }
 
 class LoginController{

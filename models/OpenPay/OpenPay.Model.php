@@ -1,5 +1,5 @@
 <?php
-		include $_SERVER['DOCUMENT_ROOT'].'/store/models/Librerias/OpenPay/Openpay.php';
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Librerias/OpenPay/Openpay.php';
 		class OpenPay_{
 			protected $OpenPayy;
 			protected $TokenId;

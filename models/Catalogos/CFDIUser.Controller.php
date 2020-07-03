@@ -1,10 +1,10 @@
 <?php 
   if (!class_exists('Connection')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
   }if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
   }if (!class_exists('CFDIUser')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/CFDIUser.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/CFDIUser.Model.php';
   }
 
   /**

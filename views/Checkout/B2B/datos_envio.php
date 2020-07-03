@@ -4,7 +4,7 @@
 <hr class="padding-bottom-1x">
 <?php 
   if (!class_exists("GetShipToAdressController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
   }
   
   try {
@@ -40,7 +40,7 @@
     <tbody>
       <?php
         if (!class_exists('PedidoController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
         }
         if(isset($_SESSION["Ecommerce-PedidoKey"])){
           $PedidoController = new PedidoController;
@@ -102,7 +102,7 @@
 <hr class="padding-bottom-1x">
 <?php 
   if (!class_exists("CFDIUserController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Catalogos/CFDIUser.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/CFDIUser.Controller.php';
   }
   $CFDIUserController = new CFDIUserController();
   $ResultCFDIUserController = $CFDIUserController->get();
@@ -125,7 +125,7 @@
 </div>
 <?php 
   if (!class_exists("GetBillToAdressController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
   }
   
   try {

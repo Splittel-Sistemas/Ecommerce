@@ -1,20 +1,20 @@
 <?php 
   @session_start();
   if (!class_exists("CategoriaController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
   }if (!class_exists("SolucionesController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Soluciones/Soluciones.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Soluciones/Soluciones.Controller.php';
   }if (!class_exists("SubcategoriasController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Subcategorias/Subcategorias.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
   }if (!class_exists("ContactoControlller")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Controller.php';
   }
   # si existe la sesión tipo de cliente y es B2B
   if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == "B2B") {
     if (!class_exists("GetExtraDaysController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetExtraDays.Controller.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetExtraDays.Controller.php';
     }if (!class_exists("GetSegmentController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BusinessPartner/GetSegment.Controller.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetSegment.Controller.php';
     }
     if (!isset($_SESSION['Ecommerce-WS-GetExtraDays']) || $_SESSION['Ecommerce-WS-GetExtraDays'] == 'N/D') {
       try {
@@ -56,7 +56,7 @@
   # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
   if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
     if (!class_exists("GetCurrencyRateController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/Currency/GetCurrencyRate.Controller.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Currency/GetCurrencyRate.Controller.php';
     }
     try {
       # obtención tipo de cambio 
@@ -131,7 +131,7 @@
           <div><i class="icon-menu"></i><span class="text-label">Menu</span></div></a></div>
       <div class="toolbar-item hidden-on-mobile col-md-6">
         <a href="javascript:void(0);">
-          <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Login/seguridad.php';  ?>
+          <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Login/seguridad.php';  ?>
           <div id="dataInterna" primero="<?php echo $_SESSION['AuthUser']; ?>" segundo="<?php echo $_SESSION['AuthPassword']; ?>">
             <span class="text-label">
               <strong>TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate'];?> MXP 
@@ -162,7 +162,7 @@
       </div>
       
       <div id="ListResumenProductosCarrito" class="toolbar-item" >
-        <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Carrito/Resumen/index.php'; ?>     
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Carrito/Resumen/index.php'; ?>     
       </div>
     </div>
     <!-- Mobile Menu-->
@@ -455,7 +455,7 @@
         <div class="toolbar-item"><a href="javascript:void(0);">
         <div><span class="text-label "><strong>TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate'];?> MXP</span></div></a></div>
         <div class="toolbar-item" id="ListResumenProductosCarritoMovil">
-          <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Carrito/Resumen/index.php'; ?>
+          <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Carrito/Resumen/index.php'; ?>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
 <?php
 }
 else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
 }
 ?>
 

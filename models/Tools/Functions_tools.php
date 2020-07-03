@@ -294,13 +294,13 @@ class Functions_tools
      */
     public function securityAjax(){
       if (!class_exists('EncrypData_')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/WebService/EncrypData.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/WebService/EncrypData.php';
       }
         $EncrypData = new EncrypData_('prueba');
 
         if (isset($_SESSION['Ecommerce-ClienteKey'])) {
             if (!class_exists("Cliente")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cliente/Cliente.Model.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
             }
             $ClienteModel = new Cliente(); 
             $Connection = new Connection();

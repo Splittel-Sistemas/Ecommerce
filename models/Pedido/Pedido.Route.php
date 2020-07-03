@@ -2,11 +2,11 @@
 
 @session_start();
 if (!class_exists("Seguridad")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Seguridad/Seguridad.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
 }if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists('PedidoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
 }
 class PedidoRoute{
     protected $Tool;

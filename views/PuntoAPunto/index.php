@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
   <?php 
       #Header
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php';
     ?>
     <!-- Page Title-->
     <div class="page-title">
@@ -67,9 +67,9 @@
    
   
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script>
       // altura('.grid_1_4')
       altura('.grid_1_3')

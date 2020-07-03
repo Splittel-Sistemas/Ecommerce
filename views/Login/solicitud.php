@@ -8,8 +8,8 @@
 <html lang="es">
 	<head>
 		<?php 
-			include $_SERVER["DOCUMENT_ROOT"].'/store/views/Login/seguridad.php';     
-			include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php';    
+			include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Login/seguridad.php';     
+			include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php';    
 		?>
 		<!-- font-awesome CSS -->
 		<link rel="stylesheet" type="text/css" href="../../public/plugins/font-awesome/css/fontawesome-all.min.css">
@@ -102,7 +102,7 @@
 								<select class="form-control form-control-pill" id="GiroEmpresa" name="GiroEmpresa">
 								<?php 
 									if (!class_exists("SubdefinicionesController")) {
-										include $_SERVER["DOCUMENT_ROOT"].'/store/models/Productos/Jumpers/Subdefiniciones.Controller.php';
+										include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Jumpers/Subdefiniciones.Controller.php';
 									}
 									$SubdefinicionesController = new SubdefinicionesController();
 									$SubdefinicionesController->filter = "WHERE t90_pk01 = 7 ";
@@ -248,7 +248,7 @@
 			</div>
 		</div>
 		<!-- scripts JS -->
-		<?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+		<?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
 		<!-- fileinput JS -->
 		<script type="text/javascript" src="../../public/plugins/file-input/js/fileinput.min.js"></script>
 		<!-- fileinput locales español JS -->

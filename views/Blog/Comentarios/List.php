@@ -8,10 +8,10 @@ if(isset($_GET['id'])){
 }
 
 if (!class_exists('ComentariosBlogController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Blog/Comentarios/Comentarios.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Blog/Comentarios/Comentarios.Controller.php';
   }
  if (!class_exists('ClienteController')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cliente/Cliente.Controller.php';
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cliente/Cliente.Controller.php';
 	}
 
 

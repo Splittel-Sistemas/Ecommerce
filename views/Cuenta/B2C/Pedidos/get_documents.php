@@ -2,7 +2,7 @@
 @session_start();
   if(isset($_SESSION["Ecommerce-ClienteKey"])){
     if (!class_exists('GetFileInvoiceController')) {
-      require_once $_SERVER["DOCUMENT_ROOT"]."/store/models/WebService/Invoice/GetFileInvoice.Controller.php";
+      require_once $_SERVER["DOCUMENT_ROOT"]."/fibra-optica/models/WebService/Invoice/GetFileInvoice.Controller.php";
     }
     $GetFileInvoiceController = new GetFileInvoiceController();
     $GetFileInvoiceController->TypeFile = $_GET['TypeFile'];

@@ -1,6 +1,6 @@
 
 <div id="List-datosFacturacion">
-  <?php include $_SERVER['DOCUMENT_ROOT'].'/store/views/Cuenta/B2C/DatosFacturacion/List.php' ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2C/DatosFacturacion/List.php' ?>
 </div>
 
 <!-- Modal -->

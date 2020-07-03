@@ -3,7 +3,7 @@
 if(isset($_SESSION['Ecommerce-ClienteKey']))
 {
   if (!class_exists("GetShipToAdress")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetShipToAdress.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetShipToAdress.php';
   }
 
   $GetShipToAdress = new GetShipToAdress();
@@ -78,12 +78,12 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
 <?php
     }
   }else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
   }
   unset($GetShipToAdress);
   unset($responseGetShipToAdress);
 }
 else{
-    include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
 }
  ?>

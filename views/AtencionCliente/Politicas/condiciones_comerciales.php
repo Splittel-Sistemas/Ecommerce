@@ -2,7 +2,7 @@
   <div class="accordion" id="accordion1" role="tablist">
     <?php 
       if (!class_exists('CatalogoCComerciales')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/models/Catalogos/CondicionesComerciales.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalogos/CondicionesComerciales.php';
       }
       $CatalogoCComerciales = new CatalogoCComerciales();
       $responseCatalogoCComerciales = (object)$CatalogoCComerciales->get("", "", false);

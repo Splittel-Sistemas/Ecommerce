@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/models/Librerias/Captcha/simple-php-captcha.php';
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Librerias/Captcha/simple-php-captcha.php';
       $_SESSION['captcha'] = simple_php_captcha();
      ?>
     <!-- Page Title-->
@@ -62,9 +62,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
     <script type="text/javascript" src="../../public/scripts/Login/index.js?id="<?php echo rand(); ?>></script>
   </body>

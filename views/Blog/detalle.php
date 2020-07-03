@@ -2,15 +2,15 @@
 <html lang="es">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <?php 
       if (!class_exists("Blog")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/store/models/Blog/Blog.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Blog/Blog.php';
       }
       $Blog = new Blog();
       $response = (object)$Blog->get("WHERE id = '".$_GET['id']."' AND activo = 'si' ", "", false)->records[0];
@@ -135,9 +135,9 @@
 
 
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <script type="text/javascript" src="../../public/scripts/Blog/Comentarios.js?id=<?php echo rand() ?>"></script>
   </body>
 </html>

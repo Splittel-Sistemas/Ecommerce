@@ -5,7 +5,7 @@
   if(empty($_SERVER['DOCUMENT_ROOT'])){
     $_SERVER['DOCUMENT_ROOT'] = "/home/fibremex/public_html";
   }if (!class_exists("PedidoB2CController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/Invoice/PedidoB2C.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Invoice/PedidoB2C.Controller.php';
   }
 
   $PedidoB2CController = new PedidoB2CController();

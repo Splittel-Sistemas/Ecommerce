@@ -1,6 +1,6 @@
 <?php 
 	if (!class_exists('ClienteController')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cliente/Cliente.Controller.php';
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cliente/Cliente.Controller.php';
 	}
 
 	$ClienteController = new ClienteController();

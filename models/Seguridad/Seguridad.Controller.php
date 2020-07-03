@@ -1,11 +1,11 @@
 <?php 
 	@session_start();
 	if (!class_exists("Connection")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
 	}if (!class_exists("Functions_tools")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 	}if (!class_exists('EncrypData_')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/store/models/Tools/EncrypData.php';
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/EncrypData.php';
 	}
 
 	/**
@@ -37,7 +37,7 @@
 					 $EncrypData = new EncrypData_('prueba');
 					if (isset($_SESSION['Ecommerce-ClienteKey'])) {
 						if (!class_exists("Cliente")) {
-							include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cliente/Cliente.Model.php';
+							include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
 						}
 						$ClienteModel = new Cliente(); 
 						$ClienteModel->SetParameters($this->conn, $this->Tool);

@@ -2,29 +2,29 @@
 
   @session_start();
   if (!class_exists("Connection")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
   }if (!class_exists("Functions_tools")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
   }if (!class_exists("WebService")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto_")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Model.php';
   }if (!class_exists("Cliente")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cliente/Cliente.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
   }if (!class_exists('PedidoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Pedido.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }if (!class_exists('DetalleController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/Detalle.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
   }if (!class_exists("PedidoB2C")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/Invoice/PedidoB2C.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Invoice/PedidoB2C.Model.php';
   }if (!class_exists('DatosEnvio')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosEnvio.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Model.php';
   }if (!class_exists('DatosFacturacion')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Cuenta/B2C/DatosFacturacion.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
   }if (!class_exists('Invoice')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/store/models/Pedido/B2C/Invoice.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2C/Invoice.Model.php';
   }if (!class_exists("Log_")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Logs/Log.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Log.Model.php';
   }
 
   /**

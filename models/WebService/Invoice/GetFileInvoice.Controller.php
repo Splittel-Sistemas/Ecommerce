@@ -5,15 +5,15 @@
  */
   @session_start();
   if (!class_exists("Connection")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Connection.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
   }if (!class_exists("Functions_tools")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Tools/Functions_tools.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
   }if (!class_exists("WebService")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/WebServiceSOAP.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto_")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Contacto/Contacto.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Model.php';
   }if (!class_exists("Cliente")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/store/models/Cliente/Cliente.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
   }
 
   class GetFileInvoiceController{

@@ -8,7 +8,7 @@
 <html lang="es">
   <head>
     <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php';     
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php';     
     ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -26,19 +26,19 @@
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <!-- Content -->
     <?php
       if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
-        include $_SERVER['DOCUMENT_ROOT'].'/store/views/Cuenta/B2C/index.php'; 
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2C/index.php'; 
       }else{
-        include $_SERVER['DOCUMENT_ROOT'].'/store/views/Cuenta/B2B/index.php'; 
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2B/index.php'; 
       }
     ?>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>

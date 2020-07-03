@@ -2,14 +2,14 @@
 <html lang="es">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Head.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Header.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
@@ -39,7 +39,7 @@
           <nav class="list-group" id="components-list">
           <?php 
             if (!class_exists("CategoriaController")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Categorias/Categoria.Controller.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
             } 
             $CategoriaKey = isset($_GET['id']) ? $_GET['id'] : "";
             $CategoriaController = new CategoriaController();
@@ -59,7 +59,7 @@
           <div class="accordion" id="accordion1" role="tablist">
           <?php
             if (!class_exists("CatalogoInformacionTecnica")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/store/models/Catalogos/InformacionTecnica.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/InformacionTecnica.php';
             } 
             $CatalogoInformacionTecnica = new CatalogoInformacionTecnica();
             $response = $CatalogoInformacionTecnica->get("WHERE id_categoria = '".$CategoriaKey."' ", "", false);
@@ -92,9 +92,9 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Footer.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>

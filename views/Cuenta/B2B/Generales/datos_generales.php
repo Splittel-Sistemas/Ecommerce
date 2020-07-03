@@ -8,7 +8,7 @@
     @session_start();
     if(isset($_SESSION['Ecommerce-ClienteKey'])){
         if (!class_exists("GetBussinesPartner")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/store/models/WebService/BussinesPartner/GetBussinesPartner.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetBussinesPartner.php';
         }
         $GetBussinesPartner = new GetBussinesPartner();
         try {
@@ -159,11 +159,11 @@
 <?php
         }
         else if($ErrorCode == 20 || $ErrorCode == 400 || $ErrorCode == -100){
-            include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/ErrorProcessWS.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
         }
         unset($GetBussinesPartner);
         unset($responseGetBussinesPartner);
     }else{
-        include $_SERVER["DOCUMENT_ROOT"].'/store/views/Partials/SessionExpired.php';
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/SessionExpired.php';
     }
 ?>
