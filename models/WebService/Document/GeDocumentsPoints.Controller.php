@@ -12,8 +12,6 @@
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto_")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Model.php';
-  }if (!class_exists("Cliente")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cliente/Cliente.Model.php';
   }if (!class_exists('PedidoController')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
@@ -37,55 +35,43 @@
     public function get(){
       try {
         if (!$this->conn->conexion()->connect_error) {
-          $ClienteModel = new Cliente(); 
-          $ClienteModel->SetParameters($this->conn, $this->Tool);
-          $ClienteExiste = $ClienteModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
-
-          if ($ClienteExiste) {
             $ContactoModel = new Contacto_();
             $ContactoModel->SetParameters($this->conn, $this->Tool);
             $ContactoExiste = $ContactoModel->GetBy();
             if ($ContactoExiste) {
               $WebServiceSOAP = new WebService(
                 "http://".$ContactoModel->GetWebservice()."/WS_Document.asmx?WSDL", 
-                $ClienteModel->GetCardCode(), 
-                $ClienteModel->GetPasswordB2b(), 
-                $ClienteModel->GetSociedad(), 
+                "", 
+                "", 
+                "FIBREMEX", 
                 "http://fibremex.com.mx/"
               );
 
               $PedidoController = new PedidoController();
-              $PedidoController->filter = "WHERE estatus = 'P' AND metodo_pago = 99 ";
+              $PedidoController->filter = "WHERE estatus = 'P' AND metodo_pago = 99 AND estatus_puntos > 100 ";
               $PedidoController->order = "";
               $ResultPedido = $PedidoController->get();
 
               foreach ($ResultPedido->records as $key => $Pedido) {
-                $Folios[] = ['int' => $Pedido->Key];
+                $Folios[] = $Pedido->Key;
               }
               
               $GeDocumentsPoints['GeDocumentsPoints']['Folios'] = $Folios;
 
+              // print_r($GeDocumentsPoints);
               $result = $WebServiceSOAP->ExecuteSoap("GeDocumentsPoints", $GeDocumentsPoints, false);
+              // print_r($result);
 
               unset($WebServiceSOAP);
               unset($ContactoModel);
               unset($ContactoExiste);
-              unset($ClienteModel);
-              unset($ClienteExiste);
 
               return $result;
             }else{
               unset($ContactoModel);
               unset($ContactoExiste);
-              unset($ClienteModel);
-              unset($ClienteExiste);
               throw new Exception("No se encuentra información acerca del contacto!");
             }
-          }else{
-            unset($ClienteModel);
-            unset($ClienteExiste);
-            throw new Exception("No se encuentra información acerca del cliente!");
-          }
         }else{
           throw new Exception("No hay datos maestros! por favor contacta con tu ejecutivo");
         }

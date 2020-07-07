@@ -21,6 +21,8 @@ if (!class_exists('Connection')) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Ecommerce/UpdateRefDelivery.Controller.php';
 }if (!class_exists("Webhook")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Webhook.Model.php';
+}if (!class_exists("GeDocumentsPointsController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Document/GeDocumentsPoints.Controller.php';
 }
 class PedidoController{
     protected $Connection;
@@ -333,6 +335,27 @@ class PedidoController{
                 $ResultPedido = $PedidoModel->PedidoLineaCredito();
                 unset($PedidoModel);
                 return $ResultPedido;
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function PuntosPagoCredito(){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $GeDocumentsPointsController = new GeDocumentsPointsController();
+                $ResultGeDocumentsPoints = $GeDocumentsPointsController->get();
+                if(count($ResultGeDocumentsPoints->GeDocumentsPointsResult->Records->DocumentPoints) > 0){
+                    $PedidoModel = new Pedido_();
+                    $PedidoModel->SetParameters($this->Connection, $this->Tool);
+                    foreach ($ResultGeDocumentsPoints->GeDocumentsPointsResult->Records->DocumentPoints as $key => $Points) {
+                        $PedidoModel->SetKey($Points->DocNumEcommerce);
+                        $PedidoModel->SetEstatusPuntos($Points->Estatus);
+                        $PedidoModel->PedidoUpdateEstatusPuntosPagoCredito();
+                    }
+                }
             }else{
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }

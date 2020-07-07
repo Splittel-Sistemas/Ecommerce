@@ -97,6 +97,8 @@
       $this->FechaRecibido = $FechaRecibido;
     }public function SetRecibio($Recibio){
       $this->Recibio = $Recibio;
+    }public function SetEstatusPuntos($EstatusPuntos){
+      $this->EstatusPuntos = $EstatusPuntos;
     }
 
     public function GetKey(){
@@ -257,6 +259,18 @@
           '".$this->TipoCambio."',
           '".$this->DiasExtraCredito."',
           '1',
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function PedidoUpdateEstatusPuntosPagoCredito(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoUpdateEstatusPuntosPagoCredito(
+          '".$this->Key."',
+          '".$this->EstatusPuntos."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
