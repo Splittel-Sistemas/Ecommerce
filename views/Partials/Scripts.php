@@ -22,6 +22,7 @@
 
 
 <!-- Facebook Pixel Code -->
+<!--
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -37,6 +38,7 @@ fbq('track', 'PageView');
 <noscript>
 <img height="1" width="1" src="https://www.facebook.com/tr?id=677450132591773&ev=PageView&noscript=1"/>
 </noscript>
+-->
 <!-- End Facebook Pixel Code -->
 
 <!-- Start of fibremex Zendesk Widget script -->
@@ -51,8 +53,9 @@ fbq('track', 'PageView');
 -->
 <!--  RdStation Adwords Pixel Code -->
 
+<!--
 <script> (function(){ window.ldfdr = window.ldfdr || {}; (function(d, s, ss, fs){ fs = d.getElementsByTagName(s)[0]; function ce(src){ var cs = d.createElement(s); cs.src = src; setTimeout(function(){fs.parentNode.insertBefore(cs,fs)}, 1); } ce(ss); })(document, 'script', 'https://sc.lfeeder.com/lftracker_v1_bElvO73AWBGaZMqj.js'); })(); </script>
-
+-->
 <!--  Captcha Code V3 -->
 <script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
     
