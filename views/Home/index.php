@@ -136,7 +136,7 @@
       </div>
     </section>
     <!-- Banner 1 -->
-    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
+    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products -->
@@ -176,7 +176,7 @@
       </div>
     </section>
     <!-- Empalmadora -->
-    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.jpg);"><span class="overlay" style="opacity: .3;"></span>
+    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.webp);"><span class="overlay" style="opacity: .3;"></span>
       <div class="container text-center">
         <div class="d-inline-block  text-white text-lg py-2 px-3 rounded"></div>
         <div class="display-4 text-white py-4">&nbsp;</div>
@@ -185,7 +185,7 @@
       </div>
     </section>
     <a class="d-block position-relative mx-auto mb-5 mb-md-0" href="#" style="max-width: 882px; margin-top: -300px; z-index: 10;">
-    <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.png" alt="Empalmadora"></a>
+    <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.webp" alt="Empalmadora"></a>
     <!-- Banner 3-->
     <div class="container padding-bottom-3x mb-md-2 mt-5 mt-md-0 pt-5 pt-md-0">
       <div class="row">
@@ -315,7 +315,7 @@
       </div>
     </div>
     <!-- Distribuidores -->
-    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.png);">
+    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products-->
@@ -381,7 +381,7 @@
       </div>
     </section>
     <!-- Sistema de canalización -->
-    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.png);">
+    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.webp);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products-->
