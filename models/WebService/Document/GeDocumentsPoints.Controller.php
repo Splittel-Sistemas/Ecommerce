@@ -55,7 +55,7 @@
               );
 
               $PedidoController = new PedidoController();
-              $PedidoController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']."  AND estatus = 'P' AND metodo_pago = 99 ";
+              $PedidoController->filter = "WHERE estatus = 'P' AND metodo_pago = 99 ";
               $PedidoController->order = "";
               $ResultPedido = $PedidoController->get();
 
