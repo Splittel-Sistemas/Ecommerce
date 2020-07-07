@@ -20,7 +20,7 @@
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
 
     <!-- Main Slider -->
-    <section class="hero-slider" style="background-image: url(../../public/images/img/hero-slider/main-bg1.jpg);">
+    <section class="hero-slider" style="background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
       <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
         <?php
           if (!class_exists('SlideController')) {
