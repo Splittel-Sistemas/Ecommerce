@@ -42,9 +42,9 @@ fbq('track', 'PageView');
 <!-- End Facebook Pixel Code -->
 
 <!-- Start of fibremex Zendesk Widget script -->
-<!--
+
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4"> </script>
--->
+
 <!-- End of fibremex Zendesk Widget script -->
 
 <!--  RdStation Pixel Code -->
