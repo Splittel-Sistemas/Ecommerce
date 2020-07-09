@@ -616,14 +616,14 @@
     public function GetTotalPuntosCanjeados($fields, $filter){
       try {
         $SQLSTATEMENT = "SELECT ".$fields." FROM listar_detalle_pedido_puntos ".$filter." ";
-        // echo $SQLSTATEMENT;
+        echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
         while ($row = $result->fetch_object()) {
           $this->ClienteKey             =   $row->id_cliente;
           $this->SubTotal               =   $row->subtotalbycliente;
-          $this->PuntosTotal            =   $row->puntos;
+          $this->PuntosTotal            =   $row->total_puntos;
           $data = true;
         }
         return $data;

@@ -349,7 +349,7 @@ if (!class_exists("Connection")) {
         if (!$this->Connection->conexion()->connect_error) {
           $PedidoModel = new Pedido_();
           $PedidoModel->SetParameters($this->Connection, $this->Tool);
-          $PedidoModel->GetTotalPuntosCanjeados("pedidokey, id_cliente, SUM(pedidoSubtotal) AS subtotalbycliente, puntos, TRUNCATE((SUM(pedidoSubtotal)/100),0) AS totalpuntosbycliente ", "WHERE estatus = 'P' AND tipo_pedido = 'CANJEO' AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
+          $PedidoModel->GetTotalPuntosCanjeados("id_cliente, SUM(pedidoSubtotal) AS subtotalbycliente, SUM(puntos) AS total_puntos, TRUNCATE((SUM(pedidoSubtotal)/100),0) AS totalpuntosbycliente ", "WHERE estatus = 'P' AND tipo_pedido = 'CANJEO' AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
           return $PedidoModel;
         }else{
           throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
