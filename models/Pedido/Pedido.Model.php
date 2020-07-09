@@ -99,6 +99,8 @@
       $this->Recibio = $Recibio;
     }public function SetEstatusPuntos($EstatusPuntos){
       $this->EstatusPuntos = $EstatusPuntos;
+    }public function SetTipoPedido($TipoPedido){
+      $this->TipoPedido = $TipoPedido;
     }
 
     public function GetKey(){
@@ -219,6 +221,7 @@
           '".$this->DiasExtraCredito."',
           '".$this->ClienteKey."',
           '".$_SERVER['REMOTE_ADDR']."',
+          '".$this->TipoPedido."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -571,6 +574,57 @@
           $newPedido->Correo = $row->email; 
           $data[] = $newPedido;
           unset($newPedido);
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+     /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function GetTotalPuntos($fields, $filter){
+      try {
+        $SQLSTATEMENT = "SELECT ".$fields." FROM listar_pedido ".$filter." ";
+        // echo $SQLSTATEMENT;
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = false;
+
+        while ($row = $result->fetch_object()) {
+          $this->ClienteKey             =   $row->id_cliente;
+          $this->SubTotal               =   $row->subtotalbycliente;
+          $this->PuntosTotal            =   $row->totalpuntosbycliente;
+          $data = true;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function GetTotalPuntosCanjeados($fields, $filter){
+      try {
+        $SQLSTATEMENT = "SELECT ".$fields." FROM listar_detalle_pedido_puntos ".$filter." ";
+        // echo $SQLSTATEMENT;
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = false;
+
+        while ($row = $result->fetch_object()) {
+          $this->ClienteKey             =   $row->id_cliente;
+          $this->SubTotal               =   $row->subtotalbycliente;
+          $this->PuntosTotal            =   $row->puntos;
+          $data = true;
         }
         return $data;
       } catch (Exception $e) {

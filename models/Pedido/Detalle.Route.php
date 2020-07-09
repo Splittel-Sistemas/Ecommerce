@@ -24,6 +24,11 @@ class DetalleRoute{
                     $Result = $DetalleController->AgregarArticuloPedido();
                     echo json_encode($Result, JSON_UNESCAPED_UNICODE);
                 break;
+                case 'create-pedido-puntos':
+                    $DetalleController = new DetalleController();
+                    $Result = $DetalleController->AgregarArticuloPedidoConPuntos();
+                    echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                break;
                 case 'create-configurable':
                     $DetalleController = new DetalleController();
                     $Result = $DetalleController->AgregarArticuloConfigurablePedido();

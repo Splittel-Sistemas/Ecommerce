@@ -199,6 +199,56 @@
       }
     }
 
+    public function ListDetallePedidoPuntos($filter, $orderBy){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM listar_detalle_pedido_puntos ".$filter." ".$orderBy;
+        // echo $SQLSTATEMENT;
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = array();
+        while ($row = $result->fetch_object()) {
+            $newItem = new Detalle_();
+            $newItem->PedidoKey                     = $row->pedidokey;
+            $newItem->ClienteKey                    = $row->id_cliente;
+            $newItem->PedidoSubtotal                = $row->pedidoSubtotal;
+            $newItem->PedidoIva                     = $row->pedidoIva;
+            $newItem->PedidoTotal                   = $row->pedidoTotal;
+            $newItem->PedidoSubtotalMXN             = $row->pedidoSubtotalMXN;
+            $newItem->PedidoIvaMXN                  = $row->pedidoIvaMXN;
+            $newItem->PedidoTotalMXN                = $row->pedidoTotalMXN;
+            $newItem->PedidoMonedaPago              = $row->moneda_pago;
+
+            $newItem->DetalleKey                    = $row->detallekey;
+            $newItem->DetalleCodigo                 = $row->detalle_codigo;
+            $newItem->DetalleSubtotal               = $row->detalleSubtotal;
+            $newItem->DetalleSubtotalSinDescuento   = $row->detalleSubtotalSinDescuento;
+            $newItem->DetallePrecioUnidad           = $row->detallePrecioUnidad;
+            $newItem->DetalleIva                    = $row->detalleIva;
+            $newItem->DetalleTotal                  = $row->detalleTotal;
+            $newItem->DetalleSubtotalMXN            = $row->detalleSubtotalMXN;
+            $newItem->DetalleSubtotalSinDescuentoMXN  = $row->detalleSubtotalSinDescuentoMXN;
+            $newItem->DetallePrecioUnidadMXN        = $row->detallePrecioUnidadMXN;
+            $newItem->DetalleIvaMXN                 = $row->detalleIvaMXN;
+            $newItem->DetalleTotalMXN               = $row->detalleTotalMXN;
+            $newItem->DetalleCantidad               = $row->cantidad;
+            $newItem->DetalleDescuento              = $row->descuento;
+            $newItem->DetalleCodigoConfigurable     = $row->detalle_code_configurable;
+            $newItem->DetalleActivo                 = $row->detalle_activo;
+
+            $newItem->ProductoCodigo                = $row->producto_codigo;
+            $newItem->ProductoDescripcion           = $row->desc_producto;
+            $newItem->ProductoPuntos                = $row->puntos;
+            $newItem->ProductoPrecio                = $row->precio;
+            $newItem->ProductoWarehouseCode         = $row->almacen;
+
+            $data[] = $newItem;
+            unset($newItem);
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function Top5ProductosMasComprados($fields, $filter, $orderBy){
       try {
         $SQLSTATEMENT = "SELECT ".$fields." FROM cotizacion_detalle ".$filter." ".$orderBy;
@@ -241,6 +291,18 @@
           '".$this->Cantidad."',
           '".$this->Descuento."',
           '".$this->CantidadValidacion."',
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function CreatePuntos(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoPuntosDetalleAgregarProducto(
+          '".$this->PedidoKey."',
+          '".$this->Codigo."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {

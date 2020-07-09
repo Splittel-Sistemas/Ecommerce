@@ -329,4 +329,34 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function GetTotalPuntos(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $PedidoModel = new Pedido_();
+          $PedidoModel->SetParameters($this->Connection, $this->Tool);
+          $PedidoModel->GetTotalPuntos("id_cliente, SUM(subtotal) AS subtotalbycliente, TRUNCATE((SUM(subtotal)/100),0) AS totalpuntosbycliente", "WHERE estatus = 'P' AND estatus_puntos = 0 AND tipo_pedido = 'NORMAL' AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
+          return $PedidoModel;
+        }else{
+          throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function GetTotalPuntosCanjeados(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $PedidoModel = new Pedido_();
+          $PedidoModel->SetParameters($this->Connection, $this->Tool);
+          $PedidoModel->GetTotalPuntosCanjeados("pedidokey, id_cliente, SUM(pedidoSubtotal) AS subtotalbycliente, puntos, TRUNCATE((SUM(pedidoSubtotal)/100),0) AS totalpuntosbycliente ", "WHERE estatus = 'P' AND tipo_pedido = 'CANJEO' AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
+          return $PedidoModel;
+        }else{
+          throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
   }

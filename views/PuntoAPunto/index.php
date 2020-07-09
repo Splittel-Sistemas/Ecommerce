@@ -2,6 +2,11 @@
 <html lang="es">
   <head>
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
+    <style>
+      .modal-lg {
+       max-width: 80%;
+      }
+    </style>
   </head>
   <!-- Body-->
   <body>
@@ -48,76 +53,37 @@
 
     <div class="container padding-bottom-1x mb-2">
       <div class="row justify-content-center ">
-        <div class="col-md-9 col-sm-8 col-2">  
-          <div class="row">
-            <?php  
-              if (!class_exists("PuntosProductosController")) {
-                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Puntos/PuntosProductos.Controller.php';
-              }
-            
-              $PuntosProductosController = new PuntosProductosController();
-              $Result = $PuntosProductosController->Get();
-              foreach ($Result->records as $key => $Producto){
+        <div class="col-md-9 col-sm-8 col-2" id="List-Productos-Puntos">  
+          <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/List.php';  ?>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modal-datos-envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body" id="modal-body-datos-envio">
+            <div class="container padding-bottom-1x">
+            <?php
+              if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/B2B/datos_envio.php'; 
+              }else{
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/B2C/datos_envio.php'; 
+              } 
             ?>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4" >
-              <div class="product-card mb-30 grid_1_4" >
-                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>">
-                  <?php 
-                    $imgUrl = "../../public/images/img_spl/notfound.png"; 
-                  ?>
-                  <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Producto->Descripcion;?>">
-                </a>
-                <div class="rating-stars">
-                  <?php 
-                    if (!class_exists('ComentariosController')) {
-                      include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
-                    }
-                    $ComentariosController = new ComentariosController();
-                    $ComentariosController->filter = "WHERE IdProducto = '".$Producto->Codigo."'";
-                    $Comentarios = $ComentariosController->Comentarios();
-                    
-                    if($Comentarios->count > 0){
-                      $RecordsComentarios = $Comentarios->records[0];
-                      $Promedio = (int)$RecordsComentarios->Promedio;
-                      for ($i=0; $i < 5; $i++) { 
-                        if ($i < $Promedio) {
-                  ?>
-                  <i class="icon-star filled"></i>
-                  <?php }else{ ?>
-                  <i class="icon-star"></i>
-                  <?php } } }else{ ?>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                  <?php } ?>
-                </div>
-                <div class="product-card-body">
-                  <div class="product-category "><a href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>"><?php echo $Producto->Codigo?></a></div>
-                  <h3 class="product-title grid_1_3">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>"><?php echo $Producto->Descripcion;?></a>
-                  
-                  </h3>
-                  <h4 class="product-price">
-                  <?php echo $Producto->Puntos; ?> PTS
-                  </h4>
-                </div>
-                <div class=" product-button-group">
-                  <input type="hidden" name="ProductoCantidad-<?php echo $Producto->Codigo;?>" id="ProductoCantidad-<?php echo $Producto->Codigo;?>" value="1">
-                  <a class="product-button" href="#" descuento="<?php echo $Producto->Descuento ?>" codigo="<?php echo $Producto->Codigo;?>" onclick="AgregarArticulo(this)"><i class="icon-shopping-cart"></i>
-                <span>Canjear</span></a></div>
-              </div>
             </div>
-            <?php } ?>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
+    <!--  -->
+    <script type="text/javascript" src="../../public/scripts/PuntoAPunto/index.js?id=<?php echo rand() ?>"></script>
     <script>
       // altura('.grid_1_4')
       altura('.grid_1_3')

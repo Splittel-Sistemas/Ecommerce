@@ -72,7 +72,22 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND t12_f004 = 'completed' ","");
+                $data = $PedidoModel->ListPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND t12_f004 = 'completed' AND tipo_pedido = 'NORMAL' ","");
+                unset($PedidoModel);
+                return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function ListPedidoB2B_(){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $PedidoModel = new Pedido_();
+                $PedidoModel->SetParameters($this->Connection, $this->Tool);
+                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND tipo_pedido = 'CANJEO' ","");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
             }else{

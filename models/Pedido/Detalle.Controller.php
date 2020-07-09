@@ -8,6 +8,10 @@ if (!class_exists('Connection')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Model.php';
 }if (!class_exists('Pedido_')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
+}if (!class_exists('SalesQuatation_')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2B/SalesQuatation.Model.php';
+}if (!class_exists('Invoice')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2C/Invoice.Model.php';
 }
 
 class DetalleController{
@@ -65,6 +69,21 @@ class DetalleController{
             throw $e;
         }
     }
+
+    public function GetDetallePedidoPuntos($filter){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $DetalleModel  = new Detalle_();
+                $DetalleModel->SetParameters($this->Connection, $this->Tool);
+                $result = $DetalleModel->ListDetallePedidoPuntos($filter, "");
+                return $this->Tool->Message_return(false,  "", $result, false);
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function ListDetallePedido(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
@@ -114,6 +133,7 @@ class DetalleController{
                     $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
                     $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
                     $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
+                    $PedidoModel->SetTipoPedido("NORMAL");
                     $ResultPedido =  $PedidoModel->CreatePedido(); 
                     if(!$ResultPedido['error']){
                         $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
@@ -129,6 +149,135 @@ class DetalleController{
                     $DetalleModel->SetDescuento($_POST['Descuento']);
                     $DetalleModel->SetCantidadValidacion($_POST['CantidadValidacion']);
                     return $ResultDetalle = $DetalleModel->Create();
+                }
+                return $ResultPedido;
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function AgregarArticuloPedidoConPuntos(){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                if(!isset($_SESSION["Ecommerce-PuntosPedidoKey"])){
+                    $PedidoModel = new Pedido_();  
+                    $PedidoModel->SetParameters($this->Connection, $this->Tool);  
+                    $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
+                    $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
+                    $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
+                    $PedidoModel->SetTipoPedido("CANJEO");    
+                    $ResultPedido =  $PedidoModel->CreatePedido(); 
+                    if(!$ResultPedido['error']){
+                        $_SESSION["Ecommerce-PuntosPedidoKey"] = $ResultPedido['keyy'];
+                    }
+                }
+                if(isset($_SESSION["Ecommerce-PuntosPedidoKey"])){
+                    $DetalleModel  = new Detalle_();
+                    $DetalleModel->SetParameters($this->Connection, $this->Tool);
+                    $DetalleModel->SetKey(0);
+                    $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PuntosPedidoKey"]);
+                    $DetalleModel->SetCodigo($_POST['Codigo']);
+                    $ResultDetalle = $DetalleModel->CreatePuntos();
+                    
+
+                    if (!$ResultDetalle['error']) {
+                        $PedidoModel = new Pedido_();
+                        $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+                        $PedidoExiste = $PedidoModel->GetBy("where id = '".$_SESSION['Ecommerce-PuntosPedidoKey']."' ");
+                        # comprobación si el pedio actual existe
+                        if ($PedidoExiste) {
+                            # guardar información relevante al pedido
+                            $PedidoModel->SetMetodoPago($_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ? 99 : '03');
+                            $PedidoModel->SetMonedaPago('USD');
+                            $PedidoModel->SetDatosEnvioKey($_POST['datosEnvio']);
+                            $PedidoModel->SetDatosFacturacionKey($_POST['datosFacturacion']);
+                            // $PedidoModel->SetNumeroguia();
+                            $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
+                            $PedidoModel->SetCFDIUser('G03');
+                            $ResultPedido = $PedidoModel->Update();
+                            if (!$ResultPedido['error']) {
+                                unset($ExistePedido);
+                                unset($PedidoModel);
+                                if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                                    # guardado de información pedido b2b para posteriromente generar los documentos sap
+                                    $SalesQuatationModel = new SalesQuatation_();
+                                    $SalesQuatationModel->SetParameters($this->Connection, $this->Tool);
+                                    $SalesQuatationModel->SetPedidoKey($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    $SalesQuatationModel->SetEstatus(50);
+                                    $SalesQuatationModel->SetIntentos(0);
+                                    $SalesQuatationModel->SetContactoNombre($_POST['ContactoNombre']);
+                                    $SalesQuatationModel->SetContactoTelefono($_POST['ContactoTelefono']);
+                                    $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
+                                    $ResultSalesQuatation = $SalesQuatationModel->create();
+                                    unset($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $_SESSION['Ecommerce-ClientePuntosDisponibles'] - $_POST['Puntos'];
+                                    // if (!$ResultSalesQuatation['error']) {
+                                    //     // Envio de correo de acuerdo a pedido realizado
+                                    //     $Email = new Email(true);
+                                    //     $TemplatePedido = new TemplatePedido();
+                                    //     $Email->MailerSubject = "Ecommerce";
+                                    //     $Email->MailerBody = $TemplatePedido->body();
+                                    //     $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                    //     $Email->EmailSendEmail();
+                                    //     unset($Email);
+                                    //     unset($TemplatePedido);
+
+                                    //     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    //     unset($SalesQuatationModel);
+                                    //     unset($ResultSalesQuatation);
+                                    // }else{
+                                    //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                                    // }
+                                }else{
+                                    # guardado de información pedido b2c para posteriromente generar los documentos sap
+                                    $InvoiceModel = new Invoice();
+                                    $InvoiceModel->SetParameters($this->Connection, $this->Tool);
+                                    $InvoiceModel->SetPedidoKey($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    $InvoiceModel->SetRequiereFactura($_POST['RequiereFactura']);
+                                    $InvoiceModel->SetEstatus(50);
+                                    $InvoiceModel->SetIntentos(0);
+                                    $ResultInovice = $InvoiceModel->create();
+                                    unset($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $_SESSION['Ecommerce-ClientePuntosDisponibles'] - $_POST['Puntos'];
+                                    // if (!$ResultInovice['error']) {
+                                    //     // Envio de correo de acuerdo a pedido realizado
+                                    //     $Email = new Email(true);
+                                    //     $TemplatePedido = new TemplatePedido();
+                                    //     $Email->MailerSubject = "Ecommerce";
+                                    //     $Email->MailerBody = $TemplatePedido->body();
+                                    //     $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                    //     $Email->EmailSendEmail();
+                                    //     unset($Email);
+                                    //     unset($TemplatePedido);
+
+                                    //     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
+                                    //     unset($InvoiceModel);
+                                    //     unset($ResultInovice);
+                                    // }else{
+                                        //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                                        // }
+                                }
+                                unset($ClienteModel);
+                                unset($ClienteExiste);
+                                unset($PedidoModel);
+                                unset($PedidoExiste);
+                                return $ResultPedido;
+                            }else{
+                                throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                            }
+                        }else{
+                            unset($PedidoModel);
+                            unset($PedidoExiste);
+                            throw new Exception("No se encuentra información acerca del pedido!");
+                        }
+                    }else{
+                        throw new Exception("No se pudo agregar el articulo seleccionado, por favor contacta a tu ejecutivo!");
+                    }
+
+
+                    return $ResultDetalle;
                 }
                 return $ResultPedido;
             }else{

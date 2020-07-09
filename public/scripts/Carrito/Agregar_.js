@@ -99,7 +99,6 @@ var AgregarArticuloConfigurable = function(Elem){
 	})
 } 
 
-
 var ListProductosCarrito_ = function(){
 	ajax_("../../views/Carrito/List.php", "POST", "HTML", {  },  
 	function(response){
