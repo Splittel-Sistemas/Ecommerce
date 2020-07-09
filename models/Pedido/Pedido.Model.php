@@ -616,7 +616,7 @@
     public function GetTotalPuntosCanjeados($fields, $filter){
       try {
         $SQLSTATEMENT = "SELECT ".$fields." FROM listar_detalle_pedido_puntos ".$filter." ";
-        echo $SQLSTATEMENT;
+        // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
