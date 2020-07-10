@@ -356,6 +356,11 @@ var existCodeSapPatchCord = function(Codigo){
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
         document.getElementById('Costo').innerHTML = '$ '+Precio
+   }else{
+    StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'none')
+    StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
+    StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'none')
+    StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'block')
    }
   })
 }
