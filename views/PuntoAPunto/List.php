@@ -22,36 +22,10 @@
     <div class="product-card mb-30 grid_1_4" >
       <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>">
         <?php 
-          $imgUrl = "../../public/images/img_spl/notfound.png"; 
+          $imgUrl = file_exists("../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg") ?  "../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg" :"../../public/images/img_spl/notfound.png"; 
         ?>
         <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Producto->Descripcion;?>">
       </a>
-      <div class="rating-stars">
-        <?php 
-          if (!class_exists('ComentariosController')) {
-            include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
-          }
-          $ComentariosController = new ComentariosController();
-          $ComentariosController->filter = "WHERE IdProducto = '".$Producto->Codigo."'";
-          $Comentarios = $ComentariosController->Comentarios();
-          
-          if($Comentarios->count > 0){
-            $RecordsComentarios = $Comentarios->records[0];
-            $Promedio = (int)$RecordsComentarios->Promedio;
-            for ($i=0; $i < 5; $i++) { 
-              if ($i < $Promedio) {
-        ?>
-        <i class="icon-star filled"></i>
-        <?php }else{ ?>
-        <i class="icon-star"></i>
-        <?php } } }else{ ?>
-          <i class="icon-star"></i>
-          <i class="icon-star"></i>
-          <i class="icon-star"></i>
-          <i class="icon-star"></i>
-          <i class="icon-star"></i>
-        <?php } ?>
-      </div>
       <div class="product-card-body">
         <div class="product-category "><a href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>"><?php echo $Producto->Codigo?></a></div>
         <h3 class="product-title grid_1_3">

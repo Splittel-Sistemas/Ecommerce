@@ -33,7 +33,6 @@
           $Obj->Precio      = $row->precio;
           $Obj->Puntos      = $row->puntos;
           $Obj->Almacen     = $row->almacen;
-          $Obj->CFDI        = $row->uso_cfdi;
           $Obj->Activo      = $row->activo;
           $data[] = $Obj;
         }
