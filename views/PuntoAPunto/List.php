@@ -20,16 +20,16 @@
   ?>
   <div class="col-lg-4 col-md-4 col-sm-4 col-4" >
     <div class="product-card mb-30 grid_1_4" >
-      <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>">
+      <a class="product-thumb">
         <?php 
           $imgUrl = file_exists("../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg") ?  "../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg" :"../../public/images/img_spl/notfound.png"; 
         ?>
         <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Producto->Descripcion;?>">
       </a>
       <div class="product-card-body">
-        <div class="product-category "><a href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>"><?php echo $Producto->Codigo?></a></div>
+        <div class="product-category "><a><?php echo $Producto->Codigo?></a></div>
         <h3 class="product-title grid_1_3">
-        <a href="../Productos/fijos.php?id_prd=<?php echo $Producto->Codigo;?>"><?php echo $Producto->Descripcion;?></a>
+        <a><?php echo $Producto->Descripcion;?></a>
         
         </h3>
         <h4 class="product-price">
@@ -38,7 +38,7 @@
       </div>
       <div class=" product-button-group">
         <?php if($_SESSION['Ecommerce-ClientePuntosDisponibles'] > $Producto->Puntos){ ?>
-        <a class="product-button" href="#" descuento="0" codigo="<?php echo $Producto->Codigo;?>" puntos="<?php echo $Producto->Puntos;?>" onclick="DatosEnvioPuntosModal(this)">
+        <a class="product-button" href="#" descuento="0" codigo="<?php echo $Producto->Codigo;?>" puntos="<?php echo $Producto->Puntos;?>" existe="<?php echo $Producto->ExisteSap;?>" key="<?php echo $Producto->Key;?>" onclick="DatosEnvioPuntosModal(this)">
           <i class="icon-shopping-cart"></i><span>Canjear</span>
         </a>
         <?php }else{?>

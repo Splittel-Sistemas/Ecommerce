@@ -12,6 +12,10 @@ if (!class_exists('Connection')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2B/SalesQuatation.Model.php';
 }if (!class_exists('Invoice')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2C/Invoice.Model.php';
+}if (!class_exists("Email")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
+}if (!class_exists("TemplateCanjeoPuntos")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/CanjeoPuntos.php';
 }
 
 class DetalleController{
@@ -158,6 +162,45 @@ class DetalleController{
             throw $e;
         }
     }
+    public function PedidoConPuntos()
+    {
+        try {
+            if($_POST['Existe'] == 0){
+                return $this->Pedido();
+            }else if($_POST['Existe'] == 1){
+                return $this->AgregarArticuloPedidoConPuntos();
+            }else{
+                throw new Exception("Opción no disponible!");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+    public function Pedido(){
+        try {
+            $data =[
+                "Nombre"    => $_POST['ContactoNombre'],
+                "Telefono"  => $_POST['ContactoTelefono'],
+                "Correo"    => $_POST['ContactoCorreo'],
+                "Ciudad"    => $_POST['DomicilioCiudad'],
+                "Calle"     => $_POST['DomicilioCalle'],
+                "NoExt"     => $_POST['DomicilioNoExt'],
+                "Colonia"   => $_POST['DomicilioColonia'],
+                "Key"       => $_POST['Key'],
+            ];
+            $Email = new Email(true);
+            $TemplateCanjeoPuntos = new TemplateCanjeoPuntos();
+            $Email->MailerSubject = "Ecommerce";
+            $Email->MailerBody = $TemplateCanjeoPuntos->body($data);
+            $Email->MailerListTo = ["marketing.directo@splittel.com"];
+            $Email->EmailSendEmail();
+            unset($Email);
+            unset($TemplateCanjeoPuntos);
+            return $this->Tool->Message_return(false, "", [], false);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function AgregarArticuloPedidoConPuntos(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
@@ -213,23 +256,6 @@ class DetalleController{
                                     $ResultSalesQuatation = $SalesQuatationModel->create();
                                     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
                                     $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $_SESSION['Ecommerce-ClientePuntosDisponibles'] - $_POST['Puntos'];
-                                    // if (!$ResultSalesQuatation['error']) {
-                                    //     // Envio de correo de acuerdo a pedido realizado
-                                    //     $Email = new Email(true);
-                                    //     $TemplatePedido = new TemplatePedido();
-                                    //     $Email->MailerSubject = "Ecommerce";
-                                    //     $Email->MailerBody = $TemplatePedido->body();
-                                    //     $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                    //     $Email->EmailSendEmail();
-                                    //     unset($Email);
-                                    //     unset($TemplatePedido);
-
-                                    //     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
-                                    //     unset($SalesQuatationModel);
-                                    //     unset($ResultSalesQuatation);
-                                    // }else{
-                                    //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
-                                    // }
                                 }else{
                                     # guardado de información pedido b2c para posteriromente generar los documentos sap
                                     $InvoiceModel = new Invoice();
@@ -241,23 +267,6 @@ class DetalleController{
                                     $ResultInovice = $InvoiceModel->create();
                                     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
                                     $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $_SESSION['Ecommerce-ClientePuntosDisponibles'] - $_POST['Puntos'];
-                                    // if (!$ResultInovice['error']) {
-                                    //     // Envio de correo de acuerdo a pedido realizado
-                                    //     $Email = new Email(true);
-                                    //     $TemplatePedido = new TemplatePedido();
-                                    //     $Email->MailerSubject = "Ecommerce";
-                                    //     $Email->MailerBody = $TemplatePedido->body();
-                                    //     $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                    //     $Email->EmailSendEmail();
-                                    //     unset($Email);
-                                    //     unset($TemplatePedido);
-
-                                    //     unset($_SESSION['Ecommerce-PuntosPedidoKey']);
-                                    //     unset($InvoiceModel);
-                                    //     unset($ResultInovice);
-                                    // }else{
-                                        //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
-                                        // }
                                 }
                                 unset($ClienteModel);
                                 unset($ClienteExiste);
@@ -275,8 +284,6 @@ class DetalleController{
                     }else{
                         throw new Exception("No se pudo agregar el articulo seleccionado, por favor contacta a tu ejecutivo!");
                     }
-
-
                     return $ResultDetalle;
                 }
                 return $ResultPedido;

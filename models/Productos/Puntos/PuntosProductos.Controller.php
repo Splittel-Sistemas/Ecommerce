@@ -24,6 +24,19 @@ if (!class_exists("Connection")) {
       $this->Tool = new Functions_tools();
     }
 
+    public function GetBy(){
+      try {
+        if(!$this->Connection->conexion()->connect_error){
+          $PuntosProductosModel = new PuntosProductos();
+          $PuntosProductosModel->SetParameters($this->Connection, $this->Tool);
+          $Result = $PuntosProductosModel->GetBy($this->filter);
+          return $PuntosProductosModel;
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function Get(){
       try {
         if(!$this->Connection->conexion()->connect_error){
