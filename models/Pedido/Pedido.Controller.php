@@ -102,7 +102,7 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND metodo_pago = 99 ","");
+                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND metodo_pago = 99 AND tipo_pedido = 'NORMAL' ","");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
             }else{

@@ -17,9 +17,13 @@ var Categoria6 = function(){
 
     if (Longitud.value >= LongitudMin && Longitud.value <= LongitudMax) {
       CodigoGenerado = Marca+Familia+Estructurados.value+NumeroConCeros2(Longitud.value, 2)+UnidadMedida+Color.value
-      verificarCosto(Longitud.value,Categoria)
-    }else{
-      verificarCosto('','')
+      let data =  { 
+        Action: 'calcular',
+        ActionCalcularPrecioPatchCord: true,
+        Longitud: Longitud.value,
+        Categoria: Categoria
+      } 
+      calcularPrecioPatchcord(data)
     }
     // Agregación de codigo para la vista en el identificador
     let DirectorioImgProducto = Marca+Familia+Estructurados.value
@@ -37,30 +41,26 @@ var Categoria6 = function(){
     patchCordNombreCodigoConfigurable({ pies: Longitud.value, color: ColorText, codigo: CodigoGenerado })
 }
 
-var verificarCosto = function(PatchLongitud, PatchCategoria){
-  if(PatchLongitud!='' && PatchCategoria!=''){
-  document.getElementById('CostoProducto').value = "" 
-  document.getElementById('Costo').innerHTML = "" 
-  ajax_(
-  '../../models/Productos/Precios/PatchCord.php', 
-  'post', 
-  'json', 
-  { 
-    Action: 'calculo',
-    ActionPatchs: true,
-    PatchLongitud: PatchLongitud,
-    PatchCategoria: PatchCategoria
-  }, 
+/**
+ * 
+ *
+ * @param {Json} data
+ *
+ * @return {number} b - Bar
+ */
+var calcularPrecioPatchcord = function(data) {
+  ajax_('../../models/Productos/PatchCord/CalcularPrecioPatchCord.Route.php', 'POST', 'JSON', data, 
   function(response){
-    document.getElementById('CostoProducto').value = "" 
-    document.getElementById('Costo').innerHTML = "" 
-    document.getElementById('CostoProducto').value = response.records 
-    document.getElementById('Costo').innerHTML = "$"+response.records.toFixed(3)   
+    if (!response.error) {
+      $('#span-leyenda').remove()
+      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
+      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
+      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('Costo').innerHTML = "$"+response.precio
+    }else{
+      ProductoEspecial()
+    }
   })
-}else{
-  document.getElementById('CostoProducto').value = "" 
-      document.getElementById('Costo').innerHTML = "" 
-}
 }
 
 var patchCordNombreCodigoConfigurable = function(data){
