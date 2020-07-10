@@ -359,8 +359,6 @@ var existCodeSapPatchCord = function(Codigo){
    }else{
     StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'none')
     StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-    StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'none')
-    StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'block')
    }
   })
 }
