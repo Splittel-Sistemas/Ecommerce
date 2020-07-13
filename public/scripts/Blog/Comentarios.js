@@ -63,6 +63,6 @@ var createReviewBlog = function(){
       }
     })
   }else{
-    templateAlert(response.typeError, "", 'Ingrese un comentario', "topRight", "icon-slash")
+    templateAlert("", "", 'Ingrese un comentario', "topRight", "icon-slash")
   }
 }
