@@ -47,18 +47,22 @@ var createReply = function(){
 
 var createReviewBlog = function(){
   let Comment = document.getElementById('comment-text')
-  ajax_(
-  '../../models/Blog/Comentarios/Comentarios.Route.php', 
-  'POST', 
-  'JSON', 
-  $('#form-comment').serialize(), 
-  function(response){
-    if (!response.error){
-      ListReviews()
-      Comment.value=''
-      templateAlert(response.typeError, "", response.message, "topRight", "icon-check-circle")
-    }else{
-      templateAlert(response.typeError, "", response.message, "topRight", "icon-slash")
-    }
-  })
+  if(Comment.value!=''){
+    ajax_(
+    '../../models/Blog/Comentarios/Comentarios.Route.php', 
+    'POST', 
+    'JSON', 
+    $('#form-comment').serialize(), 
+    function(response){
+      if (!response.error){
+        ListReviews()
+        Comment.value=''
+        templateAlert(response.typeError, "", response.message, "topRight", "icon-check-circle")
+      }else{
+        templateAlert(response.typeError, "", response.message, "topRight", "icon-slash")
+      }
+    })
+  }else{
+    templateAlert(response.typeError, "", 'Ingrese un comentario', "topRight", "icon-slash")
+  }
 }
