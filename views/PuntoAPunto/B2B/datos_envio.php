@@ -61,6 +61,12 @@
           </div>
         </td>
         <td>
+          <div id="datosEnvio-direccion-text-<?php echo $GetShipToAdress->Adress;?>" style="display: none;">
+            <span id="datosEnvio-ciudad-<?php echo $GetShipToAdress->Adress;?>"> <?php echo $GetShipToAdress->City ?></span>  
+            <span id="datosEnvio-calle-<?php echo $GetShipToAdress->Adress;?>"> <?php echo $GetShipToAdress->Street ?></span>  
+            <span id="datosEnvio-noExterior-<?php echo $GetShipToAdress->Adress;?>"> <?php echo $GetShipToAdress->StreetNo ?></span>  
+            <span id="datosEnvio-colonia-<?php echo $GetShipToAdress->Adress;?>"> <?php echo $GetShipToAdress->Block ?></span>  
+          </div>
           <span class="text-gray-dark"> <?php echo $GetShipToAdress->Adress.' '.$GetShipToAdress->City;?></span><br>
           <span class="text-muted text-sm" id="datosEnvio-direccion-<?php echo $GetShipToAdress->Adress;?>"> 
             <?php echo $GetShipToAdress->Street." No Ext. ".$GetShipToAdress->StreetNo. " Col. ".$GetShipToAdress->Block;?>

@@ -39,20 +39,13 @@
           $PedidoController->order = "";
           # obtención de subtotal iva y total del pedido actual
           $Pedido = $PedidoController->getBy();
-          $pedidoCostoEnvio = $Pedido->GetEnvio();
           $pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();          
         }
         
         $disabled = '';
         $table_td_color = '';
         foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio): 
-          if($pedidoCostoEnvio == 0 && !empty($pedidoDatosEnvio)){
-            $check = $pedidoDatosEnvio == $DatosEnvio->DatosEnvioKey ? 'checked': '' ;
-            $disabled = 'disabled';
-            $table_td_color = $pedidoDatosEnvio == $DatosEnvio->DatosEnvioKey ? 'table-info' : '' ;
-          }else{
-            $check = $key == 0 ? 'checked': '';
-          }
+          $check = $key == 0 ? 'checked': '';
           foreach ($Estado->CountryWithCitys['Mexico'] as $col => $Ciudad) {
             if ($Ciudad['value'] == $DatosEnvio->Estado) {
               $EstadoDescripcion = $Ciudad['label'];
