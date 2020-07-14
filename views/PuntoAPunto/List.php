@@ -1,23 +1,29 @@
-<div class="row">
-  <?php  
-    if (!class_exists("PuntosProductosController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Puntos/PuntosProductos.Controller.php';
-    } if (!class_exists('ClienteController')) {
-      include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cliente/Cliente.Controller.php';
-    }
-    if(!isset($_SESSION['Ecommerce-ClientePuntosDisponibles'])){
-      $ClienteController = new ClienteController();
-      $ResultGetTotalPuntos = $ClienteController->GetTotalPuntos();
-      $TotalPuntos = $ResultGetTotalPuntos->PuntosTotal;
-      $ResultGetTotalPuntosCanjeados = $ClienteController->GetTotalPuntosCanjeados();
-      $PuntosCanjeados = empty($ResultGetTotalPuntosCanjeados->PuntosTotal) ? 0 : $ResultGetTotalPuntosCanjeados->PuntosTotal;
-      $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $TotalPuntos - $PuntosCanjeados;
-    }
+<?php  
+  if (!class_exists("PuntosProductosController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Puntos/PuntosProductos.Controller.php';
+  } if (!class_exists('ClienteController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cliente/Cliente.Controller.php';
+  }
+  if(!isset($_SESSION['Ecommerce-ClientePuntosDisponibles'])){
+    $ClienteController = new ClienteController();
+    $ResultGetTotalPuntos = $ClienteController->GetTotalPuntos();
+    $TotalPuntos = $ResultGetTotalPuntos->PuntosTotal;
+    $ResultGetTotalPuntosCanjeados = $ClienteController->GetTotalPuntosCanjeados();
+    $PuntosCanjeados = empty($ResultGetTotalPuntosCanjeados->PuntosTotal) ? 0 : $ResultGetTotalPuntosCanjeados->PuntosTotal;
+    $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $TotalPuntos - $PuntosCanjeados;
+  }
 
-    $PuntosProductosController = new PuntosProductosController();
-    $Result = $PuntosProductosController->Get();
-    foreach ($Result->records as $key => $Producto){
-  ?>
+  $PuntosProductosController = new PuntosProductosController();
+  $Result = $PuntosProductosController->Get();
+?>
+
+<div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x">
+  <span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>&nbsp;&nbsp;
+  <span class='text-medium'>Total Puntos Disponibles: </span> <?php echo isset($_SESSION['Ecommerce-ClientePuntosDisponibles']) ? $_SESSION['Ecommerce-ClientePuntosDisponibles'] : 0 ?>
+</div>
+
+<div class="row">
+  <?php foreach ($Result->records as $key => $Producto){ ?>
   <div class="col-lg-4 col-md-4 col-sm-4 col-4" >
     <div class="product-card mb-30 grid_1_4" >
       <a class="product-thumb">

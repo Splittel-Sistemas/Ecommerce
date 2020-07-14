@@ -38,13 +38,15 @@
           <!-- BANNER 1 -->
           <div class="gallery-wrapper">
             <div class="gallery-item">
-              <img src="../../public/images/img_spl/puntoapunto/banner1.jpg" alt="Banner1">
+            <a href="../../public/images/img_spl/puntoapunto/banner1.jpg">
+            <img src="../../public/images/img_spl/puntoapunto/banner1.jpg" alt="Banner1"></a>
             </div>
           </div>
           <!-- BANNER 2 -->   
           <div class="gallery-wrapper">
             <div class="gallery-item">
-              <img src="../../public/images/img_spl/puntoapunto/banner2.jpg" alt="Banner2">
+              <a href="../../public/images/img_spl/puntoapunto/banner2.jpg">
+              <img src="../../public/images/img_spl/puntoapunto/banner2.jpg" alt="Banner2"></a>
             </div>
           </div>
         </div>
