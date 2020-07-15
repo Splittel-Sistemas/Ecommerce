@@ -60,11 +60,7 @@
     </div>
 
     <div class="container padding-bottom-1x mb-2">
-      <div class="row justify-content-center ">
-        <div class="col-md-9 col-sm-8 col-2" id="List-Productos-Puntos">  
-          <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/List.php';  ?>
-        </div>
-      </div>
+      <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/List.php';  ?>
     </div>
     
     <!-- Modal -->
