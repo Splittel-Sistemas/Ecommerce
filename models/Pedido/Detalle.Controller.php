@@ -16,6 +16,8 @@ if (!class_exists('Connection')) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
 }if (!class_exists("TemplateCanjeoPuntos")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/CanjeoPuntos.php';
+}if (!class_exists("PuntosCanjeados")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Puntos/PuntosCanjeados.Model.php';
 }
 
 class DetalleController{
@@ -178,25 +180,41 @@ class DetalleController{
     }
     public function Pedido(){
         try {
-            $data =[
-                "Nombre"    => $_POST['ContactoNombre'],
-                "Telefono"  => $_POST['ContactoTelefono'],
-                "Correo"    => $_POST['ContactoCorreo'],
-                "Ciudad"    => $_POST['DomicilioCiudad'],
-                "Calle"     => $_POST['DomicilioCalle'],
-                "NoExt"     => $_POST['DomicilioNoExt'],
-                "Colonia"   => $_POST['DomicilioColonia'],
-                "Key"       => $_POST['Key'],
-            ];
-            $Email = new Email(true);
-            $TemplateCanjeoPuntos = new TemplateCanjeoPuntos();
-            $Email->MailerSubject = "Ecommerce";
-            $Email->MailerBody = $TemplateCanjeoPuntos->body($data);
-            $Email->MailerListTo = ["marketing.directo@splittel.com"];
-            $Email->EmailSendEmail();
-            unset($Email);
-            unset($TemplateCanjeoPuntos);
-            return $this->Tool->Message_return(false, "", [], false);
+            if (!$this->Connection->conexion()->connect_error) {
+                $PuntosCanjeados = new PuntosCanjeados();
+                $PuntosCanjeados->SetParameters($this->Connection, $this->Tool);
+                $PuntosCanjeados->SetClienteKey($_SESSION["Ecommerce-ClienteKey"]);
+                $PuntosCanjeados->SetProductoPuntosKey($_POST['Key']);
+                $Result = $PuntosCanjeados->Create();  
+                unset($PuntosCanjeados);              
+                if(!$Result['error']){
+                    $data =[
+                        "Nombre"    => $_POST['ContactoNombre'],
+                        "Telefono"  => $_POST['ContactoTelefono'],
+                        "Correo"    => $_POST['ContactoCorreo'],
+                        "Ciudad"    => $_POST['DomicilioCiudad'],
+                        "Calle"     => $_POST['DomicilioCalle'],
+                        "NoExt"     => $_POST['DomicilioNoExt'],
+                        "Colonia"   => $_POST['DomicilioColonia'],
+                        "Key"       => $_POST['Key'],
+                    ];
+                    $Email = new Email();
+                    $TemplateCanjeoPuntos = new TemplateCanjeoPuntos();
+                    $Email->MailerSubject = "Canjeo de productos";
+                    $Email->MailerBody = $TemplateCanjeoPuntos->body($data);
+                    $Email->MailerListTo[] = $_SESSION['Ecommerce-ClienteEmail'];
+                    $Email->MailerListBCC[] = "marketing.directo@splittel.com";
+                    $Email->EmailSendEmail();
+                    unset($Email);
+                    unset($TemplateCanjeoPuntos);
+                    $_SESSION['Ecommerce-ClientePuntosDisponibles'] = $_SESSION['Ecommerce-ClientePuntosDisponibles'] - $_POST['Puntos'];
+                    return $this->Tool->Message_return(false, "", [], false);
+                }else{
+                    throw new Exception("No se pudo guardar la información solicitada!");
+                }
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
         } catch (Exception $e) {
             throw $e;
         }
@@ -226,6 +244,12 @@ class DetalleController{
                     
 
                     if (!$ResultDetalle['error']) {
+                        $PuntosCanjeados = new PuntosCanjeados();
+                        $PuntosCanjeados->SetParameters($this->Connection, $this->Tool);
+                        $PuntosCanjeados->SetClienteKey($_SESSION["Ecommerce-ClienteKey"]);
+                        $PuntosCanjeados->SetProductoPuntosKey($_POST['Key']);
+                        $Result = $PuntosCanjeados->Create(); 
+                        
                         $PedidoModel = new Pedido_();
                         $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                         $PedidoExiste = $PedidoModel->GetBy("where id = '".$_SESSION['Ecommerce-PuntosPedidoKey']."' ");

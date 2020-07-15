@@ -290,9 +290,16 @@
             </ul>
           </li>
           <li class="has-children <?php  if(trim(explode("=", $path)[0]) == "index.php?pag"){?>active<?php }?>"><span><a href="../Blog/index.php?pag=1">Blog</a></span>
+          </li> 
+          <li class="has-children"><span>
+            <a href="#">Contacto</a><span class="sub-menu-toggle"></span></span>
+            <ul class="slideable-submenu">
+              <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
+              <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+              <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
+              <li><a href="../Contacto">Dirección y teléfono</a></li> 
+            </ul>
           </li>
-          <li class="has-children <?php if(trim($path) == "Contacto"){?>active<?php }?>"><span><a href="../Contacto/">Contacto</a></span>
-          </li>   
           <!--
           <li class="has-children <?php if(trim($path) == "Catalogo"){?>active<?php }?>"><span><a href="../Catalogo/">Cat&aacute;logo</a></span>
           </li>   
@@ -443,7 +450,16 @@
             </ul>
         </li>
         <li class="has-submenu <?php  if(trim(explode("=", $path)[0]) == "index.php?pag"){?>active<?php }?>"><a href="../Blog/index.php?pag=1">Blog </a></li>
-        <li class="has-submenu <?php if(trim($path) == "Contacto"){?>active<?php }?>"><a href="../Contacto/">Contacto</a></li>
+
+        <li class="has-submenu"><a href="#">Contacto</a>
+          <ul class="sub-menu">
+            <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
+            <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+            <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
+            <li><a href="../Contacto">Dirección y teléfono</a></li> 
+          </ul>
+        </li>
+
         <!--
         <li class="has-submenu <?php if(trim($path) == "Catalogo"){?>active<?php }?>"><a href="../Catalogo/">Cat&aacute;logo</a></li>
         -->

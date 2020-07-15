@@ -615,15 +615,14 @@
      */
     public function GetTotalPuntosCanjeados($fields, $filter){
       try {
-        $SQLSTATEMENT = "SELECT ".$fields." FROM listar_detalle_pedido_puntos ".$filter." ";
-        // echo $SQLSTATEMENT;
+        $SQLSTATEMENT = "SELECT ".$fields." FROM listar_puntos_canjeados ".$filter." ";
+        // echo $SQLSTATEMENT; SELECT clientekey, SUM(puntos) AS totalpuntos FROM listar_puntos_canjeados WHERE clientekey = 2
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
         while ($row = $result->fetch_object()) {
-          $this->ClienteKey             =   $row->id_cliente;
-          $this->SubTotal               =   $row->subtotalbycliente;
-          $this->PuntosTotal            =   $row->total_puntos;
+          $this->ClienteKey             =   $row->clientekey;
+          $this->PuntosTotal            =   $row->totalpuntos;
           $data = true;
         }
         return $data;

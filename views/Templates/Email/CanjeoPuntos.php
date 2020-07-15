@@ -40,7 +40,6 @@
 													</tr>
 													<tr>
 														<td class="wrapper">	
-															<p align="center">¡Canjeo de producto!</p><br>		
 															<p align="center">Información Producto</p><br>														
 															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 																<tbody>
