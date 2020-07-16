@@ -76,7 +76,7 @@
                 <section class="widget">
                 <h3 class="widget-title">Día favorito de compra</h3>
                 <p><?php echo $DataDasboard360->DavoriteDayPurchase?></p>
-                </section>
+                </section> 
             </div>
         </div>
         <div class="row">
@@ -90,6 +90,12 @@
                 <section class="widget">
                 <h3 class="widget-title">Compra mensual</h3>
                 <p>$<?php echo number_format((float)$DataDasboard360->TotalMonthlyPurchase,2);?> <?php echo $DataDasboard360->Currency ?></p>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="widget">
+                <h3 class="widget-title">Puntos disponibles</h3>
+                <p><?php echo $_SESSION['Ecommerce-ClientePuntosDisponibles'];?></p>
                 </section>
             </div>
         </div>
