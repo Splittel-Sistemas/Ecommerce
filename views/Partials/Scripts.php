@@ -40,14 +40,21 @@ fbq('track', 'PageView');
 <!-- End Facebook Pixel Code -->
 
 <!-- Start of fibremex Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4"> </script>
+<script> 
+function Chat () { 
+var script = document.createElement ("script"); // Hacer un script DOM nodo 
+script.id = "ze-snippet" 
+script.src = " https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4";
+document.head.appendChild (script); 
+} 
+setTimeout (Chat, 2500); 
+</script> 
+
 <!-- End of fibremex Zendesk Widget script -->
 
 <!--  RdStation Pixel Code -->
 <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/714b0c18-9396-441a-8919-4fbf37288b33-loader.js" ></script> 
 <!--  RdStation Adwords Pixel Code -->
-
-<script> (function(){ window.ldfdr = window.ldfdr || {}; (function(d, s, ss, fs){ fs = d.getElementsByTagName(s)[0]; function ce(src){ var cs = d.createElement(s); cs.src = src; setTimeout(function(){fs.parentNode.insertBefore(cs,fs)}, 1); } ce(ss); })(document, 'script', 'https://sc.lfeeder.com/lftracker_v1_bElvO73AWBGaZMqj.js'); })(); </script>
 
 <!--  Captcha Code V3 -->
 <script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
