@@ -24,7 +24,7 @@
 
 <div class="row">
   <?php foreach ($Result->records as $key => $Producto){ ?>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-4" >
+  <div class="col-lg-4 col-md-4 col-sm-4 col-12" >
     <div class="product-card mb-30 grid_1_4" >
       <a class="product-thumb">
         <?php 
