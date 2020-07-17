@@ -8,11 +8,6 @@
 <html lang="es">
   <head>
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
-    <style>
-      .modal-lg {
-       max-width: 80%;
-      }
-    </style>
   </head>
   <!-- Body-->
   <body>
@@ -58,16 +53,29 @@
     </div>
 
     <div class="container padding-bottom-1x mb-2">
-    <div class="row justify-content-center ">
-      <div class="col-md-9 col-sm-8 col-12">  
+      <div class="row justify-content-center ">
+        <div class="col-md-9 col-sm-8 col-12">  
           <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/List.php';  ?>
-      </div>
         </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-md-9 col-sm-8 col-12"> 
+          <p>* Las imágenes son solo una referencia gráfica. La apariencia del producto puede variar.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-md-9 col-sm-8 col-12"> 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-terminos-condiciones">
+            <p>* Términos y condiciones</p>
+          </button>
+        </div>
+      </div>
     </div>
     
     <!-- Modal -->
     <div class="modal fade" id="modal-datos-envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 80%;">
         <div class="modal-content">
           <div class="modal-body" id="modal-body-datos-envio">
             <div class="container padding-bottom-1x">
@@ -78,6 +86,19 @@
                 include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/PuntoAPunto/B2C/datos_envio.php'; 
               } 
             ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="modal-terminos-condiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body" id="modal-body-terminos-condiciones">
+            <div class="container padding-bottom-1x padding-top-1x">
+              <embed src="../../public/images/img_spl/puntoapunto/Terminos/TerminosCondicionesPuntoaPuntoFibremex.pdf" type="application/pdf" width="64%" height="600px" />
             </div>
           </div>
         </div>
