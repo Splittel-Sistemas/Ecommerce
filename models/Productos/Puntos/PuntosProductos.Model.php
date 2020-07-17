@@ -8,6 +8,7 @@
     public $Key;
     public $Codigo;
     public $Descripcion;
+    public $NombreImg;
     public $Precio;
     public $Puntos;
     public $Almacen;
@@ -29,6 +30,7 @@
           $this->Key         = $row->id;
           $this->Codigo      = $row->codigo;
           $this->Descripcion = $row->desc_producto;
+          $this->NombreImg   = $row->nombre_imagen;
           $this->Precio      = $row->precio;
           $this->Puntos      = $row->puntos;
           $this->Almacen     = $row->almacen;
@@ -52,6 +54,7 @@
           $Obj->Key         = $row->id;
           $Obj->Codigo      = $row->codigo;
           $Obj->Descripcion = $row->desc_producto;
+          $Obj->NombreImg   = $row->nombre_imagen;
           $Obj->Precio      = $row->precio;
           $Obj->Puntos      = $row->puntos;
           $Obj->Almacen     = $row->almacen;

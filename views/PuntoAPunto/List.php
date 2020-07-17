@@ -28,7 +28,7 @@
     <div class="product-card mb-30 grid_1_4" >
       <a class="product-thumb">
         <?php 
-          $imgUrl = file_exists("../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg") ?  "../../public/images/img_spl/puntoapunto/Productos/".$Producto->Descripcion.".jpg" :"../../public/images/img_spl/notfound.png"; 
+          $imgUrl = file_exists("../../public/images/img_spl/puntoapunto/Productos/".$Producto->NombreImg.".jpg") ?  "../../public/images/img_spl/puntoapunto/Productos/".$Producto->NombreImg.".jpg" :"../../public/images/img_spl/notfound.png"; 
         ?>
         <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Producto->Descripcion;?>">
       </a>

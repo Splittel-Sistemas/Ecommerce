@@ -44,15 +44,13 @@
           <!-- BANNER 1 -->
           <div class="gallery-wrapper">
             <div class="gallery-item">
-            <a href="../../public/images/img_spl/puntoapunto/banner1.jpg">
-            <img src="../../public/images/img_spl/puntoapunto/banner1.jpg" alt="Banner1"></a>
+            <img src="../../public/images/img_spl/puntoapunto/banner1.jpg" alt="Banner1">
             </div>
           </div>
           <!-- BANNER 2 -->   
           <div class="gallery-wrapper">
             <div class="gallery-item">
-              <a href="../../public/images/img_spl/puntoapunto/banner2.jpg">
-              <img src="../../public/images/img_spl/puntoapunto/banner2.jpg" alt="Banner2"></a>
+              <img src="../../public/images/img_spl/puntoapunto/banner2.jpg" alt="Banner2">
             </div>
           </div>
         </div>

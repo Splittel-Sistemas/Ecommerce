@@ -616,7 +616,7 @@
     public function GetTotalPuntosCanjeados($fields, $filter){
       try {
         $SQLSTATEMENT = "SELECT ".$fields." FROM listar_puntos_canjeados ".$filter." ";
-        // echo $SQLSTATEMENT; SELECT clientekey, SUM(puntos) AS totalpuntos FROM listar_puntos_canjeados WHERE clientekey = 2
+        // echo $SQLSTATEMENT; 
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
