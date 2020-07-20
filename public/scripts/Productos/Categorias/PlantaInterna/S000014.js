@@ -391,7 +391,13 @@ var JumpersEspeciales = function(){
     showClave(CodigoGenerado)
   }
   ChangeListImgProducto('OPJUESP',Marca+Familia+NewPosConector1+NewPosConector2+MultimodoTipoFibra.value+NumeroHilos.value)
-  
+  if(MultimodoTipoFibra.value == 9 ){ 
+    ListProductoDescription('OPJUESP/SM')
+    ListProductoAdicional('OPJUESP/SM')
+  } else{
+    ListProductoDescription('OPJUESP/MM')
+    ListProductoAdicional('OPJUESP/MM')
+  }
  
 }
 
