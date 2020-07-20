@@ -296,7 +296,13 @@
             <ul class="slideable-submenu">
               <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
               <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+              <?php 
+                if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                  header('Location: ../Home');
+                }else{
+              ?>
               <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
+                <?php } ?>
               <li><a href="../Contacto">Dirección y teléfono</a></li> 
             </ul>
           </li>
@@ -455,7 +461,11 @@
           <ul class="sub-menu">
             <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
             <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+            <?php 
+              if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+            ?>
             <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
+              <?php } ?>
             <li><a href="../Contacto">Dirección y teléfono</a></li> 
           </ul>
         </li>

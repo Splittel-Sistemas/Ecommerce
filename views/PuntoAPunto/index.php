@@ -1,8 +1,6 @@
 <?php 
   @session_start();
-  if (!isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] != 'B2B') {
-    header('Location: ../Home');
-  }else{
+  if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -117,4 +115,5 @@
     </script>
   </body>
 </html>
+<?php }else{   header('Location: ../Home'); ?>
 <?php } ?>
