@@ -56,6 +56,13 @@ var Pigtails = function(){
     if (NumeroHilos.value == 'S12' || NumeroHilos.value == 'S06') {
       LongitudMin = 1
       LongitudMax = 5
+      StyleDisplayNoneOrBlock_2(Diametro, "block", [0])
+      StyleDisplayNoneOrBlock_2(Diametro, "none", [1])
+      Diametro[0].selected = true
+       
+    }else{
+      StyleDisplayNoneOrBlock_2(Diametro, "block", [0,1])
+      
     }
 
     LongitudIdText.innerHTML = 'Longitud (m) '+LongitudMin+'~'+LongitudMax+':'
