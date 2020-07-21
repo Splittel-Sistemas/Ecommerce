@@ -361,8 +361,13 @@ var JumpersEspeciales = function(){
     NewPosConector1=Conector2.value+PulidoConector2.value+Bota2.value
     NewPosConector2=Conector1.value+PulidoConector1.value+Bota1.value
   }else{
-    NewPosConector1=Conector1.value+PulidoConector1.value+Bota1.value
-    NewPosConector2=Conector2.value+PulidoConector2.value+Bota2.value
+    if((Bota1.value=='R' && Bota2.value=='M') && (Conector1.value+PulidoConector1.value==Conector2.value+PulidoConector2.value)){
+      NewPosConector1=Conector1.value+PulidoConector1.value+Bota2.value
+      NewPosConector2=Conector2.value+PulidoConector2.value+Bota1.value
+    }else{
+      NewPosConector1=Conector1.value+PulidoConector1.value+Bota1.value
+      NewPosConector2=Conector2.value+PulidoConector2.value+Bota2.value
+    }
   }
 
   if (Longitud.value > 0 && Longitud.value <= 999.9 && validateDecimalEntero(Longitud.value)) {
