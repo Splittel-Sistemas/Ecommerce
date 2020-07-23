@@ -9,6 +9,8 @@
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
 	}if (!class_exists("TemplateWebhook")) {
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Webhook.php';
+	}if (!class_exists("TemplateWebhookPagoBanco")) {
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/WebhookPagoBanco.php';
 	}if (!class_exists("Webhook")) {
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Webhook.Model.php';
 	}if (!class_exists("WebhookEventos")) {
@@ -31,7 +33,7 @@
 		public function webhook(){
 			try {
 				if (!$this->conn->conexion()->connect_error) {
-					/*$response = $this->Tool->Clear_data_for_sql('{"type":"charge.succeeded","event_date":"2020-02-18T15:59:11-06:00","transaction":{"id":"trrvezy5yh85cojdeosr","authorization":"801585","operation_type":"in","method":"card","transaction_type":"charge","card":{"type":"debit","brand":"visa","address":null,"card_number":"411111XXXXXX1111","holder_name":"AaronCR","expiration_year":"22","expiration_month":"04","allows_charges":true,"allows_payouts":true,"bank_name":"Banamex","bank_code":"002"},"status":"completed","conciliated":false,"creation_date":"2020-02-18T15:59:08-06:00","operation_date":"2020-02-18T15:59:09-06:00","description":"1012","error_message":null,"order_id":null,"currency":"MXN","amount":915.54,"customer":{"name":"Aaron","last_name":"Cuevas Rosas","email":"aaron.cuevas@splittel.com","phone_number":"4421917076","address":null,"creation_date":"2020-02-18T15:59:07-06:00","external_id":null,"clabe":null},"fee":{"amount":29.05,"tax":4.6480,"currency":"MXN"}}}');*/
+					// $response = $this->Tool->Clear_data_for_sql('{"type":"charge.created","event_date":"2020-07-23T11:17:24-05:00","transaction":{"id":"trligaa09ginwowwon5q","authorization":null,"operation_type":"in","transaction_type":"charge","status":"in_progress","conciliated":false,"creation_date":"2020-07-23T11:17:24-05:00","operation_date":"2020-07-23T11:17:24-05:00","description":"Pedido Número 2396","error_message":null,"order_id":"2396","due_date":"2020-08-02T23:59:59-05:00","amount":6607.66,"customer":{"name":"RAUL VALENTIN","last_name":"JARAMILLO ARRIAGA","email":"dmgnetconta@gmail.com","phone_number":null,"address":null,"creation_date":"2020-07-23T11:17:24-05:00","external_id":null,"clabe":null},"payment_method":{"type":"bank_transfer","bank":"BBVA Bancomer","clabe":"012914002014222862","agreement":"1422286","name":"42681716192450496262"},"currency":"MXN","method":"bank_account"}}');
 					$response = $this->Tool->Clear_data_for_sql(file_get_contents('php://input'));
 					$Objresponse = json_decode($response);
 
@@ -44,7 +46,9 @@
 						$data = [
 							"Descripcion" => $WebhookEventosModel->GetDescripcion(),
 							"Pedido" => $Objresponse->transaction->order_id,
-							"Fecha" => $Objresponse->event_date
+							"Fecha" => $Objresponse->event_date,
+							"Message" => "transferencia pendiente",
+							"Monto" => $Objresponse->transaction->amount.' '.$Objresponse->transaction->currency
 						];
 
 						$WebhookModel = new Webhook();
@@ -59,12 +63,12 @@
 
 						if (!$ResultWebhookModel['error']) {
 							$Email = new Email();
-							$TemplateWebhook = new TemplateWebhook();
+							$TemplateEmailWebhook = $Objresponse->transaction->method == 'bank_account' && $Objresponse->transaction->status == "in_progress" ? new TemplateWebhookPagoBanco() : new TemplateWebhook();
 							$Email->MailerSubject = "Webhook";
-							$Email->MailerBody = $TemplateWebhook->body($data);
+							$Email->MailerBody = $TemplateEmailWebhook->body($data);
 							$Email->EmailSendEmail();
 							unset($Email);
-							unset($TemplateWebhook);
+							unset($TemplateEmailWebhook);
 						}
 						return $ResultWebhookModel;
 					}
@@ -83,3 +87,6 @@
 			fclose($file); // Cerrar*/
 		}
 	}
+
+	// $WebhookController = new WebhookController();
+	// $WebhookController->webhook();
