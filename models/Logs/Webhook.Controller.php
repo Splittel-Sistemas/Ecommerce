@@ -62,8 +62,14 @@
 						$ResultWebhookModel = $WebhookModel->create();
 
 						if (!$ResultWebhookModel['error']) {
-							$Email = new Email();
-							$TemplateEmailWebhook = $Objresponse->transaction->method == 'bank_account' && $Objresponse->transaction->status == "in_progress" ? new TemplateWebhookPagoBanco() : new TemplateWebhook();
+							if($Objresponse->transaction->method == 'bank_account' && $Objresponse->transaction->status == "in_progress"){
+								$Email = new Email(true);
+								$TemplateEmailWebhook = new TemplateWebhookPagoBanco();
+							}else{
+								$Email = new Email();
+								$TemplateEmailWebhook = new TemplateWebhook();
+							}
+
 							$Email->MailerSubject = "Webhook";
 							$Email->MailerBody = $TemplateEmailWebhook->body($data);
 							$Email->EmailSendEmail();
