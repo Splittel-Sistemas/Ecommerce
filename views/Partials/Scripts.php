@@ -1,14 +1,14 @@
  <!-- JavaScript (jQuery) libraries, public and custom scripts-->
 <!-- Modernizr-->
-<script type="text/javascript" src="../../public/plantilla/js/vendor.min.js"></script>
-<script type="text/javascript" src="../../public/plantilla/js/card.min.js"></script>
-<script type="text/javascript" src="../../public/plantilla/js/scripts.min.js"></script>
-<script type="text/javascript" src="../../public/plantilla/js/modernizr.min.js"></script>
-<script type="text/javascript" src="../../public/plantilla/customizer/customizer.min.js"></script>
-<script type="text/javascript" src="../../public/plugins/tingle/tingle.js"></script>
-<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript" src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
-<script type="text/javascript" src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
+<script type="text/javascript" async src="../../public/plantilla/js/vendor.min.js"></script>
+<script type="text/javascript" async src="../../public/plantilla/js/card.min.js"></script>
+<script type="text/javascript" async src="../../public/plantilla/js/scripts.min.js"></script>
+<script type="text/javascript" async src="../../public/plantilla/js/modernizr.min.js"></script>
+<script type="text/javascript" async src="../../public/plantilla/customizer/customizer.min.js"></script>
+<script type="text/javascript" async src="../../public/plugins/tingle/tingle.js"></script>
+<script type="text/javascript" async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" async src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
+<script type="text/javascript" async src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
 <!--  Google Adwords Pixel Code -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37926902-1"></script>
 <script>
@@ -57,7 +57,7 @@ setTimeout (Chat, 2500);
 <!--  RdStation Adwords Pixel Code -->
 
 <!--  Captcha Code V3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
+<script async src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
     
 <script>
         grecaptcha.ready(function () {
