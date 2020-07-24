@@ -47,7 +47,7 @@ script.id = "ze-snippet"
 script.src = " https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4";
 document.head.appendChild (script); 
 } 
-setTimeout (Chat, 2500); 
+setTimeout (Chat, 3500); 
 </script> 
 
 <!-- End of fibremex Zendesk Widget script -->
