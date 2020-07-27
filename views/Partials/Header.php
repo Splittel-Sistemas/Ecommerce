@@ -295,7 +295,7 @@
             <a href="#">Contacto</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
               <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
-              <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+              <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
               <?php 
                 if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
                   header('Location: ../Home');
@@ -460,7 +460,7 @@
         <li class="has-submenu"><a href="#">Contacto</a>
           <ul class="sub-menu">
             <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
-            <li><a href="../Login/resgistro.php">Darme de alta como cliente</a></li>
+            <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
             <?php 
               if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
             ?>
