@@ -5,8 +5,8 @@
 <script type="text/javascript" src="../../public/plantilla/js/scripts.min.js"></script>
 <script type="text/javascript" src="../../public/plantilla/js/modernizr.min.js"></script>
 <script type="text/javascript" src="../../public/plantilla/customizer/customizer.min.js"></script>
-<script type="text/javascript" src="../../public/plugins/tingle/tingle.js"></script>
-<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" async src="../../public/plugins/tingle/tingle.js"></script>
+<script type="text/javascript" async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
 <script type="text/javascript" src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
 <!--  Google Adwords Pixel Code -->
@@ -47,7 +47,7 @@ script.id = "ze-snippet"
 script.src = " https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4";
 document.head.appendChild (script); 
 } 
-setTimeout (Chat, 2500); 
+setTimeout (Chat, 3500); 
 </script> 
 
 <!-- End of fibremex Zendesk Widget script -->
@@ -57,7 +57,7 @@ setTimeout (Chat, 2500);
 <!--  RdStation Adwords Pixel Code -->
 
 <!--  Captcha Code V3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
+<script async src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
     
 <script>
         grecaptcha.ready(function () {
