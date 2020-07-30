@@ -96,16 +96,16 @@
               $response = $CategoriaController->get();
 
                 foreach ($response->records as $CategoriaCont => $Categoria):
-                  if ($CategoriaCont == 0 || ($CategoriaCont % 4) == 0 ): ?>
+                  if ($CategoriaCont == 0 || ($CategoriaCont == 3) || ($CategoriaCont == 6) ): ?>
               <div class="row">
               <?php endif ?>
                 <div class="col-sm-3">
                   <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
                     <img class="d-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>">
-                    <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
+                    <span class="text-gray-dark"><?php echo $CategoriaCont.$Categoria->Descripcion; ?></span>
                   </a>
                 </div>
-              <?php if ($CategoriaCont == 3 || $CategoriaCont == 7 || $response->count-1 == $CategoriaCont ): ?>
+              <?php if ($CategoriaCont == 2 || $CategoriaCont == 5 || $CategoriaCont == 8 || $response->count-1 == $CategoriaCont ): ?>
               </div>
               <?php endif ?>
               <?php endforeach ?>
@@ -320,7 +320,7 @@
         $response = $CategoriaController->get();
 
           foreach ($response->records as $CategoriaCont => $Categoria):
-            if ($CategoriaCont == 0 || ($CategoriaCont % 4) == 0 ): ?>
+            if ($CategoriaCont == 0 || ($CategoriaCont == 3) || ($CategoriaCont == 6)  ): ?>
         <div class="row">
         <?php endif ?>
           <div class="col-sm-3">
@@ -329,7 +329,7 @@
               <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
             </a>
           </div>
-        <?php if ($CategoriaCont == 3 || $response->count-1 == $CategoriaCont ): ?>
+        <?php if ($CategoriaCont == 2 || $CategoriaCont == 5 || $CategoriaCont == 8 || $response->count-1 == $CategoriaCont ): ?>
         </div>
         <?php endif ?>
       <?php endforeach ?> 
