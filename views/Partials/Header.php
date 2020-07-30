@@ -80,7 +80,7 @@
   <div class="topbar d-flex justify-content-between">
     <!-- Logo-->
     <div class="site-branding d-flex">
-      <a class="site-logo align-self-center" href="../Home/"><img src="../../public/images/img/logo/logo.png" alt="Unishop"></a>
+      <a class="site-logo align-self-center" href="../Home/"><img src="../../public/images/img/logo/logo.png" alt="Fibremex"></a>
     </div>
     <!-- Search / Categories-->
     <div class="search-box-wrap d-flex">
@@ -105,10 +105,10 @@
                     <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
                   </a>
                 </div>
-              <?php if ($CategoriaCont == 3 || $response->count-1 == $CategoriaCont ): ?>
+              <?php if ($CategoriaCont == 3 || $CategoriaCont == 7 || $response->count-1 == $CategoriaCont ): ?>
               </div>
               <?php endif ?>
-            <?php endforeach ?>
+              <?php endforeach ?>
             </div>
           </div>
           <form class="input-group"><span class="input-group-btn">

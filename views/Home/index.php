@@ -72,25 +72,28 @@
             $ResultCategoria = $CategoriaController->get();
             $CategoriaCont = 1;
 
-              foreach ($ResultCategoria->records as $key => $Categoria){
-                if ($CategoriaCont == 1 || ($CategoriaCont % 5) == 0 ){ 
+            foreach ($ResultCategoria->records as $key => $Categoria){
+                if ($CategoriaCont == 1 || ($CategoriaCont / 4) == 1 || ($CategoriaCont / 7) == 1){ 
           ?>
-          <div class="col-md-6 col-12">
+          <div class="col-md-4 col-12">
             <div class="row">
-          <?php } ?>
-              <div class="col-md-3 col-6 text-center mb-25">
-                <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
-                  <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img?>'" 
-                  onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img?>'" 
-                  class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img?>" alt="Categorias">
-                  <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'"  onMouseOut="this.style.color='black'" ><?php echo $Categoria->Descripcion?></h6>
-              </a> 
-              <p class="text-sm text-muted mb-0"></p>
-            </div>
-          <?php if (($CategoriaCont % 4 == 0) || $CategoriaCont == $ResultCategoria->count){ ?>
+                <?php } ?>
+              <div class="col-md-4 col-12 text-center mb-25">
+                  <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+                    <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img?>'" 
+                    onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img?>'" 
+                    class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img?>" alt="Categorias">
+                    <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'"  onMouseOut="this.style.color='black'" ><?php echo $Categoria->Descripcion?></h6>
+                </a> 
+                <p class="text-sm text-muted mb-0"></p>
+              </div>
+            <?php 
+             if (($CategoriaCont % 3 == 0) || $CategoriaCont == $ResultCategoria->count){ ?>
             </div>
           </div>
-          <?php } $CategoriaCont++; } ?>        
+          <?php } 
+          $CategoriaCont++;
+           } ?>        
         </div>
       </div>
     </section>
