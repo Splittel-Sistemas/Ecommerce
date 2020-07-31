@@ -84,25 +84,24 @@ if (!class_exists("Connection")) {
             $ClienteModel->SetIngreso(1);
             $ResultCliente = $ClienteModel->create();
             if(!$ResultCliente['error']){
+              $Email = new Email();
+              $TemplateRegistro = new TemplateRegistro();
+              $Email->MailerSubject = utf8_decode("¡Gracias por registrarse!");
+              $Email->MailerEmbeddedImagePath = $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/public/images/Otros/welcome.jpg';
+              $Email->MailerEmbeddedImageId = "welcome";
+              $Email->MailerEmbeddedImageTitle = "registrado";
+              $Email->MailerListTo = [$_POST["Correo"]];
+              $Email->MailerBody = $TemplateRegistro->body();
+              $Email->EmailSendEmail();
+              unset($Email);
+              unset($TemplateRegistro);
+
               $LoginController = new LoginController();
               $LoginController->Correo = $ClienteModel->GetEmail();
-              $LoginController->Password = $ClienteModel->GetPassword();
+              $LoginController->Password = $EncrypData->cadenaDecrypt($ClienteModel->GetPassword());
               $ResultLogin = $LoginController->validateLogin();
+              return $ResultLogin;
               unset($LoginController);
-              if($ResultLogin['error']){
-                $Email = new Email();
-                $TemplateRegistro = new TemplateRegistro();
-                $Email->MailerSubject = utf8_decode("¡Gracias por registrarse!");
-                $Email->MailerEmbeddedImagePath = $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/public/images/Otros/welcome.jpg';
-                $Email->MailerEmbeddedImageId = "welcome";
-                $Email->MailerEmbeddedImageTitle = "registrado";
-                $Email->MailerListTo = [$_POST["Correo"]];
-                $Email->MailerBody = $TemplateRegistro->body();
-                $Email->EmailSendEmail();
-                unset($Email);
-                unset($TemplateRegistro);
-                return $ResultLogin;
-              }
             }
             unset($EncrypData);
             unset($ClienteModel);
