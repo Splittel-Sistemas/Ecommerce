@@ -18,6 +18,8 @@ if (!class_exists("Connection")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetSegment.Controller.php';
 }if (!class_exists('PedidoController')) {
   include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
+}if (!class_exists('EncrypData_')) {
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/EncrypData.php';
 }
 
 class LoginController{
@@ -42,14 +44,15 @@ class LoginController{
   public function validateLogin(){
     try{
       if(!$this->conn->conexion()->connect_error){
-
+        $EncrypData = new EncrypData_('password');
         $result = array();
         $result = $this->conn->Exec_store_procedure_json("CALL Login(
             '".$this->Correo."',
-            '".$this->Password."',
+            '".$EncrypData->cadenaEncrypt($this->Password)."',
             '".$this->Ip."',
             @Result);","@Result");
 
+        unset($EncrypData);
         if (!$result['error']) {
           $ResultLoad = $this->load();
         }

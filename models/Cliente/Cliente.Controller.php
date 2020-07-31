@@ -17,6 +17,8 @@ if (!class_exists("Connection")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
 }if (!class_exists("TemplateRegistro")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Registro.php';
+}if (!class_exists('EncrypData_')) {
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/EncrypData.php';
 }
 
   /**
@@ -65,6 +67,7 @@ if (!class_exists("Connection")) {
         if (!$this->Connection->conexion()->connect_error) {
           $validate = $this->validatePassword();
           if($validate['validate']){
+            $EncrypData = new EncrypData_('password');
             $ClienteModel = new Cliente(); 
             $ClienteModel->SetParameters($this->Connection, $this->Tool);
             $ClienteModel->SetClienteKey(0);
@@ -74,8 +77,8 @@ if (!class_exists("Connection")) {
             $ClienteModel->SetTelefono($_POST["Telefono"]);
             $this->Tool->validEmail("Correo", "Correo", true);
             $ClienteModel->SetEmail($_POST["Correo"]);
-            $ClienteModel->SetPassword($_POST["Password"]);
-            $ClienteModel->SetPasswordB2b($_POST["ConfirmarPassword"]);
+            $ClienteModel->SetPassword($EncrypData->cadenaEncrypt($_POST["Password"]));
+            $ClienteModel->SetPasswordB2b($EncrypData->cadenaEncrypt($_POST["ConfirmarPassword"]));
             $ClienteModel->SetActivo('si');
             $ClienteModel->SetTipo('B2C');
             $ClienteModel->SetIngreso(1);
@@ -101,6 +104,7 @@ if (!class_exists("Connection")) {
                 return $ResultLogin;
               }
             }
+            unset($EncrypData);
             unset($ClienteModel);
             return $ResultCliente;
           }else{
@@ -119,8 +123,8 @@ if (!class_exists("Connection")) {
         if (!$this->Connection->conexion()->connect_error) {
           $ClienteModel = new Cliente();
           $ClienteModel->SetParameters($this->Connection, $this->Tool);
-          $ClienteModel->SetPassword($_POST["Password"]);
-          $ClienteModel->SetPasswordB2b($_POST["ConfirmarPassword"]);
+          $ClienteModel->SetPassword($EncrypData->cadenaEncrypt($_POST["Password"]));
+          $ClienteModel->SetPasswordB2b($EncrypData->cadenaEncrypt($_POST["ConfirmarPassword"]));
           $ResultCliente = $ClienteModel->ClienteB2BCambiarPassword();
           if(!$ResultCliente['error']){
             $_SESSION['Ecommerce_ClienteIngreso']  = 1;
@@ -356,6 +360,22 @@ if (!class_exists("Connection")) {
         }
       } catch (Exception $e) {
         throw $e;
+      }
+    }
+
+    public function Change($key, $pass){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $ClienteModel = new Cliente();
+          $ClienteModel->SetParameters($this->Connection, $this->Tool);
+          $ClienteModel->SetClienteKey($key);
+          $ClienteModel->SetPassword($pass);
+          $ResultCliente = $ClienteModel->ChangePassword();
+          unset($ClienteModel);
+          return $ResultCliente;
+        }
+      } catch (Exception $e) {
+          throw $e;
       }
     }
 

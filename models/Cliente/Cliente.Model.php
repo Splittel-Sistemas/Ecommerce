@@ -144,7 +144,7 @@ class Cliente{
             $Cliente->CardCode      =   $row->cardcode;
             $Cliente->Sociedad      =   $row->sociedad;
             $Cliente->PasswordB2b   =   $row->pass_b2b;
-            $Cliente->Ingreso       =   $row->Ingreso;
+            $Cliente->Ingreso       =   $row->ingreso;
             $data[] = $Cliente;
         }
         return $data;
@@ -186,6 +186,18 @@ class Cliente{
                 ".$_SESSION['Ecommerce-ClienteKey'].",
                 '".$this->Password."',
                 '".$this->PasswordB2b."',
+                @Result)", "@Result");
+            return $result;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function ChangePassword(){
+        try {
+            $result = $this->Connection->Exec_store_procedure_json("CALL ChangePass(
+                ".$this->ClienteKey.",
+                '".$this->Password."',
                 @Result)", "@Result");
             return $result;
         } catch (Exception $e) {
