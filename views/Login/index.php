@@ -1,5 +1,4 @@
 <?php 
-header('Location: ../Home');
   @session_start();
   if(isset($_SESSION['Ecommerce-ClienteKey'])){
     header('Location: ../Home');
