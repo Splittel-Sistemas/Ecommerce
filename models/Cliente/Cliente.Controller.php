@@ -120,6 +120,7 @@ if (!class_exists("Connection")) {
     public function clienteB2BCambiarPassword(){
       try {
         if (!$this->Connection->conexion()->connect_error) {
+          $EncrypData = new EncrypData_('password');
           $ClienteModel = new Cliente();
           $ClienteModel->SetParameters($this->Connection, $this->Tool);
           $ClienteModel->SetPassword($EncrypData->cadenaEncrypt($_POST["Password"]));
