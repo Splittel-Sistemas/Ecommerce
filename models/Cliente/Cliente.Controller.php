@@ -98,7 +98,7 @@ if (!class_exists("Connection")) {
 
               $LoginController = new LoginController();
               $LoginController->Correo = $ClienteModel->GetEmail();
-              $LoginController->Password = $EncrypData->cadenaDecrypt($ClienteModel->GetPassword());
+              $LoginController->Password = $_POST["Password"];
               $ResultLogin = $LoginController->validateLogin();
               return $ResultLogin;
               unset($LoginController);
