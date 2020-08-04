@@ -51,7 +51,7 @@
 								</div>
 							</div>
 						</div>
-            <div class="h1 text-normal mb-3 text-center">Iniciar Sesión!</div>
+            <div class="h1 text-normal mb-3 text-center">Iniciar Sesión</div>
             <form id="form-login">
               <input type="hidden" id="Action" name="Action" value="login">
               <input type="hidden" id="ActionLogin" name="ActionLogin" value="true">
