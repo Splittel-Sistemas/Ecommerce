@@ -62,7 +62,7 @@ class CatalogoCursos{
 
         $ObjCaptcha = new Captcha();
         $retorno = $ObjCaptcha->getCaptcha($_POST['recaptcha_response']);
-        if($retorno->success == true && $retorno->score > 0.5){
+        // if($retorno->success == true && $retorno->score > 0.5){
 
         $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
           '".$this->Descripcion."',
@@ -71,6 +71,7 @@ class CatalogoCursos{
         @Result);", "@Result");
 
         if (!$result['error']) {
+          $result['cap'] = $retorno;
           $Email = new Email();
           $EmailTest = new EmailTest();
           
@@ -93,7 +94,7 @@ class CatalogoCursos{
         }
         return $return_json ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result;
 
-      }
+      // }
 
       }
     } catch (Exception $e) {
