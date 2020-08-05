@@ -1,4 +1,16 @@
 <div class="row">
+  <div class="col-md-3">
+    </div>
+  <div class="col-md-3 justify-content-end">
+    <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
+      <div class="d-inline-block">
+        <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
+        <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-twitter" href="https://twitter.com/share?ref_src=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>"><i class="socicon-twitter"></i></a>
+      </div>
+    </div>
+  </div> 
+</div> 
+<div class="row">
   <!-- Poduct Gallery-->
   <div class="col-md-6">
     <div class="product-gallery">
@@ -49,17 +61,28 @@
     <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/<?php echo $Obj->MarcaDesripcion;?>.jpg" width="30%" height="30%"/></span>
     <?php if($Obj->Descuento > 0){ ?>
     <span class="h4 d-block">
-      <del class="text-muted">$<?php echo $Obj->ProductoPrecio ?></del>&nbsp;
+      Precio:
       <b class="text-primary">
         $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD 
       </b>
+      <br>
+      <del class="text-muted">$<?php echo $Obj->ProductoPrecio ?></del>&nbsp;
     </span>
     <?php }else{ ?>
       <span class="h4 d-block">
         $<?php echo $Obj->ProductoPrecio; ?> USD 
       </span>
-    <?php } ?>    
-    <div class="pt-1 mb-4"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
+    <?php } ?>  
+    
+    <div class="row">
+      <div class="col-md-3">
+        <div class="pt-1 mb-4"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
+      </div>
+      <div class="col-md-6">
+        <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
+      </div>
+    </div>
+
     <br/> <p class="text-muted text-justify"><?php echo $Obj->DescripcionLarga;?></p>
     
     <div class="row align-items-end pb-4">
@@ -74,10 +97,10 @@
         <i class="icon-bag"></i> Agregar al carrito</button>
       </div>
     </div>
-    <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
-    
-    <hr class="mb-2">
-    <div class="d-flex flex-wrap justify-content-between">
+  </div>
+</div>
+
+<div class="d-flex flex-wrap justify-content-between">
       <div class="mt-2 mb-2">
       <?php
         if(!empty($Obj->FichaRuta)){
@@ -126,12 +149,4 @@
         }
       ?>       
       </div>
-      <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
-        <div class="d-inline-block">
-          <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
-          <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-twitter" href="https://twitter.com/share?ref_src=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>"><i class="socicon-twitter"></i></a>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
