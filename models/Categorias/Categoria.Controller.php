@@ -30,7 +30,7 @@ if (!class_exists("Connection")) {
         if (!$this->conn->conexion()->connect_error) {
           $CategoriaModel = new Categoria(); 
           $CategoriaModel->SetParameters($this->conn, $this->Tool);
-          $items = $CategoriaModel->Get($this->filter, $this->order);
+          $items = $CategoriaModel->Get($this->filter, " ORDER BY orden ASC");
           unset($CategoriaModel);
           return $this->Tool->Message_return(false, "", $items, false);
         }
@@ -44,7 +44,7 @@ if (!class_exists("Connection")) {
         if (!$this->conn->conexion()->connect_error) {
           $CategoriaModel = new Categoria(); 
           $CategoriaModel->SetParameters($this->conn, $this->Tool);
-          $CategoriaModel->GetBy($this->filter, $this->order);
+          $CategoriaModel->GetBy($this->filter, " ORDER BY orden ASC");
           return $CategoriaModel;
         }
       } catch (Exception $e) {
