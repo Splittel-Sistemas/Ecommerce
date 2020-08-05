@@ -1,7 +1,5 @@
 <div class="row">
-  <div class="col-md-3">
-    </div>
-  <div class="col-md-3 d-flex justify-content-end">
+  <div class="offset-md-3 col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
       <div class="d-inline-block">
         <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
@@ -148,6 +146,17 @@
       <?php 
           }
         }
-      ?>       
+
+        $fichero = "../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/video/video.txt";
+          if (file_exists($fichero)) {
+            $ruta = file_get_contents($fichero, FILE_USE_INCLUDE_PATH);
+          
+      ?>   
+          <button class="btn btn-outline-secondary btn-sm ">
+          <a href="#" data-toggle="tooltip" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" title="Ver video">
+            <i class="icon-download"></i>&nbsp;Manual
+          </a>
+        </button>
+        <?php } ?>
       </div>
     </div>
