@@ -5,7 +5,7 @@
 <script type="text/javascript" src="../../public/plantilla/js/scripts.min.js"></script>
 <script type="text/javascript" src="../../public/plantilla/js/modernizr.min.js"></script>
 <script type="text/javascript" src="../../public/plantilla/customizer/customizer.min.js"></script>
-<script type="text/javascript" async src="../../public/plugins/tingle/tingle.js"></script>
+<script type="text/javascript" src="../../public/plugins/tingle/tingle.js"></script>
 <script type="text/javascript" async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
 <script type="text/javascript" src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
@@ -57,7 +57,7 @@ setTimeout (Chat, 3500);
 <!--  RdStation Adwords Pixel Code -->
 
 <!--  Captcha Code V3 -->
-<script async src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
     
 <script>
         grecaptcha.ready(function () {
