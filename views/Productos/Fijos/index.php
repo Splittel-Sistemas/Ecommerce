@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3">
     </div>
-  <div class="col-md-3 justify-content-end">
+  <div class="col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
       <div class="d-inline-block">
         <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
@@ -10,6 +10,7 @@
     </div>
   </div> 
 </div> 
+
 <div class="row">
   <!-- Poduct Gallery-->
   <div class="col-md-6">
