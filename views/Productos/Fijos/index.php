@@ -112,7 +112,7 @@
         <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
       </div>
       <div class="col-md-4">
-        <span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span>
+      <div class="pt-1 mb-4"><span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span></div>
       </div>
     </div>
 
@@ -196,7 +196,7 @@
           padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
               <div class="gallery-wrapper">
               <div  class="gallery-item text-center">
-               <a id="new-btn-video" 
+               <a style="color: #BF202F; text-decoration: underline;" id="new-btn-video" 
                href="#" data-toggle="tooltip" data-type="video" 
                data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
                >
