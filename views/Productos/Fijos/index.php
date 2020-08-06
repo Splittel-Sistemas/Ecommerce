@@ -112,7 +112,7 @@
         <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
       </div>
       <div class="col-md-4">
-        <span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span>
+      <div class="pt-1 mb-4"><span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span></div>
       </div>
     </div>
 
