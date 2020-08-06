@@ -3,6 +3,16 @@
     background-image: url("../../public/images/btn.jpg");
     background-size: 50px 50px;
   }
+  #new-btn-video::after{
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    background-image: url("");
+  }
+  #new-btn-video::before{
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    background-image: url("");
+  }
 </style>
 <div class="row">
   <div class="col-md-3 align-center">
@@ -165,7 +175,32 @@
           }
         }          
       ?>   
+      <?php
+              $fichero = "../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/video/video.txt";
+              if (file_exists($fichero)) {
+                $ruta = file_get_contents($fichero, FILE_USE_INCLUDE_PATH);
+              
+                   
+          ?>  
+          <button class="btn btn-outline-secondary btn-sm ">
+          <div style="padding-top: 0px; padding-right: 0px; 
+          padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
+              <div class="gallery-wrapper">
+              <div  class="gallery-item text-center">
+               <a id="new-btn-video" 
+               href="#" data-toggle="tooltip" data-type="video" 
+               data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
+               >
+                <i class="icon-download"></i>Video
+              </a>
+              </div>
+              </div>
+            </div>
+            </button>
+            <?php } ?>
       </div>
     </div>
+
+  
 
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Informacion/Comentarios/comentarios-modal.php'; ?>
