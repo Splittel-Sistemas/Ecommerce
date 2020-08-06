@@ -129,6 +129,9 @@
         <button style="background-color: #bc2130" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
         <i class="icon-bag"></i> Agregar al carrito</button>
       </div>
+      <div class="col-sm-4">
+        <img src="../../public/images/img.png" width="80%" height="80%"/>
+      </div>
     </div>
   </div>
 </div>
