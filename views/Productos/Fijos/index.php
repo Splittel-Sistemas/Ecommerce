@@ -13,16 +13,22 @@
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
     background-image: url("");
   }
+  .new {
+    font-size: 20px !important;
+  }
 </style>
 <div class="row">
   <div class="col-md-3 align-center">
-    <div class="rating-stars">
-      <i class="icon-star"></i>
-      <i class="icon-star"></i>
-      <i class="icon-star"></i>
-      <i class="icon-star"></i>
-      <i class="icon-star"></i>
+    <div class="d-inline align-baseline text-sm text-warning mr-1">
+      <div class="rating-stars">
+        <i class="icon-star new"></i>
+        <i class="icon-star new"></i>
+        <i class="icon-star new"></i>
+        <i class="icon-star new"></i>
+        <i class="icon-star new"></i>
+      </div> 
     </div> 
+    <div class="d-inline align-baseline h5 text-muted ml-2">0 Reseñas</div>
   </div>
   <div class="col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
