@@ -1,5 +1,20 @@
+<style>
+  .video-btn>a {
+    background-image: url("../../public/images/btn.jpg");
+    background-size: 50px 50px;
+  }
+</style>
 <div class="row">
-  <div class="offset-md-3 col-md-3 d-flex justify-content-end">
+  <div class="col-md-3 align-center">
+    <div class="rating-stars">
+      <i class="icon-star"></i>
+      <i class="icon-star"></i>
+      <i class="icon-star"></i>
+      <i class="icon-star"></i>
+      <i class="icon-star"></i>
+    </div> 
+  </div>
+  <div class="col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
       <div class="d-inline-block">
         <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
@@ -20,10 +35,10 @@
           if (file_exists($fichero)) {
             $ruta = file_get_contents($fichero, FILE_USE_INCLUDE_PATH);
         ?>
-          <!-- <a href="#" data-toggle="tooltip" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" title="Ver video"></a> -->
+          <a href="#" data-toggle="modal" data-target="#modal-360"></a>
         <?php
           }
-        ?>
+          ?>
         </div>
       </div>
 
@@ -77,8 +92,11 @@
       <div class="col-md-3">
         <div class="pt-1 mb-4"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
+      </div>
+      <div class="col-md-4">
+        <span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span>
       </div>
     </div>
 
@@ -145,16 +163,9 @@
         </button>
       <?php 
           }
-        }
-
-        $fichero = "../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/video/video.txt";
-          if (file_exists($fichero)) {
-            $ruta = file_get_contents($fichero, FILE_USE_INCLUDE_PATH);
-          
+        }          
       ?>   
-           <a class="btn btn-outline-secondary btn-sm " href="#" data-toggle="tooltip" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" title="Ver video">
-            <i class="icon-download"></i>&nbsp;Manual
-          </a>
-        <?php } ?>
       </div>
     </div>
+
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Informacion/Comentarios/comentarios-modal.php'; ?>

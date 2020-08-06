@@ -21,20 +21,3 @@
 <div id="ListReviews">
   <?php include 'List.php'; ?>
 </div>
-
-<!-- Leave a Review-->
-<div class="modal fade" id="modal-review">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <form id="form-review">
-          <input type="hidden" id="ProductoKey" name="ProductoKey" value="<?php echo $IdProducto ?>">
-          <input type="hidden" id="CategoriaKey" name="CategoriaKey" value="<?php echo $IdCategoria ?>">
-          <div id="modal-body-review">
-            
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>

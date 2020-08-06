@@ -159,7 +159,8 @@
           </div>
         </div>
       </div>
-    </div>   
+    </div>  
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Informacion/Comentarios/comentarios-modal.php'; ?> 
     <!-- Footer -->
     <?php include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
