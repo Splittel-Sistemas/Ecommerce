@@ -193,7 +193,7 @@
           padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
               <div class="gallery-wrapper">
               <div  class="gallery-item text-center">
-               <a id="new-btn-video" 
+               <a style="color: #BF202F; text-decoration: underline;" id="new-btn-video" 
                href="#" data-toggle="tooltip" data-type="video" 
                data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
                >
