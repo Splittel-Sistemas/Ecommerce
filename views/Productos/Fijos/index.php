@@ -201,7 +201,7 @@
                href="#" data-toggle="tooltip" data-type="video" 
                data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $ruta;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
                >
-                <i class="icon-download"></i>Video
+                <i class="icon-play"></i> Video
               </a>
               </div>
               </div>
