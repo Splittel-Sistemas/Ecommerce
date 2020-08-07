@@ -1,7 +1,11 @@
 <style>
   .video-btn>a {
     background-image: url("../../public/images/btn.jpg");
-    background-size: 50px 50px;
+    background-size: 70px 70px;
+  }
+  .product-gallery .video-btn>a {
+    width: 80px;
+    height: 80px;
   }
   #new-btn-video::after{
     background-color: transparent;
@@ -13,22 +17,19 @@
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
     background-image: url("");
   }
-  .new {
-    font-size: 20px !important;
-  }
 </style>
 <div class="row">
-  <div class="col-md-3 align-center">
+  <div class="col-md-3 mt-3 pt-1">
     <div class="d-inline align-baseline text-sm text-warning mr-1">
       <div class="rating-stars">
-        <i class="icon-star new"></i>
-        <i class="icon-star new"></i>
-        <i class="icon-star new"></i>
-        <i class="icon-star new"></i>
-        <i class="icon-star new"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
       </div> 
     </div> 
-    <div class="d-inline align-baseline h5 text-muted ml-2">0 Reseñas</div>
+    <div class="d-inline align-baseline text-muted ml-2">0 Reseñas</div>
   </div>
   <div class="col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
@@ -104,15 +105,15 @@
       </span>
     <?php } ?>  
     
-    <div class="row">
+    <div class="row mt-4 mb-4">
       <div class="col-md-3">
-        <div class="pt-1 mb-4"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
+        <div class="pt-1"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
       </div>
       <div class="col-md-5">
-        <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
+        <div class="pt-1"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
       </div>
       <div class="col-md-4">
-      <div class="pt-1 mb-4"><span onclick="showFormCreate()"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span></div>
+      <div class="pt-1"><span onclick="showFormCreate()" style="cursor: pointer;"><div class="rating-stars"><i class="icon-star filled"></i></div> <span class="text-info"> Calificar este producto</span> </span></div>
       </div>
     </div>
 
