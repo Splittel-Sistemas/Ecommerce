@@ -47,13 +47,12 @@
     <div class="product-gallery">
       <div class="gallery-wrapper">
         <div class="gallery-item video-btn text-center">
-        <?php
-          $fichero = "../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/video/video.txt";
-          if (file_exists($fichero)) {
-            $ruta = file_get_contents($fichero, FILE_USE_INCLUDE_PATH);
-        ?>
+          <?php
+          $fichero_360 = "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/360/".$Obj->ProductoCodigo.".html";
+          if (file_exists($fichero_360)) {
+          ?>
           <a href="#" data-toggle="modal" data-target="#modal-360"></a>
-        <?php
+          <?php
           }
           ?>
         </div>
