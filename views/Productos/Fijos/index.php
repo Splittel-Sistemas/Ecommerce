@@ -88,7 +88,7 @@
   <!-- Product Info-->
   <div class="col-md-6">
     <div class="padding-top-2x mt-2 hidden-md-up"></div>
-    <h2 class="mb-3"><?php echo $Obj->ProductoDescripcion;?></h2>
+    <h2 class="mb-3 padding-top-1x"><?php echo $Obj->ProductoDescripcion;?></h2>
     <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/<?php echo $Obj->MarcaDesripcion;?>.jpg" width="30%" height="30%"/></span>
     <?php if($Obj->Descuento > 0){ ?>
     <span class="h4 d-block">
@@ -105,7 +105,7 @@
       </span>
     <?php } ?>  
     
-    <div class="row mt-4 mb-4">
+    <div class="row mt-4 mb-4 padding-top-1x">
       <div class="col-md-3">
         <div class="pt-1"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
       </div>
@@ -117,20 +117,20 @@
       </div>
     </div>
 
-    <br/> <p class="text-muted text-justify"><?php echo $Obj->DescripcionLarga;?></p>
+    <p class="text-muted text-justify"><?php echo $Obj->DescripcionLarga;?></p>
     
-    <div class="row align-items-end pb-4">
-      <div class="col-sm-4">
+    <div class="row align-items-end ">
+      <div class="col-sm-4 align-self-end">
         <div class="form-group mb-0">
           <input type="text" class="form-control myclass" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" onkeyup="validacionCantidad(this)" placeholder="Cantidad" value="1">
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 align-self-end">
         <div class="pt-4 hidden-sm-up"></div>
         <button style="background-color: #bc2130" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
         <i class="icon-bag"></i> Agregar al carrito</button>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 align-self-end">
         <img src="../../public/images/img.png" width="80%" height="80%"/>
       </div>
     </div>
