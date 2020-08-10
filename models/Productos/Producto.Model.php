@@ -339,6 +339,7 @@
           $this->ProductoActivo                    =   $row->producto_activo;
           $this->ProductoManejado                  =   $row->manejado_por;
           $this->ProductoImgPrincipal              =   $row->img_principal;
+          $this->ProductoCostoEnvio                =   $row->costo_envio;
           $this->DescripcionLarga                  =   $row->desc_larga;
           $this->CategoriaFamiliaDescripcion       =   $row->desc_familia;
           $this->CategoriaActivo                   =   $row->categoria_activo;
