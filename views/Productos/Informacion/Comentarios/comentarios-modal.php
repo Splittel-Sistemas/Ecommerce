@@ -21,7 +21,7 @@
     <div class="modal-content">
       <div class="modal-body-360">
       <?php
-        $fichero_360 = "../../public/images/img_spl/productos/OPEFEMPANU04001/360/OPEFEMPANU04001.html";
+        $fichero_360 = "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/360/".$Obj->ProductoCodigo.".html";
         if (file_exists($fichero_360)) {
         ?>
         <iframe height="500px" src="<?php echo $fichero_360;?>"></iframe>              
