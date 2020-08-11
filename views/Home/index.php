@@ -453,7 +453,7 @@
     
     <!-- Banner 1 -->
     <section class="fw-section padding-top-2x padding-bottom-2x">
-      <iframe frameBorder="0" style="height:600px;"  src="https://splittel.com/Splittour/" title="Splittour">
+      <iframe frameBorder="0" style="height:600px;"  src="https://my.matterport.com/show/?m=3jdDuNzjPgr&v=1596845222087" title="Splittour">
       </iframe>
     </section>
     
