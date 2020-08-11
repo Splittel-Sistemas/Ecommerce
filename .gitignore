@@ -3,6 +3,5 @@ models/Tools/Connection.php
 models/Contacto
 models/Email
 public/images/img_spl
-public/images/img.png
 public/archivos
 views/Test/index.php
