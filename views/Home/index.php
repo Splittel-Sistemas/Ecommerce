@@ -450,6 +450,12 @@
       </div>
     </section>
     <!-- Top -->
+    
+    <!-- Banner 1 -->
+    <section class="fw-section padding-top-2x padding-bottom-2x">
+      <iframe frameBorder="0" style="height:800px;"  src="http://splittel.com/Splittour/" title="Splittour">
+    </section>
+    
     <section class="container padding-top-2x padding-bottom-2x">
       <div class="row pt-1">
         <!-- Más Vendidos -->
