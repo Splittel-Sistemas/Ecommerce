@@ -1,6 +1,6 @@
 <style>
   .video-btn>a {
-    background-image: url("../../public/images/btn.jpg");
+    background-image: url("../../public/images/img_spl/productos/vista-360.jpg");
     background-size: 70px 70px;
   }
   .product-gallery .video-btn>a {
@@ -131,7 +131,7 @@
       </div>
       <?php if($Obj->ProductoCostoEnvio == 'no'){ ?>
       <div class="col-sm-4 align-self-end">
-        <img src="../../public/images/img.png" width="80%" height="80%"/>
+        <img src="../../public/images/img_spl/productos/envio-gratis.png" width="80%" height="80%"/>
       </div>
       <?php } ?>
     </div>
