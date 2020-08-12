@@ -10,6 +10,7 @@
     public $Fibra;
     public $Diametro;
     public $Pulido;
+    public $Codigo;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -28,7 +29,9 @@
       $this->Diametro  = $Diametro;
     }public function SetPulido($Pulido){
       $this->Pulido  = $Pulido;
-    }
+    }public function SetCodigo($Codigo){
+			$this->Codigo  = $Codigo;
+		}
      /**
      * Description
      *
@@ -45,6 +48,7 @@
           '".$this->Fibra."',
           '".$this->Diametro."',
           '".$this->Pulido."',
+          '".$this->Codigo."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
