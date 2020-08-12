@@ -179,7 +179,7 @@
       </div>
     </section>
     <!-- Empalmadora -->
-    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.png);"><span class="overlay" style="opacity: .3;"></span>
+    <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.jpg);"><span class="overlay" style="opacity: .3;"></span>
       <div class="container text-center">
         <div class="d-inline-block  text-white text-lg py-2 px-3 rounded"></div>
         <div class="display-4 text-white py-4">&nbsp;</div>
