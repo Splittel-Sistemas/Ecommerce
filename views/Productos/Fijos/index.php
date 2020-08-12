@@ -18,8 +18,54 @@
     background-image: url("");
   }
 </style>
+<?php 
+
+  if (isset($_POST['IdProducto'])) {
+   $IdProducto = $_POST['IdProducto'];
+  } else if (isset($_GET['id_prd'])) {
+    $IdProducto = $_GET['id_prd'];
+  } else {
+    $IdProducto = "";
+  }
+
+  if (isset($_POST['IdCategoria'])) {
+   $IdCategoria = $_POST['IdCategoria'];
+  } else if (isset($_GET['codigo'])) {
+    $IdCategoria = $_GET['codigo'];
+  } else {
+    $IdCategoria = "";
+  }
+
+  if (!class_exists('ComentariosController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
+  }
+
+  $Where = empty($IdProducto) ? "WHERE IdCategoria = '".$IdCategoria."' " : "WHERE IdProducto = '".$IdProducto."' ";
+  
+  $ComentariosController = new ComentariosController();
+  $ComentariosController->filter = $Where;
+  $Comentarios = $ComentariosController->Comentarios_();
+?>
 <div class="row">
   <div class="col-md-3 mt-3 pt-1">
+  <?php 
+    if (count($Comentarios['items']) > 0): 
+      $ComentariosPrincipal = $Comentarios['Principal'];
+  ?>
+  <div class="d-inline align-baseline text-sm text-warning mr-1">
+      <div class="rating-stars">
+      <?php 
+        for ($i=0; $i < 5; $i++) { 
+          if ($i < (int)$ComentariosPrincipal->Promedio) {
+      ?>
+        <i class="icon-star filled"></i>
+      <?php }else{ ?>
+        <i class="icon-star"></i>
+        <?php } } ?>
+      </div> 
+    </div> 
+    <div class="d-inline align-baseline text-muted ml-2"><?php echo count($Comentarios['items']) ?> Reseñas</div>
+  <?php else: ?>
     <div class="d-inline align-baseline text-sm text-warning mr-1">
       <div class="rating-stars">
         <i class="icon-star"></i>
@@ -30,6 +76,7 @@
       </div> 
     </div> 
     <div class="d-inline align-baseline text-muted ml-2">0 Reseñas</div>
+  <?php endif ?>
   </div>
   <div class="col-md-3 d-flex justify-content-end">
     <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
