@@ -131,15 +131,19 @@
     </section>
 
     <!-- Cables de fibra óptica -->
-    <section class="container padding-top-3x d-flex justify-content-around">
-      <div class="row col-md-12 col-lg-12 col-12">
+     <!-- Banner 1 -->
+     <section class="fw-section padding-top-2x padding-bottom-2x">
+    <div class="row col-md-12 col-lg-12 col-12">
         <div class="col-md-12 col-lg-12 col-12 text-center">
-          <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 24px;">Somos Fibremex, el Catálogo de las Telecomunicaciones,<br/>con una oferta integral para redes y fibra óptica:</h1>
+          <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 18px;">Somos Fibremex, el Catálogo de las telecomunicaciones, con una oferta integral para redes y fibra óptica. Conoce Grupo Splittel, nuestra casa. Transpórtate en un clic.</h1>
         </div>
       </div>
+      <iframe frameBorder="0" style="height:600px;"  src="https://splittel.com/Splittour/" title="Splittour">
+      </iframe>
+     
     </section>
     <!-- Banner 1 -->
-    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.webp);">
+    <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
       <div class="container text-center"></div>
     </section>
     <!-- Featured Products -->
@@ -450,29 +454,6 @@
       </div>
     </section>
     <!-- Top -->
-    
-    <!-- Banner 1 -->
-    <section class="fw-section padding-top-2x padding-bottom-2x">
-    <div class="row col-md-12 col-lg-12 col-12">
-        <div class="col-md-12 col-lg-12 col-12 text-center">
-          <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 18px;">Somos parte de Grupo Splittel. Conoce el lugar donde día a día, creamos un mundo conectado por la luz. Disfruta de esta experiencia inmersiva, sin salir de casa.<br/> 
-          Transpórtate a nuestras instalaciones con un clic.</h1>
-        </div>
-      </div>
-      <iframe frameBorder="0" style="height:600px;"  src="https://my.matterport.com/show/?m=3jdDuNzjPgr&v=1596845222087" title="Splittour">
-      </iframe>
-      <div class="row col-md-12 col-lg-12 col-12">
-      <div class="col-md-4 col-lg-4 col-12 text-center">
-        </div>
-      <div class="col-md-4 col-lg-4 col-12 text-center">
-        </div>
-        <div class="col-md-4 col-lg-4 col-12 text-center">
-        <a style="text-decoration:none;" href="https://splittel.com/Splittour/" target="_blank">
-          <h1 class="col-md-12 col-lg-12 col-12 padding-top-1x" style="font-size: 18px;"><img style="height:30px; width:30px;" src="../../public/images/img_spl/adicionales/recorrido.png"/>Ver recorrido completo</h1>
-        </a>
-        </div>
-      </div>
-    </section>
     
     <section class="container padding-top-2x padding-bottom-2x">
       <div class="row pt-1">
