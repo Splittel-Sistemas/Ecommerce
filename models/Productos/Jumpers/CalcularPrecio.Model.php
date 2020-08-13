@@ -13,7 +13,6 @@
 		public $Pulido_2;
 		public $Cubierta;
 		public $NumeroHilos;
-		public $Codigo;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
@@ -38,8 +37,6 @@
 			$this->Cubierta  = $Cubierta;
 		}public function SetNumeroHilos($NumeroHilos){
 			$this->NumeroHilos  = $NumeroHilos;
-		}public function SetCodigo($Codigo){
-			$this->Codigo  = $Codigo;
 		}
 		 /**
 		 * Description
@@ -60,7 +57,6 @@
 					'".$this->Pulido_2."',
 					'".$this->Cubierta."',
 					'".$this->NumeroHilos."',
-					'".$this->Codigo."',
 				@Result);", "@Result");
 				return $result;
 			} catch (Exception $e) {

@@ -36,7 +36,6 @@ if (!class_exists("Connection")) {
           $CalcularPrecioPigtailModel->SetFibra($_POST['Fibra']);
           $CalcularPrecioPigtailModel->SetDiametro($_POST['Diametro']);
           $CalcularPrecioPigtailModel->SetPulido($_POST['Pulido']);
-          $CalcularPrecioPigtailModel->SetCodigo($_POST['Codigo']);
           return $CalcularPrecioPigtailModel->Calcular();
         }
       } catch (Exception $e) {

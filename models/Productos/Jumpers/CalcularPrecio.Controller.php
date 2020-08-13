@@ -39,7 +39,6 @@ if (!class_exists("Connection")) {
 					$CalcularPrecioModel->SetPulido_2($_POST['Pulido_2']);
 					$CalcularPrecioModel->SetCubierta($_POST['Cubierta']);
 					$CalcularPrecioModel->SetNumeroHilos($_POST['NumeroHilos']);
-					$CalcularPrecioModel->SetCodigo($_POST['Codigo']);
 					return $CalcularPrecioModel->Calcular();
 				}
 			} catch (Exception $e) {
