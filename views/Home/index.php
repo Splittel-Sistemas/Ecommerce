@@ -135,7 +135,7 @@
      <section class="fw-section padding-top-2x padding-bottom-2x">
     <div class="row col-md-12 col-lg-12 col-12">
         <div class="col-md-12 col-lg-12 col-12 text-center">
-          <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 18px;">Somos Fibremex, el Catálogo de las telecomunicaciones, con una oferta integral para redes y fibra óptica. Conoce Grupo Splittel, nuestra casa. Transpórtate en un clic.</h1>
+          <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 18px;">Somos Fibremex, el Catálogo de las telecomunicaciones, con una oferta integral para redes y fibra óptica. <br/>Conoce Grupo Splittel, nuestra casa. Transpórtate en un clic.</h1>
         </div>
       </div>
       <iframe frameBorder="0" style="height:600px;"  src="https://splittel.com/Splittour/" title="Splittour">
