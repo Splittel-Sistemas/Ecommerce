@@ -7,6 +7,10 @@ if (!class_exists("Connection")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("PreguntaC")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Solicitud/Consultecnico/Pregunta.Model.php';
+}if (!class_exists("Email")) {
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
+}if (!class_exists("TemplateConsultecnico")) {
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Consultecnico.php';
 }
 
   /**
@@ -61,8 +65,26 @@ if (!class_exists("Connection")) {
 					$PreguntaCModel->SetCorreo($this->Tool->Clear_data_for_sql($_POST['Correo']));
 					$PreguntaCModel->SetTitulo($this->Tool->Clear_data_for_sql($_POST['Titulo']));
 					$PreguntaCModel->SetCategoria($_POST['Categoria']);
-					$PreguntaCModel->SetPregunta($this->Tool->Clear_data_for_sql($_POST['Pregunta']));
-					return $PreguntaCModel->Add();
+          $PreguntaCModel->SetPregunta($this->Tool->Clear_data_for_sql($_POST['Pregunta']));
+          $ResultPregunta = $PreguntaCModel->Add();
+
+          if(!$ResultPregunta['error']){
+            $data = [
+              "Pregunta" => $_POST['Pregunta'],
+              "Categoria" => $_POST['CategoriaDescripcion']
+            ];
+            
+            $Email = new Email();
+            $TemplateConsultecnico = new TemplateConsultecnico();
+            $Email->MailerSubject = "Consultecnico";
+            $Email->MailerListTo[] = "rodrigo.ramirez@splittel.com";
+            $Email->MailerBody = $TemplateConsultecnico->body($data);
+            $Email->EmailSendEmail();
+            unset($Email);
+            unset($TemplateConsultecnico);
+          }
+
+					return $ResultPregunta;
 				}
 			} catch (Exception $e) {
 				throw $e;

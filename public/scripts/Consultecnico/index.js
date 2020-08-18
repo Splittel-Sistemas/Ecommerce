@@ -4,6 +4,11 @@ var EnviarPregunta =  function(){
     let Titulo  = document.getElementById('Titulo')
     let Categoria  = document.getElementById('Categoria')
     let Pregunta  = document.getElementById('Pregunta')
+
+    let x = Categoria.selectedIndex;
+    let y = Categoria.options;
+    let CategoriaDescripcion = y[x].text
+    
 	ajax_("../../models/Solicitud/Consultecnico/Pregunta.Route.php", "POST", "JSON", 
 	{ 
         Action: 'create', 
@@ -11,6 +16,7 @@ var EnviarPregunta =  function(){
 		Nombre : Nombre.value,
         Correo : Correo.value,
         Titulo : Titulo.value,
+        CategoriaDescripcion : CategoriaDescripcion,
         Categoria : Categoria.value,
         Pregunta : Pregunta.value,
 	}, 
