@@ -109,14 +109,15 @@
                         <select class="form-control" name="Categoria" id="Categoria">
                           <?php 
                             $CategoriaController = new CategoriaController();
-                            $CategoriaController->filter = "";
+                            $CategoriaController->filter = "WHERE id_codigo <> 'A8' ";
                             $CategoriaController->order = "";
                             $response = $CategoriaController->get();
 
                               foreach ($response->records as $CategoriaCont => $Categoria){
+                                $selected = $category == $Categoria->CodigoKey ? 'selected': '';
                                 
                           ?>
-                          <option value="<?php echo $Categoria->CodigoKey;?>"><?php echo $Categoria->Descripcion?></option>
+                          <option value="<?php echo $Categoria->CodigoKey;?>" <?php echo $selected;?>><?php echo $Categoria->Descripcion?></option>
                           <?php } ?>
                         </select>
                       </div>
