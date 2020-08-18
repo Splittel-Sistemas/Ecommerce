@@ -4,6 +4,7 @@
     }
     $MensajeController = new MensajeController();
     $MensajeController->filter = " WHERE t41_pk01 = ".$_POST['pregunta']." ";
+    $MensajeController->order = " ORDER BY t42_f098 DESC";
     $ResultMensaje = $MensajeController->Get();
     foreach ($ResultMensaje->records as $key => $Obj_) {
 ?>

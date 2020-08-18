@@ -16,9 +16,8 @@ var EnviarPregunta =  function(){
 	}, 
 	function(response){
         if(!response.error){
-            Listar() 
-            ListarCategorias()
             GlobalCloseModal('modal-consultecnico')
+            window.location.href = "index.php?Categoria="+Categoria.value
         }
 	})
 }
@@ -40,19 +39,19 @@ var EnviarMensaje =  function(Elem){
 	})
 }
 
-var Listar =  function(){
-    ajax_('../../views/Consultecnico/List.php', 'POST', 'HTML', {}, 
-    function(response){
-        document.getElementById('list-consultecnico').innerHTML = response
-    })
-}
+// var Listar =  function(){
+//     ajax_('../../views/Consultecnico/List.php', 'POST', 'HTML', {}, 
+//     function(response){
+//         document.getElementById('list-consultecnico').innerHTML = response
+//     })
+// }
 
-var ListarCategorias =  function(){
-    ajax_('../../views/Consultecnico/categorias.php', 'POST', 'HTML', {}, 
-    function(response){
-        document.getElementById('listar-categorias-consultecnico').innerHTML = response
-    })
-}
+// var ListarCategorias =  function(){
+//     ajax_('../../views/Consultecnico/categorias.php', 'POST', 'HTML', {}, 
+//     function(response){
+//         document.getElementById('listar-categorias-consultecnico').innerHTML = response
+//     })
+// }
 
 var ListarMensajes = function(PreguntaKey){
     ajax_('../../views/Consultecnico/ListarMensajes.php', 'POST', 'HTML', {pregunta: PreguntaKey}, 
