@@ -65,8 +65,8 @@
         while ($row = $result->fetch_object()) {
           $Mensaje = new Mensaje();
           $Mensaje->Key          =   $row->t42_pk01;
-          $Mensaje->Estatus      =   $row->t42_f001;
-          $Mensaje->Mensaje      =   $row->t42_f002;
+          $Mensaje->Mensaje      =   $row->t42_f001;
+          $Mensaje->Estatus      =   $row->t42_f002;
           $Mensaje->PreguntaKey  =   $row->t41_pk01;
           $data[] = $Mensaje;
         }
@@ -79,8 +79,8 @@
     public function Add(){
       try {
         $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudConsultecnicoMensajeCrear(
-          '".$this->Estatus."',
           '".$this->Mensaje."',
+          '".$this->Estatus."',
           '".$this->PreguntaKey."',
         @Result);", "@Result");
         return $result;
