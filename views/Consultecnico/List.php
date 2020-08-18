@@ -11,9 +11,9 @@
   ?>
   <div class="card">
     <div class="card-header" role="tab">
-      <a href="#collapse<?php echo $Obj->Key ?>" data-toggle="collapse"><?php echo $Obj->Pregunta ?></a>
+      <a href="#collapse<?php echo $Obj->Key ?>" data-toggle="collapse"><?php echo $Obj->Titulo ?></a>
       <ul class="list-icon">
-        <li class="ml-3"><?php echo $Obj->Titulo ?></li>
+        <li class="ml-3"><?php echo $Obj->Pregunta ?></li>
       </ul>
     </div>
     <div class="collapse <?php echo $key == 0 ? 'show' : '' ?>" id="collapse<?php echo $Obj->Key ?>" data-parent="#accordion1" role="tabpanel">
