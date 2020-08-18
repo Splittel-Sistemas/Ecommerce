@@ -38,12 +38,26 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function Get(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $MensajeModel = new Mensaje(); 
+          $MensajeModel->SetParameters($this->Connection, $this->Tool);
+          $Result = $MensajeModel->Get($this->filter, $this->order);
+          unset($MensajeModel);
+          return $this->Tool->Message_return(false, "", $Result, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function Create(){
 			try {
 				if (!$this->Connection->conexion()->connect_error) {
 					$MensajeModel = new Mensaje(); 
 					$MensajeModel->SetParameters($this->Connection, $this->Tool);
-					$MensajeModel->SetMensaje($_POST['Mensaje']);
+					$MensajeModel->SetMensaje($this->Tool->Clear_data_for_sql($_POST['Mensaje']));
 					$MensajeModel->SetEstatus("CLIENTE");
 					$MensajeModel->SetPreguntaKey($_POST['PreguntaKey']);
 					return $MensajeModel->Add();

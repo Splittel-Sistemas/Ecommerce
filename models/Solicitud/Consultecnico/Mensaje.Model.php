@@ -59,13 +59,14 @@
       try {
         $SQLSTATEMENT = "SELECT * FROM t42_consultecnico_respuestas ".$filter." ";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        // echo $SQLSTATEMENT;
         $data = [];
 
         while ($row = $result->fetch_object()) {
           $Mensaje = new Mensaje();
           $Mensaje->Key          =   $row->t42_pk01;
-          $Mensaje->Mensaje      =   $row->t42_f001;
-          $Mensaje->Estatus      =   $row->t42_f002;
+          $Mensaje->Estatus      =   $row->t42_f001;
+          $Mensaje->Mensaje      =   $row->t42_f002;
           $Mensaje->PreguntaKey  =   $row->t41_pk01;
           $data[] = $Mensaje;
         }

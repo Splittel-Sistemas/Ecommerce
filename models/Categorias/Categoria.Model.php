@@ -1,4 +1,8 @@
 <?php
+  if (!class_exists("PreguntaC")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Solicitud/Consultecnico/Pregunta.Model.php';
+  }
+
   class Categoria{
     public $CategoriaKey;
     public $CodigoKey;
@@ -81,6 +85,29 @@
             $Categoria->Menu1            =   $row->menu1;
             $Categoria->Menu2            =   $row->menu2;
             $Categoria->DescripcionLarga =   $row->descripcion;
+            $data[] = $Categoria;
+        }
+        unset($Categoria);
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function ListarConsultecnico($filter, $order){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM menu_categorias ".$filter." ".$order;
+        // echo $SQLSTATEMENT;
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+        $Pregunta = new PreguntaC();
+        $Pregunta->SetParameters($this->Connection, $this->Tool);
+
+        while ($row = $result->fetch_object()) {
+            $Categoria = new Categoria();
+            $Categoria->CodigoKey        =   $row->id_codigo;
+            $Categoria->Descripcion      =   $row->desc_familia;
+            $Categoria->Pregunta         =   $Pregunta->Get_("WHERE t41_f004 ='".$Categoria->CodigoKey."' GROUP BY t41_f004");
             $data[] = $Categoria;
         }
         unset($Categoria);

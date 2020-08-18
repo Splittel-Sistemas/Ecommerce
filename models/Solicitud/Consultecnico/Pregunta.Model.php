@@ -91,6 +91,33 @@
       }
     }
 
+     /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function Get_($filter){
+      try {
+        $SQLSTATEMENT = "SELECT *, count(t41_f004) as TotalPreguntas FROM t41_consultecnico_pregunta ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        $Mensaje = new Mensaje();
+        $Mensaje->SetParameters($this->Connection, $this->Tool);
+
+        while ($row = $result->fetch_object()) {
+          $Pregunta = new PreguntaC();
+          $Pregunta->Total      =   $row->TotalPreguntas;
+          $data[] = $Pregunta;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function Add(){
       try {
         $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudConsultecnicoCrear(

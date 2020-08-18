@@ -37,7 +37,15 @@
       <div class="row">
         <!-- Blog Posts-->
         <div class="col-lg-9 order-lg-2">
-          <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/Create.php'; ?>
+          <?php #include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/Create.php'; ?>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-consultecnico">Nueva Pregunta</button>
+            </div>
+          </div>
+          <div class="mt-4" id="list-consultecnico">
+            <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/List.php'; ?>
+          </div>
         </div>
         <!-- Sidebar          -->
         <div class="col-lg-3 order-lg-1">
@@ -45,52 +53,92 @@
           <aside class="sidebar sidebar-offcanvas position-left"><span class="sidebar-close"><i class="icon-x"></i></span>
             <!-- Widget Categories-->
             <section class="widget widget-categories">
-              <h3 class="widget-title">Top Categories</h3>
-              <ul>
-                <li><a href="#">Editor's Choice</a><span>(24)</span></li>
-                <li><a href="#">Electronics</a><span>(12)</span></li>
-                <li><a href="#">Industrial Design</a><span>(5)</span></li>
-                <li><a href="#">Secure Payments Online</a><span>(2)</span></li>
-                <li><a href="#">Smart Gadgets</a><span>(19)</span></li>
-                <li><a href="#">Online Shopping</a><span>(7)</span></li>
+              <h3 class="widget-title">Categorias</h3>
+              <ul id="listar-categorias-consultecnico">
+               <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/categorias.php'; ?>
               </ul>
             </section>
+            
             <!-- Widget Featured Posts-->
             <section class="widget widget-featured-posts">
-              <h3 class="widget-title">Featured Posts</h3>
+              <h3 class="widget-title">Post Blog</h3>
               <!-- Entry-->
+              <?php 
+                if (!class_exists("Blog")) {
+                  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Blog/Blog.php';
+                }
+                $Blog = new Blog();
+                $response = (object)$Blog->get("WHERE activo = 'si' ", "ORDER BY fecha DESC  LIMIT 4 ", false);
+                foreach ($response->records as $key => $row) {
+              ?>
               <div class="entry">
-                <div class="entry-thumb"><a href="blog-single-rs.html"><img src="img/blog/widget/01.jpg" alt="Post"></a></div>
+                <div class="entry-thumb"><a href="detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><img src="../../public/images/img_spl/blog/<?php echo $row->BlogImg;?>" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="blog-single-rs.html">Factors Behind Wearable Gadgets Popularity</a></h4><span class="entry-meta">by Olivia Reyes</span>
+                  <h4 class="entry-title"><a href="detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a></h4><span class="entry-meta"><?php echo ucwords(strftime( '%B' , strtotime($row->BlogFecha))).' '.strftime(date("j, Y",strtotime($row->BlogFecha)));?></span>
                 </div>
               </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="blog-single-rs.html"><img src="img/blog/widget/02.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="blog-single-rs.html">Smartphones in Every Day Life </a></h4><span class="entry-meta">by Logan Coleman</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="blog-single-rs.html"><img src="img/blog/widget/03.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="blog-single-rs.html">Retro Cameras are Trending. Why so Popular?</a></h4><span class="entry-meta">by Cynthia Gomez</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="blog-single-rs.html"><img src="img/blog/widget/05.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="blog-single-rs.html">Smart Homes Become Even More Smart</a></h4><span class="entry-meta">by Cedric Diggory</span>
-                </div>
-              </div>
+              <?php } ?> 
             </section>
           </aside>
         </div>
       </div>
+
+      <!-- Leave a Review-->
+      <div class="modal fade" id="modal-consultecnico">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body-consultecnico">
+              <div class="row no-gutters">
+                <div class="col-md-12" id="notify" data-offset-top="-1">
+                  <div class=" py-5 px-3 justify-content-center align-items-center">
+                    <form class="row">
+                      <div class="col-sm-12 col-md-6 form-group">
+                        <label>Nombre <strong class="text-danger">*</strong></label>
+                        <input class="form-control" type="text" id="Nombre" name="Nombre">
+                      </div>
+                      <div class="col-sm-12 col-md-6 form-group">
+                        <label>Correo <strong class="text-danger">*</strong></label>
+                        <input class="form-control" type="text" id="Correo" name="Correo">
+                      </div>
+                      <div class="col-sm-12 col-md-6 form-group">
+                        <label>Titulo <strong class="text-danger">*</strong></label>
+                        <input class="form-control" type="text" id="Titulo" name="Titulo">
+                      </div>
+                      <div class="col-sm-12 col-md-6 form-group">
+                        <label>Categoría <strong class="text-danger">*</strong></label>
+                        <select class="form-control" name="Categoria" id="Categoria">
+                          <?php 
+                            $CategoriaController = new CategoriaController();
+                            $CategoriaController->filter = "";
+                            $CategoriaController->order = "";
+                            $response = $CategoriaController->get();
+
+                              foreach ($response->records as $CategoriaCont => $Categoria){
+                                
+                          ?>
+                          <option value="<?php echo $Categoria->CodigoKey;?>"><?php echo $Categoria->Descripcion?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                      <div class="col-sm-12 form-group">
+                        <label>Pregunta <strong class="text-danger">*</strong></label>
+                        <textarea class="form-control" name="Pregunta" id="Pregunta" rows="8"></textarea>
+                      </div>
+                      <div class="col-sm-12">
+                        <button type="button" class="btn btn-primary float-right" onclick="EnviarPregunta()">Enviar Pregunta</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+
     
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>

@@ -57,11 +57,11 @@ if (!class_exists("Connection")) {
 				if (!$this->Connection->conexion()->connect_error) {
 					$PreguntaCModel = new PreguntaC(); 
 					$PreguntaCModel->SetParameters($this->Connection, $this->Tool);
-					$PreguntaCModel->SetNombre($_POST['Nombre']);
-					$PreguntaCModel->SetCorreo($_POST['Correo']);
-					$PreguntaCModel->SetTitulo($_POST['Titulo']);
+					$PreguntaCModel->SetNombre($this->Tool->Clear_data_for_sql($_POST['Nombre']));
+					$PreguntaCModel->SetCorreo($this->Tool->Clear_data_for_sql($_POST['Correo']));
+					$PreguntaCModel->SetTitulo($this->Tool->Clear_data_for_sql($_POST['Titulo']));
 					$PreguntaCModel->SetCategoria($_POST['Categoria']);
-					$PreguntaCModel->SetPregunta($_POST['Pregunta']);
+					$PreguntaCModel->SetPregunta($this->Tool->Clear_data_for_sql($_POST['Pregunta']));
 					return $PreguntaCModel->Add();
 				}
 			} catch (Exception $e) {
