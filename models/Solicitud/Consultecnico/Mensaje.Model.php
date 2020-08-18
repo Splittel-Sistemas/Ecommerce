@@ -55,9 +55,9 @@
      *
      * @return int $b Bar
      */
-    public function Get($filter){
+    public function Get($filter, $order){
       try {
-        $SQLSTATEMENT = "SELECT * FROM t42_consultecnico_respuestas ".$filter." ";
+        $SQLSTATEMENT = "SELECT * FROM t42_consultecnico_respuestas ".$filter." ".$order;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         // echo $SQLSTATEMENT;
         $data = [];

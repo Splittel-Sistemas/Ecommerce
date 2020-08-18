@@ -14,20 +14,22 @@
     <h6><a href="#collapse<?php echo $Obj->Key ?>" data-toggle="collapse"><?php echo $Obj->Pregunta ?></a></h6>
     </div>
     <div class="collapse <?php echo $key == 0 ? 'show' : '' ?>" id="collapse<?php echo $Obj->Key ?>" data-parent="#accordion1" role="tabpanel">
-      <div class="card-body" id="listar-mensajes-pregunta-<?php echo $Obj->Key ?>">
-        <?php 
-          if(count($Obj->Mensaje) > 0){
-          foreach ($Obj->Mensaje as $key => $Obj_) {
-        ?>
-        <!-- Messages-->
-        <div class="comment">
-          <div class="comment-author-ava"><img src="../../public/images/Otros/user_.jpg" alt="Avatar"></div>
-          <div class="comment-body">
-            <p class="comment-text"><?php echo $Obj_->Mensaje ?></p>
-            <div class="comment-footer"><span class="comment-meta">--</span></div>
+      <div class="card-body">
+        <div id="listar-mensajes-pregunta-<?php echo $Obj->Key ?>">
+          <?php 
+            if(count($Obj->Mensaje) > 0){
+              foreach ($Obj->Mensaje as $key => $Obj_) {
+                ?>
+          <!-- Messages-->
+          <div class="comment">
+            <div class="comment-author-ava"><img src="../../public/images/Otros/user_.jpg" alt="Avatar"></div>
+            <div class="comment-body">
+              <p class="comment-text"><?php echo $Obj_->Mensaje ?></p>
+              <div class="comment-footer"><span class="comment-meta">--</span></div>
+            </div>
           </div>
+          <?php } }?>
         </div>
-        <?php } }?>
         <!-- Reply Form-->
         <h5 class="mb-30 padding-top-1x">Dejar Mensaje</h5>
         <form>

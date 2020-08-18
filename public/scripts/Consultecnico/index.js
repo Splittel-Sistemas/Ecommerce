@@ -34,6 +34,7 @@ var EnviarMensaje =  function(Elem){
 	function(response){
         console.log(response)   
         if(!response.error){
+            Mensaje.value = ''
             ListarMensajes(Elem.getAttribute('preguntakey'))
         }
 	})
