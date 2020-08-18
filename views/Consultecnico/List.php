@@ -5,7 +5,8 @@
     }
     $category = isset($_GET['Categoria']) ? $_GET['Categoria'] : 'A1'; 
     $PreguntaCController = new PreguntaCController();
-    $PreguntaCController->filter = "WHERE t41_f004 = '".$category."' ";
+    $PreguntaCController->filter = " WHERE t41_f004 = '".$category."' ";
+    $PreguntaCController->order = " ORDER BY t42_f098 DESC";
     $ResultPregunta = $PreguntaCController->Get();
     foreach ($ResultPregunta->records as $key => $Obj) {
   ?>
