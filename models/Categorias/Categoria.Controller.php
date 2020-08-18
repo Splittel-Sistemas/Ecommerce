@@ -52,6 +52,20 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function ListarCategoriasConsultecnico(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $CategoriaModel = new Categoria(); 
+          $CategoriaModel->SetParameters($this->conn, $this->Tool);
+          $items =  $CategoriaModel->ListarConsultecnico($this->filter, " ORDER BY orden ASC");
+          unset($CategoriaModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function estructura(){
       try {
         if (!$this->conn->conexion()->connect_error) {

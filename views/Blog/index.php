@@ -17,7 +17,7 @@
       $Blog = new Blog();
       $range1 = ($_GET['pag'] - 1) * $Blog->elem_totales_pagination;
       //$range2 = ($_GET['pag']) * $Blog->elem_totales_pagination;
-	  $range2 = $Blog->elem_totales_pagination;
+	    $range2 = $Blog->elem_totales_pagination;
       $response = (object)$Blog->get("WHERE activo = 'si' ", "ORDER BY fecha DESC  LIMIT ".$range1.", ".$range2." ", false);
     ?>
         <!-- Page Title-->
