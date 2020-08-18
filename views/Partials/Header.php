@@ -274,7 +274,7 @@
             <ul class="slideable-submenu">
              <!-- <li><a href="../Cursos/enlinea.php">En línea</a></li> -->
               <li><a href="../Cursos/cursos.php">Presencial</a></li>
-              <!-- <li><a href="../Cursos/webinar.php">Webinar</a></li> -->
+               <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
           </li>
           <li class="has-children"><span>
@@ -441,7 +441,7 @@
           <ul class="sub-menu">
              <!-- <li><a href="../Cursos/enlinea.php">En línea</a></li> -->
               <li><a href="../Cursos/cursos.php">Presencial</a></li>
-              <!--<li><a href="../Cursos/webinar.php">Webinar</a></li> -->
+              <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
         </li>
         <li class="has-submenu <?php if(trim($path) == "Biblioteca"){?>active<?php }?>"><a href="#">Biblioteca Técnica</a>
