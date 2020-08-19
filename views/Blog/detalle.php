@@ -45,7 +45,7 @@
           </ul>
           <!-- Gallery-->
           <div class="gallery-wrapper">
-            <div class="gallery-item">
+            <div class="">
               <a href="../../public/images/img_spl/blog/<?php echo $response->BlogImgLanding;?>" data-size="1000x353">
                 <img src="../../public/images/img_spl/blog/<?php echo $response->BlogImgLanding;?>" alt="<?php echo $response->BlogTitulo;?>">
               </a><span class="caption"><?php echo $response->BlogTitulo;?></span>
