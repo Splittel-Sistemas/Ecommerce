@@ -109,7 +109,7 @@ if (!class_exists('ComentariosBlogController')) {
                      echo $Cliente1->GetNombre().' '.$Cliente1->GetApellidos();
                   } ?></h4>
                     </div>
-                    <p class="comment-text"><?php echo $ComentarioList1->Review; ?></p>
+                    <p class="comment-text"><?php echo nl2br($ComentarioList1->Review); ?></p>
                     <div class="comment-footer"><span class="comment-meta"><?php echo date("d-m-Y", strtotime($ComentarioList1->fecha));?></span></div>
                   </div>
                 </div>
