@@ -62,7 +62,7 @@ if (!class_exists('ComentariosBlogController')) {
                   } ?>
                   </h4>
                 </div>
-                <p class="comment-text"><?php echo $ComentarioList->Review; ?></p>
+                <p class="comment-text"><?php echo nl2br($ComentarioList->Review); ?></p>
                 <div class="comment-footer">
                   <div class="column"><span class="comment-meta">
                   <?php echo date("d-m-Y", strtotime($ComentarioList->fecha));?></span></div>
