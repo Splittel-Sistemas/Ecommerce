@@ -22,10 +22,11 @@
           <?php 
             if(count($Obj->Mensaje) > 0){
               foreach ($Obj->Mensaje as $key => $Obj_) {
-                ?>
+                $ImgUser = $Obj_->Estatus == "CLIENTE" ? "../../public/images/Otros/user_.jpg" : "../../public/images/img_spl/usuarios/Us_1136.png";
+          ?>
           <!-- Messages-->
           <div class="comment">
-            <div class="comment-author-ava"><img src="../../public/images/Otros/user_.jpg" alt="Avatar"></div>
+            <div class="comment-author-ava"><img src="<?php echo $ImgUser ?>" alt="Avatar"></div>
             <div class="comment-body">
               <p class="comment-text"><?php echo $Obj_->Mensaje ?></p>
               <div class="comment-footer"><span class="comment-meta">--</span></div>
