@@ -36,7 +36,7 @@ unset($Obj1);
 
   foreach ($ResultProducto_->records as $key => $Obj){
   ?>
-  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo $Obj->ProductoCodigo; ?>">
+  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>">
     <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
   </a>
 <?php } 
