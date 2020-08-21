@@ -50,15 +50,15 @@
             ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" : $_SESSION['Ecommerce-ImgNotFound'];
         ?>
         <div class="product-card">
-          <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Obj->ProductoCodigo;?>">
+          <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>">
             <img src="<?php echo $imgUrl ?>" alt="<?php echo $Obj->ProductoDescripcion;?>">
           </a>
           <div class="product-card-body">
             <div class="product-category">
-              <a href="../Productos/fijos.php?id_prd=<?php echo $Obj->ProductoCodigo;?>"><?php echo $Obj->ProductoCodigo?></a>
+              <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a>
             </div>
             <h3 class="product-title">
-              <a href="../Productos/fijos.php?id_prd=<?php echo $Obj->ProductoCodigo;?>"><?php echo $Obj->ProductoDescripcion;?></a>
+              <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoDescripcion;?></a>
             </h3>
             <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
              $<?php echo number_format($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),3);?> USD
