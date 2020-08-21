@@ -47,12 +47,12 @@
           <!-- Producto -->
           <td>
             <div class="product-item">
-              <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>">
+              <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>">
                 <img src="<?php echo $ImgUrl; ?>" alt="Product">
               </a>
               <div class="product-info">
                 <h4 class="product-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>"><?php echo $data->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>"><?php echo $data->ProductoDescripcion;?></a>
                 </h4>
                 <span><em>Clave:</em> <?php echo $data->ProductoCodigo;?></span>
               </div>
