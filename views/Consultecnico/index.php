@@ -61,7 +61,7 @@
             
             <!-- Widget Featured Posts-->
             <section class="widget widget-featured-posts">
-              <h3 class="widget-title">Post Blog</h3>
+              <h3 class="widget-title">Blogs recientes</h3>
               <!-- Entry-->
               <?php 
                 if (!class_exists("Blog")) {
@@ -72,9 +72,9 @@
                 foreach ($response->records as $key => $row) {
               ?>
               <div class="entry">
-                <div class="entry-thumb"><a href="detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><img src="../../public/images/img_spl/blog/<?php echo $row->BlogImg;?>" alt="Post"></a></div>
+                <div class="entry-thumb"><a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><img src="../../public/images/img_spl/blog/<?php echo $row->BlogImg;?>" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a></h4><span class="entry-meta"><?php echo ucwords(strftime( '%B' , strtotime($row->BlogFecha))).' '.strftime(date("j, Y",strtotime($row->BlogFecha)));?></span>
+                  <h4 class="entry-title"><a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a></h4><span class="entry-meta"><?php echo ucwords(strftime( '%B' , strtotime($row->BlogFecha))).' '.strftime(date("j, Y",strtotime($row->BlogFecha)));?></span>
                 </div>
               </div>
               <?php } ?> 
