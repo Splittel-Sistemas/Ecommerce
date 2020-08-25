@@ -37,7 +37,12 @@
       <div class="row">
         <!-- Blog Posts-->
         <div class="col-lg-9 order-lg-2">
-          <?php #include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/Create.php'; ?>
+          <div class="row">
+            <div class="col-12">
+              <h3>Requieres asesoría técnica sobre las soluciones que comercializamos?</h3>
+              <small>Pregúntanos. Responderemos tu solicitud en brevedad.</small>
+            </div>
+          </div>
           <div class="row">
             <div class="col-12">
               <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-consultecnico">Nueva Pregunta</button>
