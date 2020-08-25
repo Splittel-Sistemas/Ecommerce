@@ -14,14 +14,26 @@
     public $Pregunta;
 
     public function SetNombre($Nombre){
+      if (empty($Nombre)) {
+        throw new Exception('Nombre es requerido');
+      }
       $this->Nombre = $Nombre;
     }public function SetCorreo($Correo){
+      if (empty($Correo)) {
+        throw new Exception('Correo es requerido');
+      }
       $this->Correo = $Correo;
     }public function SetTitulo($Titulo){
+      if (empty($Titulo)) {
+        throw new Exception('Título de la pregunta es requerido');
+      }
       $this->Titulo = $Titulo;
     }public function SetCategoria($Categoria){
       $this->Categoria = $Categoria;
     }public function SetPregunta($Pregunta){
+      if (empty($Pregunta)) {
+        throw new Exception('Detalle de la pregunta es requerido');
+      }
       $this->Pregunta = $Pregunta;
     }
     

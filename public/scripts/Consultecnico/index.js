@@ -24,6 +24,8 @@ var EnviarPregunta =  function(){
         if(!response.error){
             GlobalCloseModal('modal-consultecnico')
             window.location.href = "index.php?Categoria="+Categoria.value
+        }else{
+            templateAlert("danger", "", response.message, "topRight", "")
         }
 	})
 }
