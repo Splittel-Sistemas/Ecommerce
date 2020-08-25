@@ -5,7 +5,7 @@
     }
     $category = isset($_GET['Categoria']) ? $_GET['Categoria'] : 'A1'; 
     $PreguntaCController = new PreguntaCController();
-    $PreguntaCController->filter = "WHERE t41_f004 = '".$category."' ";
+    $PreguntaCController->filter = "WHERE t41_f004 = '".$category."' AND t41_f006 = 1 ";
     $ResultPregunta = $PreguntaCController->Get();
     foreach ($ResultPregunta->records as $key => $Obj) {
   ?>

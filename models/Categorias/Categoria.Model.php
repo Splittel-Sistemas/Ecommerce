@@ -107,7 +107,7 @@
             $Categoria = new Categoria();
             $Categoria->CodigoKey        =   $row->id_codigo;
             $Categoria->Descripcion      =   $row->desc_familia;
-            $Categoria->Pregunta         =   $Pregunta->Get_("WHERE t41_f004 ='".$Categoria->CodigoKey."' GROUP BY t41_f004");
+            $Categoria->Pregunta         =   $Pregunta->Get_("WHERE t41_f004 ='".$Categoria->CodigoKey."' AND t41_f006 = 1 GROUP BY t41_f004");
             $data[] = $Categoria;
         }
         unset($Categoria);
