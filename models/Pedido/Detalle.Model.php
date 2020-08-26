@@ -140,7 +140,7 @@
     public function ListDetallePedido($filter, $orderBy){
       try {
         $SQLSTATEMENT = "SELECT * FROM listar_detalle_pedido ".$filter." ".$orderBy;
-        echo $SQLSTATEMENT;
+        // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = array();
         while ($row = $result->fetch_object()) {
