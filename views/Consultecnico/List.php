@@ -1,9 +1,13 @@
+<?php
+  if(isset($_GET['Categoria'])){
+    $category = isset($_GET['Categoria']) ? $_GET['Categoria'] : ''; 
+ ?>
 <div class="accordion" id="accordion1" role="tablist">
   <?php 
     if (!class_exists('PreguntaCController')) {
       include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Consultecnico/Pregunta.Controller.php';
     }
-    $category = isset($_GET['Categoria']) ? $_GET['Categoria'] : 'A1'; 
+    
     $PreguntaCController = new PreguntaCController();
     $PreguntaCController->filter = "WHERE t41_f004 = '".$category."' AND t41_f006 = 1 ";
     $ResultPregunta = $PreguntaCController->Get();
@@ -49,3 +53,4 @@
   </div>
   <?php } ?>
 </div>
+<?php } ?>

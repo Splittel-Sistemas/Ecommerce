@@ -286,6 +286,7 @@
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>
               <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
+              <li><a href="../Consultecnico">Consultécnico</a></li>  
               <!-- <li><a href="../Biblioteca/cursos.php">Cursos</a></li> -->
             </ul>
           </li>
@@ -452,6 +453,7 @@
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>
               <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
+              <li><a href="../Consultecnico">Consultécnico</a></li>  
               <!-- <li><a href="../Biblioteca/cursos.php">Cursos</a></li> -->
             </ul>
         </li>
