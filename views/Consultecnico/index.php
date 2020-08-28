@@ -39,7 +39,7 @@
         <div class="col-lg-9 order-lg-2">
           <div class="row">
             <div class="col-12">
-              <h3>Requieres asesoría técnica sobre las soluciones que comercializamos?</h3>
+              <h3>¿Requieres asesoría técnica sobre las soluciones que comercializamos?</h3>
               <small>Pregúntanos. Responderemos tu solicitud en brevedad.</small>
             </div>
           </div>

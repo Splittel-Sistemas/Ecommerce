@@ -45,14 +45,14 @@
     <div class="page-title">
       <div class="container">
         <div class="column">
-          <h1>Cursos Optronics</h1>
+          <h1>Webinar Optronics</h1>
         </div>
         <div class="column">
           <ul class="breadcrumbs">
             <li><a href="../Home/">Home</a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li>Cursos</li>
+            <li>Webinar</li>
           </ul>
         </div>
       </div>
