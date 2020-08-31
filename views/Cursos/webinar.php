@@ -69,21 +69,33 @@
           <div class="mt-30 hidden-md-up"></div>
           <h2><?php echo $row->titulo;?></h2>
           <p class="text-muted" style="text-align: justify;"><?php echo nl2br($row->contenido);?></p>
+          <?php if ($row->registro == 'no'){ ?>  
             <button class="btn btn-outline-secondary btn-sm ">
-          <div style="padding-top: 0px; padding-right: 0px; 
-          padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
-              <div class="gallery-wrapper">
-              <div  class="gallery-item text-center">
-               <a style="color: #BF202F; text-decoration: underline;" id="new-btn-video" 
-               href="#" data-toggle="tooltip" data-type="video" 
-               data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $row->link;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
-               >
-                <i class="icon-play"></i> Video
-              </a>
+              <div style="padding-top: 0px; padding-right: 0px; padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
+                <div class="gallery-wrapper">
+                  <div  class="gallery-item text-center">
+                    <a style="color: #BF202F; text-decoration: underline;" id="new-btn-video" 
+                    href="#" data-toggle="tooltip" data-type="video" 
+                    data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;<?php echo $row->link;?>&quot; allow=&quot;autoplay&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" 
+                    >
+                      <i class="icon-play"></i> Video
+                    </a>
+                  </div>
+                </div>
               </div>
-              </div>
-            </div>
             </button>
+          <?php }else{ ?>
+            <button class="btn btn-outline-secondary btn-sm ">
+              <div style="padding-top: 0px; padding-right: 0px; padding-left: 0px; border: 0px; border-radius: 0px;" class="product-gallery" >
+                
+                    <a style="color: #BF202F; text-decoration: underline;" id="new-btn-video" 
+                    href="<?php echo $row->link;?>" target="_blank" >
+                      <i class="icon-user-plus"></i> Registrarse
+                    </a>
+                 
+              </div>
+            </button>
+          <?php }?>  
         </div>
       </div>
       <hr>
