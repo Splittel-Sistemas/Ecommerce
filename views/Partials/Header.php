@@ -27,10 +27,11 @@
         // print_r($resultGetExtraDaysController);
       } catch (Exception $e) {
         unset($_SESSION['Ecommerce-WS-GetExtraDays']);
-        $ErrorCode = -100;
+        $Message = "No se pudo obtener dias de credito";
+        $ErrorCode = -701;
       }
     }
-
+    
     if ($_SESSION['Ecommerce-ClienteDescuento'] == 0 ||  $_SESSION['Ecommerce-ClienteDescuento'] == 'N/D' ||  !isset($_SESSION['Ecommerce-ClienteEjecutivo'])) {
       try {
         # obtención dias extra credito que tiene actualmente cliente
@@ -49,7 +50,8 @@
       } catch (Exception $e) {
         unset($_SESSION['Ecommerce-ClienteDescuento']);
         unset($_SESSION['Ecommerce-ClienteEjecutivo']);
-        $ErrorCode = -100;
+        $Message = "No se pudo obtener descuento del cliente";
+        $ErrorCode = -702;
       }
     }
   }
@@ -68,7 +70,8 @@
       $_SESSION['Ecommerce-WS-CurrencyRate'] = $ErrorCode == 0 ? $resultGetCurrencyRateController->Record->Rate : 'N/D';
     } catch (Exception $e) {
       unset($_SESSION['Ecommerce-WS-CurrencyRate']);
-      $ErrorCode = -100;
+      $Message = "No se pudo obtener tipo de cambio";
+      $ErrorCode = -703;
     }
   }
 
