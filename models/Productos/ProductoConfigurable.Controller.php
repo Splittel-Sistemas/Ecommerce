@@ -34,5 +34,19 @@ class ProductoConfigurableController{
             throw $e;
         }
     }
+    public function GetFichaTecnica(){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $ProductoConfigurableModel  = new ProductoConfigurable();
+                $ProductoConfigurableModel->SetParameters($this->Connection, $this->Tool);
+                $ProductoConfigurableModel->SetCodigo($_POST['CodigoFicha']);
+                return $ProductoConfigurableModel->GetFicha();
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
 }

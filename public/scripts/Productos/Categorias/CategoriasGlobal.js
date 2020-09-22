@@ -476,3 +476,34 @@ var getDescuentoByFamiliaProductosConfigurables = function(){
 if(document.getElementById('CodeConfigurable') && hhh == 0){
   getDescuentoByFamiliaProductosConfigurables()
 }
+
+/**
+ * Description
+ *
+ * @param {Object} opt - Foo
+ *
+ * @return {number} b - Bar
+ */
+var agregarFichaTecnicaConfigurable = function(idFicha){
+  let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
+  if(idFicha != ''){
+  ajax_("../../models/Productos/ProductoConfigurable.Route.php","POST","json", 
+    { 
+      Action: 'GetFichaTecnica', 
+      CodigoFicha: idFicha
+    }, 
+    function(response){
+      if(response.ruta!=''){
+      textFicha='<button class="btn btn-outline-secondary btn-sm "> '+
+            '<a href="../../public/images/img_spl/'+response.ruta+'.pdf" target="_blank">'+
+              '<i class="icon-download"></i>&nbsp;Ficha Técnica'+
+            '</a>'+
+          '</button>';
+      FichaTecnicaTecnica.innerHTML = textFicha
+      }
+    })
+  
+    
+  }
+  
+}
