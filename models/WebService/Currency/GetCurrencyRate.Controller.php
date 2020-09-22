@@ -69,7 +69,7 @@
           throw new Exception("No hay datos maestros! por favor contacta con tu ejecutivo");
         }
       }catch (Exception $e){
-        echo $e;
+        throw $e;
       }
     }
 
