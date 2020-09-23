@@ -11,6 +11,24 @@
 <meta charset="UTF-8">
 <!-- Mobile Specific Meta Tag-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="canonical" href="https://www.fibremex.com"></link>
+<meta property="og:locale" content="es_ES" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fibremex® venta de las Telecomunicaciones y fibra óptica en México" />
+<meta property="og:site_name" content="Fibremex productos de fibra óptica y telecomunicaciones en México" />
+<meta property="og:description" content="Somos fabricantes y distribuidores de fibra óptica, cables de fibra óptica, cableado estructurado, organización de redes, equipos de medición y equipo activo" />
+<meta property="og:url" content="https://www.fibremex.com" />
+<meta property="og:image" content="https://fibremex.com/fibra-optica/public/images/img/logo/logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fibremex® productos de telecomunicaciones, fibra óptica, cableado estructurado, organización de redes y equipo de medición en México" />
+<meta name="twitter:description" content="Somos fabricantes y distribuidores de fibra óptica, cables de fibra óptica, cableado estructurado, organización de redes, equipos de medición y equipos activos." />
+<meta name="twitter:site" content="@Fibremexx" />
+<meta name="twitter:image" content="https://fibremex.com/fibra-optica/public/images/img/logo/logo.png" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+
+
 <!-- Favicon and Apple Icons-->
 <link rel="icon" type="image/x-icon" href="../../public/Icons/fibremex.ico">
 <!--
