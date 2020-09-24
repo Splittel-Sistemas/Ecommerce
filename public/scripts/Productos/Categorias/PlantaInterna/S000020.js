@@ -88,6 +88,7 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
     ListImgProducto(Marca+Familia+TipoMontaje+Unidad.value)
     ListProductoDescription(Marca+Familia+TipoMontaje+Unidad.value)
     ListProductoAdicional(Marca+Familia+TipoMontaje+Unidad.value)
+    agregarFichaTecnicaConfigurable(Marca+Familia+TipoMontaje+Unidad.value)
 }
 
 var CableNombreCodigoConfigurable = function(data){

@@ -1,1 +1,12 @@
-Options -Indexes
+#Options -Indexes
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteBase /fibra-optica/views/
+#   SOLUCIONES
+#   Entrada: /fibra-optica/views/Soluciones/NOMBRESOLUCION-ID_SOLUCION
+#   Salida: /fibra-optica/views/Soluciones/index.php?id=ID_SOLUCION
+
+RewriteRule Soluciones/(.*)-(.*)$  Soluciones/index.php?id=$1&nom=$2 [L,NC]

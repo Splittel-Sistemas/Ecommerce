@@ -267,7 +267,8 @@
 
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
-                <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a>
+              <!--  <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
+                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
               <?php endforeach ?> 
             </ul>
@@ -435,7 +436,8 @@
 
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
-                <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a>
+               <!-- <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
+                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
             <?php endforeach ?> 
             </ul>
@@ -496,6 +498,26 @@
 
 <!-- Liberación memoria objetos -->
 <?php 
+function url_amigable($url_tmp) {
+  ##webdebe.com
+  //Convertimos a minúsculas y UTF8
+  $url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
+
+  //Reemplazamos espacios por guion
+  $find = array(' ', '&', '\r\n', '\n', '+');
+  $url_utf8 = str_replace ($find, '-', $url_utf8);
+
+  $url_utf8 = strtr(utf8_decode($url_utf8),
+      utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
+      '-aaaaaaaceeeeiiiionoooooouuuuyy');
+
+  //Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
+  $find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
+  $repl = array('', '-', '');
+  $url = preg_replace ($find, $repl, $url_utf8);
+
+  return $url;
+}
 unset($Categoria);
 unset($response);
 unset($Soluciones);

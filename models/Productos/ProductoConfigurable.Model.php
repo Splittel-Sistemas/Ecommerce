@@ -23,6 +23,7 @@
 		public function SetDescripcion($Descripcion){
 			$this->Descripcion = $Descripcion;
 		}
+		
 
 		public function Add(){
       try {
@@ -35,6 +36,21 @@
       } catch (Exception $e) {
         throw $e;
       }
-    }
+	}
+	public function GetFicha(){
+		try {
+			$SQLSTATEMENT = "SELECT t1.ruta FROM u_producto_ficha_configurable t0, catalogo_fichas_tecnicas t1  
+							WHERE t0.codigo='".$this->Codigo."'
+							AND t0.id_ficha=t1.id_ficha";
+			 //echo $SQLSTATEMENT;
+			$result = $this->Connection->QueryReturn($SQLSTATEMENT);
+			$data = [];
+			//print_r($result);
+			$row = $result->fetch_object();
+			return $row;
+		  } catch (Exception $e) {
+			throw $e;
+		  }
+	  }
 	}
 	
