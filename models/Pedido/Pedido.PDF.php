@@ -115,7 +115,7 @@
                     <tbody>
                         <tr style="width: 100%;">
                             <td style="max-width: 50%;">
-                                <img class="img-thumbnail" src="https://fibremex.com/fibra-optica/public/images/img_spl/logos/fibremex.png" alt="">
+                                <img class="img-thumbnail" src="https://fibremex.com/fibra-optica/public/images/img_spl/logos/fibremex.png" width="200" height="70" alt="">
                             </td>
                             <td style="max-width: 50%;">
                                 <table class="" cellspacing="3" cellpadding="3">
