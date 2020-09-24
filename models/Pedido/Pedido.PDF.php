@@ -178,8 +178,14 @@
                                         <tr>
                                             <th>Moneda: </th>
                                             <td>USD</td>
-                                        </tr>
-                                    </tbody>
+                                        </tr>';
+                                        if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
+                                        $html.='<tr>
+                                            <th>Descuento: </th>
+                                            <td>'.$_SESSION['Ecommerce-ClienteDescuento'].'%</td>
+                                        </tr>';
+                                        }
+                                    $html.= '</tbody>
                                 </table>
                             </td>
                         </tr>
@@ -189,12 +195,12 @@
                 <table class="table" cellspacing="3" cellpadding="3">
                     <thead>
                         <tr>
-                            <th class="th-border">Artículo</th>
-                            <th class="th-border">Descripción</th>
-                            <th class="th-border">Cantidad</th>
-                            <th class="th-border">%Descuento</th>
-                            <th class="th-border">Precio unitario</th>
-                            <th class="th-border">Total</th>
+                            <th width="100" class="th-border">Artículo</th>
+                            <th width="150" class="th-border">Descripción</th>
+                            <th width="60" class="th-border">Cantidad</th>
+                            <th width="70" class="th-border">%Descuento</th>
+                            <th width="70" class="th-border">Precio unitario</th>
+                            <th width="70" class="th-border">Total</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -207,12 +213,12 @@
                     $descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
                     $html .= '
                         <tr>
-                            <td class="th-border">'. $data->DetalleCodigo .'</td>
-                            <td class="th-border">'. $descripcion .'</td>
-                            <td class="th-border">'. $data->DetalleCantidad .'</td>
-                            <td class="th-border">'.$data->Descuento .'</td>
-                            <td class="th-border">$ '. $data->ProductoPrecio .' USD</td>
-                            <td class="th-border">$ '. $detalleSubtotal .' USD</td>
+                            <td width="100" class="th-border">'. $data->DetalleCodigo .'</td>
+                            <td width="150" class="th-border">'. $descripcion .'</td>
+                            <td width="60" class="th-border">'. $data->DetalleCantidad .'</td>
+                            <td width="70"class="th-border">'.$data->DetalleDescuento .'</td>
+                            <td width="70"class="th-border">$ '. $data->DetallePrecioUnidad .'</td>
+                            <td width="70"class="th-border">$ '. $detalleSubtotal .'</td>
                         </tr>';
                       }
       
@@ -230,17 +236,17 @@
                         <tr>
                             <td colspan="4"></td>
                             <th>Subtotal: </th>
-                            <td>$'.$pedidoSubtotal .' USD</td>
+                            <td>$'.$pedidoSubtotal .'</td>
                         </tr>
                         <tr>
                             <td colspan="4"></td>
                             <th>Iva</th>
-                            <td>$'.$pedidoIva .' USD</td>
+                            <td>$'.$pedidoIva .'</td>
                         </tr>
                         <tr>
                             <td colspan="4"></td>
                             <th>Total: </th>
-                            <td>$'.$pedidoTotal .' USD</td>
+                            <td>$'.$pedidoTotal .'</td>
                         </tr>';
 
                       }
