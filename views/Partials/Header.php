@@ -268,7 +268,7 @@
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
               <!--  <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
-                <a  href="../Soluciones/<?php echo url_amigable($Soluciones->Descripcion);?>-<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a>
+                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
               <?php endforeach ?> 
             </ul>
@@ -437,7 +437,7 @@
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
                <!-- <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
-                <a  href="../Soluciones/<?php echo url_amigable($Soluciones->Descripcion);?>-<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a>
+                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
             <?php endforeach ?> 
             </ul>
