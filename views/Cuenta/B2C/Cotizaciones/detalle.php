@@ -33,13 +33,13 @@
           <td class="align-middle"><?php echo $descripcionProducto; ?></td>
           <td class="align-middle"><?php echo $data->DetalleCantidad; ?></td>
           <?php if ($data->PedidoMonedaPago == 'USD' || empty($data->PedidoMonedaPago)): ?>                
-          <td class="align-middle"><?php echo '$'.$data->PedidoSubtotal; ?></td>
-          <td class="align-middle"><?php echo '$'.$data->PedidoIva; ?></td>
-          <td class="align-middle"><?php echo '$'.$data->PedidoTotal; ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleSubtotal; ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleIva; ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleTotal; ?></td>
           <?php else: ?>
-          <td class="align-middle"><?php echo '$'.$data->PedidoSubtotalMXN ?></td>
-          <td class="align-middle"><?php echo '$'.$data->PedidoIvaMXN ?></td>
-          <td class="align-middle"><?php echo '$'.$data->PedidoTotalMXN ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleSubtotalMXN ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleIvaMXN ?></td>
+          <td class="align-middle"><?php echo '$'.$data->DetalleTotalMXN ?></td>
           <?php endif ?>
         </tr>
       <?php } ?>               
@@ -51,7 +51,7 @@
           $PedidoController->order = "";
           $Pedido = $PedidoController->getBy();
 
-          if($Pedido->GetMonedaPago() == 'USD'){
+          if($Pedido->GetMonedaPago() == 'USD' || empty($Pedido->GetMonedaPago()) || $Pedido->GetMonedaPago() == null){
             $pedidoSubtotal = $Pedido->GetSubTotal();
             $pedidoIva = $Pedido->GetIva();
             $pedidoTotal = $Pedido->GetTotal(); 

@@ -19,6 +19,7 @@
         <th  class="text-center">Total</th>
         <th  class="text-center">Pedido detalle</th>
         <th  class="text-center">Carrito</th>
+        <th  class="text-center">Cotización</th>
       </tr>
     </thead>
     <tbody>
@@ -36,6 +37,11 @@
           <span class="text-danger cursor-point" PedidoKey="<?php echo $PedidoDetalle->Key; ?>" onclick="cuentaCotizacion(this)">
             <i class="icon-shopping-cart"></i>
           </span>
+        </td>
+        <td class="text-center">
+          <a class="text-danger cursor-point" target="_blank" href="../../models/Pedido/Pedido.PDF.php?pedidokey=<?php echo $PedidoDetalle->Key; ?>">
+            <i class="icon-file"></i>
+          </a>
         </td>
       </tr>
       <?php } ?>

@@ -304,6 +304,13 @@
 </div>
 <div class="shopping-cart-footer">
   <div class="column">
+  <?php if(isset($_SESSION["Ecommerce-PedidoKey"]) && isset($_SESSION['Ecommerce-PedidoTotal']) && $_SESSION['Ecommerce-PedidoTotal'] > 0){ ?>
+    <button class="btn btn-outline-secondary btn-sm "> 
+      <a target="_blank" href="../../models/Pedido/Pedido.PDF.php?pedidokey=<?php echo $_SESSION["Ecommerce-PedidoKey"]; ?>">
+        <i class="icon-file"></i>&nbsp;Cotización
+      </a>
+    </button> 
+  <?php } ?>
     <button class="btn btn-primary" costo="<?php echo $_SESSION['Ecommerce-CostoEnvio'] ?>" requiere="<?php echo $costo ?>" subtotal="<?php echo $pedidoSubtotal ?>" existencia="<?php echo $cont; ?>" existencia1="<?php echo $cont1; ?>" onclick="FinishPedido(this)">
       Terminar Pedido
     </button>
