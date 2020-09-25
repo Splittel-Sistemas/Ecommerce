@@ -39,9 +39,9 @@
           </span>
         </td>
         <td class="text-center">
-          <span class="text-danger cursor-point" target="_blank" href="../../models/Pedido/Pedido.PDF.php?pedidokey=<?php echo $PedidoDetalle->Key; ?>">
+          <a class="text-danger cursor-point" target="_blank" href="../../models/Pedido/Pedido.PDF.php?pedidokey=<?php echo $PedidoDetalle->Key; ?>">
             <i class="icon-file"></i>
-          </span>
+          </a>
         </td>
       </tr>
       <?php } ?>
