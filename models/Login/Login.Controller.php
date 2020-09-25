@@ -44,11 +44,11 @@ class LoginController{
   public function validateLogin(){
     try{
       if(!$this->conn->conexion()->connect_error){
-        $EncrypData = new EncrypData_('password');
         $result = array();
         $result = $this->conn->Exec_store_procedure_json("CALL Login(
             '".$this->Correo."',
-            '".$EncrypData->cadenaEncrypt($this->Password)."',
+            '".$this->Password."',
+            ".$this->validatePassword().",
             '".$this->Ip."',
             @Result);","@Result");
 
@@ -60,6 +60,31 @@ class LoginController{
       }else{
         return $this->Tool->Message_return(true,"Error!!, No existe conexión",null, false);
       }
+    }catch (Exception $e) {
+      throw $e;
+    }
+  }
+  /**
+   * validación de login
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function validatePassword(){
+    try{
+      $ClienteModel = new Cliente();
+      $ClienteModel->SetParameters($this->conn, $this->Tool);
+      $Existe = $ClienteModel->GetBy("where email = '".$this->Correo."'");
+      if ($Existe) {
+        $EncrypData = new EncrypData_('password');  
+        $PasswordDesincriptada = $EncrypData->cadenaDecrypt($ClienteModel->GetPassword());
+        return $PasswordDesincriptada == $this->Password ? 1 : 0;
+      }else{
+        throw new Exception("Contraseña o correo incorrectos");
+      }
+      unset($ClienteModel);
+      return 0;
     }catch (Exception $e) {
       throw $e;
     }
