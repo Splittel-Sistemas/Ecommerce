@@ -9,4 +9,4 @@
   }
 
   $PedidoB2BController = new PedidoB2BController();
-  // $PedidoB2BController->create();
+  $PedidoB2BController->create();
