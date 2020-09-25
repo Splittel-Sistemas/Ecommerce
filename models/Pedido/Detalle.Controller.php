@@ -327,6 +327,7 @@ class DetalleController{
                     $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
                     $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
                     $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
+                    $PedidoModel->SetTipoPedido("NORMAL");
                     $ResultPedido =  $PedidoModel->CreatePedido(); 
                     if(!$ResultPedido['error']){
                         $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
