@@ -35,33 +35,33 @@
     <div class="form-group mb-0">
       <label for="quantity">Conector lado A</label>
         <select id="conec_lad_a" onchange="interior_exterior_cable()" class="form-control">
-        <option value="BI" position="0">LCA 900um</option>
-          <option value="AR" position="1">LCU 900um</option>
-          <option value="AY" position="2">SCA 900um</option>
-          <option value="AT" position="3">SCU 900um</option>
-          <option value="AX" position="4">STU 900um</option>
-          <option value="BA" position="5">FCA 900um</option>
-          <option value="AU" position="6">FCU 900um</option>
+        <option value="BI" position="0" data-conector="LCA">LCA 900um</option>
+          <option value="AR" position="1" data-conector="LCU">LCU 900um</option>
+          <option value="AY" position="2" data-conector="SCA">SCA 900um</option>
+          <option value="AT" position="3" data-conector="SCU">SCU 900um</option>
+          <option value="AX" position="4" data-conector="STU">STU 900um</option>
+          <option value="BA" position="5" data-conector="FCA">FCA 900um</option>
+          <option value="AU" position="6" data-conector="FCU">FCU 900um</option>
           <!-- multimodo -->
-          <option value="AS" position="7">LCP 900um</option>
-          <option value="AV" position="8">SCP 900um</option>
-          <option value="AZ" position="9">STP 900um</option>
-          <option value="AW" position="10">FCP 900um</option>
+          <option value="AS" position="7" data-conector="LCP">LCP 900um</option>
+          <option value="AV" position="8" data-conector="SCP">SCP 900um</option>
+          <option value="AZ" position="9" data-conector="STP">STP 900um</option>
+          <option value="AW" position="10" data-conector="FCP">FCP 900um</option>
 
-          <option value="BJ" position="11">LCA 2mm Simplex</option>
-          <option value="AA" position="12">LCU 2mm Simplex</option>
-          <option value="AB" position="13">LCU 2mm Dúplex</option>
-          <option value="AJ" position="14">SCA 2mm Simplex</option>
-          <option value="AC" position="15">SCU 2mm Simplex</option>
-          <option value="AI" position="16">STU 2mm Simplex</option>
-          <option value="AL" position="17">FCA 2mm Simplex</option>
-          <option value="AD" position="18">FCU 2mm Simplex</option>
+          <option value="BJ" position="11" data-conector="LCA">LCA 2mm Simplex</option>
+          <option value="AA" position="12" data-conector="LCU">LCU 2mm Simplex</option>
+          <option value="AB" position="13" data-conector="LCU">LCU 2mm Dúplex</option>
+          <option value="AJ" position="14" data-conector="SCA">SCA 2mm Simplex</option>
+          <option value="AC" position="15" data-conector="SCU">SCU 2mm Simplex</option>
+          <option value="AI" position="16" data-conector="STU">STU 2mm Simplex</option>
+          <option value="AL" position="17" data-conector="FCA">FCA 2mm Simplex</option>
+          <option value="AD" position="18" data-conector="FCU">FCU 2mm Simplex</option>
           <!-- multimodo -->
-          <option value="AE" position="19">LCP 2mm Simplex</option>
-          <option value="AF" position="20">LCP 2mm Dúplex</option>
-          <option value="AG" position="21">SCP 2mm Simplex</option>
-          <option value="AK" position="22">STP 2mm Simplex</option>
-          <option value="AH" position="23">FCP 2mm Simplex</option>
+          <option value="AE" position="19" data-conector="LCP">LCP 2mm Simplex</option>
+          <option value="AF" position="20" data-conector="LCP">LCP 2mm Dúplex</option>
+          <option value="AG" position="21" data-conector="SCP">SCP 2mm Simplex</option>
+          <option value="AK" position="22" data-conector="STP">STP 2mm Simplex</option>
+          <option value="AH" position="23" data-conector="FCP">FCP 2mm Simplex</option>
             
         </select>
     </div>
@@ -71,33 +71,33 @@
         <label for="quantity">Conector lado B</label>
         <select id="conec_lad_b" onchange="interior_exterior_cable()" class="form-control">
         <option value="">Sin conector</option>
-          <option value="BI" position="0">LCA 900um</option>
-          <option value="AR" position="1">LCU 900um</option>
-          <option value="AY" position="2">SCA 900um</option>
-          <option value="AT" position="3">SCU 900um</option>
-          <option value="AX" position="4">STU 900um</option>
-          <option value="BA" position="5">FCA 900um</option>
-          <option value="AU" position="6">FCU 900um</option>
+          <option value="BI" position="0" data-conector="LCA">LCA 900um</option>
+          <option value="AR" position="1" data-conector="LCU">LCU 900um</option>
+          <option value="AY" position="2" data-conector="SCA">SCA 900um</option>
+          <option value="AT" position="3" data-conector="SCU">SCU 900um</option>
+          <option value="AX" position="4" data-conector="STU">STU 900um</option>
+          <option value="BA" position="5" data-conector="FCA">FCA 900um</option>
+          <option value="AU" position="6" data-conector="FCU">FCU 900um</option>
           <!-- multimodo -->
-          <option value="AS" position="7">LCP 900um</option>
-          <option value="AV" position="8">SCP 900um</option>
-          <option value="AZ" position="9">STP 900um</option>
-          <option value="AW" position="10">FCP 900um</option>
+          <option value="AS" position="7" data-conector="LCP">LCP 900um</option>
+          <option value="AV" position="8" data-conector="SCP">SCP 900um</option>
+          <option value="AZ" position="9" data-conector="STP">STP 900um</option>
+          <option value="AW" position="10" data-conector="FCP">FCP 900um</option>
 
-          <option value="BJ" position="11">LCA 2mm Simplex</option>
-          <option value="AA" position="12">LCU 2mm Simplex</option>
-          <option value="AB" position="13">LCU 2mm Dúplex</option>
-          <option value="AJ" position="14">SCA 2mm Simplex</option>
-          <option value="AC" position="15">SCU 2mm Simplex</option>
-          <option value="AI" position="16">STU 2mm Simplex</option>
-          <option value="AL" position="17">FCA 2mm Simplex</option>
-          <option value="AD" position="18">FCU 2mm Simplex</option>
+          <option value="BJ" position="11" data-conector="LCA">LCA 2mm Simplex</option>
+          <option value="AA" position="12" data-conector="LCU">LCU 2mm Simplex</option>
+          <option value="AB" position="13" data-conector="LCU">LCU 2mm Dúplex</option>
+          <option value="AJ" position="14" data-conector="SCA">SCA 2mm Simplex</option>
+          <option value="AC" position="15" data-conector="SCU">SCU 2mm Simplex</option>
+          <option value="AI" position="16" data-conector="STU">STU 2mm Simplex</option>
+          <option value="AL" position="17" data-conector="FCA">FCA 2mm Simplex</option>
+          <option value="AD" position="18" data-conector="FCU">FCU 2mm Simplex</option>
           <!-- multimodo -->
-          <option value="AE" position="19">LCP 2mm Simplex</option>
-          <option value="AF" position="20">LCP 2mm Dúplex</option>
-          <option value="AG" position="21">SCP 2mm Simplex</option>
-          <option value="AK" position="22">STP 2mm Simplex</option>
-          <option value="AH" position="23">FCP 2mm Simplex</option>
+          <option value="AE" position="19" data-conector="LCP">LCP 2mm Simplex</option>
+          <option value="AF" position="20" data-conector="LCP">LCP 2mm Dúplex</option>
+          <option value="AG" position="21" data-conector="SCP">SCP 2mm Simplex</option>
+          <option value="AK" position="22" data-conector="STP">STP 2mm Simplex</option>
+          <option value="AH" position="23" data-conector="FCP">FCP 2mm Simplex</option>
         </select>
     </div>
   </div>

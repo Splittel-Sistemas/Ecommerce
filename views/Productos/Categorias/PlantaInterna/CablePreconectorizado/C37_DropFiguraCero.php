@@ -27,9 +27,9 @@
     <div class="form-group mb-0">
       <label for="quantity">Conector lado A</label>
         <select id="conec_lad_a" onchange="interior_exterior_cable()" class="form-control">
-            <option value="BG">SCU 3mm Simplex</option>
-            <option value="BH">SCA 3mm Simplex</option>
-            <option value="BL">LCU 3mm Simplex</option>
+            <option value="BG" data-conector="SCU">SCU 3mm Simplex</option>
+            <option value="BH" data-conector="SCA">SCA 3mm Simplex</option>
+            <option value="BL" data-conector="LCU">LCU 3mm Simplex</option>
         </select>
     </div>
   </div>
@@ -38,9 +38,9 @@
         <label for="quantity">Conector lado B</label>
         <select id="conec_lad_b" onchange="interior_exterior_cable()" class="form-control">
             <option value="">Sin conector</option>
-            <option value="BG">SCU 3mm Simplex</option>
-            <option value="BH">SCA 3mm Simplex</option>
-            <option value="BL">LCU 3mm Simplex</option>
+            <option value="BG" data-conector="SCU">SCU 3mm Simplex</option>
+            <option value="BH" data-conector="SCA">SCA 3mm Simplex</option>
+            <option value="BL" data-conector="LCU">LCU 3mm Simplex</option>
         </select>
     </div>
   </div>
