@@ -284,7 +284,7 @@
           <li class="has-children"><span>
             <a href="#">Biblioteca Técnica</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
-              <li><a href="../Biblioteca/catalogo.php">Catálogo</a></li>
+              <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
               <li><a href="../Biblioteca/videos.php">Videos</a></li>
               <li><a href="../Biblioteca/infografias.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>
@@ -452,7 +452,7 @@
         </li>
         <li class="has-submenu <?php if(trim($path) == "Biblioteca"){?>active<?php }?>"><a href="#">Biblioteca Técnica</a>
          <ul class="sub-menu">
-              <li><a href="../Biblioteca/catalogo.php">Catálogo</a></li>
+              <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
               <li><a href="../Biblioteca/videos.php">Videos</a></li>
               <li><a href="../Biblioteca/infografias.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>

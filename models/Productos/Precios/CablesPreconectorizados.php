@@ -18,6 +18,10 @@ class CablesPreconectorizados
   public $CablesPreconNumeroHilos;
   public $CablesPreconLongitud;
   public $CablesPreconTipoFibra;
+  public $CablesPreconConA;
+  public $CablesPreconConB;
+  public $CablesPreconCubierta;
+  public $CablesPreconTipo;
 
   public function __construct(){
     $this->conn = new Connection();
@@ -75,50 +79,58 @@ class CablesPreconectorizados
    */
   public function calculo($return_json){
     try {
-      $PrecioBase = $this->getPrecioBase("WHERE t02_f001 = ".$this->CablesPreconId." AND t02_f002 = ".$this->CablesPreconTipoFibra." ", "", false)->records;
-      // print_r($PrecioBase);
-      $PrecioBaseRango = $this->getPrecioBaseRango("WHERE t03_f001 = ".$this->CablesPreconId." AND t03_f002 = ".$this->CablesPreconTipoFibra." AND ".$this->CablesPreconNumeroHilos." >= t03_f003 AND ".$this->CablesPreconNumeroHilos." <= t03_f004 ", "", false)->records;
-      if($PrecioBase && $PrecioBaseRango)  {
-        $FactorHilos = $PrecioBase->t02_f003;
-        $FactorMetro = $PrecioBase->t02_f004;
-        $Precio      = $PrecioBase->t02_f005;
-        $Monto = $PrecioBaseRango->t03_f005;
+      $PrecioConectorA = $this->getPrecioBase("WHERE t02_f001 = 1 AND t02_f002 = '".$this->CablesPreconConA."' ", "", false)->records;
+      if($this->CablesPreconConB!=''){
+        $PrecioConectorB = $this->getPrecioBase("WHERE t02_f001 = 1 AND t02_f002 = '".$this->CablesPreconConB."' ", "", false)->records;
+        $ConectorB=($PrecioConectorB->t02_f003*($this->CablesPreconNumeroHilos/2));
       }else{
-        $FactorHilos =0;
-        $FactorMetro =0;
-        $Precio=0;
-        $Monto=0;
-      }
-      
+        $ConectorB=0;
 
+      }
+      if($this->CablesPreconCubierta=='E'){
+        $TCubierta='P';
+      }else{
+        $TCubierta=$this->CablesPreconCubierta;
+      }
+      $PrecioManoObra = $this->getPrecioBase("WHERE t02_f001 = 2 AND t02_f002 = '".$this->CablesPreconUso."' ", "", false)->records;
+
+      $PrecioBaseRango = $this->getPrecioBaseRango("WHERE t03_f001 = ".$this->CablesPreconId." AND t03_f002 = ".$this->CablesPreconTipoFibra." AND ".$this->CablesPreconNumeroHilos." >= t03_f003 AND ".$this->CablesPreconNumeroHilos." <= t03_f004 AND t03_f006='".$TCubierta."'", "", false)->records;
       
-       
-     
-        if ($this->CablesPreconNumeroHilos == 2 && $this->CablesPreconLongitud == 1) {
-          $Costo = $Precio;
-        }elseif ($this->CablesPreconNumeroHilos == 2 && $this->CablesPreconLongitud > 1) {
-          $Costo = $Precio + (($this->CablesPreconLongitud - 1) * $Monto);
-        }elseif ($this->CablesPreconNumeroHilos > 2 && $this->CablesPreconLongitud == 1) {
-          $Costo = $Precio + (($this->CablesPreconNumeroHilos - 2) * $FactorHilos);
-        }elseif ($this->CablesPreconNumeroHilos > 2 && $this->CablesPreconLongitud > 1) {
-          $Costo = $Precio + (($this->CablesPreconNumeroHilos - 2) * $FactorHilos) + (($this->CablesPreconLongitud - 1) * $Monto);
+      if($PrecioConectorA && $PrecioBaseRango && $PrecioManoObra)  {
+        $FactorMetro = ($PrecioBaseRango->t03_f005*$this->CablesPreconLongitud);
+        $ConectorA      = ($PrecioConectorA->t02_f003*($this->CablesPreconNumeroHilos/2));
+        if($this->CablesPreconId!=10){
+          $ManoObra = $PrecioManoObra->t02_f003;
         }else{
-          throw new Exception("No se pudo calcular el costo.....");
+          $ManoObra = 0;
         }
+      }else{
+        $FactorMetro =0;
+        $ConectorA=0;
+        $ConectorB=0;
+        $ManoObra=0;
+      }
+
+      $Costo = $FactorMetro+$ConectorA+$ConectorB+$ManoObra;
+    
         $descuento = 0;
         if(isset($_SESSION['Ecommerce-ClienteDescuento'])){
         $descuento = $_SESSION['Ecommerce-ClienteDescuento'];
         }
 
         $Costo = $Costo-($Costo*($descuento/100));
-        $Costo1= (((($Costo/.80)/.6378)/.98)/.80);
+        $Costo1= (((($Costo/.75)/.40)/.98)/.80);
     
 
      
 
       $items = [
-        "costo" => bcdiv(($Costo1), '1', 2),
-        "costoFabricacion" => bcdiv(($Costo1), '1', 2),
+        "ConectorA" =>$ConectorA,
+        "ConectorB" =>$ConectorB,
+        "Cable" =>$FactorMetro,
+        "ManoObra" =>$ManoObra,
+        "costoFabricacion" => bcdiv(($Costo), '1', 3),
+        "costo" => bcdiv(($Costo1), '1', 3),
         "precioVentaOptronics" => bcdiv(($Costo1)/0.80, '1', 2)
       ];
       unset($PrecioBase);
@@ -139,6 +151,10 @@ class CablesPreconectorizados
           $CablesPrecon->CablesPreconNumeroHilos  = $CablesPrecon->Tool->validNumber('CablesPreconNumeroHilos', 'Número de hilos', true);
           $CablesPrecon->CablesPreconLongitud     = $CablesPrecon->Tool->validNumber('CablesPreconLongitud', 'Longitud', true);
           $CablesPrecon->CablesPreconTipoFibra    = $CablesPrecon->Tool->validate_isset_post('CablesPreconTipoFibra');
+          $CablesPrecon->CablesPreconConA    = $CablesPrecon->Tool->validate_isset_post('ConectorLadoA');
+          $CablesPrecon->CablesPreconConB    = $CablesPrecon->Tool->validate_isset_post('ConectorLadoB');
+          $CablesPrecon->CablesPreconCubierta    = $CablesPrecon->Tool->validate_isset_post('TipoCubierta');
+          $CablesPrecon->CablesPreconUso    = $CablesPrecon->Tool->validate_isset_post('TipoUso');
           echo $CablesPrecon->calculo(true);
           break;
         default:
