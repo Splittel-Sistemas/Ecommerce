@@ -256,6 +256,25 @@
             </div>
             </button>
             <?php } ?>
+            
+            <?php
+            
+              $dirname_soft = "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/software/";
+              $images_soft = glob($dirname_soft."*.rar");
+              $total_soft=count($images_soft);
+              if($total_soft>0){
+                foreach($images_soft as $soft) {
+            ?>
+              <button class="btn btn-outline-secondary btn-sm ">
+                <a href="<?php echo $soft;?>" target="_blank">
+                  <i class="icon-download"></i>&nbsp;Software
+                </a>
+              </button>
+            <?php 
+                }
+              }          
+            ?>   
+
       </div>
     </div>
 
