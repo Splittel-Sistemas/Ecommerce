@@ -32,7 +32,7 @@
           <div class="comment">
             <div class="comment-author-ava"><img src="<?php echo $ImgUser ?>" alt="Avatar"></div>
             <div class="comment-body">
-              <p class="comment-text"><?php echo $Obj_->Mensaje ?></p>
+              <p class="comment-text"><?php echo nl2br($Obj_->Mensaje) ?></p>
               <div class="comment-footer"><span class="comment-meta">--</span></div>
             </div>
           </div>
