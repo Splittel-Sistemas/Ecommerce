@@ -10,14 +10,27 @@
     $responseGetFileInvoiceController = $GetFileInvoiceController->get();
 
     if($responseGetFileInvoiceController->GetFileInvoiceResult->ErrorCode == 0){
-        file_put_contents($responseGetFileInvoiceController->GetFileInvoiceResult->FileName, $responseGetFileInvoiceController->GetFileInvoiceResult->File);
+        if (file_exists("./".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName)) {
+          
+        }
+        else
+        {
+          $file = fopen("./".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName, "w"); 
+          fwrite($file, $responseGetFileInvoiceController->GetFileInvoiceResult->File);
+          fclose($file);
+        }
 
-        ob_clean(); 
-        header("Content-disposition: attachment; filename=".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName);
-        header("Content-type: application/$TypeFile");
-        readfile($responseGetFileInvoiceController->GetFileInvoiceResult->FileName);
+        header('Content-Description: File Transfer');
+        header("Content-Type: application/force-download");
+        header('Content-Disposition: attachment; filename="'.$responseGetFileInvoiceController->GetFileInvoiceResult->FileName.'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize("./".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName));
+        readfile("./".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName);
         
         unlink("./".$responseGetFileInvoiceController->GetFileInvoiceResult->FileName);
+
     }else{
         echo $responseGetFileInvoiceController->GetFileInvoiceResult->ErrorDescription;
     }
