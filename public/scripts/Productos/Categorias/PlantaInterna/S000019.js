@@ -259,6 +259,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     ListImgProducto(Directorio)
     ListProductoDescription(Directorio)
     ListProductoAdicional(Directorio)
+    agregarFichaTecnicaConfigurable(Marca+Ensamble+Familia+Unidad.value)
 }
 /**
  * Calcular precio 
