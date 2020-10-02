@@ -83,4 +83,55 @@
       }
     }
 
+    public function GetDefault(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $ClienteModel = new Cliente(); 
+          $ClienteModel->SetParameters($this->conn, $this->Tool);
+          $ClienteExiste = $ClienteModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
+
+          if ($ClienteExiste) {
+            $ContactoModel = new Contacto_();
+            $ContactoModel->SetParameters($this->conn, $this->Tool);
+            $ContactoExiste = $ContactoModel->GetBy();
+            if ($ContactoExiste) {
+              $WebServiceSOAP = new WebService(
+                "http://".$ContactoModel->GetWebservice()."/WS_BussinesPartner.asmx?WSDL", 
+                $ClienteModel->GetCardCode(), 
+                $ClienteModel->GetPasswordB2b(), 
+                $ClienteModel->GetSociedad(), 
+                "http://fibremex.com.mx/"
+              );
+
+              $GetDefaultBillToAdress['GetDefaultBillToAdress'] = ['CardCode' => $ClienteModel->GetCardCode()];
+
+              $result = $WebServiceSOAP->ExecuteSoap("GetDefaultBillToAdress", $GetDefaultBillToAdress, false);
+
+              unset($WebServiceSOAP);
+              unset($ContactoModel);
+              unset($ContactoExiste);
+              unset($ClienteModel);
+              unset($ClienteExiste);
+
+              return $result;
+            }else{
+              unset($ContactoModel);
+              unset($ContactoExiste);
+              unset($ClienteModel);
+              unset($ClienteExiste);
+              throw new Exception("No se encuentra información acerca del contacto!");
+            }
+          }else{
+            unset($ClienteModel);
+            unset($ClienteExiste);
+            throw new Exception("No se encuentra información acerca del cliente!");
+          }
+        }else{
+          throw new Exception("No hay datos maestros! por favor contacta con tu ejecutivo");
+        }
+      }catch (Exception $e){
+        echo $e;
+      }
+    }
+
   }
