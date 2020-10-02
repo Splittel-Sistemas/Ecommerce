@@ -1,5 +1,11 @@
 <?php 
-      @session_start();
+
+    @session_start();
+    if (!class_exists("Connection")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
+    }if (!class_exists("Functions_tools")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
+    }
     if(!class_exists("MYTCPDF")){ 
         include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/MYTCPDF.php'; 
     }if (!class_exists('DetalleController')) {
@@ -15,6 +21,11 @@
     class PedidoPDF{
         private $Obj_MYTCPDF; 
         private $Obj_PDF; 
+
+        public function __construct(){
+            $this->Connection = new Connection();
+            $this->Tool = new Functions_tools();
+        }
 
         public function configurationBuiltPDF(){
             try {
@@ -43,7 +54,7 @@
                 $this->Obj_MYTCPDF->Output('cotizacion-pedido-'.$_GET['pedidokey'].'.pdf','I');
                 
             } catch (Exception $e) {
-                return $this->Obj_Functions->Message_return(false,'Error!! conexión: '.$e, null,'', true);
+                return $this->Tool->Message_return(false,'Error!! conexión: '.$e, null,'', true);
             }
         }
 
@@ -54,6 +65,51 @@
                 $companyRegimen = "601- General de Ley Personas Morales";
                 $companyLugarExp = 76246;
                 $PedidoKey = $_GET['pedidokey'];
+
+                $ventaMostradorFacturadoA = "Venta Mostrador";
+                $ventaMostradorRFC = "XAXX010101000";
+                $ventaMostradorCP = 76246;
+
+                if(isset($_SESSION['Ecommerce-ClienteTipo'])){
+                    if($_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
+                        if (!class_exists("GetBillToAdressController")) {
+                            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
+                        }
+                    
+                        $GetBillToAdressController = new GetBillToAdressController();
+                        $Result = $GetBillToAdressController->GetDefault();
+                        $ResultGetBillToAdress = $Result->GetDefaultBillToAdressResult;
+                        if($ResultGetBillToAdress->ErrorCode == 0){
+                            $Record = $ResultGetBillToAdress->Record;
+                            $ventaMostradorFacturadoA = $Record->CardName;
+                            $ventaMostradorRFC = $Record->FederalTaxID;
+                            $ventaMostradorCP = $Record->ZipCode;
+                            unset($Record);
+                        }
+                        unset($GetBillToAdressController);
+                        unset($Result);
+                        unset($ResultGetBillToAdress);
+                    }else if($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ){
+                        if(!$this->Connection->conexion()->connect_error){
+                            if (!class_exists('DatosFacturacion')) {
+                                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
+                            }
+
+                            $DatosFacturacionModel = new DatosFacturacion();
+                            $DatosFacturacionModel->SetParameters($this->Connection, $this->Tool);
+                            $Existe = $DatosFacturacionModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND activo = 1 LIMIT 1");
+                            if($Existe){
+                                $ventaMostradorFacturadoA = $_SESSION['Ecommerce-ClienteNombre'];
+                                $ventaMostradorRFC = $DatosFacturacionModel->GetRFC();
+                                $ventaMostradorCP = $DatosFacturacionModel->GetCodigoPostal();
+                            }
+                            unset($DatosFacturacionModel);
+                        }else{
+                            throw new Exception("Error!!, Datos maestros");                            
+                        }
+                    }
+                }
+
                 
                 $html = '<!DOCTYPE html>
                 <html lang="en">
@@ -151,15 +207,15 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Facturado a: </th>
-                                                    <td></td>
+                                                    <td>'.$ventaMostradorFacturadoA.'</td>
                                                 </tr>
                                                 <tr>
                                                     <th>RFC: </th>
-                                                    <td></td>
+                                                    <td>'.$ventaMostradorRFC.'</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Cp: </th>
-                                                    <td></td>
+                                                    <td>'.$ventaMostradorCP.'</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Condiciones: </th>
