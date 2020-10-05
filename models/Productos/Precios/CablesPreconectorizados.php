@@ -82,7 +82,7 @@ class CablesPreconectorizados
       $PrecioConectorA = $this->getPrecioBase("WHERE t02_f001 = 1 AND t02_f002 = '".$this->CablesPreconConA."' ", "", false)->records;
       if($this->CablesPreconConB!=''){
         $PrecioConectorB = $this->getPrecioBase("WHERE t02_f001 = 1 AND t02_f002 = '".$this->CablesPreconConB."' ", "", false)->records;
-        $ConectorB=($PrecioConectorB->t02_f003*($this->CablesPreconNumeroHilos/2));
+        $ConectorB=($PrecioConectorB->t02_f003*($this->CablesPreconNumeroHilos));
       }else{
         $ConectorB=0;
 
@@ -98,7 +98,7 @@ class CablesPreconectorizados
       
       if($PrecioConectorA && $PrecioBaseRango && $PrecioManoObra)  {
         $FactorMetro = ($PrecioBaseRango->t03_f005*$this->CablesPreconLongitud);
-        $ConectorA      = ($PrecioConectorA->t02_f003*($this->CablesPreconNumeroHilos/2));
+        $ConectorA      = ($PrecioConectorA->t02_f003*($this->CablesPreconNumeroHilos));
         if($this->CablesPreconId!=10){
           $ManoObra = $PrecioManoObra->t02_f003;
         }else{
