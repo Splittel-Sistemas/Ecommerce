@@ -8,6 +8,7 @@
         public $Total;
         public $IdCotizacion;
         public $Fecha;
+        public $EmailEjecutivo;
 
         protected $Connection;
         
@@ -36,6 +37,7 @@
                     $Detalle->Total = $row->total;
                     $Detalle->IdCotizacion = $row->id_cotizacion;
                     $Detalle->Fecha = $row->fecha;
+                    $Detalle->EmailEjecutivo = $row->email_ejecutivo;
                     $data[] = $Detalle;
                     unset($Detalle);
                 }

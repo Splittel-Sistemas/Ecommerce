@@ -116,6 +116,10 @@
                             $this->Email->MailerListTo = explode(";",$Correos[0]);
                             $this->Email->MailerListCC = explode(";",$Correos[1]);
                             $this->Email->MailerListBCC = explode(";",$Correos[2]);
+                            echo $lines->EmailEjecutivo;
+                            if(!empty($lines->EmailEjecutivo)){
+                                $this->Email->MailerListTo[] = $lines->EmailEjecutivo;
+                            }
                             if($this->Email->EmailSendEmail()){
                                 echo "Correo reporte del cliente: ".$Customer->Nombre." - Enviado <br>";
                             }else{
