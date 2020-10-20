@@ -58,7 +58,7 @@ class SubcategoriasN1{
           $this->NivelConfigurable =   $row->nivel_configurable;
           $this->Activo            =   $row->activo;
           $this->Configuracion     =   $row->configuracion;
-          $remates = $this->CategoriasKey ? true : false;
+          $remates = $this->CategoriasKey == "A8" ? true : false;
           $this->Descuento         =   $this->Tool->CalcularDescuento($row->descuento, $remates);
           $data = true;
         }
@@ -86,7 +86,7 @@ class SubcategoriasN1{
           $SubcategoriasN1->NivelConfigurable =   $row->nivel_configurable;
           $SubcategoriasN1->Activo            =   $row->activo;
           $SubcategoriasN1->Configuracion     =   $row->configuracion;
-          $remates = $SubcategoriasN1->CategoriasKey ? true : false;
+          $remates = $SubcategoriasN1->CategoriasKey == "A8" ? true : false;
           $SubcategoriasN1->Descuento         =   $this->Tool->CalcularDescuento($row->descuento, $remates);
           $data[] = $SubcategoriasN1;
         }
