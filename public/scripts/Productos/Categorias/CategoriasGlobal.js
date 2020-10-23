@@ -339,11 +339,14 @@ var existCodeSapPatchCord = function(Codigo){
     if (!response.error && response.count > 0) {
       let resultResponse = response.records[0]
       let DescripcionLarga = document.getElementById('descripcionLarga')
+      let Descripcion_CEO = document.getElementById('descripcionCEO')
 
         // agregar stock
         Stock.innerHTML = resultResponse.ProductoExistencia
         // agregar descricpión larga
+        //console.log(resultResponse)
         DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
+        Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo
         let Precio = resultResponse.Descuento > 0 
           ? resultResponse.ProductoPrecio - (resultResponse.ProductoPrecio * (resultResponse.Descuento /100)) 
           : resultResponse.ProductoPrecio 
@@ -385,12 +388,15 @@ var existEcommerce_ = function(Codigo){
     if (!response.error && response.count > 0) {
       let resultResponse =  response.records[0]
       let DescripcionLarga = document.getElementById('descripcionLarga')
+      let Descripcion_CEO = document.getElementById('descripcionCEO')
       let Stock = document.getElementById('add-stock')
 
       // agregar stock
       Stock.innerHTML = resultResponse.ProductoExistencia
       // agregar descricpión larga
       DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
+      
+      Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo
       // agregar ficha técnica
       
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){

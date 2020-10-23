@@ -4,6 +4,7 @@
     public $Codigo;
     public $Descripcion;
     public $DescripcionLarga;
+    public $DescripcionCeo;
     public $Img;
     public $CategoriaCodigo;
     public $SubcategoriaCodigo;
@@ -183,6 +184,7 @@
           $Obj->ProductoManejado                  =   $row->manejado_por;
           $Obj->ProductoImgPrincipal              =   $row->img_principal;
           $Obj->DescripcionLarga                  =   $row->desc_larga;
+          $Obj->DescripcionCeo                    =   $row->desc_ceo;
           $Obj->CategoriaFamiliaDescripcion       =   $row->desc_familia;
           $Obj->CategoriaActivo                   =   $row->categoria_activo;
           $Obj->CategoriaMenu1                    =   $row->menu1;
