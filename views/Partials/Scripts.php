@@ -9,6 +9,7 @@
 <script type="text/javascript" async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
 <script type="text/javascript" src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
+<script src="../../public/plantilla/js/seofmx.js" type="text/javascript" async="async"></script>
 <!--  Google Adwords Pixel Code -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37926902-1"></script>
 <script>
