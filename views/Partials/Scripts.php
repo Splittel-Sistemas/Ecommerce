@@ -9,7 +9,30 @@
 <script type="text/javascript" async src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="../../public/scripts/general.js?id=<?php echo rand(); ?>"></script>
 <script type="text/javascript" src="../../public/scripts/Carrito/Agregar_.js?id=<?php echo rand(); ?>"></script>
-<script src="../../public/plantilla/js/seofmx.js"  type="application/javascript" async="async"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fibremex",
+  "url": "https://www.fibremex.com",
+  "logo": "https://fibremex.com/fibra-optica/public/images/img/logo/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "4422208046",
+    "contactType": "customer service",
+    "areaServed": "MX",
+    "availableLanguage": "es"
+  },
+  "sameAs": [
+    "https://www.facebook.com/Fibremex",
+    "https://twitter.com/Fibremexx",
+    "https://www.instagram.com/fibremex",
+    "https://www.youtube.com/user/fibremex1",
+    "https://mx.linkedin.com/company/fibremex-s-a-de-c-v-",
+    "https://www.fibremex.com"
+  ]
+}
+</script>
 <!--  Google Adwords Pixel Code -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37926902-1"></script>
 <script>
