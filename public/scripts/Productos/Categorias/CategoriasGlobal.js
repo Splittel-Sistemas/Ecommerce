@@ -346,7 +346,7 @@ var existCodeSapPatchCord = function(Codigo){
         // agregar descricpión larga
         //console.log(resultResponse)
         DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
-        Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo
+        Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo.replace(/(?:\r\n|\r|\n)/g, '<br>');
         let Precio = resultResponse.Descuento > 0 
           ? resultResponse.ProductoPrecio - (resultResponse.ProductoPrecio * (resultResponse.Descuento /100)) 
           : resultResponse.ProductoPrecio 
@@ -396,7 +396,7 @@ var existEcommerce_ = function(Codigo){
       // agregar descricpión larga
       DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
       
-      Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo
+      Descripcion_CEO.innerHTML = resultResponse.DescripcionCeo.replace(/(?:\r\n|\r|\n)/g, '<br>');
       // agregar ficha técnica
       
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
