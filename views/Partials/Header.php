@@ -288,7 +288,7 @@
               <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
               <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario-fibra-optica.php?r=A-E">Glosarío</a></li>
-              <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
+              <li><a href="../Biblioteca/informacion-tecnica-fibra-optica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
               <li><a href="../Consultecnico">Consultécnico</a></li>  
               <!-- <li><a href="../Biblioteca/cursos.php">Cursos</a></li> -->
@@ -456,7 +456,7 @@
               <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
               <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario-fibra-optica.php?r=A-E">Glosarío</a></li>
-              <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
+              <li><a href="../Biblioteca/informacion-tecnica-fibra-optica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
               <li><a href="../Consultecnico">Consultécnico</a></li>  
               <!-- <li><a href="../Biblioteca/cursos.php">Cursos</a></li> -->

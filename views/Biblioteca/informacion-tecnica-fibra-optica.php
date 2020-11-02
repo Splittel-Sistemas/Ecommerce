@@ -49,7 +49,7 @@
 
             foreach ($ResultCategoria->records as $key => $Categoria){ 
           ?>
-            <a class="list-group-item list-group-item-action <?php if($Categoria->CodigoKey == $CategoriaKey){?>active <?php }?>" href="informacion_tecnica.php?id=<?php echo $Categoria->CodigoKey;?>">
+            <a class="list-group-item list-group-item-action <?php if($Categoria->CodigoKey == $CategoriaKey){?>active <?php }?>" href="informacion-tecnica-fibra-optica.php?id=<?php echo $Categoria->CodigoKey;?>">
               <?php echo $Categoria->Descripcion;?>
             </a>
           <?php } ?>  
