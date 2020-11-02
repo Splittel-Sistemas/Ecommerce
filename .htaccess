@@ -6,8 +6,13 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteBase /fibra-optica/views/
 #   SOLUCIONES
-#   Entrada: /fibra-optica/views/Soluciones/NOMBRESOLUCION-ID_SOLUCION
+#   Entrada: /fibra-optica/views/Soluciones/NOMBRECURSO-ID_SOLUCION
 #   Salida: /fibra-optica/views/Soluciones/index.php?id=ID_SOLUCION
-
 RewriteRule Soluciones/(.*)-(.*)$  Soluciones/index.php?id=$1&nom=$2 [L,NC]
-RewriteRule Cursos/(.*)-(.*)$  Cursos/cursos_detalle.php?id=$1&nom=$2 [L,NC]
+
+#   CURSOS
+#   Entrada: /fibra-optica/views/Cursos/ID_CURSO-NOMBRESOLUCION
+#   Salida: /fibra-optica/views/Cursos/cursos_detalle.php?id=ID_SOLUCION&nom=NOMBRECURSO
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule Cursos/([0-9]+)-(.*)$  Cursos/cursos_detalle.php?id=$1&nom=$2 [L,NC]

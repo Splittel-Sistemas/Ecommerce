@@ -43,7 +43,7 @@
           <div class="mt-30 hidden-md-up"></div>
           <h2><?php echo $row->nombre;?></h2>
           <p class="text-muted" style="text-align: justify;"><?php echo nl2br($row->texto1);?></p>
-          <a class="text-decoration-none" href="cursos_detalle.php?id=<?php echo $row->id;?>">Conocer más&nbsp;<i class="icon-arrow-right d-inline-block align-middle"></i></a>
+          <a class="text-decoration-none" href="<?php echo $row->id;?>-<?php echo url_amigable($row->nombre);?>">Conocer más&nbsp;<i class="icon-arrow-right d-inline-block align-middle"></i></a>
         </div>
       </div>
       <hr>
