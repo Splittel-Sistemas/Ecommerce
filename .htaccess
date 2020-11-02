@@ -10,3 +10,4 @@ RewriteBase /fibra-optica/views/
 #   Salida: /fibra-optica/views/Soluciones/index.php?id=ID_SOLUCION
 
 RewriteRule Soluciones/(.*)-(.*)$  Soluciones/index.php?id=$1&nom=$2 [L,NC]
+RewriteRule Cursos/(.*)-(.*)$  Cursos/cursos_detalle.php?id=$1&nom=$2 [L,NC]

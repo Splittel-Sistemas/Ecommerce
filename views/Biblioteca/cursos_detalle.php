@@ -26,7 +26,7 @@
             <li><a href="../Home/">Home</a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><a href="cursos.php">Cursos</a>
+            <li><a href="cursos-fibra-optica.php">Cursos</a>
             </li>
             <li class="separator">&nbsp;</li>
             <li><?php echo $response->nombre;?></li>
@@ -135,16 +135,16 @@
             $CatalogoCursos = new CatalogoCursos();
             $first_cur = $CatalogoCursos->get("", "ORDER BY id ASC LIMIT 1 ", false)->records[0];
             $first_cur = $first_cur->id;
-            $first_cur == $_GET['id'] ? $first_cur = '#' : $first_cur = "cursos_detalle.php?id=".($_GET['id'] - 1);
+            $first_cur == $_GET['id'] ? $first_cur = '#' : $first_cur = "cursos_detalle.php?id=".($_GET['id'] - 1)."&nom=".url_amigable($first_cur->nombre);
 
             $CatalogoCursos = new CatalogoCursos();
             $final_cur = $CatalogoCursos->get("", "ORDER BY id DESC LIMIT 1 ", false)->records[0];
             $final_cur = $final_cur->id;
-            $final_cur == $_GET['id'] ? $final_cur = '#' : $final_cur = "cursos_detalle.php?id=".($_GET['id'] + 1);
+            $final_cur == $_GET['id'] ? $final_cur = '#' : $final_cur = "cursos_detalle.php?id=".($_GET['id'] + 1)."&nom=".url_amigable($final_cur->nombre);
            ?>
           <div class="entry-navigation">
             <div class="column text-left"><a class="btn btn-outline-secondary btn-sm" href="<?php echo $first_cur; ?>"><i class="icon-arrow-left"></i>&nbsp;Prev</a></div>
-            <div class="column"><a class="btn btn-outline-secondary view-all" href="cursos.php" data-toggle="tooltip" data-placement="top" title="Todos"><i class="icon-menu"></i></a></div>
+            <div class="column"><a class="btn btn-outline-secondary view-all" href="cursos-fibra-optica.php" data-toggle="tooltip" data-placement="top" title="Todos"><i class="icon-menu"></i></a></div>
             <div class="column text-right"><a class="btn btn-outline-secondary btn-sm" href="<?php echo $final_cur; ?>">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
           </div>
         </div>
