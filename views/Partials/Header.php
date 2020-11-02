@@ -286,7 +286,7 @@
             <ul class="slideable-submenu">
               <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
               <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
-              <li><a href="../Biblioteca/infografias.php">Infografías</a></li>
+              <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>
               <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
@@ -454,7 +454,7 @@
          <ul class="sub-menu">
               <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
               <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
-              <li><a href="../Biblioteca/infografias.php">Infografías</a></li>
+              <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
               <li><a href="../Biblioteca/glosario.php?r=A-E">Glosarío</a></li>
               <li><a href="../Biblioteca/informacion_tecnica.php?id=A1">Info. Técnica</a></li>
               <li><a href="../Biblioteca/fichas_tecnicas.php?id=A1">Hojas Técnicas</a></li>  
