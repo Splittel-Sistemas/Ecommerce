@@ -266,6 +266,10 @@
                                         // }else{
                                         //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                                         // }
+                                        $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                                        unset($_SESSION['Ecommerce-PedidoKey']);
+                                        unset($SalesQuatationModel);
+                                        unset($ResultSalesQuatation);
                                     }else{
                                         # guardado de información pedido b2c para posteriromente generar los documentos sap
                                         $InvoiceModel = new Invoice();
@@ -295,6 +299,10 @@
                                         // }else{
                                         //     throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                                         // }
+                                        $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                                        unset($_SESSION['Ecommerce-PedidoKey']);
+                                        unset($InvoiceModel);
+                                        unset($ResultInovice);
                                     }
                                     unset($ClienteModel);
                                     unset($ClienteExiste);
