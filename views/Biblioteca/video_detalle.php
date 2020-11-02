@@ -26,7 +26,7 @@
             <li><a href="index.php">Home</a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><a href="../Biblioteca/videos.php">Videos</a>
+            <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a>
             </li>
             <li class="separator">&nbsp;</li>
             <li><?php echo $response->VideosTitulo;?></li>
@@ -77,7 +77,7 @@
            ?>
           <div class="entry-navigation">
             <div class="column text-left"><a class="btn btn-outline-secondary btn-sm" href="<?php echo $first_video; ?>"><i class="icon-arrow-left"></i>&nbsp;Prev</a></div>
-            <div class="column"><a class="btn btn-outline-secondary view-all" href="videos.php" data-toggle="tooltip" data-placement="top" title="Todos"><i class="icon-menu"></i></a></div>
+            <div class="column"><a class="btn btn-outline-secondary view-all" href="videos-tutoriales-fibra-optica.php" data-toggle="tooltip" data-placement="top" title="Todos"><i class="icon-menu"></i></a></div>
             <div class="column text-right"><a class="btn btn-outline-secondary btn-sm" href="<?php echo $final_video; ?>">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
           </div>         
         </div>

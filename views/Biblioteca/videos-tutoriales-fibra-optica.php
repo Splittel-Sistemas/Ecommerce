@@ -26,7 +26,7 @@
             <li><a href="../Home/">Home</a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><a href="../Biblioteca/videos.php">Videos</a>
+            <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a>
             </li>
           </ul>
         </div>
