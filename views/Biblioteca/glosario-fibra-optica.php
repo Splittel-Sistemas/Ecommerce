@@ -45,7 +45,7 @@
             $rango = isset($_GET['r']) ? $_GET['r'] : "";
           ?>
           <?php foreach ($response->records as $key => $row): ?>
-            <a class="list-group-item list-group-item-action <?php if($row->GlosarioRango == $rango){?>active <?php }?>" href="../Biblioteca/glosario.php?r=<?php echo $row->GlosarioRango;?>">
+            <a class="list-group-item list-group-item-action <?php if($row->GlosarioRango == $rango){?>active <?php }?>" href="../Biblioteca/glosario-fibra-optica.php?r=<?php echo $row->GlosarioRango;?>">
               <?php echo $row->GlosarioRango;?>
             </a>
           <?php endforeach ?>
