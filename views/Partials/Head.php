@@ -12,6 +12,7 @@
 <!-- Mobile Specific Meta Tag-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+<!--
 <link rel="canonical" href="https://www.fibremex.com"></link>
 <meta property="og:locale" content="es_ES" />
 <meta property="og:type" content="website" />
@@ -26,7 +27,7 @@
 <meta name="twitter:site" content="@Fibremexx" />
 <meta name="twitter:image" content="https://fibremex.com/fibra-optica/public/images/img/logo/logo.png" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
+-->
 
 
 <!-- Favicon and Apple Icons-->
