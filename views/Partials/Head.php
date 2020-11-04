@@ -1,6 +1,8 @@
 <!-- SEO Meta Tags-->
 <title>Fibremex | Líderes en Fibra Óptica y Telecomunicaciones de México</title>
+<?php if(basename($_SERVER['PHP_SELF'])!='fijos.php'){?>
 <meta name="Description" content="Distribuidor de productos para la instalación de redes de Fibra Óptica, Telecomunicaciones y Cableado Estructurado en México." />
+<?php }?>
 <meta name="keywords" content="fibra óptica, telecomunicaciones, fibra óptica multimodo, fibra óptica monomodo, fibras opticas, redes, cableado estructurado, fibras opticas en mexico, fibra óptica">
 <meta name="DC.title" content="fibremex" />
 <meta name="geo.region" content="MX-QUE" />
@@ -12,7 +14,7 @@
 <!-- Mobile Specific Meta Tag-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<!--
+
 <link rel="canonical" href="https://www.fibremex.com"></link>
 <meta property="og:locale" content="es_ES" />
 <meta property="og:type" content="website" />
@@ -27,7 +29,7 @@
 <meta name="twitter:site" content="@Fibremexx" />
 <meta name="twitter:image" content="https://fibremex.com/fibra-optica/public/images/img/logo/logo.png" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
--->
+
 
 
 <!-- Favicon and Apple Icons-->

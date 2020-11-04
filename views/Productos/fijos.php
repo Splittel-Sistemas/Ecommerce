@@ -1,6 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <?php
+     if (!class_exists("ProductoController")) {
+      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
+    }
+    if(isset($_GET['id_prd'])){
+    $ProductoController = new ProductoController();
+    $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
+    $ProductoController->order = "";
+    $Obj = $ProductoController->GetByProductosFijos();
+    $MetaFamilia = !empty($Obj->ProductoCodigo) ? $Obj->CategoriaFamiliaDescripcion : '';
+    $MetaSubfamilia = !empty($Obj->ProductoCodigo) ? $Obj->SubcategoriaDescripcion : '';
+    $MetaProducto = !empty($Obj->ProductoCodigo) ? $Obj->ProductoDescripcion : '';
+    ?>
+    <meta name="Description" content="<?php echo $MetaFamilia;?>, <?php echo $MetaSubfamilia;?>, <?php echo $MetaProducto;?>" />
+    <?php
+    }
+    ?>
     <!-- <title> Contacto </title> -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
     <link href="../../public/fonts/Roboto/Roboto.css?family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -9,7 +26,7 @@
         font-family: 'Roboto Mono', monospace;
       }
     </style>
-  </head>
+   </head>
   <!-- Body-->
   <body>
     <!-- Header -->
@@ -18,11 +35,12 @@
       if (!class_exists("ProductoController")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
       }
+     if(isset($_GET['id_prd'])){
       $ProductoController = new ProductoController();
       $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
       $ProductoController->order = "";
       $Obj = $ProductoController->GetByProductosFijos();
-      if(!empty($Obj->ProductoCodigo)){
+      if(!empty($Obj->ProductoCodigo) ){
     ?>
     <!-- Page Title-->
     <div class="page-title">
@@ -86,6 +104,13 @@
     <?php
     }
     ?>
+      <?php }else{ ?>
+      <div class="padding-bottom-3x mb-1 mt-5">
+        <div class="text-center">
+            <h2>Producto no encontrado</h2>
+        </div>
+      </div>
+      <?php } ?>
     <?php }else{ ?>
     <div class="padding-bottom-3x mb-1 mt-5">
       <div class="text-center">
