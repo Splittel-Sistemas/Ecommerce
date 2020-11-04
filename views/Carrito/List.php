@@ -23,7 +23,28 @@
         }if (!class_exists('PedidoController')) {
           include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
         }
-
+        if (!function_exists('url_amigable')) {
+          function url_amigable($url_tmp) {
+            ##webdebe.com
+            //Convertimos a minúsculas y UTF8
+            $url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
+            
+            //Reemplazamos espacios por guion
+            $find = array(' ', '&', '\r\n', '\n', '+');
+            $url_utf8 = str_replace ($find, '-', $url_utf8);
+            
+            $url_utf8 = strtr(utf8_decode($url_utf8),
+              utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
+              '-aaaaaaaceeeeiiiionoooooouuuuyy');
+            
+            //Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
+            $find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
+            $repl = array('', '-', '');
+            $url = preg_replace ($find, $repl, $url_utf8);
+            
+            return $url;
+            }
+          }
         $DetalleController = new DetalleController();
         $Obj = $DetalleController->GetDetallePedido();
         $cont = 0;
@@ -47,12 +68,12 @@
           <!-- Producto -->
           <td>
             <div class="product-item">
-              <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>">
+              <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>&nom=<?php echo url_amigable($data->ProductoDescripcion);?>">
                 <img src="<?php echo $ImgUrl; ?>" alt="Product">
               </a>
               <div class="product-info">
                 <h4 class="product-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>"><?php echo $data->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($data->ProductoCodigo);?>&nom=<?php echo url_amigable($data->ProductoDescripcion);?>"><?php echo $data->ProductoDescripcion;?></a>
                 </h4>
                 <span><em>Clave:</em> <?php echo $data->ProductoCodigo;?></span>
               </div>

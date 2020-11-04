@@ -20,6 +20,28 @@
 			$_SESSION['Ecommerce-CostoEnvio'] = 0;
 		}
 	}
+	if (!function_exists('url_amigable')) {
+		function url_amigable($url_tmp) {
+			##webdebe.com
+			//Convertimos a minúsculas y UTF8
+			$url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
+		  
+			//Reemplazamos espacios por guion
+			$find = array(' ', '&', '\r\n', '\n', '+');
+			$url_utf8 = str_replace ($find, '-', $url_utf8);
+		  
+			$url_utf8 = strtr(utf8_decode($url_utf8),
+				utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
+				'-aaaaaaaceeeeiiiionoooooouuuuyy');
+		  
+			//Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
+			$find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
+			$repl = array('', '-', '');
+			$url = preg_replace ($find, $repl, $url_utf8);
+		  
+			return $url;
+		  }
+		}
 ?>
 
 <a href="../Carrito/">
@@ -44,13 +66,13 @@ if($Obj->count > 0){
 			<!-- Entry-->
 			<div class="entry">
 				<div class="entry-thumb">
-					<a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>">
+					<a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>&nom=<?php echo url_amigable($data->ProductoDescripcion);?>">
 						<img src="<?php echo $ImgUrl; ?>" alt="Product">
 					</a>
 				</div>
 				<div class="entry-content">
 					<h4 class="entry-title">
-						<a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>"><?php echo $data->ProductoDescripcion;?></a>
+						<a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>&nom=<?php echo url_amigable($data->ProductoDescripcion);?>"><?php echo $data->ProductoDescripcion;?></a>
 					</h4>
 					<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?></span>
 				</div>

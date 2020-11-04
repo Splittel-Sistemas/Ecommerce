@@ -208,15 +208,15 @@
               }
 
               $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE producto_activo = 'si' AND codigo='OPEMFHO51' ";
-              $ProductoController->order = "";
-              $ResultProducto_ = $ProductoController->GetProductosFijos_();
+              $ProductoController->filter = "WHERE producto_activo = 'si' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
+              $ProductoController->order = "ORDER BY RAND() LIMIT 12 ";
+              $ResultProducto = $ProductoController->GetProductosFijos_();
 
-              foreach ($ResultProducto_->records as $key => $Obj){ 
+              foreach ($ResultProducto->records as $key => $Obj){ 
             ?>
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="product-card mb-30 ">
-                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
                 <?php 
                   $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
                   ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
@@ -247,63 +247,8 @@
                   <?php } ?>
                 </div>
                 <div class="product-card-body">
-                  <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a></div>
-                  <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
-                  <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-                    $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
-                  </h4>
-                </div>
-                <div class="product-button-group">
-                  <input type="hidden" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" value="1">
-                  <a class="product-button" href="#" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
-                    <i class="icon-shopping-cart"></i><span>Agregar al carrito</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <?php
-              }
-
-              $ProductoController->filter = "WHERE producto_activo = 'si' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
-              $ProductoController->order = "ORDER BY RAND() LIMIT 12 ";
-              $ResultProducto = $ProductoController->GetProductosFijos_();
-
-              foreach ($ResultProducto->records as $key => $Obj){ 
-            ?>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="product-card mb-30 ">
-                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
-                <?php 
-                  $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
-                  ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
-                  : "../../public/images/img_spl/notfound.png"; 
-                ?>
-                <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Obj->ProductoDescripcion;?>"> 
-                <div class="rating-stars">
-                  <?php 
-                    $ComentariosController->filter = "WHERE IdProducto = '".$Obj->ProductoCodigo."'";
-                    $Comentarios = $ComentariosController->Comentarios();
-                    
-                    if($Comentarios->count > 0){
-                      $RecordsComentarios = $Comentarios->records[0];
-                      $Promedio = (int)$RecordsComentarios->Promedio;
-                      for ($i=0; $i < 5; $i++) { 
-                        if ($i < $Promedio) {
-                  ?>
-                  <i class="icon-star filled"></i>
-                  <?php }else{ ?>
-                  <i class="icon-star"></i>
-                  <?php } } }else{ ?>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                  <?php } ?>
-                </div>
-                <div class="product-card-body">
-                  <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a></div>
-                  <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
+                  <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoCodigo?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
                   <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                     $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
                   </h4>
@@ -339,7 +284,7 @@
         ?>
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
           <div class="product-card mb-30 ">
-            <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+            <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
             <?php 
               $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
               ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
@@ -370,8 +315,8 @@
               <?php } ?>
             </div>
             <div class="product-card-body">
-              <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a></div>
-              <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
+              <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoCodigo?></a></div>
+              <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
               <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                 $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
               </h4>
@@ -405,7 +350,7 @@
         ?>
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
           <div class="product-card mb-30 ">
-            <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+            <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
             <?php 
               $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
               ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
@@ -436,8 +381,8 @@
               <?php } ?>
             </div>
             <div class="product-card-body">
-              <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a></div>
-              <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
+              <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoCodigo?></a></div>
+              <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
               <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                 $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
               </h4>
@@ -475,13 +420,13 @@
             <!-- Entry-->
             <div class="entry">
               <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
                   <img src="<?php echo $imgUrl?>" alt="Product">
                 </a>
               </div>
               <div class="entry-content">
                 <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
                 </h4>
                 <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                 $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
@@ -508,13 +453,13 @@
             <!-- Entry-->
             <div class="entry">
               <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
                   <img src="<?php echo $imgUrl?>" alt="Product">
                 </a>
               </div>
               <div class="entry-content">
                 <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
                 </h4>
                 <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                 $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
@@ -541,13 +486,13 @@
             <!-- Entry-->
             <div class="entry">
               <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
                   <img src="<?php echo $imgUrl?>" alt="Product">
                 </a>
               </div>
               <div class="entry-content">
                 <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
                 </h4>
                 <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                 $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD

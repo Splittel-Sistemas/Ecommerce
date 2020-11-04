@@ -6,7 +6,28 @@
   if (!class_exists("SubcategoriasController")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
   }
-
+  if (!function_exists('url_amigable')) {
+    function url_amigable($url_tmp) {
+      ##webdebe.com
+      //Convertimos a minúsculas y UTF8
+      $url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
+      
+      //Reemplazamos espacios por guion
+      $find = array(' ', '&', '\r\n', '\n', '+');
+      $url_utf8 = str_replace ($find, '-', $url_utf8);
+      
+      $url_utf8 = strtr(utf8_decode($url_utf8),
+        utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
+        '-aaaaaaaceeeeiiiionoooooouuuuyy');
+      
+      //Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
+      $find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
+      $repl = array('', '-', '');
+      $url = preg_replace ($find, $repl, $url_utf8);
+      
+      return $url;
+      }
+    }
   $SubcategoriasController = new SubcategoriasController();
   $SubcategoriasController->filter = "WHERE desc_subcategoria LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
   $SubcategoriasController->order = "LIMIT 5";
@@ -36,7 +57,7 @@ unset($Obj1);
 
   foreach ($ResultProducto_->records as $key => $Obj){
   ?>
-  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>">
+  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
     <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
   </a>
 <?php } 

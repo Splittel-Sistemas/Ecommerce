@@ -261,7 +261,7 @@
             ?>
             <div class="col-lg-4 col-md-4 col-sm-4 col-4" >
               <div class="product-card mb-30 grid_1_4" >
-                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>">
+                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>&nom=<?php echo url_amigable($Producto->ProductoDescripcion);?>">
                   <?php 
                     $imgUrl = file_exists(utf8_decode("../../public/images/img_spl/productos/".$Relacionados->Codigo."/thumbnail/".$Producto->ProductoImgPrincipal."")) 
                     ? "../../public/images/img_spl/productos/".$Relacionados->Codigo."/thumbnail/".$Producto->ProductoImgPrincipal."" 
@@ -296,9 +296,9 @@
                   <?php } ?>
                 </div>
                 <div class="product-card-body">
-                  <div class="product-category "><a href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>"><?php echo $Relacionados->Codigo?></a></div>
+                  <div class="product-category "><a href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>&nom=<?php echo url_amigable($Producto->ProductoDescripcion);?>"><?php echo $Relacionados->Codigo?></a></div>
                   <h3 class="product-title grid_1_3">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>"><?php echo $Producto->ProductoDescripcion;?></a>
+                  <a href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>&nom=<?php echo url_amigable($Producto->ProductoDescripcion);?>"><?php echo $Producto->ProductoDescripcion;?></a>
                   
                   </h3>
                   <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Producto->ProductoPrecio-($Producto->ProductoPrecio*($Producto->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">

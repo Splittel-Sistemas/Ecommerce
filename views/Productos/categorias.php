@@ -185,7 +185,7 @@
             ?>
             <div class="col-lg-4 col-md-4 col-sm-6 col-12">
               <div class="product-card mb-30 ">
-                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>">
+                <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
                 <?php 
                   $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/thumbnail/".$Obj->ProductoImgPrincipal."") 
                   ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigoWhitOutSlash."/thumbnail/".$Obj->ProductoImgPrincipal."" 
@@ -216,8 +216,8 @@
                   <?php } ?>
                 </div>
                 <div class="product-card-body">
-                  <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>"><?php echo $Obj->ProductoCodigo?></a></div>
-                  <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
+                  <div class="product-category"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoCodigo?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a></h3>
                   <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
                     $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
                   </h4>
