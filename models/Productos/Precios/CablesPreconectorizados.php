@@ -119,7 +119,7 @@ class CablesPreconectorizados
         }
 
         $Costo = $Costo-($Costo*($descuento/100));
-        $Costo1= (((($Costo/.75)/.60)/.98)/.80);
+        $Costo1= (((($Costo/.75)/.50)/.98)/.80);
     
 
      
