@@ -29,6 +29,7 @@
                 //$ImgUser = $Obj_->Estatus == "CLIENTE" ? "../../public/images/Otros/user_.jpg" : "../../public/images/img_spl/usuarios/Us_1136.png";
                if( $Obj_->Estatus == "CLIENTE" ){
                   $ImgUser = "../../public/images/Otros/user_.jpg";
+                  $nomResp='Anonimo';
                }else{
                 
                 if (!class_exists('ConsultecnicosController')) {
@@ -40,7 +41,9 @@
                 $ResultConsultecnicos = $ConsultecnicosController->Get();
                 foreach ($ResultConsultecnicos->records as $key => $Object1_) {
                   $ImgFib = $Object1_->Imagen;
+                  $nomRE=$Object1_->Nombre.' '.$Object1_->Apellido;
                 }
+                $nomResp=$nomRE;
                 $ImgUser="../../public/images/img_spl/splittellers/".$ImgFib;
               }
             
@@ -50,7 +53,7 @@
             <div class="comment-author-ava"><img src="<?php echo $ImgUser ?>" alt="Avatar"></div>
             <div class="comment-body">
               <p class="comment-text"><?php echo nl2br($Obj_->Mensaje) ?></p>
-              <div class="comment-footer"><span class="comment-meta">--</span></div>
+              <div class="comment-footer"><span class="comment-meta"><?php echo ($nomResp);?></span></div>
             </div>
           </div>
           <?php } }?>
