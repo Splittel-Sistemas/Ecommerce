@@ -38,14 +38,14 @@
         <!-- Blog Posts-->
         <div class="col-lg-9 order-lg-2">
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 padding-bottom-1x text-center">
               <h3>¿Requieres asesoría técnica sobre las soluciones que comercializamos?</h3>
               <small>Pregúntanos. Responderemos tu solicitud en brevedad.</small>
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
-              <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-consultecnico">Nueva Pregunta</button>
+            <div class="col-12 padding-bottom-1x d-flex justify-content-center">
+              <button class="btn btn-primary " data-toggle="modal" data-target="#modal-consultecnico">Nueva Pregunta</button>
             </div>
           </div>
           <?php
