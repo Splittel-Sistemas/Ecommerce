@@ -4,7 +4,7 @@
   }
 
   $PedidoController = new PedidoController();
-  $PedidoController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND t05_f008 <> 0  ";
+  $PedidoController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND t05_f008 <> 0 AND (t12_f001 = 'charge.succeeded' AND t12_f004 = 'completed' || t12_f001 = 'charge.created' && t12_f004 = 'in_progress' )  ";
   $PedidoController->order = "";
   $ResultPedido = $PedidoController->ListPedidoB2C_();
 ?>
