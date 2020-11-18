@@ -26,7 +26,24 @@
           <?php 
             if(count($Obj->Mensaje) > 0){
               foreach ($Obj->Mensaje as $key => $Obj_) {
-                $ImgUser = $Obj_->Estatus == "CLIENTE" ? "../../public/images/Otros/user_.jpg" : "../../public/images/img_spl/usuarios/Us_1136.png";
+                //$ImgUser = $Obj_->Estatus == "CLIENTE" ? "../../public/images/Otros/user_.jpg" : "../../public/images/img_spl/usuarios/Us_1136.png";
+               if( $Obj_->Estatus == "CLIENTE" ){
+                  $ImgUser = "../../public/images/Otros/user_.jpg";
+               }else{
+                
+                if (!class_exists('ConsultecnicosController')) {
+                  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Consultecnico/Consultecnicos.Controller.php';
+                }
+                
+                $ConsultecnicosController = new ConsultecnicosController();
+                $ConsultecnicosController->filter = "WHERE IdSplitnet=".$Obj_->ConsultorKey;
+                $ResultConsultecnicos = $ConsultecnicosController->Get();
+                foreach ($ResultConsultecnicos->records as $key => $Object1_) {
+                  $ImgFib = $Object1_->Imagen;
+                }
+                $ImgUser="../../public/images/img_spl/splittellers/".$ImgFib;
+              }
+            
           ?>
           <!-- Messages-->
           <div class="comment">

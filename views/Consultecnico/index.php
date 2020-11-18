@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- <title> Contacto </title> -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
@@ -48,6 +48,17 @@
               <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-consultecnico">Nueva Pregunta</button>
             </div>
           </div>
+          <?php
+            if(!isset($_GET['Categoria'])){
+          ?>
+            <div class="row">
+              <div class="col-12">
+              <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/ListSplittelers.php'; ?>
+              </div>
+            </div>
+          <?php
+            }
+          ?>
           <div class="mt-4" id="list-consultecnico">
             <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Consultecnico/List.php'; ?>
           </div>

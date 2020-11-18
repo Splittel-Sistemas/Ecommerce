@@ -8,6 +8,7 @@
     public $Mensaje;
     public $Estatus;
     public $PreguntaKey;
+    public $ConsultorKey;
 
     public function SetMensaje($Mensaje){
       $this->Mensaje = $Mensaje;
@@ -68,6 +69,7 @@
           $Mensaje->Mensaje      =   $row->t42_f001;
           $Mensaje->Estatus      =   $row->t42_f002;
           $Mensaje->PreguntaKey  =   $row->t41_pk01;
+          $Mensaje->ConsultorKey =   $row->IdConsultor;
           $data[] = $Mensaje;
         }
         return $data;
