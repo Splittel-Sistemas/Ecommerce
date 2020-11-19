@@ -9,6 +9,7 @@
     foreach ($ResultMensaje->records as $key => $Obj_) {
         if( $Obj_->Estatus == "CLIENTE" ){
             $ImgUser = "../../public/images/Otros/user_.jpg";
+            $nomResp='Anonimo';
          }else{
           
           if (!class_exists('ConsultecnicosController')) {
@@ -20,7 +21,9 @@
           $ResultConsultecnicos = $ConsultecnicosController->Get();
           foreach ($ResultConsultecnicos->records as $key => $Object1_) {
             $ImgFib = $Object1_->Imagen;
+            $nomRE=$Object1_->Nombre.' '.$Object1_->Apellido;
           }
+          $nomResp=$nomRE;
           $ImgUser="../../public/images/img_spl/splittellers/".$ImgFib;
         }
         
@@ -29,8 +32,20 @@
 <div class="comment">
     <div class="comment-author-ava"><img src="<?php echo $ImgUser ?>" alt="Avatar"></div>
     <div class="comment-body">
-    <p class="comment-text"><?php echo $Obj_->Mensaje ?></p>
-    <div class="comment-footer"><span class="comment-meta"></span></div>
+      <p class="comment-text"><?php echo nl2br($Obj_->Mensaje) ?></p>
+      <div class="comment-footer">
+              <?php
+              if($Obj_->Adjunto!=''){
+                ?>
+              <span class="comment-meta">
+              <a target="_blank" href="../../public/images/img_spl/consultecnico/<?php echo $Obj_->Adjunto;?>">
+              <i class="icon-download-cloud"></i>
+              <?php echo $Obj_->Adjunto;?></a></span>
+              <br/>
+              <?php
+              } ?>
+              <span class="comment-meta"><?php echo ($nomResp);?></span>
+              </div>
     </div>
 </div>
 <?php } ?>

@@ -69,6 +69,7 @@
           $Mensaje->Mensaje      =   $row->t42_f001;
           $Mensaje->Estatus      =   $row->t42_f002;
           $Mensaje->PreguntaKey  =   $row->t41_pk01;
+          $Mensaje->Adjunto      =   $row->t42_f003;
           $Mensaje->ConsultorKey =   $row->IdConsultor;
           $data[] = $Mensaje;
         }

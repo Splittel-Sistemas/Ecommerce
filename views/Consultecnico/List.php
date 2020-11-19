@@ -35,6 +35,8 @@
                 if (!class_exists('ConsultecnicosController')) {
                   include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Consultecnico/Consultecnicos.Controller.php';
                 }
+
+            
                 
                 $ConsultecnicosController = new ConsultecnicosController();
                 $ConsultecnicosController->filter = "WHERE IdSplitnet=".$Obj_->ConsultorKey;
@@ -53,7 +55,19 @@
             <div class="comment-author-ava"><img src="<?php echo $ImgUser ?>" alt="Avatar"></div>
             <div class="comment-body">
               <p class="comment-text"><?php echo nl2br($Obj_->Mensaje) ?></p>
-              <div class="comment-footer"><span class="comment-meta"><?php echo ($nomResp);?></span></div>
+              <div class="comment-footer">
+              <?php
+              if($Obj_->Adjunto!=''){
+                ?>
+              <span class="comment-meta">
+              <a target="_blank" href="../../public/images/img_spl/consultecnico/<?php echo $Obj_->Adjunto;?>">
+              <i class="icon-download-cloud"></i>
+              <?php echo $Obj_->Adjunto;?></a></span>
+              <br/>
+              <?php
+              } ?>
+              <span class="comment-meta"><?php echo ($nomResp);?></span>
+              </div>
             </div>
           </div>
           <?php } }?>
