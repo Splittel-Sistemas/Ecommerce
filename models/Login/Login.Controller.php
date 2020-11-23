@@ -107,6 +107,7 @@ class LoginController{
         $_SESSION['Ecommerce-ClienteEmail']    = $ClienteModel->GetEmail();
         $_SESSION['Ecommerce-ClienteTipo']     = $ClienteModel->GetTipo();
         $_SESSION['Ecommerce_ClienteIngreso']  = $ClienteModel->GetIngreso();
+        $_SESSION['Ecommerce-ClienteDescuento'] = $ClienteModel->GetDescuento();
 
         $OpenPay_ = new OpenPay_();
         $OpenPay_->SetParameters($this->conn, $this->Tool);
@@ -125,14 +126,14 @@ class LoginController{
         if(isset($_SESSION["Ecommerce-PedidoKey"]) && $_SESSION["Ecommerce-PedidoKey"]!=""){
           $PedidoController = new PedidoController();
           $PedidoController->ActualizarCliente();
-          if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
-             # obtención porcentaje de descuento cliente
-            $GetSegmentController = new GetSegmentController();
-            $resultGetSegmentController = $GetSegmentController->get();
-            $resultGetSegment = $resultGetSegmentController->GetSegmentResult->Diccionary->Diccionary;
-            $ErrorCode = $resultGetSegmentController->GetSegmentResult->ErrorCode;
-            $_SESSION['Ecommerce-ClienteDescuento'] = $ErrorCode == 0 ? (float)$resultGetSegment[0]->Value : 'N/D';
-          }
+          // if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
+          //    # obtención porcentaje de descuento cliente
+          //   $GetSegmentController = new GetSegmentController();
+          //   $resultGetSegmentController = $GetSegmentController->get();
+          //   $resultGetSegment = $resultGetSegmentController->GetSegmentResult->Diccionary->Diccionary;
+          //   $ErrorCode = $resultGetSegmentController->GetSegmentResult->ErrorCode;
+          //   $_SESSION['Ecommerce-ClienteDescuento'] = $ErrorCode == 0 ? (float)$resultGetSegment[0]->Value : 'N/D';
+          // }
           $DetalleController = new DetalleController();
           $DetalleController->DetallePedidoActualizar();
         }
