@@ -126,7 +126,8 @@ var JumpersMultimodo = function(){
       Pulido_2 : NewPulidoConector2,
       Cubierta : TipoCubierta.value,
       NumeroHilos : NumeroHilos.value,
-      Codigo: CodigoGenerado
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioJumper(data)
     
@@ -253,7 +254,8 @@ var JumpersMonomodo = function(){
         Pulido_2 : NewPulidoConector2,
         Cubierta : TipoCubierta.value,
         NumeroHilos : NumeroHilos.value,
-        Codigo: CodigoGenerado
+        Codigo: CodigoGenerado,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
       calcularPrecioJumper(data)
 

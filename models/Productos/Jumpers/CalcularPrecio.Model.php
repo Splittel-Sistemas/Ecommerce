@@ -13,7 +13,8 @@
 		public $Pulido_2;
 		public $Cubierta;
 		public $NumeroHilos;
-		public $Codigo;
+		public $SubcategoriaN1Code;
+		public $ClienteId;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
@@ -40,6 +41,10 @@
 			$this->NumeroHilos  = $NumeroHilos;
 		}public function SetCodigo($Codigo){
 			$this->Codigo  = $Codigo;
+		}public function SetSubcategoriaN1Code($SubcategoriaN1Code){
+			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
+		}public function SetClienteId($ClienteId){
+			$this->ClienteId  = $ClienteId;
 		}
 		 /**
 		 * Description
@@ -61,6 +66,8 @@
 					'".$this->Cubierta."',
 					'".$this->NumeroHilos."',
 					'".$this->Codigo."',
+					'".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
 				@Result);", "@Result");
 				return $result;
 			} catch (Exception $e) {
