@@ -683,7 +683,7 @@ var calcularPrecioJumper = function(data) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       ProductoEspecial()
@@ -706,7 +706,7 @@ var calcularPrecioJumperMPO = function(data) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       document.getElementById('CostoProducto').value = '' 
@@ -731,7 +731,7 @@ var calcularPrecioJumperMPOBreakOut = function(data) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       document.getElementById('CostoProducto').value = '' 
@@ -757,7 +757,7 @@ var calcularPrecioJumpersEspeciales = function(data) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       document.getElementById('CostoProducto').value = '' 
@@ -780,7 +780,7 @@ var verificarCosto = function(TipoFibra,CableLongitud,CantidadFibras){
     CantidadFibras: CantidadFibras
   }, 
   function(response){
-    document.getElementById('CostoProducto').value = response.records 
+    document.getElementById('CostoProducto').value = response.recordsNormal 
     document.getElementById('Costo').innerHTML = "$"+response.records.toFixed(3)
   })
 }

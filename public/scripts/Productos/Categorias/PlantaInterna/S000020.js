@@ -116,7 +116,7 @@ var calcularPrecioPrecargados = function(data) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       ProductoEspecial()

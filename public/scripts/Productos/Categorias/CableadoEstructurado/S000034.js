@@ -53,7 +53,7 @@ var calcularPrecioPatchcord = function(data) {
   function(response){
     if (!response.error) {
       $('#span-leyenda').remove()
-      document.getElementById('CostoProducto').value = response.precio 
+      document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = "$"+response.precio
     }else{
       ProductoEspecial()
