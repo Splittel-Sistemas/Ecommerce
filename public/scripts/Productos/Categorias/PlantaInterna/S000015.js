@@ -90,7 +90,8 @@ var Pigtails = function(){
       Fibra : TipoFibra.value,
       Diametro : Diametro.value,
       Pulido : TipoPulido,
-      Codigo: CodigoGenerado
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioPigtail(data)
 }

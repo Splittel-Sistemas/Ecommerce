@@ -21,7 +21,8 @@ var Categoria6 = function(){
         Action: 'calcular',
         ActionCalcularPrecioPatchCord: true,
         Longitud: Longitud.value,
-        Categoria: Categoria
+        Categoria: Categoria,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       } 
       calcularPrecioPatchcord(data)
     }

@@ -32,6 +32,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioPatchCordModel->SetParameters($this->Connection, $this->Tool);
           $CalcularPrecioPatchCordModel->SetLongitud($_POST['Longitud']);
           $CalcularPrecioPatchCordModel->SetCategoria($_POST['Categoria']);
+          $CalcularPrecioPatchCordModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioPatchCordModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioPatchCordModel->Calcular();
         }
       } catch (Exception $e) {

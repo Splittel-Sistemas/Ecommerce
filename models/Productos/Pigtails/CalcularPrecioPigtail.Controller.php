@@ -37,6 +37,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioPigtailModel->SetDiametro($_POST['Diametro']);
           $CalcularPrecioPigtailModel->SetPulido($_POST['Pulido']);
           $CalcularPrecioPigtailModel->SetCodigo($_POST['Codigo']);
+          $CalcularPrecioPigtailModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioPigtailModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioPigtailModel->Calcular();
         }
       } catch (Exception $e) {

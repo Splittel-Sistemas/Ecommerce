@@ -33,6 +33,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioMPOBreakOutModel->SetLongitud($_POST['Longitud']);
           $CalcularPrecioMPOBreakOutModel->SetFibra($_POST['Fibra']);
           $CalcularPrecioMPOBreakOutModel->SetNumeroHilos($_POST['NumeroHilos']);
+          $CalcularPrecioMPOBreakOutModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioMPOBreakOutModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioMPOBreakOutModel->Calcular();
         }
       } catch (Exception $e) {

@@ -41,6 +41,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioEspecialesModel->SetNumeroHilos($_POST['NumeroHilos']);
           $CalcularPrecioEspecialesModel->SetBota_1($_POST['Bota_1']);
           $CalcularPrecioEspecialesModel->SetBota_2($_POST['Bota_2']);
+          $CalcularPrecioEspecialesModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioEspecialesModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioEspecialesModel->Calcular();
         }
       } catch (Exception $e) {

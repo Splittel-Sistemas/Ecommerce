@@ -37,6 +37,8 @@ if (!class_exists("Connection")) {
 					$PreconectorizadoCalcularPrecioModel->SetTipoFibra($_POST['TipoFibra']);
 					$PreconectorizadoCalcularPrecioModel->SetPuerto($_POST['Puerto']);
 					$PreconectorizadoCalcularPrecioModel->SetNumeroAcopladores($_POST['NumeroAcopladores']);
+					$PreconectorizadoCalcularPrecioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$PreconectorizadoCalcularPrecioModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
 					return $PreconectorizadoCalcularPrecioModel->Calcular();
 				}
 			} catch (Exception $e) {

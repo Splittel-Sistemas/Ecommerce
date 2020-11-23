@@ -15,6 +15,8 @@
     public $NumeroHilos;
     public $Bota_1;
     public $Bota_2;
+    public $SubcategoriaN1Code;
+		public $ClienteId;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -43,7 +45,11 @@
       $this->Bota_1  = $Bota_1;
     }public function SetBota_2($Bota_2){
       $this->Bota_2  = $Bota_2;
-    }
+    }public function SetSubcategoriaN1Code($SubcategoriaN1Code){
+			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
+		}public function SetClienteId($ClienteId){
+			$this->ClienteId  = $ClienteId;
+		}
      /**
      * Description
      *
@@ -65,6 +71,8 @@
           '".$this->NumeroHilos."',
           '".$this->Bota_1."',
           '".$this->Bota_2."',
+          '".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {

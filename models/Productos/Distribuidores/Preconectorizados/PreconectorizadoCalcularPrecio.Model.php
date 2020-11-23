@@ -11,6 +11,8 @@
 		public $TipoFibra;
 		public $Puerto;
 		public $NumeroAcopladores;
+		public $SubcategoriaN1Code;
+		public $ClienteId;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
@@ -31,6 +33,10 @@
 			$this->Puerto  = $Puerto;
 		}public function SetNumeroAcopladores($NumeroAcopladores){
 			$this->NumeroAcopladores  = $NumeroAcopladores;
+		}public function SetSubcategoriaN1Code($SubcategoriaN1Code){
+			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
+		}public function SetClienteId($ClienteId){
+			$this->ClienteId  = $ClienteId;
 		}
 		
 		 /**
@@ -50,6 +56,8 @@
 					'".$this->TipoFibra."',
 					'".$this->Puerto."',
 					'".$this->NumeroAcopladores."',
+					'".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
 				@Result);", "@Result");
 				return $result;
 			} catch (Exception $e) {

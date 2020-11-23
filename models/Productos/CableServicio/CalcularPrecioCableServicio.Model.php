@@ -6,6 +6,8 @@
 
     public $Longitud;
     public $NumeroHilos;
+    public $SubcategoriaN1Code;
+		public $ClienteId;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -16,7 +18,11 @@
       $this->Longitud  = $Longitud;
     }public function SetNumeroHilos($NumeroHilos){
       $this->NumeroHilos  = $NumeroHilos;
-    }
+    }public function SetSubcategoriaN1Code($SubcategoriaN1Code){
+			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
+		}public function SetClienteId($ClienteId){
+			$this->ClienteId  = $ClienteId;
+		}
      /**
      * Description
      *
@@ -29,6 +35,8 @@
         $result = $this->Connection->Exec_store_procedure_json("CALL PrecioCableServicio(
           ".$this->Longitud.",
           '".$this->NumeroHilos."',
+          '".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {

@@ -36,6 +36,8 @@ if (!class_exists("Connection")) {
 					$PrecargadoCalcularPrecioModel->SetColor($_POST['Color']);
 					$PrecargadoCalcularPrecioModel->SetPuertos($_POST['Puertos']);
 					$PrecargadoCalcularPrecioModel->SetNumeroAcopladores($_POST['NumeroAcopladores']);
+					$PrecargadoCalcularPrecioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$PrecargadoCalcularPrecioModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
 					return $PrecargadoCalcularPrecioModel->Calcular();
 				}
 			} catch (Exception $e) {

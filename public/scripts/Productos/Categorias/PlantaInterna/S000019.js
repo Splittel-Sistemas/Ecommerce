@@ -243,7 +243,8 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
         Acoplador: acoplador,
         TipoFibra: TipoFibra.value,
         Puerto: Puertos.value,
-        NumeroAcopladores: CantidadPigtails.value
+        NumeroAcopladores: CantidadPigtails.value,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
       calcularPrecioPreconectorizados(data)
       // Registrar descripción 

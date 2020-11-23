@@ -33,6 +33,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioMPOModel->SetLongitud($_POST['Longitud']);
           $CalcularPrecioMPOModel->SetFibra($_POST['Fibra']);
           $CalcularPrecioMPOModel->SetCantidadFibras($_POST['CantidadFibras']);
+          $CalcularPrecioMPOModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioMPOModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioMPOModel->Calcular();
         }
       } catch (Exception $e) {

@@ -65,9 +65,9 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
         Acoplador: TipoAcoplador.value,
         Color: NewColor,
         Puertos: Puertos.value,
-        NumeroAcopladores: NumeroAcopladores.value*1
+        NumeroAcopladores: NumeroAcopladores.value*1,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      console.log(data)
       calcularPrecioPrecargados(data)
       
       //verificarCosto(Unidad.value,TipoAcoplador.value,Puertos.value,NumeroAcopladores.value,NumeroAcopladoresMax)

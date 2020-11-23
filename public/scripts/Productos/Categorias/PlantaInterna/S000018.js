@@ -31,7 +31,8 @@ var CableServicio412 = function(){
       Action: 'calcular', 
       ActionCalcularPrecioCableServicio: true,
       Longitud: Longitud.value,
-      NumeroHilos: NumeroHilos.value
+      NumeroHilos: NumeroHilos.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioCableServicio(data)
   }

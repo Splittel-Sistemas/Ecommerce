@@ -393,6 +393,7 @@ var JumpersEspeciales = function(){
       NumeroHilos : NumeroHilos.value,
       Bota_1 : Bota1.value,
       Bota_2 : Bota2.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioJumpersEspeciales(data)
   }else{
@@ -593,8 +594,8 @@ var JumpersMPO = function(){
       ActionCalcularPrecioMPO: true,
       Longitud: Longitud.value,
       Fibra: Fibraselected,
-      CantidadFibras: CantidadFibras.value
-
+      CantidadFibras: CantidadFibras.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioJumperMPO(data)
     showClave(CodigoGenerado)
@@ -641,7 +642,8 @@ var JumpersMPOBreakOut = function(){
       ActionCalcularPrecioMPOBreakOut: true,
       Longitud: Longitud.value,
       NumeroHilos: NumeroHilos,
-      Fibra: TipoFibra.value
+      Fibra: TipoFibra.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioJumperMPOBreakOut(data)
   }

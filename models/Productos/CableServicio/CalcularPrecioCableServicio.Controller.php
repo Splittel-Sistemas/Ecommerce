@@ -32,6 +32,8 @@ if (!class_exists("Connection")) {
           $CalcularPrecioCableServicioModel->SetParameters($this->Connection, $this->Tool);
           $CalcularPrecioCableServicioModel->SetLongitud($_POST['Longitud']);
           $CalcularPrecioCableServicioModel->SetNumeroHilos($_POST['NumeroHilos']);
+          $CalcularPrecioCableServicioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioCableServicioModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
           return $CalcularPrecioCableServicioModel->Calcular();
         }
       } catch (Exception $e) {

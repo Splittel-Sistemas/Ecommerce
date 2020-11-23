@@ -11,6 +11,8 @@
     public $Diametro;
     public $Pulido;
     public $Codigo;
+    public $SubcategoriaN1Code;
+		public $ClienteId;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -31,6 +33,10 @@
       $this->Pulido  = $Pulido;
     }public function SetCodigo($Codigo){
 			$this->Codigo  = $Codigo;
+		}public function SetSubcategoriaN1Code($SubcategoriaN1Code){
+			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
+		}public function SetClienteId($ClienteId){
+			$this->ClienteId  = $ClienteId;
 		}
      /**
      * Description
@@ -49,6 +55,8 @@
           '".$this->Diametro."',
           '".$this->Pulido."',
           '".$this->Codigo."',
+          '".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
