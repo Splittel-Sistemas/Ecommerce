@@ -40,6 +40,8 @@ if (!class_exists("Connection")) {
 					$CalcularPrecioModel->SetCubierta($_POST['Cubierta']);
 					$CalcularPrecioModel->SetNumeroHilos($_POST['NumeroHilos']);
 					$CalcularPrecioModel->SetCodigo($_POST['Codigo']);
+					$CalcularPrecioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
 					return $CalcularPrecioModel->Calcular();
 				}
 			} catch (Exception $e) {
