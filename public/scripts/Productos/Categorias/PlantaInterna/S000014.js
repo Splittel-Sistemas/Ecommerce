@@ -396,6 +396,15 @@ var JumpersEspeciales = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     calcularPrecioJumpersEspeciales(data)
+    let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
+    let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
+    let Diametroselected=Diametro.options[Diametro.selectedIndex].text
+    let Bota1selected=Bota1.options[Bota1.selectedIndex].text
+    let Bota2selected=Bota2.options[Bota2.selectedIndex].text
+    
+    let descripcion_mpo = "Jumper Bota Especial "+Conector1.value+PulidoConector1.value+' '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+    CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
   }else{
     CodigoGenerado='';
     showClave(CodigoGenerado)
