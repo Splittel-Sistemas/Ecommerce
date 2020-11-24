@@ -14,7 +14,6 @@ var Pigtails = function(){
   let TipoFibra = document.getElementById('TipoFibra')
   let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text;
   let NumeroHilos = document.getElementById('NumeroHilos')
-  let TipoPulidoSelect = document.getElementById('TipoPulidoSelect')
   let TipoPulido = document.getElementById('TipoPulido')
   let Diametro = document.getElementById('Diametro')
   let Diametroselected = Diametro.options[Diametro.selectedIndex].text;
@@ -80,7 +79,10 @@ var Pigtails = function(){
     ListProductoDescription(Marca+Familia+Pigtail.value)
     ListProductoAdicional(Marca+Familia+Pigtail.value)
     showClave(CodigoGenerado)
-    patchCordNombreCodigoConfigurable({ diametro:Diametroselected, hilos:NumeroHilos.value, fibra: TipoFibraselected, metros: Longitud1, pigtail: Pigtail.value+TipoPulido, codigo: CodigoGenerado })
+
+    let descripcion = "Pigtail "+Pigtail.value+TipoPulido+" "+TipoFibraselected+" "+NumeroHilos.value+" de "+Longitud1+" metro(s) de "+Diametroselected
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+
     let data = {
       Action: 'calcular',
       ActionCalcularPrecioPigtail: true,
@@ -93,48 +95,7 @@ var Pigtails = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPigtail(data)
-}
-
-/**
- * Calcular precio jumper monomodo, multimodo y armado
- *
- * @param {Json} data
- *
- * @return {number} b - Bar
- */
-var calcularPrecioPigtail = function(data) {
-  ajax_('../../models/Productos/Pigtails/CalcularPrecioPigtail.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
-
-var patchCordNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = "Pigtail "+data.pigtail+" "+data.fibra+" "+data.hilos+" de "+data.metros+" metro(s) de "+data.diametro
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }
+    CalcularPrecio("../../models/Productos/Pigtails/CalcularPrecioPigtail.Route.php", data)
 }
 
 Pigtails()

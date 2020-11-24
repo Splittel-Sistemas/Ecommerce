@@ -15,6 +15,7 @@ class Cliente{
     public $PasswordB2b;
     public $Ingreso;
     public $Descuento;
+    public $EmailEjecutivo;
 
     protected $Connection;
     protected $Tool;
@@ -88,6 +89,8 @@ class Cliente{
         return $this->Ingreso;
     }public function GetDescuento(){
         return $this->Descuento;
+    }public function GetEmailEjecutivo(){
+        return $this->EmailEjecutivo;
     }
 
     public function GetBy($filter){
@@ -107,6 +110,7 @@ class Cliente{
           $this->FechaIngreso   =   $row->fecha_registro;
           $this->Tipo           =   $row->tipo_cliente;
           $this->Ingreso        =   $row->ingreso;
+          $this->EmailEjecutivo =   $row->email_ejecutivo;
           $this->Descuento      =   $row->descuento;
 
           # si el cliente es un usuario B2B

@@ -24,7 +24,7 @@ var Categoria5e = function(){
         Categoria: Categoria,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       } 
-      calcularPrecioPatchcord(data)
+      CalcularPrecioPatchCords("../../models/Productos/PatchCord/CalcularPrecioPatchCord.Route.php", data)
     }
     // Agregación de codigo para la vista en el identificador
     let DirectorioImgProducto = Marca+Familia+Estructurados.value
@@ -39,46 +39,9 @@ var Categoria5e = function(){
     let x = Color.selectedIndex;
     let y = Color.options;
     let ColorText = y[x].text    
-    patchCordNombreCodigoConfigurable({ pies: Longitud.value, color: ColorText, codigo: CodigoGenerado })
-}
-/**
- * 
- *
- * @param {Json} data
- *
- * @return {number} b - Bar
- */
-var calcularPrecioPatchcord = function(data) {
-  ajax_('../../models/Productos/PatchCord/CalcularPrecioPatchCord.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
 
-var patchCordNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = "PatchCord Cat5e "+data.pies+" pie(s) color "+data.color
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }
+    let descripcion = "PatchCord Cat5e "+Longitud.value+" pie(s) color "+ColorText
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
 }
-
 
 Categoria5e()
