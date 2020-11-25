@@ -68,7 +68,7 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
         NumeroAcopladores: NumeroAcopladores.value*1,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      calcularPrecioPrecargados("../../models/Productos/Distribuidores/Preconectorizados/PreconectorizadoCalcularPrecio.Route.php", data)
+      CalcularPrecio("../../models/Productos/Distribuidores/Precargados/PrecargadoCalcularPrecio.Route.php", data)
            
       let Puertosselected = Puertos.options[Puertos.selectedIndex].text
       if(ColorSelect.style.display=="block"){
