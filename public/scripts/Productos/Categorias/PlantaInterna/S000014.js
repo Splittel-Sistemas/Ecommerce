@@ -62,25 +62,11 @@ var JumpersMultimodo = function(){
     StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [0])
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [1])
-    // Diametro.selectedIndex = 0
-    // MultimodoTipoFibra.selectedIndex = 0
-    // StyleDisplayNoneOrBlock_2(MultimodoTipoFibra, 'none', [3])
   }else{
     contJumperMultimodo = 0
-    // NumeroHilos.value = 'S'
     StyleDisplayNoneOrBlock_2(Diametro, 'block', [2])
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [0])
-    // StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [1])
-    // StyleDisplayNoneOrBlock_2(MultimodoTipoFibra, 'block', [3])
   }
-
-  // if (Conector1.value == 'MT' || Conector2.value == 'MT') {
-  //   // RemoveOptionSelect(TipoFibra, 3)
-  //   RemoveOptionSelect(Diametro, 2)
-  //   StyleDisplayNoneOrBlock(NumeroHilosSelect, "none")
-  //   NumeroHilos.value = 'D'
-  // }
-
 
   if (PosicionConector1 == PosicionConector2) {
     if (PosicionPulidoConector1 < PosicionPulidoConector2) {
@@ -129,7 +115,7 @@ var JumpersMultimodo = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioJumper(data)
+    CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
     
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -137,7 +123,7 @@ var JumpersMultimodo = function(){
     let Diametroselected=Diametro.options[Diametro.selectedIndex].text
 
     let descripcion_mpo = "Jumper Multimodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
-    CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+    NombreProductoConfigurable(CodigoGenerado, descripcion_mpo)
 
   }
 
@@ -180,17 +166,12 @@ var JumpersMonomodo = function(){
     StyleDisplayNoneOrBlock_2(PulidoConector2, 'block', [0,1])
     StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1,2])
     
-
-      // PulidoConector1[0].style.display = "block"
-      // PulidoConector2[0].style.display = "block"
     if (Conector2.value == "MU" || Conector2.value == "ST" ) {
-      // StyleDisplayNoneOrBlock(PulidoConector1Select, 'none')
       PulidoConector2[0].style.display = "none"
       PulidoConector2.selectedIndex = 1
     }
 
     if (Conector1.value == "MU" || Conector1.value == "ST") {
-      // StyleDisplayNoneOrBlock(PulidoConector2Select, 'none')
       PulidoConector1[0].style.display = "none"
       PulidoConector1.selectedIndex = 1
     }
@@ -257,15 +238,15 @@ var JumpersMonomodo = function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      calcularPrecioJumper(data)
+      CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MonomodoTipoFibra.options[MonomodoTipoFibra.selectedIndex].text
       let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
       let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
       let Diametroselected=Diametro.options[Diametro.selectedIndex].text
   
-      let descripcion_mpo = "Jumper Monomodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
-      CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+      let descripcion = "Jumper Monomodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+      NombreProductoConfigurable(CodigoGenerado, descripcion)
   
     }
 
@@ -395,7 +376,7 @@ var JumpersEspeciales = function(){
       Bota_2 : Bota2.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioJumpersEspeciales(data)
+    CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
     let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
@@ -403,8 +384,8 @@ var JumpersEspeciales = function(){
     let Bota1selected=Bota1.options[Bota1.selectedIndex].text
     let Bota2selected=Bota2.options[Bota2.selectedIndex].text
     
-    let descripcion_mpo = "Jumper Bota Especial "+Conector1.value+PulidoConector1.value+' '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
-    CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+    let descripcion = "Jumper Bota Especial "+Conector1.value+PulidoConector1.value+' '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
   }else{
     CodigoGenerado='';
     showClave(CodigoGenerado)
@@ -445,19 +426,14 @@ var JumpersArmados = function(){
   let PosicionPulidoConector2 = PulidoConector2.options[PulidoConector2.selectedIndex].getAttribute('position')
 
   let CodigoGenerado = ""
-  // let NumeroHilos = 'S'
-  // let TipoCubierta = 'RA'
-  // Diametro = '3'
 
     StyleDisplayNoneOrBlock(MonomodoTipoFibraSelect, 'none')
 
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [1])
     StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [0,1,2])
-    // StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [0])
     StyleDisplayNoneOrBlock_2(Diametro, 'none', [0,1])
 
     TipoCubierta.selectedIndex = 3
-    // TipoCubierta.selectedIndex = 1
     Diametro.selectedIndex = 2
     NumeroHilos.selectedIndex = 0
 
@@ -543,15 +519,15 @@ var JumpersArmados = function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      calcularPrecioJumper(data)
+      CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
       let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
       let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
       let Diametroselected=Diametro.options[Diametro.selectedIndex].text
   
-      let descripcion_mpo = "Jumper Armado "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
-      CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+      let descripcion = "Jumper Armado "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+      NombreProductoConfigurable(CodigoGenerado, descripcion)
   
     }
 
@@ -594,8 +570,8 @@ var JumpersMPO = function(){
     NewLongitud = NumeroConCeros2(Longitud.value, 3)
     CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
     // Agreación de codigo para la vista en el identificador
-    let descripcion_mpo = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
-    CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+    let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
 
     ChangeListImgProducto('OPJA1A1','OPJA1A1'+Polaridad.value+Diseno.value)
 	  ListProductoDescription('OPJA1A1')
@@ -608,7 +584,7 @@ var JumpersMPO = function(){
       CantidadFibras: CantidadFibras.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioJumperMPO(data)
+    CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
     showClave(CodigoGenerado)
   }
 }
@@ -642,8 +618,8 @@ var JumpersMPOBreakOut = function(){
     NewLongitud = NumeroConCeros2(Longitud.value, 3)
     CodigoGenerado = Marca+Familia+ConectarizacionLadoA.value+Diseno.value+ConectarizacionLadoB.value+Polaridad.value+CantidadFibras.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value+LongitudBreakOut.value
     // Agreación de codigo para la vista en el identificador
-    let descripcion_mpo = "Jumper MPO-BreakOut "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
-    CableNombreCodigoConfigurable({ descripcion_jumper: descripcion_mpo, codigo: CodigoGenerado })
+    let descripcion = "Jumper MPO-BreakOut "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
  
     ListImgProducto("OPJA1xAE")
     ListProductoDescription('OPJA1xAE')
@@ -656,147 +632,11 @@ var JumpersMPOBreakOut = function(){
       Fibra: TipoFibra.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioJumperMPOBreakOut(data)
+    CalcularPrecio("../../models/Productos/Jumpers/MPOBreakOut/CalcularPrecioMPOBreakOut.Route.php", data)
   }
     showClave(CodigoGenerado)
 }
 
-var CableNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = data.descripcion_jumper
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }
-}
-
-/**
- * Calcular precio jumper monomodo, multimodo y armado
- *
- * @param {Json} data
- *
- * @return {number} b - Bar
- */
-var calcularPrecioJumper = function(data) {
-  ajax_('../../models/Productos/Jumpers/CalcularPrecio.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
-/**
- * Calcular precio Jumper MPO
- *
- * @param {Object} Elem
- *
- * @return {number} b - Bar
- */
-var calcularPrecioJumperMPO = function(data) {
-  ajax_('../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      ProductoEspecial()
-    }
-  })
-}
-/**
- * Calcular precio Jumper MPO Break-Out
- *
- * @param {Object} Elem
- *
- * @return {number} b - Bar
- */
-var calcularPrecioJumperMPOBreakOut = function(data) {
-  ajax_('../../models/Productos/Jumpers/MPOBreakOut/CalcularPrecioMPOBreakOut.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      ProductoEspecial()
-    }
-  })
-}
-
-/**
- * Calcular precio Jumpers Especiales
- *
- * @param {Object} Elem
- *
- * @return {number} b - Bar
- */
-var calcularPrecioJumpersEspeciales = function(data) {
-  ajax_('../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      document.getElementById('CostoProducto').value = '' 
-      document.getElementById('Costo').innerHTML = "$"
-      ProductoEspecial()
-    }
-  })
-}
-
-var verificarCosto = function(TipoFibra,CableLongitud,CantidadFibras){
-  ajax_(
-  '../../models/Productos/Precios/Mpo.php', 
-  'post', 
-  'json', 
-  { 
-    Action: 'calculo',
-    ActionMpo: true,
-    TipoFibra: TipoFibra,
-    CableLongitud: CableLongitud,
-    CantidadFibras: CantidadFibras
-  }, 
-  function(response){
-    document.getElementById('CostoProducto').value = response.recordsNormal 
-    document.getElementById('Costo').innerHTML = "$"+response.records.toFixed(3)
-  })
-}
-
-var contremove = 0
 var JumpersFibraOptica = function() {
   switch(Jumper.value){
     case 'JMul' : 

@@ -1,7 +1,6 @@
 var RemoveOptionsSelect = function(Elem, Options){
   for (var i = 0; i < Options.length; i++) {
     Elem.remove(Options[i]-i)    
-    // i == 0 ? Elem.remove(Options[i]) : Elem.remove(Options[i]-i)    
   }
 }
 /**
@@ -457,15 +456,18 @@ var ProductoEspecial = function(){
       '<p>Producto especial, solicitar cotización a su ejecutivo de ventas</p></span></div>')
 }
 
-var NombreProductoConfigurable = function(data){
+var NombreProductoConfigurable = function(Codigo, Descripcion){
   if(document.getElementById('CodeConfigurable')){
-    data['Action'] = 'create'
-    data['CodigoConfigurable'] = document.getElementById('CodeConfigurable').value
     ajax_(
     '../../models/Productos/ProductoConfigurable.Route.php', 
     'post', 
     'json', 
-    data, 
+    { 
+      Action: 'create',
+      Codigo: Codigo,
+      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
+      Descripcion: Descripcion
+    }, 
     function(response){
       console.log(response)
     })
@@ -515,8 +517,52 @@ var agregarFichaTecnicaConfigurable = function(idFicha){
       FichaTecnicaTecnica.innerHTML = textFicha
       }
     })
-  
-    
-  }
-  
+  } 
+}
+
+
+var CalcularPrecio = function(url, data){
+  ajax_(url, 'POST', 'JSON', data, 
+  function(response){
+    if (!response.error) {
+      $('#span-leyenda').remove()
+      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
+      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
+      let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+      '<b class="text-primary">'+
+        '$'+response.precio+' USD '+
+      '</b>'+
+      '<del class="text-muted">$'+response.precioNormal+' USD</del>&nbsp;'+
+    '</span>' : 
+    '<span class="h4 d-block">'+
+      '$'+response.precio+' USD '+
+    '</span>';
+      document.getElementById('CostoProducto').value = response.precioNormal 
+      document.getElementById('Costo').innerHTML = mostrarPrecio
+    }else{
+      ProductoEspecial()
+    }
+  })
+}
+
+var CalcularPrecioPatchCords = function(url, data){
+  ajax_(url, 'POST', 'JSON', data, 
+  function(response){
+    if (!response.error) {
+      $('#span-leyenda').remove()
+      let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+      '<b class="text-primary">'+
+        '$'+response.precio+' USD '+
+      '</b>'+
+      '<del class="text-muted">$'+response.precioNormal+' USD</del>&nbsp;'+
+    '</span>' : 
+    '<span class="h4 d-block">'+
+      '$'+response.precio+' USD '+
+    '</span>';
+      document.getElementById('CostoProducto').value = response.precioNormal 
+      document.getElementById('Costo').innerHTML = mostrarPrecio
+    }else{
+      ProductoEspecial()
+    }
+  })
 }

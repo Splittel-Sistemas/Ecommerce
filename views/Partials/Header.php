@@ -13,8 +13,6 @@
   if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == "B2B") {
     if (!class_exists("GetExtraDaysController")) {
       include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetExtraDays.Controller.php';
-    }if (!class_exists("GetSegmentController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetSegment.Controller.php';
     }
     if (!isset($_SESSION['Ecommerce-WS-GetExtraDays']) || $_SESSION['Ecommerce-WS-GetExtraDays'] == 'N/D') {
       try {
@@ -29,29 +27,6 @@
         unset($_SESSION['Ecommerce-WS-GetExtraDays']);
         $Message = "No se pudo obtener dias de credito";
         $ErrorCode = -701;
-      }
-    }
-    
-    if ($_SESSION['Ecommerce-ClienteDescuento'] == 0 ||  $_SESSION['Ecommerce-ClienteDescuento'] == 'N/D' ||  !isset($_SESSION['Ecommerce-ClienteEjecutivo'])) {
-      try {
-        # obtención dias extra credito que tiene actualmente cliente
-        $GetSegmentController = new GetSegmentController();
-        $resultGetSegmentController = $GetSegmentController->get();
-        $resultGetSegment = $resultGetSegmentController->GetSegmentResult->Diccionary->Diccionary;
-        $ErrorCode = $resultGetSegmentController->GetSegmentResult->ErrorCode;
-        if($ErrorCode == 0){
-          $_SESSION['Ecommerce-ClienteDescuento'] = (float)$resultGetSegment[0]->Value;
-          $_SESSION['Ecommerce-ClienteEjecutivo'] = $resultGetSegment[1]->Value;
-        }else{
-          $_SESSION['Ecommerce-ClienteDescuento'] = 'N/D';
-          unset($_SESSION['Ecommerce-ClienteEjecutivo']);
-        }
-        // print_r($resultGetSegmentController);
-      } catch (Exception $e) {
-        unset($_SESSION['Ecommerce-ClienteDescuento']);
-        unset($_SESSION['Ecommerce-ClienteEjecutivo']);
-        $Message = "No se pudo obtener descuento del cliente";
-        $ErrorCode = -702;
       }
     }
   }

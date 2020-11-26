@@ -246,12 +246,11 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
         NumeroAcopladores: CantidadPigtails.value,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      calcularPrecioPreconectorizados(data)
+      CalcularPrecio("../../models/Productos/Distribuidores/Preconectorizados/PreconectorizadoCalcularPrecio.Route.php", data)
       // Registrar descripción 
       let DescripcionProducto = document.getElementById('descripcion-producto-configurable')
       let Descripcion = DescripcionProducto.getAttribute('descripcion')+" con "+CantidadPigtails.value+" Pigtails "+TipoAcoplador.value+" "+TipoFibraDescripcion
-      data = { Codigo: CodigoGenerado, Descripcion: Descripcion }
-      NombreProductoConfigurable(data)
+      NombreProductoConfigurable(CodigoGenerado, Descripcion)
    
     
     // Agregación de codigo para la vista en el identificador
@@ -261,27 +260,6 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     ListProductoDescription(Directorio)
     ListProductoAdicional(Directorio)
     agregarFichaTecnicaConfigurable(Marca+Ensamble+Familia+Unidad.value)
-}
-/**
- * Calcular precio 
- *
- * @param {Object} Elem
- *
- * @return {number} b - Bar
- */
-var calcularPrecioPreconectorizados = function(data) {
-  ajax_('../../models/Productos/Distribuidores/Preconectorizados/PreconectorizadoCalcularPrecio.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
 }
 
 var DistribuidoresPreconectorizados = function() {

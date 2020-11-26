@@ -72,7 +72,7 @@
           <h2 class="mb-3"></h2>
           <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/optronics1.png"/></span>
           <div id="leyenda" class="col-12 mb-4">
-            <span class="h3 " id="Costo" >$ </span> <span class="h3 "> USD</span> 
+            <span class="h3 " id="Costo" >$ </span>
           </div>
           <div class="col-12 pt-1 mb-5">
             <span class="product-badge bg-secondary border-default text-body">

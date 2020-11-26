@@ -1250,9 +1250,9 @@ var cable_F8 = function(){
     let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
     let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
-    let descripcion_cable = "Cable preconectorizado Figura 8 con armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+    let descripcion = "Cable preconectorizado Figura 8 con armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion)
     }
     let data = {
       Action: 'calculo',
@@ -1273,27 +1273,6 @@ var cable_F8 = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "F8")
       ListProductoAdicional(Marca + Familia + "F8")
-}
-
-var CableNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = data.descripcion_cable
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }else{
-    console.log('NoCodeCofig');
-  }
 }
 
 var interior_exterior_cable = function() {

@@ -68,19 +68,17 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
         NumeroAcopladores: NumeroAcopladores.value*1,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      calcularPrecioPrecargados(data)
-      
-      //verificarCosto(Unidad.value,TipoAcoplador.value,Puertos.value,NumeroAcopladores.value,NumeroAcopladoresMax)
-     
+      CalcularPrecio("../../models/Productos/Distribuidores/Precargados/PrecargadoCalcularPrecio.Route.php", data)
+           
       let Puertosselected = Puertos.options[Puertos.selectedIndex].text
       if(ColorSelect.style.display=="block"){
          Colorselected = Color.options[Color.selectedIndex].text
       }else{
          Colorselected = ""
       }
-      let descripcion_cable = "Distribuidor precargado "+Unidad.value+" "+NumeroAcopladores.value+" Acoplador(es) "+Colorselected+" "+TipoAcoplador.value+" "+Puertosselected
+      let descripcion = "Distribuidor precargado "+Unidad.value+" "+NumeroAcopladores.value+" Acoplador(es) "+Colorselected+" "+TipoAcoplador.value+" "+Puertosselected
       if(CodigoGenerado!=''){
-        CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+        NombreProductoConfigurable(CodigoGenerado, descripcion)
       }
     }
     // Agregación de codigo para la vista en el identificador
@@ -90,40 +88,6 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
     ListProductoAdicional(Marca+Familia+TipoMontaje+Unidad.value)
     agregarFichaTecnicaConfigurable(Marca+Familia+TipoMontaje+Unidad.value)
 }
-
-var CableNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = data.descripcion_cable
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }
-}
-var calcularPrecioPrecargados = function(data) {
-  ajax_('../../models/Productos/Distribuidores/Precargados/PrecargadoCalcularPrecio.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
-
 
 var DistribuidoresPrecargados = function() {
   switch(Unidad.value){

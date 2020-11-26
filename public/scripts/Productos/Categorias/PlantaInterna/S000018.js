@@ -26,7 +26,10 @@ var CableServicio412 = function(){
     ListImgProducto('OPEECS')
     ListProductoDescription('OPEECS')
     ListProductoAdicional('OPEECS')
-    CableNombreCodigoConfigurable({ diametro:Diametroselected, hilos:NumeroHilos.value, metros: Longitud.value, conector: Conectorselected, codigo: CodigoGenerado })
+
+    let descripcion = "Cable de servicio monomodo de "+NumeroHilos.value+" hilos "+Conectorselected+" de "+Longitud.value+" metro(s) de "+Diametroselected
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+
     let data = { 
       Action: 'calcular', 
       ActionCalcularPrecioCableServicio: true,
@@ -34,51 +37,10 @@ var CableServicio412 = function(){
       NumeroHilos: NumeroHilos.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioCableServicio(data)
+    CalcularPrecio("../../models/Productos/CableServicio/CalcularPrecioCableServicio.Route.php", data)
   }
   showClave(CodigoGenerado)
 } 
-
-var CableNombreCodigoConfigurable = function(data){
-  if(document.getElementById('CodeConfigurable')){
-    let descripcion = "Cable de servicio monomodo de "+data.hilos+" hilos "+data.conector+" de "+data.metros+" metro(s) de "+data.diametro
-    ajax_(
-    '../../models/Productos/ProductoConfigurable.Route.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'create',
-      Codigo: data.codigo,
-      CodigoConfigurable: document.getElementById('CodeConfigurable').value,
-      Descripcion: descripcion
-    }, 
-    function(response){
-      console.log(response)
-    })
-  }
-}
-
-/**
- * Calcular cable servicio
- *
- * @param {Json} data
- *
- * @return {number} b - Bar
- */
-var calcularPrecioCableServicio = function(data) {
-  ajax_('../../models/Productos/CableServicio/CalcularPrecioCableServicio.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
 
 var CableServicio = function() {
   let Cable = document.getElementById('Cable')
