@@ -55,74 +55,27 @@ var ConectoresPosicion = [
   'AK'
 ]
 
-var verificarCosto = function(CablesPreconId, CablesPreconNumeroHilos, CablesPreconLongitud, CablesPreconTipoFibra,Aux_ConectorLadoA,Aux_ConectorLadoB,Cubierta,Uso){
-  document.getElementById('Costo').innerHTML = "$"   
-  document.getElementById('CostoProducto').value = ""
-    ajax_(
-    '../../models/Productos/Precios/CablesPreconectorizados.php', 
-    'post', 
-    'json', 
-    { 
-      Action: 'calculo',
-      ActionPrecioPreconectorizados: true,
-      CablesPreconId: CablesPreconId,
-      CablesPreconNumeroHilos: CablesPreconNumeroHilos,
-      CablesPreconLongitud: CablesPreconLongitud,
-      CablesPreconTipoFibra: CablesPreconTipoFibra,
-      ConectorLadoA: Aux_ConectorLadoA,
-      ConectorLadoB: Aux_ConectorLadoB,
-      TipoCubierta:Cubierta,
-      TipoUso:Uso
-
-    }, 
-    function(response){
-      console.log(response)
-      $('#span-leyenda').remove()
-      document.getElementById('Costo').innerHTML = "$"   
-      document.getElementById('CostoProducto').value = ""
-      if(response.error!=true){
-        if(response.records.costo>0){
-          document.getElementById('Costo').innerHTML = "$"+response.records.costo   
-          document.getElementById('CostoProducto').value = response.records.costo
-        }else{
-          ProductoEspecial()
-        }
-      }
-      
-    })
-
-}
-
-var verificarCostoFigura0 = function(CablesPreconLongitud, CablesPreconConA, CablesPreconConB){
- 
-  ajax_(
-  '../../models/Productos/Precios/CablesPreconectorizadosF0.php', 
-  'post', 
-  'json', 
-  { 
-    Action: 'calculo',
-    ActionPrecioPreconectorizados: true,
-    CablesPreconLongitud: CablesPreconLongitud,
-    CablesPreconConA: CablesPreconConA,
-    CablesPreconConB: CablesPreconConB,
-  }, 
+/**
+ * Calcular precio cables preconectorizados
+ *
+ * @param {Json} data
+ *
+ * @return {number} b - Bar
+ */
+var calcularPrecioPreconectorizado = function(data) {
+  ajax_('../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php', 'POST', 'JSON', data, 
   function(response){
-    $('#span-leyenda').remove()
-    document.getElementById('Costo').innerHTML = "$"   
-    document.getElementById('CostoProducto').value = ""
-    if(response.error!=true){
-      if(response.records.costo>0){
-        document.getElementById('Costo').innerHTML = "$"+response.records.costo   
-        document.getElementById('CostoProducto').value = response.records.costo
-      }else{
-        ProductoEspecial()
-      }
+    if (!response.error) {
+      $('#span-leyenda').remove()
+      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
+      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
+      document.getElementById('CostoProducto').value = response.precioNormal 
+      document.getElementById('Costo').innerHTML = "$"+response.precio
+    }else{
+      ProductoEspecial()
     }
-    
   })
-
 }
-
 
 var cable_IE = function(){
   
@@ -194,12 +147,7 @@ let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAt
     
 
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(2, NoHilos.value, Longitud.value, TipoFibra.value, Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Interior')
       CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
       showClave(CodigoGenerado);
     }
     
@@ -300,14 +248,9 @@ let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAt
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(2, NoHilos.value, Longitud.value, TipoFibra.value , Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Interior')
-      CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+       CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
       
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
-      showClave(CodigoGenerado);
     }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
@@ -319,6 +262,21 @@ let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAt
     if(CodigoGenerado!=''){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 2,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Interior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
 
   let DirectorioImgProducto = Marca + Familia + "IE/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -390,12 +348,7 @@ var cable_CI = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(1, NoHilos.value, Longitud.value, TipoFibra.value, Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Interior')
       CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
       showClave(CodigoGenerado);
     }
   }else if(TipoTermiacion.value == '2MM'){
@@ -496,12 +449,7 @@ var cable_CI = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(1, NoHilos.value, Longitud.value, TipoFibra.value , Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Interior')
-      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
+     CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
     }
   }
@@ -516,6 +464,21 @@ var cable_CI = function(){
     CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
 
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 1,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Interior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
 
   let DirectorioImgProducto = Marca + Familia + "CI/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -587,12 +550,7 @@ var cable_SA = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(6, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
-      CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
+       CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
     }
   }
@@ -605,6 +563,21 @@ var cable_SA = function(){
     if(CodigoGenerado!=''){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 6,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
 
   let DirectorioImgProducto = Marca + Familia + "SA/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -640,7 +613,6 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
       CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
       //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
-      verificarCosto(10, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Interior')
       let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
       let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
       let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
@@ -652,15 +624,24 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
         CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
       }
       
-    }else{
-      //verificarCostoFigura0('','','')
-      verificarCosto('','','','','','','','')
-      CodigoGenerado='';
-      showClave(CodigoGenerado);
     }
   }
 
- 
+  let data = {
+    Action: 'calculo',
+    ActionPrecioPreconectorizados: true,
+    CablesPreconId: 10,
+    CablesPreconNumeroHilos: NoHilos.value,
+    CablesPreconLongitud: Longitud.value,
+    CablesPreconTipoFibra: TipoFibra.value,
+    Conector_1: Aux_ConectorLadoA,
+    Conector_2: Aux_ConectorLadoB,
+    Cubierta:TipoCubierta.value,
+    Uso:'Interior',
+    Codigo: CodigoGenerado,
+    SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+  }
+  calcularPrecioPreconectorizado(data)
 
 
   let DirectorioImgProducto = Marca + Familia + "D0/fotos"
@@ -733,12 +714,7 @@ var cable_S8 = function(){
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-        showClave(CodigoGenerado);
-      }else{
-        verificarCosto('', '', '', '')
-        CodigoGenerado='';
         showClave(CodigoGenerado);
       }
     }
@@ -748,12 +724,7 @@ var cable_S8 = function(){
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
       if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-        showClave(CodigoGenerado);
-      }else{
-        verificarCosto('', '', '', '','', '', '', '')
-        CodigoGenerado='';
         showClave(CodigoGenerado);
       }
     }
@@ -763,12 +734,7 @@ var cable_S8 = function(){
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
       if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
-        verificarCosto(9, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-        showClave(CodigoGenerado);
-      }else{
-        verificarCosto('', '', '', '','', '', '', '')
-        CodigoGenerado='';
         showClave(CodigoGenerado);
       }
     }
@@ -782,6 +748,21 @@ var cable_S8 = function(){
     if(CodigoGenerado!=''){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 9,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
 
   let DirectorioImgProducto = Marca + Familia + "S8/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -854,12 +835,7 @@ var cable_M8 = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(8, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
-      CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
+       CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
     }
   }
@@ -872,6 +848,21 @@ var cable_M8 = function(){
     if(CodigoGenerado!=''){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 8,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
 
   let DirectorioImgProducto = Marca + Familia + "M8/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -942,12 +933,7 @@ var cable_DI = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(5, NoHilos.value, Longitud.value, TipoFibra.value, Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
       CodigoGenerado=Marca + Familia + "DI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
       showClave(CodigoGenerado);
     }
   }
@@ -961,6 +947,21 @@ var cable_DI = function(){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
 
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 5,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
   let DirectorioImgProducto = Marca + Familia + "DI/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "DI")
@@ -1030,12 +1031,7 @@ var cable_AR = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(4, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
       CodigoGenerado=Marca + Familia + "AR" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
       showClave(CodigoGenerado);
     }
   }
@@ -1049,6 +1045,21 @@ var cable_AR = function(){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
 
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 4,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
   let DirectorioImgProducto = Marca + Familia + "AR/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AR")
@@ -1120,12 +1131,7 @@ var cable_AD = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(3, NoHilos.value, Longitud.value, TipoFibra.value, Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
       CodigoGenerado=Marca + Familia + "AD" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
       showClave(CodigoGenerado);
     }
   }
@@ -1139,6 +1145,21 @@ var cable_AD = function(){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
 
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 3,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
   let DirectorioImgProducto = Marca + Familia + "AD/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AD")
@@ -1209,12 +1230,7 @@ var cable_F8 = function(){
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-        verificarCosto(7, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
-        CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-        showClave(CodigoGenerado);
-      }else{
-        verificarCosto('', '', '', '','', '', '', '')
-        CodigoGenerado='';
+         CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
         showClave(CodigoGenerado);
       }
   }else{
@@ -1223,12 +1239,7 @@ var cable_F8 = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
-      verificarCosto(7, NoHilos.value, Longitud.value, TipoFibra.value,Aux_ConectorLadoA,Aux_ConectorLadoB,TipoCubierta.value,'Exterior')
-      CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
-      showClave(CodigoGenerado);
-    }else{
-      verificarCosto('', '', '', '','', '', '', '')
-      CodigoGenerado='';
+       CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
     }
   }
@@ -1243,7 +1254,21 @@ var cable_F8 = function(){
     if(CodigoGenerado!=''){
       CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
     }
-
+    let data = {
+      Action: 'calculo',
+      ActionPrecioPreconectorizados: true,
+      CablesPreconId: 7,
+      CablesPreconNumeroHilos: NoHilos.value,
+      CablesPreconLongitud: Longitud.value,
+      CablesPreconTipoFibra: TipoFibra.value,
+      Conector_1: Aux_ConectorLadoA,
+      Conector_2: Aux_ConectorLadoB,
+      Cubierta:TipoCubierta.value,
+      Uso:'Exterior',
+      Codigo: CodigoGenerado,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    calcularPrecioPreconectorizado(data)
   let DirectorioImgProducto = Marca + Familia + "F8/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "F8")
