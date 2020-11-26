@@ -62,20 +62,7 @@ var ConectoresPosicion = [
  *
  * @return {number} b - Bar
  */
-var calcularPrecioPreconectorizado = function(data) {
-  ajax_('../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php', 'POST', 'JSON', data, 
-  function(response){
-    if (!response.error) {
-      $('#span-leyenda').remove()
-      StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
-      StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      document.getElementById('CostoProducto').value = response.precioNormal 
-      document.getElementById('Costo').innerHTML = "$"+response.precio
-    }else{
-      ProductoEspecial()
-    }
-  })
-}
+
 
 var cable_IE = function(){
   
@@ -260,7 +247,7 @@ let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAt
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado Interior-Exterior "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion_cable)
     }
     let data = {
       Action: 'calculo',
@@ -276,7 +263,8 @@ let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAt
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
 
   let DirectorioImgProducto = Marca + Familia + "IE/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -461,8 +449,8 @@ var cable_CI = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado de Distribucion "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-    CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
-    }
+    NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+  }
 
     let data = {
       Action: 'calculo',
@@ -478,7 +466,9 @@ var cable_CI = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
 
   let DirectorioImgProducto = Marca + Familia + "CI/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -561,7 +551,7 @@ var cable_SA = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado ADSS"+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
     let data = {
       Action: 'calculo',
@@ -577,7 +567,8 @@ var cable_SA = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
 
   let DirectorioImgProducto = Marca + Familia + "SA/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -621,7 +612,7 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
       let descripcion_cable = "Cable preconectorizado Drop Figura 0 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
       
       if(CodigoGenerado!=''){
-        CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
       }
       
     }
@@ -641,7 +632,8 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
     Codigo: CodigoGenerado,
     SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
   }
-  calcularPrecioPreconectorizado(data)
+  CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
 
 
   let DirectorioImgProducto = Marca + Familia + "D0/fotos"
@@ -746,7 +738,7 @@ var cable_S8 = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado figura 8 sin armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
     let data = {
       Action: 'calculo',
@@ -762,7 +754,8 @@ var cable_S8 = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
 
   let DirectorioImgProducto = Marca + Familia + "S8/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -846,7 +839,7 @@ var cable_M8 = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado Exterior Mini-Figura 8 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
     let data = {
       Action: 'calculo',
@@ -862,7 +855,8 @@ var cable_M8 = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
 
   let DirectorioImgProducto = Marca + Familia + "M8/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -944,7 +938,7 @@ var cable_DI = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado Exterior Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
     let data = {
@@ -961,7 +955,8 @@ var cable_DI = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
   let DirectorioImgProducto = Marca + Familia + "DI/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "DI")
@@ -1042,7 +1037,7 @@ var cable_AR = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado Exterior Armado "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+      NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
     let data = {
@@ -1059,7 +1054,8 @@ var cable_AR = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
   let DirectorioImgProducto = Marca + Familia + "AR/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AR")
@@ -1142,7 +1138,7 @@ var cable_AD = function(){
     let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
     let descripcion_cable = "Cable preconectorizado Exterior Armado Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
-      CableNombreCodigoConfigurable({ descripcion_cable: descripcion_cable, codigo: CodigoGenerado })
+        NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
     let data = {
@@ -1159,7 +1155,8 @@ var cable_AD = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
   let DirectorioImgProducto = Marca + Familia + "AD/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AD")
@@ -1268,7 +1265,8 @@ var cable_F8 = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    calcularPrecioPreconectorizado(data)
+    CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
   let DirectorioImgProducto = Marca + Familia + "F8/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "F8")
