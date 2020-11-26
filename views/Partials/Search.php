@@ -67,7 +67,7 @@
                
              ?>
                 <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($SubcategoriaN1->Codigo); ?>">
-                <?php echo "Configúralo -> ". $SubcategoriaN1->Descripcion; ?>
+                <?php echo "<span style='color:#BF202F;'>Configúralo -></span> ". $SubcategoriaN1->Descripcion; ?>
               </a>
             <?php 
                 } 
