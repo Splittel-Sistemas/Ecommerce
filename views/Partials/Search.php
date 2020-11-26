@@ -6,6 +6,9 @@
   if (!class_exists("SubcategoriasController")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
   }
+  if (!class_exists("SubcategoriasN1Controller")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
+  }
   if (!function_exists('url_amigable')) {
     function url_amigable($url_tmp) {
       ##webdebe.com
@@ -28,6 +31,8 @@
       return $url;
       }
     }
+  
+  //BUSCADOR DE CATEGORIAS
   $SubcategoriasController = new SubcategoriasController();
   $SubcategoriasController->filter = "WHERE desc_subcategoria LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
   $SubcategoriasController->order = "LIMIT 5";
@@ -47,9 +52,31 @@
     </a>
   <?php }
   } 
-unset($SubcategoriasController);
-unset($ResultSubcategoria_);
-unset($Obj1);
+  unset($SubcategoriasController);
+  unset($ResultSubcategoria_);
+  unset($Obj1);
+
+  //BUSCADOR DE SUBCATEGORIAS
+  $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+            $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%".$_POST["Descripcion"]."%') AND activo='si' ";
+            $SubcategoriasN1Controller->order = "LIMIT 8";
+            $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
+            if($ResultSubcategoriasN1->count > 0 ){
+              $SubcategoriaN1Key = $ResultSubcategoriasN1->records[0]->CategoriasKey;
+             	foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
+               
+             ?>
+                <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($SubcategoriaN1->Codigo); ?>">
+                <?php echo "Configúralo -> ". $SubcategoriaN1->Descripcion; ?>
+              </a>
+            <?php 
+                } 
+            }
+    unset($SubcategoriasN1Controller);
+    unset($ResultSubcategoriasN1);
+    unset($SubcategoriaN1);
+
+  //BUSCADOR DE PRODUCTOS FIJOS
   $ProductoController = new ProductoController();
   $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND codigo_configurable ='' ";
   $ProductoController->order = "LIMIT 20";
