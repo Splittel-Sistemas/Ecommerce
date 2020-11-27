@@ -9,27 +9,6 @@
   }if (!class_exists("ContactoControlller")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Controller.php';
   }
-  # si existe la sesión tipo de cliente y es B2B
-  if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == "B2B") {
-    if (!class_exists("GetExtraDaysController")) {
-      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetExtraDays.Controller.php';
-    }
-    if (!isset($_SESSION['Ecommerce-WS-GetExtraDays']) || $_SESSION['Ecommerce-WS-GetExtraDays'] == 'N/D') {
-      try {
-        # obtención dias extra credito que tiene actualmente cliente
-        $GetExtraDaysController = new GetExtraDaysController();
-        $resultGetExtraDaysController = $GetExtraDaysController->get();
-        $resultGetExtraDaysController = $resultGetExtraDaysController->GetExtraDaysResult;
-        $ErrorCode = $resultGetExtraDaysController->ErrorCode;
-        $_SESSION['Ecommerce-WS-GetExtraDays'] = $ErrorCode == 0 ? $resultGetExtraDaysController->Value : 'N/D';
-        // print_r($resultGetExtraDaysController);
-      } catch (Exception $e) {
-        unset($_SESSION['Ecommerce-WS-GetExtraDays']);
-        $Message = "No se pudo obtener dias de credito";
-        $ErrorCode = -701;
-      }
-    }
-  }
   # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
   if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
     if (!class_exists("GetCurrencyRateController")) {

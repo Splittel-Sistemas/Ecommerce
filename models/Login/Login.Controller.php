@@ -108,8 +108,10 @@ class LoginController{
         $_SESSION['Ecommerce-ClienteTipo']     = $ClienteModel->GetTipo();
         $_SESSION['Ecommerce_ClienteIngreso']  = $ClienteModel->GetIngreso();
         $_SESSION['Ecommerce-ClienteDescuento'] = $ClienteModel->GetDescuento();
+        // si existe la sesión tipo de cliente y es B2B 
         if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
           $_SESSION['Ecommerce-ClienteEjecutivo'] = $ClienteModel->GetEmailEjecutivo();
+          $_SESSION['Ecommerce-WS-GetExtraDays'] = $ClienteModel->GetDiasCredito();
         }
 
         $OpenPay_ = new OpenPay_();
