@@ -10,7 +10,7 @@
         $LOGs = $LogSystem->List_Log("WHERE ".$SQL_Where ," ",false)->records;
     }else{
         $SQL_Where = "";
-        $LOGs = $LogSystem->List_Log("GROUP BY t99_f003, t99_f002"," ",false)->records;
+        $LOGs = $LogSystem->List_Log("GROUP BY t99_f003, t99_f002","ORDER BY t99_f003 DESC",false)->records;
     }
     
     // print_r($LOGs);
