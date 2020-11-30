@@ -10,7 +10,7 @@
 <meta name="geo.position" content="20.619458;-100.402572" />
 <meta name="ICBM" content="20.619458, -100.402572" />
 <meta name="author" content="TI - Grupo Splittel">
-<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8">
 <!-- Mobile Specific Meta Tag-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
