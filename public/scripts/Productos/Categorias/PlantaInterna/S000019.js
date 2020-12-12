@@ -260,6 +260,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     ListProductoDescription(Directorio)
     ListProductoAdicional(Directorio)
     agregarFichaTecnicaConfigurable(Marca+Ensamble+Familia+Unidad.value)
+    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var DistribuidoresPreconectorizados = function() {
