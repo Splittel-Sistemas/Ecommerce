@@ -42,8 +42,6 @@ var Categoria6 = function(){
 
     let descripcion = "PatchCord Cat6 "+Longitud.value+" pie(s) color "+ColorText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
-    agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
-    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 Categoria6()

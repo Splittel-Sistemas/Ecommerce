@@ -130,8 +130,6 @@ var JumpersMultimodo = function(){
   ChangeListImgProducto('OPJULCP','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value)
   ListProductoDescription('OPJULCP')
   ListProductoAdicional('OPJULCP')
-  agregarFichaTecnicaConfigurable('OPJULCP')
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var JumpersMonomodo = function(){
@@ -255,8 +253,6 @@ var JumpersMonomodo = function(){
     ChangeListImgProducto('OPJULCU','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MonomodoTipoFibra.value+NumeroHilos.value)
     ListProductoDescription('OPJULCU')
     ListProductoAdicional('OPJULCU')
-    agregarFichaTecnicaConfigurable('OPJULCU')
-    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var JumpersEspeciales = function(){
@@ -402,8 +398,7 @@ var JumpersEspeciales = function(){
     ListProductoDescription('OPJUESP/MM')
     ListProductoAdicional('OPJUESP/MM')
   }
-  agregarFichaTecnicaConfigurable('OPJUESP')
-  agregarCertificadoConfigurable(CodigoGenerado)
+ 
 }
 
 var JumpersArmados = function(){
@@ -540,8 +535,6 @@ var JumpersArmados = function(){
     ListImgProducto('OPJURA3')
     ListProductoDescription('OPJURA3')
     ListProductoAdicional('OPJURA3')
-    agregarFichaTecnicaConfigurable('OPJURA3')
-    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var JumpersMPO = function(){
@@ -594,8 +587,6 @@ var JumpersMPO = function(){
     CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
     showClave(CodigoGenerado)
   }
-  agregarFichaTecnicaConfigurable('OPJA1A1')
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var JumpersMPOBreakOut = function(){
@@ -644,8 +635,6 @@ var JumpersMPOBreakOut = function(){
     CalcularPrecio("../../models/Productos/Jumpers/MPOBreakOut/CalcularPrecioMPOBreakOut.Route.php", data)
   }
     showClave(CodigoGenerado)
-    agregarFichaTecnicaConfigurable('OPJA1xAE')
-    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var JumpersFibraOptica = function() {

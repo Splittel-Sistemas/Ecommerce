@@ -66,8 +66,8 @@ var ConectoresPosicion = [
 
 var cable_IE = function(){
   
-  let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
-  let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
+let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
+let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
 
 
   StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
@@ -270,8 +270,6 @@ var cable_IE = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "IE")
   ListProductoAdicional(Marca + Familia + "IE")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "IE")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_CI = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -476,8 +474,6 @@ var cable_CI = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "CI")
       ListProductoAdicional(Marca + Familia + "CI")
-      agregarFichaTecnicaConfigurable(Marca + Familia + "CI")
-      agregarCertificadoConfigurable(CodigoGenerado)
   //console.log(descripcion_cable)
 }
 var cable_SA = function(){
@@ -578,8 +574,6 @@ var cable_SA = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "SA")
       ListProductoAdicional(Marca + Familia + "SA")
-      agregarFichaTecnicaConfigurable(Marca + Familia + "SA")
-      agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_D0 = function(){
   // alert(TipoTermiacion.value);
@@ -646,8 +640,6 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "D0")
   ListProductoAdicional(Marca + Familia + "D0")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "D0")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_S8 = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -769,8 +761,7 @@ var cable_S8 = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "S8")
   ListProductoAdicional(Marca + Familia + "S8")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "S8")
-  agregarCertificadoConfigurable(CodigoGenerado)
+  
 }
 var cable_M8 = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -871,8 +862,6 @@ var cable_M8 = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "M8")
   ListProductoAdicional(Marca + Familia + "M8")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "M8")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_DI = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -972,9 +961,6 @@ var cable_DI = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "DI")
   ListProductoAdicional(Marca + Familia + "DI")
-
-  agregarFichaTecnicaConfigurable(Marca + Familia + "DI")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_AR = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -1074,8 +1060,6 @@ var cable_AR = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AR")
   ListProductoAdicional(Marca + Familia + "AR")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "AR")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var cable_AD = function(){
@@ -1177,9 +1161,6 @@ var cable_AD = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AD")
   ListProductoAdicional(Marca + Familia + "AD")
-
-  agregarFichaTecnicaConfigurable(Marca + Familia + "AD")
-  agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_F8 = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
@@ -1290,8 +1271,6 @@ var cable_F8 = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "F8")
       ListProductoAdicional(Marca + Familia + "F8")
-      agregarFichaTecnicaConfigurable(Marca + Familia + "F8")
-      agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 var interior_exterior_cable = function() {

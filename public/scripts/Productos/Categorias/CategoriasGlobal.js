@@ -166,13 +166,6 @@ var agregarFichaTecnica = function(name, descripcion){
     '</a>'+
   '</button>';
 }
-var agregarCertificado = function(name, descripcion){
-  return '<button class="btn btn-outline-secondary btn-sm "> '+
-    '<a href="'+name+'" target="_blank">'+
-      '<i class="icon-download"></i>&nbsp;'+descripcion+''+
-    '</a>'+
-  '</button>';
-}
 /**
  * Description
  *
@@ -369,18 +362,6 @@ var existCodeSapPatchCord = function(Codigo){
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
         document.getElementById('Costo').innerHTML = '$ '+Precio
-
-        let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
-        FichaTecnicaTecnica.innerHTML =''
-      if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
-        
-        FichaTecnicaTecnica.innerHTML = agregarFichaTecnica(resultResponse.FichaRuta, 'Ficha Técnica')
-      }
-      if((resultResponse.Certificado != '' && resultResponse.Certificado!=null)){
-       // let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
-        FichaTecnicaTecnica.innerHTML += agregarCertificado(resultResponse.Certificado, 'Certificado de pruebas')
-      }
-
    }else{
     StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'none')
     StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
@@ -423,14 +404,10 @@ var existEcommerce_ = function(Codigo){
         Descripcion_CEO.innerHTML = '';
       }
       // agregar ficha técnica
-      let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
+      
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
-        
+        let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML = agregarFichaTecnica(resultResponse.FichaRuta, 'Ficha Técnica')
-      }
-      if((resultResponse.Certificado != '' && resultResponse.Certificado!=null)){
-       // let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
-        FichaTecnicaTecnica.innerHTML += agregarCertificado(resultResponse.Certificado, 'Certificado de pruebas')
       }
 
       if(resultResponse.ProductoPrecio > 0){
@@ -524,7 +501,6 @@ if(document.getElementById('CodeConfigurable') && hhh == 0){
  */
 var agregarFichaTecnicaConfigurable = function(idFicha){
   let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
-  FichaTecnicaTecnica.innerHTML ='';
   if(idFicha != ''){
   ajax_("../../models/Productos/ProductoConfigurable.Route.php","POST","json", 
     { 
@@ -540,37 +516,6 @@ var agregarFichaTecnicaConfigurable = function(idFicha){
           '</button>';
       FichaTecnicaTecnica.innerHTML = textFicha
       }
-    
-    })
-  } 
-}
-
-/**
- * Description
- *
- * @param {Object} opt - Foo
- *
- * @return {number} b - Bar
- */
-var agregarCertificadoConfigurable = function(codigo){
-  let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
-  if(codigo != ''){
-  ajax_("../../models/Productos/ProductoConfigurable.Route.php","POST","json", 
-    { 
-      Action: 'GetCertificado', 
-      CodigoFicha: codigo
-    }, 
-    function(response){
-      
-      if(response.certificado!=''){
-        textCertificado='<button id="PruebaCertificado" class="btn btn-outline-secondary btn-sm "> '+
-            '<a href="'+response.certificado+'" target="_blank">'+
-              '<i class="icon-download"></i>&nbsp;Certificado de prueba'+
-            '</a>'+
-          '</button>';
-      FichaTecnicaTecnica.innerHTML += textCertificado
-      }
-    
     })
   } 
 }

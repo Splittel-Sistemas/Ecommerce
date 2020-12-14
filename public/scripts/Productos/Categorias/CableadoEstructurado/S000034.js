@@ -42,8 +42,6 @@ var Categoria5e = function(){
 
     let descripcion = "PatchCord Cat5e "+Longitud.value+" pie(s) color "+ColorText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
-    agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
-    agregarCertificadoConfigurable(CodigoGenerado)
 }
 
 Categoria5e()

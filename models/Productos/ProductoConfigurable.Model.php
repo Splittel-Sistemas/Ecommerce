@@ -52,25 +52,5 @@
 			throw $e;
 		  }
 	  }
-
-	  public function ExistCert($codigo){
-		try {
-		  $codigo1="";
-		  $file="";
-		  foreach(glob('../../public/images/img_spl/certificados/*.pdf') as $image) {
-				  $path_parts = pathinfo($image);
-				  $file=$path_parts['filename'];
-				  if (preg_match("#$file#i",$codigo)) {
-					 $codigo1=$image;
-				  } 
-			 }
-			 $array = array('certificado' => $codigo1);
-		 return $array;
-	   
-		} catch (Exception $e) {
-		  throw $e;
-		}
-  
-	  }
 	}
 	
