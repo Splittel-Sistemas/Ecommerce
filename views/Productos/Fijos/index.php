@@ -188,6 +188,20 @@
 <div class="d-flex flex-wrap justify-content-between">
       <div class="mt-2 mb-2">
       <?php
+        if(!empty($Obj->Certificado)){
+          $Certificado = $Obj->Certificado;
+          if(file_exists($Certificado) ) {
+            
+      ?>
+        <button class="btn btn-outline-secondary btn-sm "> 
+          <a href="<?php echo $Certificado;?>" target="_blank">
+            <i class="icon-download"></i>&nbsp;Certificado de prueba
+          </a>
+        </button> 
+            
+      <?php
+          }
+        }
         if(!empty($Obj->FichaRuta)){
           $FichaTecnica = '../../public/images/img_spl/'.$Obj->FichaRuta.'.pdf';
           if(file_exists($FichaTecnica) ) {

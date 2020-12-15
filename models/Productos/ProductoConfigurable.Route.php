@@ -27,6 +27,11 @@ class ProductoConfigurableRoute{
                     $Result = $ProductoConfigurableController->GetFichaTecnica();
                     echo json_encode($Result, JSON_UNESCAPED_UNICODE);
                 break;
+                case 'GetCertificado':
+                    $ProductoConfigurableController = new ProductoConfigurableController();
+                    $Result = $ProductoConfigurableController->GetCertificado();
+                    echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                break;
                 default:
                     throw new Exception("No se encontro la opción solicitada, por favor contactanos");
                 break;
