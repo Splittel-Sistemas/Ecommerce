@@ -62,7 +62,9 @@
 				  $file=$path_parts['filename'];
 				  if (preg_match("#$file#i",$codigo)) {
 					 $codigo1=$image;
-				  } 
+				  } else if(levenshtein($file, $codigo)==4){
+					$codigo1=$image;
+				}
 			 }
 			 $array = array('certificado' => $codigo1);
 		 return $array;

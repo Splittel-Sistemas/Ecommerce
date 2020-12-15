@@ -114,7 +114,9 @@
           <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span id="Clave" class="styleClave"></span> </div>
           <hr class="mb-2">
           <div class="d-flex flex-wrap justify-content-between">
-            <div class="mt-2 mb-2" id="add-ficha-tecnica-mini-catalogo">   
+            <div class="mt-2 mb-2"> 
+            <div id="add-ficha-tecnica-mini-catalogo"></div>
+            <div  id="add-certificado"></div>
             </div> 
             <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
               <div class="d-inline-block">

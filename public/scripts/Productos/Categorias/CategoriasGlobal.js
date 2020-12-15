@@ -553,7 +553,8 @@ var agregarFichaTecnicaConfigurable = function(idFicha){
  * @return {number} b - Bar
  */
 var agregarCertificadoConfigurable = function(codigo){
-  let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
+  let CertificadoPrueba = document.getElementById('add-certificado')
+  CertificadoPrueba.innerHTML='';
   if(codigo != ''){
   ajax_("../../models/Productos/ProductoConfigurable.Route.php","POST","json", 
     { 
@@ -563,12 +564,12 @@ var agregarCertificadoConfigurable = function(codigo){
     function(response){
       
       if(response.certificado!=''){
-        textCertificado='<button id="PruebaCertificado" class="btn btn-outline-secondary btn-sm "> '+
+        textCertificado='<button class="btn btn-outline-secondary btn-sm "> '+
             '<a href="'+response.certificado+'" target="_blank">'+
               '<i class="icon-download"></i>&nbsp;Certificado de prueba'+
             '</a>'+
           '</button>';
-      FichaTecnicaTecnica.innerHTML += textCertificado
+          CertificadoPrueba.innerHTML = textCertificado
       }
     
     })
