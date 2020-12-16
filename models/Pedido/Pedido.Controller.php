@@ -151,7 +151,7 @@ class PedidoController{
                 foreach ($data as $key => $row) {
                     $Email = new Email(true);
                     $TemplatePedido = new TemplatePedido();
-                    $Email->MailerSubject = "Ecommerce";
+                    $Email->MailerSubject = " Ecommerce - Pedido #".$row->Key;
                     $Email->MailerBody = $TemplatePedido->EcommercePedidoPagoBanco($row->Key);
                     $Email->MailerListTo = [$row->Correo];
                     $Email->EmailSendEmail();
@@ -420,7 +420,7 @@ class PedidoController{
                                 if (!$ResultSalesQuatation['error']) {
                                     $Email = new Email(true);
                                     $TemplatePedido = new TemplatePedido();
-                                    $Email->MailerSubject = "Ecommerce";
+                                    $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
                                     $Email->MailerBody = $TemplatePedido->body();
                                     $Email->MailerListTo = [$ClienteModel->GetEmail()];
                                     $Email->EmailSendEmail();

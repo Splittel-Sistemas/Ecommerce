@@ -94,7 +94,7 @@
                                             // Envio de correo de acuerdo a pedido realizado
                                             $Email = new Email(true);
                                             $TemplatePedido = new TemplatePedido();
-                                            $Email->MailerSubject = "Ecommerce";
+                                            $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
                                             $Email->MailerBody = $TemplatePedido->body();
                                             $Email->MailerListTo = [$ClienteModel->GetEmail()];
                                             $Email->EmailSendEmail();
@@ -123,7 +123,7 @@
                                             // Envio de correo de acuerdo a pedido realizado
                                             $Email = new Email(true);
                                             $TemplatePedido = new TemplatePedido();
-                                            $Email->MailerSubject = "Ecommerce";
+                                            $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
                                             $Email->MailerBody = $TemplatePedido->body();
                                             $Email->MailerListTo = [$ClienteModel->GetEmail()];
                                             $Email->EmailSendEmail();
