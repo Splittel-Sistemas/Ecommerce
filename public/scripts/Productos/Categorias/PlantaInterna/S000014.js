@@ -27,10 +27,25 @@ function validateDecimalEntero(valor) {
       return false;
   }
 }
+
+function JumperValidacionLongitud(Elem, Tamano){//Solo numeros
+  if (Elem.value.indexOf('.') > -1)
+  {
+    let x = Elem.value.split(".", 2);
+    if(x[0].length <= 3){
+      Elem.value = Elem.value.substring(0,x[0].length +2)
+    }
+  }else{
+    if(Elem.value.length >= Tamano){
+      Elem.value = Elem.value.substring(0,Tamano)
+    }
+  }
+}
+
 var contJumperMultimodo = 0;
 var JumpersMultimodo = function(){
   let Longitud = document.getElementById('Longitud')
-  validacionCantidad_(Longitud, 3)
+  JumperValidacionLongitud(Longitud, 3)
 
   let Conector1 = document.getElementById('Conector1')
   let Conector2 = document.getElementById('Conector2')
@@ -136,7 +151,7 @@ var JumpersMultimodo = function(){
 
 var JumpersMonomodo = function(){
   let Longitud = document.getElementById('Longitud')
-  validacionCantidad_(Longitud, 3)
+  JumperValidacionLongitud(Longitud, 3)
 
   let Conector1 = document.getElementById('Conector1')
   let Conector2 = document.getElementById('Conector2')
@@ -408,7 +423,7 @@ var JumpersEspeciales = function(){
 
 var JumpersArmados = function(){
   let Longitud = document.getElementById('Longitud')
-  validacionCantidad_(Longitud, 3)
+  JumperValidacionLongitud(Longitud, 3)
   // conectores 
   let Conector1 = document.getElementById('Conector1')
   let Conector2 = document.getElementById('Conector2')
@@ -546,7 +561,7 @@ var JumpersArmados = function(){
 
 var JumpersMPO = function(){
   let Longitud = document.getElementById('Longitud')
-  validacionCantidad_(Longitud, 3)
+  JumperValidacionLongitud(Longitud, 3)
 
   let Conectarizacion = "A1"
   let Polaridad = document.getElementById('Polaridad')
@@ -570,7 +585,7 @@ var JumpersMPO = function(){
   Familia = "J"
 
   if(Longitud.value > 100){
-    validacionCantidad_(Longitud, 2)
+    JumperValidacionLongitud(Longitud, 2)
   }
       
   if (Longitud.value > 0 && Longitud.value <= 100) {
@@ -600,7 +615,7 @@ var JumpersMPO = function(){
 
 var JumpersMPOBreakOut = function(){
   let Longitud = document.getElementById('Longitud')
-  validacionCantidad_(Longitud, 3)
+  JumperValidacionLongitud(Longitud, 3)
 
   let ConectarizacionLadoA = document.getElementById('ConectorLadoA')
   let ConectarizacionLadoB = document.getElementById('ConectorLadoB')
@@ -620,7 +635,7 @@ var JumpersMPOBreakOut = function(){
   Familia = "J"
 
   if(Longitud.value > 100){
-    validacionCantidad_(Longitud, 2)
+    JumperValidacionLongitud(Longitud, 2)
   }
       
   if (Longitud.value > 0 && Longitud.value <= 100) {
