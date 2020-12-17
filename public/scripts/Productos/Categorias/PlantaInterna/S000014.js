@@ -38,10 +38,8 @@ function JumperValidacionLongitud(Elem, Tamano){//Solo numeros
       }
       if(x[0].length <= 3){
         Elem.value = Elem.value.substring(0,x[0].length +2)
-        console.log(Elem.value.substring(0,x[0].length +2), 'menor3')
       }else{
-        console.log(x[0].substring(0,Tamano)+'.'+x[1].length, 'mayor3')
-        Elem.value = x[0].substring(0,Tamano)+'.'+x[1].length
+        Elem.value = x[0].substring(0,Tamano)+'.'+x[1]
       }
     }else{
       if(Elem.value.length >= Tamano){
