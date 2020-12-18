@@ -29,7 +29,7 @@
       </div>
     </div>
     <!-- Page Content-->
-     <section class="fw-section " style="background-image: url(../../public/images/img_spl/catalogo/Descarga-catalogo.jpg); background-position: center top; background-size: 100% auto;"><span class="overlay" style="opacity: .3;"></span>
+     <section class="fw-section " style="background-image: url(../../public/images/img_spl/catalogo/Descarga-catalogo.jpg); background-position: center top; background-size: 100% auto auto;"><span class="overlay" style="opacity: .3;"></span>
       <div class="col-lg-12 col-md-12 padding-bottom-2x padding-top-2x container text-center">
       <div class="row">
         <div class="col-lg-8 col-md-8">
