@@ -5,6 +5,7 @@ class Cliente{
     public $Apellidos;
     public $Telefono;
     public $Email;
+    private $ConfirmPassword;
     public $Password;
     public $FechaIngreso;
     public $LastLogin;
@@ -45,6 +46,12 @@ class Cliente{
         $this->Email = $Email;
     }public function SetPassword($Password){
         $this->Password = $Password;
+    }public function SetConfirmPassword($ConfirmPassword){
+        $this->ConfirmPassword = $ConfirmPassword;
+    }public function SetCardCode($CardCode){
+        $this->CardCode = $CardCode;
+    }public function SetSociedad($Sociedad){
+        $this->Sociedad = $Sociedad;
     }public function SetPasswordB2b($PasswordB2b){
         $this->PasswordB2b = $PasswordB2b;
     }public function SetFechaIngreso($FechaIngreso){
@@ -178,6 +185,26 @@ class Cliente{
                 '".$this->Activo."',
                 '".$this->Tipo."',
                 ".$this->Ingreso.",
+                @Result);", "@Result");
+            return $result;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function createb2b(){
+        try {
+            $result = $this->Connection->Exec_store_procedure_json("CALL ClienteB2BRegistro(
+                ".$this->ClienteKey.",
+                '".$this->Nombre."',
+                '".$this->Apellidos."',
+                '".$this->Telefono."',
+                '".$this->Email."',
+                '".$this->Password."',
+                '".$this->ConfirmPassword."',
+                '".$this->CardCode."',
+                '".$this->Sociedad."',
+                '".$this->PasswordB2b."',
                 @Result);", "@Result");
             return $result;
         } catch (Exception $e) {
