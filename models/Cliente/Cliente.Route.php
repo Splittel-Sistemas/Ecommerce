@@ -22,6 +22,11 @@
                         $Result = $ClienteController->Create();
                         echo json_encode($Result, JSON_UNESCAPED_UNICODE);
                     break;
+                    case 'createb2b':
+                        $ClienteController = new ClienteController();
+                        $Result = $ClienteController->CreateB2B();
+                        echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                    break;
                     case 'cambiarPassword':
                         $ClienteController = new ClienteController();
                         $Result = $ClienteController->clienteB2BCambiarPassword();

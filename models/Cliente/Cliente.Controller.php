@@ -62,6 +62,35 @@ if (!class_exists("Connection")) {
         throw $e;
       }
     }
+    public function CreateB2B(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $EncrypData = new EncrypData_('password');
+          $ClienteModel = new Cliente(); 
+          $ClienteModel->SetParameters($this->Connection, $this->Tool);
+          $ClienteModel->SetClienteKey(0);
+          $ClienteModel->SetNombre($_POST["Nombre"]);
+          $ClienteModel->SetApellidos($_POST["Apellidos"]);
+          $ClienteModel->SetTelefono($_POST["Telefono"]);
+          $this->Tool->validEmail("Correo", "Correo", true);
+          $ClienteModel->SetEmail($_POST["Correo"]);
+          $ClienteModel->SetPassword($EncrypData->cadenaEncrypt($_POST["Password"]));
+          $ClienteModel->SetConfirmPassword($EncrypData->cadenaEncrypt($_POST["ConfirmarPassword"]));
+          $ClienteModel->SetCardCode($_POST["CardCode"]);
+          $ClienteModel->SetSociedad($_POST["Sociedad"]);
+          $ClienteModel->SetPasswordB2b($_POST["PasswordB2B"]);
+          $ResultCliente = $ClienteModel->createb2b();
+          unset($EncrypData);
+          unset($ClienteModel);
+          return $ResultCliente;
+        }else{
+          throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function Create(){
       try {
         if (!$this->Connection->conexion()->connect_error) {
