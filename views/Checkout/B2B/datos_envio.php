@@ -52,22 +52,28 @@
           $pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();          
         }
         
-        $disabled = '';
         $table_td_color = '';
+        $check = '';
+        $boleano = false;
         foreach ($listGetShipToAdress as $key => $GetShipToAdress): 
-          $check = '';
-          if($pedidoCostoEnvio == 0 && !empty($pedidoDatosEnvio)){
-            $check = $pedidoDatosEnvio == $GetShipToAdress->Adress ? 'checked': '' ;
-            $disabled = 'disabled';
-            $table_td_color = $pedidoDatosEnvio == $GetShipToAdress->Adress ? 'table-info' : '' ;
-          }if(empty($GetShipToAdress->Street) || empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->Block) || 
+          $disabled = '';
+          if(empty($GetShipToAdress->Street) || empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->Block) || 
           empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->ZipCode) || empty($GetShipToAdress->Adress) ||
           empty($GetShipToAdress->ContactPerson->Name) || empty($GetShipToAdress->ContactPerson->Telphone) || empty($GetShipToAdress->ContactPerson->Email) ||
           empty($GetShipToAdress->City)){
             $disabled = 'disabled';
-          }else{
-            $check = $key == 0 ? 'checked': '';
+          }else{            
+            if($pedidoCostoEnvio == 0 && !empty($pedidoDatosEnvio)){
+              $check = $pedidoDatosEnvio == $GetShipToAdress->Adress && !$boleano ? 'checked': '' ;
+              $disabled = 'disabled';
+              $table_td_color = $pedidoDatosEnvio == $GetShipToAdress->Adress ? 'table-info' : '' ;
+            }else{
+              $check = $disabled == "" && $check == "" && !$boleano ? 'checked': '';
+            }
           }
+          if($check == "checked") $boleano = true
+
+          
       ?>
       <tr class="<?php echo $table_td_color;?>"> 
         <td>

@@ -38,15 +38,24 @@
     </thead>
     <tbody>
       <?php 
+      $check = '';
+      $boleano = false;
         foreach ($listGetShipToAdress as $key => $GetShipToAdress): 
-          // $GetShipToAdress = $row->BussinessPartnerAdresses;
-          // print_r($GetShipToAdress);
-          $check = $key == 0 ? 'checked': '';
+          $disabled = '';
+          if(empty($GetShipToAdress->Street) || empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->Block) || 
+          empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->ZipCode) || empty($GetShipToAdress->Adress) ||
+          empty($GetShipToAdress->ContactPerson->Name) || empty($GetShipToAdress->ContactPerson->Telphone) || empty($GetShipToAdress->ContactPerson->Email) ||
+          empty($GetShipToAdress->City)){
+            $disabled = 'disabled';
+          }else{
+            $check = $disabled == "" && $check == "" && !$boleano ? 'checked': '';
+          }
+          if($check == "checked") $boleano = true
       ?>
       <tr>
         <td>
           <div class="custom-control custom-radio">
-            <input class="custom-control-input datosEnvio" type="radio" id="radio-<?php echo $GetShipToAdress->Adress;?>" name="radioDatosEnvio" value="<?php echo $GetShipToAdress->Adress;?>" <?php echo $check ?>>
+            <input class="custom-control-input datosEnvio" type="radio" id="radio-<?php echo $GetShipToAdress->Adress;?>" name="radioDatosEnvio" value="<?php echo $GetShipToAdress->Adress;?>" <?php echo $check ?> <?php echo $disabled ?>>
             <label class="custom-control-label" for="radio-<?php echo $GetShipToAdress->Adress;?>"></label>
           </div>
         </td>
