@@ -133,30 +133,34 @@ class DetalleController{
     public function AgregarArticuloPedido(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
-                if(!isset($_SESSION["Ecommerce-PedidoKey"])){
-                    $PedidoModel = new Pedido_();  
-                    $PedidoModel->SetParameters($this->Connection, $this->Tool);  
-                    $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
-                    $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
-                    $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
-                    $PedidoModel->SetTipoPedido("NORMAL");
-                    $ResultPedido =  $PedidoModel->CreatePedido(); 
-                    if(!$ResultPedido['error']){
-                        $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
+                if(isset($_SESSION['Ecommerce-CostoEnvio']) && $_SESSION['Ecommerce-CostoEnvio'] > 1){
+                    if(!isset($_SESSION["Ecommerce-PedidoKey"])){
+                        $PedidoModel = new Pedido_();  
+                        $PedidoModel->SetParameters($this->Connection, $this->Tool);  
+                        $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
+                        $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
+                        $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
+                        $PedidoModel->SetTipoPedido("NORMAL");
+                        $ResultPedido =  $PedidoModel->CreatePedido(); 
+                        if(!$ResultPedido['error']){
+                            $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
+                        }
                     }
+                    if(isset($_SESSION["Ecommerce-PedidoKey"])){
+                        $DetalleModel  = new Detalle_();
+                        $DetalleModel->SetParameters($this->Connection, $this->Tool);
+                        $DetalleModel->SetKey(0);
+                        $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                        $DetalleModel->SetCodigo($_POST['Codigo']);
+                        $DetalleModel->SetCantidad($_POST['Cantidad']);
+                        $DetalleModel->SetDescuento($_POST['Descuento']);
+                        $DetalleModel->SetCantidadValidacion($_POST['CantidadValidacion']);
+                        return $ResultDetalle = $DetalleModel->Create();
+                    }
+                    return $ResultPedido;
+                }else{
+                    throw new Exception("Recuerda que una vez solicitado tu costo de envio, no podras agregar mas productos a tu pedido.");
                 }
-                if(isset($_SESSION["Ecommerce-PedidoKey"])){
-                    $DetalleModel  = new Detalle_();
-                    $DetalleModel->SetParameters($this->Connection, $this->Tool);
-                    $DetalleModel->SetKey(0);
-                    $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                    $DetalleModel->SetCodigo($_POST['Codigo']);
-                    $DetalleModel->SetCantidad($_POST['Cantidad']);
-                    $DetalleModel->SetDescuento($_POST['Descuento']);
-                    $DetalleModel->SetCantidadValidacion($_POST['CantidadValidacion']);
-                    return $ResultDetalle = $DetalleModel->Create();
-                }
-                return $ResultPedido;
             }else{
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
@@ -321,31 +325,35 @@ class DetalleController{
     public function AgregarArticuloConfigurablePedido(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
-                if(!isset($_SESSION["Ecommerce-PedidoKey"])){
-                    $PedidoModel = new Pedido_();  
-                    $PedidoModel->SetParameters($this->Connection, $this->Tool);  
-                    $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
-                    $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
-                    $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
-                    $PedidoModel->SetTipoPedido("NORMAL");
-                    $ResultPedido =  $PedidoModel->CreatePedido(); 
-                    if(!$ResultPedido['error']){
-                        $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
+                if(isset($_SESSION['Ecommerce-CostoEnvio']) && $_SESSION['Ecommerce-CostoEnvio'] > 1){
+                    if(!isset($_SESSION["Ecommerce-PedidoKey"])){
+                        $PedidoModel = new Pedido_();  
+                        $PedidoModel->SetParameters($this->Connection, $this->Tool);  
+                        $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);    
+                        $PedidoModel->SetDiasExtraCredito(isset($_SESSION['Ecommerce-WS-GetExtraDays']) ? $_SESSION['Ecommerce-WS-GetExtraDays'] : 0);    
+                        $PedidoModel->SetClienteKey(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);    
+                        $PedidoModel->SetTipoPedido("NORMAL");
+                        $ResultPedido =  $PedidoModel->CreatePedido(); 
+                        if(!$ResultPedido['error']){
+                            $_SESSION["Ecommerce-PedidoKey"] = $ResultPedido['keyy'];
+                        }
                     }
+                    if(isset($_SESSION["Ecommerce-PedidoKey"])){
+                        $DetalleModel  = new Detalle_();
+                        $DetalleModel->SetParameters($this->Connection, $this->Tool);
+                        $DetalleModel->SetKey(0);
+                        $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                        $DetalleModel->SetCodigo($_POST['Codigo']);
+                        $DetalleModel->SetCodigoConfigurable($_POST['CodigoConfigurable']);
+                        $DetalleModel->SetCantidad($_POST['Cantidad']);
+                        $DetalleModel->SetDescuento($_POST['Descuento']);
+                        $DetalleModel->SetSubtotal($_POST['Precio']);
+                        return $ResultDetalle = $DetalleModel->CreateConfigurable();
+                    }
+                    return $ResultPedido;
+                }else{
+                    throw new Exception("Recuerda que una vez solicitado tu costo de envio, no podras agregar mas productos a tu pedido.");
                 }
-                if(isset($_SESSION["Ecommerce-PedidoKey"])){
-                    $DetalleModel  = new Detalle_();
-                    $DetalleModel->SetParameters($this->Connection, $this->Tool);
-                    $DetalleModel->SetKey(0);
-                    $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                    $DetalleModel->SetCodigo($_POST['Codigo']);
-                    $DetalleModel->SetCodigoConfigurable($_POST['CodigoConfigurable']);
-                    $DetalleModel->SetCantidad($_POST['Cantidad']);
-                    $DetalleModel->SetDescuento($_POST['Descuento']);
-                    $DetalleModel->SetSubtotal($_POST['Precio']);
-                    return $ResultDetalle = $DetalleModel->CreateConfigurable();
-                }
-                return $ResultPedido;
             }else{
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
