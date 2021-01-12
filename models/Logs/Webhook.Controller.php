@@ -28,7 +28,7 @@
 		public $order;
 
 		public function __construct(){
-			$this->conn = new Connection();
+			$this->Connection = new Connection();
 			$this->Tool = new Functions_tools();
 		}
 
