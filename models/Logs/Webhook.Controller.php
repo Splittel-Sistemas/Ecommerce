@@ -38,7 +38,7 @@
 				if (!$this->Connection->conexion()->connect_error) {
 					$WebhookModel = new Webhook();
 					$WebhookModel->SetParameters($this->Connection, $this->Tool);
-					$Exist = $WebhookModel->getgetAll($this->filter, $this->order);
+					$Exist = $WebhookModel->get($this->filter, $this->order);
 					return $Exist;
 				}else{
 					throw new Exception("No hay datos maestros por favor contacta con tu ejecutivo!", 1);
