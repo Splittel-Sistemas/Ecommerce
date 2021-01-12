@@ -7,7 +7,9 @@
   $WebhookController->filter = "WHERE t12_f002 = '".$_GET["Key"]."' AND t12_f004 = 'completed' ";
   $WebhookController->order = "";
   $ExistWebhook = $WebhookController->GetBy();
+  echo $ExistWebhook;
   if($ExistWebhook){
-    header('Location: ../Completado');
+    header('Location: ../Completado.php');
+  }else{
+    header('Location: ../Incompleto.php');
   }
-  header('Location: ../Incompleto');

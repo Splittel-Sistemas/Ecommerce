@@ -84,6 +84,7 @@
     public function get($filter, $order){
       try {
         $SQLSTATEMENT = "SELECT * FROM t12_open_pay_webhook_log ".$filter." ".$order;
+        echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
         while ($row = $result->fetch_object()) {
