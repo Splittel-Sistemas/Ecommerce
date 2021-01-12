@@ -24,10 +24,28 @@
 		
 		private $conn;
 		private $Tool;
+		public $filter;
+		public $order;
 
 		public function __construct(){
 			$this->conn = new Connection();
 			$this->Tool = new Functions_tools();
+		}
+
+		public function GetBy()
+		{
+			try {
+				if (!$this->Connection->conexion()->connect_error) {
+					$WebhookModel = new Webhook();
+					$WebhookModel->SetParameters($this->Connection, $this->Tool);
+					$Exist = $WebhookModel->getgetAll($this->filter, $this->order);
+					return $Exist;
+				}else{
+					throw new Exception("No hay datos maestros por favor contacta con tu ejecutivo!", 1);
+				}
+			} catch (Exception $e) {
+				throw $e;
+			}
 		}
 
 		public function webhook(){

@@ -153,6 +153,52 @@
 					throw $e;
 				}
 			}
+			public function CreateCharge3DSecure($Cliente, $Pedido){
+				if(is_null($this->Id)){
+					throw new Exception('$Id is null');
+				}
+				if(is_null($this->PublicKey)){
+					throw new Exception('$PublicKey is null');
+				}
+				try {
+					$this->OpenPayy = Openpay::getInstance($this->Id, $this->PublicKey);
+					Openpay::setProductionMode($this->ProductionMode);
+					$Customer = array(
+						'name'          => $Cliente->GetNombre(),
+						'last_name'     => $Cliente->GetApellidos(),
+						'phone_number'  => $Cliente->GetTelefono(),
+						'email'         => $Cliente->GetEmail()
+					);
+
+					$valor= round($Pedido->GetTotalMXN(),2);
+					$Amount = strval($valor);
+
+					$chargeData = array(
+						"method" => "card",
+						"amount" => $Amount,
+						"description" => "Pedido Número ".$Pedido->GetKey(),
+						"order_id" => $Pedido->GetKey(),
+						'source_id' => $this->TokenId,//token tarjeta
+						"redirect_url" => "https://fibremex.co/fibra-optica/views/Pedido/3DSecure/index.php?Key=".$Pedido->GetKey(),
+						"use_3d_secure" => "true",
+						'device_session_id' => $this->DeviceSessionId,// sessionDev []
+						'customer' => $Customer
+					);
+					return $this->Charge = $this->OpenPayy->charges->create($chargeData);
+				} catch (OpenpayApiTransactionError $e) {
+					throw $e;
+				} catch (OpenpayApiRequestError $e) {
+					throw $e;
+				} catch (OpenpayApiConnectionError $e) {
+					throw $e;
+				} catch (OpenpayApiAuthError $e) {
+					throw $e;
+				} catch (OpenpayApiError $e) {
+					throw $e;
+				} catch (Exception $e) {
+					throw $e;
+				}
+			}
 			public function CreateChargeBank($Cliente,$Pedido){
 				if(is_null($this->Id)){
 					throw new Exception('$Id is null');

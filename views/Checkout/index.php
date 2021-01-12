@@ -87,6 +87,16 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-3d-secure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body" id="modal-body-3d-secure">
+            
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
@@ -103,6 +113,7 @@
     <script type="text/javascript" src="../../public/plugins/OpenPay/js/openpay.v1.min.js"></script>
     <script type='text/javascript' src="../../public/plugins/OpenPay/js/openpay-data.v1.min.js"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/PagoTarjeta.js?id=<?php echo rand() ?>"></script>
+    <script type="text/javascript" src="../../public/scripts/Checkout/Pago/Pago3DSecure.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/PagoCredito.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/PagoBanco.js?id=<?php echo rand() ?>"></script>
   </body>

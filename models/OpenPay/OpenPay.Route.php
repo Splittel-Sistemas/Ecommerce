@@ -19,6 +19,11 @@
             try {
                 $Action = $this->Tool->validate_isset_post('Action');
                 switch ($Action) {
+                    case 'Pago3DSecure':
+                        $OpenPayController = new OpenPayController();
+                        $Result = $OpenPayController->Pago3DSecure();
+                        echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                    break;
                     case 'PagoTarjeta':
                         $OpenPayController = new OpenPayController();
                         $Result = $OpenPayController->PagoTarjeta();

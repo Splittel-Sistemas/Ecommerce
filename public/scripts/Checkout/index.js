@@ -9,6 +9,7 @@ var datosViewResumenCheckoutPedido = function(){
   let lineaCredito  = false
   let metodoPago    = ''
   let monedaPago    = getChecked('.monedaPago')
+  let PagoTarjeta    = getChecked('.pagoTarjeta')
   let requiereFactura = document.getElementById("RequiereFactura")
   let checkDatosEnvio       = getChecked('.datosEnvio')
   let checkDatosFacturacion = getChecked('.datosFacturacion')
@@ -20,7 +21,7 @@ var datosViewResumenCheckoutPedido = function(){
   }
 
   ajax_('../../views/Checkout/Resumen.php', 'POST', 'HTML', 
-  { Credito: lineaCredito, monedaPago: monedaPago, requiereFactura: requiereFactura.checked, Banco: pagoBanco.checked }, 
+  { Credito: lineaCredito, monedaPago: monedaPago, requiereFactura: requiereFactura.checked, Banco: pagoBanco.checked, PagoTarjeta: PagoTarjeta }, 
   function(response){
     document.getElementById('PartialCheckout-4').innerHTML = response
 
