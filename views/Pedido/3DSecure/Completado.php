@@ -2,8 +2,7 @@
   $_SESSION['Ecommerce-PedidoTotal'] = 0;
   unset($_SESSION['Ecommerce-PedidoKey']);
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8">
     <!-- Mobile Specific Meta Tag-->
