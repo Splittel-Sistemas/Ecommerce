@@ -1,3 +1,7 @@
+<?php 
+  $_SESSION['Ecommerce-PedidoTotal'] = 0;
+  unset($_SESSION['Ecommerce-PedidoKey']);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
