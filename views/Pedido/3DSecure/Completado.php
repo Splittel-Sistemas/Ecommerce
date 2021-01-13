@@ -9,14 +9,8 @@
 				<u>Para ver los detalles de su compra:</u>
 			</p>
 			<div class="padding-top-1x padding-bottom-1x">
-				<a class="btn btn-outline-primary" onclick="ViewCuenta()"><i class="icon-user"></i>&nbsp;Ir a mi cuenta</a>
+				<a class="btn btn-outline-primary" onclick="window.parent.location.href='<?php echo $link ?>'"><i class="icon-user"></i>&nbsp;Ir a mi cuenta</a>
 			</div>
 		</div>
 	</div>
 </div>
-
-	<script>
-	var ViewCuenta = function(){
-		window.parent.location.href = <?php echo $link ?>
-	} 
-	</script>
