@@ -102,3 +102,7 @@ var Expiracion = function(Elem){
   document.getElementById("exp_month").value = res[0]
   document.getElementById("exp_year").value = res[1]
 }
+
+var Verificar3DSecure = function(){
+  window.parent.location.href = "../Pedido/3DSecure/Completado.php"
+}
