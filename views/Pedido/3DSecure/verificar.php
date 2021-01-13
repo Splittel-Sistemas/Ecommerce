@@ -1,7 +1,7 @@
 <button type="button" id="<?php echo $_GET['id'] ?>" onclick="Verificar3DSecure()">Continuar</button>
 
 <script>
-  var Verificar3DSecure = function(Elem){
-    window.parent.location.href = "../3DSecure/verificar.php?id="+Elem.id
+  var Verificar3DSecure = function(){
+    window.parent.location.href = "../3DSecure/Completado.php"
   } 
 </script>

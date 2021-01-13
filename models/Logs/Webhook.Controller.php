@@ -22,7 +22,7 @@
 	 */
 	class WebhookController{
 		
-		private $conn;
+		private $Connection;
 		private $Tool;
 		public $filter;
 		public $order;
@@ -50,13 +50,64 @@
 
 		public function webhook(){
 			try {
-				if (!$this->conn->conexion()->connect_error) {
-					// $response = $this->Tool->Clear_data_for_sql('{"type":"charge.created","event_date":"2020-07-23T11:17:24-05:00","transaction":{"id":"trligaa09ginwowwon5q","authorization":null,"operation_type":"in","transaction_type":"charge","status":"in_progress","conciliated":false,"creation_date":"2020-07-23T11:17:24-05:00","operation_date":"2020-07-23T11:17:24-05:00","description":"Pedido Número 2396","error_message":null,"order_id":"2396","due_date":"2020-08-02T23:59:59-05:00","amount":6607.66,"customer":{"name":"RAUL VALENTIN","last_name":"JARAMILLO ARRIAGA","email":"dmgnetconta@gmail.com","phone_number":null,"address":null,"creation_date":"2020-07-23T11:17:24-05:00","external_id":null,"clabe":null},"payment_method":{"type":"bank_transfer","bank":"BBVA Bancomer","clabe":"012914002014222862","agreement":"1422286","name":"42681716192450496262"},"currency":"MXN","method":"bank_account"}}');
-					$response = $this->Tool->Clear_data_for_sql(file_get_contents('php://input'));
+				if (!$this->Connection->conexion()->connect_error) {
+					$response = $this->Tool->Clear_data_for_sql('{
+						"type": "charge.succeeded",
+						"event_date": "2021-01-13T11:35:35-06:00",
+						"transaction": {
+							 "id": "trk2rgxr8i1nuyduimkm",
+							 "authorization": "801585",
+							 "operation_type": "in",
+							 "transaction_type": "charge",
+							 "card": {
+								  "type": "debit",
+								  "brand": "visa",
+								  "address": null,
+								  "card_number": "411111XXXXXX1111",
+								  "holder_name": "Jesus",
+								  "expiration_year": "24",
+								  "expiration_month": "03",
+								  "allows_charges": true,
+								  "allows_payouts": true,
+								  "bank_name": "Banamex",
+								  "bank_code": "002"
+							 },
+							 "status": "completed",
+							 "conciliated": false,
+							 "creation_date": "2021-01-13T11:35:20-06:00",
+							 "operation_date": "2021-01-13T11:35:32-06:00",
+							 "description": "Pedido Número 1582",
+							 "error_message": null,
+							 "order_id": "1582",
+							 "payment_method": {
+								  "type": "redirect",
+								  "url": "https://sandbox-api.openpay.mx/v1/mf698cdcjeijmamx0sgv/charges/trk2rgxr8i1nuyduimkm/redirect/"
+							 },
+							 "currency": "MXN",
+							 "amount": 572.1,
+							 "customer": {
+								  "name": "Aaron",
+								  "last_name": "Cuevas Rosas",
+								  "email": "aaron.cuevas@splittel.com",
+								  "phone_number": "4421917076",
+								  "address": null,
+								  "creation_date": "2021-01-13T11:35:20-06:00",
+								  "external_id": null,
+								  "clabe": null
+							 },
+							 "fee": {
+								  "amount": 19.09,
+								  "tax": 3.0544,
+								  "currency": "MXN"
+							 },
+							 "method": "card"
+						}
+				   }');
+					// $response = $this->Tool->Clear_data_for_sql(file_get_contents('php://input'));
 					$Objresponse = json_decode($response);
 
 					$WebhookEventosModel = new WebhookEventos();
-					$WebhookEventosModel->SetParameters($this->conn, $this->Tool);
+					$WebhookEventosModel->SetParameters($this->Connection, $this->Tool);
 					$ExistWebhookEventosModel = $WebhookEventosModel->get("WHERE t13_f001 = '".$Objresponse->type."' ", "");
 					$WebhookEventosModel->GetDescripcion();
 
@@ -70,7 +121,7 @@
 						];
 
 						$WebhookModel = new Webhook();
-						$WebhookModel->SetParameters($this->conn, $this->Tool);
+						$WebhookModel->SetParameters($this->Connection, $this->Tool);
 						$WebhookModel->SetTitulo($Objresponse->type);
 						$WebhookModel->SetPedidoKey($Objresponse->transaction->order_id);
 						$WebhookModel->SetPedidoTipo($Objresponse->transaction->method == 'bank_account' ? 0 : 1);
