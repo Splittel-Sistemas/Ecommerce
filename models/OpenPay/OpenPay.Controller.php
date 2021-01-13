@@ -38,9 +38,11 @@
         {
             try {
                 if (!$this->Connection->conexion()->connect_error) {
+                    @session_start();
                     $OpenPay_ =  new OpenPay_();
                     $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                     $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
+                    $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
                     $Result = $OpenPay_->GetCharge($id);
                     return $Result;
                 }else{
