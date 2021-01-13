@@ -51,59 +51,59 @@
 		public function webhook(){
 			try {
 				if (!$this->Connection->conexion()->connect_error) {
-					$response = $this->Tool->Clear_data_for_sql('{
-						"type": "charge.succeeded",
-						"event_date": "2021-01-13T11:35:35-06:00",
-						"transaction": {
-							 "id": "trk2rgxr8i1nuyduimkm",
-							 "authorization": "801585",
-							 "operation_type": "in",
-							 "transaction_type": "charge",
-							 "card": {
-								  "type": "debit",
-								  "brand": "visa",
-								  "address": null,
-								  "card_number": "411111XXXXXX1111",
-								  "holder_name": "Jesus",
-								  "expiration_year": "24",
-								  "expiration_month": "03",
-								  "allows_charges": true,
-								  "allows_payouts": true,
-								  "bank_name": "Banamex",
-								  "bank_code": "002"
-							 },
-							 "status": "completed",
-							 "conciliated": false,
-							 "creation_date": "2021-01-13T11:35:20-06:00",
-							 "operation_date": "2021-01-13T11:35:32-06:00",
-							 "description": "Pedido Número 1582",
-							 "error_message": null,
-							 "order_id": "1582",
-							 "payment_method": {
-								  "type": "redirect",
-								  "url": "https://sandbox-api.openpay.mx/v1/mf698cdcjeijmamx0sgv/charges/trk2rgxr8i1nuyduimkm/redirect/"
-							 },
-							 "currency": "MXN",
-							 "amount": 572.1,
-							 "customer": {
-								  "name": "Aaron",
-								  "last_name": "Cuevas Rosas",
-								  "email": "aaron.cuevas@splittel.com",
-								  "phone_number": "4421917076",
-								  "address": null,
-								  "creation_date": "2021-01-13T11:35:20-06:00",
-								  "external_id": null,
-								  "clabe": null
-							 },
-							 "fee": {
-								  "amount": 19.09,
-								  "tax": 3.0544,
-								  "currency": "MXN"
-							 },
-							 "method": "card"
-						}
-				   }');
-					// $response = $this->Tool->Clear_data_for_sql(file_get_contents('php://input'));
+				// 	$response = $this->Tool->Clear_data_for_sql('{
+				// 		"type": "charge.succeeded",
+				// 		"event_date": "2021-01-13T11:35:35-06:00",
+				// 		"transaction": {
+				// 			 "id": "trk2rgxr8i1nuyduimkm",
+				// 			 "authorization": "801585",
+				// 			 "operation_type": "in",
+				// 			 "transaction_type": "charge",
+				// 			 "card": {
+				// 				  "type": "debit",
+				// 				  "brand": "visa",
+				// 				  "address": null,
+				// 				  "card_number": "411111XXXXXX1111",
+				// 				  "holder_name": "Jesus",
+				// 				  "expiration_year": "24",
+				// 				  "expiration_month": "03",
+				// 				  "allows_charges": true,
+				// 				  "allows_payouts": true,
+				// 				  "bank_name": "Banamex",
+				// 				  "bank_code": "002"
+				// 			 },
+				// 			 "status": "completed",
+				// 			 "conciliated": false,
+				// 			 "creation_date": "2021-01-13T11:35:20-06:00",
+				// 			 "operation_date": "2021-01-13T11:35:32-06:00",
+				// 			 "description": "Pedido Número 1582",
+				// 			 "error_message": null,
+				// 			 "order_id": "1582",
+				// 			 "payment_method": {
+				// 				  "type": "redirect",
+				// 				  "url": "https://sandbox-api.openpay.mx/v1/mf698cdcjeijmamx0sgv/charges/trk2rgxr8i1nuyduimkm/redirect/"
+				// 			 },
+				// 			 "currency": "MXN",
+				// 			 "amount": 572.1,
+				// 			 "customer": {
+				// 				  "name": "Aaron",
+				// 				  "last_name": "Cuevas Rosas",
+				// 				  "email": "aaron.cuevas@splittel.com",
+				// 				  "phone_number": "4421917076",
+				// 				  "address": null,
+				// 				  "creation_date": "2021-01-13T11:35:20-06:00",
+				// 				  "external_id": null,
+				// 				  "clabe": null
+				// 			 },
+				// 			 "fee": {
+				// 				  "amount": 19.09,
+				// 				  "tax": 3.0544,
+				// 				  "currency": "MXN"
+				// 			 },
+				// 			 "method": "card"
+				// 		}
+				//    }');
+					$response = $this->Tool->Clear_data_for_sql(file_get_contents('php://input'));
 					$Objresponse = json_decode($response);
 
 					$WebhookEventosModel = new WebhookEventos();
@@ -162,6 +162,3 @@
 			fclose($file); // Cerrar*/
 		}
 	}
-
-	// $WebhookController = new WebhookController();
-	// $WebhookController->webhook();
