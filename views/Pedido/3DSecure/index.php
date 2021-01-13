@@ -2,6 +2,6 @@
 
 <script>
   var Verificar3DSecure = function(Elem){
-    window.parent.location.href = "../3DSecure/verificar.php?id="+Elem.id
+    window.parent.location.href = "../verificar.php?id="+Elem.id
   } 
 </script>

@@ -45,7 +45,32 @@
                     return $Result;
                 }else{
                     throw new Exception("No hay datos maestros por favor contacta con tu ejecutivo!", 1);
-                  }   
+                }   
+            } catch (OpenpayApiTransactionError $e) {
+                if ($this->openPayExeption($e, "ERROR en la transacción:")) {
+                  throw new Exception("ERROR en la transacción:");
+                }
+                throw new Exception("ERROR en la transacción: No se guardo Log");
+            } catch (OpenpayApiRequestError $e) {
+                if ($this->openPayExeption($e, "ERROR en la petición:")) {
+                  throw new Exception("ERROR en la petición:");
+                }
+                throw new Exception("ERROR en la petición: No se guardo Log");
+            } catch (OpenpayApiConnectionError $e) {
+                if ($this->openPayExeption($e, "ERROR en la conexión al API:")) {
+                  throw new Exception("ERROR en la conexión al API:");
+                }
+                throw new Exception("ERROR en la conexión al API: No se guardo Log");
+            } catch (OpenpayApiAuthError $e) {
+                if ($this->openPayExeption($e, "ERROR en la autenticación:")) {
+                  throw new Exception("ERROR en la autenticación:");
+                }
+                throw new Exception("ERROR en la autenticación: No se guardo Log");
+            } catch (OpenpayApiError $e) {
+                if ($this->openPayExeption($e, "ERROR en el API:")) {
+                  throw new Exception("ERROR en el API:");
+                }
+                throw new Exception("ERROR en el API: No se guardo Log");
             } catch (Exception $e) {
                 throw $e;
             }
