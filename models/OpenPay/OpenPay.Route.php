@@ -6,7 +6,7 @@
         include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
     }if (!class_exists('Functions_tools')) {
         include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
-    }if (!class_exists('Detalle')) {
+    }if (!class_exists('OpenPayController')) {
         include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Controller.php';
     }
     class OpenPayRoute{

@@ -34,6 +34,22 @@
             $this->Connection = $conn;
             $this->Tool = $Tool;
         }
+        public function GetCharge($id)
+        {
+            try {
+                if (!$this->Connection->conexion()->connect_error) {
+                    $OpenPay_ =  new OpenPay_();
+                    $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
+                    $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
+                    $Result = $OpenPay_->GetCharge($id);
+                    return $Result;
+                }else{
+                    throw new Exception("No hay datos maestros por favor contacta con tu ejecutivo!", 1);
+                  }   
+            } catch (Exception $e) {
+                throw $e;
+            }
+        }
         public function PagoTarjeta(){
             try {
                 if (!$this->Connection->conexion()->connect_error) {
