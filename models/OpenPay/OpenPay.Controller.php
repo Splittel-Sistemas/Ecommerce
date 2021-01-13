@@ -424,8 +424,6 @@
                                         $SalesQuatationModel->SetContactoTelefono($_POST['ContactoTelefono']);
                                         $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
                                         $ResultSalesQuatation = $SalesQuatationModel->create();
-                                        $_SESSION['Ecommerce-PedidoTotal'] = 0;
-                                        unset($_SESSION['Ecommerce-PedidoKey']);
                                         unset($SalesQuatationModel);
                                         unset($ResultSalesQuatation);
                                     }else{
@@ -439,8 +437,6 @@
                                         $InvoiceModel->SetReferencia($_POST['paqueteria']);
                                         $InvoiceModel->SetIntentos(0);
                                         $ResultInovice = $InvoiceModel->create();
-                                        $_SESSION['Ecommerce-PedidoTotal'] = 0;
-                                        unset($_SESSION['Ecommerce-PedidoKey']);
                                         unset($InvoiceModel);
                                         unset($ResultInovice);
                                     }

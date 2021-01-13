@@ -27,7 +27,11 @@
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-2">
       <!-- Principal -->
-      <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Pedido/Tarjeta/index.php'; ?>
+      <?php 
+        $_SESSION['Ecommerce-PedidoTotal'] = 0;
+        unset($_SESSION['Ecommerce-PedidoKey']);
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Pedido/Tarjeta/index.php'; 
+      ?>
     </div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
