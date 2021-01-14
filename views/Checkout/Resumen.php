@@ -57,7 +57,7 @@
     </ul>
   </div>
 </div>
-<div class="d-flex justify-content-between paddin-top-1x mt-4" g="<?php echo $_POST['PagoTarjeta'] ?>">
+<div class="d-flex justify-content-between paddin-top-1x mt-4">
   <a class="btn btn-outline-secondary" number="3" onclick="addViewCheckout(this)">
     <i class="icon-arrow-left"></i><span class="hidden-xs-down">Pago&nbsp;</span>
   </a>
@@ -69,12 +69,8 @@
   <a class="btn btn-primary" onclick="PagarPedidoBanco(this)">
     <span class="hidden-xs-down">Pagar&nbsp;</span><i class="icon-arrow-right"></i>
   </a>
-  <?php }else if($_POST['PagoTarjeta'] == '2'){ ?>
+  <?php }else { ?>
     <a class="btn btn-primary" onclick="PagarPedido3DSecure(this)">
-    <span class="hidden-xs-down">Pagar&nbsp;</span><i class="icon-arrow-right"></i>
-  </a>
-  <?php }else{  ?>
-  <a class="btn btn-primary" onclick="PagarPedido(this)">
     <span class="hidden-xs-down">Pagar&nbsp;</span><i class="icon-arrow-right"></i>
   </a>
   <?php } 

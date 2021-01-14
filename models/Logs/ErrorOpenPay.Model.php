@@ -1,9 +1,4 @@
 <?php 
-
-
-	/**
-	 * 
-	 */
 	class ErrorOpenPay{
 		public $Key;
 		public $ErrorCode;
@@ -58,12 +53,12 @@
 				$data = [];
 				while ($row = $result->fetch_object()) {
 					$ErrorOpenPay = new ErrorOpenPay();
-					$ErrorOpenPay->Key	 					= $row->t16_pk01;
-					$ErrorOpenPay->ErrorCode	 		= $row->t16_f001;
+					$ErrorOpenPay->Key	 			= $row->t16_pk01;
+					$ErrorOpenPay->ErrorCode	 	= $row->t16_f001;
 					$ErrorOpenPay->ErrorCodeHttp	= $row->t16_f002;
 					$ErrorOpenPay->Description		= $row->t16_f003;
 					$ErrorOpenPay->DataResponse		= $row->t16_f004;
-					$ErrorOpenPay->PedidoKey			= $row->t16_f005;
+					$ErrorOpenPay->PedidoKey		= $row->t16_f005;
 					$data[] = $ErrorOpenPay;
 				}
 				return $data;
@@ -78,6 +73,24 @@
 		 *
 		 * @return int $b Bar
 		 */
+		public function getByOpenPayErrores($filter, $order){
+			try {
+				$SQLSTATEMENT = "SELECT * FROM t15_open_pay_errores ".$filter." ".$order;
+				// echo $SQLSTATEMENT;
+				$result = $this->Connection->QueryReturn($SQLSTATEMENT);
+				$data = false;
+				while ($row = $result->fetch_object()) {
+					$this->Key	 			= $row->t15_pk01;
+					$this->ErrorCode	 	= $row->t15_f001;
+					$this->ErrorCodeHttp	= $row->t15_f002;
+					$this->Description		= $row->t15_f004;
+					$data = true;
+				}
+				return $data;
+			} catch (Exception $e) {
+				throw $e;
+			 }
+		}
 		public function getBy($filter, $order){
 			try {
 				$SQLSTATEMENT = "SELECT * FROM list_log_open_pay_error ".$filter." ".$order;
@@ -85,12 +98,12 @@
 				$result = $this->Connection->QueryReturn($SQLSTATEMENT);
 				$data = false;
 				while ($row = $result->fetch_object()) {
-					$this->Key	 					= $row->t16_pk01;
-					$this->ErrorCode	 		= $row->t16_f001;
+					$this->Key	 			= $row->t16_pk01;
+					$this->ErrorCode	 	= $row->t16_f001;
 					$this->ErrorCodeHttp	= $row->t16_f002;
 					$this->Description		= $row->t15_f004;
 					$this->DataResponse		= $row->t16_f004;
-					$this->PedidoKey			= $row->t16_f005;
+					$this->PedidoKey		= $row->t16_f005;
 					$data = true;
 				}
 				return $data;

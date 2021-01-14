@@ -20,13 +20,12 @@
             if (!class_exists("ErrorOpenPayController")) {
               include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Logs/ErrorOpenPay.Controller.php';
             }
-
             $ErrorOpenPayController = new ErrorOpenPayController();
-            $ErrorOpenPayController->filter = "WHERE t16_f005 = ".$_SESSION['Ecommerce-PedidoKey']." ";
-            $ErrorOpenPayController->order = "ORDER BY t16_pk01 DESC LIMIT 1";
+            $ErrorOpenPayController->filter = "Where t15_f001 = ".$result->error_code;
+            $ErrorOpenPayController->order = "";
             $ErrorOpenPay = $ErrorOpenPayController->GetBy();
 
-            if ($ErrorOpenPay) {
+            if (!empty($ErrorOpenPay->GetDescription())) {
             ?>
           <p class="card-text"><?php echo $ErrorOpenPay->GetDescription(); ?></p>
           <?php }else{ ?>

@@ -1,6 +1,15 @@
 <?php 
-  $_SESSION['Ecommerce-PedidoTotal'] = 0;
-  unset($_SESSION['Ecommerce-PedidoKey']);
+  if (!class_exists('OpenPayController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Controller.php';
+  }
+
+  try {
+    $OpenPayController = new OpenPayController();
+    $OpenPayController->Pago3DSecureSuccess($_GET['id']);
+  } catch (Exception $e) {
+    throw $e;
+  }
+  
 ?>
 <html>
   <head>

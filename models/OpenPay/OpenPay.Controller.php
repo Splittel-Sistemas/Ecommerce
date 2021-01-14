@@ -286,7 +286,7 @@
                                         $SalesQuatationModel->SetEstatus(50);
                                         $SalesQuatationModel->SetIntentos(0);
                                         $SalesQuatationModel->SetOpenPayTransaccionKey($ResultCharge->id);
-                                        $SalesQuatationModel->SetReferencia($_POST['paqueteria']);
+                                        $SalesQuatationModel->SetReferencia($_POST['referencia']);
                                         $SalesQuatationModel->SetContactoNombre($_POST['ContactoNombre']);
                                         $SalesQuatationModel->SetContactoTelefono($_POST['ContactoTelefono']);
                                         $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
@@ -303,7 +303,7 @@
                                         $InvoiceModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
                                         $InvoiceModel->SetRequiereFactura($_POST['RequiereFactura']);
                                         $InvoiceModel->SetEstatus(50);
-                                        $InvoiceModel->SetReferencia($_POST['paqueteria']);
+                                        $InvoiceModel->SetReferencia($_POST['referencia']);
                                         $InvoiceModel->SetIntentos(0);
                                         $ResultInovice = $InvoiceModel->create();
                                         $_SESSION['Ecommerce-PedidoTotal'] = 0;
@@ -394,62 +394,25 @@
                             $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel,$PedidoModel);
                             # comprobar si el cargo se completo exitosamente!
                             if ($ResultCharge->status == 'charge_pending') {
-                                # guardar información relevante al pedido
-                                $PedidoModel->SetMetodoPago('03');
-                                $PedidoModel->SetMonedaPago($_POST['monedaPago']);
-                                $PedidoModel->SetDatosEnvioKey($_POST['datosEnvio']);
-                                $PedidoModel->SetDatosFacturacionKey($_POST['datosFacturacion']);
-                                // $PedidoModel->SetNumeroguia();
-                                $PedidoModel->SetPaqueteria($_POST['paqueteria']);
-                                $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
+                                $Informacion = [
+                                    "monedaPago" => $_POST["monedaPago"],
+                                    "datosEnvio" => $_POST["datosEnvio"],
+                                    "datosFacturacion" => $_POST["datosFacturacion"],
+                                    "paqueteria" => $_POST["paqueteria"],
+                                    "CFDIUser" => $_POST["CFDIUser"],
+                                    "referencia" => $_POST["referencia"],
+                                ];
                                 if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-                                    $PedidoModel->SetDiasExtraCredito($_SESSION['Ecommerce-WS-GetExtraDays']);
-                                }
-                                $PedidoModel->SetCFDIUser($_POST['CFDIUser']);
-                                $ResultPedido = $PedidoModel->Update();
-                                if (!$ResultPedido['error']) {
-                                    unset($ExistePedido);
-                                    unset($PedidoModel);
-                                    if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-                                        $this->Tool->validateSession($_SESSION['Ecommerce-WS-GetExtraDays']);
-                                        # guardado de información pedido b2b para posteriromente generar los documentos sap
-                                        $SalesQuatationModel = new SalesQuatation_();
-                                        $SalesQuatationModel->SetParameters($this->Connection, $this->Tool);
-                                        $SalesQuatationModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
-                                        $SalesQuatationModel->SetEstatus(50);
-                                        $SalesQuatationModel->SetIntentos(0);
-                                        $SalesQuatationModel->SetOpenPayTransaccionKey($ResultCharge->id);
-                                        $SalesQuatationModel->SetReferencia($_POST['paqueteria']);
-                                        $SalesQuatationModel->SetContactoNombre($_POST['ContactoNombre']);
-                                        $SalesQuatationModel->SetContactoTelefono($_POST['ContactoTelefono']);
-                                        $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
-                                        $ResultSalesQuatation = $SalesQuatationModel->create();
-                                        unset($SalesQuatationModel);
-                                        unset($ResultSalesQuatation);
-                                    }else{
-                                        # guardado de información pedido b2c para posteriromente generar los documentos sap
-                                        $InvoiceModel = new Invoice();
-                                        $InvoiceModel->SetParameters($this->Connection, $this->Tool);
-                                        $InvoiceModel->SetOpenPayTransaccionKey($ResultCharge->id);
-                                        $InvoiceModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
-                                        $InvoiceModel->SetRequiereFactura($_POST['RequiereFactura']);
-                                        $InvoiceModel->SetEstatus(50);
-                                        $InvoiceModel->SetReferencia($_POST['paqueteria']);
-                                        $InvoiceModel->SetIntentos(0);
-                                        $ResultInovice = $InvoiceModel->create();
-                                        unset($InvoiceModel);
-                                        unset($ResultInovice);
-                                    }
-                                    unset($ClienteModel);
-                                    unset($ClienteExiste);
-                                    unset($PedidoModel);
-                                    unset($PedidoExiste);
-                                    $ResultPedido['openpay']['url'] = $ResultCharge->payment_method->url;
-                                    $ResultPedido['openpay']['id'] = $ResultCharge->id;
-                                    return $ResultPedido;
+                                    $Informacion["ContactoTelefono"] = $_POST["ContactoTelefono"];
+                                    $Informacion["ContactoCorreo"] = $_POST["ContactoCorreo"];
+                                    $Informacion["ContactoNombre"] = $_POST["ContactoNombre"];
+                                    
                                 }else{
-                                    throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                                    $Informacion["RequiereFactura"] = $_POST["RequiereFactura"];
                                 }
+                                $_SESSION["Ecommerce-OpenPay-3DSecure-Info"] = $Informacion;
+                                $Result['openpay']['url'] = $ResultCharge->payment_method->url;
+                                return $Result;
                             }else{
                                 throw new Exception("No se pudo generar tu pago de forma correcta, por favor contacta a tu ejecutivo!");
                             }
@@ -498,6 +461,84 @@
                 throw $e;
             }
         }
+
+        public function Pago3DSecureSuccess($IdTransaccion)
+        {
+            try {
+                if (!$this->Connection->conexion()->connect_error) {
+                    #Información 3D Secure
+                    $Info3DSecure = (object)$_SESSION["Ecommerce-OpenPay-3DSecure-Info"];
+                    # Pedido
+                    $PedidoModel = new Pedido_();
+                    $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+                    $PedidoExiste = $PedidoModel->GetBy("where id = '".$_SESSION['Ecommerce-PedidoKey']."' ");
+                    # guardar información relevante al pedido
+                    $PedidoModel->SetMetodoPago('03');
+                    $PedidoModel->SetMonedaPago($Info3DSecure->monedaPago);
+                    $PedidoModel->SetDatosEnvioKey($Info3DSecure->datosEnvio);
+                    $PedidoModel->SetDatosFacturacionKey($Info3DSecure->datosFacturacion);
+                    // $PedidoModel->SetNumeroguia();
+                    $PedidoModel->SetPaqueteria($Info3DSecure->paqueteria);
+                    $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
+                    if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                        $PedidoModel->SetDiasExtraCredito($_SESSION['Ecommerce-WS-GetExtraDays']);
+                    }
+                    $PedidoModel->SetCFDIUser($Info3DSecure->CFDIUser);
+                    $ResultPedido = $PedidoModel->Update();
+                    if (!$ResultPedido['error']) {
+                        unset($ExistePedido);
+                        unset($PedidoModel);
+                        if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                            $this->Tool->validateSession($_SESSION['Ecommerce-WS-GetExtraDays']);
+                            # guardado de información pedido b2b para posteriromente generar los documentos sap
+                            $SalesQuatationModel = new SalesQuatation_();
+                            $SalesQuatationModel->SetParameters($this->Connection, $this->Tool);
+                            $SalesQuatationModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
+                            $SalesQuatationModel->SetEstatus(50);
+                            $SalesQuatationModel->SetIntentos(0);
+                            $SalesQuatationModel->SetOpenPayTransaccionKey($IdTransaccion);
+                            $SalesQuatationModel->SetReferencia($Info3DSecure->referencia);
+                            $SalesQuatationModel->SetContactoNombre($Info3DSecure->ContactoNombre);
+                            $SalesQuatationModel->SetContactoTelefono($Info3DSecure->ContactoTelefono);
+                            $SalesQuatationModel->SetContactoCorreo($Info3DSecure->ContactoCorreo);
+                            $ResultSalesQuatation = $SalesQuatationModel->create();
+                            $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                            unset($_SESSION['Ecommerce-PedidoKey']);
+                            unset($SalesQuatationModel);
+                            unset($ResultSalesQuatation);
+                        }else{
+                            # guardado de información pedido b2c para posteriromente generar los documentos sap
+                            $InvoiceModel = new Invoice();
+                            $InvoiceModel->SetParameters($this->Connection, $this->Tool);
+                            $InvoiceModel->SetOpenPayTransaccionKey($IdTransaccion);
+                            $InvoiceModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
+                            $InvoiceModel->SetRequiereFactura($Info3DSecure->RequiereFactura);
+                            $InvoiceModel->SetEstatus(50);
+                            $InvoiceModel->SetReferencia($Info3DSecure->referencia);
+                            $InvoiceModel->SetIntentos(0);
+                            $ResultInovice = $InvoiceModel->create();
+                            $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                            unset($_SESSION['Ecommerce-PedidoKey']);
+                            unset($InvoiceModel);
+                            unset($ResultInovice);
+                        }
+                        unset($ClienteModel);
+                        unset($ClienteExiste);
+                        unset($PedidoModel);
+                        unset($PedidoExiste);
+                        unset($_SESSION["Ecommerce-OpenPay-3DSecure-Info"]);
+                        return $ResultPedido;
+                    }else{
+                        throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                    }
+                }else{
+                    throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
+                }
+            } catch (Exception $e) {
+                throw $e;
+            }
+        }
+
         public function openPayExeption($exeption, $message){
             try {
               if (!$this->Connection->conexion()->connect_error) {

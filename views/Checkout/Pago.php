@@ -41,16 +41,6 @@
           </div>
         </div>
         <hr class="padding-bottom-1x">
-        <div class="d-flex justify-content-center">
-          <div class="custom-control custom-radio custom-control-inline">
-          <input class="custom-control-input pagoTarjeta" type="radio" id="pagoTarjetaNormal" name="pagoTarjeta" value="1" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)" checked="checked">
-          <label class="custom-control-label" for="pagoTarjetaNormal">Normal</label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input class="custom-control-input pagoTarjeta" type="radio" id="pagoTarjeta3D" name="pagoTarjeta" value="2" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)">
-          <label class="custom-control-label" for="pagoTarjeta3D">3D Secure</label>
-        </div>
-        </div>
         <div class="card-wrapper"></div>
         <form class="interactive-credit-card row">
           <div class="form-group col-12 col-sm-6">
