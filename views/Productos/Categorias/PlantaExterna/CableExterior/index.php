@@ -7,12 +7,6 @@
   }elseif ($_GET['codigo'] == 'C9') {
     $_SESSION['FamiliaCable'] = "";
     include 'Drop.php';
-  }elseif ($_GET['codigo'] == 'C91') {
-    $_SESSION['FamiliaCable'] = "";
-    include 'ADSSA.php';
-  }elseif ($_GET['codigo'] == 'C92') {
-    $_SESSION['FamiliaCable'] = "";
-    include 'ADSSR.php';
   }else{
     include 'Exterior.php';
   }
