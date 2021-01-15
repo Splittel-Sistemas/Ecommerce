@@ -28,6 +28,7 @@
     <div class="container padding-bottom-3x mb-2">
       <!-- Principal -->
       <?php 
+        unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
         if(isset($_GET['method']) && $_GET['method'] == 'bank'){
           include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Pedido/Banco/index.php'; 
         }else{

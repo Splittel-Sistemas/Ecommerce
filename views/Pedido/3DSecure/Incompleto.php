@@ -20,6 +20,7 @@
             if (!class_exists("ErrorOpenPayController")) {
               include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Logs/ErrorOpenPay.Controller.php';
             }
+            
             $ErrorOpenPayController = new ErrorOpenPayController();
             $ErrorOpenPayController->filter = "Where t15_f001 = ".$result->error_code;
             $ErrorOpenPayController->order = "";

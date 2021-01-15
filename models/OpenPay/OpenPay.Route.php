@@ -34,6 +34,11 @@
                         $Result = $OpenPayController->PagoBanco();
                         echo json_encode($Result, JSON_UNESCAPED_UNICODE);
                     break;
+                    case 'ComprobarTransaccion3DSecure':
+                        $OpenPayController = new OpenPayController();
+                        $Result = $OpenPayController->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                        echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                    break;
                     default:
                         throw new Exception("No se encontro la opción solicitada, por favor contactanos");
                     break;

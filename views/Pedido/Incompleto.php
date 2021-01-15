@@ -33,7 +33,13 @@
           <?php 
             if (!class_exists("ErrorOpenPayController")) {
               include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Logs/ErrorOpenPay.Controller.php';
-            }
+            }if (!class_exists('OpenPayController')) {
+              include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Controller.php';
+            } 
+          
+            $OpenPayController = new OpenPayController();
+            $result = $OpenPayController->GetCharge($_SESSION["Ecommerce-OpenPay-Bank-Id"]);
+
             $ErrorOpenPayController = new ErrorOpenPayController();
             $ErrorOpenPayController->filter = "Where t15_f001 = ".$result->error_code;
             $ErrorOpenPayController->order = "";

@@ -35,7 +35,7 @@
           <p class="card-text"> 
             <u>Para ver los detalles de su compra:</u>
           </p>
-          <div class="padding-top-1x padding-bottom-1x">
+          <div class="padding-top-1x padding-bottom-1x" id="verificar-pago-3d-secure" IdTransaccion="<?php echo $_GET['id'] ?>">
             <a class="btn btn-outline-primary" onclick="window.parent.location.href='<?php echo $link ?>'"><i class="icon-user"></i>&nbsp;Ir a mi cuenta</a>
           </div>
         </div>
