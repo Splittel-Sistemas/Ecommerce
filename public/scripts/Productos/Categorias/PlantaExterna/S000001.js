@@ -135,6 +135,39 @@ var CableADDS = function(){
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
 }
+var ADDSAntitracking = function(){
+  let MaterialCubierta = "D"
+  let MaterialTuboHolgado = "3"
+  let TipoConstruccion = "B"
+  let TotalMetros = document.getElementById("TotalMetros")
+  let DirectorioImgProducto = "OPCFOCE09SAS2XXXD3B" 
+  // Codigo Generado de acuerdo a las opciones selecionadas
+  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+TotalMetros.value+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(DirectorioImgProducto)
+  ListProductoAdicional(DirectorioImgProducto)
+  // Agreación de codigo para la vista en el identificador
+  showClave(CodigoGenerado)
+  existEcommerce_(CodigoGenerado)
+
+}
+
+var ADDSAntirroedor = function(){
+  let MaterialCubierta = "B"
+  let MaterialTuboHolgado = "3"
+  let TipoConstruccion = "P"
+  let TotalMetros = document.getElementById("TotalMetros")
+  let DirectorioImgProducto = "OPCFOCE09DASXXXB3P" 
+  // Codigo Generado de acuerdo a las opciones selecionadas
+  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+TotalMetros.value+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(DirectorioImgProducto)
+  ListProductoAdicional(DirectorioImgProducto)
+  // Agreación de codigo para la vista en el identificador
+  showClave(CodigoGenerado)
+  existEcommerce_(CodigoGenerado)
+  
+}
 
 var contremove = 0
 var CableExterior = function() {
@@ -167,6 +200,12 @@ var CableExterior = function() {
     break;
     case 'DRFTTHP' : 
       CableDropPlano()
+    break;
+    case 'ADSSA' : 
+      ADDSAntitracking()
+    break;
+    case 'ADSSR' : 
+      ADDSAntirroedor()
     break;
     default:
       templateAlert("danger", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")
