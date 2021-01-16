@@ -5,6 +5,14 @@
     include 'c89_jumper_mpo_break_out.php';    
   }else if ($_GET['codigo'] == 'C18') {
     include 'c18_jumper_especial.php';    
+  }else if ($_GET['codigo'] == 'C93') {
+    include 'c93_cable_mtp_lc.php';    
+  }else if ($_GET['codigo'] == 'C94') {
+    include 'c94_cable_breakout_lc.php';    
+  }elseif ($_GET['codigo'] == 'C95') {
+    include 'c95_cable_mtpro_mtprous.php';    
+  }else if ($_GET['codigo'] == 'C96') {
+    include 'c96_cable_mtpro_lc.php';    
   }else{
 ?>
   <div class="row align-items-end pb-4">
