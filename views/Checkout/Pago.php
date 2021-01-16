@@ -89,6 +89,7 @@
     </div>
   </div>
   <!--  -->
+  <?php if(!isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])){ ?>
   <div class="card" id="metodo-pago-banco" style="display: none; ">
     <div class="card-header" role="tab">
       <h6><a class="collapsed" href="#bank" data-toggle="collapse"><i class="icon-award"></i>Transferencia Interbancaria</a></h6>
@@ -102,8 +103,14 @@
       </div>
     </div>
   </div>
+  <?php }else{ ?>
+    <div class="custom-control custom-checkbox d-none">
+      <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
+      <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
+    </div>
   <!--  -->
   <?php 
+  }
     if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
       if (!class_exists("GetBussinesPartnerController")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';

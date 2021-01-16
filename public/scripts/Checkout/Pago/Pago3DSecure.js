@@ -100,3 +100,11 @@ var Expiracion = function(Elem){
   document.getElementById("exp_month").value = res[0]
   document.getElementById("exp_year").value = res[1]
 }
+
+$("#modal-3d-secure").on('hidden.bs.modal', function () {
+    ajax_('../../models/OpenPay/OpenPay.Route.php', 'POST', 'JSON', { Action : "ComprobarTransaccion3DSecure", ActionOpenPay : true }, 
+    function(response){
+      if(response.completed) window.parent.location.href = "../Cuenta/index.php?menu=4"
+      if(response.status == "failed") window.location.reload()
+    })
+})
