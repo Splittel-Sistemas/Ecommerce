@@ -136,19 +136,30 @@
     <div class="padding-top-2x mt-2 hidden-md-up"></div>
     <h2 class="mb-3 padding-top-1x"><?php echo $Obj->ProductoDescripcion;?></h2>
     <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/<?php echo $Obj->MarcaDesripcion;?>.jpg" width="30%" height="30%"/></span>
-    <?php if($Obj->Descuento > 0){ ?>
-    <span class="h4 d-block">
-      Precio:
-      <b class="text-primary">
-        $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD 
-      </b>
-      <br>
-      <del class="text-muted">$<?php echo $Obj->ProductoPrecio ?></del>&nbsp;
-    </span>
+    <?php if($Obj->ProductoPrecio > 0){ ?>
+      <?php if($Obj->Descuento > 0){ ?>
+      <span class="h4 d-block">
+        Precio:
+        <b class="text-primary">
+          $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD 
+        </b>
+        <br>
+        <del class="text-muted">$<?php echo $Obj->ProductoPrecio ?></del>&nbsp;
+      </span>
+      <?php }else{ ?>
+        <span class="h4 d-block">
+          $<?php echo $Obj->ProductoPrecio; ?> USD 
+        </span>
+      <?php } ?>  
     <?php }else{ ?>
       <span class="h4 d-block">
-        $<?php echo $Obj->ProductoPrecio; ?> USD 
-      </span>
+          $ 0 
+        </span>
+      <div class="col-12 pb-4 mt-4">
+        <span class="product-badge bg-danger border-default text-body text-white">
+          <p>Producto especial, solicitar cotización a su ejecutivo de ventas</p>
+        </span>
+      </div>
     <?php } ?>  
     
     <div class="row mt-4 mb-4 padding-top-1x">
@@ -171,11 +182,13 @@
           <input type="text" class="form-control myclass" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" onkeyup="validacionCantidad(this)" placeholder="Cantidad" value="1">
         </div>
       </div>
+      <?php if($Obj->ProductoPrecio > 0){ ?>
       <div class="col-sm-4 align-self-end">
         <div class="pt-4 hidden-sm-up"></div>
         <button style="background-color: #bc2130" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
         <i class="icon-bag"></i> Agregar al carrito</button>
       </div>
+      <?php } ?>
       <?php if($Obj->ProductoCostoEnvio == 'no'){ ?>
       <div class="col-sm-4 align-self-end">
         <img src="../../public/images/img_spl/productos/envio-gratis.png" width="80%" height="80%"/>
