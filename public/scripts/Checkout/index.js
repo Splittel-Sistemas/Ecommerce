@@ -82,6 +82,12 @@ var addViewCheckout = function(Elem){
       return false
     }
   }
+
+  if(!$('[name="radioDatosEnvio"]').is(':checked')){
+    toastAlert('danger', '', "algún dato se encuentra incorrecto, favor de verificar sus en datos en Mi cuenta o bien con su ejecutivo", 'topRight', 'icon-ban')
+    return false
+  }
+
   $('.step-title').removeClass('completado').find('i:first').remove()
   $('.process').removeClass('active')
   document.getElementById('process-'+number).classList.add('active')
