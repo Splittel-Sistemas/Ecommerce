@@ -271,7 +271,7 @@ class PedidoController{
                     $TemplateCostoEnvio = new TemplateCostoEnvio();
                     $Email->MailerSubject = "Solicitud costo de envio";
                     $Email->MailerBody = $TemplateCostoEnvio->body();
-                    $Email->MailerListTo[] = $_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ? 'yareli.garcia@splittel.com' : $_SESSION['Ecommerce-ClienteEjecutivo'];
+                    $Email->MailerListTo[] = $_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ? 'sac@splittel.com' : $_SESSION['Ecommerce-ClienteEjecutivo'];
                     $Email->EmailSendEmail();
                     unset($Email);
                     unset($TemplateCostoEnvio);
