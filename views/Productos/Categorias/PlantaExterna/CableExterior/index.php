@@ -13,6 +13,8 @@
   }elseif ($_GET['codigo'] == 'C92') {
     $_SESSION['FamiliaCable'] = "";
     include 'ADSSR.php';
+  }elseif ($_GET['codigo'] == 'C8') {
+    include 'MiniFigura8.php';
   }else{
     include 'Exterior.php';
   }

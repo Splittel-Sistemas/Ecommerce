@@ -82,6 +82,13 @@ var CableExteriorDielectrico = function(){
 var CableExteriorMiniFigura8 = function(){
   let SelectMaterialCubierta = document.getElementById("SelectMaterialCubierta")
   SelectMaterialCubierta ? SelectMaterialCubierta.remove() : ""
+
+  if(TipoFibra.value == '57'){
+    NumeroFibras[1].style.display = "none"
+    NumeroFibras.selectedIndex = 0
+  }else{
+    NumeroFibras[1].style.display = "block"
+  }
   // Codigo Generado de acuerdo a las opciones selecionadas
   CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+Cable.value+NumeroFibras.value
   ListImgProducto("OPCFOCExxM8xx")
@@ -191,7 +198,7 @@ var CableExterior = function() {
       CableExteriorDielectrico()
     break;
     case 'M8' : 
-      contremove == 0 ? RemoveOptionsSelect(NumeroFibras, [1,2,3,4,5,6,7]) : ""
+      contremove == 0 ? RemoveOptionsSelect(NumeroFibras, [2,3,4,5,6,7]) : ""
       contremove++
       CableExteriorMiniFigura8()
     break;
