@@ -49,7 +49,7 @@
 <link rel="stylesheet" type="text/css" href="../../public/plugins/tingle/tingle.css">
 
 <!-- Hotjar Tracking Code for www.fibremex.com -->
-
+<!--
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -60,7 +60,7 @@
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
-
+-->
 
 <?php 
 	@session_start();
