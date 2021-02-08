@@ -68,7 +68,7 @@ class Functions_tools
     }
     public function Message_return($error,$message,$records,$return_json){
         $object          = new stdClass();
-        $object->error   = $records == null ? $error : count($records) == 0 ? true: false;
+        $object->error   = ($records == null ? $error : count($records) == 0) ? true: false;
         $object->message = $this->validate_array($records, $message);
         $object->records = $records;
         $object->count  = $records == null ? 0 : count($records);
