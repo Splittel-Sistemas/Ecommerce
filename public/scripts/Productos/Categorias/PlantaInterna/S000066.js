@@ -86,9 +86,10 @@ var JumpersMTP = function(){
     
     NombreProductoConfigurable(CodigoGenerado, descripcion)
 
-    ChangeListImgProducto('OPJA3','OPJA3'+Polaridad.value+Diseno.value)
+    ListImgProducto("OPJA3")
 	  ListProductoDescription('OPJA3')
     ListProductoAdicional('OPJA3')
+   
     let data = {
       Action: 'calcular',
       ActionCalcularPrecioMTP: true,
@@ -195,7 +196,7 @@ var JumpersMTPPRO = function(){
       let descripcion = "Jumper MTP PRO a MTP PRO US CONEC Swap on site Polaridad "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
      // console.log(descripcion)
-      ChangeListImgProducto('OPJA5','OPJA5'+Polaridad.value+Diseno.value)
+     ListImgProducto("OPJA5")
         ListProductoDescription('OPJA5')
       ListProductoAdicional('OPJA5')
       let data = {
