@@ -76,3 +76,4 @@
     echo $AddNewAddressBussinesPartner->create(true);*/
   }
   unset($Tool);
+  print_r('test');
