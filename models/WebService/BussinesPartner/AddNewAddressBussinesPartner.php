@@ -76,4 +76,5 @@
     echo $AddNewAddressBussinesPartner->create(true);*/
   }
   unset($Tool);
-  print_r('test');
+  print_r($_SERVER['PHP_AUTH_USER']);
+  print_r($_POST);
