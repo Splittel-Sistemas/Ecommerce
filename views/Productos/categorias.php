@@ -304,8 +304,9 @@
                 $ResultCategoria = $CategoriaController->get();
 
                 foreach ($ResultCategoria->records as $key => $Categoria){ 
+                 
               ?>
-                <li class="has-children <?php if($CategoriaKey == $Categoria->CodigoKey || $SubcategoriaN1Key == $Categoria->CodigoKey){?>expanded<?php }?>">
+                <li class="has-children <?php if($Subcategoria->GetFamiliaKey() == $Categoria->CodigoKey || $SubcategoriaN1Key == $Categoria->CodigoKey){?>expanded<?php }?>">
                   <a <?php if($Categoria->CodigoKey=='A8'){?> href="categorias.php?id_ct=<?php echo $Categoria->CodigoKey?>" <?php  }else{?> href="#" <?php }?>><?php echo $Categoria->Descripcion;?></a><span></span>
                   <ul>
                   <?php 
