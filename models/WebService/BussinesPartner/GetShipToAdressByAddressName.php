@@ -4,7 +4,9 @@
  * 
  */
   @session_start();
-  if (!class_exists("WebService")) {
+  if (!class_exists("Seguridad")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
+  }if (!class_exists("WebService")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.php';
@@ -65,13 +67,13 @@
 
   }
 
-  $Tool = new Functions_tools();
-  # Comprobación Autorización Ajax    
-  if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && isset($_POST['ActionEnvio'])) { 
+  $SeguridadController = new SeguridadController();
+	# Comprobación Autorización Ajax    
+	if ($SeguridadController->decryptData() && isset($_POST['ActionEnvio'])) { 
     $Result = GetShipToAdressByAddressName::create();
     echo json_encode($Result);
   }
-  unset($Tool);
+  unset($SeguridadController);
     /*$_POST['NombreDireccion'] = 'ENVIO DE CATALOGO 2020';
     $Result = GetShipToAdressByAddressName::create();
     print_r($Result->GetShipToAdressByAddressNameResult);
