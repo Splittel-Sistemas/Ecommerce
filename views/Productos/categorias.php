@@ -15,6 +15,10 @@
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
       }if (!class_exists("SubcategoriasN1Controller")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
+      }if (!class_exists("SubmenuController")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/Submenu.Controller.php';
+      }if (!class_exists("UnionSubmenuController")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/UnionSubmenu.Controller.php';
       }if (!class_exists("ProductoController")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
       }if (!class_exists('ComentariosController')) {
@@ -56,12 +60,16 @@
                 }elseif(isset($_GET['prd'])){
                   $SubcategoriaKey = $_GET['prd'];
                 }
+                if(isset($_GET['id_gpo'])){
+                  $GpoKey = $_GET['id_gpo'];
+                }
 
-                $SubcategoriasController = new SubcategoriasController();
-                $SubcategoriasController->filter = "WHERE id_subcategoria = '".$SubcategoriaKey."' AND activo='si' ";
-                $SubcategoriasController->order = "";
-                $Subcategoria = $SubcategoriasController->getBy();
 
+                $SubmenuController = new SubmenuController();
+                $SubmenuController->filter = "WHERE id = '".$SubcategoriaKey."' AND nivel=2 AND activo='si' ";
+                $SubmenuController->order = "";
+                $Subcategoria = $SubmenuController->getBy();
+               
                 $CategoriaController = new CategoriaController();
                 $CategoriaController->filter = "WHERE id_codigo = '".$Subcategoria->GetFamiliaKey()."' AND activo='si'";
                 $CategoriaController->order = "";
@@ -117,9 +125,10 @@
             $SubcategoriasController->filter = "WHERE id_familia = '".$CategoriaKey."' AND activo='si' ";
             $SubcategoriasController->order = "";
             $ResultSubcategoria = $SubcategoriasController->get();
-
+           
             if ($ResultSubcategoria->count > 0){ 
-            foreach ($ResultSubcategoria->records as $key => $Subcategoria_){ ?>
+            foreach ($ResultSubcategoria->records as $key => $Subcategoria_){ 
+              ?>
             <div class="col-md-4 col-sm-6 col-12">
               <div class="product-card mb-30">
                 <a class="product-thumb" 
@@ -141,41 +150,83 @@
             } 
           } 
 
-          if(isset($_GET['id_sbct']) ){
-            $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-            $SubcategoriasN1Controller->filter = "WHERE id_subcategoria = '".$SubcategoriaKey."' AND activo='si' ";
-            $SubcategoriasN1Controller->order = "";
-            $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
-            if($ResultSubcategoriasN1->count > 0 ){
-              $SubcategoriaN1Key = $ResultSubcategoriasN1->records[0]->CategoriasKey;
-             	foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
-                $ConfiguracionPath = $SubcategoriaN1->Configuracion == 1 
-                ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo." " : "#";
+          if(isset($_GET['id_sbct']) || isset($_GET['id_gpo']) ){
+            
 
-                $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg")) 
-                ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg" 
-                : "../../public/images/img_spl/notfound1.png"; 
-             ?>
-              <div class="col-md-4 col-sm-6 col-12">
-                <div class="product-card mb-30">
-                	<?php if ($SubcategoriaN1->Configuracion == 0){ ?>
-                	<div class="product-badge bg-primary">Próximamente</div>
-                  <?php } ?>
-                  <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
-                  <img src="<?php echo $imgUrl ?>" alt="<?php echo $SubcategoriaN1->Descripcion;?>"></a>
-                  <div class="product-card-body">
-                    <h1 class="product-title"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $SubcategoriaN1->Descripcion;?></a></h1>
+            $UnionSubmenuController = new UnionSubmenuController();
+            $UnionSubmenuController->filter = "WHERE id_menu = '".$SubcategoriaKey."'";
+            $UnionSubmenuController->order = "";
+            $ResultUnionSubmenu = $UnionSubmenuController->get();
+            
+            if($ResultUnionSubmenu->count > 0 ){
+              foreach ($ResultUnionSubmenu->records as $key => $Subcategorias_){
+
+              $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+              if(isset($_GET['id_gpo'])){
+                $SubcategoriaKeyGPO=$_GET['id_gpo'];
+                $SubcategoriasN1Controller->filter = "WHERE id_subcategoria = '".$Subcategorias_->SubcategoriaKey."' AND activo='si' AND (grupo='".$SubcategoriaKeyGPO."') ";
+              }else{
+                $SubcategoriaKeyGPO='';
+                $SubcategoriasN1Controller->filter = "WHERE id_subcategoria = '".$Subcategorias_->SubcategoriaKey."' AND activo='si' ";
+              }
+              
+              $SubcategoriasN1Controller->order = "";
+              
+              $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
+              
+              if($ResultSubcategoriasN1->count > 0 ){
+                $SubcategoriaN1Key = $ResultSubcategoriasN1->records[0]->CategoriasKey;
+                
+                foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
+                  $ConfiguracionPath = $SubcategoriaN1->Configuracion == 1 
+                  ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo." " : "#";
+
+                  $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg")) 
+                  ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg" 
+                  : "../../public/images/img_spl/notfound1.png"; 
+              ?>
+                <div class="col-md-4 col-sm-6 col-12">
+                  <div class="product-card mb-30">
+                    <?php if ($SubcategoriaN1->Configuracion == 0){ ?>
+                    <div class="product-badge bg-primary">Próximamente</div>
+                    <?php } ?>
+                    <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
+                    <img src="<?php echo $imgUrl ?>" alt="<?php echo $SubcategoriaN1->Descripcion;?>"></a>
+                    <div class="product-card-body">
+                      <h1 class="product-title"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $SubcategoriaN1->Descripcion;?></a></h1>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <?php 
+              <?php 
+                  } 
                 } 
-              } 
+              }
+             }
             } 
             
-            if (isset($_GET['id_sbct'])){ 
+            if (isset($_GET['id_sbct']) || isset($_GET['id_gpo'])){ 
+              if(isset($_GET['id_gpo'])){
+                $SubcategoriaKeyGPO=$_GET['id_gpo'];
+              }else{
+                $SubcategoriaKeyGPO='';
+              }
+              $UnionSubmenuController = new UnionSubmenuController();
+              $UnionSubmenuController->filter = "WHERE id_menu = '".$SubcategoriaKey."' ";
+              $UnionSubmenuController->order = "";
+              $ResultUnionSubmenu = $UnionSubmenuController->get();
+             
+              if($ResultUnionSubmenu->count > 0 ){
+                foreach ($ResultUnionSubmenu->records as $key => $Subcategorias_){
+
               $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE subcategoria='".$SubcategoriaKey."' AND producto_activo='si' AND codigo_configurable='' ";
+              if(isset($_GET['id_gpo'])){
+                $SubcategoriaKeyGPO=$_GET['id_gpo'];
+                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND codigo_configurable='' AND (grupo='".$SubcategoriaKeyGPO."' )";
+              }else{
+                $SubcategoriaKeyGPO='';
+                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND codigo_configurable=''";
+              }
+              
               $ProductoController->order = "ORDER BY desc_producto DESC ";
               $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
@@ -233,6 +284,8 @@
           <?php 
               }
             } 
+           }
+           }
           } 
           ?>
           </div>
@@ -246,7 +299,7 @@
               <h3 class="widget-title">Categorías</h3>              
               <ul>
               <?php 
-                $CategoriaController->filter = "";
+                $CategoriaController->filter = "WHERE activo='si'";
                 $CategoriaController->order = "";
                 $ResultCategoria = $CategoriaController->get();
 
@@ -256,23 +309,54 @@
                   <a <?php if($Categoria->CodigoKey=='A8'){?> href="categorias.php?id_ct=<?php echo $Categoria->CodigoKey?>" <?php  }else{?> href="#" <?php }?>><?php echo $Categoria->Descripcion;?></a><span></span>
                   <ul>
                   <?php 
+                     $SubmenuController = new SubmenuController();
+                     $SubmenuController->filter = "WHERE id_categoria = '".$Categoria->CodigoKey."' AND nivel=2 AND activo='si' ";
+                     $SubmenuController->order = "";
+                     $ResultSubcategoria = $SubmenuController->get();
+                     if ($ResultSubcategoria->count > 0){
+                      foreach ($ResultSubcategoria->records as $key => $Submenu){
+                      ?>
+                      <li>
+                        <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>"><?php echo $Submenu->Descripcion;?></a>
+                        <ul>
+                        <?php 
+                         $SubmenuController_ = new SubmenuController();
+                         $SubmenuController_->filter = "WHERE id_principal = '".$Submenu->Key."' AND nivel=3 AND activo='si' ";
+                         $SubmenuController_->order = "";
+                         $ResultSubcategoria_ = $SubmenuController_->get();
+                          if($ResultSubcategoria_->count > 0){
+                            foreach ($ResultSubcategoria_->records as $key_ => $Subcategoria_){
+                            ?>
+                            <li>
+                              <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>&id_gpo=<?php echo $Subcategoria_->Key;?>"><?php echo $Subcategoria_->Descripcion;?></a>
+                            </li>
+                            <?php }?>
+                        <?php }?>
+                        </ul>
+                      </li>
+                      <?php } ?>
+                    <?php } 
+
+
+                  /*
                      $SubcategoriasController = new SubcategoriasController();
                      $SubcategoriasController->filter = "WHERE id_familia = '".$Categoria->CodigoKey."' AND activo='si' ";
                      $SubcategoriasController->order = "";
                      $ResultSubcategoria = $SubcategoriasController->get();
                      if ($ResultSubcategoria->count > 0){
-                    foreach ($ResultSubcategoria->records as $key => $Subcategoria){
-                  ?>
-                    <li>
-                      <a <?php if($Subcategoria->Subnivel == 'NO'){ ?> 
-                      href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=no" <?php }?> 
-                      <?php if($Subcategoria->Subnivel == 'SI'){ ?> 
-                      href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=si" <?php }?> >
-                        <?php echo $Subcategoria->Descripcion;?>
-                      </a>
-                    </li>
-                    <?php } ?>
-                    <?php } ?>
+                      foreach ($ResultSubcategoria->records as $key => $Subcategoria){
+                      ?>
+                      <li>
+                        <a <?php if($Subcategoria->Subnivel == 'NO'){ ?> 
+                        href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=no" <?php }?> 
+                        <?php if($Subcategoria->Subnivel == 'SI'){ ?> 
+                        href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=si" <?php }?> >
+                          <?php echo $Subcategoria->Descripcion;?>
+                        </a>
+                      </li>
+                      <?php } ?>
+                    <?php } 
+                    */?>
                   </ul>
                 </li>
                 <?php } ?>              

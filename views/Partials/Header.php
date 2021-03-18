@@ -48,7 +48,7 @@
             <div class="dropdown-menu mega-dropdown">
             <?php 
               $CategoriaController = new CategoriaController();
-              $CategoriaController->filter = "";
+              $CategoriaController->filter = "WHERE activo='si'";
               $CategoriaController->order = "";
               $response = $CategoriaController->get();
 
@@ -194,7 +194,7 @@
             <ul class="slideable-submenu">
             <?php 
               $CategoriaController = new CategoriaController();
-              $CategoriaController->filter = "";
+              $CategoriaController->filter = "WHERE activo='si'";
               $CategoriaController->order = "";
               $response = $CategoriaController->get();
 
@@ -280,7 +280,7 @@
       <div class="dropdown-menu mega-dropdown">
       <?php 
         $CategoriaController = new CategoriaController();
-        $CategoriaController->filter = "";
+        $CategoriaController->filter = "WHERE activo='si'";
         $CategoriaController->order = "";
         $response = $CategoriaController->get();
 

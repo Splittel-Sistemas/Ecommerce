@@ -67,7 +67,7 @@
               include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
             } 
             $CategoriaController = new CategoriaController();
-            $CategoriaController->filter = "";
+            $CategoriaController->filter = "WHERE activo='si'";
             $CategoriaController->order = "";
             $ResultCategoria = $CategoriaController->get();
             $CategoriaCont = 1;
