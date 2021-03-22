@@ -122,18 +122,17 @@
           <?php  
           if(isset($_GET['id_ct'])){
             $CategoriaKey = $_GET['id_ct']; 
-            $SubcategoriasController->filter = "WHERE id_familia = '".$CategoriaKey."' AND activo='si' ";
-            $SubcategoriasController->order = "";
-            $ResultSubcategoria = $SubcategoriasController->get();
-           
+            $SubmenuController = new SubmenuController();
+                     $SubmenuController->filter = "WHERE id_categoria = '".$CategoriaKey."' AND nivel=2 AND activo='si' ";
+                     $SubmenuController->order = "";
+                     $ResultSubcategoria = $SubmenuController->get();
+                     //print_r($ResultSubcategoria);
             if ($ResultSubcategoria->count > 0){ 
             foreach ($ResultSubcategoria->records as $key => $Subcategoria_){ 
               ?>
             <div class="col-md-4 col-sm-6 col-12">
               <div class="product-card mb-30">
-                <a class="product-thumb" 
-                 <?php if($Subcategoria_->Subnivel == 'NO'){ ?> href="categorias.php?id_sbct=<?php echo $Subcategoria_->SubcategoriasKey;?>&sbn=no"<?php }?> 
-                 <?php if($Subcategoria_->Subnivel == 'SI'){ ?> href="categorias.php?id_sbct=<?php echo $Subcategoria_->SubcategoriasKey;?>&sbn=si"<?php }?>  >
+                <a class="product-thumb"  href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>" >
                  <?php 
                   $imgUrl = file_exists("../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg") 
                   ? "../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg" 
@@ -141,12 +140,12 @@
                 ?>
                  <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Subcategoria_->Descripcion;?>"></a>
                 <div class="product-card-body">                 
-                  <h1 class="product-title"><a href="categorias.php?id_sbct=<?php echo $Subcategoria_->SubcategoriasKey;?>"><?php echo $Subcategoria_->Descripcion;?></a></h1>
+                  <h1 class="product-title"><a href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>"><?php echo $Subcategoria_->Descripcion;?></a></h1>
                 </div>
               </div>
             </div>
           <?php 
-              } 
+              }
             } 
           } 
 
@@ -302,14 +301,29 @@
                 $CategoriaController->filter = "WHERE activo='si'";
                 $CategoriaController->order = "";
                 $ResultCategoria = $CategoriaController->get();
+               
+                foreach ($ResultCategoria ->records as $key => $Categoria){ 
 
-                foreach ($ResultCategoria->records as $key => $Categoria){ 
-                 
+                  if(isset($_GET['id_sbct'])){
+                    $SubmenuController_ = new SubmenuController();
+                    $SubmenuController_->filter = "WHERE id= '".$SubcategoriaKey."' AND nivel=2 AND activo='si' ";
+                     $SubmenuController_->order = "";
+                    $ResultSubcategoria_ = $SubmenuController_->get();
+                    //print_r($ResultSubcategoria_);
+                    if($ResultSubcategoria_->count > 0){
+                      $RecordsSubcategoria_ = $ResultSubcategoria_->records[0];
+                      $SubcategoriaN1Key_ = $RecordsSubcategoria_->FamiliaKey;
+                     
+                    }?>
+                     <li class="has-children <?php if($Categoria->CodigoKey  == $SubcategoriaN1Key_){?>expanded<?php }?>">
+                 <?php }else{  ?>
+                     <li class="has-children <?php if($CategoriaKey  == $Categoria->CodigoKey){?>expanded<?php }?>">
+                 <?php }
               ?>
-                <li class="has-children <?php if($Subcategoria->GetFamiliaKey() == $Categoria->CodigoKey || $SubcategoriaN1Key == $Categoria->CodigoKey){?>expanded<?php }?>">
-                  <a <?php if($Categoria->CodigoKey=='A8'){?> href="categorias.php?id_ct=<?php echo $Categoria->CodigoKey?>" <?php  }else{?> href="#" <?php }?>><?php echo $Categoria->Descripcion;?></a><span></span>
+                 <a <?php if($Categoria->CodigoKey=='A8'){?> href="categorias.php?id_ct=<?php echo $Categoria->CodigoKey?>" <?php  }else{?> href="#" <?php }?>><?php echo $Categoria->Descripcion;?></a><span></span>
                   <ul>
                   <?php 
+                 
                      $SubmenuController = new SubmenuController();
                      $SubmenuController->filter = "WHERE id_categoria = '".$Categoria->CodigoKey."' AND nivel=2 AND activo='si' ";
                      $SubmenuController->order = "";
@@ -336,28 +350,7 @@
                         </ul>
                       </li>
                       <?php } ?>
-                    <?php } 
-
-
-                  /*
-                     $SubcategoriasController = new SubcategoriasController();
-                     $SubcategoriasController->filter = "WHERE id_familia = '".$Categoria->CodigoKey."' AND activo='si' ";
-                     $SubcategoriasController->order = "";
-                     $ResultSubcategoria = $SubcategoriasController->get();
-                     if ($ResultSubcategoria->count > 0){
-                      foreach ($ResultSubcategoria->records as $key => $Subcategoria){
-                      ?>
-                      <li>
-                        <a <?php if($Subcategoria->Subnivel == 'NO'){ ?> 
-                        href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=no" <?php }?> 
-                        <?php if($Subcategoria->Subnivel == 'SI'){ ?> 
-                        href="categorias.php?id_sbct=<?php echo $Subcategoria->SubcategoriasKey;?>&sbn=si" <?php }?> >
-                          <?php echo $Subcategoria->Descripcion;?>
-                        </a>
-                      </li>
-                      <?php } ?>
-                    <?php } 
-                    */?>
+                    <?php } ?>
                   </ul>
                 </li>
                 <?php } ?>              
