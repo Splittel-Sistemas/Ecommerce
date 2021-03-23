@@ -16,26 +16,12 @@
 		public $Uso;
 		public $SubcategoriaN1Code;
 		public $ClienteId;
+		public $BreakOut;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
 			$this->Tool = $Tool;
 		}
-
-		/*
-		$CalcularPrecioModel->SetParameters($this->Connection, $this->Tool);
-					$CalcularPrecioModel->SetCableId($_POST['CablesPreconId']);
-					$CalcularPrecioModel->SetNumeroHilos($_POST['CablesPreconNumeroHilos']);
-					$CalcularPrecioModel->SetLongitud($_POST['CablesPreconLongitud']);
-					$CalcularPrecioModel->SetFibra($_POST['CablesPreconTipoFibra']);
-					$CalcularPrecioModel->SetConector_1($_POST['Aux_ConectorLadoA']);
-					$CalcularPrecioModel->SetConector_2($_POST['Aux_ConectorLadoB']);
-					$CalcularPrecioModel->SetCubierta($_POST['Cubierta']);
-					$CalcularPrecioModel->SetUso($_POST['Uso']);
-					$CalcularPrecioModel->SetCodigo($_POST['Codigo']);
-					$CalcularPrecioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
-					$CalcularPrecioModel->SetClienteId(i
-		*/
 		public function SetCableId($CableId){
 			$this->CableId  = $CableId;
 		}public function SetNumeroHilos($NumeroHilos){
@@ -58,6 +44,8 @@
 			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
 		}public function SetClienteId($ClienteId){
 			$this->ClienteId  = $ClienteId;
+		}public function SetBreakOut($BreakOut){
+			$this->BreakOut  = $BreakOut;
 		}
 		 /**
 		 * Description
@@ -80,6 +68,7 @@
 					'".$this->Codigo."',
 					'".$this->SubcategoriaN1Code."',
 					'".$this->ClienteId."',
+					'".$this->BreakOut."',
 				@Result);", "@Result");
 				return $result;
 			} catch (Exception $e) {

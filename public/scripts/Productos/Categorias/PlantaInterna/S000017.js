@@ -249,8 +249,10 @@ var cable_IE = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)
     }
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 2,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -454,8 +456,10 @@ var cable_CI = function(){
     NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
   }
 
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
     let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 1,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -557,8 +561,10 @@ var cable_SA = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 6,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -624,8 +630,10 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
     }
   }
 
-  let data = {
+  let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+    let data = {
     Action: 'calculo',
+    BreakOut : BreakOut,
     ActionPrecioPreconectorizados: true,
     CablesPreconId: 10,
     CablesPreconNumeroHilos: NoHilos.value,
@@ -748,8 +756,10 @@ var cable_S8 = function(){
     if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 9,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -850,8 +860,10 @@ var cable_M8 = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 8,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -952,8 +964,10 @@ var cable_DI = function(){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 5,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -1054,8 +1068,10 @@ var cable_AR = function(){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 4,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -1157,8 +1173,10 @@ var cable_AD = function(){
         NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     }
 
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 3,
       CablesPreconNumeroHilos: NoHilos.value,
@@ -1270,8 +1288,10 @@ var cable_F8 = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
     }
-    let data = {
+    let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+      let data = {
       Action: 'calculo',
+      BreakOut : BreakOut,
       ActionPrecioPreconectorizados: true,
       CablesPreconId: 7,
       CablesPreconNumeroHilos: NoHilos.value,
