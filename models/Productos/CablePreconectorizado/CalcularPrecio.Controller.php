@@ -41,6 +41,7 @@ if (!class_exists("Connection")) {
 					$CalcularPrecioModel->SetCodigo($_POST['Codigo']);
 					$CalcularPrecioModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
 					$CalcularPrecioModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
+					$CalcularPrecioModel->SetBreakOut($_POST['BreakOut']);
 					return $CalcularPrecioModel->Calcular();
 				}
 			} catch (Exception $e) {
