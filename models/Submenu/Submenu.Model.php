@@ -78,6 +78,57 @@
       }
     }
 
+    public function GetByConfigurableCode($filter, $order){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM menu_principal
+                            WHERE id IN (SELECT id_menu FROM u_menu_subcategorias 
+                              WHERE id_subcategorias IN (SELECT id_subcategoria FROM menu_subcategorias_n1 ".$filter." )) ".$order." LIMIT 1 ";
+        //print_r($SQLSTATEMENT);
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        while ($row = $result->fetch_object()) {
+            $Submenu = new Submenu_();
+            $Submenu->Key               =   $row->id;
+            $Submenu->FamiliaKey        =   $row->id_categoria;
+            $Submenu->CategoriasKey     =   $row->id_principal;
+            $Submenu->Descripcion       =   $row->descripcion;
+            $Submenu->nivel             =   $row->nivel;
+            $Submenu->Activo            =   $row->activo;
+            $data[] = $Submenu;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function getByFixedCode($filter, $order){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM menu_principal
+                          WHERE id IN (SELECT id_menu FROM u_menu_subcategorias 
+                            WHERE id_subcategorias IN (SELECT subcategoria FROM catalogo_productos ".$filter.") ) ".$order." LIMIT 1 ";
+        
+        //print_r($SQLSTATEMENT);
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        while ($row = $result->fetch_object()) {
+            $Submenu = new Submenu_();
+            $Submenu->Key               =   $row->id;
+            $Submenu->FamiliaKey        =   $row->id_categoria;
+            $Submenu->CategoriasKey     =   $row->id_principal;
+            $Submenu->Descripcion       =   $row->descripcion;
+            $Submenu->nivel             =   $row->nivel;
+            $Submenu->Activo            =   $row->activo;
+            $data[] = $Submenu;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
   
 
   }

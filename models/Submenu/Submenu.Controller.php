@@ -48,6 +48,34 @@ if (!class_exists("Submenu")) {
       }
     }
 
+    public function getByConfigurableCode(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $SubmenuModel = new Submenu_(); 
+          $SubmenuModel->SetParameters($this->conn, $this->Tool);
+          $items = $SubmenuModel->GetByConfigurableCode($this->filter, $this->order);
+          unset($SubmenuModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function getByFixedCode(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $SubmenuModel = new Submenu_(); 
+          $SubmenuModel->SetParameters($this->conn, $this->Tool);
+          $items = $SubmenuModel->GetByFixedCode($this->filter, $this->order);
+          unset($SubmenuModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     
 
   }

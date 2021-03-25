@@ -20,11 +20,19 @@
       if (!class_exists("CategoriaController")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
       }
-
+      if (!class_exists("SubmenuController")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/Submenu.Controller.php';
+      }
       $CategoriaController = new CategoriaController();
       $CategoriaController->filter = "WHERE codigo = '".$_GET['codigo']."' ";
       $CategoriaController->order = "";
       $Obj = $CategoriaController->estructura();
+      //print_r($Obj);
+      $SubmenuController = new SubmenuController();
+      $SubmenuController->filter = "WHERE codigo = '".$_GET['codigo']."' ";
+      $SubmenuController->order = "ORDER BY id_categoria ASC";
+      $ObjMenu = $SubmenuController->getByConfigurableCode();
+      //print_r($ObjMenu);
     ?>
     <!-- Page Title-->
     <div class="page-title">
@@ -38,10 +46,10 @@
             </li>
             <li class="separator">&nbsp;</li>
             <li>
-              <a href="categorias.php?id_ct=<?php echo $Obj->CategoriaCodigoKey ?>"><?php echo $Obj->CategoriaDescripcion; ?></a>
+              <a href="categorias.php?id_ct=<?php echo $ObjMenu->records[0]->FamiliaKey ?>"><?php echo $Obj->CategoriaDescripcion; ?></a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><a href="categorias.php?id_sbct=<?php echo $Obj->SubcategoriaN1Key ?>&sbn=<?php echo $Obj->SubcategoriaSubnivel ?>"><?php echo $Obj->SubcategoriaDescripcion; ?></a>
+            <li><a href="categorias.php?id_sbct=<?php echo $ObjMenu->records[0]->Key ?>"><?php echo $ObjMenu->records[0]->Descripcion; ?></a>
             </li>
             <li></li>
             <li>

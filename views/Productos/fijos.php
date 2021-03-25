@@ -35,12 +35,21 @@
       if (!class_exists("ProductoController")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
       }
+      if (!class_exists("SubmenuController")) {
+        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/Submenu.Controller.php';
+      }
      if(isset($_GET['id_prd'])){
       $ProductoController = new ProductoController();
       $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
       $ProductoController->order = "";
       $Obj = $ProductoController->GetByProductosFijos();
-      if(!empty($Obj->ProductoCodigo) ){
+
+      $SubmenuController = new SubmenuController();
+      $SubmenuController->filter = "WHERE codigo = '".$_GET['id_prd']."' ";
+      $SubmenuController->order = "ORDER BY id_categoria ASC";
+      $ObjMenu = $SubmenuController->GetByFixedCode();
+      //print_r($ObjMenu);
+      if(!empty($Obj->ProductoCodigo) && !empty($ObjMenu->records[0]->Key)){
     ?>
     <!-- Page Title-->
     <div class="page-title">
@@ -54,13 +63,12 @@
             </li>
             <li class="separator">&nbsp;</li>
             <li>
-              <a href="categorias.php?id_ct=<?php echo $Obj->ProductoCategoriaKey ?>"><?php echo $Obj->CategoriaFamiliaDescripcion; ?></a>
+              <a href="categorias.php?id_ct=<?php echo $ObjMenu->records[0]->FamiliaKey ?>"><?php echo $Obj->CategoriaFamiliaDescripcion; ?></a>
             </li>
             <li class="separator">&nbsp;</li>
             <li>
-              <a <?php if($Obj->SubcategoriaSubnivel=='NO'){ ?> href="categorias.php?id_sbct=<?php echo $Obj->ProductoSubcategoriaKey;?>&sbn=no"<?php }?>
-                   <?php if($Obj->SubcategoriaSubnivel=='SI'){ ?> href="categorias.php?id_sbct=<?php echo $Obj->ProductoSubcategoriaKey;?>&sbn=si"<?php }?>
-                 ><?php echo $Obj->SubcategoriaDescripcion;?></a>
+              <a href="categorias.php?id_sbct=<?php echo $ObjMenu->records[0]->Key ?>"
+                 ><?php echo $ObjMenu->records[0]->Descripcion;?></a>
             </li>
             <li></li>
             <li>
