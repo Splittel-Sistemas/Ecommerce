@@ -9,7 +9,7 @@
           <div class="row">
           <?php 
             $CategoriaController = new CategoriaController();
-            $CategoriaController->filter = "";
+            $CategoriaController->filter = "WHERE activo='si'";
             $CategoriaController->order = "";
             $response = $CategoriaController->get();
 
