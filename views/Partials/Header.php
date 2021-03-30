@@ -315,8 +315,8 @@
               <ul class="sub-menu">
               <?php 
                 $CategoriaController = new CategoriaController();
-                $CategoriaController->filter = "";
-                $CategoriaController->order = "";
+                $CategoriaController->filter = "WHERE activo = 'si' ";
+                $CategoriaController->order = "ORDER BY orden DESC";
                 $response = $CategoriaController->get();
 
                   foreach ($response->records as $CategoriaCont => $Categoria): ?>
