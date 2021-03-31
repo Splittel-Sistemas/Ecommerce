@@ -132,7 +132,7 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoB2C("WHERE t05_f008 <> 0 AND t05_f011 <= 150 AND t12_f004 = 'completed' ","");
+                $data = $PedidoModel->ListPedidoB2C("WHERE estatus = 'P' AND t05_f008 <> 0 AND t05_f011 <= 150 AND t12_f004 = 'completed' ","");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
             }else{

@@ -182,6 +182,31 @@
         throw $e;
       }
     }
+    public function Update3DSecure(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoActualizar(
+          '".$this->Key."',
+          '".$this->ClienteKey."',
+          '".$this->SubTotal."',
+          '".$this->Iva."',
+          '".$this->Total."',
+          'si',
+          '".$this->Estatus."',
+          '".$this->MetodoPago."',
+          '".$this->MonedaPago."',
+          '".$this->DatosEnvioKey."',
+          '".$this->DatosFacturacionKey."',
+          '".$this->Numeroguia."',
+          '".$this->Paqueteria."',
+          '".$this->TipoCambio."',
+          '".$this->DiasExtraCredito."',
+          '".$this->CFDIUser."',
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
     public function UpdateCliente($filter){
       try {
         $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ".$filter." ";

@@ -17,6 +17,7 @@
         <p><img src="../../public/images/img_spl/iconos/close.png" width="200px" height="200px" /></p>
           <h3 class="card-title">&#33;Su orden no se ha generado!</h3>
           <?php 
+            @session_start();
             if (!class_exists("ErrorOpenPayController")) {
               include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Logs/ErrorOpenPay.Controller.php';
             }

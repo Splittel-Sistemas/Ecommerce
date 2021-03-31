@@ -1,11 +1,12 @@
 <?php 
+  @session_start();
   if (!class_exists('OpenPayController')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Controller.php';
   }
 
   try {
     $OpenPayController = new OpenPayController();
-    $OpenPayController->Pago3DSecureSuccess($_GET['id']);
+    $OpenPayController->Pago3DSecureSuccess();
   } catch (Exception $e) {
     throw $e;
   }
