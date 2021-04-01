@@ -3,12 +3,13 @@
   if (!class_exists("ProductoController")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
   }
-  if (!class_exists("SubcategoriasController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
-  }
   if (!class_exists("SubcategoriasN1Controller")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
   }
+  if (!class_exists("SubmenuController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/Submenu.Controller.php';
+  }
+
   if (!function_exists('url_amigable')) {
     function url_amigable($url_tmp) {
       ##webdebe.com
@@ -31,31 +32,31 @@
       return $url;
       }
     }
-  
-  //BUSCADOR DE CATEGORIAS
-  $SubcategoriasController = new SubcategoriasController();
-  $SubcategoriasController->filter = "WHERE desc_subcategoria LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
-  $SubcategoriasController->order = "LIMIT 5";
-  $ResultSubcategoria_ = $SubcategoriasController->get();
-  foreach ($ResultSubcategoria_->records as $key1 => $Obj1){
-    if($Obj1->Subnivel=='SI'){
+    $SubmenuController = new SubmenuController();
+    $SubmenuController->filter = "WHERE descripcion LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
+    $SubmenuController->order = "LIMIT 8";
+    $Subcategoria = $SubmenuController->get();
+  // print_r($Subcategoria->records);
+    if ($Subcategoria->count > 0){ 
+      foreach ($Subcategoria->records as $key => $Subcategoria_){ 
+        if($Subcategoria_->nivel==2){
     ?>
-    <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Obj1->SubcategoriasKey; ?>&sbn=si">
-      <?php echo $Obj1->Descripcion; ?>
+    <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>">
+      <?php echo $Subcategoria_->Descripcion; ?>
     </a>
-    <?php 
+    <?php }
+     if($Subcategoria_->nivel==3){
+    ?>
+     <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->CategoriasKey;?>&id_gpo=<?php echo $Subcategoria_->Key; ?>">
+      <?php echo $Subcategoria_->Descripcion; ?>
+    </a>
+  <?php 
+        }
+      }
     }
-    if($Obj1->Subnivel=='NO'){
-    ?>
-    <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Obj1->SubcategoriasKey; ?>&sbn=no">
-      <?php echo $Obj1->Descripcion; ?>
-    </a>
-  <?php }
-  } 
-  unset($SubcategoriasController);
-  unset($ResultSubcategoria_);
-  unset($Obj1);
-
+    unset($SubmenuController);
+    unset($Subcategoria);
+    unset($Subcategoria_);
   //BUSCADOR DE SUBCATEGORIAS
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
             $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%".$_POST["Descripcion"]."%') AND activo='si' ";
