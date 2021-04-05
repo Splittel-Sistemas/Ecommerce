@@ -566,7 +566,6 @@
                         $PedidoExiste = $PedidoModel->GetBy("where id = '".$_SESSION['Ecommerce-PedidoKey']."' ");
                         # guardar información relevante al pedido
                         $PedidoModel->SetEstatus('P');
-                        $PedidoModel->SetCFDIUser($Info3DSecure->CFDIUser);
                         $ResultPedido = $PedidoModel->Update3DSecure();
                         if (!$ResultPedido['error']) {
                              // Envio de correo de acuerdo a pedido realizado
