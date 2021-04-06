@@ -9,6 +9,9 @@
   }if (!class_exists("ContactoControlller")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Contacto/Contacto.Controller.php';
   }
+  if (!class_exists("SubmenuController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Submenu/Submenu.Controller.php';
+  }
   # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
   if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
     if (!class_exists("GetCurrencyRateController")) {
@@ -332,18 +335,22 @@
             <li><span class="mega-menu-title">Top Subcategorías</span>
               <ul class="sub-menu">
               <?php 
-                $SubcategoriasController = new SubcategoriasController();
-                $SubcategoriasController->filter = "WHERE activo = 'si' ";
-                $SubcategoriasController->order = "ORDER BY RAND() LIMIT 8";
-                $response = $SubcategoriasController->get(false);
-
-                  foreach ($response->records as $SubcategoriasCont => $Subcategorias): ?>
+                $SubmenuController = new SubmenuController();
+                $SubmenuController->filter = "WHERE nivel=2 AND activo='si' ";
+                $SubmenuController->order = "ORDER BY RAND() LIMIT 12";
+                $Subcategoria = $SubmenuController->get();
+              // print_r($Subcategoria->records);
+                if ($Subcategoria->count > 0){ 
+                  foreach ($Subcategoria->records as $key => $Subcategoria_){
+                ?>
                 <li>
-                  <a <?php if($Subcategorias->Subnivel=='NO'){ ?> href="../Productos/categorias.php?id_sbct=<?php echo $Subcategorias->SubcategoriasKey;?>&sbn=no" <?php }?> <?php if($Subcategorias->Subnivel=='SI'){ ?> href="../Productos/categorias.php?id_sbct=<?php echo $Subcategorias->SubcategoriasKey;?>&sbn=si" <?php }?>><?php echo $Subcategorias->Descripcion;?>
-                    
+                  <a href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>" >
+                  <?php echo $Subcategoria_->Descripcion;?>
                   </a>
                 </li>
-              <?php endforeach ?>
+              <?php }
+              }
+              ?>
               </ul>
             </li>
             <li>
@@ -477,6 +484,7 @@ unset($response);
 unset($Soluciones);
 unset($responseSoluciones);
 unset($Subcategoria);
+unset($Subcategoria_);
 unset($responseSucategoria);
 unset($GetCurrencyRate);
 unset($ResponseGetCurrencyRate);
