@@ -33,7 +33,7 @@
       }
     }
     $SubmenuController = new SubmenuController();
-    $SubmenuController->filter = "WHERE descripcion LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
+    $SubmenuController->filter = "WHERE descripcion LIKE '".$_POST["Descripcion"]."%' AND activo='si' ";
     $SubmenuController->order = "LIMIT 8";
     $Subcategoria = $SubmenuController->get();
   // print_r($Subcategoria->records);
@@ -59,7 +59,7 @@
     unset($Subcategoria_);
   //BUSCADOR DE SUBCATEGORIAS
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-            $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%".$_POST["Descripcion"]."%') AND activo='si' ";
+            $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '".$_POST["Descripcion"]."%') AND activo='si' ";
             $SubcategoriasN1Controller->order = "LIMIT 8";
             $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
             if($ResultSubcategoriasN1->count > 0 ){
@@ -79,7 +79,7 @@
 
   //BUSCADOR DE PRODUCTOS FIJOS
   $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND codigo_configurable ='' ";
+  $ProductoController->filter = "WHERE (desc_producto LIKE '".$_POST["Descripcion"]."%' OR codigo LIKE '".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND codigo_configurable ='' ";
   $ProductoController->order = "LIMIT 20";
   $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
