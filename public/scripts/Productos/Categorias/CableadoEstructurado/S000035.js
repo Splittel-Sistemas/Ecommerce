@@ -12,7 +12,7 @@ var Categoria6 = function(){
   let CodigoGenerado = ""
   let LongitudMin = 1
   let LongitudMax = 210
-  StyleDisplayNoneOrBlock_2(Color, 'none', [1,2])
+ // StyleDisplayNoneOrBlock_2(Color, 'none', [1,2])
     LongitudIdText.innerHTML = 'Longitud (pies) '+LongitudMin+'~'+LongitudMax+':'
 
     if (Longitud.value >= LongitudMin && Longitud.value <= LongitudMax) {

@@ -8,6 +8,7 @@
           <option value="VE">Verde</option>
           <option value="BL">Blanco</option>
           <option value="GR">Gris</option>
+          <option value="NE">Negro</option>
         </select>
       </div>
     </div> 
