@@ -40,6 +40,43 @@ class PedidoController{
         $this->Connection = $conn;
         $this->Tool = $Tool;
     }
+    public function EnviarCorreo()
+    {
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $PedidoModel = new Pedido_();
+                $PedidoModel->SetParameters($this->Connection, $this->Tool);
+                $dataPedido = $PedidoModel->Get('WHERE estatus = "P" AND  envio_correo = 0 ', '');
+                foreach ($dataPedido as $key => $pedido) {
+                    $ClienteModel = new Cliente();
+                    $ClienteModel->SetParameters($this->Connection, $this->Tool);
+                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '".$pedido->ClienteKey."' ");
+                    if($ClienteExiste){
+                        // Envio de correo de acuerdo a pedido realizado
+                        $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
+                        $Email = new Email(true);
+                        $TemplatePedido = new TemplatePedido();
+                        $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                        $Email->MailerBody = $TemplatePedido->body();
+                        $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                        $Email->EmailSendEmail();
+                        unset($Email);
+                        unset($TemplatePedido);
+
+                        $PedidoModel->SetKey($pedido->Key);
+                        $PedidoModel->SetEnvioCorreo(1);
+                        $result = $PedidoModel->ActualizarEstatusEnvioCorreo();
+
+                        unset($_SESSION['Ecommerce-PedidoKey']);
+                    }
+                }
+            }else{
+                throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function getBy(){
         try {
           if (!$this->Connection->conexion()->connect_error) {
@@ -418,14 +455,14 @@ class PedidoController{
                                 $ResultSalesQuatation = $SalesQuatationModel->create();
                                 // print_r($ResultSalesQuatation);
                                 if (!$ResultSalesQuatation['error']) {
-                                    $Email = new Email(true);
-                                    $TemplatePedido = new TemplatePedido();
-                                    $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                    $Email->MailerBody = $TemplatePedido->body();
-                                    $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                    $Email->EmailSendEmail();
-                                    unset($Email);
-                                    unset($TemplatePedido);
+                                    // $Email = new Email(true);
+                                    // $TemplatePedido = new TemplatePedido();
+                                    // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                                    // $Email->MailerBody = $TemplatePedido->body();
+                                    // $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                    // $Email->EmailSendEmail();
+                                    // unset($Email);
+                                    // unset($TemplatePedido);
                                     
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                     unset($_SESSION['Ecommerce-PedidoKey']);

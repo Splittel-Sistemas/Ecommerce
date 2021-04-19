@@ -1,4 +1,4 @@
-<?php
+<?php 
   @session_start();
   ini_set('default_socket_timeout', 600);
   if(empty($_SERVER['DOCUMENT_ROOT'])){
@@ -7,5 +7,5 @@
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
 
-  // $PedidoController = new PedidoController();
-  // $PedidoController->PedidosPagoBancoTranferenciaCompleta();
+  $PedidoController = new PedidoController();
+  $PedidoController->EnviarCorreo();

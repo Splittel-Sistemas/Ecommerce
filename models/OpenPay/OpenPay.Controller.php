@@ -161,14 +161,14 @@
                                         $ResultSalesQuatation = $SalesQuatationModel->create();
                                         if (!$ResultSalesQuatation['error']) {
                                             // Envio de correo de acuerdo a pedido realizado
-                                            $Email = new Email(true);
-                                            $TemplatePedido = new TemplatePedido();
-                                            $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                            $Email->MailerBody = $TemplatePedido->body();
-                                            $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                            $Email->EmailSendEmail();
-                                            unset($Email);
-                                            unset($TemplatePedido);
+                                            // $Email = new Email(true);
+                                            // $TemplatePedido = new TemplatePedido();
+                                            // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                                            // $Email->MailerBody = $TemplatePedido->body();
+                                            // $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                            // $Email->EmailSendEmail();
+                                            // unset($Email);
+                                            // unset($TemplatePedido);
 
                                             $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                             unset($_SESSION['Ecommerce-PedidoKey']);
@@ -190,14 +190,14 @@
                                         $ResultInovice = $InvoiceModel->create();
                                         if (!$ResultInovice['error']) {
                                             // Envio de correo de acuerdo a pedido realizado
-                                            $Email = new Email(true);
-                                            $TemplatePedido = new TemplatePedido();
-                                            $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                            $Email->MailerBody = $TemplatePedido->body();
-                                            $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                            $Email->EmailSendEmail();
-                                            unset($Email);
-                                            unset($TemplatePedido);
+                                            // $Email = new Email(true);
+                                            // $TemplatePedido = new TemplatePedido();
+                                            // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                                            // $Email->MailerBody = $TemplatePedido->body();
+                                            // $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                            // $Email->EmailSendEmail();
+                                            // unset($Email);
+                                            // unset($TemplatePedido);
 
                                             $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                             unset($_SESSION['Ecommerce-PedidoKey']);
@@ -568,20 +568,18 @@
                         $PedidoModel->SetEstatus('P');
                         $ResultPedido = $PedidoModel->Update3DSecure();
                         if (!$ResultPedido['error']) {
-                             // Envio de correo de acuerdo a pedido realizado
-                             $Email = new Email(true);
-                             $TemplatePedido = new TemplatePedido();
-                             $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                             $Email->MailerBody = $TemplatePedido->body();
-                             $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                             $Email->EmailSendEmail();
-                             unset($Email);
-                             unset($TemplatePedido);
+                            //  Envio de correo de acuerdo a pedido realizado
+                            //  $Email = new Email(true);
+                            //  $TemplatePedido = new TemplatePedido();
+                            //  $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                            //  $Email->MailerBody = $TemplatePedido->body();
+                            //  $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                            //  $Email->EmailSendEmail();
+                            //  unset($Email);
+                            //  unset($TemplatePedido);
 
                              $_SESSION['Ecommerce-PedidoTotal'] = 0;
                              unset($_SESSION['Ecommerce-PedidoKey']);
-                             unset($InvoiceModel);
-                             unset($ResultInovice);
                         }else{
                             throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                         }

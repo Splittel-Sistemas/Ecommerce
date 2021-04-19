@@ -28,6 +28,7 @@
     public $CFDIUser;
     public $NumeroGuiaEstatus;
     public $NombrePaqueteria;
+    public $EnvioCorreo;
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;
@@ -101,6 +102,8 @@
       $this->EstatusPuntos = $EstatusPuntos;
     }public function SetTipoPedido($TipoPedido){
       $this->TipoPedido = $TipoPedido;
+    }public function SetEnvioCorreo($EnvioCorreo){
+      $this->EnvioCorreo = $EnvioCorreo;
     }
 
     public function GetKey(){
@@ -137,6 +140,8 @@
       return $this->DatosFacturacionKey;
     }public function GetPaqueteria(){
       return $this->Paqueteria;
+    }public function GetEnvioCorreo(){
+      return $this->EnvioCorreo;
     }
 
     public function Add(){
@@ -305,6 +310,18 @@
         throw $e;
       }
     }
+
+    public function ActualizarEstatusEnvioCorreo(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoActualizarEstatusEnvioCorreo(
+          ".$this->Key.",
+          ".$this->EnvioCorreo.",
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
     /**
      * Listar Pedido 
      *
@@ -362,6 +379,7 @@
     public function Get($filter, $orderBy){
       try {
         $SQLSTATEMENT = "SELECT * FROM listar_pedido ".$filter." ".$orderBy;
+        // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = array();
         while ($row = $result->fetch_object()) {
@@ -390,6 +408,7 @@
           $newPedido->NombrePaqueteria       =   $row->nombre_paqueteria; 
           $newPedido->FechaRecibido          =   $row->fecha_recibio_paquete; 
           $newPedido->Recibio                =   $row->recibio;
+          $newPedido->EnvioCorreo            =   $row->envio_correo;
           $data[] = $newPedido;
           unset($newPedido);
         }
