@@ -266,8 +266,119 @@ var JumpersMTPPRO = function(){
       agregarCertificadoConfigurable(CodigoGenerado)
   }
 
+  var JumpersMPO = function(){
+    let Longitud = document.getElementById('Longitud')
+    JumperValidacionLongitud(Longitud, 3)
+  
+    let Conectarizacion = "A1"
+    let Polaridad = document.getElementById('Polaridad')
+    let Polaridadselected = Polaridad.options[Polaridad.selectedIndex].text
+    let CantidadFibras = document.getElementById('CantidadFibras')
+    let Diseno = document.getElementById('Diseno')
+    let Disenoselected = Diseno.options[Diseno.selectedIndex].text
+    let TipoFibra = document.getElementById('TipoFibra')
+    let Fibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let TipoCable = 'R'
+    let TipoCubierta = document.getElementById('TipoCubierta')
+    
+    let CodigoGenerado = ""
+    
+    CantidadFibras[0].style.display = "none"
+    CantidadFibras[1].selected = true
+    TipoCubierta[0].style.display = "none"
+    TipoCubierta[1].style.display = "none"
+    TipoCubierta[2].selected = "selected"
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    Familia = "J"
+  
+    if(Longitud.value > 100){
+      JumperValidacionLongitud(Longitud, 2)
+    }
+        
+    if (Longitud.value > 0 && Longitud.value <= 100) {
+      NewLongitud = NumeroConCeros2(Longitud.value, 3)
+      CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
+      // Agreación de codigo para la vista en el identificador
+      let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
+      NombreProductoConfigurable(CodigoGenerado, descripcion)
+  
+      ChangeListImgProducto('OPJA1A1','OPJA1A1'+Polaridad.value+Diseno.value)
+      ListProductoDescription('OPJA1A1')
+      ListProductoAdicional('OPJA1A1')
+      let data = {
+        Action: 'calcular',
+        ActionCalcularPrecioMPO: true,
+        Longitud: Longitud.value,
+        Fibra: Fibraselected,
+        CantidadFibras: CantidadFibras.value,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+      }
+      CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
+      showClave(CodigoGenerado)
+    }
+    agregarFichaTecnicaConfigurable('OPJA1A1')
+    agregarCertificadoConfigurable(CodigoGenerado)
+  }
+  
+  var JumpersMPOBreakOut = function(){
+    let Longitud = document.getElementById('Longitud')
+    JumperValidacionLongitud(Longitud, 3)
+  
+    let ConectarizacionLadoA = document.getElementById('ConectorLadoA')
+    let ConectarizacionLadoB = document.getElementById('ConectorLadoB')
+    let Polaridad = document.getElementById('Polaridad')
+    let Polaridadselected = Polaridad.options[Polaridad.selectedIndex].text
+    let CantidadFibras = document.getElementById('CantidadFibras')
+    let Diseno = document.getElementById('Diseno')
+    let Disenoselected = Diseno.options[Diseno.selectedIndex].text
+    let TipoFibra = document.getElementById('TipoFibra')
+    let Fibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+    let NumeroHilos = CantidadFibras.options[CantidadFibras.selectedIndex].getAttribute('numerohilos')
+    let TipoCable = 'R'
+    let TipoCubierta = document.getElementById('TipoCubierta')
+    let LongitudBreakOut = document.getElementById('LongitudBreakOut')
+    let CodigoGenerado = ""
+    let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+    Familia = "J"
+  
+    if(Longitud.value > 100){
+      JumperValidacionLongitud(Longitud, 2)
+    }
+        
+    if (Longitud.value > 0 && Longitud.value <= 100) {
+      NewLongitud = NumeroConCeros2(Longitud.value, 3)
+      CodigoGenerado = Marca+Familia+ConectarizacionLadoA.value+Diseno.value+ConectarizacionLadoB.value+Polaridad.value+CantidadFibras.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value+LongitudBreakOut.value
+      // Agreación de codigo para la vista en el identificador
+      let descripcion = "Jumper MPO-BreakOut "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
+      NombreProductoConfigurable(CodigoGenerado, descripcion)
+   
+      ListImgProducto("OPJA1xAE")
+      ListProductoDescription('OPJA1xAE')
+      ListProductoAdicional('OPJA1xAE')
+      let data = {
+        Action: 'calcular',
+        ActionCalcularPrecioMPOBreakOut: true,
+        Longitud: Longitud.value,
+        NumeroHilos: NumeroHilos,
+        Fibra: TipoFibra.value,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+      }
+      CalcularPrecio("../../models/Productos/Jumpers/MPOBreakOut/CalcularPrecioMPOBreakOut.Route.php", data)
+    }
+      showClave(CodigoGenerado)
+      agregarFichaTecnicaConfigurable('OPJA1xAE')
+      agregarCertificadoConfigurable(CodigoGenerado)
+  }
+
+
 var JumpersMTPUS = function() {
   switch(Jumper.value){
+    case 'JMPO' : 
+      JumpersMPO()
+    break;
+    case 'JMPOBO' : 
+      JumpersMPOBreakOut()
+    break;
     case 'MTPMTP' : 
       JumpersMTP()
     break;
