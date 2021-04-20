@@ -15,6 +15,8 @@
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Webhook.Model.php';
 	}if (!class_exists("WebhookEventos")) {
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/WebhookEventos.Model.php';
+	}if (!class_exists('Pedido_')) {
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
 	}
 
 	/**
