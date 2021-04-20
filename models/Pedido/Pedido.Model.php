@@ -171,7 +171,7 @@
           '".$this->Iva."',
           '".$this->Total."',
           'si',
-          'P',
+          '".$this->Estatus."',
           '".$this->MetodoPago."',
           '".$this->MonedaPago."',
           '".$this->DatosEnvioKey."',
