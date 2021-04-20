@@ -294,6 +294,7 @@
                                 $PedidoModel->SetMonedaPago($_POST['monedaPago']);
                                 $PedidoModel->SetDatosEnvioKey($_POST['datosEnvio']);
                                 $PedidoModel->SetDatosFacturacionKey($_POST['datosFacturacion']);
+                                $PedidoModel->SetEstatus('C');
                                 // $PedidoModel->SetNumeroguia();
                                 $PedidoModel->SetPaqueteria($_POST['paqueteria']);
                                 $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
