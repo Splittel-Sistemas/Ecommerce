@@ -15,6 +15,8 @@
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Webhook.Model.php';
 	}if (!class_exists("WebhookEventos")) {
 		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/WebhookEventos.Model.php';
+	}if (!class_exists('Pedido_')) {
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
 	}
 
 	/**
@@ -112,9 +114,10 @@
 					$WebhookEventosModel->GetDescripcion();
 
 					if ($ExistWebhookEventosModel) {
+						$pedidoKey = $Objresponse->transaction->order_id;
 						$data = [
 							"Descripcion" => $WebhookEventosModel->GetDescripcion(),
-							"Pedido" => $Objresponse->transaction->order_id,
+							"Pedido" => $pedidoKey,
 							"Fecha" => $Objresponse->event_date,
 							"Message" => "transferencia pendiente",
 							"Monto" => $Objresponse->transaction->amount.' '.$Objresponse->transaction->currency
@@ -123,7 +126,7 @@
 						$WebhookModel = new Webhook();
 						$WebhookModel->SetParameters($this->Connection, $this->Tool);
 						$WebhookModel->SetTitulo($Objresponse->type);
-						$WebhookModel->SetPedidoKey($Objresponse->transaction->order_id);
+						$WebhookModel->SetPedidoKey($pedidoKey);
 						$WebhookModel->SetPedidoTipo($Objresponse->transaction->method == 'bank_account' ? 0 : 1);
 						$WebhookModel->SetEstatus($Objresponse->transaction->status); 
 						$WebhookModel->SetData($response);
@@ -131,6 +134,16 @@
 						$ResultWebhookModel = $WebhookModel->create();
 
 						if (!$ResultWebhookModel['error']) {
+							if($Objresponse->transaction->method == 'bank_account' && $Objresponse->transaction->status == "completed"){
+								# Pedido
+								$PedidoModel = new Pedido_();
+								$PedidoModel->SetParameters($this->Connection,  $this->Tool);
+								$PedidoExiste = $PedidoModel->GetBy("where id = '".$pedidoKey."' ");
+								# guardar información relevante al pedido
+								$PedidoModel->SetEstatus('P');
+								$ResultPedido = $PedidoModel->Update();
+							}
+							
 							if($Objresponse->transaction->method == 'bank_account' && $Objresponse->transaction->status == "in_progress"){
 								$Email = new Email(true);
 								$TemplateEmailWebhook = new TemplateWebhookPagoBanco();
