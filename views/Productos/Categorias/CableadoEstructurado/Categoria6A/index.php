@@ -11,11 +11,21 @@
             <option value="VE">Verde</option>
             <option value="BL">Blanco</option>
             <option value="GR">Gris</option>
+            <?php if ($_GET['codigo'] == "C97"): ?>
+            <option value="NE">Negro</option>
+          <?php endif ?>
           <?php endif ?>
         </select>
       </div>
     </div> 
-    <?php if($_GET['codigo'] == "C70"){ ?>
+    <?php if($_GET['codigo'] == "C97"){ ?>
+    <div class="col-sm-4" id="LongitudInput">
+      <div class="form-group mb-0">
+        <label id="LongitudIdText">Longitud (pies)</label>
+        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" onkeyup="Categoria6A()">
+      </div>
+    </div>
+    <?php }else if($_GET['codigo'] == "C70"){ ?>
     <div class="col-sm-4" id="LongitudSelect">
       <div class="form-group mb-0">
         <label id="Longitud_1IdText">Longitud (pies)</label>
