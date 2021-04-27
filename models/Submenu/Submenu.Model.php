@@ -44,7 +44,7 @@
           $this->CategoriasKey     =   $row->id_principal;
           $this->Descripcion       =   $row->descripcion;
           $this->nivel             =   $row->nivel;
-          
+          $this->DescripcionLarga  =   $row->descripcion_seo;
           $this->Activo            =   $row->activo;
           $data = true;
         }
@@ -69,7 +69,7 @@
             $Submenu->nivel             =   $row->nivel;
             
             $Submenu->Activo            =   $row->activo;
-            //$Subcategorias->DescripcionLarga  =   $row->descripcion;
+            $Submenu->DescripcionLarga  =   $row->descripcion_seo;
             $data[] = $Submenu;
         }
         return $data;

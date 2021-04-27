@@ -69,6 +69,16 @@
                 $SubmenuController->filter = "WHERE id = '".$SubcategoriaKey."' AND nivel=2 AND activo='si' ";
                 $SubmenuController->order = "";
                 $Subcategoria = $SubmenuController->getBy();
+
+                if(!isset($_GET['id_gpo'])){
+                  $SubmenuController->filter = "WHERE id = '".$SubcategoriaKey."' AND activo='si' ";
+                  $SubmenuController->order = "";
+                  $Subcategoria1 = $SubmenuController->getBy();
+                }else{
+                  $SubmenuController->filter = "WHERE id = '".$GpoKey."' AND activo='si' ";
+                  $SubmenuController->order = "";
+                  $Subcategoria1 = $SubmenuController->getBy();
+                }
                
                 $CategoriaController = new CategoriaController();
                 $CategoriaController->filter = "WHERE id_codigo = '".$Subcategoria->GetFamiliaKey()."' AND activo='si'";
@@ -78,7 +88,7 @@
             <li class="separator">&nbsp;</li>
             <li><a href="../Productos/categorias.php?id_ct=<?php echo $Subcategoria->GetFamiliaKey(); ?>"><?php echo $Categoria_->GetDescripcion();?></a></li>
             <li class="separator">&nbsp;</li>
-            <li><?php echo $Subcategoria->GetDescripcion();?></li>
+            <li><?php echo $Subcategoria1->GetDescripcion();?></li>
             <?php } ?>
           </ul>
         </div>
@@ -99,7 +109,8 @@
               <h1 class="post-title"><p><?php echo $Categoria->GetDescripcionLarga();?></p></h1>
             </div>
           </div>
-          <?php }  if (isset($_GET['id_sbct'])){ ?>
+          <?php } ?>
+          <?php   if (isset($_GET['id_sbct'])){ ?>
            <!-- Promo banner-->
            <?php if(file_exists("../../public/images/img_spl/BannerSubcategoria/banner_".$_GET['id_sbct'].".jpg")){?>
            <div class="row">
@@ -110,10 +121,12 @@
             </div>
             </a>
           </div>
-           <?php }?>
+           <?php }
+           //print_r($Subcategoria);
+           ?>
           <div class="row">
             <a href="javascript:void(0);" class="alert alert-default alert-dismissible fade  show fw-section mb-30 margin-bottom-1x">
-              <h1 class="post-title"><p><?php echo $Subcategoria->GetDescripcionLarga();?></p></h1>
+              <h1 class="post-title"><p><?php echo $Subcategoria1->GetDescripcionLarga();?></p></h1>
             </a>
           </div>
           <?php } ?>
