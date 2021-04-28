@@ -12,6 +12,7 @@
             <option value="BL">Blanco</option>
             <option value="GR">Gris</option>
             <?php if ($_GET['codigo'] == "C97"): ?>
+            <option value="AM">Amarillo</option>
             <option value="NE">Negro</option>
           <?php endif ?>
           <?php endif ?>
@@ -22,7 +23,7 @@
     <div class="col-sm-4" id="LongitudInput">
       <div class="form-group mb-0">
         <label id="LongitudIdText">Longitud (pies)</label>
-        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" onkeyup="Categoria6A()">
+        <input oninput="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" id="Longitud" name="Longitud" value="1" onkeyup="Categoria6A()">
       </div>
     </div>
     <?php }else if($_GET['codigo'] == "C70"){ ?>
