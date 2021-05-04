@@ -92,8 +92,8 @@ if (!class_exists("CategoriaController")) {
             $Email = new Email();
             $TemplateConsultecnico = new TemplateConsultecnico();
             $Email->MailerSubject = "Consultecnico";
-            $Email->MailerListTo = ["aaron.cuevas@splittel.com"];
-            //$Email->MailerListTo = ["rodrigo.ramirez@splittel.com", "irving.ramirez@splittel.com"];
+            //$Email->MailerListTo = ["aaron.cuevas@splittel.com"];
+            $Email->MailerListTo = ["rodrigo.ramirez@splittel.com", "irving.ramirez@splittel.com"];
             $Email->MailerBody = $TemplateConsultecnico->body($data);
             $Email->EmailSendEmail();
             unset($Email);
