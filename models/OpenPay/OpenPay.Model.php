@@ -208,7 +208,7 @@
 						"description" => "Pedido Número ".$Pedido->GetKey(),
 						"order_id" => $Pedido->GetKey(),
 						'source_id' => $this->TokenId,//token tarjeta
-						"redirect_url" => "https://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php",
+						"redirect_url" => "http://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
 						"use_3d_secure" => "true",
 						'device_session_id' => $this->DeviceSessionId,// sessionDev []
 						'customer' => $Customer

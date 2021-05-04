@@ -160,16 +160,6 @@
                                         $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
                                         $ResultSalesQuatation = $SalesQuatationModel->create();
                                         if (!$ResultSalesQuatation['error']) {
-                                            // Envio de correo de acuerdo a pedido realizado
-                                            // $Email = new Email(true);
-                                            // $TemplatePedido = new TemplatePedido();
-                                            // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                            // $Email->MailerBody = $TemplatePedido->body();
-                                            // $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                            // $Email->EmailSendEmail();
-                                            // unset($Email);
-                                            // unset($TemplatePedido);
-
                                             $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                             unset($_SESSION['Ecommerce-PedidoKey']);
                                             unset($SalesQuatationModel);
@@ -189,16 +179,6 @@
                                         $InvoiceModel->SetIntentos(0);
                                         $ResultInovice = $InvoiceModel->create();
                                         if (!$ResultInovice['error']) {
-                                            // Envio de correo de acuerdo a pedido realizado
-                                            // $Email = new Email(true);
-                                            // $TemplatePedido = new TemplatePedido();
-                                            // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                            // $Email->MailerBody = $TemplatePedido->body();
-                                            // $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                            // $Email->EmailSendEmail();
-                                            // unset($Email);
-                                            // unset($TemplatePedido);
-
                                             $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                             unset($_SESSION['Ecommerce-PedidoKey']);
                                             unset($InvoiceModel);
@@ -569,16 +549,6 @@
                         $PedidoModel->SetEstatus('P');
                         $ResultPedido = $PedidoModel->Update3DSecure();
                         if (!$ResultPedido['error']) {
-                            //  Envio de correo de acuerdo a pedido realizado
-                            //  $Email = new Email(true);
-                            //  $TemplatePedido = new TemplatePedido();
-                            //  $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                            //  $Email->MailerBody = $TemplatePedido->body();
-                            //  $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                            //  $Email->EmailSendEmail();
-                            //  unset($Email);
-                            //  unset($TemplatePedido);
-
                              $_SESSION['Ecommerce-PedidoTotal'] = 0;
                              unset($_SESSION['Ecommerce-PedidoKey']);
                         }else{
