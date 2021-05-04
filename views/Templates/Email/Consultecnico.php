@@ -13,7 +13,11 @@
      */
     public function body($data){
       try {
+        $comment="";
         $Principal = new TemplatePrincipal();
+        if(isset($data['Comentario']) && $data['Comentario']!=""){
+          $comment='<p align="center" style="margin-bottom:10px;"><strong>Comentario: </strong>'.$data['Comentario'].'</p>';
+        }
         $html = $Principal->Head().'<body class="">
                 <span class="preheader">Ecommerce Grupo Splittel</span>
                 
@@ -34,6 +38,7 @@
                             <td class="wrapper">
                               <p align="center" style="margin-bottom:10px;"><strong>Pregunta: </strong>'.$data['Pregunta'].'</p>
                               <p align="center" style="margin-bottom:10px;"><strong>Categoría: </strong>'.$data['Categoria'].'</p>
+                              '.$comment.'
                               <p><br></p>
                               <p align="center">Este es un correo electrónico generado automáticamente</p>
                             </td>
