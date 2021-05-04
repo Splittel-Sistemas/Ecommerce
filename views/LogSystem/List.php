@@ -10,7 +10,7 @@
         $LOGs = $LogSystem->List_Log("".$SQL_Where ," ",false)->records;
     }else{
         $SQL_Where = "";
-        $LOGs = $LogSystem->List_Log(" WHERE t99_f099 BETWEEN DATE_ADD(CURDATE(), INTERVAL -10 DAY) AND CURDATE()","",false)->records;
+        $LOGs = $LogSystem->List_Log(" WHERE t99_f099 BETWEEN DATE_ADD(CURDATE(), INTERVAL -10 DAY) AND DATE_ADD(CURDATE(), INTERVAL +1 DAY)","",false)->records;
     }
     
     // print_r($LOGs);
