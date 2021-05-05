@@ -199,7 +199,8 @@
 						'email'         => $Cliente->GetEmail()
 					);
 
-					$valor= round($Pedido->GetTotalMXN(),2);
+					$PedidoMonto = $Pedido->GetMonedaPago() == 'USD' ? $Pedido->GetTotal() : $Pedido->GetTotalMXN();
+					$valor= round($PedidoMonto,2);
 					$Amount = strval($valor);
 
 					$chargeData = array(
