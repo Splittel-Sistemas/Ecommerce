@@ -50,7 +50,7 @@
 </div>
 
 <div class="modal fade" id="Pedido-Detalle-B2B">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Pedido Detalle</h4>
