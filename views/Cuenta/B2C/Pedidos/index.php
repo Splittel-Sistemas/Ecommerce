@@ -2,7 +2,7 @@
 <?php include 'List.php'; ?>
 
 <div class="modal fade" id="modal-create-update">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Datos de envió</h4>
