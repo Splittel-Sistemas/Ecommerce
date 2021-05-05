@@ -159,7 +159,7 @@
 						'method'            => 'card',
 						'source_id'         => $this->TokenId,//token tarjeta
 						'amount'            => $Amount,
-						"currency"          => $_POST['monedaPago'] == 'USD' ? $_POST['monedaPago'] : 'MXN',
+						"currency"          => $_POST['monedaPago'] == 'USD' ? 'USD' : 'MXN',
 						'description'       => "Pago con tarjeta",
 						'order_id'			=> $Pedido->GetKey(),
 						'device_session_id' => $this->DeviceSessionId,// sessionDev []
@@ -205,6 +205,7 @@
 					$chargeData = array(
 						"method" => "card",
 						"amount" => $Amount,
+						"currency" => $Pedido->GetMonedaPago() == 'USD' ? 'USD' : 'MXN',
 						"description" => "Pedido Número ".$Pedido->GetKey(),
 						"order_id" => $Pedido->GetKey(),
 						'source_id' => $this->TokenId,//token tarjeta
