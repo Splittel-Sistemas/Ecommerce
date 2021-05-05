@@ -356,4 +356,17 @@ class Functions_tools
           throw $e;
         }
     }
+    public function vaidateHttps(){
+        try {
+            $isHttps = 'http';
+            if(isset($_SERVER['HTTPS'])){
+                if ($_SERVER['HTTPS']) {
+                        $isHttps = 'https';
+                }
+            }
+            return $isHttps;
+        } catch (Exception $e) {
+          throw $e;
+        }
+    }
 }

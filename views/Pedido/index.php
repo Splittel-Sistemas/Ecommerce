@@ -1,5 +1,9 @@
 <?php 
+  if(isset($_GET['session_id'])){
+    @session_id($_GET['session_id']);
+  }
   @session_start();
+
   if (!class_exists('OpenPayController')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/OpenPay/OpenPay.Controller.php';
   } 

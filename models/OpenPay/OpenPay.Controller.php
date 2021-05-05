@@ -399,6 +399,7 @@
                             }
                             # crear cargo pago pedido mediante Open Pay
                             $OpenPay_ =  new OpenPay_();
+                            $OpenPay_->SetParameters($this->Connection, $this->Tool);
                             $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                             $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
                             $OpenPay_->SetTokenId($_POST['tokenId']);

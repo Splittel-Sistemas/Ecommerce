@@ -199,18 +199,20 @@
 						'email'         => $Cliente->GetEmail()
 					);
 
-					$PedidoMonto = $Pedido->GetMonedaPago() == 'USD' ? $Pedido->GetTotal() : $Pedido->GetTotalMXN();
+					$PedidoMonto = $_POST["monedaPago"] == 'USD' ? $Pedido->GetTotal() : $Pedido->GetTotalMXN();
 					$valor= round($PedidoMonto,2);
 					$Amount = strval($valor);
+
+					$http = $this->Tool->vaidateHttps();
 
 					$chargeData = array(
 						"method" => "card",
 						"amount" => $Amount,
-						"currency" => $Pedido->GetMonedaPago() == 'USD' ? 'USD' : 'MXN',
+						"currency" => $_POST["monedaPago"] == 'USD' ? 'USD' : 'MXN',
 						"description" => "Pedido Número ".$Pedido->GetKey(),
 						"order_id" => $Pedido->GetKey(),
 						'source_id' => $this->TokenId,//token tarjeta
-						"redirect_url" => "http://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
+						"redirect_url" => $http."://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
 						"use_3d_secure" => "true",
 						'device_session_id' => $this->DeviceSessionId,// sessionDev []
 						'customer' => $Customer
