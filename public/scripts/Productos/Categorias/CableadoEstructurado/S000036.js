@@ -2,11 +2,12 @@
 
 var Marca = "OP"
 var Familia = "CA"
-var Estructurados = "PCC6AU"
+var Estructurados = "PCC6A"
 var Categoria="CAT6A"
 var DirectorioImgProducto = Marca+Familia+Estructurados
 
 var Categoria6AUTP1 = function(){
+  var Estructurados = "PCC6AU"
   let Longitud = document.getElementById('Longitud')
   let Color = document.getElementById('Color')
   let LongitudIdText = document.getElementById('LongitudIdText')
