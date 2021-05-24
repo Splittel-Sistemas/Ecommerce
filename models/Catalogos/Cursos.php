@@ -142,7 +142,7 @@ class CatalogoCursos{
             'Telefono'    => $Telefono   
           ];
 
-          $CatalogoCursos->Informacion =  json_encode($CatalogoCursos->Curso);
+          echo $CatalogoCursos->Informacion =  json_encode($CatalogoCursos->Curso);
           echo $CatalogoCursos->sendEmail(true);
           break;
         case 'RegistroBoletin':
