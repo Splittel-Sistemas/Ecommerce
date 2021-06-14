@@ -138,9 +138,10 @@
           <h1 class="col-md-12 col-lg-12 col-12" style="font-size: 18px;">Somos Fibremex, el Catálogo de las telecomunicaciones, con una oferta integral para redes y fibra óptica. <br/>Conoce Grupo Splittel, nuestra casa. Transpórtate en un clic.</h1>
         </div>
       </div>
+      <!--
       <iframe frameBorder="0" style="height:625px;"  src="https://splittel.com/Splittour/" title="Splittour">
       </iframe>
-     
+     -->
     </section>
     <!-- Banner 1 -->
     <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
