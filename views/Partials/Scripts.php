@@ -34,7 +34,7 @@
 }
 </script>
 <!--  Google Adwords Pixel Code -->
-<!--
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37926902-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -43,12 +43,12 @@
 
   gtag('config', 'UA-37926902-1');
 </script>
--->
+
 <!-- End Google Adwords Pixel Code -->
 
 
 <!-- Facebook Pixel Code -->
-<!--
+
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -64,11 +64,11 @@ fbq('track', 'PageView');
 <noscript>
 <img height="1" width="1" src="https://www.facebook.com/tr?id=677450132591773&ev=PageView&noscript=1"/>
 </noscript>
--->
+
 <!-- End Facebook Pixel Code -->
 
 <!-- Start of fibremex Zendesk Widget script -->
-<!--
+
 <script> 
 function Chat () { 
 var script = document.createElement ("script"); // Hacer un script DOM nodo 
@@ -78,17 +78,17 @@ document.head.appendChild (script);
 } 
 setTimeout (Chat, 3500); 
 </script> 
--->
+
 <!-- End of fibremex Zendesk Widget script -->
 
 <!--  RdStation Pixel Code -->
-<!--
+
 <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/714b0c18-9396-441a-8919-4fbf37288b33-loader.js" ></script> 
--->
+
 <!--  RdStation Adwords Pixel Code -->
 
 <!--  Captcha Code V3 -->
-<!--
+
 <script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
     
 <script>
@@ -99,5 +99,5 @@ setTimeout (Chat, 3500);
             });
         });
     </script>
-    -->
+ 
 <!--  Captcha Code V3 -->
