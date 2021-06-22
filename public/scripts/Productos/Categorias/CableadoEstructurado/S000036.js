@@ -36,7 +36,7 @@ var Categoria6AUTP1 = function(){
     ListProductoDescription('OPCAPCC6AU')
     ListProductoAdicional('OPCAPCC6AU')
     ChangeListImgProducto(DirectorioImgProducto, ImgProducto)
-    
+    agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados)
     showClave(CodigoGenerado)
     existCodeSapPatchCord(CodigoGenerado)
     
