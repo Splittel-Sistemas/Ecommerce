@@ -3,6 +3,7 @@
 var Marca = "OP"
 var Familia = "PI"
 var Pigtail = document.getElementById('Cable')
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var Pigtails = function(){
   let Longitud = document.getElementById('Longitud')
@@ -82,7 +83,7 @@ var Pigtails = function(){
 
     let descripcion = "Pigtail "+Pigtail.value+TipoPulido+" "+TipoFibraselected+" "+NumeroHilos.value+" de "+Longitud1+" metro(s) de "+Diametroselected
     NombreProductoConfigurable(CodigoGenerado, descripcion)
-
+    DescPrdConf.innerHTML=descripcion
     let data = {
       Action: 'calcular',
       ActionCalcularPrecioPigtail: true,

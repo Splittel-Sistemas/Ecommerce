@@ -77,7 +77,7 @@
         <!-- Product Info-->
         <div class="col-md-6">
           <div class="padding-top-2x mt-2 hidden-md-up"></div>
-          <h2 class="mb-3"></h2>
+          <h4 class="mb-3 padding-top-1x" id="DscProductoConfigurable"></h4>
           <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/optronics1.png"/></span>
           <div id="leyenda" class="col-12 mb-4">
             <span class="h3 " id="Costo" >$ </span>

@@ -4,6 +4,7 @@ var Marca = "OP"
 var Familia = "DI"
 var Unidad = document.getElementById('Cable')
 var NumeroAcopladoresMin = 1
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var cont = 0
 var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
@@ -79,6 +80,7 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
       let descripcion = "Distribuidor precargado "+Unidad.value+" "+NumeroAcopladores.value+" Acoplador(es) "+Colorselected+" "+TipoAcoplador.value+" "+Puertosselected
       if(CodigoGenerado!=''){
         NombreProductoConfigurable(CodigoGenerado, descripcion)
+        DescPrdConf.innerHTML=descripcion
       }
     }
     // Agregación de codigo para la vista en el identificador

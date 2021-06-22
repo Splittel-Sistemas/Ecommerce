@@ -5,6 +5,7 @@ var Familia = "CA"
 var Estructurados = "PCC6A"
 var Categoria="CAT6A"
 var DirectorioImgProducto = Marca+Familia+Estructurados
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var Categoria6AUTP1 = function(){
   var Estructurados = "PCC6AU"
@@ -46,6 +47,7 @@ var Categoria6AUTP1 = function(){
     let descripcion = "PatchCord Cat6A UTP "+Longitud.value+" pie(s) color "+ColorText
     //console.log(descripcion)
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
     agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados)
     agregarCertificadoConfigurable(CodigoGenerado)
 }

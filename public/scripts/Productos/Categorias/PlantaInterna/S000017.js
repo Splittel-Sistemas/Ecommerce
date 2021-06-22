@@ -3,6 +3,7 @@ var Marca = "OP"
 // [CP] CABLE PRECONECTORIZADOS
 var Familia = "CP"
 var Clave = document.getElementById('Clave');
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 // propierties
 let TipoTermiacion      = document.getElementById("TipoTerminacion");
 let ConectorLadoA       = document.getElementById("conec_lad_a");
@@ -248,6 +249,7 @@ var cable_IE = function(){
     let descripcion_cable = "Cable preconectorizado Interior-Exterior "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)
+      DescPrdConf.innerHTML=descripcion_cable
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -454,6 +456,7 @@ var cable_CI = function(){
     let descripcion_cable = "Cable preconectorizado de Distribucion "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
     NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+    DescPrdConf.innerHTML=descripcion_cable
   }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -560,6 +563,7 @@ var cable_SA = function(){
     let descripcion_cable = "Cable preconectorizado ADSS"+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+      DescPrdConf.innerHTML=descripcion_cable
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -624,7 +628,8 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
       let descripcion_cable = "Cable preconectorizado Drop Figura 0 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
       
       if(CodigoGenerado!=''){
-       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+       NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
+       DescPrdConf.innerHTML=descripcion_cable 
       }
       
     }
@@ -755,6 +760,7 @@ var cable_S8 = function(){
     let descripcion_cable = "Cable preconectorizado figura 8 sin armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+       DescPrdConf.innerHTML=descripcion_cable
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -859,6 +865,7 @@ var cable_M8 = function(){
     let descripcion_cable = "Cable preconectorizado Exterior Mini-Figura 8 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+      DescPrdConf.innerHTML=descripcion_cable
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -962,6 +969,7 @@ var cable_DI = function(){
     let descripcion_cable = "Cable preconectorizado Exterior Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+      DescPrdConf.innerHTML=descripcion_cable
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1066,6 +1074,7 @@ var cable_AR = function(){
     let descripcion_cable = "Cable preconectorizado Exterior Armado "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+      DescPrdConf.innerHTML=descripcion_cable
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1171,6 +1180,7 @@ var cable_AD = function(){
     let descripcion_cable = "Cable preconectorizado Exterior Armado Dielectrico "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
         NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
+        DescPrdConf.innerHTML=descripcion_cable
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1287,6 +1297,7 @@ var cable_F8 = function(){
     let descripcion = "Cable preconectorizado Figura 8 con armadura "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
+      DescPrdConf.innerHTML=descripcion
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {

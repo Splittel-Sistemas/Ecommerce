@@ -6,6 +6,7 @@ var Familia = "DP"
 var Unidad = document.getElementById('Cable')
 var NumeroAcopladoresMin = 1
 var Pig = 'P'
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var contP1 = 0
 var contP2 = 0
@@ -251,7 +252,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       let DescripcionProducto = document.getElementById('descripcion-producto-configurable')
       let Descripcion = DescripcionProducto.getAttribute('descripcion')+" con "+CantidadPigtails.value+" Pigtails "+TipoAcoplador.value+" "+TipoFibraDescripcion
       NombreProductoConfigurable(CodigoGenerado, Descripcion)
-   
+      DescPrdConf.innerHTML=Descripcion
     
     // Agregación de codigo para la vista en el identificador
     showClave(CodigoGenerado)

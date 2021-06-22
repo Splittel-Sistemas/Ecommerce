@@ -346,7 +346,7 @@ var existCodeSapPatchCord = function(Codigo){
       let resultResponse = response.records[0]
       let DescripcionLarga = document.getElementById('descripcionLarga')
       let Descripcion_CEO = document.getElementById('descripcionCEO')
-
+      let DescPrdConf = document.getElementById('DscProductoConfigurable')
         // agregar stock
         Stock.innerHTML = resultResponse.ProductoExistencia
         // agregar descricpión larga
@@ -357,6 +357,12 @@ var existCodeSapPatchCord = function(Codigo){
         }else{
           Descripcion_CEO.innerHTML = '';
         }
+        if(resultResponse.ProductoDescripcion){
+          DescPrdConf.innerHTML = resultResponse.ProductoDescripcion.replace(/(?:\r\n|\r|\n)/g, '<br>');
+          }else{
+            DescPrdConf.innerHTML = '';
+          }
+
         let Precio = resultResponse.Descuento > 0 
           ? resultResponse.ProductoPrecio - (resultResponse.ProductoPrecio * (resultResponse.Descuento /100)) 
           : resultResponse.ProductoPrecio 
@@ -412,6 +418,7 @@ var existEcommerce_ = function(Codigo){
       let DescripcionLarga = document.getElementById('descripcionLarga')
       let Descripcion_CEO = document.getElementById('descripcionCEO')
       let Stock = document.getElementById('add-stock')
+      let DescPrdConf = document.getElementById('DscProductoConfigurable')
 
       // agregar stock
       Stock.innerHTML = resultResponse.ProductoExistencia
@@ -422,6 +429,11 @@ var existEcommerce_ = function(Codigo){
       }else{
         Descripcion_CEO.innerHTML = '';
       }
+      if(resultResponse.ProductoDescripcion){
+        DescPrdConf.innerHTML = resultResponse.ProductoDescripcion.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        }else{
+          DescPrdConf.innerHTML = '';
+        }
       // agregar ficha técnica
       let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){

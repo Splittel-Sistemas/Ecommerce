@@ -3,6 +3,7 @@ var Categoria="CAT6"
 var Marca = "OP"
 var Familia = "CA"
 var Estructurados = document.getElementById('Cable')
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var Categoria6 = function(){
   let Longitud = document.getElementById('Longitud')
@@ -42,6 +43,7 @@ var Categoria6 = function(){
 
     let descripcion = "PatchCord Cat6 "+Longitud.value+" pie(s) color "+ColorText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
     agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
     agregarCertificadoConfigurable(CodigoGenerado)
 }

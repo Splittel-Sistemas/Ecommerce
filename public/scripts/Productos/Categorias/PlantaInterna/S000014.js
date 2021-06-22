@@ -3,6 +3,7 @@
 var Marca = "OP"
 var Familia = "JU"
 var Jumper = document.getElementById('Cable')
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var PosicionConectorJumpers = [
   'LC',
@@ -145,7 +146,7 @@ var JumpersMultimodo = function(){
 
     let descripcion_mpo = "Jumper Multimodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion_mpo)
-
+    DescPrdConf.innerHTML=descripcion_mpo
   }
 
   ChangeListImgProducto('OPJULCP','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value)
@@ -270,7 +271,7 @@ var JumpersMonomodo = function(){
   
       let descripcion = "Jumper Monomodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
-  
+      DescPrdConf.innerHTML=descripcion
     }
 
     ChangeListImgProducto('OPJULCU','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MonomodoTipoFibra.value+NumeroHilos.value)
@@ -411,9 +412,11 @@ var JumpersEspeciales = function(){
     
     let descripcion = "Jumper Bota Especial "+Conector1.value+PulidoConector1.value+' '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
   }else{
     CodigoGenerado='';
     showClave(CodigoGenerado)
+    DescPrdConf.innerHTML=''
   }
   ChangeListImgProducto('OPJUESP',Marca+Familia+NewPosConector1+NewPosConector2+MultimodoTipoFibra.value+NumeroHilos.value)
   if(MultimodoTipoFibra.value == 9 ){ 
@@ -554,7 +557,7 @@ var JumpersArmados = function(){
   
       let descripcion = "Jumper Armado "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
-  
+      DescPrdConf.innerHTML=descripcion
     }
 
     ChangeListImgProducto('OPJURA3','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value)

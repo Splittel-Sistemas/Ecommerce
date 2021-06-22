@@ -6,6 +6,7 @@ var TipoFibra = "09"
 var TipoCable = "FD"
 var Con = "SCA"
 var Clave = document.getElementById('Clave')
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var CableServicio412 = function(){
   let Longitud = document.getElementById('Longitud')
@@ -29,6 +30,7 @@ var CableServicio412 = function(){
 
     let descripcion = "Cable de servicio monomodo de "+NumeroHilos.value+" hilos "+Conectorselected+" de "+Longitud.value+" metro(s) de "+Diametroselected
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
 
     let data = { 
       Action: 'calcular', 

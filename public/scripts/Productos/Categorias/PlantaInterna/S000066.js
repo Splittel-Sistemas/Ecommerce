@@ -3,7 +3,7 @@
 var Marca = "OP"
 var Familia = "JA"
 var Jumper = document.getElementById('Cable')
-
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var PosicionPulidoJumpers = [
   'A',
@@ -85,6 +85,7 @@ var JumpersMTP = function(){
     let descripcion = "Jumper MTP a MTP US CONEC Polaridad "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
     
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
 
     ListImgProducto("OPJA3")
 	  ListProductoDescription('OPJA3')
@@ -142,6 +143,7 @@ var JumpersMPTLC = function(){
     // Agreación de codigo para la vista en el identificador
     let descripcion = "Jumper BreakOut MTP a LC duplex "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) Break Out "+LongitudBreakOutselected
     NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
     //console.log(descripcion)
     ListImgProducto("OPJA3HAE")
     ListProductoDescription('OPJA3HAE')
@@ -195,6 +197,7 @@ var JumpersMTPPRO = function(){
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MTP PRO a MTP PRO US CONEC Swap on site Polaridad "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
+      DescPrdConf.innerHTML=descripcion
      // console.log(descripcion)
      ListImgProducto("OPJA5")
         ListProductoDescription('OPJA5')
@@ -247,6 +250,7 @@ var JumpersMTPPRO = function(){
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Cable Break-Out MTP PRO a LC dúplex "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) Break Out "+ LongitudBreakOutselected
       NombreProductoConfigurable(CodigoGenerado, descripcion)
+      DescPrdConf.innerHTML=descripcion
       //console.log(descripcion)
       ListImgProducto("OPJA5MAE")
       ListProductoDescription('OPJA5MAE')
@@ -301,6 +305,7 @@ var JumpersMTPPRO = function(){
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
+      DescPrdConf.innerHTML=descripcion
   
       ChangeListImgProducto('OPJA1A1','OPJA1A1'+Polaridad.value+Diseno.value)
       ListProductoDescription('OPJA1A1')
@@ -351,6 +356,7 @@ var JumpersMTPPRO = function(){
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MPO-BreakOut "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
+      DescPrdConf.innerHTML=descripcion
    
       ListImgProducto("OPJA1xAE")
       ListProductoDescription('OPJA1xAE')
