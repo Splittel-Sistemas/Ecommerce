@@ -321,8 +321,13 @@
     <span class="text-muted">Iva:&nbsp; </span><span class="text-gray-dark">$ <?php echo $pedidoIva ?> USD</span><br>
     <span class="text-muted">Total:&nbsp; </span><span class="text-gray-dark">$ <?php echo $pedidoTotal ?> USD</span>
 
+      
   </div>
+  
 </div>
+<!-- Alert-->
+<div id="AlertFinishPedido"></div>     
+<div id="AlertFinishPedidoWarning"></div> 
 <div class="shopping-cart-footer">
   <div class="column">
   <?php if(isset($_SESSION["Ecommerce-PedidoKey"]) && isset($_SESSION['Ecommerce-PedidoTotal']) && $_SESSION['Ecommerce-PedidoTotal'] > 0){ ?>

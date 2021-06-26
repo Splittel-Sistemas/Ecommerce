@@ -26,9 +26,7 @@
     </div>
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-1">
-      <!-- Alert-->
-      <div id="AlertFinishPedido"></div>     
-      <div id="AlertFinishPedidoWarning"></div> 
+      
       <!-- Shopping Cart-->
       <div id="ListProductosCarrito">
         <?php include 'List.php'; ?>
