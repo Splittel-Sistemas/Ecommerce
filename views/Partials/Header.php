@@ -260,7 +260,7 @@
               <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
               <?php 
                 if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-                  header('Location: ../Home');
+                  // header('Location: ../Home');
                 }else{
               ?>
               <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
