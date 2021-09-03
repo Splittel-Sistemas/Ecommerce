@@ -413,6 +413,7 @@ var LineaCreditoTipoCambio = function(Elem){
 }
 
 var EmailCatalogo = function(Elem){
+  gtag('event', 'conversion', {'send_to': 'AW-1069545026/ixqYCIPh0MIBEMLs__0D'}); 
   ajax_("../../models/Catalogos/Cursos.php", "POST", "JSON", $('#form-catalogo').serialize(), 
   function(response){
     if (!response.error) {
@@ -430,6 +431,7 @@ var EmailCatalogo = function(Elem){
       templateAlert('warning', '', response.message, 'topRight', 'alert-triangle')
     }
   })
+  
 }
 
 var EmailCursos = function(Elem){

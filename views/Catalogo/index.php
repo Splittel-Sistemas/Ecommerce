@@ -3,9 +3,7 @@
   <head>
     <!-- <title> Contacto </title> -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
-	<script>
-	  gtag('event', 'conversion', {'send_to': 'AW-1069545026/ixqYCIPh0MIBEMLs__0D'});
-	</script>
+	
 
   </head>
   <!-- Body-->
