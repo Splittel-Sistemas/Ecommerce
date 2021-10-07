@@ -94,7 +94,7 @@
           $Pregunta->Titulo     =   $row->t41_f003;
           $Pregunta->Categoria  =   $row->t41_f004;
           $Pregunta->Pregunta   =   $row->t41_f005;
-          $Pregunta->Mensaje   =   $Mensaje->Get(" WHERE t41_pk01 = ".$Pregunta->Key." ", " ORDER BY t42_f098 DESC");
+          $Pregunta->Mensaje   =   $Mensaje->Get(" WHERE t41_pk01 = ".$Pregunta->Key." ", " ORDER BY t42_f098 ASC");
           $data[] = $Pregunta;
         }
         return $data;
