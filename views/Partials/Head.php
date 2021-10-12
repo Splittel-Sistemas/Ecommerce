@@ -30,7 +30,7 @@
 <meta name="twitter:image" content="https://fibremex.com/fibra-optica/public/images/img/logo/logo.png" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-
+<meta name="facebook-domain-verification" content="50cg6u1q3t0co07p4xr2fd0ox3az4l" />
 
 <!-- Favicon and Apple Icons-->
 <link rel="icon" type="image/x-icon" href="../../public/Icons/fibremex.ico">
