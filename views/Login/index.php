@@ -42,8 +42,9 @@
     <!-- Page Content-->
     <div class="row no-gutters" id="dataInterna" primero="<?php echo $_SESSION['AuthUser']; ?>" segundo="<?php echo $_SESSION['AuthPassword']; ?>">
       <div class="col-md-4 fh-section" id="notify" data-offset-top="-1">
-        <div class="d-flex flex-column fh-section py-5 px-3 justify-content-center align-items-center">
+        <div class="d-flex flex-column fh-section  px-3 justify-content-center align-items-center">
           <div style="max-width: 500px;">
+         <!--
             <div class="row no-gutters mb-5">
 							<div class="col-12">
 								<div class="d-flex justify-content-center justify-content-md-start">
@@ -51,6 +52,7 @@
 								</div>
 							</div>
 						</div>
+          -->
             <div class="h1 text-normal mb-3 text-center">Iniciar Sesión</div>
             <form id="form-login">
               <input type="hidden" id="Action" name="Action" value="login">
@@ -62,24 +64,40 @@
               <div class="form-group">
                 <input class="form-control" type="password" id="Password" name="Password" placeholder="Password" required>
               </div>
-              <h6 class="text-sm mb-4"> * Si ya eres cliente de nosotros y requieres usuario y contraseña, solicítala a tu ejecutivo de ventas.</h6>
               <div class="row">
                 <div class="col-12">
                   <button type="button" class="btn btn-outline-primary btn-block float-right" onclick="Login(this)"><i class="icon-log-in"></i>&nbsp; Ingresar</button>
                 </div>
+                
+              </div>
+              <hr style="height:2px;" class="padding-bottom-1x"/>
+              <h6 class="text-sm mb-4"> * Si no tienes usuario y contraseña, regístrate.</h6>
+              <div class="row">
+                
                 <div class="col-12">
                   <a class="btn btn-outline-info btn-block float-right" href="../Login/registro.php"><i class="icon-user-plus"></i>&nbsp; Registro</a>
                 </div>
+               
+              </div>
+              <hr style="height:2px;" class="padding-bottom-1x"/>
+              <h6 class="text-sm mb-4"> EMPRESAS ESPECIALIZADAS EN INSTALACIÓN DE REDES DE TELECOMUNICACIONES</h6>
+              <h4 class="text-sm mb-4 padding-bottom-1x"> * Si ya es cliente y aún no cuenta con su número de cuenta o password para acceder, contacte con su ejecutivo de ventas.</h4>
+              <h4 class="text-sm mb-4 padding-bottom-1x"> Si es una empresa integradora especializada, le solicitamos realizar el prerregistro para poder obtener beneficios adicionales.</h4>
+              <div class="row">
+                
                 <div class="col-12">
-                  <a class="btn btn-outline-secondary btn-block float-right" href="../Home"><i class="icon-home"></i>&nbsp; Home</a>
+                  <a class="btn btn-outline-info btn-block float-right" href="../Login/solicitud.php"><i class="icon-user-plus"></i>&nbsp; Pre-registro empresas</a>
+                </div>
+                <div class="col-12 padding-top-3x">
+                <a class="btn btn-outline-secondary btn-block float-right" href="../Home"><i class="icon-home"></i>&nbsp; Home</a>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="col-md-8 fh-section" style="background-image: url(../../public/images/Otros/catalogo.jpg);">
-        <span class="overlay" style="background-color: #000; opacity: .7;"></span>
+      <div class="col-md-8 fh-section" style="background-image: url(../../public/images/Otros/catalogo.jpg); background-position:100% 100%;">
+        <span class="overlay" style="background-color: #000; opacity: .5;"></span>
         <div class="d-flex flex-column fh-section py-5 px-3 justify-content-between">
           <div class="w-100 text-center"></div>
           <div class="w-100 text-center">
