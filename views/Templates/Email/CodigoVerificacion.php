@@ -41,6 +41,10 @@
                               <p><br></p>
                               <p align="center" style="margin-bottom:10px;">'.$Obj->GetCodigo().'</p>
                               <p><br></p>
+                              <p align="center" style="margin-bottom:10px;">Pedido</p>
+                              <p><br></p>
+                              <p align="center" style="margin-bottom:10px;">'.$pedidoKey.'</p>
+                              <p><br></p>
                               <p align="center">Este es un correo electrónico generado automáticamente</p>
                             </td>
                           </tr>
