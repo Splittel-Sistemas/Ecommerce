@@ -374,7 +374,7 @@ var existCodeSapPatchCord = function(Codigo){
 
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
-        document.getElementById('Costo').innerHTML = '$ '+Precio
+        document.getElementById('Costo').innerHTML = '$ '+Precio+' USD '
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML =''
@@ -458,7 +458,7 @@ var existEcommerce_ = function(Codigo){
   
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
-        document.getElementById('Costo').innerHTML = '$ '+Precio
+        document.getElementById('Costo').innerHTML = '$ '+Precio+' USD '
         nuevoPrecioPorLongitud(document.getElementById('longitud'))
       }else{
         ProductoEspecial()
