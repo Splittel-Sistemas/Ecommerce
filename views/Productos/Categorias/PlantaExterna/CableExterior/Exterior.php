@@ -15,7 +15,7 @@
     <div class="form-group mb-0">
       <label for="quantity">Número de fibras</label>
       <select class="form-control" id="NumeroFibras" name="NumeroFibras" onchange="CableExterior()">
-         <?php if ($_GET['codigo'] == 'C1' || $_GET['codigo'] == 'C4' || $_GET['codigo'] == 'C6' || $_GET['codigo'] == 'C8') { ?>
+         <?php if ($_GET['codigo'] == 'C1' || $_GET['codigo'] == 'C2' || $_GET['codigo'] == 'C4' || $_GET['codigo'] == 'C6' || $_GET['codigo'] == 'C8') { ?>
         <option value="06">6 Fibras</option>
         <?php } ?>
         <option value="12">12 Fibras</option>
