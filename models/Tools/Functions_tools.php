@@ -336,8 +336,12 @@ class Functions_tools
         try {
             $discountRate = 0; // inicializar porcentaje de descuento
             $discountClient = $_SESSION['Ecommerce-ClienteDescuento']; // descuento cliente b2b
-            if($discountProduct != 0 && isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B'){
-                $discountRate = $discountClient >= $discountProduct ? $discountProduct : $discountClient;
+            if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B'){
+                if($discountProduct > 0){
+                    $discountRate = $discountClient >= $discountProduct ? $discountProduct : $discountClient;
+                }else if($discountProduct == -1){
+                    $discountRate = $discountClient;
+                }
             }
             return $discountRate;
         } catch (Exception $e) {
