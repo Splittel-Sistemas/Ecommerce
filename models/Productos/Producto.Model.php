@@ -89,7 +89,7 @@
           $this->Valoraciones             =   $row->valoraciones;
           $this->Precio                   =   $row->precio;
           $remates = $this->CategoriaCodigo == "A8" ? true : false;
-          $this->Descuento                =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $this->Descuento                =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $this->Existencia               =   $row->existencia;
           $this->Caracteristicas          =   $row->caracteristicas;
           $this->InformacionTecnica       =   $row->info_tecnica;
@@ -132,7 +132,7 @@
           $Producto->Valoraciones             =   $row->valoraciones;
           $Producto->Precio                   =   $row->precio;
           $remates = $Producto->CategoriaCodigo == "A8" ? true : false;
-          $Producto->Descuento                =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $Producto->Descuento                =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $Producto->Existencia               =   $row->existencia;
           $Producto->Caracteristicas          =   $row->caracteristicas;
           $Producto->InformacionTecnica       =   $row->info_tecnica;
@@ -173,7 +173,7 @@
           $Obj->ProductoPrecio                    =   $row->precio;
           $Obj->ProductoDescuento                 =   $row->descuento_producto;
           $remates = $Obj->ProductoCategoriaKey == "A8" ? true : false;
-          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $Obj->ProductoExistencia                =   $row->existencia;
           $Obj->ProductoInformacionTecnica        =   $row->info_tecnica;
           $Obj->ProductoPesosDimensiones          =   $row->pesos_dimensiones;
@@ -226,7 +226,7 @@
           $Obj->ProductoPrecio                    =   $row->precio;
           $Obj->ProductoDescuento                 =   $row->descuento_producto;
           $remates = $Obj->ProductoCategoriaKey == "A8" ? true : false;
-          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $Obj->ProductoExistencia                =   $row->existencia;
           $Obj->ProductoInformacionTecnica        =   $row->info_tecnica;
           $Obj->ProductoPesosDimensiones          =   $row->pesos_dimensiones;
@@ -280,7 +280,7 @@
           $Obj->ProductoPrecio                    =   $row->precio;
           $Obj->ProductoDescuento                 =   $row->descuento_producto;
           $remates = $Obj->ProductoCategoriaKey == "A8" ? true : false;
-          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $Obj->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $Obj->ProductoExistencia                =   $row->existencia;
           $Obj->ProductoInformacionTecnica        =   $row->info_tecnica;
           $Obj->ProductoPesosDimensiones          =   $row->pesos_dimensiones;
@@ -332,7 +332,7 @@
           $this->ProductoPrecio                    =   $row->precio;
           $this->ProductoDescuento                 =   $row->descuento_producto;
           $remates = $this->ProductoCategoriaKey == "A8" ? true : false;
-          $this->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto, $remates);
+          $this->Descuento                         =   $this->Tool->CalcularDescuento($row->descuento_producto);
           $this->ProductoExistencia                =   $row->existencia;
           $this->ProductoInformacionTecnica        =   $row->info_tecnica;
           $this->ProductoPesosDimensiones          =   $row->pesos_dimensiones;

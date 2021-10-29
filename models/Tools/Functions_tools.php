@@ -332,17 +332,16 @@ class Functions_tools
         }
     }
 
-    public function CalcularDescuento($descuento, $remates){
+    public function CalcularDescuento($discountProduct){
         try {
-          $porcentajeDescuento = 0;
-          if ($descuento >= 0 && isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' || $descuento >= 0 && $remates) {
-            $porcentajeDescuento = $descuento;
-          }else if(empty($descuento) || $descuento < 0){
-            $porcentajeDescuento = $_SESSION['Ecommerce-ClienteDescuento'];
-          }
-          return $porcentajeDescuento;
+            $discountRate = 0; // inicializar porcentaje de descuento
+            $discountClient = $_SESSION['Ecommerce-ClienteDescuento']; // descuento cliente b2b
+            if($discountProduct != 0 && isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B'){
+                $discountRate = $discountClient >= $discountProduct ? $discountProduct : $discountClient;
+            }
+            return $discountRate;
         } catch (Exception $e) {
-          throw $e;
+            throw $e;
         }
     }
 
@@ -353,7 +352,7 @@ class Functions_tools
             }
             return false;
         } catch (Exception $e) {
-          throw $e;
+            throw $e;
         }
     }
     public function vaidateHttps(){
@@ -361,7 +360,7 @@ class Functions_tools
             $isHttps = 'http';
             if(isset($_SERVER['HTTPS'])){
                 if ($_SERVER['HTTPS']) {
-                        $isHttps = 'https';
+                    $isHttps = 'https';
                 }
             }
             return $isHttps;
