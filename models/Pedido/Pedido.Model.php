@@ -212,6 +212,15 @@
         throw $e;
       }
     }
+    public function UpdateStatusPackageDelivered($filter){
+      try {
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET estatus_recibio_paquete = 1 ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
     public function UpdateCliente($filter){
       try {
         $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ".$filter." ";

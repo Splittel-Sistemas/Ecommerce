@@ -262,14 +262,17 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $ResultPedido = $PedidoModel->Get("WHERE numero_guia_estatus = 'OK' AND recibio <> '' ","");
+                $ResultPedido = $PedidoModel->Get("where numero_guia_estatus = 'OK' and recibio <> '' and estatus_recibio_paquete = 0 ","");
                 $UpdateRefDeliveryController = new UpdateRefDeliveryController();
                 foreach ($ResultPedido as $key => $Pedido) {
                     $UpdateRefDeliveryController->NumEcommerce  = $Pedido->Key;
                     $UpdateRefDeliveryController->ClienteKey    = $Pedido->ClienteKey;
                     $UpdateRefDeliveryController->DateDelivery  = $Pedido->FechaRecibido;
                     $UpdateRefDeliveryController->Received      = $Pedido->Recibio;
-                    $UpdateRefDeliveryController->create();
+                    $result = $UpdateRefDeliveryController->create();
+                    if($result->UpdateRefDeliveryResult->ErrorCode == 0){
+                        $PedidoModel->UpdateStatusPackageDelivered("where id = ".$Pedido->Key);
+                    }
                 }
                 unset($PedidoModel);
             }else{
