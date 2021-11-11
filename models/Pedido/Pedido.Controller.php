@@ -458,14 +458,14 @@ class PedidoController{
                                 $ResultSalesQuatation = $SalesQuatationModel->create();
                                 // print_r($ResultSalesQuatation);
                                 if (!$ResultSalesQuatation['error']) {
-                                    // $Email = new Email(true);
-                                    // $TemplatePedido = new TemplatePedido();
-                                    // $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
-                                    // $Email->MailerBody = $TemplatePedido->body();
+                                    $Email = new Email(true);
+                                    $TemplatePedido = new TemplatePedido();
+                                    $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'].' - Credito';
+                                    $Email->MailerBody = $TemplatePedido->body();
                                     // $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                                    // $Email->EmailSendEmail();
-                                    // unset($Email);
-                                    // unset($TemplatePedido);
+                                    $Email->EmailSendEmail();
+                                    unset($Email);
+                                    unset($TemplatePedido);
                                     
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                     unset($_SESSION['Ecommerce-PedidoKey']);
