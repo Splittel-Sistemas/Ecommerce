@@ -2,7 +2,10 @@
   @session_start();
   $url = isset($_GET['url']) && !empty($_GET['url']) ? $_GET['url'] : '';
   if(isset($_SESSION['Ecommerce-ClienteKey'])){
-    header('Location: ../Home');
+    if(empty($url))
+        header('Location: ../Home');
+      else
+        header('Location: '.$url);
   }else{
     $ip='localhost';
     if (isset($_SERVER["HTTP_CLIENT_IP"]))
