@@ -1,5 +1,6 @@
 <?php 
   @session_start();
+  $url = isset($_GET['url']) && !empty($_GET['url']) ? $_GET['url'] : '';
   if(isset($_SESSION['Ecommerce-ClienteKey'])){
     header('Location: ../Home');
   }else{
@@ -58,6 +59,7 @@
               <input type="hidden" id="Action" name="Action" value="login">
               <input type="hidden" id="ActionLogin" name="ActionLogin" value="true">
               <input type="hidden" id="Ip" name="Ip" value="<?php echo $ip?>">
+              <input type="hidden" id="url" name="url" value="<?php echo $url?>">
               <div class="form-group">
                 <input class="form-control" type="email" id="Email" name="Email" placeholder="Correo" required>
               </div>

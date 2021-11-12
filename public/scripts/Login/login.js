@@ -66,11 +66,12 @@ var QuitarLista = function() {
  * @return {number} b - Bar
  */
 var Login = function() {
+  let url = document.getElementById('url')
   ajax_('../../models/Login/Login.Route.php', 'POST', 'JSON', $('#form-login').serialize(), 
   function(response){
     if (!response.error) {
       toastAlert(response.typeError, '', response.message, 'topLeft', "icon-check-circle")
-      window.location.href = '../Home'
+      window.location.href = url.value == '' ? '../Home' : url.value
     }else{
       toastAlert('danger', '', response.message, 'topLeft', 'icon-ban')
     }
