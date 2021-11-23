@@ -76,24 +76,26 @@
                 
               </div>
               <hr style="height:2px;" class="padding-bottom-1x"/>
-              <h6 class="text-sm mb-4"> * Si no tienes usuario y contraseña, regístrate.</h6>
+              <h6 class="text-sm"> * Si no tienes usuario y contraseña, regístrate.</h6>
               <div class="row">
-                
                 <div class="col-12">
                   <a class="btn btn-outline-info btn-block float-right" href="../Login/registro.php"><i class="icon-user-plus"></i>&nbsp; Registro</a>
                 </div>
                
               </div>
               <hr style="height:2px;" class="padding-bottom-1x"/>
-              <h6 class="text-sm mb-4"> EMPRESAS ESPECIALIZADAS EN INSTALACIÓN DE REDES DE TELECOMUNICACIONES</h6>
-              <h4 class="text-sm mb-4 padding-bottom-1x"> * Si ya es cliente y aún no cuenta con su número de cuenta o password para acceder, contacte con su ejecutivo de ventas.</h4>
-              <h4 class="text-sm mb-4 padding-bottom-1x"> Si es una empresa integradora especializada, le solicitamos realizar el prerregistro para poder obtener beneficios adicionales.</h4>
+              <h6 class="text-sm"> EMPRESAS ESPECIALIZADAS EN INSTALACIÓN DE REDES DE TELECOMUNICACIONES</h6>
+              <h4 class="text-sm "> * Si ya es cliente y aún no cuenta con su número de cuenta o password para acceder, contacte con su ejecutivo de ventas.
+                <br/><br/>
+                Si es una empresa integradora especializada, le solicitamos realizar el prerregistro para poder obtener beneficios adicionales.
+              </h4>
+              
               <div class="row">
                 
                 <div class="col-12">
                   <a class="btn btn-outline-info btn-block float-right" href="../Login/solicitud.php"><i class="icon-user-plus"></i>&nbsp; Pre-registro empresas</a>
                 </div>
-                <div class="col-12 padding-top-3x">
+                <div class="col-12 ">
                 <a class="btn btn-outline-secondary btn-block float-right" href="../Home"><i class="icon-home"></i>&nbsp; Home</a>
                 </div>
               </div>
