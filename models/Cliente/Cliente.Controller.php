@@ -125,6 +125,34 @@ if (!class_exists("Connection")) {
               unset($Email);
               unset($TemplateRegistro);
 
+              /****************** ENVIAR REGISTRO API GETRESPONSE *********************/
+              $bodyGetResponse = '{
+                      "name": "'.utf8_decode($_POST["Nombre"].' '.$_POST["Apellidos"]).'",
+                      "email": "'.$_POST["Correo"].'",
+                      "dayOfCycle": "10",
+                      "campaign": {
+                        "campaignId": "5xIBE"
+                      },
+                      
+                      "ipAddress": "170.247.226.26"
+                    }';
+              
+          
+                $request = ("https://api.getresponse.com/v3/contacts/");
+                $headers = array(
+                  'Content-Type: application/json; charset=utf-8',
+                  'X-Auth-Token: api-key cac2slmgqkphfkme85ro79ummg8yjtr4',
+                  );
+                $curl_handle=curl_init();
+                curl_setopt($curl_handle, CURLOPT_URL,$request);
+                curl_setopt($curl_handle, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($curl_handle, CURLOPT_HEADER, 0);
+                curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl_handle, CURLOPT_POSTFIELDS,utf8_encode($bodyGetResponse));
+                curl_exec($curl_handle);
+                curl_close($curl_handle);
+              /************************************************************************/
+
               $LoginController = new LoginController();
               $LoginController->Correo = $ClienteModel->GetEmail();
               $LoginController->Password = $_POST["Password"];
