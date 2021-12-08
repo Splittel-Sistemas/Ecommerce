@@ -220,6 +220,7 @@
 
               $columnas = "col-lg-12 col-md-12 col-sm-12 col-12";
               include '../product/fixed/fixed.php';
+              unset($getProduct);
             ?>
           </div>
         </div>
@@ -241,6 +242,7 @@
 
           $columnas = "col-lg-3 col-md-4 col-sm-6 col-12";
           include '../product/fixed/fixed.php';
+          unset($getProduct);
         ?>
       </div>
     </section>
@@ -259,7 +261,8 @@
           $getProduct = $ProductoController->GetProductosFijos_();
 
           $columnas = "col-lg-3 col-md-4 col-sm-6 col-12";
-          include '../product/fixed/fixed.php'; ?>
+          include '../product/fixed/fixed.php';
+          unset($getProduct); ?>
       </div>
     </section>
     <!-- Top -->
@@ -274,29 +277,11 @@
               $ProductoController = new ProductoController();
               $ProductoController->filter = "WHERE estatus = 'P' ";
               $ProductoController->order = "GROUP BY codigo ORDER BY total DESC LIMIT 4 ";
-              $ResultProductosMasVendidos = $ProductoController->GetProductosMasVendidos();
+              $getProduct = $ProductoController->GetProductosMasVendidos();
 
-              foreach ($ResultProductosMasVendidos->records as $key => $Obj){ 
-                $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
-                ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
-                : "../../public/images/img_spl/notfound.png";
+              include "../product/fixed/fixed_entry.php";
+              unset($getProduct);
             ?>
-            <!-- Entry-->
-            <div class="entry">
-              <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
-                  <img src="<?php echo $imgUrl?>" alt="Product">
-                </a>
-              </div>
-              <div class="entry-content">
-                <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
-                </h4>
-                <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-                $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
-              </div>
-            </div>
-            <?php } ?>
           </div>
         </div>
         <!-- Nuevos Productos -->
@@ -307,29 +292,11 @@
               $ProductoController = new ProductoController();
               $ProductoController->filter = "WHERE producto_activo = 'si' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
               $ProductoController->order = "ORDER BY id DESC LIMIT 4 ";
-              $ResultNuevosProductos = $ProductoController->GetProductosFijos_();
+              $getProduct = $ProductoController->GetProductosFijos_();
 
-              foreach ($ResultNuevosProductos->records as $key => $Obj){ 
-                $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
-                ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
-                : "../../public/images/img_spl/notfound.png";
+              include "../product/fixed/fixed_entry.php";
+              unset($getProduct);
             ?>
-            <!-- Entry-->
-            <div class="entry">
-              <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
-                  <img src="<?php echo $imgUrl?>" alt="Product">
-                </a>
-              </div>
-              <div class="entry-content">
-                <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
-                </h4>
-                <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-                $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
-              </div>
-            </div>
-            <?php } ?>
           </div>
         </div>
         <!-- Mejor valorados -->
@@ -340,29 +307,11 @@
               $ProductoController = new ProductoController();
               $ProductoController->filter = "WHERE Codigo <> '' ";
               $ProductoController->order = "GROUP BY Codigo ORDER BY Promedio DESC LIMIT 4 ";
-              $ResultProductosMejorValorados = $ProductoController->GetProductosMejorValorados();
+              $getProduct = $ProductoController->GetProductosMejorValorados();
 
-              foreach ($ResultProductosMejorValorados->records as $key => $Obj){ 
-                $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."") 
-                ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" 
-                : "../../public/images/img_spl/notfound.png";
+              include "../product/fixed/fixed_entry.php";
+              unset($getProduct);
             ?>
-            <!-- Entry-->
-            <div class="entry">
-              <div class="entry-thumb">
-                <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
-                  <img src="<?php echo $imgUrl?>" alt="Product">
-                </a>
-              </div>
-              <div class="entry-content">
-                <h4 class="entry-title">
-                  <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo)?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
-                </h4>
-                <span class="entry-meta" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-                $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD
-              </div>
-            </div>
-            <?php } ?>
           </div>
         </div>
 

@@ -301,14 +301,24 @@
                   <a href="../Productos/fijos.php?id_prd=<?php echo $Relacionados->Codigo;?>&nom=<?php echo url_amigable($Producto->ProductoDescripcion);?>"><?php echo $Producto->ProductoDescripcion;?></a>
                   
                   </h3>
+
+                  <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
                   <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Producto->ProductoPrecio-($Producto->ProductoPrecio*($Producto->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-                  $<?php echo bcdiv($Producto->ProductoPrecio-($Producto->ProductoPrecio*($Producto->Descuento/100)),1,3); ?> USD
+                    $<?php echo bcdiv($Producto->ProductoPrecio-($Producto->ProductoPrecio*($Producto->Descuento/100)),1,3); ?> USD
                   </h4>
+                  <?php } ?>
+
                 </div>
                 <div class=" product-button-group">
                   <input type="hidden" name="ProductoCantidad-<?php echo $Relacionados->Codigo;?>" id="ProductoCantidad-<?php echo $Relacionados->Codigo;?>" value="1">
-                  <a class="product-button" href="#" descuento="<?php echo $Producto->Descuento ?>" codigo="<?php echo $Relacionados->Codigo;?>" onclick="AgregarArticulo(this)"><i class="icon-shopping-cart"></i>
-                <span>Agregar al carrito</span></a></div>
+                  <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
+                    <a class="product-button" href="javascript:void(0)" descuento="<?php echo $Producto->Descuento ?>" codigo="<?php echo $Relacionados->Codigo;?>" onclick="AgregarArticulo(this)">
+                  <?php }else{ ?>
+                    <a class="product-button" href="javascript:void(0)">
+                  <?php } ?>
+                    <i class="icon-shopping-cart"></i><span>Agregar al carrito</span>
+                  </a>
+                </div>
               </div>
             </div>
             <?php 
@@ -320,23 +330,23 @@
               $ResultSubcategoriasN1Controller = $SubcategoriasN1Controller->get();
 
               if($ResultSubcategoriasN1Controller->count > 0){
-              foreach ($ResultSubcategoriasN1Controller->records as $key => $Subcategorias) {
-                $ConfiguracionPath = $row->SubcategoriaConfiguracion == 1 
-                ? "../Productos/configurables.php?codigo=".$row->SubcategoriaCodigo." " : "#";
+              foreach ($ResultSubcategoriasN1Controller->records as $key => $subcategoria) {
+                $ConfiguracionPath = $subcategoria->Configuracion == 1 
+                ? "../Productos/configurables.php?codigo=".$subcategoria->Configuracion." " : "#";
 
-                $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$row->SubcategoriaDescripcion.".jpg")) 
-                ? "../../public/images/img_spl/subsubcategorias/".$row->SubcategoriaDescripcion.".jpg" 
+                $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg")) 
+                ? "../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg" 
                 : "../../public/images/img_spl/notfound1.png"; 
             ?>
             <div class="col-md-4 col-sm-4 col-12">
               <div class="product-card mb-30">
-                <?php if ($Subcategorias->Configuracion == 0): ?>
+                <?php if ($subcategoria->Configuracion == 0): ?>
                 <div class="product-badge bg-primary">Próximamente</div>
                 <?php endif ?>
                 <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
-                <img src="<?php echo $imgUrl ?>" alt="<?php echo $Subcategorias->Descripcion;?>"></a>
+                <img src="<?php echo $imgUrl ?>" alt="<?php echo $subcategoria->Descripcion;?>"></a>
                 <div class="product-card-body">
-                  <h3 class="product-title grid_1_3"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $Subcategorias->Descripcion;?></a></h3>
+                  <h3 class="product-title grid_1_3"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $subcategoria->Descripcion;?></a></h3>
                 </div>
               </div>
             </div>

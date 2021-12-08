@@ -41,35 +41,12 @@
           }
           $ProductoController = new ProductoController();
           $ProductoController->order = "ORDER BY RAND() LIMIT 12 ";
-          $ResultProducto = $ProductoController->GetProductosFijos();
+          $getProduct = $ProductoController->GetProductosFijos();
 
-          foreach ($ResultProducto->records as $key => $Obj): 
-            $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."")
-            ? "../../public/images/img_spl/productos/".$Obj->ProductoCodigo."/thumbnail/".$Obj->ProductoImgPrincipal."" : $_SESSION['Ecommerce-ImgNotFound'];
+          $columnas = "col-12";
+          include '../product/fixed/fixed.php';
+          unset($getProduct);
         ?>
-        <div class="product-card">
-          <a class="product-thumb" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>">
-            <img src="<?php echo $imgUrl ?>" alt="<?php echo $Obj->ProductoDescripcion;?>">
-          </a>
-          <div class="product-card-body">
-            <div class="product-category">
-              <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoCodigo?></a>
-            </div>
-            <h3 class="product-title">
-              <a href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo);?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>"><?php echo $Obj->ProductoDescripcion;?></a>
-            </h3>
-            <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo number_format((($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100))) * $_SESSION['Ecommerce-WS-CurrencyRate']),3) ;?> MXP">
-             $<?php echo number_format($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),3);?> USD
-            </h4>
-          </div>
-          <div class="product-button-group">
-            <input type="hidden" class="form-control form-control-sm" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" value="1">
-            <a class="product-button" href="#" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
-              <i class="icon-shopping-cart"></i><span>Agregar al carrito</span>
-            </a>
-          </div>
-        </div>
-         <?php endforeach ?>
       </div>
       <!-- Modal -->
       <div class="modal fade" id="modal-carrito-list-datos-envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

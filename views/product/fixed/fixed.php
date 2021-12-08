@@ -1,4 +1,7 @@
 <?php 
+  if (!class_exists('ComentariosController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
+  }
   foreach ($getProduct->records as $key => $obj) { 
     $urlDetailProduct = "../Productos/fijos.php?id_prd=".$obj->ProductoCodigo."&nom=".url_amigable($obj->ProductoDescripcion); #url detalle del producto
     $urlImg = "../../public/images/img_spl/productos/".$obj->ProductoCodigo."/thumbnail/".$obj->ProductoImgPrincipal; #url imagen del producto
@@ -30,7 +33,10 @@
         <i class="icon-star"></i>
         <i class="icon-star"></i>
         <i class="icon-star"></i>
-      <?php } ?>
+      <?php }
+        unset($ComentariosController);
+        unset($Comentarios);
+      ?>
     </div>
     <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
       <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
@@ -38,16 +44,31 @@
     <div class="product-card-body">
       <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
       <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+      <!-- validar si existe variable de sesión -->
+      <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
       <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
         $<?php echo $priceUSD ?> USD
       </h4>
+      <?php } ?>
     </div>
     <div class="product-button-group">
       <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" value="1">
+      <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
       <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
+      <?php }else{ ?>
+      <a class="product-button" href="javascript:(0)">
+      <?php } ?>
         <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
       </a>
     </div>
   </div>
 </div>
-<?php } ?>
+<?php 
+  unset($urlDetailProduct);
+  unset($urlImg);
+  unset($newUrlImg);
+  unset($calculatePrice);
+  unset($priceUSD);
+  unset($priceMXN);
+  } 
+?>

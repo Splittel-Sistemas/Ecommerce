@@ -80,7 +80,7 @@
           <h4 class="mb-3 padding-top-1x" id="DscProductoConfigurable"></h4>
           <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/optronics1.png"/></span>
           <div id="leyenda" class="col-12 mb-4">
-            <span class="h3 " id="Costo" >$ </span>
+            <span class="h3 " id="Costo" > <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>$ <?php } ?> </span>
           </div>
           <div class="col-12 pt-1 mb-5">
             <span class="product-badge bg-secondary border-default text-body">
@@ -96,28 +96,30 @@
               include  $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Productos/Categorias/'.$FileUbicacionTemplate.'/index.php';             
             ?>  
           <div class="row align-items-end pb-4">
+            <input type="hidden" class="form-control" name="CodeClave" id="CodeClave">
+            <input type="hidden" class="form-control" name="CodeConfigurable" id="CodeConfigurable" value="<?php echo $_GET['codigo']; ?>">
+            <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
             <div class="col-sm-4">
               <div class="form-group mb-0" id="div-quantity">
                 <label for="quantity">Cantidad</label>
                 <input type="text" class="form-control" name="quantity" id="quantity">
-                <input type="hidden" class="form-control" name="CodeClave" id="CodeClave">
-                <input type="hidden" class="form-control" name="CodeConfigurable" id="CodeConfigurable" value="<?php echo $_GET['codigo']; ?>">
               </div>
               <div class="form-group mb-0" id="div-longitud" style="display: none;">
                 <label for="longitud" id="changename">Longitud (m)</label>
                 <input type="text" class="form-control" name="longitud" id="longitud" onkeyup="nuevoPrecioPorLongitud(this)" value="1">
                 <input type="hidden" class="form-control" name="precio-longitud" id="precio-longitud">
-                <input type="hidden" class="form-control" name="CodeClave" id="CodeClave">
-                <input type="hidden" class="form-control" name="CodeConfigurable" id="CodeConfigurable" value="<?php echo $_GET['codigo']; ?>">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="pt-4 hidden-sm-up"></div>
               <button type="button" style="background-color: #bc2130" class="btn btn-primary btn-block m-0" id="btn-configurable" descuento="0" onclick="AgregarArticuloConfigurable(this)">
-              <i class="icon-bag"></i> Agregar al carrito</button>
+                <i class="icon-bag"></i> Agregar al carrito
+              </button>
               <button type="button" style="background-color: #bc2130; display: none;" class="btn btn-primary btn-block m-0" id="btn-fijo" onclick="AgregarArticuloFijoConfigurable(this)">
-              <i class="icon-bag"></i> Agregar al carrito</button>
+                <i class="icon-bag"></i> Agregar al carrito
+              </button>
             </div>
+            <?php } ?>
           </div>
           <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span id="Clave" class="styleClave"></span> </div>
           <hr class="mb-2">

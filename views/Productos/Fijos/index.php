@@ -136,8 +136,12 @@
     <div class="padding-top-2x mt-2 hidden-md-up"></div>
     <h2 class="mb-3 padding-top-1x"><?php echo $Obj->ProductoDescripcion;?></h2>
     <span class="h3 d-block"><img src="../../public/images/img_spl/marcas/<?php echo $Obj->MarcaDesripcion;?>.jpg" width="30%" height="30%"/></span>
-    <?php if($Obj->ProductoPrecio > 0){ ?>
-      <?php if($Obj->Descuento > 0){ ?>
+    
+      <?php 
+        if(isset($_SESSION['Ecommerce-ClienteKey'])){
+          if($Obj->ProductoPrecio > 0){ 
+            if($Obj->Descuento > 0){ 
+      ?>  
       <span class="h4 d-block">
         Precio:
         <b class="text-primary">
@@ -150,8 +154,10 @@
         <span class="h4 d-block">
           $<?php echo $Obj->ProductoPrecio; ?> USD 
         </span>
-      <?php } ?>  
-    <?php }else{ ?>
+      <?php 
+          }  
+         }else{ 
+      ?>
       <span class="h4 d-block">
           $ 0 
         </span>
@@ -160,7 +166,7 @@
           <p>Producto especial, solicitar cotización a su ejecutivo de ventas</p>
         </span>
       </div>
-    <?php } ?>  
+    <?php } }?>  
     
     <div class="row mt-4 mb-4 padding-top-1x">
       <div class="col-md-3">
@@ -177,6 +183,7 @@
     <p class="text-muted text-justify"><?php echo $Obj->DescripcionLarga;?></p>
     
     <div class="row align-items-end ">
+      <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
       <div class="col-sm-4 align-self-end">
         <div class="form-group mb-0">
           <input type="text" class="form-control myclass" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo;?>" onkeyup="validacionCantidad(this)" placeholder="Cantidad" value="1">
@@ -193,7 +200,7 @@
       <div class="col-sm-4 align-self-end">
         <img src="../../public/images/img_spl/productos/envio-gratis.png" width="80%" height="80%"/>
       </div>
-      <?php } ?>
+      <?php } } ?>
     </div>
   </div>
 </div>
