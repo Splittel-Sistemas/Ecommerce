@@ -1,7 +1,7 @@
 <?php 
     @session_start();
     if ($_SESSION['Ecommerce_ClienteIngreso'] == 1 || $_SESSION['Ecommerce-ClienteTipo'] == 'B2C'){ 
-      header ("Location: ./Login/solicitud.php"); 
+      header ("Location: ./solicitud.php"); 
     }else{ 
 ?>
 <!DOCTYPE html>
