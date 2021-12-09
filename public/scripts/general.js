@@ -369,7 +369,7 @@ var changePassword = function(){
     if (!response.error) {
       templateAlert(response.typeError, "", response.message, "topCenter", "icon-help-circle")
       if(document.getElementById('PersonalTerminos')){
-        window.location.href = "../Home/";
+        window.location.href = "../Login/solicitud.php";
       }
     }else{
       templateAlert("warning", "", response.message, "topCenter", "icon-slash")
