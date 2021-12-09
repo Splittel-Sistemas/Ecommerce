@@ -1,9 +1,3 @@
-<?php 
-	@session_start();
-	if(isset($_SESSION['Ecommerce-ClienteKey'])){
-		header('Location: ../Home');
-	}else{
-?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -259,4 +253,3 @@
 		<script type="text/javascript" src="../../public/scripts/Login/solicitud_precalificacion.js?id=<?php echo rand() ?>"></script>
 	</body>
 </html>
-<?php } ?>
