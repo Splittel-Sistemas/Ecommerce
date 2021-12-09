@@ -99,24 +99,73 @@
           </div>
         </a>
       </div>
+
+      <?php 
+        $ContactoController = new ContactoController();
+        $Contacto = $ContactoController->GetBy();
+        if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
+          $mailAssigment = $_SESSION['Ecommerce-ClienteEjecutivo'];
+        }else{
+          $mailAssigment = "sac@fibremex.com.mx";
+        }
+      ?>
+
       <div class="toolbar-item hidden-on-mobile">
-      <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){ ?> 
+        <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){ ?> 
         <a href="../Cuenta/index.php?menu=1">
-      <?php }else{ ?>
+        <?php }else{ ?>
         <a href="../Login/"> 
-      <?php } ?>
+        <?php } ?>
           <div>
             <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?>
           </div>
         </a>
-        <div class="toolbar-dropdown cart-dropdown text-center px-3">
+        <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile">
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Telefono</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>"><?php echo '01 800 '.$Contacto->GetTelefono(); ?></a>
+            </div>
+          </div>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="mailto:<?php echo $mailAssigment; ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-mail"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Mail</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="mailto:<?php echo $mailAssigment; ?>"><?php echo $mailAssigment; ?></a>
+            </div>
+          </div>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="/fibra-optica/views/Consultecnico" style="text-decoration: none; font-size: 20px;"> <i class="icon-link"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Consultecnico</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>
+            </div>
+          </div>
           <?php if(!isset($_SESSION['Ecommerce-ClienteNombre'])): ?>
           <p class="text-xs mb-3 pt-2">Inicie sesión en su cuenta o registre una nueva para tener control total sobre sus pedidos.</p>
           <a class="btn btn-primary btn-sm btn-block" href="../Login/">Iniciar Sesión</a>
           <p class="text-xs text-muted mb-2">¿Nuevo Cliente?&nbsp;<a href="../Login/registro.php">Registrar</a></p>
           <?php else: ?>
-            <a class="list-group-item" href="../Cuenta/index.php?menu=1"><i class="icon-user"></i>Mi cuenta</a>
-            <a class="btn btn-outline-primary btn-sm btn-block" href="../Login/logout.php">Salir</a>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="fibra-optica/views/Cuenta/index.php?menu=1" style="text-decoration: none; font-size: 20px;"> <i class="icon-user"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Mi cuenta</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>
+            </div>
+          </div>
+           <!-- Entry-->
+           <div class="entry">
+            <div class="entry-thumb"> <a href="/fibra-optica/views/Login/logout.php" style="text-decoration: none; font-size: 20px;"> <i class="icon-power"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Salir</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>
+            </div>
+          </div>
           <?php endif ?>
         </div>
       </div>
@@ -154,27 +203,69 @@
             </div>
           </a>
         </div>
+        
         <div class="toolbar-item">
-        <?php if(isset($_SESSION["Ecommerce-ClienteEmail"])){ ?> 
-          <a href="../Cuenta/index.php?menu=1">
+        <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){ ?> 
+        <a href="javascript:void()">
         <?php }else{ ?>
-          <a href="../Login"> 
-          <?php } ?>
-            <div>
-              <i class="icon-user"></i><span class="text-label"><?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?></span>
-            </div>
-          </a>
-        </div>
-        <?php if(isset($_SESSION["Ecommerce-ClienteEmail"])){ ?> 
-        <div class="toolbar-item">
-          <a href="../Login/logout.php">
-            <div>
-              <i class="icon-log-out"></i><span class="text-label">Salir</span>
-            </div>
-          </a>
-        </div>
+        <a href="javascript:void()"> 
         <?php } ?>
+          <div>
+            <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?>
+          </div>
+        </a>
+        <div class="toolbar-dropdown cart-dropdown widget-cart">
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Telefono</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>"><?php echo '01 800 '.$Contacto->GetTelefono(); ?></a>
+            </div>
+          </div>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="mailto:<?php echo $mailAssigment; ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-mail"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Mail</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="mailto:<?php echo $mailAssigment; ?>"><?php echo $mailAssigment; ?></a>
+            </div>
+          </div>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="/fibra-optica/views/Consultecnico" style="text-decoration: none; font-size: 20px;"> <i class="icon-link"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Consultecnico</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>
+            </div>
+          </div>
+          <?php if(!isset($_SESSION['Ecommerce-ClienteNombre'])): ?>
+          <p class="text-xs mb-3 pt-2">Inicie sesión en su cuenta o registre una nueva para tener control total sobre sus pedidos.</p>
+          <a class="btn btn-primary btn-sm btn-block" href="../Login/">Iniciar Sesión</a>
+          <p class="text-xs text-muted mb-2">¿Nuevo Cliente?&nbsp;<a href="../Login/registro.php">Registrar</a></p>
+          <?php else: ?>
+          <!-- Entry-->
+          <div class="entry">
+            <div class="entry-thumb"> <a href="fibra-optica/views/Cuenta/index.php?menu=1" style="text-decoration: none; font-size: 20px;"> <i class="icon-user"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Mi cuenta</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>
+            </div>
+          </div>
+           <!-- Entry-->
+           <div class="entry">
+            <div class="entry-thumb"> <a href="/fibra-optica/views/Login/logout.php" style="text-decoration: none; font-size: 20px;"> <i class="icon-power"></i> </a> </div>
+            <div class="entry-content">
+              <h4 class="entry-title"> <a href="javascript:void()">Salir</a> </h4>
+              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>
+            </div>
+          </div>
+          <?php endif ?>
+        </div>
       </div>
+
+      </div>
+      
       <!-- Slideable (Mobile) Menu-->
       <?php 
         // obtener url actual

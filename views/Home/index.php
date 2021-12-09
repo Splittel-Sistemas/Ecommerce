@@ -152,42 +152,6 @@
     <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
       <div class="container text-center"></div>
     </section>
-    <!-- Featured Products -->
-    <section class="container padding-top-2x padding-bottom-2x mb-2">
-      <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
-      <div class="row">
-      <?php
-        if (!class_exists("SubcategoriasN1Controller")) {
-          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/SubcategoriasN1.Controller.php';
-        } 
-        $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-        $SubcategoriasN1Controller->filter = "WHERE codigo='C1' OR codigo='C2' OR codigo='C3' OR codigo='C4' OR codigo='C5' OR codigo='C6' OR codigo='C7' OR codigo='C8' OR codigo='C9' OR codigo='C10' OR codigo='C11' OR codigo='C12' OR codigo='C13' OR codigo='C14' OR codigo='C38' ";
-        $SubcategoriasN1Controller->order = "ORDER BY RAND() LIMIT 4 ";
-        $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
-      
-        foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriasN1){ 
-
-          $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriasN1->Descripcion.".jpg")) 
-          ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriasN1->Descripcion.".jpg" 
-          : "../../public/images/img_spl/notfound1.png"; 
-
-          $ConfiguracionPath = $SubcategoriasN1->Configuracion == 1 ? "../Productos/configurables.php?codigo=".$SubcategoriasN1->Codigo." " : "#";
-      ?>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-          <div class="product-card mb-30 featured_products_card">
-            <?php if ($SubcategoriasN1->Configuracion == 0){ ?>
-              <div class="product-badge bg-primary">Próximamente</div>
-            <?php } ?>
-            <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
-            <img src="<?php echo $imgUrl; ?>" alt="<?php echo $SubcategoriasN1->Descripcion;?>"></a>
-            <div class="product-card-body">
-              <h3 class="product-title"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $SubcategoriasN1->Descripcion;?></a></h3>
-            </div>
-          </div>
-        </div>
-        <?php } ?>
-      </div>
-    </section>
     <!-- Empalmadora -->
     <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.jpg);"><span class="overlay" style="opacity: .3;"></span>
       <div class="container text-center">
@@ -199,123 +163,13 @@
     </section>
     <a class="d-block position-relative mx-auto mb-5 mb-md-0" href="#" style="max-width: 882px; margin-top: -300px; z-index: 10;">
     <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.png" alt="Empalmadora"></a>
-    <!-- Banner 3-->
-    <div class="container padding-bottom-3x mb-md-2 mt-5 mt-md-0 pt-5 pt-md-0">
-      <div class="row">
-        <!-- Checkout Adress-->
-        <div class="col-lg-12 col-sm-12">    
-          <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">También te puede interesar </h3>            
-          <div  class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
-            <?php
-              if (!class_exists("ProductoController")) {
-                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Producto.Controller.php';
-              }if (!class_exists('ComentariosController')) {
-                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
-              }
-
-              $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE producto_activo = 'si' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
-              $ProductoController->order = "ORDER BY RAND() LIMIT 12 ";
-              $getProduct = $ProductoController->GetProductosFijos_();
-
-              $columnas = "col-lg-12 col-md-12 col-sm-12 col-12";
-              include '../product/fixed/fixed.php';
-              unset($getProduct);
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Distribuidores -->
     <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.webp);">
       <div class="container text-center"></div>
     </section>
-    <!-- Featured Products-->
-    <section class="container padding-bottom-1x mb-2 padding-top-2x">
-      <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
-      <div class="row">
-        <?php
-          $ProductoController = new ProductoController();
-          $ProductoController->filter = "WHERE subcategoria='S000021' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
-          $ProductoController->order = "ORDER BY RAND() LIMIT 4 ";
-          $getProduct = $ProductoController->GetProductosFijos_();
-
-          $columnas = "col-lg-3 col-md-4 col-sm-6 col-12";
-          include '../product/fixed/fixed.php';
-          unset($getProduct);
-        ?>
-      </div>
-    </section>
     <!-- Sistema de canalización -->
     <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.webp);">
       <div class="container text-center"></div>
-    </section>
-    <!-- Featured Products-->
-    <section class="container padding-bottom-1x mb-2 padding-top-2x">
-      <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
-      <div class="row">
-        <?php
-          $ProductoController = new ProductoController();
-          $ProductoController->filter = "WHERE subcategoria='S000028' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
-          $ProductoController->order = "ORDER BY RAND() LIMIT 4 ";
-          $getProduct = $ProductoController->GetProductosFijos_();
-
-          $columnas = "col-lg-3 col-md-4 col-sm-6 col-12";
-          include '../product/fixed/fixed.php';
-          unset($getProduct); ?>
-      </div>
-    </section>
-    <!-- Top -->
-    
-    <section class="container padding-top-2x padding-bottom-2x">
-      <div class="row pt-1">
-        <!-- Más Vendidos -->
-        <div class="col-md-4 col-sm-6">
-          <div class="widget widget-featured-products">
-            <h3 class="widget-title">Más Vendidos</h3>
-            <?php
-              $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE estatus = 'P' ";
-              $ProductoController->order = "GROUP BY codigo ORDER BY total DESC LIMIT 4 ";
-              $getProduct = $ProductoController->GetProductosMasVendidos();
-
-              include "../product/fixed/fixed_entry.php";
-              unset($getProduct);
-            ?>
-          </div>
-        </div>
-        <!-- Nuevos Productos -->
-        <div class="col-md-4 col-sm-6">
-          <div class="widget widget-featured-products">
-            <h3 class="widget-title">Nuevos Productos</h3>
-            <?php
-              $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE producto_activo = 'si' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) ";
-              $ProductoController->order = "ORDER BY id DESC LIMIT 4 ";
-              $getProduct = $ProductoController->GetProductosFijos_();
-
-              include "../product/fixed/fixed_entry.php";
-              unset($getProduct);
-            ?>
-          </div>
-        </div>
-        <!-- Mejor valorados -->
-        <div class="col-md-4 col-sm-6">
-          <div class="widget widget-featured-products">
-            <h3 class="widget-title">Mejor valorados</h3>
-            <?php
-              $ProductoController = new ProductoController();
-              $ProductoController->filter = "WHERE Codigo <> '' ";
-              $ProductoController->order = "GROUP BY Codigo ORDER BY Promedio DESC LIMIT 4 ";
-              $getProduct = $ProductoController->GetProductosMejorValorados();
-
-              include "../product/fixed/fixed_entry.php";
-              unset($getProduct);
-            ?>
-          </div>
-        </div>
-
-      </div>
     </section>
     <!-- Popular Brands Carousel-->
     <section class="bg-secondary padding-top-3x padding-bottom-3x">
