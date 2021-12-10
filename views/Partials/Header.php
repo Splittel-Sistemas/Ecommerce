@@ -42,6 +42,17 @@
     <div class="site-branding d-flex">
       <a class="site-logo align-self-center" href="../Home/"><img src="../../public/images/img/logo/logo.png" alt="Fibremex"></a>
     </div>
+    
+    <?php
+    if(isset($_SESSION['Ecommerce-ClienteNombre'])){
+    ?>
+    <div class="toolbar  d-flex" style="border-right: 2px solid #e5e5e5;">
+      <div class="toolbar-item mobile-menu-toggle-myaccount"><a href="#">
+          <div><i class="icon-menu"></i><span class="text-label">Mi Cuenta</span></div></a></div>
+    </div> 
+    <?php
+    }
+    ?>
     <!-- Search / Categories-->
     <div class="search-box-wrap d-flex">
       <div class="search-box-inner align-self-center">
@@ -56,7 +67,7 @@
               $response = $CategoriaController->get();
 
                 foreach ($response->records as $CategoriaCont => $Categoria):
-                  if ($CategoriaCont == 0 || ($CategoriaCont == 3) || ($CategoriaCont == 6) ): ?>
+                  if ($CategoriaCont == 0 || ($CategoriaCont == 4)  ): ?>
               <div class="row">
               <?php endif ?>
                 <div class="col-sm-3">
@@ -65,7 +76,7 @@
                     <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
                   </a>
                 </div>
-              <?php if ($CategoriaCont == 2 || $CategoriaCont == 5 || $CategoriaCont == 8 || $response->count-1 == $CategoriaCont ): ?>
+              <?php if ($CategoriaCont == 3 || $CategoriaCont == 7 ): ?>
               </div>
               <?php endif ?>
               <?php endforeach ?>
@@ -125,7 +136,7 @@
           <div class="entry">
             <div class="entry-thumb"> <a href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Telefono</a> </h4>
+              <h4 class="entry-title"> <a href="javascript:void()">Teléfono</a> </h4>
               <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 '.$Contacto->GetTelefono(); ?>"><?php echo '01 800 '.$Contacto->GetTelefono(); ?></a>
             </div>
           </div>
@@ -141,8 +152,7 @@
           <div class="entry">
             <div class="entry-thumb"> <a href="/fibra-optica/views/Consultecnico" style="text-decoration: none; font-size: 20px;"> <i class="icon-link"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Consultecnico</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>
+            <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Consultecnico','_self');" href="javascript:void(0)">Ir a Consultecnico</a> </h4>
             </div>
           </div>
           <?php if(!isset($_SESSION['Ecommerce-ClienteNombre'])): ?>
@@ -154,16 +164,14 @@
           <div class="entry">
             <div class="entry-thumb"> <a href="fibra-optica/views/Cuenta/index.php?menu=1" style="text-decoration: none; font-size: 20px;"> <i class="icon-user"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Mi cuenta</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>
+            <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Cuenta/index.php?menu=1','_self');" href="javascript:void(0)">Ir a mi cuenta</a> </h4>
             </div>
           </div>
            <!-- Entry-->
            <div class="entry">
             <div class="entry-thumb"> <a href="/fibra-optica/views/Login/logout.php" style="text-decoration: none; font-size: 20px;"> <i class="icon-power"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Salir</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>
+            <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Login/logout.php','_self');" href="javascript:void(0)">Salir</a> </h4>
             </div>
           </div>
           <?php endif ?>
@@ -235,8 +243,8 @@
           <div class="entry">
             <div class="entry-thumb"> <a href="/fibra-optica/views/Consultecnico" style="text-decoration: none; font-size: 20px;"> <i class="icon-link"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Consultecnico</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>
+              <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Consultecnico','_self');" href="javascript:void(0)">Ir a Consultecnico</a> </h4>
+            <!--  <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>  -->
             </div>
           </div>
           <?php if(!isset($_SESSION['Ecommerce-ClienteNombre'])): ?>
@@ -248,16 +256,16 @@
           <div class="entry">
             <div class="entry-thumb"> <a href="fibra-optica/views/Cuenta/index.php?menu=1" style="text-decoration: none; font-size: 20px;"> <i class="icon-user"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Mi cuenta</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>
+              <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Cuenta/index.php?menu=1','_self');" href="javascript:void(0)">Ir a mi cuenta</a> </h4>
+              <!--<a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>  -->
             </div>
           </div>
            <!-- Entry-->
            <div class="entry">
             <div class="entry-thumb"> <a href="/fibra-optica/views/Login/logout.php" style="text-decoration: none; font-size: 20px;"> <i class="icon-power"></i> </a> </div>
             <div class="entry-content">
-              <h4 class="entry-title"> <a href="javascript:void()">Salir</a> </h4>
-              <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>
+              <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Login/logout.php','_self');" href="javascript:void(0)">Salir</a> </h4>
+              <!-- <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>  -->
             </div>
           </div>
           <?php endif ?>
@@ -366,7 +374,52 @@
         </ul>
       </nav>
     </div>
+
+    <div class="mobile-menu-myaccount" style="width:30%">
+      <!-- Search Box-->
+     <!-- Toolbar-->
+      <div class="toolbar">
+        <div class="toolbar-item">
+        <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){ ?> 
+        <a href="javascript:void()">
+        <?php }else{ ?>
+        <a href="javascript:void()"> 
+        <?php } ?>
+          <div>
+            <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?>
+          </div>
+        </a>
+      </div>
+      </div>
+     
+       <?php
+      if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2C/menu-home.php'; 
+      }else{
+        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Cuenta/B2B/menu-home.php'; 
+      }
+    ?>
+    </div>
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
+
+
+  
   <!-- Navbar-->
   <div class="navbar">
     <div class="btn-group categories-btn">

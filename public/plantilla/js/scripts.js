@@ -48,6 +48,16 @@ jQuery(document).ready(function(a) {
     }(".mobile-menu-toggle", ".mobile-menu");
     a(".slideable-menu .slideable-submenu").each(function() {
         a(this).prepend('<li class="back-btn"><a href="#">Back</a></li>')
+    }),
+    function(b, c) {
+        a(b).on("click", function() {
+            a(this).toggleClass("active"),
+            a(this).find("i").toggleClass("icon-x"),
+            a(c).toggleClass("open")
+        })
+    }(".mobile-menu-toggle-myaccount", ".mobile-menu-myaccount");
+    a(".slideable-menu-myaccount .slideable-submenu-myaccount").each(function() {
+        a(this).prepend('<li class="back-btn"><a href="#">Back</a></li>')
     });
     var d = a(".has-children .sub-menu-toggle");
     a(".slideable-menu .slideable-submenu .back-btn").on("click", function(b) {

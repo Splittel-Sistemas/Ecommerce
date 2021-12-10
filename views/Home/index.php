@@ -78,12 +78,12 @@
             $CategoriaCont = 1;
 
             foreach ($ResultCategoria->records as $key => $Categoria){
-                if ($CategoriaCont == 1 || ($CategoriaCont / 4) == 1 || ($CategoriaCont / 7) == 1){ 
+                if ($CategoriaCont == 1 || ($CategoriaCont) == 5 ){ 
           ?>
-          <div class="col-md-4 col-12">
+          <div class="col-md-6 col-12">
             <div class="row">
                 <?php } ?>
-              <div class="col-md-4 col-12 text-center mb-25">
+              <div class="col-md-3 col-12 text-center mb-25">
                   <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
                     <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img?>'" 
                     onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img?>'" 
@@ -93,7 +93,7 @@
                 <p class="text-sm text-muted mb-0"></p>
               </div>
             <?php 
-             if (($CategoriaCont % 3 == 0) || $CategoriaCont == $ResultCategoria->count){ ?>
+             if (($CategoriaCont == 4) || $CategoriaCont == 8){ ?>
             </div>
           </div>
           <?php } 
