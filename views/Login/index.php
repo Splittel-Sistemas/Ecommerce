@@ -75,6 +75,7 @@
                 </div>
                 
               </div>
+              <!--
               <hr style="height:2px;" class="padding-bottom-1x"/>
               <h6 class="text-sm"> * Si no tienes usuario y contraseña, regístrate.</h6>
               <div class="row">
@@ -83,6 +84,7 @@
                 </div>
                
               </div>
+               -->
               <hr style="height:2px;" class="padding-bottom-1x"/>
               <h6 class="text-sm"> EMPRESAS ESPECIALIZADAS EN INSTALACIÓN DE REDES DE TELECOMUNICACIONES</h6>
               <h4 class="text-sm "> * Si ya es cliente y aún no cuenta con su número de cuenta o password para acceder, contacte con su ejecutivo de ventas.

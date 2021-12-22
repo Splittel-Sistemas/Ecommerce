@@ -83,9 +83,13 @@
             <span class="h3 " id="Costo" > <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>$ <?php } ?> </span>
           </div>
           <div class="col-12 pt-1 mb-5">
+          <?php
+              if (isset($_SESSION['Ecommerce-ClienteTipo'])){
+            ?>
             <span class="product-badge bg-secondary border-default text-body">
               Stock: <span id="add-stock"></span>
             </span>
+            <?php } ?>
           </div>
           <input type="hidden" id="CostoProducto">
           <p class="mt-3 text-muted text-justify" id="descripcionLarga"></p>

@@ -169,9 +169,13 @@
     <?php } }?>  
     
     <div class="row mt-4 mb-4 padding-top-1x">
+      <?php
+      if (isset($_SESSION['Ecommerce-ClienteTipo'])){
+      ?>
       <div class="col-md-3">
         <div class="pt-1"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia;?></span></div>
       </div>
+      <?php }?>
       <div class="col-md-5">
         <div class="pt-1"><span class="text-medium">CLAVE:</span> <span class="styleClave"><?php echo $Obj->ProductoCodigo;?></span></div>
       </div>

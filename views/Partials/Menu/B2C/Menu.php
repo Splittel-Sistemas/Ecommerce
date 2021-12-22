@@ -1,0 +1,178 @@
+ <!-- Navbar-->
+ <div class="navbar">
+    <div class="btn-group categories-btn">
+      <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="icon-menu text-lg"></i>&nbsp;Categorias</button>
+      <div class="dropdown-menu mega-dropdown">
+      <?php 
+        $CategoriaController = new CategoriaController();
+        $CategoriaController->filter = "WHERE activo='si'";
+        $CategoriaController->order = "";
+        $response = $CategoriaController->get();
+
+          foreach ($response->records as $CategoriaCont => $Categoria):
+            if ($CategoriaCont == 0 || ($CategoriaCont == 3) || ($CategoriaCont == 6)  ): ?>
+        <div class="row">
+        <?php endif ?>
+          <div class="col-sm-3">
+            <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+              <img class="d-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>">
+              <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
+            </a>
+          </div>
+        <?php if ($CategoriaCont == 2 || $CategoriaCont == 5 || $CategoriaCont == 8 || $response->count-1 == $CategoriaCont ): ?>
+        </div>
+        <?php endif ?>
+      <?php endforeach ?> 
+      </div>
+    </div>
+    <nav class="site-menu">
+      <ul>
+        <li class="has-submenu <?php if(trim($path) == "Home"){?>active<?php }?>">
+          <a href="../Home/">Home </a> 
+        </li>
+        <li class="has-submenu <?php if(trim($path) == "Nosotros"){?>active<?php }?>">
+          <a href="../Nosotros/">Nosotros</a>
+        </li>
+        <li class="has-megamenu">
+          <a href="#">Productos</a>
+            <ul class="mega-menu">
+            <li><span class="mega-menu-title">Categorías</span>
+              <ul class="sub-menu">
+              <?php 
+                $CategoriaController = new CategoriaController();
+                $CategoriaController->filter = "WHERE activo = 'si' ";
+                $CategoriaController->order = "ORDER BY orden DESC";
+                $response = $CategoriaController->get();
+
+                  foreach ($response->records as $CategoriaCont => $Categoria): ?>
+                <li>
+                  <a class="d-inline-block m-1" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+                  <img style="width: 12%; height: 12%;" class="d-inline-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>"/>
+                  <?php echo $Categoria->Descripcion;?>
+                  </a>
+                </li>
+              <?php endforeach ?>
+              </ul>
+            </li>
+            <li><span class="mega-menu-title">Top Subcategorías</span>
+              <ul class="sub-menu">
+              <?php 
+                $SubmenuController = new SubmenuController();
+                $SubmenuController->filter = "WHERE nivel=2 AND activo='si' ";
+                $SubmenuController->order = "ORDER BY RAND() LIMIT 12";
+                $Subcategoria = $SubmenuController->get();
+              // print_r($Subcategoria->records);
+                if ($Subcategoria->count > 0){ 
+                  foreach ($Subcategoria->records as $key => $Subcategoria_){
+                ?>
+                <li>
+                  <a href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>" >
+                  <?php echo $Subcategoria_->Descripcion;?>
+                  </a>
+                </li>
+              <?php }
+              }
+              ?>
+              </ul>
+            </li>
+            <li>
+              <?php 
+                $ContactoController = new ContactoController();
+                $Contacto = $ContactoController->GetBy();
+              ?>
+              <span class="mega-menu-title">Ubicación</span>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <ul class="list-icon">
+                    <li> 
+                      <i class="icon-map-pin text-muted"></i><?php echo $Contacto->GetUbicacion(); ?>
+                    </li>
+                    <li> 
+                      <i class="icon-phone text-muted"></i><?php echo $Contacto->GetTelefono(); ?>
+                    </li>
+                    <li class="mb-0">
+                      <i class="icon-mail text-muted"></i>
+                      <a class="navi-link" href="mailto: <?php echo $Contacto->GetEmail(); ?>"> 
+                        <?php echo $Contacto->GetEmail(); ?>
+                      </a>
+                    </li>
+                    <li> 
+                      <i class="icon-clock text-muted"></i><?php echo $Contacto->GetHorario(); ?></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+            <a class="card border-0 bg-secondary rounded-0" href="../Catalogo/">
+            <img class="d-block mx-auto" alt="Catalogo" src="../../public/images/img_spl/adicionales/descarga_catalogo.jpg"/></a>
+            </li>
+          </ul>
+        </li>
+        <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
+          <a href="#">Soluciones</a> 
+            <ul class="sub-menu">
+            <?php 
+              $SolucionesController = new SolucionesController();
+              $SolucionesController->filter = "WHERE activo = 'si' ";
+              $SolucionesController->order = "";
+              $responseSoluciones = $SolucionesController->get(false); 
+
+              foreach ($responseSoluciones->records as $Soluciones): ?>
+              <li>
+               <!-- <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
+                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
+              </li>
+            <?php endforeach ?> 
+            </ul>
+        </li>
+        <li class="has-submenu <?php if(trim($path) == "Cursos"){?>active<?php }?>">
+          <a href="#">Cursos</a>
+          <ul class="sub-menu">
+             <!-- <li><a href="../Cursos/enlinea.php">En línea</a></li> -->
+              <li><a href="../Cursos/cursos-fibra-optica.php">Presencial</a></li>
+              <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
+          </ul>
+        </li>
+        <li class="has-submenu <?php if(trim($path) == "Biblioteca"){?>active<?php }?>"><a href="#">Biblioteca Técnica</a>
+         <ul class="sub-menu">
+              <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
+              <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
+              <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
+              <li><a href="../Biblioteca/glosario-fibra-optica.php?r=A-E">Glosarío</a></li>
+              <li><a href="../Biblioteca/informacion-tecnica-fibra-optica.php?id=A1">Info. Técnica</a></li>
+              <li><a href="../Biblioteca/fichas-tecnicas-fibra-optica.php?id=A1">Hojas Técnicas</a></li>  
+              <li><a href="../Consultecnico">Consultécnico</a></li>  
+              <!-- <li><a href="../Biblioteca/cursos.php">Cursos</a></li> -->
+            </ul>
+        </li>
+        <li class="has-submenu <?php  if(trim(explode("=", $path)[0]) == "index.php?pag"){?>active<?php }?>"><a href="../Blog/index.php?pag=1">Blog </a></li>
+
+        <li class="has-submenu"><a href="#">Contacto</a>
+          <ul class="sub-menu">
+            <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
+            <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
+            <?php 
+              if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+            ?>
+            <li><a href="../PuntoAPunto">Programa de puntos</a></li> 
+              <?php } ?>
+            <li><a href="../Contacto">Dirección y teléfono</a></li> 
+          </ul>
+        </li>
+
+        <!--
+        <li class="has-submenu <?php if(trim($path) == "Catalogo"){?>active<?php }?>"><a href="../Catalogo/">Cat&aacute;logo</a></li>
+        -->
+      </ul>
+    </nav>
+    <!-- Toolbar ( Put toolbar here only if you enable sticky navbar )-->
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <div class="toolbar-item"><a href="javascript:void(0);">
+        <div><span class="text-label "><strong>TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate'];?> MXP</span></div></a></div>
+        <div class="toolbar-item" id="ListResumenProductosCarritoMovil">
+          <?php include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Carrito/Resumen/index.php'; ?>
+        </div>
+      </div>
+    </div>
+  </div>

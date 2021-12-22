@@ -25,20 +25,9 @@
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Header.php'; ?>
 
     <!-- Main Slider -->
-    <section class="hero-slider" style="background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-      <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
-        <?php
-          if (!class_exists('SlideController')) {
-            include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Home/Slide.Controller.php';
-          }        
-          $SlideController = new SlideController();
-          $ResultSlide = $SlideController->get();
-          foreach ($ResultSlide->records as $key => $Slide) {
-            $linkIzquierda = $Slide->UrlImg1 == '' ? '#' : $Slide->UrlImg1;
-            $linkDerecha = $Slide->UrlImg2 == '' ? '#' : $Slide->UrlImg2;
-            $ImgIzquierda = '../../public/images/img_spl/slide/img1/'.$Slide->PathImg1;
-            $ImgDerecha = '../../public/images/img_spl/slide/img2/'.$Slide->PathImg2;
-        ?>
+    <section class="hero-slider" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
+      <div style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
+        <!--
         <div class="item">
           <div class="container padding-top-2x">
             <div class="row">
@@ -59,6 +48,27 @@
               </div>
             </div>
           </div>
+        </div>
+          -->
+        
+        <?php
+          if (!class_exists('SlideController')) {
+            include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Home/Slide.Controller.php';
+          }        
+          $SlideController = new SlideController();
+          $ResultSlide = $SlideController->get();
+          foreach ($ResultSlide->records as $key => $Slide) {
+            $linkIzquierda = $Slide->UrlImg1 == '' ? '#' : $Slide->UrlImg1;
+           // $linkDerecha = $Slide->UrlImg2 == '' ? '#' : $Slide->UrlImg2;
+            $ImgIzquierda = '../../public/images/img_spl/slide/img1/'.$Slide->PathImg1;
+           // $ImgDerecha = '../../public/images/img_spl/slide/img2/'.$Slide->PathImg2;
+        ?>
+        <div class="item">
+          <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
+              <a style="display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda;?>" target="<?php echo $Slide->TargetLink1 ?>">
+                   <img style="width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda;?>"  alt="<?php echo $Slide->Descripcion;?>">
+              </a>
+            </div>
         </div>
         <?php } ?>
       </div>
@@ -137,6 +147,7 @@
 
     <!-- Cables de fibra óptica -->
      <!-- Banner 1 -->
+     <!--
      <section class="fw-section padding-top-2x padding-bottom-2x">
     <div class="row col-md-12 col-lg-12 col-12">
         <div class="col-md-12 col-lg-12 col-12 text-center">
@@ -148,11 +159,15 @@
       </iframe>
      
     </section>
+      -->
     <!-- Banner 1 -->
+    <!--
     <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-02.png);">
       <div class="container text-center"></div>
     </section>
+      -->
     <!-- Empalmadora -->
+    <!--
     <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/empalmadora-core4s.jpg);"><span class="overlay" style="opacity: .3;"></span>
       <div class="container text-center">
         <div class="d-inline-block  text-white text-lg py-2 px-3 rounded"></div>
@@ -163,14 +178,19 @@
     </section>
     <a class="d-block position-relative mx-auto mb-5 mb-md-0" href="#" style="max-width: 882px; margin-top: -300px; z-index: 10;">
     <img class="d-block w-100" src="../../public/images/img_spl/banners/empalmadora1.png" alt="Empalmadora"></a>
+      -->
     <!-- Distribuidores -->
+    <!--
     <section class="fw-section padding-top-4x padding-bottom-10x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-04.webp);">
       <div class="container text-center"></div>
     </section>
+      -->
     <!-- Sistema de canalización -->
+    <!--
     <section class="fw-section padding-top-4x padding-bottom-8x" style="background-image: url(../../public/images/img_spl/banners/shop-banner-bg-05.webp);">
       <div class="container text-center"></div>
     </section>
+      -->
     <!-- Popular Brands Carousel-->
     <section class="bg-secondary padding-top-3x padding-bottom-3x">
       <div class="container">
