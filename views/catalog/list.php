@@ -14,7 +14,7 @@
     <div class="page-title">
       <div class="container">
         <div class="column">
-          <h1 class="font-weight-bold">Catálogos 2022</h1>
+          <h1 class="font-weight-bold">Catálogos Interactivos 2022</h1>
         </div>
       </div>
     </div>
@@ -47,8 +47,7 @@
           <div class="card mb-3 dinamic_height_catalog">
             <img class="card-img-top" src="/fibra-optica/public/images/image/catalog/<?php echo $catalog->LinkImg ?>" alt="Card image">
             <div class="card-body text-center">
-              <h6 class="card-title font-weight-bold mb-1 title"><?php echo $catalog->Title ?></h6>
-              <p class="card-text text-muted mb-1">Catálogo interactivo</p>
+              <h6 class="card-title font-weight-bold mb-1 title" style="display : none"><?php echo $catalog->Title ?></h6>
               <a class="btn btn-outline-primary btn-sm" href="<?php echo $catalog->LinkCatalog ?>" target="_blank">VER ONLINE</a>
             </div>
           </div>
