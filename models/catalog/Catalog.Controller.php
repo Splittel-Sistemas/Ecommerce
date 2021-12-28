@@ -1,11 +1,12 @@
 <?php
 
-  if(!class_exists("Connection")){
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
-  }if(!class_exists("Functions_tools")){
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
-  }if(!class_exists("CatalogModel")){
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Catalog/Catalog.Model.php';
+  @session_start();
+  if (!class_exists("Connection")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
+  }if (!class_exists("Functions_tools")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
+  }if (!class_exists("CatalogModel")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/catalog/Catalog.Model.php';
   }
 
   class CatalogController{
