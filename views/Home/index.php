@@ -146,6 +146,42 @@
     </section>
 
     <!-- Cables de fibra óptica -->
+    <!-- Featured Products -->
+    <section class="container padding-top-2x padding-bottom-2x mb-2">
+      <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
+      <div class="row">
+      <?php
+        if (!class_exists("SubcategoriasN1Controller")) {
+          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/SubcategoriasN1.Controller.php';
+        } 
+        $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+        $SubcategoriasN1Controller->filter = "WHERE codigo='C1' OR codigo='C2' OR codigo='C3' OR codigo='C4' OR codigo='C5' OR codigo='C6' OR codigo='C7' OR codigo='C8' OR codigo='C9' OR codigo='C10' OR codigo='C11' OR codigo='C12' OR codigo='C13' OR codigo='C14' OR codigo='C38' ";
+        $SubcategoriasN1Controller->order = "ORDER BY RAND() LIMIT 4 ";
+        $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
+      
+        foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriasN1){ 
+
+          $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriasN1->Descripcion.".jpg")) 
+          ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriasN1->Descripcion.".jpg" 
+          : "../../public/images/img_spl/notfound1.png"; 
+
+          $ConfiguracionPath = $SubcategoriasN1->Configuracion == 1 ? "../Productos/configurables.php?codigo=".$SubcategoriasN1->Codigo." " : "#";
+      ?>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="product-card mb-30 featured_products_card">
+            <?php if ($SubcategoriasN1->Configuracion == 0){ ?>
+              <div class="product-badge bg-primary">Próximamente</div>
+            <?php } ?>
+            <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
+            <img src="<?php echo $imgUrl; ?>" alt="<?php echo $SubcategoriasN1->Descripcion;?>"></a>
+            <div class="product-card-body">
+              <h3 class="product-title"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $SubcategoriasN1->Descripcion;?></a></h3>
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+      </div>
+    </section>
      <!-- Banner 1 -->
      <!--
      <section class="fw-section padding-top-2x padding-bottom-2x">
