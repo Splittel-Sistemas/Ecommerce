@@ -1,8 +1,4 @@
 <?php 
-
-  /**
-   * 
-   */
   @session_start();
   if (!class_exists("Functions_tools")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';

@@ -20,7 +20,7 @@ var Enviar = function() {
 	dataSolicitud.forEach(function(elem, index){
 		dataForm[elem.name] = elem.value
 	});
-
+	/*
 	$(".respuesta-integras-soluciones").each(function(index) {
 		let dataIntegraSoluciones = {}
 		dataIntegraSoluciones['key'] = $(this).attr('preguntakey')
@@ -33,7 +33,8 @@ var Enviar = function() {
 		toastAlert('info', '', '<strong>Integras soluciones como,</strong> seleccionar al menos 1 campo', 'topLeft', 'icon-ban')
 		return false
 	}
-
+	*/
+	/*
 	$(".respuesta-productos").each(function(index) {
 		let dataProductos = {}
 		dataProductos['key'] = $(this).attr('preguntakey')
@@ -46,7 +47,8 @@ var Enviar = function() {
 		toastAlert('info', '', '<strong>Distribuyes/utilizas productos,</strong> seleccionar al menos 1 campo', 'topLeft', 'icon-ban')
 		return false
 	}
-
+	*/
+	/*
 	$(".respuesta-tipo-clientes").each(function(index) {
 		let dataTipoClientes = {}
 		dataTipoClientes['key'] = $(this).attr('preguntakey')
@@ -59,19 +61,20 @@ var Enviar = function() {
 		toastAlert('info', '', '<strong>Sector o tipo de clientes que atienden,</strong> seleccionar al menos 1 campo', 'topLeft', 'icon-ban')
 		return false
 	}
-
+	*/
 	let data = {
 		Action: 'create',
 		ActionPrecalificacion: true, 
 		Terminos: document.getElementById('aviso-privacidad').checked ? 1 : 0,
-		data: dataForm,
-		IntegraSoluciones: checkIntegraSoluciones,
-		Productos: checkProductos,
-		TipoClientes: checkTipoClientes
+		data: dataForm
+		//IntegraSoluciones: checkIntegraSoluciones,
+		//Productos: checkProductos,
+		//TipoClientes: checkTipoClientes
 	}
-
-	ajax_('../../models/Solicitud/Precalificacion.Route.php', 'POST', 'JSON', data, 
+	//console.log(JSON.stringify(data));
+	ajaxViews('../../models/Solicitud/Precalificacion.Route.php', 'POST','JSON', (data), 
 	function(response){
+		console.log(response)
 		if(!response.error){
 			toastAlert(response.typeError, '', response.message, 'topLeft', "icon-check-circle")
 			location.reload();

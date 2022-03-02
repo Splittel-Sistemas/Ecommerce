@@ -46,6 +46,19 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function GetBy_(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $PrecalificacionModel = new Precalificacion(); 
+          $PrecalificacionModel->SetParameters($this->Connection, $this->Tool);
+          $PrecalificacionModel->GetBy_($this->filter, $this->order);
+          return $PrecalificacionModel;
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
     public function GetChecks(){
       try {
         if (!$this->Connection->conexion()->connect_error) {
@@ -62,6 +75,7 @@ if (!class_exists("Connection")) {
     public function Create(){
       try {
         if (!$this->Connection->conexion()->connect_error) {
+          //print_r($_POST['Terminos']);
           $PrecalificacionModel = new Precalificacion(); 
           $PrecalificacionModel->SetParameters($this->Connection, $this->Tool);
           $PrecalificacionModel->SetTerminos($_POST['Terminos'] ? 1 : 0);
@@ -71,6 +85,7 @@ if (!class_exists("Connection")) {
           $PrecalificacionModel->SetDireccionFacturacion($_POST['data']['DireccionFacturacion']);
           $PrecalificacionModel->SetCodigoPostal($this->Tool->validCodigoPostal_($_POST['data']['CodigoPostal'], 'Código Postal', true));
           $PrecalificacionModel->SetCorreo($this->Tool->validEmail_($_POST['data']['Correo'], 'Correo', true));
+         /*
           $PrecalificacionModel->SetContacto($_POST['data']['Contacto']);
           $PrecalificacionModel->SetTelefonoOficina($_POST['data']['TelefonoOficina']);
           $PrecalificacionModel->SetTelefonoMovil($_POST['data']['TelefonoMovil']);
@@ -82,12 +97,14 @@ if (!class_exists("Connection")) {
 					$PrecalificacionModel->SetExperienciaMercado($_POST['data']['ExperienciaMercado']);
 					$PrecalificacionModel->SetProyectos($_POST['data']['Proyectos']);
 					$PrecalificacionModel->SetSituacionFiscalKey($_SESSION['Ecommerce-FileKey']);
+          */
 					$ResultPrecalificacion = $PrecalificacionModel->Add();
 
 					if(!$ResultPrecalificacion['error']){
 						$Precalificacion_Model = new Precalificacion_(); 
 						$Precalificacion_Model->SetParameters($this->Connection, $this->Tool);
 						$Precalificacion_Model->SetPrecalificacionKey($ResultPrecalificacion['keyy']);
+            /*
 						foreach ($_POST['IntegraSoluciones'] as $key => $Soluciones) {
 							$Precalificacion_Model->SetCheck(filter_var($Soluciones['value'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0 );
 							$Precalificacion_Model->SetSubdefinicionesKey($Soluciones['key']);
@@ -105,13 +122,14 @@ if (!class_exists("Connection")) {
 							$Precalificacion_Model->SetSubdefinicionesKey($TipoClientes['key']);
 							$ResultPrecalificacion_ = $Precalificacion_Model->Add();
             }
-            
+            */
             $Email = new Email();
             $TemplatePrecalificacion = new TemplatePrecalificacion();
             $TemplatePrecalificacion->SetKey($ResultPrecalificacion['keyy']); 
             $Email->MailerSubject = utf8_decode("Solicitud Precalificación");
             $Email->MailerBody = $TemplatePrecalificacion->body();
             $Email->MailerListTo = ['marketing.directo@splittel.com'];
+            //$Email->MailerListTo = ['aaron.cuevas@splittel.com'];
             $Email->EmailSendEmail();
             unset($Email);
             unset($TemplatePrecalificacion);

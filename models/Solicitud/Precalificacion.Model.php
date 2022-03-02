@@ -148,6 +148,29 @@
       }
     }
 
+    public function GetBy_($filter){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM t22_solicitud_precalificacion ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = false;
+
+        while ($row = $result->fetch_object()) {
+          $this->Key                    				=   $row->t22_pk01;
+          $this->NombreFacturacion             	=   $row->t22_f001;
+          $this->RFC      											=   $row->t22_f002;
+          $this->NombreComercial                =   $row->t22_f003;
+          $this->DireccionFacturacion        		=   $row->t22_f004;
+          $this->CodigoPostal   								=   $row->t22_f005;
+          $this->Correo           							=   $row->t22_f006;
+          $data = true;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+
     public function Add(){
       try {
         $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudPrecalificacionCrear(

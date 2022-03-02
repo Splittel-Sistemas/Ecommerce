@@ -27,7 +27,7 @@
 				$PrecalificacionController = new PrecalificacionController();
 				$PrecalificacionController->filter = "WHERE t22_pk01 = ".$this->Key." ";
 				$PrecalificacionController->order = "";
-				$Precalificacion = $PrecalificacionController->GetBy();
+				$Precalificacion = $PrecalificacionController->GetBy_();
 
 				$Principal = new TemplatePrincipal();
 				$html = $Principal->Head().'<body class="">
@@ -74,6 +74,7 @@
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Correo eléctronico</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->Correo.'</td>
 																	</tr>
+																	<!--
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Nombre del contacto, título y departamento</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->Contacto.'</td>
@@ -96,27 +97,28 @@
 																	</tr>
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Giró Empresa</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->GiroEmpresaDescripcion.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.''/*$Precalificacion->GiroEmpresaDescripcion*/.'</td>
 																	</tr>
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Presencia</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->PresenciaDescripcion.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.''/*$Precalificacion->PresenciaDescripcion*/.'</td>
 																	</tr>
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">No. de empleados aproximado</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->NumeroEmpleadosDescripcion.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.''/*$Precalificacion->NumeroEmpleadosDescripcion*/.'</td>
 																	</tr>
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Experiencia en el mercado (años)</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->ExperienciaMercadoDescripcion.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.''/*$Precalificacion->ExperienciaMercadoDescripcion*/.'</td>
 																	</tr>
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Proyectos</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->Proyectos.'</td>
 																	</tr>	
+																	-->
 																</tbody>
 															</table><br>	
-
+															<!--
 															<p style="font-weight: bold;">Integras soluciones como</p><br>										
 															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 																<tbody>';
@@ -138,7 +140,8 @@
 																}
 																$html .= '</tbody>
 															</table><br>
-
+															-->
+															<!--
 															<p style="font-weight: bold;">Distribuyes/utilizas productos</p><br>										
 															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 															<tbody>';
@@ -160,7 +163,8 @@
 															}
 															$html .= '</tbody>
 															</table><br>
-
+															-->
+															<!--
 															<p style="font-weight: bold;">Sector o tipo de clientes que atienden</p><br>										
 															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 															<tbody>';
@@ -182,7 +186,7 @@
 															}
 															$html .= '</tbody>
 															</table><br>
-
+															-->
 															<div style="text-align:right">
 															<div style="float: right">
 															</div>

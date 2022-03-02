@@ -14,9 +14,9 @@
 	<body>
 		<!-- Page Content-->
 		<div class="row no-gutters">
-			<div class="col-md-12 fh-section" style="background-image: url(../../public/images/Otros/catalogo.jpg); height: 50vh !important;">
+			<div class="col-md-12 fh-section" style="background-image: url(../../public/images/Otros/catalogo.jpg); height: 30vh !important;">
 				<span class="overlay" style="background-color: #000; opacity: .7;"></span>
-				<div class="d-flex flex-column fh-section py-5 px-3 justify-content-between" style="height: 50vh !important;">
+				<div class="d-flex flex-column fh-section py-5 px-3 justify-content-between" style="height: 30vh !important;">
 					<div class="w-100 text-center">
 					</div>
 					<div class="w-100 text-center mt-5">
@@ -71,26 +71,37 @@
 								<input class="form-control form-control-pill" type="email" id="Correo" name="Correo" placeholder="Correo electrónico" autocomplete="off" required>
 							</div>
 							<!-- Nombre del contacto, título y departamento: -->
+							<!--
 							<div class="form-group col-12">
 								<textarea class="form-control form-control-pill" id="Contacto"  name="Contacto" cols="30" rows="3" placeholder="Nombre del contacto, título y departamento:"></textarea>
 							</div>
+							-->
 							<!-- Teléfono (s) de oficina/ móvil: -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="text" id="TelefonoOficina" name="TelefonoOficina" placeholder="Teléfono (s) de oficina/ móvil:" autocomplete="off" required>
 							</div>
+							-->
 							<!-- Teléfono (s) móvil: -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="text" id="TelefonoMovil" name="TelefonoMovil" placeholder="Teléfono (s) móvil:" autocomplete="off" required>
 							</div>
+							-->
 							<!-- Página Web -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="text" id="PaginaWeb" name="PaginaWeb" placeholder="Página Web" autocomplete="off" required>
 							</div>
+							--> 
 							<!-- Dirección Oficina -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="text" id="DireccionOficina" name="DireccionOficina" placeholder="Dirección Oficina" autocomplete="off" required>
 							</div>
+							-->
 							<!-- Giró Empresa -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<label>Giró Empresa</label>
 								<select class="form-control form-control-pill" id="GiroEmpresa" name="GiroEmpresa">
@@ -109,7 +120,9 @@
 								<?php }  ?>
 								</select>
 							</div>
+							-->
 							 <!-- Presencia -->
+							 <!--
 							 <div class="form-group col-12 col-sm-6">
 								<label>Presencia</label>
 								<select class="form-control form-control-pill" id="Presencia" name="Presencia">
@@ -125,7 +138,9 @@
 								<?php }  ?>
 								</select>
 							</div>
+							-->
 							<!-- Número de empleados -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<label>No. de empleados aproximado</label>
 								<select class="form-control form-control-pill" id="NumeroEmpleados" name="NumeroEmpleados">
@@ -141,7 +156,9 @@
 								<?php }  ?>
 								</select>
 							</div>
+							-->
 							<!-- Experiencia en el mercado -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<label>Experiencia en el mercado (años)</label>
 								<select class="form-control form-control-pill" id="ExperienciaMercado" name="ExperienciaMercado">
@@ -157,7 +174,9 @@
 								<?php }  ?>
 								</select>
 							</div>
+							-->
 							<!-- Integras soluciones como -->
+							<!--
 							<div class="form-group col-12">
 								<label>Integras soluciones como</label>
 							</div>
@@ -174,7 +193,9 @@
 								<label class="custom-control-label" for="integras-soluciones-<?php echo $Subdefiniciones->Key ?>"><?php echo $Subdefiniciones->Descripcion ?></label>
 							</div>
 							<?php }  ?>
+							-->
 							<!-- Distribuyes/utilizas productos  -->
+							<!--
 							<div class="form-group col-12">
 								<label>Distribuyes/utilizas productos </label>
 							</div>
@@ -191,7 +212,9 @@
 								<label class="custom-control-label" for="productos-<?php echo $Subdefiniciones->Key ?>"><?php echo $Subdefiniciones->Descripcion ?></label>
 							</div>
 							<?php }  ?>
+							-->
 							<!-- Sector o tipo de clientes que atienden  -->
+							<!--
 							<div class="form-group col-12">
 								<label>Sector o tipo de clientes que atienden </label>
 							</div>
@@ -208,11 +231,15 @@
 								<label class="custom-control-label" for="tipo-clientes-<?php echo $Subdefiniciones->Key ?>"><?php echo $Subdefiniciones->Descripcion ?></label>
 							</div>
 							<?php }  ?>
+							-->
 							<!-- Proyectos Destacados o en puerta: -->
+							<!--
 							<div class="form-group col-12 mt-3">
 								<textarea class="form-control form-control-pill" id="Proyectos"  name="Proyectos" cols="30" rows="3" placeholder="Proyectos Destacados o en puerta:"></textarea>
 							</div>
+							-->
 							<!-- Anexar constancia de situación fiscal (pdf o imagen)  -->
+							<!--
 							<div class="form-group col-12 mt-3">
 								<label>Anexar constancia de situación fiscal (pdf o imagen) </label>
 							</div>
@@ -221,6 +248,7 @@
 									<input type="file" id="situacion-fiscal" name="situacion-fiscal">
 								</div>
 							</div>
+							-->
 						</form>
 							<div class="custom-control custom-checkbox col-12 mt-5" style=" display: flex; justify-content: center;">
 								<input class="custom-control-input" type="checkbox" id="aviso-privacidad">
