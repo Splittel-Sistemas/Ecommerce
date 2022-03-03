@@ -80,10 +80,11 @@ if (!class_exists("Connection")) {
           $PrecalificacionModel->SetParameters($this->Connection, $this->Tool);
           $PrecalificacionModel->SetTerminos($_POST['Terminos'] ? 1 : 0);
           $PrecalificacionModel->SetNombreFacturacion($_POST['data']['NombreFacturacion']);
-          $PrecalificacionModel->SetRFC($this->Tool->validRFC_($_POST['data']['RFC'], 'RFC', true));
+          //$PrecalificacionModel->SetRFC($this->Tool->validRFC_($_POST['data']['RFC'], 'RFC', true));
+          $PrecalificacionModel->SetRFC($_POST['data']['RFC']);
           $PrecalificacionModel->SetNombreComercial($_POST['data']['NombreComercial']);
           $PrecalificacionModel->SetDireccionFacturacion($_POST['data']['DireccionFacturacion']);
-          $PrecalificacionModel->SetCodigoPostal($this->Tool->validCodigoPostal_($_POST['data']['CodigoPostal'], 'Código Postal', true));
+         // $PrecalificacionModel->SetCodigoPostal($this->Tool->validCodigoPostal_($_POST['data']['CodigoPostal'], 'Código Postal', true));
           $PrecalificacionModel->SetCorreo($this->Tool->validEmail_($_POST['data']['Correo'], 'Correo', true));
          /*
           $PrecalificacionModel->SetContacto($_POST['data']['Contacto']);

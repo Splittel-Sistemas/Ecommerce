@@ -51,25 +51,27 @@
 															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 																<tbody>
 																	<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Nombre facturación</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Nombre de la empresa</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->NombreFacturacion.'</td>
 																	</tr>
 																	<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">RFC</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->RFC.'</td>
-																	</tr>
-																	<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Nombre comercial</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Contacto</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->NombreComercial.'</td>
 																	</tr>
 																	<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Dirección de facturación</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->DireccionFacturacion.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Telefono</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->RFC.'</td>
 																	</tr>
 																	<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Código Postal</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->CodigoPostal.'</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Giro</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->DireccionFacturacion.'</td>
 																	</tr>
+																	<!--
+																	<tr style="width:100%;">
+																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Código Postal</td>
+																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.''/*$Precalificacion->CodigoPostal*/.'</td>
+																	</tr>
+																	-->
 																	<tr style="width:100%;">
 																		<td style="margin-bottom: 10px; text-align: left; max-width:30%; font-weight: bold;">Correo eléctronico</td>
 																		<td style="margin-bottom: 10px; text-align: left; max-width:70%;">'.$Precalificacion->Correo.'</td>

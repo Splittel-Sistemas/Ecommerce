@@ -48,24 +48,27 @@
 						<form class="row" id="form-solicitud-precalificacion">
 							<!-- Nombre de facturación (Física/ Moral): -->
 							<div class="form-group col-12 col-sm-6">
-								<input class="form-control form-control-pill" type="text" id="NombreFacturacion" name="NombreFacturacion" placeholder="Nombre de facturación (Física/ Moral):" autocomplete="off" required>
-							</div>
-							<!-- RFC -->
-							<div class="form-group col-12 col-sm-6">
-								<input class="form-control form-control-pill" type="text" id="RFC" name="RFC" placeholder="RFC" autocomplete="off" required style="text-transform: uppercase;">
+								<input class="form-control form-control-pill" type="text" id="NombreFacturacion" name="NombreFacturacion" placeholder="Nombre de la empresa" autocomplete="off" required>
 							</div>
 							<!-- Nombre Comercial -->
 							<div class="form-group col-12 col-sm-6">
-								<input class="form-control form-control-pill" type="text" id="NombreComercial" name="NombreComercial" placeholder="Nombre Comercial" autocomplete="off" required>
+								<input class="form-control form-control-pill" type="text" id="NombreComercial" name="NombreComercial" placeholder="Contacto" autocomplete="off" required>
 							</div>
+							<!-- RFC -->
+							<div class="form-group col-12 col-sm-6">
+								<input class="form-control form-control-pill" type="text" id="RFC" name="RFC" placeholder="Teléfono" autocomplete="off" required >
+							</div>
+							
 							<!-- Dirección de facturación -->
 							<div class="form-group col-12 col-sm-6">
-								<input class="form-control form-control-pill" type="text" id="DireccionFacturacion" name="DireccionFacturacion" placeholder="Dirección de facturación" autocomplete="off" required>
+								<input class="form-control form-control-pill" type="text" id="DireccionFacturacion" name="DireccionFacturacion" placeholder="Giro" autocomplete="off" required>
 							</div>
 							<!-- Codigo Postal Facturación -->
+							<!--
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="text" id="CodigoPostal" name="CodigoPostal" placeholder="Codigo Postal Facturación" autocomplete="off" required>
 							</div>
+							-->
 							<!-- Correo electrónico -->
 							<div class="form-group col-12 col-sm-6">
 								<input class="form-control form-control-pill" type="email" id="Correo" name="Correo" placeholder="Correo electrónico" autocomplete="off" required>
