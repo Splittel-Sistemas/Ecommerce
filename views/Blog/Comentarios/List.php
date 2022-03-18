@@ -66,7 +66,10 @@ if (!class_exists('ComentariosBlogController')) {
                 <div class="comment-footer">
                   <div class="column"><span class="comment-meta">
                   <?php echo date("d-m-Y", strtotime($ComentarioList->fecha));?></span></div>
-                  <div class="column"><a class="reply-link" onclick="showFormCreate(<?php echo $ComentarioList->Key;?>)" href="#"><i class="icon-corner-up-left"></i>Responder</a></div>
+                  <div class="column">
+                      <a class="reply-link" onclick="showFormCreate(<?php echo $ComentarioList->Key;?>)" href="#">
+                        <i class="icon-corner-up-left"></i>Responder</a>
+                  </div>
                 </div>
                 <!-- Comment reply-->
               <?php
@@ -110,7 +113,62 @@ if (!class_exists('ComentariosBlogController')) {
                   } ?></h4>
                     </div>
                     <p class="comment-text"><?php echo nl2br($ComentarioList1->Review); ?></p>
-                    <div class="comment-footer"><span class="comment-meta"><?php echo date("d-m-Y", strtotime($ComentarioList1->fecha));?></span></div>
+                    <div class="comment-footer">
+                      <span class="comment-meta"><?php echo date("d-m-Y", strtotime($ComentarioList1->fecha));?></span>
+                      <div class="column">
+                      <a class="reply-link" onclick="showFormCreate(<?php echo $ComentarioList1->Key;?>)" href="#">
+                        <i class="icon-corner-up-left"></i>Responder</a>
+                      </div>
+                    </div>
+                     <!-- Comment reply-->
+              <?php
+              
+              $Where2 = "WHERE id_comentario ='".$ComentarioList1->Key."' AND Id_blog = '".$IdBlog."' AND tipo=1 AND activo=1";
+              $Order2 = "ORDER BY fecha ASC";
+              
+              $ComentariosController2 = new ComentariosBlogController();
+              $ComentariosController2->filter = $Where2;
+              $ComentariosController2->order = $Order2;
+              $Comentarios2 = $ComentariosController2->Get();
+              
+               foreach ($Comentarios2->records as $ComentarioList2){ ?>
+          
+              
+              <div class="comment comment-reply">
+                <div class="comment-author-ava">
+                <?php
+                     $ImgUser = "../../public/images/img_spl/usuarios/Us_".$ComentarioList2->KeyCliente.".png";
+                     if (file_exists($ImgUser)) { ?>
+                      <img src="<?php echo $ImgUser;?>" alt="Comment author">
+                <?
+                     }else{
+                ?>
+                  <img src="../../public/images/Otros/user_.jpg" alt="Comment author">
+                <?php
+                     }
+                ?>
+                </div>
+                <div class="comment-body">
+                  <div class="comment-header">
+                    <h4 class="comment-title">
+                <?php 
+                if($ComentarioList2->KeyCliente==0){
+                  echo "Usuario";
+                }else{
+                  $ClienteController2 = new ClienteController();
+                  $ClienteController2->filter = "WHERE id_cliente = ".$ComentarioList2->KeyCliente." ";
+                  $Cliente1 = $ClienteController2->getBy();
+                   echo $Cliente1->GetNombre().' '.$Cliente1->GetApellidos();
+                } ?></h4>
+                  </div>
+                  <p class="comment-text"><?php echo nl2br($ComentarioList2->Review); ?></p>
+                  <div class="comment-footer">
+                    <span class="comment-meta"><?php echo date("d-m-Y", strtotime($ComentarioList2->fecha));?></span>
+                   
+                  </div>
+                </div>
+              </div>
+              <?php }?>
                   </div>
                 </div>
                 <?php }?>

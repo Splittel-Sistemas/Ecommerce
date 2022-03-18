@@ -58,6 +58,7 @@
 						</div>
           -->
             <div class="h1 text-normal mb-3 text-center">Iniciar Sesión</div>
+            <h4 class="text-sm "> * Si ya es cliente nuestro y cuenta con usuario y contraseña, favor de ingresar los datos para iniciar sesión</h4>
             <form id="form-login">
               <input type="hidden" id="Action" name="Action" value="login">
               <input type="hidden" id="ActionLogin" name="ActionLogin" value="true">

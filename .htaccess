@@ -16,3 +16,10 @@ RewriteRule Soluciones/(.*)-(.*)$  Soluciones/index.php?id=$1&nom=$2 [L,NC]
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule Cursos/([0-9]+)-(.*)$  Cursos/cursos_detalle.php?id=$1&nom=$2 [L,NC]
+
+#   CAPACITACIONES
+#   Entrada: /fibra-optica/views/Capacitaciones/ID_CURSO-NOMBRESOLUCION
+#   Salida: /fibra-optica/views/Capacitaciones/capacitaciones_detalle.php?id=ID_SOLUCION&nom=NOMBRECURSO
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule Capacitaciones/([0-9]+)-(.*)$  Capacitaciones/capacitaciones_detalle.php?id=$1&nom=$2 [L,NC]
