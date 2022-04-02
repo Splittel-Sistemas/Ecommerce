@@ -49,7 +49,7 @@
             $atributos1=$ancho."x".$alto;
             ?>
             
-              <div class="gallery-wrapper padding-top-1x padding-bottom-3x">
+              <div class="gallery-wrapper padding-top-1x ">
                 <div class="gallery-item">
                 
                 <img src="../../public/images/img_spl/capacitaciones/<?php echo $response->banner2;?>" alt="<?php echo $response->nombre;?>">
@@ -77,10 +77,14 @@
                 color: black;
                 text-decoration: underline;
             }
-          .fc-toolbar-title { text-transform: capitalize; }
+          .fc-toolbar-title { text-transform: uppercase; }
           </style>
-          <hr class="margin-top-2x">
-          <div style="text-decoration:none" class="margin-top-2x" id='calendar'>
+          <h6 class="text-center text-normal padding-top-2x">Consulta nuestra oferta academica de todo el año.</h6>
+
+            <div class="text-muted opacity-75 padding-top-3x ">CALENDARIO DE EVENTOS</div>
+          <hr class="padding-top-1x">
+
+          <div style="text-decoration:none" class="" id='calendar'>
           
         </div>
 
