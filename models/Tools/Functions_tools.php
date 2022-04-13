@@ -335,7 +335,11 @@ class Functions_tools
     public function CalcularDescuento($discountProduct){
         try {
             $discountRate = 0; // inicializar porcentaje de descuento
-            $discountClient = $_SESSION['Ecommerce-ClienteDescuento']; // descuento cliente b2b
+            if(isset($_SESSION['Ecommerce-ClienteDescuento'])){
+                $discountClient = $_SESSION['Ecommerce-ClienteDescuento']; // descuento cliente b2b
+            }else{
+                $discountClient = 0;
+            }
             if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B'){
                 if($discountProduct > 0){
                     $discountRate = $discountClient >= $discountProduct ? $discountProduct : $discountClient;

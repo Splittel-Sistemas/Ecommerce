@@ -51,7 +51,9 @@
                <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
           </li>
-        
+          <li class="has-children">
+            <span><a href="#">Capacitaciones</a></span>
+          </li>
           <li class="has-children">
             <span><a href="../Cuenta/index.php?menu=5">Pedidos en proceso</a></span>
           </li>

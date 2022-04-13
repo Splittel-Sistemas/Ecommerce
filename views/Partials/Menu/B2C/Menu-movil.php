@@ -54,6 +54,15 @@
                <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
           </li>
+          <li class="has-children">
+            <span><a href="#">Capacitaciones</a><span class="sub-menu-toggle"></span></span>
+            <ul class="slideable-submenu">
+               <li><a href="../Capacitaciones/1-fintec">FINTEC</a></li>
+               <li><a href="../Capacitaciones/2-insider">INSIDER</a></li> 
+               <li><a href="../Capacitaciones/3-develop">DEVELOP</a></li> 
+               <li><a href="../Capacitaciones/4-partners">CERTIFICACIÓN OPTRONICS</a></li> 
+          </ul>
+          </li>
           <li class="has-children"><span>
             <a href="#">Biblioteca Técnica</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">

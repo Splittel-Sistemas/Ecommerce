@@ -130,6 +130,85 @@
               <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
         </li>
+        <li class="has-megamenu">
+          <a href="#">Capacitaciones</a>
+            <ul class="mega-menu">
+            <li><span class="mega-menu-title">FINTEC</span>
+              <ul class="sub-menu">
+                <li>
+                  <a class="d-inline-block" href="../Capacitaciones/1-fintec">
+                  <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/>
+                  ¿Qué es Fintec?
+                  </a>
+                </li>
+                <!--
+                <li>
+                  <a class="d-inline-block" href="../Capacitaciones/1-fintec#calendar">
+                  <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/2.jpg"/>
+                  Calendario
+                  </a>
+                </li>
+              -->
+                <li>
+                  <a class="d-inline-block m-1" href="../Capacitaciones/1-fintec">
+                  <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg"/>
+                
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li><span class="mega-menu-title">INSIDER</span>
+              <ul class="sub-menu">
+                <li>
+                  <a href="../Capacitaciones/2-insider" >
+                  ¿Qué es Insider?
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="mega-menu-title">DEVELOP</span>
+                  <ul class="sub-menu">
+                  <li>
+                  <a href="../Capacitaciones/3-develop" >
+                  ¿Qué es Develop?
+                  </a>
+                </li>
+                <?php 
+                  if (!class_exists("CatalogoCursos")) {
+                    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Cursos.php';
+                  }
+                  $CatalogoCursos = new CatalogoCursos();
+                  $responseD = $CatalogoCursos->get("", "", false);
+                ?>
+                    <?php if ($responseD->count > 0): ?>
+                      <?php foreach ($responseD->records as $key => $row): ?>
+                        <li>
+                        <a class="text-decoration-none" href="../Cursos/<?php echo $row->id;?>-<?php echo url_amigable($row->nombre);?>">  
+                        <?php echo $row->nombre;?>
+                      </a>
+                      </li>
+                      <?php endforeach ?>
+                    <?php endif ?> 
+                  </ul>
+            </li>
+            <li>
+              <span class="mega-menu-title">CERTIFICACIÓN OPTRONICS</span>
+                  <ul class="sub-menu">
+                  <li>
+                    <a href="../Capacitaciones/4-partners" >
+                    ¿Qué es?
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../Capacitaciones/4-partners#banner2" >
+                   Proceso para certificar una red
+                    </a>
+                  </li>
+                  </ul>
+            </li>
+          </ul>
+        </li>
         <li class="has-submenu">
           <a href="../Cuenta/index.php?menu=5">Pedidos en proceso</a> 
         </li>

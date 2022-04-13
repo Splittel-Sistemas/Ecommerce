@@ -52,7 +52,7 @@
               <div class="gallery-wrapper padding-top-1x ">
                 <div class="gallery-item">
                 
-                <img src="../../public/images/img_spl/capacitaciones/<?php echo $response->banner2;?>" alt="<?php echo $response->nombre;?>">
+                <img id='banner2' src="../../public/images/img_spl/capacitaciones/<?php echo $response->banner2;?>" alt="<?php echo $response->nombre;?>">
                 <span class="caption"><?php echo $Soluciones->nombre;?></span>
                 </div>
               </div>
@@ -79,23 +79,23 @@
             }
           .fc-toolbar-title { text-transform: uppercase; }
           </style>
+          <!--
           <h6 class="text-center text-normal padding-top-2x">Consulta nuestra oferta academica de todo el año.</h6>
 
             <div class="text-muted opacity-75 padding-top-3x ">CALENDARIO DE EVENTOS</div>
           <hr class="padding-top-1x">
-
-          <div style="text-decoration:none" class="" id='calendar'>
+          <div style="text-decoration:none" class="" id='calendar'> 
           
         </div>
-
+          -->
           <p class="text-muted text-center text-normal margin-top-3x">
             Seguimos con nuestra oferta de actividades y eventos para darte a conocer mejor las soluciones que ofrecemos y mantenerte
             actualizado con la información relevante y actual a todo lo relacionado con la fibra óptica y las telecomunicaciones.
          </p>
 
           <p class="text-muted text-center text-normal  margin-top-3x">
-            <b>¿Tienes interés por alguno de nuestros eventos durante este año?</b><br/>
-            Contáctanos haciendo clic en el siguiente botón y un ejecutivo te atenderá.
+            <b>Mantenemos la comunicación abierta para resolver tus dudas</b>
+           
          </p>
 
           <h6 class="text-muted text-center text-normal margin-top-3x">

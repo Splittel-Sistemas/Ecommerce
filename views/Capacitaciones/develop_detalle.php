@@ -3,7 +3,7 @@
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Cursos.php';
       }
       $CatalogoCursos = new CatalogoCursos();
-      $responseD = $CatalogoCursos->get("", "", false);
+      $responseD = $CatalogoCursos->get("", "ORDER BY fecha DESC", false);
     ?>
 
 
