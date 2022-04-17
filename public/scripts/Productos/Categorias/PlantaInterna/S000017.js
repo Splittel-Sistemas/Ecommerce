@@ -71,7 +71,7 @@ var cable_IE = function(){
   let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
 
 
-  StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
+  //StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
   let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
   let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
   // alert(TipoTermiacion.value);
@@ -280,7 +280,7 @@ var cable_IE = function(){
 var cable_CI = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
   let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
-  StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
+  //StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [2]);
   let PosicionConector1 = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('position')
   let PosicionConector2 = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('position')
   // alert(TipoTermiacion.value);
