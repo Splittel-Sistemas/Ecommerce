@@ -43,14 +43,15 @@
               <?php endforeach ?> 
             </ul>
           </li>
+          <!--
           <li class="has-children <?php if(trim($path) == "Cursos"){?>active<?php }?>">
             <span><a href="#">Cursos</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
-             <!-- <li><a href="../Cursos/enlinea.php">En línea</a></li> -->
               <li><a href="../Cursos/cursos-fibra-optica.php">Presencial</a></li>
                <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
           </li>
+              -->
           <li class="has-children">
             <span><a href="#">Capacitaciones</a></span>
           </li>

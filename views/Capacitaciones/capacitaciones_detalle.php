@@ -99,7 +99,7 @@
          </p>
 
           <h6 class="text-muted text-center text-normal margin-top-3x">
-            <img src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png">
+            <a target="_blank" href="<?php echo$response->link_whatsapp?>"><img src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png"></a>
           </h6>
 
           <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x"><?php echo $response->text_form;?> </h6>

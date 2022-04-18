@@ -122,14 +122,16 @@
             <?php endforeach ?> 
             </ul>
         </li>
+        <!--
         <li class="has-submenu <?php if(trim($path) == "Cursos"){?>active<?php }?>">
           <a href="#">Cursos</a>
           <ul class="sub-menu">
-             <!-- <li><a href="../Cursos/enlinea.php">En línea</a></li> -->
+              <li><a href="../Cursos/enlinea.php">En línea</a></li> 
               <li><a href="../Cursos/cursos-fibra-optica.php">Presencial</a></li>
               <li><a href="../Cursos/webinar.php?pag=1">Webinar</a></li> 
           </ul>
         </li>
+              -->
         <li class="has-megamenu">
           <a href="#">Capacitaciones</a>
             <ul class="mega-menu">
@@ -164,6 +166,21 @@
                   ¿Qué es Insider?
                   </a>
                 </li>
+                <?php 
+                    if (!class_exists("CatalogoCapacitaciones")) {
+                      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
+                      }
+                      $CatalogoCursos = new CatalogoCapacitaciones();
+                      $responseI = $CatalogoCursos->getEventsInsider("WHERE activo = 'si' ", "", false)->records;
+                      //echo $Json= json_encode($response);
+                ?>
+                      <?php foreach ($responseI as $row ):  ?>
+                        <li>
+                        <a class="text-decoration-none" href="../Capacitaciones/2-Insider#I<?php echo $row->id;?>">  
+                        <?php echo $row->titulo;?>
+                      </a>
+                      </li>
+                      <?php endforeach ?>
               </ul>
             </li>
             <li>
