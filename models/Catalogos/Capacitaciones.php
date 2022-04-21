@@ -62,7 +62,7 @@ class CatalogoCapacitaciones{
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
         //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
-       $SQLSTATEMENT="SELECT title, date(start) AS start,date(end) AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
+       $SQLSTATEMENT="SELECT costo,link,descripcion,fecha,title, date(start) AS start FROM menu_capacitaciones_eventos ".$filter." ".$order;
        // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {
@@ -76,6 +76,40 @@ class CatalogoCapacitaciones{
       throw $e;
     }
   }
+
+  /**
+   * Obtención de información relevante eventos para el calendario
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function getMonths($filter, $order, $return_json){
+    try {
+      $items = [];
+      if (!$this->conn->conexion()->connect_error) {
+        //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
+        $SQLSTATEMENT="SET lc_time_names = 'es_ES';";
+        $this->conn->QueryReturn($SQLSTATEMENT);
+       $SQLSTATEMENT="SELECT MONTH(START) mes_num, YEAR(START) anio, DATE_FORMAT((START),'%M') mes_nombre
+                        FROM menu_capacitaciones_eventos 
+                        WHERE MONTH(START) >= MONTH(NOW())
+                        AND YEAR(START) >= YEAR(NOW())
+                        GROUP BY MONTH(START), YEAR(START);";
+       // echo $SQLSTATEMENT;
+        $result = $this->conn->QueryReturn($SQLSTATEMENT);
+        while ($row = $result->fetch_object()) {
+          $items[] = $row;
+        }
+
+        return $this->Tool->Message_return(false, "", $items, $return_json);
+    
+      }
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
+
 
   /**
    * Obtención de información relevante eventos para el calendario
