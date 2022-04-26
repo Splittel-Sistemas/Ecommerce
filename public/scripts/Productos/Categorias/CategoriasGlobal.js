@@ -413,14 +413,16 @@ var existEcommerce_ = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
+    //console.log(response);
     if (!response.error && response.count > 0) {
       let resultResponse =  response.records[0]
       let DescripcionLarga = document.getElementById('descripcionLarga')
       let Descripcion_CEO = document.getElementById('descripcionCEO')
       let Stock = document.getElementById('add-stock')
       let DescPrdConf = document.getElementById('DscProductoConfigurable')
-
+ //console.log(resultResponse);
       // agregar stock
+      if(Stock)
       Stock.innerHTML = resultResponse.ProductoExistencia
       // agregar descricpión larga
       DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
@@ -518,7 +520,9 @@ var getDescuentoByFamiliaProductosConfigurables = function(){
   }, 
   function(response){
     resultResponse = response.records[0]
+    if(document.getElementById('btn-fijo') )
     document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
+    if(document.getElementById('btn-configurable'))
     document.getElementById('btn-configurable').setAttribute('descuento', resultResponse.Descuento)
   })
 }
