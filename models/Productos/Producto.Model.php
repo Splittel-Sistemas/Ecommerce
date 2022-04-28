@@ -357,6 +357,8 @@
           $this->MarcaDesripcion                   =   $row->desc_marca;
           $this->FichaKey                          =   $row->ficha_id;
           $this->FichaRuta                         =   $row->ruta;
+          $this->MetaKey                           =   $row->meta_key;
+          $this->MetaDescription                   =   $row->meta_description;
           $this->Certificado                       =   $this->ExistCert($row->codigo);
           $data = true;
         }

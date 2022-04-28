@@ -10,11 +10,12 @@
     $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
     $ProductoController->order = "";
     $Obj = $ProductoController->GetByProductosFijos();
-    $MetaFamilia = !empty($Obj->ProductoCodigo) ? $Obj->CategoriaFamiliaDescripcion : '';
-    $MetaSubfamilia = !empty($Obj->ProductoCodigo) ? $Obj->SubcategoriaDescripcion : '';
-    $MetaProducto = !empty($Obj->ProductoCodigo) ? $Obj->ProductoDescripcion : '';
+    
+    $Meta_Key = !empty($Obj->MetaKey) ? $Obj->MetaKey : '';
+    $Meta_Description = !empty($Obj->MetaDescription) ? $Obj->MetaDescription : '';
     ?>
-    <meta name="Description" content="<?php echo $MetaFamilia;?>, <?php echo $MetaSubfamilia;?>, <?php echo $MetaProducto;?>" />
+    <meta name="Description" content="<?php echo $Meta_Description;?>" />
+    <meta name="keywords" content="<?php echo $Meta_Key;?>" />
     <?php
     }
     ?>
