@@ -2,8 +2,9 @@
 <title>Fibremex | Líderes en Fibra Óptica y Telecomunicaciones de México</title>
 <?php if(basename($_SERVER['PHP_SELF'])!='fijos.php'){?>
 <meta name="Description" content="Distribuidor de productos para la instalación de redes de Fibra Óptica, Telecomunicaciones y Cableado Estructurado en México." />
-<?php }?>
 <meta name="keywords" content="fibra óptica, telecomunicaciones, fibra óptica multimodo, fibra óptica monomodo, fibras opticas, redes, cableado estructurado, fibras opticas en mexico, fibra óptica">
+<?php }?>
+
 <meta name="DC.title" content="fibremex" />
 <meta name="geo.region" content="MX-QUE" />
 <meta name="geo.placename" content="Querétaro" />
