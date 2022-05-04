@@ -77,37 +77,7 @@
             <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola! Me gustario obtener informacion sobre las promociones"><img src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png"></a>
           </h6>
 
-          <h6 class="text-muted text-normal text-uppercase margin-top-3x">REGISTRATE</h6>
-          <hr class="margin-bottom-1x ">
-          <form id="form-cursos">
-            <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
-            <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
-            <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="Promociones">
-            <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->nombre;?>">
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <label for="validationCustom04">Nombre</label>
-                <input class="form-control cursos" type="text"  name="Nombre" id="Nombre" required>
-              </div>
-              <div class="col-sm-6 form-group">
-                <label for="validationCustom05">Empresa</label>
-                <input class="form-control cursos" type="text"  name="Empresa" id="Empresa" required>
-                
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <label>Email</label>
-                <input class="form-control cursos" type="email" name="Email" id="Email" required>
-              </div>
-              <div class="col-sm-6 form-group">
-                <label>Telefono</label>
-                <input class="form-control cursos" type="text" name="Telefono" id="Telefono" required>                
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="EmailCursos(this)">Enviar</button>
-            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-          </form>
+         
           
           <!-- Post Tags + Share-->
           <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-4">
