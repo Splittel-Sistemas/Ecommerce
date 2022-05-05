@@ -39,9 +39,10 @@
             ?>
             <div class="row">
             <?php foreach ($responseI as $row ): 
-               
+              if($row->link!=''){ 
                 ?>
-   
+            <a class="text-decoration-none"  href="<?php echo $row->link;?>" ">
+            <?php }?>
             <div class="row align-items-center padding-bottom-2x padding-top-2x" >
                     <div class="col-md-5">
                       
@@ -56,21 +57,24 @@
                      <span style="color: #BF202F;" class="text-decoration-none" ><?php echo $row->vigencia;?>&nbsp;</span> 
                     </div>
             </div>
+            <?php if($row->link!=''){ ?>
+            </a>
+            <?php }?>
                   <hr style="width:100%; height: 15px;" id="I<?php echo $row->id?>">
             <?php endforeach ?>
 
             </div>
             
           <div class="col-lg-12 col-md-8 order-md-2">          
-         
+         <!--
           <p class="text-muted text-center text-normal margin-top-3x">
             Seguimos con nuestra oferta de actividades y eventos para darte a conocer mejor las soluciones que ofrecemos y mantenerte
             actualizado con la información relevante y actual a todo lo relacionado con la fibra óptica y las telecomunicaciones.
          </p>
-
+            -->
           <p class="text-muted text-center text-normal  margin-top-3x">
-            <b>Tienes preguntas sobre promociones?</b><br/>
-            Contáctanos haciendo clic en el siguiente botón y un ejecutivo te atenderá.
+            <b>¿Quieres conocer más sobre nuestras promociones?</b><br/>
+            Contáctanos para que un ejecutivo pueda atenderte.
          </p>
         
           <h6 class="text-muted text-center text-normal margin-top-3x">
