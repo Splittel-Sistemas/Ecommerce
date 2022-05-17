@@ -111,13 +111,13 @@
                 <table style="width:100%;" >
                 <?php 
                     $CatalogoEventos = new CatalogoCapacitaciones();
-                    $responseCalEvents = $CatalogoEventos->getEvents("where month(start)= $row->mes_num AND YEAR(start) = $row->anio", "ORDER BY start ASC", false);
+                    $responseCalEvents = $CatalogoEventos->getEventsCal("where month(start)= $row->mes_num AND YEAR(start) = $row->anio", "ORDER BY start ASC", false);
                     $cont=1;
                     $cont1=1;
                     foreach ($responseCalEvents as $row1 ): 
                       if($cont==1 || $varAnt!=$row1->title){
                       $CatalogoEventosEsp = new CatalogoCapacitaciones();
-                      $responseCalEventsEsp = $CatalogoEventosEsp->getEvents("where month(start)= $row->mes_num AND YEAR(start) = $row->anio AND title='".$row1->title."'", "", false);
+                      $responseCalEventsEsp = $CatalogoEventosEsp->getEventsCal("where month(start)= $row->mes_num AND YEAR(start) = $row->anio AND title='".$row1->title."'", "", false);
                       $rwSpan=count($responseCalEventsEsp);
                     }
                   ?>

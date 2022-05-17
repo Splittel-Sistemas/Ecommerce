@@ -6,7 +6,7 @@ if (!class_exists("Connection")) {
 }if (!class_exists("Functions_tools")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
 }if (!class_exists("Soluciones")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Soluciones/Soluciones.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Soluciones/Soluciones_.Model.php';
 }
 
   /**

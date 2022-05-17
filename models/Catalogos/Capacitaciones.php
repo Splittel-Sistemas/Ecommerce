@@ -62,14 +62,14 @@ class CatalogoCapacitaciones{
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
         //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
-       $SQLSTATEMENT="SELECT costo,link,descripcion,fecha,title, date(start) AS start FROM menu_capacitaciones_eventos ".$filter." ".$order;
+       $SQLSTATEMENT="SELECT imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
        // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {
           $items[] = $row;
         }
-
-        return $return_json ? json_encode($items, JSON_UNESCAPED_UNICODE) : $items;
+        return $this->Tool->Message_return(false, "", $items, $return_json);
+        //return $return_json ? json_encode($items, JSON_UNESCAPED_UNICODE) : $items;
     
       }
     } catch (Exception $e) {
@@ -77,6 +77,32 @@ class CatalogoCapacitaciones{
     }
   }
 
+   /**
+   * Obtención de información relevante eventos para el calendario
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function getEventsCal($filter, $order, $return_json){
+    try {
+      $items = [];
+      if (!$this->conn->conexion()->connect_error) {
+        //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
+       $SQLSTATEMENT="SELECT imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
+       // echo $SQLSTATEMENT;
+        $result = $this->conn->QueryReturn($SQLSTATEMENT);
+        while ($row = $result->fetch_object()) {
+          $items[] = $row;
+        }
+        //return $this->Tool->Message_return(false, "", $items, $return_json);
+        return $return_json ? json_encode($items, JSON_UNESCAPED_UNICODE) : $items;
+    
+      }
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
   /**
    * Obtención de información relevante eventos para el calendario
    *

@@ -106,6 +106,10 @@
           </ul>
         </li>
         <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
+          <a href="../Soluciones/">Soluciones</a>
+        </li>
+        <!--
+        <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
           <a href="#">Soluciones</a> 
             <ul class="sub-menu">
             <?php 
@@ -116,12 +120,12 @@
 
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
-               <!-- <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
                 <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
             <?php endforeach ?> 
             </ul>
         </li>
+              -->
         <!--
         <li class="has-submenu <?php if(trim($path) == "Cursos"){?>active<?php }?>">
           <a href="#">Cursos</a>

@@ -27,6 +27,10 @@
             <?php endforeach ?>
             </ul>
           </li>
+          <li class="has-children <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
+            <span><a href="../Soluciones/">Soluciones</a></span>
+          </li>
+          <!--
           <li class="has-children">
             <span>
               <a href="#">Soluciones</a><span class="sub-menu-toggle"></span>
@@ -40,12 +44,12 @@
 
               foreach ($responseSoluciones->records as $Soluciones): ?>
               <li>
-              <!--  <a href="../Soluciones/index.php?id=<?php echo $Soluciones->SolucionesKey;?>"><?php echo $Soluciones->Descripcion;?></a> -->
                 <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
               </li>
               <?php endforeach ?> 
             </ul>
           </li>
+              -->
           <!--
           <li class="has-children <?php if(trim($path) == "Cursos"){?>active<?php }?>">
             <span><a href="#">Cursos</a><span class="sub-menu-toggle"></span></span>
