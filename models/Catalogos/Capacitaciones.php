@@ -62,7 +62,7 @@ class CatalogoCapacitaciones{
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
         //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
-       $SQLSTATEMENT="SELECT imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
+       $SQLSTATEMENT="SELECT comillas,imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
        // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {

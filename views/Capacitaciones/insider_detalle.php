@@ -14,7 +14,7 @@
 <div class="row align-items-center padding-bottom-2x padding-top-2x" >
         <div class="col-md-5">
           
-          <img class="d-block m-auto img-thumbnail" src="../../public/images/img_spl/capacitaciones/<?php echo $row->imagen;?>" alt="<?php echo $row->titulo;?>">
+          <img class="d-block m-auto img-thumbnail" src="../../public/images/img_spl/capacitaciones/<?php echo $row->imagen;?>" alt="<?php echo $row->title1;?>">
    
         </div>
         <div class="col-md-7 text-md-left text-center">

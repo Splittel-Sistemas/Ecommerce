@@ -149,7 +149,15 @@
                     <td style="background-color:<?php echo $colorBack;?>"><small><?php echo $row1->descripcion;?></small></td>
                     <td style="background-color:<?php echo $colorBack;?>"><small><?php echo $row1->fecha;?></small></td>
                     <td style="text-align:center; background-color:<?php echo $colorBack;?>;"><small><?php echo $row1->costo;?></small></td>
-                    <td style="text-align:center; width:10%; background-color:<?php echo $colorBack;?>"><small><a style="color: #BF202F;" href="<?php echo $row1->link;?>" target="_blank">Ver más</a></small></td>
+                    <td style="text-align:center; width:10%; background-color:<?php echo $colorBack;?>">
+                      <small>
+                        <?php if($row1->title == 'Insider'){?>
+                          <a style="color: #BF202F;" href="<?php echo $row1->link;?>" target="_blank">Registro</a>
+                        <?php }else{ ?>
+                          <a style="color: #BF202F;" href="<?php echo $row1->link;?>" target="_blank">Ver más</a>
+                       <?php }?>
+                      </small>
+                    </td>
                   </tr>
                   <?php 
                       $varAnt=$row1->title;

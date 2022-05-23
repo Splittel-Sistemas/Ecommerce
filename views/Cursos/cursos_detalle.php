@@ -41,9 +41,11 @@
         <!-- Content-->
         <div class="col-xl-9 col-lg-8 order-lg-2">
           <!-- Post Meta-->
+          <!--
           <ul class="post-meta mb-4">
             <li><i class="icon-clock"></i><a href="#"><?php echo ucwords(strftime( '%B' , strtotime($response->fecha))).' '.strftime(date("j, Y",strtotime($response->fecha)));?></a></li>
           </ul>
+          -->
           <!-- Gallery-->
           <div class="gallery-wrapper">
             <div class="gallery-item"><a href="../../public/images/img_spl/cursos/<?php echo $response->img_principal;?>" data-size="1000x353">
@@ -70,8 +72,18 @@
           <div class="row pt-3 pb-2">
             <div class="col-xl-10 offset-xl-1">
               <blockquote class="margin-top-1x margin-bottom-1x">
-                <p><?php echo nl2br($response->comillas)?></p>
+              <?php
+               if (!class_exists("CatalogoCapacitaciones")) {
+                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
+                }
+                $CatalogoCursos = new CatalogoCapacitaciones();
+                $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND  id_curso=".$response->id, "LIMIT 1", false)->records[0];
                 
+              ?>
+                <p><b><?php echo nl2br($responseI->comillas)?></b></p>
+              <?php
+              
+              ?>
               </blockquote>
             </div>
           </div>
