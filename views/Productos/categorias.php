@@ -84,7 +84,7 @@
                 $Categoria_ = $CategoriaController->getBy();
             ?>
             <li class="separator">&nbsp;</li>
-            <li><a href="../Productos/categorias.php?id_ct=<?php echo $Subcategoria->GetFamiliaKey(); ?>"><?php echo $Categoria_->GetDescripcion();?></a></li>
+            <li><a href="../Productos/categorias.php?id_ct=<?php echo $Subcategoria->GetFamiliaKey(); ?>&nom=<?php echo url_amigable($Subcategoria->GetDescripcion());?>"><?php echo $Categoria_->GetDescripcion();?></a></li>
             <li class="separator">&nbsp;</li>
             <li><?php echo $Subcategoria1->GetDescripcion();?></li>
             <?php } ?>

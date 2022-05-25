@@ -46,10 +46,10 @@
             </li>
             <li class="separator">&nbsp;</li>
             <li>
-              <a href="categorias.php?id_ct=<?php echo $ObjMenu->records[0]->FamiliaKey ?>"><?php echo $Obj->CategoriaDescripcion; ?></a>
+              <a href="categorias.php?id_ct=<?php echo $ObjMenu->records[0]->FamiliaKey ?>&nom=<?php echo url_amigable($Obj->CategoriaDescripcion);?>"><?php echo $Obj->CategoriaDescripcion; ?></a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><a href="categorias.php?id_sbct=<?php echo $ObjMenu->records[0]->Key ?>"><?php echo $ObjMenu->records[0]->Descripcion; ?></a>
+            <li><a href="categorias.php?id_sbct=<?php echo $ObjMenu->records[0]->Key ?>&nom=<?php echo url_amigable($ObjMenu->records[0]->Descripcion);?>"><?php echo $ObjMenu->records[0]->Descripcion; ?></a>
             </li>
             <li></li>
             <li>
