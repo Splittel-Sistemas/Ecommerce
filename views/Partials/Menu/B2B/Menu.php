@@ -1,7 +1,7 @@
  <!-- Navbar-->
  <div class="navbar">
     <div class="btn-group categories-btn">
-      <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="icon-menu text-lg"></i>&nbsp;Categorias</button>
+      <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="icon-menu text-lg"></i>&nbsp;Categor&iacute;as</button>
       <div class="dropdown-menu mega-dropdown">
       <?php 
         $CategoriaController = new CategoriaController();
@@ -14,7 +14,7 @@
         <div class="row">
         <?php endif ?>
           <div class="col-sm-3">
-            <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+            <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion);?>">
               <img class="d-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>">
               <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
             </a>
@@ -43,7 +43,7 @@
 
                   foreach ($response->records as $CategoriaCont => $Categoria): ?>
                 <li>
-                  <a class="d-inline-block m-1" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+                  <a class="d-inline-block m-1" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion);?>">
                   <img style="width: 12%; height: 12%;" class="d-inline-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>"/>
                   <?php echo $Categoria->Descripcion;?>
                   </a>
@@ -63,7 +63,7 @@
                   foreach ($Subcategoria->records as $key => $Subcategoria_){
                 ?>
                 <li>
-                  <a href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>" >
+                  <a href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>&nom=<?php echo url_amigable($Subcategoria_->Descripcion);?>" >
                   <?php echo $Subcategoria_->Descripcion;?>
                   </a>
                 </li>

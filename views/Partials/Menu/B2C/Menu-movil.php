@@ -19,7 +19,7 @@
 
                 foreach ($response->records as $CategoriaCont => $Categoria): ?>
               <li>
-                <a class="d-inline-block m-1" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+                <a class="d-inline-block m-1" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion);?>">
                 <img style="width: 12%; height: 12%;" class="d-inline-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>"/>
                 <?php echo $Categoria->Descripcion;?>
                 </a>

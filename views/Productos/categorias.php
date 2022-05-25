@@ -189,7 +189,7 @@
                 
                 foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
                   $ConfiguracionPath = $SubcategoriaN1->Configuracion == 1 
-                  ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo." " : "#";
+                  ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo."" : "#";
 
                   $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg")) 
                   ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg" 
@@ -200,10 +200,10 @@
                     <?php if ($SubcategoriaN1->Configuracion == 0){ ?>
                     <div class="product-badge bg-primary">Próximamente</div>
                     <?php } ?>
-                    <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>">
+                    <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>&nom=<?php echo url_amigable($SubcategoriaN1->Descripcion);?>">
                     <img src="<?php echo $imgUrl ?>" alt="<?php echo $SubcategoriaN1->Descripcion;?>"></a>
                     <div class="product-card-body">
-                      <h1 class="product-title"><a href="<?php echo $ConfiguracionPath ?>"><?php echo $SubcategoriaN1->Descripcion;?></a></h1>
+                      <h1 class="product-title"><a href="<?php echo $ConfiguracionPath ?>&nom=<?php echo url_amigable($SubcategoriaN1->Descripcion);?>"><?php echo $SubcategoriaN1->Descripcion;?></a></h1>
                     </div>
                   </div>
                 </div>
@@ -297,7 +297,7 @@
                       foreach ($ResultSubcategoria->records as $key => $Submenu){
                       ?>
                       <li>
-                        <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>"><?php echo $Submenu->Descripcion;?></a>
+                        <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>&nom=<?php echo url_amigable($Submenu->Descripcion);?>"><?php echo $Submenu->Descripcion;?></a>
                         <ul>
                         <?php 
                          $SubmenuController_ = new SubmenuController();
@@ -308,7 +308,7 @@
                             foreach ($ResultSubcategoria_->records as $key_ => $Subcategoria_){
                             ?>
                             <li>
-                              <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>&id_gpo=<?php echo $Subcategoria_->Key;?>"><?php echo $Subcategoria_->Descripcion;?></a>
+                              <a href="categorias.php?id_sbct=<?php echo $Submenu->Key;?>&id_gpo=<?php echo $Subcategoria_->Key;?>&nom=<?php echo url_amigable($Subcategoria_->Descripcion);?>"><?php echo $Subcategoria_->Descripcion;?></a>
                             </li>
                             <?php }?>
                         <?php }?>

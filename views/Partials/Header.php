@@ -62,7 +62,7 @@
               <div class="row">
               <?php endif ?>
                 <div class="col-sm-3">
-                  <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>">
+                  <a class="d-block navi-link text-center mb-30" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion);?>">
                     <img class="d-block" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img; ?>">
                     <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
                   </a>
