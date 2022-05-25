@@ -143,7 +143,7 @@
               ?>
             <div class="col-md-4 col-sm-6 col-12">
               <div class="product-card mb-30">
-                <a class="product-thumb"  href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>" >
+                <a class="product-thumb"  href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>&nom=<?php echo url_amigable($Subcategoria_->Descripcion);?>" >
                  <?php 
                   $imgUrl = file_exists("../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg") 
                   ? "../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg" 
@@ -151,7 +151,7 @@
                 ?>
                  <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Subcategoria_->Descripcion;?>"></a>
                 <div class="product-card-body">                 
-                  <h1 class="product-title"><a href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>"><?php echo $Subcategoria_->Descripcion;?></a></h1>
+                  <h1 class="product-title"><a href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>&nom=<?php echo url_amigable($Subcategoria_->Descripcion);?>"><?php echo $Subcategoria_->Descripcion;?></a></h1>
                 </div>
               </div>
             </div>
