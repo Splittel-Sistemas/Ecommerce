@@ -145,8 +145,8 @@
               <div class="product-card mb-30">
                 <a class="product-thumb"  href="categorias.php?id_sbct=<?php echo $Subcategoria_->Key;?>&nom=<?php echo url_amigable($Subcategoria_->Descripcion);?>" >
                  <?php 
-                  $imgUrl = file_exists("../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg") 
-                  ? "../../public/images/img_spl/subcategorias/".$Subcategoria_->Descripcion.".jpg" 
+                  $imgUrl = file_exists("../../public/images/img_spl/subcategorias/".$Subcategoria_->Imagen) 
+                  ? "../../public/images/img_spl/subcategorias/".$Subcategoria_->Imagen 
                   : "../../public/images/img_spl/notfound.png"; 
                 ?>
                  <img src="<?php echo $imgUrl; ?>" alt="<?php echo $Subcategoria_->Descripcion;?>"></a>

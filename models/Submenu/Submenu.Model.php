@@ -7,6 +7,7 @@
     public $Subnivel;
     public $Activo;
     public $DescripcionLarga;
+    public $Imagen;
 
     protected $Connection;
     protected $Tool;
@@ -30,6 +31,8 @@
       return $this->Activo;
     }public function GetDescripcionLarga(){
       return $this->DescripcionLarga;
+    }public function GetImagen(){
+      return $this->Imagen;
     }
 
     public function GetBy($filter, $order){
@@ -46,6 +49,7 @@
           $this->nivel             =   $row->nivel;
           $this->DescripcionLarga  =   $row->descripcion_seo;
           $this->Activo            =   $row->activo;
+          $this->Imagen            =   $row->imagen;
           $data = true;
         }
         return $data;
@@ -70,6 +74,7 @@
             
             $Submenu->Activo            =   $row->activo;
             $Submenu->DescripcionLarga  =   $row->descripcion_seo;
+            $Submenu->Imagen  =   $row->imagen;
             $data[] = $Submenu;
         }
         return $data;
