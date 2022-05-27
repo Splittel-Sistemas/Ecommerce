@@ -104,7 +104,7 @@
           <?php if (isset($_GET['id_ct'])){ ?>
           <div class="row">
             <div class="alert alert-default alert-dismissible fade show margin-bottom-1x">
-              <h1 class="post-title"><p><?php echo $Categoria->GetDescripcionLarga();?></p></h1>
+              <h1 class="post-title"><?php echo $Categoria->GetDescripcionLarga();?></h1>
             </div>
           </div>
           <?php } ?>
@@ -124,7 +124,7 @@
            ?>
           <div class="row">
             <a href="javascript:void(0);" class="alert alert-default alert-dismissible fade  show fw-section mb-30 margin-bottom-1x">
-              <h1 class="post-title"><p><?php echo $Subcategoria1->GetDescripcionLarga();?></p></h1>
+              <h1 class="post-title"><?php echo $Subcategoria1->GetDescripcionLarga();?></h1>
             </a>
           </div>
           <?php } ?>
