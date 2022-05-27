@@ -24,6 +24,7 @@
     public $Activo;
     public $Manejado;
     public $ImgPrincipal;
+    public $Destacado;
 
     protected $Connection;
     protected $Tool;
@@ -198,6 +199,7 @@
           $Obj->MarcaDesripcion                   =   $row->desc_marca;
           $Obj->FichaKey                          =   $row->ficha_id;
           $Obj->FichaRuta                         =   $row->ruta;
+          $Obj->Destacado                         =   $row->destacado;
           $Obj->Certificado                       =   $this->ExistCert($row->codigo);
           $data[] = $Obj;
         }
