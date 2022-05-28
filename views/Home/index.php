@@ -66,7 +66,7 @@
         <div class="item">
           <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda;?>" target="<?php echo $Slide->TargetLink1 ?>">
-                   <img style="width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda;?>"  alt="<?php echo $Slide->Descripcion;?>">
+                   <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda;?>"  alt="<?php echo $Slide->Descripcion;?>">
               </a>
             </div>
         </div>
