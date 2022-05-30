@@ -59,7 +59,7 @@
           $disabled = '';
           if(empty($GetShipToAdress->Street) || empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->Block) || 
           empty($GetShipToAdress->StreetNo) || empty($GetShipToAdress->ZipCode) || empty($GetShipToAdress->Adress) ||
-          empty($GetShipToAdress->ContactPerson->Name) || empty($GetShipToAdress->ContactPerson->Telphone) || empty($GetShipToAdress->ContactPerson->Email) ||
+          /*empty($GetShipToAdress->ContactPerson->Name) || empty($GetShipToAdress->ContactPerson->Telphone) || empty($GetShipToAdress->ContactPerson->Email) || */
           empty($GetShipToAdress->City)){
             $disabled = 'disabled';
           }else{            
@@ -90,13 +90,13 @@
         </td>
         <td class="text-center" id="datosEnvio-codigoPostal-<?php echo $GetShipToAdress->Adress;?>"><?php echo $GetShipToAdress->ZipCode ?></td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm" id="datosEnvio-nombre-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-nombre-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Name ?>" autocomplete="off">
+          <input type="text" class="datosEnvioNombre form-control form-control-sm" id="datosEnvio-nombre-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-nombre-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Name ?>" autocomplete="off">
         </td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm" id="datosEnvio-telefono-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-telefono-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Telphone ?>" autocomplete="off">
+          <input type="text" class="datosEnvioTelefono form-control form-control-sm" id="datosEnvio-telefono-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-telefono-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Telphone ?>" autocomplete="off">
         </td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm" id="datosEnvio-correo-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-correo-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Email ?>" autocomplete="off">
+          <input type="text" class="datosEnvioCorreo form-control form-control-sm" id="datosEnvio-correo-<?php echo $GetShipToAdress->Adress;?>" name="datosEnvio-correo-<?php echo $GetShipToAdress->Adress;?>" value="<?php echo $GetShipToAdress->ContactPerson->Email ?>" autocomplete="off">
         </td>
       </tr>
       <?php endforeach ?>

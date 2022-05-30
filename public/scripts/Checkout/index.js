@@ -72,9 +72,22 @@ var datosViewResumenCheckoutPedido = function(){
  */
 var addViewCheckout = function(Elem){
   let number = Elem.getAttribute('number')
+
   if (!(number == 1)) {
     if($('.datosEnvio').length == 0){
-      toastAlert('danger', '', "Por favor ingresa los datos de envio", 'topRight', 'icon-ban')
+      toastAlert('danger', '', "Por favor seleccione la direccion de envio", 'topRight', 'icon-ban')
+      return false
+    }
+    if($('.datosEnvioNombre')[0].value == '' ){
+      toastAlert('danger', '', "Por favor ingresa el nombre de contacto", 'topRight', 'icon-ban')
+      return false
+    }
+    if($('.datosEnvioTelefono')[0].value == ''){
+      toastAlert('danger', '', "Por favor ingresa el telefono de contacto", 'topRight', 'icon-ban')
+      return false
+    }
+    if( $('.datosEnvioCorreo')[0].value == ''){
+      toastAlert('danger', '', "Por favor ingresa el correo de contacto", 'topRight', 'icon-ban')
       return false
     }
     if(document.getElementById("RequiereFactura").checked && $('.datosFacturacion').length == 0){
