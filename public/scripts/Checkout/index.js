@@ -78,18 +78,24 @@ var addViewCheckout = function(Elem){
       toastAlert('danger', '', "Por favor seleccione la direccion de envio", 'topRight', 'icon-ban')
       return false
     }
-    if($('.datosEnvioNombre')[0].value == '' ){
+    if(($('.datosEnvioNombre')[0]) ){
+     if( $('.datosEnvioNombre')[0].value == '' ){
       toastAlert('danger', '', "Por favor ingresa el nombre de contacto", 'topRight', 'icon-ban')
       return false
+     }
     }
+    if(($('.datosEnvioTelefono')[0]) ){
     if($('.datosEnvioTelefono')[0].value == ''){
       toastAlert('danger', '', "Por favor ingresa el telefono de contacto", 'topRight', 'icon-ban')
       return false
     }
+  }
+  if(($('.datosEnvioCorreo')[0]) ){
     if( $('.datosEnvioCorreo')[0].value == ''){
       toastAlert('danger', '', "Por favor ingresa el correo de contacto", 'topRight', 'icon-ban')
       return false
     }
+  }
     if(document.getElementById("RequiereFactura").checked && $('.datosFacturacion').length == 0){
       toastAlert('danger', '', "Por favor ingresa los datos de facturación", 'topRight', 'icon-ban')
       return false
