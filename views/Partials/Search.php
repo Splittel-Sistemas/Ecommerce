@@ -32,6 +32,25 @@
       return $url;
       }
     }
+
+     //BUSCADOR DE PRODUCTOS FIJOS
+  $ProductoController = new ProductoController();
+  $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND (codigo_configurable ='' OR configurablefijo='si') ";
+  $ProductoController->order = "LIMIT 20";
+  $ResultProducto_ = $ProductoController->GetProductosFijos_();
+
+  foreach ($ResultProducto_->records as $key => $Obj){
+  ?>
+  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
+    <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
+  </a>
+<?php } 
+    unset($ProductoController);
+    unset($ResultProducto_);
+    unset($Obj);
+
+
+
     $SubmenuController = new SubmenuController();
     $SubmenuController->filter = "WHERE descripcion LIKE '%".$_POST["Descripcion"]."%' AND activo='si' ";
     $SubmenuController->order = "LIMIT 8";
@@ -77,21 +96,7 @@
     unset($ResultSubcategoriasN1);
     unset($SubcategoriaN1);
 
-  //BUSCADOR DE PRODUCTOS FIJOS
-  $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND (codigo_configurable ='' OR configurablefijo='si') ";
-  $ProductoController->order = "LIMIT 20";
-  $ResultProducto_ = $ProductoController->GetProductosFijos_();
-
-  foreach ($ResultProducto_->records as $key => $Obj){
-  ?>
-  <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion);?>">
-    <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
-  </a>
-<?php } 
-    unset($ProductoController);
-    unset($ResultProducto_);
-    unset($Obj);
+ 
   }else{ ?>
   <a class="list-group-item item-product" href="#">
     No se envian datos, si el problema persiste por favor pide ayuda a tu ejecutivo
