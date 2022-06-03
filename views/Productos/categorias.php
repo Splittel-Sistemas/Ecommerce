@@ -229,12 +229,13 @@
                 foreach ($ResultUnionSubmenu->records as $key => $Subcategorias_){
 
               $ProductoController = new ProductoController();
+            
               if(isset($_GET['id_gpo'])){
                 $SubcategoriaKeyGPO=$_GET['id_gpo'];
-                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND codigo_configurable='' AND (grupo='".$SubcategoriaKeyGPO."' )";
+                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND (codigo_configurable='' OR configurablefijo='si' ) AND (grupo='".$SubcategoriaKeyGPO."' )";
               }else{
                 $SubcategoriaKeyGPO='';
-                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND codigo_configurable=''";
+                $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND (codigo_configurable='' OR configurablefijo='si' )";
               }
               
               $ProductoController->order = "ORDER BY desc_producto DESC ";

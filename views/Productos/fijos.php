@@ -7,7 +7,7 @@
     }
     if(isset($_GET['id_prd'])){
     $ProductoController = new ProductoController();
-    $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
+    $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL  OR configurablefijo='si'  ) AND producto_activo = 'si'  ";
     $ProductoController->order = "";
     $Obj = $ProductoController->GetByProductosFijos();
     
@@ -41,7 +41,7 @@
       }
      if(isset($_GET['id_prd'])){
       $ProductoController = new ProductoController();
-      $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL ) AND producto_activo = 'si'  ";
+      $ProductoController->filter = "WHERE codigo = '".$_GET['id_prd']."' AND (codigo_configurable = '' OR codigo_configurable IS NULL OR configurablefijo='si') AND producto_activo = 'si'  ";
       $ProductoController->order = "";
       $Obj = $ProductoController->GetByProductosFijos();
 

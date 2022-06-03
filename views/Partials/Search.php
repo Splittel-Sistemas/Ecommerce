@@ -79,7 +79,7 @@
 
   //BUSCADOR DE PRODUCTOS FIJOS
   $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND codigo_configurable ='' ";
+  $ProductoController->filter = "WHERE (desc_producto LIKE '%".$_POST["Descripcion"]."%' OR codigo LIKE '%".$_POST["Descripcion"]."%') AND producto_activo = 'si' AND (codigo_configurable ='' OR configurablefijo='si') ";
   $ProductoController->order = "LIMIT 20";
   $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
