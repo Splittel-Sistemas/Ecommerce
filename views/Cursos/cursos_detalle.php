@@ -102,7 +102,7 @@
           </p>
           
           <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x">&iquest;EST&Aacute;S INTERESADO EN EL CURSO? </h6>
-          <h6 class="text-muted text-center text-normal ">Deja tus datos y a la brevedad nos comunicaremos contigo para porporcionarte m&aacute;s informaci&oacute;n</h6>
+          <h6 class="text-muted text-center text-normal ">Deja tus datos y a la brevedad nos comunicaremos contigo para proporcionarte m&aacute;s informaci&oacute;n</h6>
           <hr class="margin-bottom-1x margin-top-2x">
           <form id="form-cursos">
             <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
