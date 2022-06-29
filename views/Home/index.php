@@ -237,6 +237,54 @@
           ?>
       </div>
     </section>
+
+    <!-- ULTIMOS BLOGS -->
+    <section class="fw-section padding-top-2x padding-bottom-2x">
+    <h2 class="h3 pb-3 text-center">Información relevante del blog de fibra y cobre</h2>
+      
+    
+        <?php
+        if (!class_exists("Blog")) {
+          include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Blog/Blog.php';
+        }
+        $Blog = new Blog();
+        $response = (object)$Blog->get("WHERE activo = 'si' AND (pagina='Fibremex' OR pagina='ambas')", "ORDER BY fecha DESC  LIMIT 3", false);
+        
+        ?>
+        <div class="container padding-bottom-3x mb-1">
+        <hr class="col-lg-12 col-md-12 padding-bottom-1x padding-bottom-2x" />
+          <div class="row" style="height:100%">
+          
+   
+          <?php if ($response->count > 0): ?>
+            <?php $con1=1; $con2=1; ?>
+            <?php foreach ($response->records as $key => $row): ?>
+            <div class="col-lg-4 col-md-3 " >
+              <div class="blog-post ">
+              <?php // if ( ((($con2 % 2)!=0) &&  (($con1 % 2)!=0) )  || ( (($con1 % 2)==0) && (($con2 % 2)==0) )): ?>
+                <a class="post-thumb" href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>">
+                  <img src="../../public/images/img_spl/blog/<?php echo $row->BlogImg;?>" alt="<?php echo $row->BlogTitulo;?>">
+                </a>
+              <?php //endif ?>
+                <div class="post-body " >
+                 
+                  <h1 class="post-title featured_products_content_1" >
+                    <a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a>
+                  </h1>
+                  <p class="product-title featured_products_content_1" ><?php echo $row->BlogContenido;?> 
+                    <a href='../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>'>Ver más</a>
+                  </p>
+                </div>
+               
+                <div class="card-footer text-muted">Publicado <?php echo imprimirTiempo($row->BlogFecha,'08:00:00'); ?></div>
+              </div>
+            </div>
+              <?php endforeach ?>
+            <?php endif ?>
+            </div>
+        </div>
+    </section>
+
      <!-- Banner 1 -->
      <!--
      <section class="fw-section padding-top-2x padding-bottom-2x">
@@ -346,5 +394,62 @@
   unset($ResultProductosMasVendidos);
   unset($ResultNuevosProductos);
   unset($ResultProductosMejorValorados);
+  
   } 
+  function imprimirTiempo($fecha,$hora){
+    $start_date = new DateTime($fecha." ".$hora);
+    $since_start = $start_date->diff(new DateTime(date("Y-m-d")." ".date("H:i:s")));
+    echo "hace ";
+    if($since_start->y==0){
+        if($since_start->m==0){
+            if($since_start->d==0){
+               if($since_start->h==0){
+                   if($since_start->i==0){
+                      if($since_start->s==0){
+                         echo $since_start->s.' segundos';
+                      }else{
+                          if($since_start->s==1){
+                             echo $since_start->s.' segundo'; 
+                          }else{
+                             echo $since_start->s.' segundos'; 
+                          }
+                      }
+                   }else{
+                      if($since_start->i==1){
+                          echo $since_start->i.' minuto'; 
+                      }else{
+                        echo $since_start->i.' minutos';
+                      }
+                   }
+               }else{
+                  if($since_start->h==1){
+                    echo $since_start->h.' hora';
+                  }else{
+                    echo $since_start->h.' horas';
+                  }
+               }
+            }else{
+                if($since_start->d==1){
+                    echo $since_start->d.' día';
+                }else{
+                    echo $since_start->d.' días';
+                }
+            }
+        }else{
+            if($since_start->m==1){
+               echo $since_start->m.' mes';
+            }else{
+                echo $since_start->m.' meses';
+            }
+        }
+    }else{
+        if($since_start->y==1){
+            echo $since_start->y.' año';
+        }else{
+            echo $since_start->y.' años';
+        }
+    }
+}
+
+
 ?>

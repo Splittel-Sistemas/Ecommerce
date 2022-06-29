@@ -272,6 +272,7 @@ var JumpersMTPPRO = function(){
 
   var JumpersMPO = function(){
     let Longitud = document.getElementById('Longitud')
+    validateEntero(Longitud.value)
     JumperValidacionLongitud(Longitud, 3)
   
     let Conectarizacion = "A1"
@@ -327,6 +328,7 @@ var JumpersMTPPRO = function(){
   
   var JumpersMPOBreakOut = function(){
     let Longitud = document.getElementById('Longitud')
+    validateEntero(Longitud.value)
     JumperValidacionLongitud(Longitud, 3)
   
     let ConectarizacionLadoA = document.getElementById('ConectorLadoA')
