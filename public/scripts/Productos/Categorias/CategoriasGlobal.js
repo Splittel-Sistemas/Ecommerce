@@ -340,6 +340,7 @@ var existCodeSapPatchCord = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
+    
     let Stock = document.getElementById('add-stock')
         Stock.innerHTML = ""
     if (!response.error && response.count > 0) {
@@ -374,7 +375,7 @@ var existCodeSapPatchCord = function(Codigo){
 
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
-        document.getElementById('Costo').innerHTML = '$ '+Precio+' USD '
+        document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML =''
@@ -460,7 +461,7 @@ var existEcommerce_ = function(Codigo){
   
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
-        document.getElementById('Costo').innerHTML = '$ '+Precio+' USD '
+        document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
         nuevoPrecioPorLongitud(document.getElementById('longitud'))
       }else{
         ProductoEspecial()
@@ -478,7 +479,7 @@ var nuevoPrecioPorLongitud = function(Elem){
   if (Elem.value > 0 && Elem.value != "") {
     let precio = Elem.value * document.getElementById('precio-longitud').value
     precio = precio.toFixed(3)
-    document.getElementById('Costo').innerHTML = '$ '+precio
+    document.getElementById('Costo').innerHTML = 'Precio: $ '+precio
   }
 }
 
@@ -601,12 +602,12 @@ var CalcularPrecio = function(url, data){
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
       let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
-      '<b class="text-primary">'+
+      '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+response.precioNormal+' USD</span>&nbsp;'+
+      '<br>Tu precio con descuento:<br><b class="text-primary">'+
         '$'+response.precio+' USD '+
-      '</b>'+
-      '<del class="text-muted">$'+response.precioNormal+' USD</del>&nbsp;'+
+      '</b></small></p>'+
     '</span>' : 
-    '<span class="h4 d-block">'+
+    '<span class="h4 d-block">Precio: '+
       '$'+response.precio+' USD '+
     '</span>';
       document.getElementById('CostoProducto').value = response.precioNormal 
@@ -620,16 +621,17 @@ var CalcularPrecio = function(url, data){
 var CalcularPrecioPatchCords = function(url, data){
   ajax_(url, 'POST', 'JSON', data, 
   function(response){
+    console.log(response)
     if (!response.error) {
       $('#span-leyenda').remove()
       let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
-      '<b class="text-primary">'+
+      '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+response.precioNormal+' USD</span>&nbsp;'+
+      '<br>Tu precio con descuento:<br><b class="text-primary">'+
         '$'+response.precio+' USD '+
-      '</b>'+
-      '<del class="text-muted">$'+response.precioNormal+' USD</del>&nbsp;'+
+      '</b></small></p>'+
     '</span>' : 
-    '<span class="h4 d-block">'+
-      '$'+response.precio+' USD '+
+    '<span class="h4 d-block">Precio: '+
+     '$'+response.precio+' USD '+
     '</span>';
       document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = mostrarPrecio

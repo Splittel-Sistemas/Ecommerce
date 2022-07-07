@@ -163,7 +163,7 @@
                 </li>
               </ul>
             </li>
-            <li><span class="mega-menu-title">INSIDER</span>
+            <li><span class="mega-menu-title">SEMINARIOS ONLINE</span>
               <ul class="sub-menu">
                 <li>
                   <a href="../Capacitaciones/2-insider" >
@@ -180,7 +180,7 @@
                 ?>
                       <?php foreach ($responseI as $row ):  ?>
                         <li>
-                        <a class="text-decoration-none" href="../Capacitaciones/2-Insider#I<?php echo $row->id;?>">  
+                        <a class="text-decoration-none" href="../Capacitaciones/2-seminarios-online#I<?php echo $row->id;?>">  
                         <?php echo $row->titulo;?>
                       </a>
                       </li>
@@ -188,10 +188,10 @@
               </ul>
             </li>
             <li>
-              <span class="mega-menu-title">DEVELOP</span>
+              <span class="mega-menu-title">CURSOS PRESENCIALES</span>
                   <ul class="sub-menu">
                   <li>
-                  <a href="../Capacitaciones/3-develop" >
+                  <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica" >
                   ¿Qué es Develop?
                   </a>
                 </li>

@@ -143,15 +143,17 @@
             if($Obj->Descuento > 0){ 
       ?>  
       <span class="h4 d-block">
-        Precio:
+      <p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>
+      $<?php echo $Obj->ProductoPrecio ?> USD&nbsp;</span>
+      <br>Tu precio con descuento:<br>
         <b class="text-primary">
           $<?php echo bcdiv($Obj->ProductoPrecio-($Obj->ProductoPrecio*($Obj->Descuento/100)),1,3); ?> USD 
         </b>
-        <br>
-        <del class="text-muted">$<?php echo $Obj->ProductoPrecio ?></del>&nbsp;
+        </small></p>
       </span>
       <?php }else{ ?>
         <span class="h4 d-block">
+          Precio: 
           $<?php echo $Obj->ProductoPrecio; ?> USD 
         </span>
       <?php 
