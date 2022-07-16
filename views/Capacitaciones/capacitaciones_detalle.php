@@ -21,7 +21,7 @@
     ?>
   
     <!-- Page Content-->
-    <div class="container padding-top-3x padding-bottom-3x mb-2">
+    <div class="container padding-top-3x  mb-2">
       <div class="row justify-content-center">
         <!-- Content-->
         <div class="col-xl-9 col-lg-8 order-lg-2">
@@ -66,6 +66,9 @@
           </div>
 
           <?php endif ?>
+          </div>
+          </div>
+          </div>
           <?php
           /****************SECCION ESPECIAL PARA CADA CAPACITACION*****************/
           if(!empty($response->detalle)):

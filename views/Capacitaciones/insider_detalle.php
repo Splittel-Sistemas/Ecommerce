@@ -1,3 +1,7 @@
+<div class="container  mb-2">
+      <div class="row justify-content-center">
+        <!-- Content-->
+        <div class="col-xl-9 col-lg-8 order-lg-2">
 <?php 
      if (!class_exists("CatalogoCapacitaciones")) {
       include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
@@ -30,6 +34,33 @@
       <hr style="width:100%; height: 15px;" id="I<?php echo $row->id?>">
  <?php endforeach ?>
 </div>
+<div class="row">
+<div class="padding-top-2x" >
+<h2 class="text-center"><b>Obtén tu constancia INSIDER y recibe grandes beneficios</b></h2>
+<p class="text-muted" style="text-align: justify;">
+Al concluir todos los seminarios del ciclo INSIDER, te otorgaremos una constancia en recomendacion a tu esfuerzo. Lo único que
+debes hacer es registrarte y estar presente en cada uno de ellos. Tu constancia te traerá grandes beneficios para el crecimiento
+de tus proyectos.
+</p>
+</div>
+
+<div class="padding-top-1x gallery-wrapper" >
+            <div class="gallery-item" style="margin-bottom:0px;">
+            <img src="../../public/images/img_spl/capacitaciones/beneficios-Insider1.jpg" ></div>
+          </div>
+</div>  
+</div>
+</div>
+</div>
+<section class="fw-section padding-bottom-10x" 
+  style="background-image: url(../../public/images/img_spl/capacitaciones/beneficios-Insider2.jpg);
+        background-size: ">
+      <div class="container text-center"></div>
+    </section>
+    <div class="container padding-top-1x padding-bottom-3x mb-2">
+      <div class="row justify-content-center">
+        <!-- Content-->
+        <div class="col-xl-9 col-lg-8 order-lg-2">
 <p class="text-muted text-center text-normal  margin-top-3x">
         Consulta nuestro calendario de eventos. Si te interesa alguno de los temas que tocamos,<br/>
         <b>llámanos al 800 134 26 90,</b> queremos atenderte.

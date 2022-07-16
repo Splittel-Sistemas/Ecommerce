@@ -27,7 +27,7 @@
           <p style="text-align: justify;"><?php
                 echo ('Aumentamos tus posibilidades de inversión con promociones que favorecen tu bolsillo. Conoce nuestra oferta de productos en 
                 promoción, no dejes pasar más tiempo, hoy tienes la oportunidad de obtener tus soluciones de conectividad con una ventaja 
-                agregada, ahorrar recursos de tu proyecto');
+                agregada, ahorrar recursos de tu proyecto.');
             ?></p>
          <?php 
                 if (!class_exists("CatalogoPromociones")) {

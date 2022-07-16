@@ -1,3 +1,7 @@
+<div class="container padding-top-3x padding-bottom-3x mb-2">
+      <div class="row justify-content-center">
+        <!-- Content-->
+        <div class="col-xl-9 col-lg-8 order-lg-2">
 <?php 
       if (!class_exists("CatalogoCursos")) {
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Cursos.php';

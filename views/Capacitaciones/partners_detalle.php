@@ -1,4 +1,7 @@
-
+<div class="container padding-top-3x padding-bottom-3x mb-2">
+      <div class="row justify-content-center">
+        <!-- Content-->
+        <div class="col-xl-9 col-lg-8 order-lg-2">
 <p class="text-muted text-center text-normal  padding-top-3x">
             <b>Sólo habrá cupo para 9 participantes durante cada certificación.<br>
                 Las certificaciones se abrirán de manera trimestral.</b>
