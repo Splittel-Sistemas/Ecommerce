@@ -4,9 +4,18 @@ var Marca = "OP"
 var Familia = "CA"
 var Estructurados = document.getElementById('Cable')
 var DescPrdConf = document.getElementById('DscProductoConfigurable')
-
+function validateEntero(valor) {
+  var patronEntero = /^\d*$/; 
+  if (patronEntero.test(valor)) {
+      return true;
+  } else {
+    //console.log('test'+valor.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1'))
+    document.getElementById('Longitud').value=valor.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
+  }
+}
 var Categoria5e = function(){
   let Longitud = document.getElementById('Longitud')
+  validateEntero(Longitud.value)
   let Color = document.getElementById('Color')
   let LongitudIdText = document.getElementById('LongitudIdText')
   let UnidadMedida = "P" // Pies
