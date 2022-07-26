@@ -57,8 +57,10 @@
                 <th class="text-center" style="width: 10%;">Imagen</th>
                 <th class="text-center" style="width: 10%;">Clave</th>
                 <th class="text-center" style="width: 50%;">Descripción</th>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){?>
                 <th class="text-center" style="width: 10%;">Precio</th>
                 <th class="text-center" style="width: 10%;">Stock</th>
+              <?php }?>
                 <th class="text-center" style="width: 10%;">Agregar</th>
               </tr>
             </thead>
@@ -86,8 +88,10 @@
               </td>
               <td class="text-center align-middle"><span class="styleClave"><?php echo $Obj_->Codigo; ?></span></td>
               <td class="text-center align-middle"><?php echo $Obj_->Descripcion; ?></td>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){?>
               <td class="text-center align-middle">$<?php echo bcdiv($Obj_->Precio-($Obj_->Precio*($Obj_->Descuento/100)),1,3); ?> USD</td>
               <td class="text-center align-middle"><?php echo $Obj_->Existencia; ?></td>
+              <?php }?>
               <td class="text-center align-middle">
                 <input type="hidden" name="ProductoCantidad-<?php echo $Obj_->Codigo;?>" id="ProductoCantidad-<?php echo $Obj_->Codigo;?>" value="1">
                 <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" onclick="add(this)">
