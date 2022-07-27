@@ -59,7 +59,7 @@ class PedidoController{
                         $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
                         $Email->MailerBody = $TemplatePedido->body();
                         $Email->MailerListTo = [$ClienteModel->GetEmail()];
-                        $Email->MailerListCC = [$ClienteModel->GetEmailEjecutivo()];
+                        $Email->MailerListBCC = [$ClienteModel->GetEmailEjecutivo()];
                         $Email->EmailSendEmail();
                         unset($Email);
                         unset($TemplatePedido);
@@ -192,7 +192,7 @@ class PedidoController{
                     $Email->MailerSubject = " Ecommerce - Pedido #".$row->Key;
                     $Email->MailerBody = $TemplatePedido->EcommercePedidoPagoBanco($row->Key);
                     $Email->MailerListTo = [$row->Correo];
-                    $Email->MailerListCC = [$row->CorreoEjecutivo];
+                    $Email->MailerListBCC = [$row->CorreoEjecutivo];
                     $Email->EmailSendEmail();
                     
                     $Webhook = new Webhook();
