@@ -29,6 +29,7 @@
     public $NumeroGuiaEstatus;
     public $NombrePaqueteria;
     public $EnvioCorreo;
+    public $EmailEjecutivo;
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;
@@ -625,6 +626,7 @@
           $newPedido = new Pedido_();
           $newPedido->Key    = $row->pedidokey; 
           $newPedido->Correo = $row->email; 
+          $newPedido->CorreoEjecutivo = $row->emailejecutivo; 
           $data[] = $newPedido;
           unset($newPedido);
         }
