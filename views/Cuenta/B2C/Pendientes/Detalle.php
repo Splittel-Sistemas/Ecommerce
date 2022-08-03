@@ -5,7 +5,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
   }
   $DetalleController = new DetalleController();
-  $DetalleController->filter = "WHERE pedidokey = ".$_POST['CotizacionKey']." ";
+  $DetalleController->filter = "WHERE pedidokey = ".$_POST['CotizacionKey']." AND detalle_activo = 'si'";
   $DetalleController->order = "";
   $Obj = $DetalleController->ListDetallePedido();
 ?>
