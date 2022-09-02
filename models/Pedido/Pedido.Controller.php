@@ -464,7 +464,8 @@ class PedidoController{
                                     $TemplatePedido = new TemplatePedido();
                                     $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'].' - Credito';
                                     $Email->MailerBody = $TemplatePedido->body();
-                                    // $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                    $Email->MailerListTo = [$ClienteModel->GetEmail()];
+                                    $Email->MailerListBCC = [$ClienteModel->GetEmailEjecutivo()];
                                     $Email->EmailSendEmail();
                                     unset($Email);
                                     unset($TemplatePedido);
