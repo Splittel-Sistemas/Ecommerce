@@ -1,6 +1,10 @@
 
 
 <div class="row">
+<div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>
+
+
+
     <div class=" col-md-5 ">
       <p class="credit d-flex justify-content-center">Transacciones realizadas vía:</p>
     </div>
@@ -14,6 +18,7 @@
         <p>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</p>
       </div>
     </div>
+  </div>
   </div>
   <h4 class="text-center text-md-left">Moneda de facturación</h4>
 <hr class="padding-bottom-1x">
