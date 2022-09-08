@@ -50,7 +50,7 @@
               </div>
             </div>
           </td>
-          <td>1</td>
+          <td></td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
@@ -85,7 +85,7 @@
             </div>
           </td>
           <td class="text-center text-lg">
-           2
+           
           </td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
@@ -122,7 +122,9 @@
             </div>
           </td>
 
-          <td>3</td>
+          <td class="text-center text-lg">
+            <ul class="list-unstyled"><li class="text-md text-success">Tiempo de fabricación. <?php echo $data->TiempoEntrega;?></li></ul>
+          </td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
