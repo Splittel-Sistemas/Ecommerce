@@ -1,4 +1,4 @@
-<h4 class="text-center text-md-left">Moneda de facturación</h4>
+<h4 class="text-center text-md-center">Moneda de facturación</h4>
 
   <div class="row">
     <div class=" col-md-5 ">
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<h4 class="padding-top-1x text-center text-md-left">Método de pago</h4>
+<h4 class="padding-top-1x text-center text-md-center">Método de pago</h4>
 <hr class="padding-bottom-1x">
 <div class="accordion" id="accordion" role="tablist">
   <div class="card">
