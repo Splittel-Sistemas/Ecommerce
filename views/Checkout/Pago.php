@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class=" col-md-5 ">
-      <p class="credit d-flex justify-content-end">Transacciones realizadas vía:</p>
+      <p class="credit d-flex justify-content-center">Transacciones realizadas vía:</p>
     </div>
     <div class=" col-md-3">
       <div class="credit d-flex justify-content-center">
