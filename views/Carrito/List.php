@@ -263,6 +263,10 @@
             <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x">
             </span><i class="icon-alert-triangle"></i>&nbsp;&nbsp;
             Postes, registros, monotubo y tritubo requieren costo de envio.
+            <br>
+                <strong>
+                  Si tienes alguna duda, contáctanos: 800 134 26 90
+                </strong>
             <?php 
           $_SESSION['requiereCostoEnvio'] = $requiereCostoEnvio;
             if((isset($_SESSION['Ecommerce-CostoEnvio']) && $_SESSION['Ecommerce-CostoEnvio'] == 2) && $requiereCostoEnvio > 0){ 
