@@ -6,10 +6,9 @@
     <thead>
       <tr>
         <th>Producto</th>
-        <th class="text-center"></th>
+        <th class="text-center"> </th>
 
         <th class="text-center">Cantidad</th>
-        
         <th class="text-center">Subtotal</th>
       </tr>
     </thead>
@@ -51,6 +50,7 @@
               </div>
             </div>
           </td>
+          <td>1</td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
@@ -84,10 +84,8 @@
               </div>
             </div>
           </td>
-          <td>
-          <h4 class="entry-title">
-					<a href="../Productos/configurables.php?codigo=<?php echo $data->DetalleCodigoConfigurable;?>"><?php echo $data->ProductoConfigurableNombre;?></a>
-				</h4>
+          <td class="text-center text-lg">
+           2
           </td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
@@ -123,6 +121,8 @@
               </div>
             </div>
           </td>
+
+          <td>3</td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
