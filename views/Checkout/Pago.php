@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-12 alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>
+  <div class="col-md-12 alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
 
 
 
