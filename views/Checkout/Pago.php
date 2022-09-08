@@ -45,9 +45,9 @@
           <div class="col-md-12">
             <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>&nbsp;&nbsp;Monto máximo para pago con tarjeta: <strong>$100,000 MXN</strong>
             <br>
-                <p>
-                  Llámanos:800 134 26 90
-                </p>
+                <strong>
+                  Si tienes alguna duda contactanos :800 134 26 90
+                </strong>
           </div>
           </div>
         </div>
