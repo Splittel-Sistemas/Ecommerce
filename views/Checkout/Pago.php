@@ -1,26 +1,20 @@
 <h4 class="text-center text-md-left">Moneda de facturación</h4>
 
-
-
- 
-    <div class="col-md-12">
-      <div class="row">
-        <div class=" col-md-3">
-          <strong>Transacciones realizadas vía:</strong>
-        </div>
-        <div class=" col-md-3">
-          <div >
-            <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
-        </div>
-       
-      
+  <div class="row">
+    <div class=" col-md-6 ">
+      <p class="credit d-flex justify-content-end">Transacciones realizadas vía:</p>
+    </div>
+    <div class=" col-md-3">
+      <div class="credit d-flex justify-content-end">
+        <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
       </div>
     </div>
-  
+    <div class=" col-md-3">
+      <div class="credit d-flex justify-content-end">
+        <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
+      </div>
+    </div>
+  </div>
 
 <hr class="padding-bottom-1x">
 <div class="d-flex justify-content-center">
