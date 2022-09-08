@@ -1,13 +1,11 @@
 <h4 class="text-center text-md-left">Moneda de facturación</h4>
 
 
-<div class="row mt-4">
-  <div class="col-md-12">
-    <!--  <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i> <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong></div>
-          </div> -->
-    <div class="col-md-3">
+
+ 
+    <div class="col-md-12">
       <div class="row">
-        <div class=" col-md-3 offset-md-3">
+        <div class=" col-md-3 ">
           <p class="text-right">Transacciones realizadas vía:</p>
         </div>
         <div class=" col-md-3">
@@ -15,19 +13,19 @@
             <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
           </div>
         </div>
+        <div class="col-md-3">
+          <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
+        </div>
         <div class=" col-md-3">
           <div class="credit d-flex justify-content-center">
             <img class="img-responsive" src="../../public/images/OpenPay/security.png">
           </div>
         </div>
-        <div class=" col-md-3">
-          <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
-        </div>
+      
       </div>
     </div>
   
-  </div>
-</div>
+
 <hr class="padding-bottom-1x">
 <div class="d-flex justify-content-center">
   <div class="custom-control custom-radio custom-control-inline">
