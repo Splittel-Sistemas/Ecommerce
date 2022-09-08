@@ -1,4 +1,4 @@
-<h4 class="text-center text-md-left">Moneda de facturación</h4>
+
 
 <div class="row">
     <div class=" col-md-5 ">
@@ -15,6 +15,7 @@
       </div>
     </div>
   </div>
+  <h4 class="text-center text-md-left">Moneda de facturación</h4>
 <hr class="padding-bottom-1x">
 <div class="d-flex justify-content-center">
   <div class="custom-control custom-radio custom-control-inline">
