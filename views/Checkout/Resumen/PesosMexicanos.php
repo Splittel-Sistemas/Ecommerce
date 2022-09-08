@@ -6,6 +6,8 @@
     <thead>
       <tr>
         <th>Producto</th>
+        <th class="text-center"> </th>
+
         <th class="text-center">Cantidad</th>
         <th class="text-center">Subtotal</th>
       </tr>
@@ -48,6 +50,7 @@
               </div>
             </div>
           </td>
+          <td></td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
@@ -81,6 +84,8 @@
               </div>
             </div>
           </td>
+          <td></td>
+
           <!-- Cantidad -->
           <td class="text-center text-lg">
             <?php echo $data->DetalleCantidad ?>
@@ -114,6 +119,9 @@
                 <span><em>Clave:</em> <?php echo $data->DetalleCodigo;?></span>
               </div>
             </div>
+          </td>
+          <td class="text-center text-lg">
+            <ul class="list-unstyled"><li class="text-md text-success">Tiempo de fabricación. <?php echo $data->TiempoEntrega;?></li></ul>
           </td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
