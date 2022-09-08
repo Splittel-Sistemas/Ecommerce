@@ -5,22 +5,18 @@
  
     <div class="col-md-12">
       <div class="row">
-        <div class=" col-md-3 justify-content-end">
-          <p class="text-right">Transacciones realizadas vía:</p>
+        <div class=" col-md-3">
+          <strong>Transacciones realizadas vía:</strong>
         </div>
         <div class=" col-md-3">
-          <div class="credit d-flex justify-content-end">
+          <div >
             <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
         </div>
-        <div class=" col-md-3">
-          <div class="credit d-flex justify-content-left">
-            <img class="img-responsive" src="../../public/images/OpenPay/security.png">
-          </div>
-        </div>
+       
       
       </div>
     </div>
