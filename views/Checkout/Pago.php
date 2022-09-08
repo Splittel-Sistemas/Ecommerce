@@ -2,13 +2,13 @@
 <hr class="padding-bottom-1x">
 <div class="d-flex justify-content-center">
   <div class="custom-control custom-radio custom-control-inline">
-  <input class="custom-control-input monedaPago" type="radio" id="monedaPagoUSD" name="monedaPago" value="USD" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)" checked="checked">
-  <label class="custom-control-label" for="monedaPagoUSD">USD</label>
-</div>
-<div class="custom-control custom-radio custom-control-inline">
-  <input class="custom-control-input monedaPago" type="radio" id="monedaPagoMXN" name="monedaPago" value="MXP" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)">
-  <label class="custom-control-label" for="monedaPagoMXN">MXP</label>
-</div>
+    <input class="custom-control-input monedaPago" type="radio" id="monedaPagoUSD" name="monedaPago" value="USD" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)" checked="checked">
+    <label class="custom-control-label" for="monedaPagoUSD">USD</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input class="custom-control-input monedaPago" type="radio" id="monedaPagoMXN" name="monedaPago" value="MXP" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)">
+    <label class="custom-control-label" for="monedaPagoMXN">MXP</label>
+  </div>
 </div>
 
 <h4 class="padding-top-1x text-center text-md-left">Método de pago</h4>
@@ -60,9 +60,7 @@
         </form>
         <!-- Información OpenPay Necesaria -->
         <div class="row mt-4">
-        <div class="col-md-12">
-            <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i> <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong></div>
-          </div>
+
           <div class="col-md-6">
             <div class="row">
               <div class="col-12 col-md-6 offset-md-3">
@@ -73,7 +71,7 @@
                   <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
           <div class="col-md-6">
             <div class="row">
@@ -85,134 +83,138 @@
               <div class="col-12 col-md-6">
                 <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!--  -->
-  <?php if(!isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])){ ?>
-  <div class="card" id="metodo-pago-banco" style="display: none; ">
-    <div class="card-header" role="tab">
-      <h6><a class="collapsed" href="#bank" data-toggle="collapse"><i class="icon-award"></i>Transferencia Interbancaria</a></h6>
-    </div>
-    <div class="collapse" id="bank" data-parent="#accordion" role="tabpanel">
-      <div class="card-body">
-        <div class="custom-control custom-checkbox d-block">
-          <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
-          <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
+  <?php if (!isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) { ?>
+    <div class="card" id="metodo-pago-banco" style="display: none; ">
+      <div class="card-header" role="tab">
+        <h6><a class="collapsed" href="#bank" data-toggle="collapse"><i class="icon-award"></i>Transferencia Interbancaria</a></h6>
+      </div>
+      <div class="collapse" id="bank" data-parent="#accordion" role="tabpanel">
+        <div class="col-md-12">
+          <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i> <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong></div>
         </div>
-        <!-- Información OpenPay Necesaria -->
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-12 col-md-6 offset-md-3">
-                <p class="text-right">Transacciones realizadas vía:</p>
-              </div>
-              <div class="col-12 col-md-3">
-                <div class="credit d-flex justify-content-end">
-                  <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
-                </div>
-              </div>
-            </div>  
+        <div class="card-body">
+          <div class="custom-control custom-checkbox d-block">
+            <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
+            <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
           </div>
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-12 col-md-2">
-                <div class="credit d-flex justify-content-center">
-                  <img class="img-responsive" src="../../public/images/OpenPay/security.png">
+          <!-- Información OpenPay Necesaria -->
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                  <p class="text-right">Transacciones realizadas vía:</p>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="credit d-flex justify-content-end">
+                    <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
+                  </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6">
-                <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-12 col-md-2">
+                  <div class="credit d-flex justify-content-center">
+                    <img class="img-responsive" src="../../public/images/OpenPay/security.png">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
+                </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <?php }else{ ?>
+  <?php } else { ?>
     <div class="custom-control custom-checkbox d-none">
       <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
       <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
       <!-- Información OpenPay Necesaria -->
       <div class="row mt-4">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-12 col-md-6 offset-md-3">
-                <p class="text-right">Transacciones realizadas vía:</p>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+              <p class="text-right">Transacciones realizadas vía:</p>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="credit d-flex justify-content-end">
+                <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
               </div>
-              <div class="col-12 col-md-3">
-                <div class="credit d-flex justify-content-end">
-                  <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
-                </div>
-              </div>
-            </div>  
-          </div>
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-12 col-md-2">
-                <div class="credit d-flex justify-content-center">
-                  <img class="img-responsive" src="../../public/images/OpenPay/security.png">
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
-              </div>
-            </div>  
+            </div>
           </div>
         </div>
-    </div>
-  <!--  -->
-  <?php 
-  }
-    if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-      if (!class_exists("GetBussinesPartnerController")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';
-      }if (!class_exists("Functions_tools")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
-      }
-      
-      try {
-        $GetBussinesPartnerController = new GetBussinesPartnerController();
-        $resultGetBussinesPartnerController = $GetBussinesPartnerController->get();
-        $ErrorCode = $resultGetBussinesPartnerController->GetBussinesPartnerResult->ErrorCode;
-        // print_r($resultGetBussinesPartnerController);
-      } catch (Exception $e) {
-        $ErrorCode = -100;
-      }
-
-      if ($ErrorCode == 0) {
-        $clienteCredito = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->CreditLine;
-   ?>
-  <div class="card" id="credito-cliente-b2b">
-    <div class="card-header" role="tab">
-      <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a></h6>
-    </div>
-    <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
-      <div class="card-body">
-        <p>Crédito disponible<span class="text-medium">
-          <?php 
-            $clienteCreditoDisponible = $clienteCredito;
-          ?>
-         $<?php echo $clienteCreditoDisponible;?></span> USD.</p>
-        <div class="custom-control custom-checkbox d-block">
-          <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito" onchange="LineaCreditoTipoCambio(this)">
-          <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta orden.</label>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <div class="credit d-flex justify-content-center">
+                <img class="img-responsive" src="../../public/images/OpenPay/security.png">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <?php 
-      }
+    <!--  -->
+    <?php
+  }
+  if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+    if (!class_exists("GetBussinesPartnerController")) {
+      include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';
     }
-    unset($GetBussinesPartnerController);
-    unset($resultGetBussinesPartnerController);
-    unset($Tool);
-   ?>
-   
+    if (!class_exists("Functions_tools")) {
+      include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
+    }
+
+    try {
+      $GetBussinesPartnerController = new GetBussinesPartnerController();
+      $resultGetBussinesPartnerController = $GetBussinesPartnerController->get();
+      $ErrorCode = $resultGetBussinesPartnerController->GetBussinesPartnerResult->ErrorCode;
+      // print_r($resultGetBussinesPartnerController);
+    } catch (Exception $e) {
+      $ErrorCode = -100;
+    }
+
+    if ($ErrorCode == 0) {
+      $clienteCredito = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->CreditLine;
+    ?>
+      <div class="card" id="credito-cliente-b2b">
+        <div class="card-header" role="tab">
+          <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a></h6>
+        </div>
+        <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
+          <div class="card-body">
+            <p>Crédito disponible<span class="text-medium">
+                <?php
+                $clienteCreditoDisponible = $clienteCredito;
+                ?>
+                $<?php echo $clienteCreditoDisponible; ?></span> USD.</p>
+            <div class="custom-control custom-checkbox d-block">
+              <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito" onchange="LineaCreditoTipoCambio(this)">
+              <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta orden.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+  <?php
+    }
+  }
+  unset($GetBussinesPartnerController);
+  unset($resultGetBussinesPartnerController);
+  unset($Tool);
+  ?>
+
 </div>
 
 <div class="d-flex justify-content-between paddin-top-1x mt-4">
@@ -242,7 +244,9 @@
     <div class="modal-content">
       <div class="modal-body" id="modal-body-verificar-codigo-verificacion">
         <div class="col-12 mt-5 mb-3">
-          <strong><p>Por medida de seguridad se genero un token el cual ha sido enviado a su correo, por favor de ingresarlo.</p></strong>
+          <strong>
+            <p>Por medida de seguridad se genero un token el cual ha sido enviado a su correo, por favor de ingresarlo.</p>
+          </strong>
         </div>
         <div class="col-12">
           <label>Codigo de verificación</label>
