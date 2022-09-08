@@ -1,17 +1,17 @@
 <h4 class="text-center text-md-left">Moneda de facturación</h4>
 
   <div class="row">
-    <div class=" col-md-6 ">
+    <div class=" col-md-5 ">
       <p class="credit d-flex justify-content-end">Transacciones realizadas vía:</p>
     </div>
     <div class=" col-md-3">
-      <div class="credit d-flex justify-content-end">
+      <div class="credit d-flex justify-content-center">
         <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
       </div>
     </div>
-    <div class=" col-md-3">
-      <div class="credit d-flex justify-content-end">
-        <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
+    <div class=" col-md-4">
+      <div class="credit d-flex justify-content-center">
+        <p>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</p>
       </div>
     </div>
   </div>
