@@ -6,8 +6,9 @@
     <thead>
       <tr>
         <th>Producto</th>
-        <th class="text-center">Cantidad</th>
         <th class="text-center"></th>
+
+        <th class="text-center">Cantidad</th>
 
         <th class="text-center">Subtotal</th>
       </tr>

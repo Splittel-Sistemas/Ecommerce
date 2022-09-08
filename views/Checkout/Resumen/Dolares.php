@@ -6,7 +6,10 @@
     <thead>
       <tr>
         <th>Producto</th>
+        <th class="text-center"></th>
+
         <th class="text-center">Cantidad</th>
+        
         <th class="text-center">Subtotal</th>
       </tr>
     </thead>
@@ -80,6 +83,11 @@
                 <span><em>Clave:</em> <?php echo $data->ProductoCodigo;?></span>
               </div>
             </div>
+          </td>
+          <td>
+          <h4 class="entry-title">
+					<a href="../Productos/configurables.php?codigo=<?php echo $data->DetalleCodigoConfigurable;?>"><?php echo $data->ProductoConfigurableNombre;?></a>
+				</h4>
           </td>
           <!-- Cantidad -->
           <td class="text-center text-lg">
