@@ -1,4 +1,11 @@
-
+<div class="col-md-12">
+            <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span> 
+            <strong>Solo se envian pedidos completos</strong>
+            <br>
+                <strong>
+                  Si tienes alguna duda, contáctanos: 800 134 26 90
+                </strong>
+          </div>
 <h4 class="padding-bottom-1x text-center text-md-left">Revisa tu orden</h4>
 
 <div class="row mt-3 mb-3">
