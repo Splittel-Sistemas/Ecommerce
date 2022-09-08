@@ -1,19 +1,20 @@
 
 
 <div class="row">
-<div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>
+<div class="row">
+<div class="col-md-12 alert alert-danger alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>
 
 
 
-    <div class=" col-md-5 ">
+    <div class=" col-md-12 ">
       <p class="credit d-flex justify-content-center">Transacciones realizadas vía:</p>
     </div>
-    <div class=" col-md-3">
+    <div class=" col-md-12">
       <div class="credit d-flex justify-content-center">
         <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
       </div>
     </div>
-    <div class=" col-md-4">
+    <div class=" col-md-12">
       <div class="credit d-flex justify-content-center">
         <p>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</p>
       </div>
