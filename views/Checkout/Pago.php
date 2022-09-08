@@ -60,6 +60,9 @@
         </form>
         <!-- Información OpenPay Necesaria -->
         <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i> <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong></div>
+          </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-12 col-md-6 offset-md-3">
