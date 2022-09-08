@@ -5,7 +5,7 @@
  
     <div class="col-md-12">
       <div class="row">
-        <div class=" col-md-3 ">
+        <div class=" col-md-3 justify-content-end">
           <p class="text-right">Transacciones realizadas vía:</p>
         </div>
         <div class=" col-md-3">
@@ -17,7 +17,7 @@
           <strong>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</strong>
         </div>
         <div class=" col-md-3">
-          <div class="credit d-flex justify-content-center">
+          <div class="credit d-flex justify-content-left">
             <img class="img-responsive" src="../../public/images/OpenPay/security.png">
           </div>
         </div>
