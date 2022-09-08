@@ -100,6 +100,33 @@
           <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
           <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
         </div>
+        <!-- Información OpenPay Necesaria -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-12 col-md-6 offset-md-3">
+                <p class="text-right">Transacciones realizadas vía:</p>
+              </div>
+              <div class="col-12 col-md-3">
+                <div class="credit d-flex justify-content-end">
+                  <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
+                </div>
+              </div>
+            </div>  
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-12 col-md-2">
+                <div class="credit d-flex justify-content-center">
+                  <img class="img-responsive" src="../../public/images/OpenPay/security.png">
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
+              </div>
+            </div>  
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -107,6 +134,33 @@
     <div class="custom-control custom-checkbox d-none">
       <input class="custom-control-input" type="checkbox" id="pagoBanco" name="pagoBanco">
       <label class="custom-control-label" for="pagoBanco">Pago mediante transferencia interbancaria.</label>
+      <!-- Información OpenPay Necesaria -->
+      <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-12 col-md-6 offset-md-3">
+                <p class="text-right">Transacciones realizadas vía:</p>
+              </div>
+              <div class="col-12 col-md-3">
+                <div class="credit d-flex justify-content-end">
+                  <img class="img-responsive" src="../../public/images/OpenPay/openpay.png">
+                </div>
+              </div>
+            </div>  
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-12 col-md-2">
+                <div class="credit d-flex justify-content-center">
+                  <img class="img-responsive" src="../../public/images/OpenPay/security.png">
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <p>Tus pagos se realizan de forma segura con encriptación de 256 bits</p>
+              </div>
+            </div>  
+          </div>
+        </div>
     </div>
   <!--  -->
   <?php 

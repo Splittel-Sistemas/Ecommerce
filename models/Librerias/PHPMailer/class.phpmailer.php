@@ -64,7 +64,7 @@ class PHPMailer
      * The From email address for the message.
      * @var string
      */
-    public $From = ' notificaciones-splitnet@splittel.com';
+    public $From = ' notificaciones@fibremex.com';
     /**
      * The From name of the message.
      * @var string
