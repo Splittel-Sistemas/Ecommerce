@@ -2,8 +2,22 @@
 <hr class="padding-bottom-1x">
 <div class="row">
   <div class="col-md-12 col-12">
-  	<label class="text-center text-md-left">Referencia para paquetería</label>
+    <label class="text-center text-md-left">Referencia para paquetería</label>
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
+  </div>
+  <hr class="mt-3">
+
+  <div class="col-md-12">
+    <label class="text-center text-md-left">Políticas para el servicio de entrega local:</label>
+    <ul>
+      <li>Los traslados por servicio de entrega local son sin cargo alguno y sin mínimo de compra.</li>
+      <li>La programación de materiales de volumen serán bajo disponibilidad de unidades, se puede extender de 24 a 48 hrs.</li>
+      <li>La descarga especial (carretes completos, tarimas, etc) corresponden al cliente receptor, aquellas que comprendan utilizar maquinaria o personal extra.</li>
+      <li>Horario entrega: las salidas serán en 2 ciclos durante el transcurso del día, el primero a las 09:00 am y el segundo a las 15:00 hrs.</li>
+      <li>Las entregas se realizan en el transcurso del día bajo la programación de ruta indicada por el repartidor.</li>
+
+
+    </ul>
   </div>
 </div>
 
