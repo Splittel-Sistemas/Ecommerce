@@ -14,6 +14,8 @@
     <div class=" col-md-12">
       <div class="credit d-flex justify-content-center">
         <p>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</p>
+        <br>
+        <p>Open Pay, la plataforma online confiable para realizar tu pago con Fibremex</p>
       </div>
     </div>
   </div>
@@ -44,11 +46,11 @@
         <div class="row mb-4">
           <div class="col-md-12">
             <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>&nbsp;&nbsp;Monto máximo para pago con tarjeta: <strong>$100,000 MXN</strong>
-            <br>
-                <strong>
-                  Si tienes alguna duda, contáctanos: 800 134 26 90
-                </strong>
-          </div>
+              <br>
+              <strong>
+                Si tienes alguna duda, contáctanos: 800 134 26 90
+              </strong>
+            </div>
           </div>
         </div>
         <div class="row mb-4">
@@ -85,7 +87,7 @@
         </form>
         <!-- Información OpenPay Necesaria -->
         <div class="row mt-4">
-         
+
           <div class="col-md-6">
             <div class="row">
               <div class="col-12 col-md-6 offset-md-3">
