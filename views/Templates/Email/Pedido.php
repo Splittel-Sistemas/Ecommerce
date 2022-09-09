@@ -119,6 +119,44 @@
 																unset($Pedido);
 																$html .= '</tbody>
 															</table>
+															<br>
+																						<div class="row padding-top-1x mt-3">
+							<div class="col-12 col-sm-3">
+								<h5>Datos de envió:</h5>
+								<ul class="list-unstyled">
+								<li><span class="text-muted">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</li>
+								<li><span class="text-muted">Dirección: </span> <span id="resumen-datosEnvio-direccion"></span></li>
+								<li><span class="text-muted">Teléfono: </span> <span id="resumen-datosEnvio-telefono"></span></li>
+								</ul>
+							</div>
+
+
+								<div class="col-12 col-sm-3">
+								<h5>Datos de Facturación:</h5>
+								<ul class="list-unstyled">
+									<li><span class="text-muted">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</li>
+									<li><span class="text-muted">Dirección: </span> <span id="resumen-datosFacturacion-direccion"></span></li>
+									<li><span class="text-muted">RFC: </span> <span id="resumen-datosFacturacion-RFC"></span></li>
+								</ul>
+								</div>
+
+							<div class="col-12 col-sm-3">
+								<h5>Paquetería:</h5>
+								<ul class="list-unstyled">
+								<li id="resumen-paqueteria"></li>
+								</ul>
+							</div>
+							<div class="col-12 col-sm-3">
+								<h5>Método de pago:</h5>
+								<ul class="list-unstyled">
+								<li id="resumen-metodo-pago"></li>
+								</ul>
+								<h5>Moneda de pago:</h5>
+								<ul class="list-unstyled">
+								<li><span id="resumen-moneda-pago"></span></li>
+								</ul>
+							</div>
+							</div>
 															<div style="text-align:right">
 															<div style="float: right">
 															</div>
