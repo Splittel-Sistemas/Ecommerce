@@ -14,7 +14,10 @@
     <div class=" col-md-12">
       <div class="credit d-flex justify-content-center">
         <p>SOLO SE ACEPTAN TRANSFERENCIAS EN MXN</p>
-        <br>
+
+      </div>
+      <div class="credit d-flex justify-content-center">
+
         <p>Open Pay, la plataforma online confiable para realizar tu pago con Fibremex</p>
       </div>
     </div>
