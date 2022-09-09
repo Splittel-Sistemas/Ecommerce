@@ -50,8 +50,8 @@
 																 <thead>
 																	<tr style="width:100%;">
 																		<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Código</th>
-																		<th style="margin-bottom: 20px; text-align: left; max-width:25%;">Descripción</th>
-																		<th style="margin-bottom: 20px; text-align: left; max-width:25%;"></th>
+																		<th style="margin-bottom: 20px; text-align: left; max-width:30%;">Descripción</th>
+																		<th style="margin-bottom: 20px; text-align: left; max-width:20%;"></th>
 
 																		<th style="margin-bottom: 20px; max-width:10%;">Cantidad</th>
 																		<th style="margin-bottom: 20px; max-width:10%;">Subtotal</th>
@@ -68,15 +68,17 @@
 																		$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
 																		$html .= '<tr style="width:100%;">
 																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->DetalleCodigo .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:25%;">'. $descripcion .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:25%;">'. $data->TiempoEntrega .'</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:30%;">'. $descripcion .'</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->TiempoEntrega .'</td>
 
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->DetalleCantidad .'</td>
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $'.$detalleSubtotal .'</td>
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->PedidoMonedaPago .'</td>
 																		</tr>';
 																	}
-
+																/* 	
+																	
+																 */
 																	$PedidoController = new PedidoController;
 																	$PedidoController->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
 																	$PedidoController->order = "";
@@ -96,21 +98,27 @@
 
 															$html .= '<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
+
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Subtotal</td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoSubtotal .' </td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
+
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Iva</td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoIva .' </td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
+
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Total</td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoTotal .' </td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
