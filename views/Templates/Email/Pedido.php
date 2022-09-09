@@ -120,22 +120,14 @@
 																$html .= '</tbody>
 															</table>
 
-															<table role="presentation" border="0" cellpadding="0" cellspacing="0">
-															<tbody>
-																<tr style="width:100%;">
-																	<td style="margin-bottom: 10px; text-align: center; max-width:33%;"></td>
-																	<td style="margin-bottom: 10px; text-align: center; max-width:33%;"><img src="http://www.fibremex.com/ecomfmx/check.jpg" width="50" height="50"></td>
-																</tr>
-															</tbody>
-														</table><br>
+															<br>
 														<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 															 <thead>
 																<tr style="width:100%;">
 																	<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de envió:</th>
 																	<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>
 																	<th style="margin-bottom: 20px; max-width:10%;">Paquetería</th>
-																	<th style="margin-bottom: 20px; max-width:10%;">Método de pago</th>
-																	<th style="margin-bottom: 20px; max-width:10%;">Moneda</th>
+																	
 																</tr>
 															</thead>
 															<tbody>';
@@ -172,31 +164,29 @@
 																} */
 
 
-														$html .= '<tr style="width:100%;">
+														$html .= '				<tr style="width:100%;">
 																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
+
+																				
+																				</tr>
+																				<tr style="width:100%;">
 																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Dirección: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Dirección: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
+
+																				
+																				</tr>
+																				<tr style="width:100%;">
 																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Teléfono: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				
-
-																			</tr>
-																			<tr style="width:100%;">
-																			<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																			<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Dirección: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-
 																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">RFC: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																			</tr>
-																			<tr style="width:100%;">
-																			<td style="margin-bottom: 2px; text-align: center; max-width:20%;">RFC: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				
-																			</tr>
-																			<tr style="width:100%;">
-																			<td style="margin-bottom: 2px; text-align: center; max-width:20%;">RFC: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				
-																			</tr>
-																			<tr style="width:100%;">
-																			<td style="margin-bottom: 2px; text-align: center; max-width:20%;">RFC: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				
-																			</tr>';
+																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
+																				</tr>
+																			
+																			
+																		
+																			';
 							 /*
 															}
 															 unset($DetalleController);
