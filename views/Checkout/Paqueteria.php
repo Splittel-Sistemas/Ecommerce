@@ -6,9 +6,9 @@
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
   </div>
   <hr class="mt-3">
-
   <div class="col-md-12">
-    <label class="text-center text-md-left">Políticas para el servicio de entrega local:</label>
+    <br>
+    <strong class="text-center text-md-left">Políticas para el servicio de entrega local:</strong>
     <ul>
       <li>Los traslados por servicio de entrega local son sin cargo alguno y sin mínimo de compra.</li>
       <li>La programación de materiales de volumen serán bajo disponibilidad de unidades, se puede extender de 24 a 48 hrs.</li>
