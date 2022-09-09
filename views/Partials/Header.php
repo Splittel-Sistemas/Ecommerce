@@ -119,7 +119,7 @@
         <a href="../Login/"> 
         <?php } ?>
           <div>
-            <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?>
+            <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? utf8_decode($_SESSION['Ecommerce-ClienteNombre'] ): 'Iniciar sesión' ?>
           </div>
         </a>
         <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile">
