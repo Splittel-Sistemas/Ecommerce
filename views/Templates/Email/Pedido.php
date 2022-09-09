@@ -131,68 +131,41 @@
 																</tr>
 															</thead>
 															<tbody>';
-															/* $DetalleController = new DetalleController();
+															$DetalleController = new DetalleController();
 															$Obj = $DetalleController->GetDetallePedido();
 
 															if($Obj->count > 0){
 																foreach ($Obj->records as $key => $data) {
 																	$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
 																	$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-																	$html .= '<tr style="width:100%;">
-																		<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->DetalleCodigo .'</td>
-																		<td style="margin-bottom: 10px; text-align: left; max-width:50%;">'. $descripcion .'</td>
-																		<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->DetalleCantidad .'</td>
-																		<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $'.$detalleSubtotal .'</td>
-																		<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->PedidoMonedaPago .'</td>
-																	</tr>';
+																	
+														$html .= '				<tr style="width:100%;">
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">'. $data->Paqueteria .'</span></td>
+
+														
+														</tr>
+														<tr style="width:100%;">
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Dirección: </span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Ext: </span> </td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
+
+														
+														</tr>
+														<tr style="width:100%;">
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: </span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
+														</tr>
+													
+													
+												
+													';
+															
 																}
 
-																$PedidoController = new PedidoController;
-																$PedidoController->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
-																$PedidoController->order = "";
-																# obtención de subtotal iva y total del pedido actual
-																$Pedido = $PedidoController->getBy();
-																
-																if($Pedido->MonedaPago == "USD"){
-																	$pedidoSubtotal = $Pedido->GetSubTotal();
-																	$pedidoIva = $Pedido->GetIva();
-																	$pedidoTotal = $Pedido->GetTotal(); 
-																}else{
-																	$pedidoSubtotal = $Pedido->GetSubTotalMXN();
-																	$pedidoIva = $Pedido->GetIvaMXN();
-																	$pedidoTotal = $Pedido->GetTotalMXN(); 
-																} */
-
-
-														$html .= '				<tr style="width:100%;">
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
-
-																				
-																				</tr>
-																				<tr style="width:100%;">
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Dirección: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Dirección: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
-
-																				
-																				</tr>
-																				<tr style="width:100%;">
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">Teléfono: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">RFC: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-																				<td style="margin-bottom: 2px; text-align: center; max-width:20%;">: </span></td>
-																				</tr>
-																			
-																			
-																		
-																			';
-							 /*
 															}
-															 unset($DetalleController);
-															unset($Obj);
-															unset($PedidoController);
-															unset($Pedido); */
 															$html .= '</tbody>
 														</table>
 
