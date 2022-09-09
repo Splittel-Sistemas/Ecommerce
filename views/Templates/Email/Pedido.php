@@ -50,7 +50,9 @@
 																 <thead>
 																	<tr style="width:100%;">
 																		<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Código</th>
-																		<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Descripción</th>
+																		<th style="margin-bottom: 20px; text-align: left; max-width:25%;">Descripción</th>
+																		<th style="margin-bottom: 20px; text-align: left; max-width:25%;"></th>
+
 																		<th style="margin-bottom: 20px; max-width:10%;">Cantidad</th>
 																		<th style="margin-bottom: 20px; max-width:10%;">Subtotal</th>
 																		<th style="margin-bottom: 20px; max-width:10%;">Moneda</th>
@@ -66,7 +68,9 @@
 																		$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
 																		$html .= '<tr style="width:100%;">
 																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->DetalleCodigo .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:50%;">'. $descripcion .'</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:25%;">'. $descripcion .'</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:25%;">'. $data->TiempoEntrega .'</td>
+
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->DetalleCantidad .'</td>
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $'.$detalleSubtotal .'</td>
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->PedidoMonedaPago .'</td>
@@ -138,11 +142,17 @@
 																foreach ($Obj->records as $key => $data) {
 																	$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
 																	$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-																	
+																}
+
+																	$PedidoController = new PedidoController;
+																	$PedidoController->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
+																	$PedidoController->order = "";
+																	# obtención de subtotal iva y total del pedido actual
+																	$Pedido = $PedidoController->getBy();
 														$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">'. $data->Paqueteria .'</span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">'. $Pedido->Paqueteria .'</span></td>
 
 														
 														</tr>
@@ -163,8 +173,7 @@
 												
 													';
 															
-																}
-
+																
 															}
 															$html .= '</tbody>
 														</table>
