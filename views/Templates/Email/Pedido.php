@@ -167,7 +167,7 @@
 																	$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();   
  
 																	$DatosEnvioController = new DatosEnvioController();
-																	$DatosEnvioController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
+																	$DatosEnvioController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." LIMIT 1 ";
 																	$DatosEnvioController->order = "";
 																	$ResultDatosEnvioController = $DatosEnvioController->get();
 
@@ -197,7 +197,18 @@
 														
 														</tr>
 														<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: </span></td>
+														';
+
+
+
+															foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+																$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: '.$DatosEnvio->Telefono.'</span></td>';
+															
+															}
+															 
+	;													$html .= '	
+														
+														
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 														</tr>
