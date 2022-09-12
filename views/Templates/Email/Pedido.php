@@ -147,7 +147,10 @@
 															<tbody>';
 															$DetalleController = new DetalleController();
 															$Obj = $DetalleController->GetDetallePedido();
-
+															$DatosFacturacionController = new DatosFacturacionController();
+															$DatosFacturacionController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
+															$DatosFacturacionController->order = "";
+															$ResultDatosFacturacionController = $DatosFacturacionController->get();  
 															if($Obj->count > 0){
 																foreach ($Obj->records as $key => $data) {
 																	$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
@@ -175,7 +178,7 @@
 														</tr>
 														<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: </span></td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC:'. $ResultDatosFacturacionController->RFC .'</span></td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 														</tr>
 													
