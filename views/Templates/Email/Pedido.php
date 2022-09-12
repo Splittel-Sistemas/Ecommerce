@@ -77,7 +77,7 @@ class TemplatePedido
 				foreach ($Obj->records as $key => $data) {
 					$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
 					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-					$tiempo = !($data->DetalleCodigoConfigurable == '') ? $data->TiempoEntrega : '';
+					$tiempo = !($data->DetalleCodigoConfigurable == '') ? $data->TiempoEntrega : 'NA';
 
 					$html .= '<tr style="width:100%;">
 																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">' . $data->DetalleCodigo . '</td>
