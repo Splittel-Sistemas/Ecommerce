@@ -160,6 +160,11 @@
 																	$PedidoController->order = "";
 																	# obtención de subtotal iva y total del pedido actual
 																	$Pedido = $PedidoController->getBy();
+
+																	$pedidoCostoEnvio = $Pedido->GetEnvio();
+																	$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();   
+
+
 														$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
@@ -167,9 +172,20 @@
 
 														
 														</tr>
-														<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>
+														<tr style="width:100%;">';
+
+
+
+															foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+															 echo '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: '.$DatosEnvio->Calle." No Ext. ".$DatosEnvio->NumeroExterior. " Col. ".$DatosEnvio->Colonia.';</span></td>';
+															
+															}
+															 
+	;													$html .= '	
 														
+
+
+													
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 
 														
