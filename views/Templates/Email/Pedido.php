@@ -11,6 +11,9 @@ if (!class_exists('PedidoController')) {
 if (!class_exists("DatosEnvioController")) {
 	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
 }
+if (!class_exists("DatosFacturacionController")) {
+	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
+}
 
 class TemplatePedido
 {
@@ -86,7 +89,7 @@ class TemplatePedido
 																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">' . $data->PedidoMonedaPago . '</td>
 																		</tr>';
 				}
-			
+
 				$PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
@@ -132,7 +135,7 @@ class TemplatePedido
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>';
 			}
-			
+
 			$html .= '</tbody>
 															</table>
 
@@ -142,16 +145,14 @@ class TemplatePedido
 																<tr style="width:100%;">
 																	<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de envió:</th>
 																	';
-																	if ($Pedido->DatosFacturacionKey == '') {
+			if ($Pedido->DatosFacturacionKey == '') {
 
-																		$html .= '';
-														
-																	
-																	} else {
-																		$html .= '<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>';
-																	};
-																	
-																	$html .= '<th style="margin-bottom: 20px; max-width:10%;">Paquetería</th>
+				$html .= '';
+			} else {
+				$html .= '<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>';
+			};
+
+			$html .= '<th style="margin-bottom: 20px; max-width:10%;">Paquetería</th>
 																	
 																</tr>
 															</thead>
@@ -173,11 +174,16 @@ class TemplatePedido
 				$PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
+				$DatosFacturacionController = new DatosFacturacionController();
+				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosFacturacionController->order = "";
+				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
 				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
-				$rfcfactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>' : '';
-				
+
+
+
 				$pedidoCostoEnvio = $Pedido->GetEnvio();
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
@@ -188,7 +194,7 @@ class TemplatePedido
 
 				$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
-														'.$nombrefactura .'
+														' . $nombrefactura . '
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">' . $Pedido->Paqueteria . '</span></td>
 
 														
@@ -205,11 +211,24 @@ class TemplatePedido
 				} else {
 					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
 				};
+
+
+					/* factuacion */
+				if (!empty($Pedido->DatosFacturacionKey)) {
+
+
+					foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . ';</span></td>';
+					}
+				} else {
+					$html .= '';
+				};
+/* fin fcturacion */
 				$html .= '	
 														
 
 
-														'.$rfcfactura.'
+														
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 
 														
