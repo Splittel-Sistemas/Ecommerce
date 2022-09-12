@@ -134,8 +134,10 @@
 																unset($Pedido);
 																
 
-																$facturacisn = $_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ? 'Datos de Facturación: ': '';
-
+																$facturacisn = $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ? 'Datos de Facturación: ': '';
+															
+																$nombrefacturacion = $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>': '';
+																$RFCfacturacion = $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>': '';
 																$html .= '</tbody>
 															</table>
 
@@ -166,7 +168,7 @@
 																	$Pedido = $PedidoController->getBy();
 														$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
+														'.$nombrefacturacion .'
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">'. $Pedido->Paqueteria .'</span></td>
 
 														
@@ -180,7 +182,7 @@
 														</tr>
 														<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: </span></td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
+														'.$RFCfacturacion .'
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 														</tr>
 													
