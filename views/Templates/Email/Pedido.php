@@ -166,7 +166,9 @@ class TemplatePedido
 				$PedidoController->order = "";
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
-
+				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+				$rfcfactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>' : '';
+				
 				$pedidoCostoEnvio = $Pedido->GetEnvio();
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
@@ -177,7 +179,7 @@ class TemplatePedido
 
 				$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
+														'.$nombrefactura .'
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">' . $Pedido->Paqueteria . '</span></td>
 
 														
@@ -198,7 +200,7 @@ class TemplatePedido
 														
 
 
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
+														'.$rfcfactura.'
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 
 														
