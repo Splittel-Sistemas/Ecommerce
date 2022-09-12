@@ -5,7 +5,9 @@
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
 	}if (!class_exists('PedidoController')) {
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
-	}
+	}if (!class_exists('DatosFacturacion')) {
+		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
+	  }
 
 	class TemplatePedido{
 		/**
