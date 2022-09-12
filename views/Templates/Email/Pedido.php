@@ -132,7 +132,7 @@
 																unset($Obj);
 																unset($PedidoController);
 																unset($Pedido);
-																}
+																
 
 																$facturacisn = $_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ? 'Datos de Facturación: ': '';
 
