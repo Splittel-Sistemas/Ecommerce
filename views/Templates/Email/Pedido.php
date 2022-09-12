@@ -213,7 +213,6 @@ class TemplatePedido
 				};
 
 
-				/* factuacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
@@ -221,15 +220,14 @@ class TemplatePedido
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
 					} else {
 						$html .= '';
 					};
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: </span></td>';
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
 				};
-				/* fin fcturacion */
 				$html .= '	
 														
 
@@ -252,6 +250,9 @@ class TemplatePedido
 				};
 
 
+				
+
+				/* factuacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
@@ -259,14 +260,15 @@ class TemplatePedido
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
 						}
 					} else {
 						$html .= '';
 					};
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: </span></td>';
 				};
+				/* fin fcturacion */
 				$html .= '	
 														
 														
