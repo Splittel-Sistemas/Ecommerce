@@ -5,9 +5,7 @@
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
 	}if (!class_exists('PedidoController')) {
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
-	}if (!class_exists('DatosFacturacion')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
-	  }
+	}
 
 	class TemplatePedido{
 		/**
@@ -149,10 +147,7 @@
 															<tbody>';
 															$DetalleController = new DetalleController();
 															$Obj = $DetalleController->GetDetallePedido();
-															$DatosFacturacionController = new DatosFacturacionController();
-															$DatosFacturacionController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
-															$DatosFacturacionController->order = "";
-															$ResultDatosFacturacionController = $DatosFacturacionController->get();  
+
 															if($Obj->count > 0){
 																foreach ($Obj->records as $key => $data) {
 																	$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
@@ -180,7 +175,7 @@
 														</tr>
 														<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: </span></td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC:'. $ResultDatosFacturacionController->RFC .'</span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 														</tr>
 													
