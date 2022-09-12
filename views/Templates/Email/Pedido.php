@@ -1,26 +1,31 @@
 <?php
-	if (!class_exists("TemplatePrincipal")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Principal.php';
-	}if (!class_exists('DetalleController')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
-	}if (!class_exists('PedidoController')) {
-		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
-	} if (!class_exists("DatosEnvioController")) {
-		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
-	  }
+if (!class_exists("TemplatePrincipal")) {
+	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Principal.php';
+}
+if (!class_exists('DetalleController')) {
+	include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Detalle.Controller.php';
+}
+if (!class_exists('PedidoController')) {
+	include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Pedido.Controller.php';
+}
+if (!class_exists("DatosEnvioController")) {
+	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
+}
 
-	class TemplatePedido{
-		/**
-		 * Estructura correo para pedidos Ecommerce
-		 *
-		 * @param string $a Foo
-		 *
-		 * @return int $b Bar
-		 */
-		public function body(){
-			try {
-				$Principal = new TemplatePrincipal();
-				$html = $Principal->Head().'<body class="">
+class TemplatePedido
+{
+	/**
+	 * Estructura correo para pedidos Ecommerce
+	 *
+	 * @param string $a Foo
+	 *
+	 * @return int $b Bar
+	 */
+	public function body()
+	{
+		try {
+			$Principal = new TemplatePrincipal();
+			$html = $Principal->Head() . '<body class="">
 								<span class="preheader">Ecommerce Grupo Splittel</span>
 								
 								<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
@@ -61,54 +66,54 @@
 																	</tr>
 																</thead>
 																<tbody>';
-																$DetalleController = new DetalleController();
-																$Obj = $DetalleController->GetDetallePedido();
+			$DetalleController = new DetalleController();
+			$Obj = $DetalleController->GetDetallePedido();
 
-																
-																if($Obj->count > 0){
-																	foreach ($Obj->records as $key => $data) {
-																		$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
-																		$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-																		$tiempo = !($data->DetalleCodigoConfigurable == '') ? $data->TiempoEntrega : '';
 
-																		$html .= '<tr style="width:100%;">
-																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->DetalleCodigo .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:30%;">'. $descripcion .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $tiempo .'</td>
+			if ($Obj->count > 0) {
+				foreach ($Obj->records as $key => $data) {
+					$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
+					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
+					$tiempo = !($data->DetalleCodigoConfigurable == '') ? $data->TiempoEntrega : '';
 
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->DetalleCantidad .'</td>
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $'.$detalleSubtotal .'</td>
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->PedidoMonedaPago .'</td>
+					$html .= '<tr style="width:100%;">
+																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">' . $data->DetalleCodigo . '</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:30%;">' . $descripcion . '</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">' . $tiempo . '</td>
+
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">' . $data->DetalleCantidad . '</td>
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $' . $detalleSubtotal . '</td>
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">' . $data->PedidoMonedaPago . '</td>
 																		</tr>';
-																	}
-																/* 	
+				}
+				/* 	
 																	
 																 */
-																	$PedidoController = new PedidoController;
-																	$PedidoController->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
-																	$PedidoController->order = "";
-																	# obtención de subtotal iva y total del pedido actual
-																	$Pedido = $PedidoController->getBy();
-																	
-																	if($Pedido->MonedaPago == "USD"){
-																		$pedidoSubtotal = $Pedido->GetSubTotal();
-																		$pedidoIva = $Pedido->GetIva();
-																		$pedidoTotal = $Pedido->GetTotal(); 
-																	}else{
-																		$pedidoSubtotal = $Pedido->GetSubTotalMXN();
-																		$pedidoIva = $Pedido->GetIvaMXN();
-																		$pedidoTotal = $Pedido->GetTotalMXN(); 
-																	}
+				$PedidoController = new PedidoController;
+				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
+				$PedidoController->order = "";
+				# obtención de subtotal iva y total del pedido actual
+				$Pedido = $PedidoController->getBy();
+
+				if ($Pedido->MonedaPago == "USD") {
+					$pedidoSubtotal = $Pedido->GetSubTotal();
+					$pedidoIva = $Pedido->GetIva();
+					$pedidoTotal = $Pedido->GetTotal();
+				} else {
+					$pedidoSubtotal = $Pedido->GetSubTotalMXN();
+					$pedidoIva = $Pedido->GetIvaMXN();
+					$pedidoTotal = $Pedido->GetTotalMXN();
+				}
 
 
-															$html .= '<tr style="width:100%;">
+				$html .= '<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Subtotal</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoSubtotal .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoSubtotal . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
@@ -116,8 +121,8 @@
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Iva</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoIva .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoIva . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
@@ -125,16 +130,15 @@
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Total</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoTotal .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoTotal . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>';
-								 
-																}
-																unset($DetalleController);
-																unset($Obj);
-																unset($PedidoController);
-																unset($Pedido);
-																$html .= '</tbody>
+			}
+			unset($DetalleController);
+			unset($Obj);
+			unset($PedidoController);
+			unset($Pedido);
+			$html .= '</tbody>
 															</table>
 
 															<br>
@@ -148,50 +152,53 @@
 																</tr>
 															</thead>
 															<tbody>';
-															$DetalleController = new DetalleController();
-															$Obj = $DetalleController->GetDetallePedido();
+			$DetalleController = new DetalleController();
+			$Obj = $DetalleController->GetDetallePedido();
 
-															if($Obj->count > 0){
-																foreach ($Obj->records as $key => $data) {
-																	$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
-																	$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-																}
+			if ($Obj->count > 0) {
+				foreach ($Obj->records as $key => $data) {
+					$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
+					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
+				}
 
-																	$PedidoController = new PedidoController;
-																	$PedidoController->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
-																	$PedidoController->order = "";
-																	# obtención de subtotal iva y total del pedido actual
-																	$Pedido = $PedidoController->getBy();
+				$PedidoController = new PedidoController;
+				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
+				$PedidoController->order = "";
+				# obtención de subtotal iva y total del pedido actual
+				$Pedido = $PedidoController->getBy();
 
-																	$pedidoCostoEnvio = $Pedido->GetEnvio();
-																	$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();   
- 
-																	$DatosEnvioController = new DatosEnvioController();
-																	$DatosEnvioController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." LIMIT 1 ";
-																	$DatosEnvioController->order = "";
-																	$ResultDatosEnvioController = $DatosEnvioController->get();
+				$pedidoCostoEnvio = $Pedido->GetEnvio();
+				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
-														$html .= '				<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">'. $Pedido->Paqueteria .'</span></td>
+				$DatosEnvioController = new DatosEnvioController();
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->order = "";
+				$ResultDatosEnvioController = $DatosEnvioController->get();
+
+				$html .= '				<tr style="width:100%;">
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">' . $Pedido->Paqueteria . '</span></td>
 
 														
 														</tr>
 														<tr style="width:100%;">';
 
 
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-															foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-																$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: '.$DatosEnvio->Calle." No Ext. ".$DatosEnvio->NumeroExterior. " Col. ".$DatosEnvio->Colonia.';</span></td>';
-															
-															}
-															 
-	;													$html .= '	
+
+					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . ';</span></td>';
+					}
+				} else {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
+				};
+				$html .= '	
 														
 
 
-													
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 
 														
@@ -199,27 +206,25 @@
 														<tr style="width:100%;">
 														';
 
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-
-															foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-																$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: '.$DatosEnvio->Telefono.'</span></td>';
-															
-															}
-															 
-	;													$html .= '	
+					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
+					}
+				} else {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: </span></td>';
+				};
+				$html .= '	
 														
 														
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">RFC: </span></td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
+													
 														</tr>
 													
 													
 												
 													';
-															
-																
-															}
-															$html .= '</tbody>
+			}
+			$html .= '</tbody>
 														</table>
 
 
@@ -261,23 +266,24 @@
 								</table>
 							</body>
 						</html>';
-				return $html;
-			} catch (Exception $e) {
-				throw $e;
-			}
+			return $html;
+		} catch (Exception $e) {
+			throw $e;
 		}
+	}
 
-		/**
-		 * Estructura correo para pedidos Ecommerce
-		 *
-		 * @param string $a Foo
-		 *
-		 * @return int $b Bar
-		 */
-		public function EcommercePedidoPagoBanco($PedidoKey){
-			try {
-				$Principal = new TemplatePrincipal();
-				$html = $Principal->Head().'<body class="">
+	/**
+	 * Estructura correo para pedidos Ecommerce
+	 *
+	 * @param string $a Foo
+	 *
+	 * @return int $b Bar
+	 */
+	public function EcommercePedidoPagoBanco($PedidoKey)
+	{
+		try {
+			$Principal = new TemplatePrincipal();
+			$html = $Principal->Head() . '<body class="">
 								<span class="preheader">Ecommerce Grupo Splittel</span>
 								
 								<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
@@ -316,67 +322,66 @@
 																	</tr>
 																</thead>
 																<tbody>';
-																$DetalleController = new DetalleController();
-																$Obj = $DetalleController->GetDetallePedido_("WHERE pedidokey = '".$PedidoKey."' AND detalle_activo = 'si'");
+			$DetalleController = new DetalleController();
+			$Obj = $DetalleController->GetDetallePedido_("WHERE pedidokey = '" . $PedidoKey . "' AND detalle_activo = 'si'");
 
-																if($Obj->count > 0){
-																	foreach ($Obj->records as $key => $data) {
-																		$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
-																		$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-																		$html .= '<tr style="width:100%;">
-																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">'. $data->DetalleCodigo .'</td>
-																			<td style="margin-bottom: 10px; text-align: left; max-width:50%;">'. $descripcion .'</td>
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->DetalleCantidad .'</td>
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $'.$detalleSubtotal .'</td>
-																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">'. $data->PedidoMonedaPago .'</td>
+			if ($Obj->count > 0) {
+				foreach ($Obj->records as $key => $data) {
+					$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
+					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
+					$html .= '<tr style="width:100%;">
+																			<td style="margin-bottom: 10px; text-align: left; max-width:20%;">' . $data->DetalleCodigo . '</td>
+																			<td style="margin-bottom: 10px; text-align: left; max-width:50%;">' . $descripcion . '</td>
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">' . $data->DetalleCantidad . '</td>
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;"> $' . $detalleSubtotal . '</td>
+																			<td style="margin-bottom: 10px; text-align: center; max-width:10%;">' . $data->PedidoMonedaPago . '</td>
 																		</tr>';
-																	}
+				}
 
-																	$PedidoController = new PedidoController;
-																	$PedidoController->filter = "WHERE id = '".$PedidoKey."' ";
-																	$PedidoController->order = "";
-																	# obtención de subtotal iva y total del pedido actual
-																	$Pedido = $PedidoController->getBy();
-																	
-																	if($Pedido->MonedaPago == "USD"){
-																		$pedidoSubtotal = $Pedido->GetSubTotal();
-																		$pedidoIva = $Pedido->GetIva();
-																		$pedidoTotal = $Pedido->GetTotal(); 
-																	}else{
-																		$pedidoSubtotal = $Pedido->GetSubTotalMXN();
-																		$pedidoIva = $Pedido->GetIvaMXN();
-																		$pedidoTotal = $Pedido->GetTotalMXN(); 
-																	}
+				$PedidoController = new PedidoController;
+				$PedidoController->filter = "WHERE id = '" . $PedidoKey . "' ";
+				$PedidoController->order = "";
+				# obtención de subtotal iva y total del pedido actual
+				$Pedido = $PedidoController->getBy();
+
+				if ($Pedido->MonedaPago == "USD") {
+					$pedidoSubtotal = $Pedido->GetSubTotal();
+					$pedidoIva = $Pedido->GetIva();
+					$pedidoTotal = $Pedido->GetTotal();
+				} else {
+					$pedidoSubtotal = $Pedido->GetSubTotalMXN();
+					$pedidoIva = $Pedido->GetIvaMXN();
+					$pedidoTotal = $Pedido->GetTotalMXN();
+				}
 
 
-															$html .= '<tr style="width:100%;">
+				$html .= '<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Subtotal</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoSubtotal .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoSubtotal . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Iva</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoIva .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoIva . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>
 																				<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:50%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">Total</td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $'.$pedidoTotal .' </td>
-																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">'. $Pedido->GetMonedaPago() .'</td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;"> $' . $pedidoTotal . ' </td>
+																					<td style="margin-bottom: 2px; text-align: center; max-width:10%;">' . $Pedido->GetMonedaPago() . '</td>
 																				</tr>';
-								 
-																}
-																unset($DetalleController);
-																unset($Obj);
-																unset($PedidoController);
-																unset($Pedido);
-																$html .= '</tbody>
+			}
+			unset($DetalleController);
+			unset($Obj);
+			unset($PedidoController);
+			unset($Pedido);
+			$html .= '</tbody>
 															</table>
 															<div style="text-align:right">
 															<div style="float: right">
@@ -416,11 +421,9 @@
 								</table>
 							</body>
 						</html>';
-				return $html;
-			} catch (Exception $e) {
-				throw $e;
-			}
+			return $html;
+		} catch (Exception $e) {
+			throw $e;
 		}
-
 	}
-
+}
