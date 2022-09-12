@@ -5,7 +5,9 @@
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
 	}if (!class_exists('PedidoController')) {
 		include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
-	}
+	} if (!class_exists("DatosEnvioController")) {
+		include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Cuenta/B2C/DatosEnvio.Controller.php';
+	  }
 
 	class TemplatePedido{
 		/**
@@ -163,7 +165,11 @@
 
 																	$pedidoCostoEnvio = $Pedido->GetEnvio();
 																	$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();   
-
+ 
+																	$DatosEnvioController = new DatosEnvioController();
+																	$DatosEnvioController->filter = "WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
+																	$DatosEnvioController->order = "";
+																	$ResultDatosEnvioController = $DatosEnvioController->get();
 
 														$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>'. $_SESSION['Ecommerce-ClienteNombre'] .'</td>
