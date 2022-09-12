@@ -206,24 +206,30 @@ class TemplatePedido
 
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . ';</span></td>';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
 				} else {
 					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
 				};
 
 
-					/* factuacion */
-				if (!empty($Pedido->DatosFacturacionKey)) {
+				/* factuacion */
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
-					foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . ';</span></td>';
-					}
+					if (!empty($Pedido->DatosFacturacionKey)) {
+
+
+						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
+						}
+					} else {
+						$html .= '';
+					};
 				} else {
-					$html .= '';
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: </span></td>';
 				};
-/* fin fcturacion */
+				/* fin fcturacion */
 				$html .= '	
 														
 
@@ -243,6 +249,23 @@ class TemplatePedido
 					}
 				} else {
 					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: </span></td>';
+				};
+
+
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+
+					if (!empty($Pedido->DatosFacturacionKey)) {
+
+
+						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
+						}
+					} else {
+						$html .= '';
+					};
+				} else {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
 				};
 				$html .= '	
 														
