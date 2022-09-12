@@ -62,6 +62,7 @@
 																$DetalleController = new DetalleController();
 																$Obj = $DetalleController->GetDetallePedido();
 
+																
 																if($Obj->count > 0){
 																	foreach ($Obj->records as $key => $data) {
 																		$detalleSubtotal = $data->PedidoMonedaPago == "USD" ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
@@ -131,6 +132,10 @@
 																unset($Obj);
 																unset($PedidoController);
 																unset($Pedido);
+																}
+
+																$facturacisn = $_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ? 'Datos de Facturación: ': '';
+
 																$html .= '</tbody>
 															</table>
 
@@ -139,7 +144,7 @@
 															 <thead>
 																<tr style="width:100%;">
 																	<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de envió:</th>
-																	<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>
+																	<th style="margin-bottom: 20px; text-align: left; max-width:50%;">'.$facturacisn.'</th>
 																	<th style="margin-bottom: 20px; max-width:10%;">Paquetería</th>
 																	
 																</tr>
@@ -167,8 +172,8 @@
 														
 														</tr>
 														<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Dirección: </span></td>
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Ext: </span> </td>
+														<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>
+														
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
 
 														
