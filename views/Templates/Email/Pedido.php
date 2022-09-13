@@ -224,8 +224,10 @@ class TemplatePedido
 					}
 				} else {
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if($Pedido->DatosEnvioKey == $GetShipToAdress->Adress)
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: '.$GetShipToAdress->Street.' No Ext. '.$GetShipToAdress->StreetNo. ' Col. '.$GetShipToAdress->Block.'</span></td>';
 					}
+					
 
 
 			
@@ -265,10 +267,10 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
 					}
 				} else {
-					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: '.$GetShipToAdress->ContactPerson->Telphone.'</span></td>';
+					
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
 
-					}
+					
 				};
 
 
