@@ -160,7 +160,7 @@ class TemplatePedido
 				$html .= '<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>';
 			};
 
-			$html .= '<th style="margin-bottom: 20px; max-width:10%;">Paquetería</th>
+			$html .= '<th style="margin-bottom: 20px; max-width:20%;">Paquetería</th>
 																	
 																</tr>
 															</thead>
@@ -239,7 +239,7 @@ class TemplatePedido
 				$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
 														' . $nombrefactura . '
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">' . $Pedido->Paqueteria . '</span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:20%;">' . $Pedido->Paqueteria . '</span></td>
 
 														
 														</tr>
@@ -302,7 +302,7 @@ class TemplatePedido
 					}
 				} else {
 
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>';
 				};
 
 
