@@ -13,9 +13,13 @@ if (!class_exists("DatosEnvioController")) {
 }
 if (!class_exists("DatosFacturacionController")) {
 	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
-}  if (!class_exists("GetShipToAdressController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
-  }
+}
+if (!class_exists("GetShipToAdressController")) {
+	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
+}
+if (!class_exists("GetBillToAdressController")) {
+	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
+}
 
 class TemplatePedido
 {
@@ -108,19 +112,7 @@ class TemplatePedido
 					$pedidoTotal = $Pedido->GetTotalMXN();
 				}
 
-				try {
-					$GetShipToAdressController = new GetShipToAdressController();
-					$resultGetShipToAdressController = $GetShipToAdressController->get();
-					$ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
-				 	//print_r($resultGetShipToAdressController);
-				  } catch (Exception $e) {
-					$ErrorCode = -100;
-				  }
-				  if ($resultGetShipToAdressController->GetShipToAdressResult->Count == 1) {
-					$listGetShipToAdress[] = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
-				  }else{
-					$listGetShipToAdress = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
-				  }
+
 				$html .= '<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
@@ -205,6 +197,42 @@ class TemplatePedido
 				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosEnvioController->order = "";
 				$ResultDatosEnvioController = $DatosEnvioController->get();
+				/* DATOS DE ENVIO DE SAP */
+				try {
+					$GetShipToAdressController = new GetShipToAdressController();
+					$resultGetShipToAdressController = $GetShipToAdressController->get();
+					$ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
+					//print_r($resultGetShipToAdressController);
+				} catch (Exception $e) {
+					$ErrorCode = -100;
+				}
+				if ($resultGetShipToAdressController->GetShipToAdressResult->Count == 1) {
+					$listGetShipToAdress[] = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
+				} else {
+					$listGetShipToAdress = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
+				}
+				/* FIN DATOS DE ENVIO SAP */
+
+				/* DATOS DE FACTURACION SAP */
+
+
+				try {
+					$GetBillToAdressController = new GetBillToAdressController();
+					$resultGetBillToAdressController = $GetBillToAdressController->get();
+					$ErrorCode = $resultGetBillToAdressController->GetBillToAdressResult->ErrorCode;
+					// print_r($resultGetBillToAdressController);
+				} catch (Exception $e) {
+					$ErrorCode = -100;
+				}
+
+
+				if ($resultGetBillToAdressController->GetBillToAdressResult->Count == 1) {
+					$listGetBillToAdress[] = $resultGetBillToAdressController->GetBillToAdressResult->Records->BussinessPartnerAdresses;
+				} else {
+					$listGetBillToAdress = $resultGetBillToAdressController->GetBillToAdressResult->Records->BussinessPartnerAdresses;
+				}
+
+				/* FIN DATOS DE FACTURACION*/
 
 				$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
@@ -215,7 +243,7 @@ class TemplatePedido
 														</tr>
 														<tr style="width:100%;">';
 
-
+				/* datos de envio */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
@@ -224,16 +252,12 @@ class TemplatePedido
 					}
 				} else {
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						if($Pedido->DatosEnvioKey == $GetShipToAdress->Adress)
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: '.$GetShipToAdress->Street.' No Ext. '.$GetShipToAdress->StreetNo. ' Col. '.$GetShipToAdress->Block.'</span></td>';
+						if ($Pedido->DatosEnvioKey == $GetShipToAdress->Adress)
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
 					}
-					
-
-
-			
 				};
 
-
+				/* datos de facturacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
@@ -247,7 +271,15 @@ class TemplatePedido
 						$html .= '';
 					};
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
+					if (!empty($Pedido->DatosFacturacionKey)) {
+
+						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
+							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
+								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
+						}
+					} else {
+						$html .= '';
+					};
 				};
 				$html .= '	
 														
@@ -267,14 +299,12 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
 					}
 				} else {
-					
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
 
-					
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
 				};
 
 
-				
+
 
 				/* factuacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
@@ -290,7 +320,14 @@ class TemplatePedido
 						$html .= '';
 					};
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: </span></td>';
+					if (!empty($Pedido->DatosFacturacionKey)) {
+						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
+							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
+								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
+						}
+					} else {
+						$html .= '';
+					};
 				};
 				/* fin fcturacion */
 				$html .= '	
