@@ -123,7 +123,7 @@ var addViewCheckout = function (Elem) {
         return false;
       }
     }
-    if ($(".datosEnvioTelefono")[0]) {
+    /* if ($(".datosEnvioTelefono")[0]) {
       if ($(".datosEnvioTelefono")[0].value == "") {
         toastAlert(
           "danger",
@@ -134,7 +134,7 @@ var addViewCheckout = function (Elem) {
         );
         return false;
       }
-    }
+    } */
     if ($(".datosEnvioCorreo")[0]) {
       if ($(".datosEnvioCorreo")[0].value == "") {
         toastAlert(
