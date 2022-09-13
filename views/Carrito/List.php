@@ -262,7 +262,7 @@
         <div class="col-12">
             <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x">
             </span><i class="icon-alert-triangle"></i>&nbsp;&nbsp;
-            Postes, registros, monotubo y tritubo requieren costo de envio.
+            registros, monotubo y tritubo requieren costo de envio.
             <br>
                 <strong>
                   Si tienes alguna duda, contáctanos: 800 134 26 90
