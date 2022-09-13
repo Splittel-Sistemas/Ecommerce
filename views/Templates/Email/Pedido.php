@@ -13,7 +13,9 @@ if (!class_exists("DatosEnvioController")) {
 }
 if (!class_exists("DatosFacturacionController")) {
 	include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Controller.php';
-}
+}  if (!class_exists("GetShipToAdressController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetShipToAdress.Controller.php';
+  }
 
 class TemplatePedido
 {
@@ -106,7 +108,19 @@ class TemplatePedido
 					$pedidoTotal = $Pedido->GetTotalMXN();
 				}
 
-
+				try {
+					$GetShipToAdressController = new GetShipToAdressController();
+					$resultGetShipToAdressController = $GetShipToAdressController->get();
+					$ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
+					// print_r($resultGetShipToAdressController);
+				  } catch (Exception $e) {
+					$ErrorCode = -100;
+				  }
+				  if ($resultGetShipToAdressController->GetShipToAdressResult->Count == 1) {
+					$listGetShipToAdress[] = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
+				  }else{
+					$listGetShipToAdress = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
+				  }
 				$html .= '<tr style="width:100%;">
 																					<td style="margin-bottom: 2px; text-align: center; max-width:20%;"></td>
 																					<td style="margin-bottom: 2px; text-align: center; max-width:30%;"></td>
@@ -209,7 +223,12 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: </span></td>';
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: '.$GetShipToAdress->Street.' No Ext. '.$GetShipToAdress->StreetNo. ' Col. '.$GetShipToAdress->Block.'</span></td>';
+					}
+
+
+			
 				};
 
 
@@ -246,7 +265,10 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
 					}
 				} else {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: </span></td>';
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: '.$GetShipToAdress->ContactPerson->Telphone.'</span></td>';
+
+					}
 				};
 
 
