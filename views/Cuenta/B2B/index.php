@@ -31,11 +31,11 @@
       'icon' => 'icon-folder', 
       'file' => '/fibra-optica/views/Cuenta/B2B/HistoricoPedidos/index.php'
     ],
-    [
+  /*   [
       'descripcion' => 'Rechazados', 
       'icon' => 'icon-trash', 
       'file' => '/fibra-optica/views/Cuenta/B2B/Rechazados/index.php'
-    ],
+    ], */
     [
       'descripcion' => 'Pagos', 
       'icon' => 'icon-dollar-sign', 
