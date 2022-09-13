@@ -146,6 +146,8 @@ class TemplatePedido
 															</table>
 
 															<br>
+															<br>
+															<br>
 														<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 															 <thead>
 																<tr style="width:100%;">
@@ -350,6 +352,10 @@ class TemplatePedido
 															</div>
 															<p><br></p>
 															<p align="center">Este es un correo electrónico generado automáticamente</p>
+															<br>
+															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
+
+															
 														</td>
 													</tr>
 
