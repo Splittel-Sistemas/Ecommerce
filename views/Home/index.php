@@ -218,7 +218,7 @@
                 <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
                 <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
                 <?php }else{ ?>
-                <a class="product-button" href="javascript:(0)">
+                <a class="product-button" href="../Login/" >
                 <?php } ?>
                   <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
                 </a>
