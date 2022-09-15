@@ -44,9 +44,6 @@ var Success = function(response) {
 
   ajax_('../../models/OpenPay/OpenPay.Route.php', 'POST', 'JSON', data, 
   function(response){
-    console.log(response);
-    document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"></div>'
-
     document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
     GlobalOpenModal("modal-3d-secure")
   })
