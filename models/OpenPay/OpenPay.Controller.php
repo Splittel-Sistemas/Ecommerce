@@ -101,7 +101,8 @@ class OpenPayController
                 ];
             } else {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                echo '<scrip> window.location.href = "../Pedido/Incompleto.php"</scrip>';
+                header('Location: ../Pedido/Incompleto.php');
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Pedido/3DSecure/Incompleto.php'; 
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
