@@ -127,7 +127,7 @@ class OpenPayController
                     "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
                 ];
             } else {
-               /*  unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]); */
+                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
              
                 $array = [
                     "completed" => false,
@@ -439,9 +439,9 @@ class OpenPayController
                     $PedidoExiste = $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                     # comprobación si el pedio actual existe
                     if ($PedidoExiste) {
-                       /*  if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
+                        if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                        } */
+                        }
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
                         $OpenPay_->SetParameters($this->Connection, $this->Tool);
