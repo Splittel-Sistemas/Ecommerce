@@ -140,7 +140,7 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
                         $ResultCharge = $OpenPay_->CreateChargeCard($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
-                       /*  if ($ResultCharge->status == 'completed') { */
+                        if ($ResultCharge->status == 'completed') {
                             # guardar información relevante al pedido
                             $PedidoModel->SetMetodoPago('03');
                             $PedidoModel->SetMonedaPago($_POST['monedaPago']);
@@ -207,9 +207,9 @@ class OpenPayController
                             } else {
                                 throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                             }
-                     /*    } else {
+                        } else {
                             throw new Exception("No se pudo generar tu pago de forma correcta, por favor contacta a tu ejecutivo!");
-                        } */
+                        }
                         return $ResultCharge;
                     } else {
                         unset($ClienteModel);
