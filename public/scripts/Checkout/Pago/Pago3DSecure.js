@@ -50,7 +50,7 @@ var Success = function(response) {
 }
 
 var Errorr = function(response) {
-  console.log(response + "Aqui")
+  console.log(response )
   let desc = response.data.description != undefined ? response.data.description : response.message;
   alert("ERROR [" + response.status + "] " + desc);
 }

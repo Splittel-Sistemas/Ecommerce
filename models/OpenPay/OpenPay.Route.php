@@ -44,7 +44,7 @@
                     break;
                 }
             } catch (Exception $e) {
-                echo $this->Tool->Message_return(true, $e->getMessage() . "aquiii", null, true);
+                echo $this->Tool->Message_return(true, $e->getMessage(), null, true);
               
             }
         }
