@@ -101,8 +101,7 @@ class OpenPayController
                 ];
             } else {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                header('Location: ../Pedido/Incompleto.php');
-                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/views/Pedido/3DSecure/Incompleto.php'; 
+                header('Location: ../../views/Pedido/Incompleto.php');
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
