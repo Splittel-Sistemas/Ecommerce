@@ -108,16 +108,9 @@ class OpenPayController
                 ];
             } else if ($result->status == "failed") {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-
-                session_destroy();
-                header("Location: ../Home/");
-                exit();
             }
             return $array;
         } catch (Exception $e) {
-            unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-
-
             throw $e;
         }
     }
