@@ -98,13 +98,12 @@
                 }else if($result->status == "failed"){
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
 
-                    session_destroy($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                    session_destroy();
                 }
                 return $array;
             } catch (Exception $e) {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
 
-                session_destroy($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
 
                 throw $e;
 
