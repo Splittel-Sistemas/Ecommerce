@@ -101,6 +101,8 @@
                 return $array;
             } catch (Exception $e) {
                 throw $e;
+                session_destroy($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+
             }
         }
         public function PagoTarjeta(){
