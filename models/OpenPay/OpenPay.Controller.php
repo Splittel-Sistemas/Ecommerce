@@ -108,9 +108,7 @@ class OpenPayController
                 ];
             } else if ($result->status == "failed") {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                unset($_SESSION['Ecommerce-PedidoKey']);
-                unset($_SESSION['Ecommerce-OpenPayId']);
-                
+                session_destroy();
 
 
             }
