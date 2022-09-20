@@ -44,8 +44,8 @@
                     break;
                 }
             } catch (Exception $e) {
-                echo $this->Tool->Message_return(true, $e->getMessage(), null, true);
-                session_destroy($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                echo $this->Tool->Message_return(true, $e->getMessage() . "aquiii", null, true);
+              
             }
         }
     }
