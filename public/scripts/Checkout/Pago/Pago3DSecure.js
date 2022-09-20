@@ -1,11 +1,7 @@
 OpenPay.setId(OpenPayConfig.setId); 
 OpenPay.setApiKey(OpenPayConfig.setApiKey);
 OpenPay.setSandboxMode(OpenPayConfig.setSandboxMode);
-window.addEventListener('resize', changeScreen);
 
-function changeScreen(e){
-    alert("cambio: " );
-}
 var Success = function(response) {
   let tokenId = response.data.id;
   let deviceSessionId = OpenPay.deviceData.setup();
