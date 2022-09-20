@@ -91,9 +91,9 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal    data-backdrop="static"     data-keyboard="false"   -->
    
-    <div class="modal fade" data-backdrop="static"  id="modal-3d-secure" tabindex="-1" role="dialog"  data-keyboard="false"aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal-3d-secure" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body" id="modal-body-3d-secure">
