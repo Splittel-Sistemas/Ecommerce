@@ -101,7 +101,7 @@ class OpenPayController
                 ];
             } else {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                
+                echo '<scrip> window.location.href = "../Pedido/Incompleto.php"</scrip>';
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
