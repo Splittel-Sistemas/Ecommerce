@@ -107,13 +107,10 @@ class OpenPayController
                     "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
                 ];
             } else if ($result->status == "failed") {
-                $array = [
-                    "completed" => false,
-                    "status" => 'failed',
-                    "message" => "No se a completado la transacción: " . $IdTransaccion
-                    
-                ];
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                unset($_SESSION['Ecommerce-PedidoKey']);
+
+
             }
             return $array;
         } catch (Exception $e) {
