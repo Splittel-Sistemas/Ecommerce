@@ -87,6 +87,33 @@ class OpenPayController
             throw $e;
         }
     }
+  /*   public function ComprobarPago3DSecure($IdTransaccion)
+    {
+        try {
+            $result = $this->GetCharge($IdTransaccion);
+            $array = [
+                "completed" => false,
+                "status" => $result->status,
+                "message" => "No se a completado la transacción: " . $IdTransaccion,
+                "openpay" => [
+                    "url" => $result->payment_method->url
+                ]
+            ];
+            if ($result->status == "completed") {
+                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                $array = [
+                    "completed" => true,
+                    "status" => $result->status,
+                    "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
+                ];
+            } else if ($result->status == "failed") {
+                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+            }
+            return $array;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    } */
     public function ComprobarPago3DSecure($IdTransaccion)
     {
         try {
@@ -100,8 +127,8 @@ class OpenPayController
                     "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
                 ];
             } else {
-                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                header('Location: ../../views/Pedido/Incompleto.php');
+               /*  unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]); */
+             
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
@@ -110,9 +137,10 @@ class OpenPayController
                         "url" => $result->payment_method->url
                     ]
                 ];
-                return $array;
+               
 
             }
+            return $array;
         } catch (Exception $e) {
             throw $e;
         }
