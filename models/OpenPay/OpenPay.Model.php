@@ -199,10 +199,15 @@
 						'email'         => $Cliente->GetEmail()
 					);
 
-					$PedidoMonto = $_POST["monedaPago"] == 'USD' ? $Pedido->GetTotal() : $Pedido->GetTotalMXN();
+					/* $PedidoMonto = $_POST["monedaPago"] == 'USD' ? $Pedido->GetTotal() : $Pedido->GetTotalMXN();
 					$valor= round($PedidoMonto,2);
+					$Amount = strval($valor); */
+					if($_POST['monedaPago'] == 'USD'){
+						$valor= round($Pedido->GetTotal(),2);
+					}else{
+						$valor= round($Pedido->GetTotalMXN(),2);
+					}
 					$Amount = strval($valor);
-
 					$http = $this->Tool->vaidateHttps();
 
 					$chargeData = array(
