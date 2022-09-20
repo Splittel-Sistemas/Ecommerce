@@ -87,7 +87,7 @@ class OpenPayController
             throw $e;
         }
     }
-  /*   public function ComprobarPago3DSecure($IdTransaccion)
+    public function ComprobarPago3DSecure($IdTransaccion)
     {
         try {
             $result = $this->GetCharge($IdTransaccion);
@@ -113,8 +113,8 @@ class OpenPayController
         } catch (Exception $e) {
             throw $e;
         }
-    } */
-    public function ComprobarPago3DSecure($IdTransaccion)
+    }
+  /*   public function ComprobarPago3DSecure($IdTransaccion)
     {
         try {
             $result = $this->GetCharge($IdTransaccion);
@@ -144,7 +144,7 @@ class OpenPayController
         } catch (Exception $e) {
             throw $e;
         }
-    }
+    } */
     public function PagoTarjeta()
     {
         try {
