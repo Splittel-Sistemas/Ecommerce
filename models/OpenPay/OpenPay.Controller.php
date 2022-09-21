@@ -474,11 +474,11 @@ class OpenPayController
                        
                         $OpenPay_->SetDeviceSessionId($_POST['deviceSessionId']);
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
-                        print_r("precode" . $_SESSION['Ecommerce-OpenPayId'] ."+". $_SESSION['Ecommerce-OpenPayPrivateKey'] ."+".$_SESSION['Ecommerce-OpenPayProductionMode']  );
-                        exit();
+                      
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
-                       
+                        print_r("precode" . $_SESSION['Ecommerce-PedidoKey'] ."+". $_SESSION['Ecommerce-PedidoKey']  ."+".$ResultCharge );
+                        exit();
                         if ($ResultCharge->status == 'charge_pending') {
                             # Pedido
                             $PedidoModel = new Pedido_();
