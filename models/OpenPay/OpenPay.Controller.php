@@ -145,7 +145,18 @@ class OpenPayController
                         "url" => $result->payment_method->url
                     ]
                 ];
-               
+                $PedidoModel = new Pedido_();
+                $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+                $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
+                $ResultPedido = $PedidoModel->Update3DCANCEL($_SESSION['Ecommerce-PedidoKey'] );
+
+                if (!$ResultPedido['error']) {
+                    unset($ExistePedido);
+                    unset($PedidoModel);
+                }else {
+                    throw new Exception("No se pudo guardar la información");
+                }
+
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                 unset($_SESSION['Ecommerce-PedidoKey']);
             }

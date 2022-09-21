@@ -231,6 +231,15 @@
         throw $e;
       }
     }
+    public function Update3DCANCEL($id){
+      try {
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET activo = 'no' where id = ".$id."";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
     public function UpdateTipoCambio(){
       try {
         $result = $this->Connection->Exec_store_procedure_json("CALL PedidoTipoCambioActualizar(
