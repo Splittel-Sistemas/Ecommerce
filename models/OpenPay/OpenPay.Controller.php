@@ -458,6 +458,8 @@ class OpenPayController
                     $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                     $PedidoExiste = $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                     # comprobación si el pedio actual existe
+                    print_r($PedidoExiste );
+                    exit();
                     if ($PedidoExiste) {
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
