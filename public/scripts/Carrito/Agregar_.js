@@ -21,13 +21,13 @@ var AgregarArticulo = function(Elem){
 	}, 
 	function(response){
 		if (!response.error) {
-			templateAlert("success", "", "Se agrego correctamente el producto", "topCenter", "icon-check-circle")
+			templateAlert("success", "", "Se agrego correctamente el producto", "CenterRight", "icon-check-circle")
 			if(document.getElementById('ListProductosCarrito')){
 				ListProductosCarrito_()
 			}
 			LisResumenProductosCarrito_()
 		}else{
-			templateAlert("danger", "", response.message, "topCenter", "icon-slash")
+			templateAlert("danger", "", response.message, "CenterRight", "icon-slash")
 		}    
 	})
 }
