@@ -92,10 +92,14 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
       </div>
     </div>
     <!-- Modal    data-backdrop="static"     data-keyboard="false"   -->
-   
-    <div class="modal fade" id="modal-3d-secure"  tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="modal-3d-secure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">SI CIERRA ESTA VENTANA TENDRA QUE INICIAR EL PROCESO DE NUEVIO</h5>
+
+          </div>
           <div class="modal-body" id="modal-body-3d-secure">
 
           </div>
