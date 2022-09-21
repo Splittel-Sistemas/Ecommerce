@@ -1,36 +1,7 @@
 <div class="row">
   <div class="col-md-12 alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-  $(document).bind("contextmenu",function(e) {
- e.preventDefault();
-});
-function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-$(document).keydown(function(e){
-    if(e.which === 123){
-       return false;
-    }
-    if (window.event && window.event.keyCode == 116) {
-
-window.event.keyCode = 505;
-
-}
-
-if (window.event && window.event.keyCode == 505) {
-
-return false;
-
-}
-});
-</script>
+ 
 
     <div class=" col-md-12 ">
       <p class="credit d-flex justify-content-center">Transacciones realizadas vía:</p>
