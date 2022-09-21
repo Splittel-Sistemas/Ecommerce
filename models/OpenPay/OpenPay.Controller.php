@@ -466,12 +466,13 @@ class OpenPayController
                         }  
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
-                        print_r("precode" . $OpenPay_);
-                        exit();
+                      
                         $OpenPay_->SetParameters($this->Connection, $this->Tool);
                         $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                         $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
                         $OpenPay_->SetTokenId($_POST['tokenId']);
+                        print_r("precode" . $_POST['tokenId']);
+                        exit();
                         $OpenPay_->SetDeviceSessionId($_POST['deviceSessionId']);
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
