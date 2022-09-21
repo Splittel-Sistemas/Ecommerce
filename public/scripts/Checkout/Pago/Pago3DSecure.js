@@ -104,7 +104,7 @@ var Expiracion = function(Elem){
 $("#modal-3d-secure").on('hidden.bs.modal', function () {
     ajax_('../../models/OpenPay/OpenPay.Route.php', 'POST', 'JSON', { Action : "ComprobarTransaccion3DSecure", ActionOpenPay : true }, 
     function(response){
-      if(response.completed) window.parent.location.href = "../Cuenta/index.php?menu=4"
-      if(response.status == "failed") window.location.reload()
+      if(response.completed){window.parent.location.href = "../Cuenta/index.php?menu=4"}
+      else {window.location.reload()}
     })
 })
