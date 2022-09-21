@@ -3,6 +3,7 @@ OpenPay.setApiKey(OpenPayConfig.setApiKey);
 OpenPay.setSandboxMode(OpenPayConfig.setSandboxMode);
 
 var Success = function(response) {
+  console.log(response + " successive");
   let tokenId = response.data.id;
   let deviceSessionId = OpenPay.deviceData.setup();
   let monedaPago = getChecked('.monedaPago')
