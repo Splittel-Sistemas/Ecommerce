@@ -217,7 +217,7 @@
 						'device_session_id' => $this->DeviceSessionId,// sessionDev []
 						'customer' => $Customer
 					);
-					print_r($chargeData  );
+					print_r( $this->OpenPayy->charges->create($chargeData));
 					exit();
 					return $this->Charge = $this->OpenPayy->charges->create($chargeData);
 				} catch (OpenpayApiTransactionError $e) {
