@@ -460,11 +460,11 @@ class OpenPayController
                     # comprobación si el pedio actual existe
                    
                     if ($PedidoExiste) {
-                        print_r($_SESSION["Ecommerce-OpenPay-3DSecure-Id"] );
-                        exit();
+                      
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                        }
+                        }  print_r("precode" . $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] );
+                        exit();
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
                         $OpenPay_->SetParameters($this->Connection, $this->Tool);
