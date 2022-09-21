@@ -114,7 +114,7 @@
 					}
 					$this->OpenPayy = Openpay::getInstance($this->Id, $this->PublicKey);
 					Openpay::setProductionMode($this->ProductionMode);
-					$charge = $this->OpenPayy->charges->get($idCharge);
+					$charge = $this->OpenPayy->charges->get($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
 					return $charge;
 
 				} catch (OpenpayApiTransactionError $e) {
