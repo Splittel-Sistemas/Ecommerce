@@ -233,7 +233,7 @@
     }
     public function Update3DCANCEL($id){
       try {
-        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET activo = 'no' where id = ".$id."";
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET activo = 'no' , fecha = '2022-12-31 11:11:11' where id = ".$id."";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         return $result;
       } catch (Exception $e) {
