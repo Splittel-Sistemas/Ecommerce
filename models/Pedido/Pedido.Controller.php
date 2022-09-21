@@ -350,13 +350,13 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
               
 
-                $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $_POST['PedidoKey'];
                 $_SESSION['Ecommerce-PedidoKey'] = $_POST['PedidoKey'];
-                var_dump($_POST);
-                var_dump($_SESSION["Ecommerce-OpenPay-3DSecure-Id"] );
+             
                 $this->filter = "WHERE id =  ".$_SESSION['Ecommerce-PedidoKey']." ";
                 $this->order = "";
                 $Pedido = $this->getBy();
+                $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $Pedido->Key ;
+                var_dump($_SESSION['Ecommerce-OpenPay-3DSecure-Id']);
                 $_SESSION['Ecommerce-CostoEnvio'] =  2;
                 if($Pedido->GetEnvio() == ''){
                     # actualizar tipo de cambio
