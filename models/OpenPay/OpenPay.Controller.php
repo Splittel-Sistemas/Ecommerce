@@ -140,7 +140,7 @@ class OpenPayController
                     ]
                 ];
                
-                
+
             }
             return $array;
         } catch (Exception $e) {
