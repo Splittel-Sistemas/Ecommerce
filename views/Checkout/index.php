@@ -17,12 +17,42 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
   <head>
     <?php
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php';
-    
+
     ?>
+    <script>
+      history.forward()
+      document.onkeydown = function() {
+
+        if (window.event && window.event.keyCode == 116) {
+
+          window.event.keyCode = 505;
+
+        }
+
+        if (window.event && window.event.keyCode == 505) {
+
+          return false;
+
+        }
+
+      }
+      document.onkeydown = function(e) {
+
+        tecla = (document.all) ? e.keyCode : e.which;
+
+        alert(tecla)
+
+        if (tecla = 116) {
+          return false;
+        }
+
+      }
+    </script>
   </head>
   <!-- Body-->
 
   <body>
+
     <!-- Header -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
     <!-- Page Title-->
@@ -41,6 +71,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         </div>
       </div>
     </div>
+
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-2">
       <div class="row">
@@ -98,7 +129,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">SI CIERRA ESTA VENTANA TENDRA QUE INICIAR EL PROCESO DE NUEVIO</h5>
+            <h5 class="modal-title">SI CIERRA ESTA VENTANA TENDRA QUE INICIAR EL PROCESO DE NUEVO</h5>
 
           </div>
           <div class="modal-body" id="modal-body-3d-secure">
@@ -126,6 +157,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/Pago3DSecure.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/PagoCredito.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Checkout/Pago/PagoBanco.js?id=<?php echo rand() ?>"></script>
+
   </body>
 
   </html>
