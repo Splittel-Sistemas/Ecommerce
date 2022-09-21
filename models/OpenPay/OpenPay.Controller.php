@@ -129,7 +129,7 @@ class OpenPayController
             } else {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                 unset($_SESSION['Ecommerce-PedidoKey']);
-                header("Location: ../../views/Home/");
+                echo "<script type='text/javascript'>location.reload()</script>";
                 
                 $array = [
                     "completed" => false,
