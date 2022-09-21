@@ -127,9 +127,10 @@ class OpenPayController
                     "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
                 ];
             } else {
-               /*  unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]); */
+                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                 unset($_SESSION['Ecommerce-PedidoKey']);
-               
+                header("Location: ../../views/Home/");
+                
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
