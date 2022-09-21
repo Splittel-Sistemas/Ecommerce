@@ -471,10 +471,11 @@ class OpenPayController
                         $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                         $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
                         $OpenPay_->SetTokenId($_POST['tokenId']);
-                        print_r("precode" . $_POST['tokenId']);
-                        exit();
+                       
                         $OpenPay_->SetDeviceSessionId($_POST['deviceSessionId']);
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
+                        print_r("precode" . $_SESSION['Ecommerce-OpenPayId'] ."+". $_SESSION['Ecommerce-OpenPayPrivateKey'] ."+".$_SESSION['Ecommerce-OpenPayProductionMode']  );
+                        exit();
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
                        
