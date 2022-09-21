@@ -19,10 +19,13 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php';
 
     ?>
-    <script>
-      
-      $(document).ready(function() {
-            function disableBack() {
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).bind("contextmenu",function(e) {
+ e.preventDefault();
+});
+function disableBack() {
                 window.history.forward()
             }
             window.onload = disableBack();
@@ -30,24 +33,23 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
                 if (e.persisted)
                     disableBack();
             }
-            history.forward()
-      document.onkeydown = function() {
+$(document).keydown(function(e){
+    if(e.which === 123){
+       return false;
+    }
+    if (window.event && window.event.keyCode == 116) {
 
-        if (window.event && window.event.keyCode == 116) {
+window.event.keyCode = 505;
 
-          window.event.keyCode = 505;
+}
 
-        }
+if (window.event && window.event.keyCode == 505) {
 
-        if (window.event && window.event.keyCode == 505) {
+return false;
 
-          return false;
-
-        }
-
-      }
-        });
-    </script>
+}
+});
+</script>
   </head>
   <!-- Body-->
 
