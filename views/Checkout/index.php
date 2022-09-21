@@ -36,17 +36,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         }
 
       }
-      document.onkeydown = function(e) {
-
-        tecla = (document.all) ? e.keyCode : e.which;
-
-        
-
-        if (tecla = 116) {
-          return false;
-        }
-
-      }
+     
     </script>
   </head>
   <!-- Body-->
