@@ -64,8 +64,8 @@ class OpenPayController
             }
             throw new Exception("ERROR en la transacción: No se guardo Log");
         } catch (OpenpayApiRequestError $e) {
-            if ($this->openPayExeption($e, "ERROR en la petición:")) {
-                throw new Exception("ERROR en la petición:");
+            if ($this->openPayExeption($e, "ERROR en la petición1:")) {
+                throw new Exception("ERROR en la petición1:");
             }
             throw new Exception("ERROR en la petición: No se guardo Log");
         } catch (OpenpayApiConnectionError $e) {
@@ -272,8 +272,8 @@ class OpenPayController
             }
             throw new Exception("ERROR en la transacción: No se guardo Log");
         } catch (OpenpayApiRequestError $e) {
-            if ($this->openPayExeption($e, "ERROR en la petición:")) {
-                throw new Exception("ERROR en la petición:");
+            if ($this->openPayExeption($e, "ERROR en la petición3:")) {
+                throw new Exception("ERROR en la petición3:");
             }
             throw new Exception("ERROR en la petición: No se guardo Log");
         } catch (OpenpayApiConnectionError $e) {
@@ -562,8 +562,8 @@ class OpenPayController
             }
             throw new Exception("ERROR en la transacción: No se guardo Log");
         } catch (OpenpayApiRequestError $e) {
-            if ($this->openPayExeption($e, "ERROR en la petición:")) {
-                throw new Exception("ERROR en la petición:");
+            if ($this->openPayExeption($e, "ERROR en la petición:2")) {
+                throw new Exception("ERROR en la petición:2");
             }
             throw new Exception("ERROR en la petición: No se guardo Log");
         } catch (OpenpayApiConnectionError $e) {
