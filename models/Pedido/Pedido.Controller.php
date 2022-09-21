@@ -346,16 +346,13 @@ class PedidoController{
         }
     }
     public function CuentaCotizacion(){
+        /*  unset($_SESSION['Ecommerce-PedidoKey']); */
         try {
             if (!$this->Connection->conexion()->connect_error) {
-              
-
                 $_SESSION['Ecommerce-PedidoKey'] = $_POST['PedidoKey'];
-             
                 $this->filter = "WHERE id =  ".$_SESSION['Ecommerce-PedidoKey']." ";
                 $this->order = "";
                 $Pedido = $this->getBy();
-               /*  $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $Pedido->GetKey() ; */
                 $_SESSION['Ecommerce-CostoEnvio'] =  2;
                 if($Pedido->GetEnvio() == ''){
                     # actualizar tipo de cambio
@@ -378,6 +375,7 @@ class PedidoController{
                     $_SESSION['Ecommerce-CostoEnvio'] =  1;
                     return $this->Tool->Message_return(false,  "Pedido", null, false);
                 }
+                unset($_SESSION['Ecommerce-PedidoKey']);
             }else{
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
