@@ -17,6 +17,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
   <head>
     <?php
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php';
+    print_r($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
     ?>
   </head>
   <!-- Body-->
