@@ -49,7 +49,6 @@ class OpenPayController
     {
         try {
             if (!$this->Connection->conexion()->connect_error) {
-                var_dump($id);
                 $OpenPay_ =  new OpenPay_();
                 $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                 $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
