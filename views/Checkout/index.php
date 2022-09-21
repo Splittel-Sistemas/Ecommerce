@@ -20,36 +20,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
 
     ?>
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-  $(document).bind("contextmenu",function(e) {
- e.preventDefault();
-});
-function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-$(document).keydown(function(e){
-    if(e.which === 123){
-       return false;
-    }
-    if (window.event && window.event.keyCode == 116) {
-
-window.event.keyCode = 505;
-
-}
-
-if (window.event && window.event.keyCode == 505) {
-
-return false;
-
-}
-});
-</script>
+ 
   </head>
   <!-- Body-->
 
