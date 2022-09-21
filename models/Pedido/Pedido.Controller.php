@@ -355,7 +355,7 @@ class PedidoController{
                 $this->filter = "WHERE id =  ".$_SESSION['Ecommerce-PedidoKey']." ";
                 $this->order = "";
                 $Pedido = $this->getBy();
-                $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $Pedido->Key ;
+                $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $Pedido->GetKey() ;
                 $_SESSION['Ecommerce-CostoEnvio'] =  2;
                 if($Pedido->GetEnvio() == ''){
                     # actualizar tipo de cambio
