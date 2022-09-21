@@ -463,8 +463,7 @@ class OpenPayController
                       
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                        }  print_r("precode" . $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] );
-                        exit();
+                        }  
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
                         $OpenPay_->SetParameters($this->Connection, $this->Tool);
@@ -475,7 +474,8 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
-                       
+                        print_r("precode" . $ResultCharge);
+                        exit();
                         if ($ResultCharge->status == 'charge_pending') {
                             # Pedido
                             $PedidoModel = new Pedido_();
