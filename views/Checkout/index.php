@@ -40,7 +40,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
 
         tecla = (document.all) ? e.keyCode : e.which;
 
-        alert(tecla)
+        
 
         if (tecla = 116) {
           return false;
