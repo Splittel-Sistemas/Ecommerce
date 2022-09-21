@@ -348,6 +348,7 @@ class PedidoController{
     public function CuentaCotizacion(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
+                $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $_POST['PedidoKey'];
                 $_SESSION['Ecommerce-PedidoKey'] = $_POST['PedidoKey'];
                 $this->filter = "WHERE id =  ".$_SESSION['Ecommerce-PedidoKey']." ";
                 $this->order = "";
