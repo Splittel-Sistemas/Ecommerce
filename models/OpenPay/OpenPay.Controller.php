@@ -458,9 +458,9 @@ class OpenPayController
                     $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                     $PedidoExiste = $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                     # comprobación si el pedio actual existe
-                    print_r($PedidoExiste );
-                    exit();
+                   
                     if ($PedidoExiste) {
+                       
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                         }
@@ -474,6 +474,8 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
+                        print_r($ResultCharge );
+                        exit();
                         if ($ResultCharge->status == 'charge_pending') {
                             # Pedido
                             $PedidoModel = new Pedido_();
