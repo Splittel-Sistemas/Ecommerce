@@ -59,8 +59,8 @@ class OpenPayController
                 throw new Exception("No hay datos maestros por favor contacta con tu ejecutivo!", 1);
             }
         } catch (OpenpayApiTransactionError $e) {
-            if ($this->openPayExeption($e, "ERROR en la transacción:")) {
-                throw new Exception("ERROR en la transacción:");
+            if ($this->openPayExeption($e, "ERROR en la transacción1:")) {
+                throw new Exception("ERROR en la transacción1:");
             }
             throw new Exception("ERROR en la transacción: No se guardo Log");
         } catch (OpenpayApiRequestError $e) {
@@ -568,8 +568,8 @@ class OpenPayController
                 throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
             }
         } catch (OpenpayApiTransactionError $e) {
-            if ($this->openPayExeption($e, "ERROR en la transacción:")) {
-                throw new Exception("ERROR en la transacción:");
+            if ($this->openPayExeption($e, "ERROR en la transacción2:")) {
+                throw new Exception("ERROR en la transacción2:");
             }
             throw new Exception("ERROR en la transacción: No se guardo Log");
         } catch (OpenpayApiRequestError $e) {
