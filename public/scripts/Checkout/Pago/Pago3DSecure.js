@@ -44,7 +44,6 @@ var Success = function(response) {
 
   ajax_('../../models/OpenPay/OpenPay.Route.php', 'POST', 'JSON', data, 
   function(response){
-    console.log(response.data + "Aqio"+ response);
     document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
     GlobalOpenModal("modal-3d-secure")
   })
@@ -102,10 +101,10 @@ var Expiracion = function(Elem){
   document.getElementById("exp_year").value = res[1]
 }
 
-/* $("#modal-3d-secure").on('hidden.bs.modal', function () {
+$("#modal-3d-secure").on('hidden.bs.modal', function () {
     ajax_('../../models/OpenPay/OpenPay.Route.php', 'POST', 'JSON', { Action : "ComprobarTransaccion3DSecure", ActionOpenPay : true }, 
     function(response){
       if(response.completed) window.parent.location.href = "../Cuenta/index.php?menu=4"
       if(response.status == "failed") window.location.reload()
     })
-}) */
+})
