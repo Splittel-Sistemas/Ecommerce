@@ -46,10 +46,10 @@ var Success = function(response) {
   function(response){
     console.log(response);
    
-    if(response.completed){
+
      document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
-    GlobalOpenModal("modal-3d-secure")}
-    else{window.parent.location.href = "../Home/index.php"}
+    GlobalOpenModal("modal-3d-secure")
+    if(response.error) {window.parent.location.href = "../Home/index.php"}
   })
 }
 
