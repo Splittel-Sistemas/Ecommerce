@@ -37,6 +37,7 @@
                     case 'ComprobarTransaccion3DSecure':
                         $OpenPayController = new OpenPayController();
                         $Result = $OpenPayController->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                        var_dump($Result);
                         echo json_encode($Result, JSON_UNESCAPED_UNICODE);
                     break;
                     default:
