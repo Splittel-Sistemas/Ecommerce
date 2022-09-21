@@ -356,7 +356,6 @@ class PedidoController{
                 $this->order = "";
                 $Pedido = $this->getBy();
                 $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] = $Pedido->Key ;
-                var_dump($_SESSION['Ecommerce-OpenPay-3DSecure-Id']);
                 $_SESSION['Ecommerce-CostoEnvio'] =  2;
                 if($Pedido->GetEnvio() == ''){
                     # actualizar tipo de cambio
