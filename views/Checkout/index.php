@@ -20,7 +20,17 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
 
     ?>
     <script>
-      history.forward()
+      
+      $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+            history.forward()
       document.onkeydown = function() {
 
         if (window.event && window.event.keyCode == 116) {
@@ -36,7 +46,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         }
 
       }
-     
+        });
     </script>
   </head>
   <!-- Body-->
