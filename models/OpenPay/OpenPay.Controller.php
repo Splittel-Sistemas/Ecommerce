@@ -129,7 +129,7 @@ class OpenPayController
             } else {
                 unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                 unset($_SESSION['Ecommerce-PedidoKey']);
-                unset($_SESSION['Ecommerce-ClienteKey']);
+               
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
