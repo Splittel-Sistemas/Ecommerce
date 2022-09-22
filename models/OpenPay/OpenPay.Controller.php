@@ -120,11 +120,6 @@ class OpenPayController
             $result = $this->GetCharge($IdTransaccion);
 
           
-            $PedidoModel = new Pedido_();
-            $PedidoModel->SetParameters($this->Connection,  $this->Tool);
-            $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
-              
-            if ( $result->amount ==   $PedidoModel->GetTotalMXN()) {
                 if ($result->status == "completed") {
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     $array = [
@@ -138,10 +133,10 @@ class OpenPayController
 
                     $array = [
                         "completed" => false,
-                        "status" => $result->status,
-                        "message" => "No se a completado la transacción: " . $IdTransaccion,
+                        "status" => 'failed',
+                        "message" => "No se a completado la transacción: los montos no coinciden" . $IdTransaccion,
                         "openpay" => [
-                            "url" => $result->payment_method->url
+                            "url" => ''
                         ]
                     ];
                     $PedidoModel = new Pedido_();
@@ -159,34 +154,7 @@ class OpenPayController
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     unset($_SESSION['Ecommerce-PedidoKey']);
                 }
-            } else {
-
-
-
-                $array = [
-                    "completed" => false,
-                    "status" => 'failed',
-                    "message" => "No se a completado la transacción: los montos no coinciden" . $IdTransaccion,
-                    "openpay" => [
-                        "url" => ''
-                    ]
-                ];
-                $PedidoModel = new Pedido_();
-                $PedidoModel->SetParameters($this->Connection,  $this->Tool);
-                $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
-                $ResultPedido = $PedidoModel->Update3DCANCEL($_SESSION['Ecommerce-PedidoKey']);
-
-                if (!$ResultPedido['error']) {
-                    unset($ExistePedido);
-                    unset($PedidoModel);
-                } else {
-                    throw new Exception("No se pudo guardar la información");
-                }
-
-                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                unset($_SESSION['Ecommerce-PedidoKey']);
-                throw new Exception("No se pudo guardar la información");
-            }
+           
             return $array;
         } catch (Exception $e) {
             throw $e;
