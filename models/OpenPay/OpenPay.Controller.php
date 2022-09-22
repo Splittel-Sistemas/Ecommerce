@@ -153,6 +153,7 @@ class OpenPayController
 
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     unset($_SESSION['Ecommerce-PedidoKey']);
+                    throw new Exception("No se pudo guardar la información");
                 }
            
             return $array;
