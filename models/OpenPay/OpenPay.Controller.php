@@ -131,7 +131,7 @@ class OpenPayController
             $PedidoModel->SetParameters($this->Connection,  $this->Tool);
             $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
 
-            if (  $result->amount ==   $PedidoModel->Gettotal_openpay()) {
+            if ($result->amount ==   $PedidoModel->PedidoTotalMXN) {
                 if ($result->status == "completed") {
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     $array = [
@@ -529,7 +529,7 @@ class OpenPayController
                             }
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
-                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id ,$ResultCharge->amount );
+                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount);
 
                             $ResultPedido = $PedidoModel->Update3DSecure();
                             if (!$ResultPedido['error']) {
