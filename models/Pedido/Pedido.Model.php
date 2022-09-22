@@ -13,12 +13,16 @@
     public $PedidoIvaMXN;
     public $PedidoTotalMXN;
     public $Envio;
+    public $id_openpay;
+
     public $Fecha;
     public $FechaMas10Dias;
     public $Activo;
     public $Estatus;
     public $MetodoPago;
     public $MonedaPago;
+   
+
     public $DatosEnvioKey;
     public $DatosFacturacionKey;
     public $Numeroguia;
@@ -125,6 +129,8 @@
       return $this->TotalMXN;
     }public function GetEnvio(){
       return $this->Envio;
+    }public function Getid_openpay(){
+      return $this->id_openpay;
     }public function GetFecha(){
       return $this->Fecha;
     }public function GetFechaMas10Dias(){
@@ -234,6 +240,15 @@
     public function Update3DCANCEL($id){
       try {
         $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET activo = 'no' , fecha = '2022-05-31 11:11:11' where id = ".$id."";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+    public function Updateid_openpay($id,$datos){
+      try {
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = ".$datos."  where id = ".$id."";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         return $result;
       } catch (Exception $e) {
@@ -381,6 +396,8 @@
           $this->NombrePaqueteria       =   $row->nombre_paqueteria; 
           $this->FechaRecibido          =   $row->fecha_recibio_paquete; 
           $this->Recibio                =   $row->recibio; 
+          $this->id_openpay                =   $row->id_openpay; 
+
           $data = true;
         }
         return $data;
