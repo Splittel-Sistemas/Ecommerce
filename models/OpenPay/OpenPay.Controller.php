@@ -87,7 +87,7 @@ class OpenPayController
             throw $e;
         }
     }
-   /*  public function ComprobarPago3DSecure($IdTransaccion)
+    /*  public function ComprobarPago3DSecure($IdTransaccion)
     {
         try {
             $result = $this->GetCharge($IdTransaccion);
@@ -118,6 +118,7 @@ class OpenPayController
     {
         try {
             $result = $this->GetCharge($IdTransaccion);
+
             $array = [
                 "completed" => false,
                 "status" => $result->status,
@@ -126,17 +127,49 @@ class OpenPayController
                     "url" => $result->payment_method->url
                 ]
             ];
-            if ($result->status == "completed") {
-                unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                $array = [
-                    "completed" => true,
-                    "status" => $result->status,
-                    "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
-                ];
+            $PedidoModel = new Pedido_();
+            $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+            $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
+
+            if (  $result->amount ==   $PedidoModel->Gettotal_openpay()) {
+                if ($result->status == "completed") {
+                    unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                    $array = [
+                        "completed" => true,
+                        "status" => $result->status,
+                        "message" => "transacción : " . $IdTransaccion . " completada exitosamente "
+                    ];
+                } else {
+
+
+
+                    $array = [
+                        "completed" => false,
+                        "status" => $result->status,
+                        "message" => "No se a completado la transacción: " . $IdTransaccion,
+                        "openpay" => [
+                            "url" => $result->payment_method->url
+                        ]
+                    ];
+                    $PedidoModel = new Pedido_();
+                    $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+                    $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
+                    $ResultPedido = $PedidoModel->Update3DCANCEL($_SESSION['Ecommerce-PedidoKey']);
+
+                    if (!$ResultPedido['error']) {
+                        unset($ExistePedido);
+                        unset($PedidoModel);
+                    } else {
+                        throw new Exception("No se pudo guardar la información");
+                    }
+
+                    unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
+                    unset($_SESSION['Ecommerce-PedidoKey']);
+                }
             } else {
-               
-             
-                
+
+
+
                 $array = [
                     "completed" => false,
                     "status" => $result->status,
@@ -148,12 +181,12 @@ class OpenPayController
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                 $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
-                $ResultPedido = $PedidoModel->Update3DCANCEL($_SESSION['Ecommerce-PedidoKey'] );
+                $ResultPedido = $PedidoModel->Update3DCANCEL($_SESSION['Ecommerce-PedidoKey']);
 
                 if (!$ResultPedido['error']) {
                     unset($ExistePedido);
                     unset($PedidoModel);
-                }else {
+                } else {
                     throw new Exception("No se pudo guardar la información");
                 }
 
@@ -458,26 +491,26 @@ class OpenPayController
                     $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                     $PedidoExiste = $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                     # comprobación si el pedio actual existe
-                   
+
                     if ($PedidoExiste) {
-                      
+
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
-                        }  
+                        }
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
-                      
+
                         $OpenPay_->SetParameters($this->Connection, $this->Tool);
                         $OpenPay_->SetId($_SESSION['Ecommerce-OpenPayId']);
                         $OpenPay_->SetPublicKey($_SESSION['Ecommerce-OpenPayPrivateKey']);
                         $OpenPay_->SetTokenId($_POST['tokenId']);
-                       
+
                         $OpenPay_->SetDeviceSessionId($_POST['deviceSessionId']);
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
-                        
+
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
-                       
+
                         if ($ResultCharge->status == 'charge_pending') {
                             # Pedido
                             $PedidoModel = new Pedido_();
@@ -496,7 +529,7 @@ class OpenPayController
                             }
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
-                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'],$ResultCharge->id);
+                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id ,$ResultCharge->amount );
 
                             $ResultPedido = $PedidoModel->Update3DSecure();
                             if (!$ResultPedido['error']) {

@@ -14,6 +14,7 @@
     public $PedidoTotalMXN;
     public $Envio;
     public $id_openpay;
+    public $total_openpay;
 
     public $Fecha;
     public $FechaMas10Dias;
@@ -131,6 +132,8 @@
       return $this->Envio;
     }public function Getid_openpay(){
       return $this->id_openpay;
+    }public function Gettotal_openpay(){
+      return $this->total_openpay;
     }public function GetFecha(){
       return $this->Fecha;
     }public function GetFechaMas10Dias(){
@@ -246,9 +249,9 @@
         throw $e;
       }
     }
-    public function Updateid_openpay($id,$datos){
+    public function Updateid_openpay($id,$datos,$total){
       try {
-        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = '$datos'  where id = ".$id."";
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = '$datos' ,total_openpay ='$total'  where id = ".$id."";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         return $result;
       } catch (Exception $e) {
@@ -397,6 +400,8 @@
           $this->FechaRecibido          =   $row->fecha_recibio_paquete; 
           $this->Recibio                =   $row->recibio; 
           $this->id_openpay                =   $row->id_openpay; 
+          $this->total_openpay                =   $row->total_openpay; 
+
 
           $data = true;
         }
