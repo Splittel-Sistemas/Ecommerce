@@ -55,7 +55,8 @@ if (!class_exists("Connection")) {
                 $Pedido_->SetNombrePaqueteria('DHL');
               }else if($ResultReordGetOrderInprocesID->Paqueteria == 14
                     || $ResultReordGetOrderInprocesID->Paqueteria == 15
-                    || $ResultReordGetOrderInprocesID->Paqueteria == 16){ // PAQUETE EXPRESS
+                    || $ResultReordGetOrderInprocesID->Paqueteria == 16
+                    || $ResultReordGetOrderInprocesID->Paqueteria == 27){ // PAQUETE EXPRESS
                 $Pedido_->SetNombrePaqueteria('PAQEXPRESS');
               }
               $Pedido_->PedidoAgregarNumeroGuia();
