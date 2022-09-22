@@ -102,6 +102,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
+          <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Cerrar</button>
             <h5 class="modal-title">SI CIERRA ESTA VENTANA TENDRA QUE INICIAR EL PROCESO DE NUEVO</h5>
 
           </div>
