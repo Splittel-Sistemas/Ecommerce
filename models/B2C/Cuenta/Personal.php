@@ -93,7 +93,7 @@
             $Personal->PersonalPassword           = $row->password;
             $Personal->PersonalEmail              = $row->email;
             $Personal->PersonalFechaRegistro      = $row->fecha_registro;
-            $Personal->PersonalTipoCliente        = $row->tipo;
+            $Personal->PersonalTipoCliente        = $row->tipo_cliente;
             $Personal->PersonalCardcode           = $row->cardcode_b2c;
             $Personal->PersonalSociedad           = $row->sociedad_b2c;
             $Personal->PersonalPasswordEcommerce  = $row->password_b2c;
