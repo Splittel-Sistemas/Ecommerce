@@ -130,8 +130,7 @@ class OpenPayController
             $PedidoModel = new Pedido_();
             $PedidoModel->SetParameters($this->Connection,  $this->Tool);
             $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
-                print_r($result->amount ." == " . $PedidoModel->GetTotalMXN());
-                exit;
+              
             if ( $result->amount ==   $PedidoModel->GetTotalMXN()) {
                 if ($result->status == "completed") {
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
