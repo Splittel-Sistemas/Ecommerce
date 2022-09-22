@@ -496,7 +496,7 @@ class OpenPayController
                             }
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
-                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id);
+                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey']);
 
                             $ResultPedido = $PedidoModel->Update3DSecure();
                             if (!$ResultPedido['error']) {

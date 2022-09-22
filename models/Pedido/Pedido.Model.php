@@ -246,9 +246,9 @@
         throw $e;
       }
     }
-    public function Updateid_openpay($id,$datos){
+    public function Updateid_openpay($id){
       try {
-        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = ".$datos."  where id = ".$id."";
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = 'fgfg'  where id = ".$id."";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         return $result;
       } catch (Exception $e) {
