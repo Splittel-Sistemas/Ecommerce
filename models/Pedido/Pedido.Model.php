@@ -400,6 +400,7 @@
           $this->FechaRecibido          =   $row->fecha_recibio_paquete; 
           $this->Recibio                =   $row->recibio; 
           $this->id_openpay                =   $row->id_openpay; 
+          $this->total_openpay                =   $row->total_openpay; 
         
 
 

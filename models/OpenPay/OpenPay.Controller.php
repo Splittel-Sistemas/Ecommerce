@@ -117,6 +117,10 @@ class OpenPayController
     public function ComprobarPago3DSecure($IdTransaccion)
     {
         try {
+            $PedidoModel = new Pedido_();
+            $PedidoModel->SetParameters($this->Connection,  $this->Tool);
+            $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
+            if ( $PedidoModel->Gettotal_openpay() ==   $PedidoModel->GetTotalMXN()) {
             $result = $this->GetCharge($IdTransaccion);
 
             $array = [
@@ -127,11 +131,9 @@ class OpenPayController
                     "url" => $result->payment_method->url
                 ]
             ];
-            $PedidoModel = new Pedido_();
-            $PedidoModel->SetParameters($this->Connection,  $this->Tool);
-            $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
+          
               
-            if ( $result->amount ==   $PedidoModel->GetTotalMXN()) {
+           
                 if ($result->status == "completed") {
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     $array = [
