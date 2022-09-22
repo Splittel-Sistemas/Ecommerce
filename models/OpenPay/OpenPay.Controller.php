@@ -169,15 +169,15 @@ class OpenPayController
                     unset($_SESSION['Ecommerce-PedidoKey']);
                 }
             } else {
-                $result = $this->GetCharge($IdTransaccion);
+              
 
 
                 $array = [
                     "completed" => false,
-                    "status" => $result->status,
+                    "status" => 'failed',
                     "message" => "No se a completado la transacción: los montos no coinciden" . $IdTransaccion,
                     "openpay" => [
-                        "url" => $result->payment_method->url
+                        "url" => ''
                     ]
                 ];
                 $PedidoModel = new Pedido_();
