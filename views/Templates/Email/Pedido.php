@@ -182,13 +182,13 @@ class TemplatePedido
 				$PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
-				/* $DatosFacturacionController = new DatosFacturacionController();
-				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosFacturacionController = new DatosFacturacionController();
+				$DatosFacturacionController->filter = "WHERE id_cliente = " . $Pedido->ClienteKey . " LIMIT 1 ";
 				$DatosFacturacionController->order = "";
-				$ResultDatosFacturacionController = $DatosFacturacionController->get(); */
+				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
-				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span></td>' : '';
 
 
 
@@ -196,7 +196,7 @@ class TemplatePedido
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
 				$DatosEnvioController = new DatosEnvioController();
-				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $Pedido->ClienteKey . " LIMIT 1 ";
 				$DatosEnvioController->order = "";
 				$ResultDatosEnvioController = $DatosEnvioController->get();
 				/* DATOS DE ENVIO DE SAP */
@@ -237,7 +237,7 @@ class TemplatePedido
 				/* FIN DATOS DE FACTURACION*/
 
 				$html .= '				<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span></td>
 														' . $nombrefactura . '
 														<td style="margin-bottom: 2px; text-align: left max-width:20%;">' . $Pedido->Paqueteria . '</span></td>
 
@@ -262,16 +262,16 @@ class TemplatePedido
 				/* datos de facturacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
-					/* if (!empty($Pedido->DatosFacturacionKey)) {
+
+					if (!empty($Pedido->DatosFacturacionKey)) {
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
-					} else {$html .= '';};
-						 */
-					
+					} else {
+						$html .= '';
+					};
 				} else {
 					if (!empty($Pedido->DatosFacturacionKey)) {
 
@@ -314,11 +314,10 @@ class TemplatePedido
 
 					if (!empty($Pedido->DatosFacturacionKey)) {
 
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
 
-					/* 	foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
-						} */
+						}
 					} else {
 						$html .= '';
 					};
