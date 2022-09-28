@@ -186,10 +186,15 @@ var addViewCheckout = function (Elem) {
   $(".completado").prepend('<i class="icon-check-circle"></i>');
   $(".PartialCheckout").css("display", "none");
   document.getElementById("PartialCheckout-" + number).style.display = "block";
+  if(number == 3){
+    datosViewResumenCheckoutPedido();
+    validateCreditAvailable();
+  }
 
   if (number == 4) {
     datosViewResumenCheckoutPedido();
   }
+
 };
 /**
  * mostrar CFDIUser escenario B2C
@@ -220,10 +225,15 @@ var facturacionBb2MXP = function (Elem) {
   // metodo pago por linea de credito solo si es cliente B2B
   if (Elem.getAttribute("cliente") == "B2B") {
     if (Elem.value == "MXP") {
-      document.getElementById("credito-cliente-b2b").style.display = "none";
-      document.getElementById("lineaCredito").checked = false;
+      if(document.getElementById("credito-cliente-b2b"))
+        document.getElementById("credito-cliente-b2b").style.display = "none";
+      if(document.getElementById("lineaCredito"))
+        document.getElementById("lineaCredito").checked = false;
+   
     } else {
-      document.getElementById("credito-cliente-b2b").style.display = "block";
+      validateCreditAvailable(Elem)
+      if(document.getElementById("credito-cliente-b2b"))
+        document.getElementById("credito-cliente-b2b").style.display = "block";
     }
   }
   // metodo pago por banco
@@ -233,4 +243,28 @@ var facturacionBb2MXP = function (Elem) {
     document.getElementById("metodo-pago-banco").style.display = "none";
     document.getElementById("pagoBanco").checked = false;
   }
+};
+/**
+ * mostrar valida el credito disponible
+ *
+ * @param {Object} opt - Foo
+ *
+ * @return {number} b - Bar
+ */
+ var validateCreditAvailable = function () {
+
+  let monedaPago = getChecked(".monedaPago");
+
+  ajax_(
+    "../../views/Checkout/Credito.php",
+    "POST",
+    "HTML",
+    {
+      monedaPago: monedaPago,
+    },
+    function (response) {
+      document.getElementById("CreditValid").innerHTML = response;
+
+    }
+  );
 };

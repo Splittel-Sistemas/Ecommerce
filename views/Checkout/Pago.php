@@ -200,10 +200,14 @@
     if (!class_exists("GetBussinesPartnerController")) {
       include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/GetBussinesPartner.Controller.php';
     }
+    if (!class_exists("ValidCreditController")) {
+      include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/ValidCredit.Controller.php';
+    }
+
     if (!class_exists("Functions_tools")) {
       include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
     }
-
+    /*
     try {
       $GetBussinesPartnerController = new GetBussinesPartnerController();
       $resultGetBussinesPartnerController = $GetBussinesPartnerController->get();
@@ -212,10 +216,24 @@
     } catch (Exception $e) {
       $ErrorCode = -100;
     }
+    */
+    /*
+    try {
+      $ValidCreditController = new ValidCreditController();
+      $resultValidCreditController = $ValidCreditController->GetValidCredit(1999.99,$_POST["monedaPago"],$_SESSION['Ecommerce-WS-CurrencyRate']);
+      $ErrorCode = $resultValidCreditController->ValidCreditResult->ErrorCode;
+      $ErrorDescription = $resultValidCreditController->ValidCreditResult->ErrorDescription;
+    } catch (Exception $e) {
+      $ErrorCode = -100;
+    }
 
     if ($ErrorCode == 0) {
       $clienteCredito = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->CreditLine;
+      */
     ?>
+    <div id="CreditValid">
+    </div>
+    <!--
       <div class="card" id="credito-cliente-b2b">
         <div class="card-header" role="tab">
           <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a></h6>
@@ -234,8 +252,9 @@
           </div>
         </div>
       </div>
+    -->
   <?php
-    }
+   // }
   }
   unset($GetBussinesPartnerController);
   unset($resultGetBussinesPartnerController);
