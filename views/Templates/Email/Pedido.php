@@ -179,13 +179,13 @@ class TemplatePedido
 					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
 				}
 
-				$PedidoController = new PedidoController;
+				/* $PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
 				$DatosFacturacionController = new DatosFacturacionController();
 				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosFacturacionController->order = "";
-				$ResultDatosFacturacionController = $DatosFacturacionController->get();
+				$ResultDatosFacturacionController = $DatosFacturacionController->get(); */
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
 				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
@@ -262,16 +262,16 @@ class TemplatePedido
 				/* datos de facturacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-
-					if (!empty($Pedido->DatosFacturacionKey)) {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
+					/* if (!empty($Pedido->DatosFacturacionKey)) {
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
-					} else {
-						$html .= '';
-					};
+					} else {$html .= '';};
+						 */
+					
 				} else {
 					if (!empty($Pedido->DatosFacturacionKey)) {
 
@@ -314,10 +314,11 @@ class TemplatePedido
 
 					if (!empty($Pedido->DatosFacturacionKey)) {
 
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></span></td>';
 
-						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+					/* 	foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
-						}
+						} */
 					} else {
 						$html .= '';
 					};
