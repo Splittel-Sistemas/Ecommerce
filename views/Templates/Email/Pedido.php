@@ -183,12 +183,12 @@ class TemplatePedido
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
 				$DatosFacturacionController = new DatosFacturacionController();
-				$DatosFacturacionController->filter = "WHERE id_cliente = " . $Pedido->ClienteKey . " LIMIT 1 ";
+				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosFacturacionController->order = "";
 				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
-				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span></td>' : '';
+				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
 
 
 
@@ -196,7 +196,7 @@ class TemplatePedido
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
 				$DatosEnvioController = new DatosEnvioController();
-				$DatosEnvioController->filter = "WHERE id_cliente = " . $Pedido->ClienteKey . " LIMIT 1 ";
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosEnvioController->order = "";
 				$ResultDatosEnvioController = $DatosEnvioController->get();
 				/* DATOS DE ENVIO DE SAP */
@@ -237,7 +237,7 @@ class TemplatePedido
 				/* FIN DATOS DE FACTURACION*/
 
 				$html .= '				<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span></td>
+														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
 														' . $nombrefactura . '
 														<td style="margin-bottom: 2px; text-align: left max-width:20%;">' . $Pedido->Paqueteria . '</span></td>
 
