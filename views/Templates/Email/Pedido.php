@@ -179,10 +179,10 @@ class TemplatePedido
 					$descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
 				}
 
-				/* $PedidoController = new PedidoController;
+				$PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
-				$DatosFacturacionController = new DatosFacturacionController();
+				/* $DatosFacturacionController = new DatosFacturacionController();
 				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosFacturacionController->order = "";
 				$ResultDatosFacturacionController = $DatosFacturacionController->get(); */
