@@ -54,6 +54,10 @@ class PedidoController{
                     if($ClienteExiste){
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
+                        $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
+                        $_SESSION['Ecommerce-ClienteTipo'] = $pedido->Tipo;
+                        $_SESSION['Ecommerce-ClienteNombre'] = $pedido->Nombre." ".$pedido->Apellidos ;
+
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();
                         $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
