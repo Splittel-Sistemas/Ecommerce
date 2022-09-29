@@ -19,7 +19,7 @@
         
         <label>Fecha de solicitud <strong class="text-danger">*</strong></label>
    
-          <input class="form-control" type="date" id="date" name="date">
+          <input class="form-control" type="date" id="Fecha" name="Fecha">
         </div>
         <div class="col-sm-12">
           <button type="button" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Pregunta</button>

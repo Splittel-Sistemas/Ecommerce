@@ -64,19 +64,24 @@ if (!class_exists("Connection")) {
 					$SolicitudCModel->SetNombre($this->Tool->Clear_data_for_sql($_POST['Nombre']));
 					$SolicitudCModel->SetCorreo($this->Tool->Clear_data_for_sql($_POST['Correo']));
 					$SolicitudCModel->SetMonto($this->Tool->Clear_data_for_sql($_POST['Monto']));
-          $SolicitudCModel->Setdate($this->Tool->Clear_data_for_sql($_POST['date']));
+          $SolicitudCModel->SetFecha($_POST['Fecha']);
+       
           $ResultSolicitud = $SolicitudCModel->Add();
 
           if(!$ResultSolicitud['error']){
             $data = [
               "Correo" => $_POST['Correo'],
-              "Monto" => $_POST['Monto']
+              "Monto" => $_POST['Monto'],
+              "Nombre" => $_POST['Nombre'],
+              "Fecha" => $_POST['Fecha']
+
+
             ];
             
             $Email = new Email();
             $TemplateFicrece = new TemplateFicrece();
-            $Email->MailerSubject = "Solicitud FICRECE";
-            $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx", "ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+            $Email->MailerSubject = "SOLICITUD FICRECE";
+            $Email->MailerListTo = [/* "christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx", */ "ramon.olea@splittel.com"/* , "aaron.cuevas@splittel.com" */];
             $Email->MailerBody = $TemplateFicrece->body($data);
             $Email->EmailSendEmail();
             unset($Email);

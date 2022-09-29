@@ -36,6 +36,7 @@
                           </tr>
                           <tr>
                             <td class="wrapper">
+                            <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>'.$data['Nombre'].'</p>
                               <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['Correo'].'</p>
                               <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['Monto'].'</p>
                               '.$comment.'

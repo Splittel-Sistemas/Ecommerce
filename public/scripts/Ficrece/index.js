@@ -2,7 +2,7 @@ var EnviarSolicitud =  function(){
     let Nombre  = document.getElementById('Nombre')
     let Correo  = document.getElementById('Correo')
     let Monto  = document.getElementById('Monto')
-    let date  = document.getElementById('date')
+    let Fecha  = document.getElementById('Fecha')
 
     
 	ajax_("../../models/Solicitud/Ficrece/Solicitud.Route.php", "POST", "JSON", 
@@ -12,12 +12,13 @@ var EnviarSolicitud =  function(){
 		Nombre : Nombre.value,
         Correo : Correo.value,
         Monto : Monto.value,
-        date : date.value,
+        Fecha : Fecha.value,
 	}, 
 	function(response){
         if(!response.error){
+            templateAlert("success", "Enviado", "La solicitud ha sido enviada", "center", "")
             GlobalCloseModal('modal-ficrece')
-            window.location.href = "index.php"
+            window.location.href = "index.php?"
         }else{
             templateAlert("danger", "", response.message, "topRight", "")
         }

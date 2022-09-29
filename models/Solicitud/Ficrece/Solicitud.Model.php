@@ -27,11 +27,11 @@
         throw new Exception(' Monto es requerido');
       }
       $this->Monto = $Monto;
-    }public function Setdate($date){
-      if (empty($date)) {
+    }public function SetFecha($Fecha){
+      if (empty($Fecha)) {
         throw new Exception('Fecha es requerido');
       }
-      $this->date = $date;
+      $this->Fecha = $Fecha;
     }
     
     public function SetParameters($conn, $Tool){
@@ -48,17 +48,17 @@
      */
     public function GetBy($filter){
       try {
-        $SQLSTATEMENT = "SELECT * FROM t41_ficrece_solicitud ".$filter." ";
+        $SQLSTATEMENT = "SELECT * FROM t48_solicitud_ficrece ".$filter." ";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
         while ($row = $result->fetch_object()) {
-          $this->Key        =   $row->t41_pk01;
-          $this->Nombre     =   $row->t41_f001;
-          $this->Correo     =   $row->t41_f002;
-          $this->Titulo     =   $row->t41_f003;
-          $this->Categoria  =   $row->t41_f004;
-          $this->Solicitud   =   $row->t41_f005;
+          $this->Key        =   $row->id;
+          $this->Nombre     =   $row->nombre;
+          $this->Correo     =   $row->correo;
+          $this->Monto     =   $row->monto;
+          $this->Fecha  =   $row->fecha;
+          $this->Fecha_Solicitud   =   $row->fecha_solicitud;
           $data = true;
         }
         return $data;
@@ -76,7 +76,7 @@
      */
     public function Get($filter){
       try {
-        $SQLSTATEMENT = "SELECT * FROM t41_ficrece_solicitud ".$filter." ";
+        $SQLSTATEMENT = "SELECT * FROM t48_solicitud_ficrece ".$filter." ";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
 
@@ -85,13 +85,13 @@
 
         while ($row = $result->fetch_object()) {
           $Solicitud = new SolicitudC();
-          $Solicitud->Key        =   $row->t41_pk01;
-          $Solicitud->Nombre     =   $row->t41_f001;
-          $Solicitud->Correo     =   $row->t41_f002;
-          $Solicitud->Titulo     =   $row->t41_f003;
-          $Solicitud->Categoria  =   $row->t41_f004;
-          $Solicitud->Solicitud   =   $row->t41_f005;
-          $Solicitud->Mensaje   =   $Mensaje->Get(" WHERE t41_pk01 = ".$Solicitud->Key." ", " ORDER BY t42_f098 ASC");
+          $Solicitud->Key        =   $row->id;
+          $Solicitud->Nombre     =   $row->nombre;
+          $Solicitud->Correo     =   $row->correo;
+          $Solicitud->Monto     =   $row->monto;
+          $Solicitud->Fecha  =   $row->fecha;
+          $Solicitud->Fecha_Solicitud   =   $row->fecha_solicitud;
+          $Solicitud->Mensaje   =   $Mensaje->Get(" WHERE id = ".$Solicitud->Key." ", " ORDER BY fecha_solicitud ASC");
           $data[] = $Solicitud;
         }
         return $data;
@@ -109,7 +109,7 @@
      */
     public function Get_($filter){
       try {
-        $SQLSTATEMENT = "SELECT *, count(t41_f004) as TotalSolicituds FROM t41_ficrece_solicitud ".$filter." ";
+        $SQLSTATEMENT = "SELECT *, count(fecha) as TotalSolicituds FROM t48_solicitud_ficrece ".$filter." ";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
 
