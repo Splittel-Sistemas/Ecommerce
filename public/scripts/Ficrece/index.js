@@ -13,15 +13,15 @@ var EnviarSolicitud =  function(){
         Correo : Correo.value,
         Monto : Monto.value,
         date : date.value,
-	}/* , 
+	}, 
 	function(response){
         if(!response.error){
             GlobalCloseModal('modal-ficrece')
-            window.location.href = "index.php?Categoria="+Categoria.value
+            window.location.href = "index.php"
         }else{
             templateAlert("danger", "", response.message, "topRight", "")
         }
-	} */
+	}
     
     )
 }

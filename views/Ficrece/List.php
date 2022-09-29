@@ -4,11 +4,11 @@
  ?>
 <div class="accordion" id="accordion1" role="tablist">
   <?php 
-    if (!class_exists('PreguntaCController')) {
-      include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Consultecnico/Pregunta.Controller.php';
+    if (!class_exists('SolicitudCController')) {
+      include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Ficrece/Solicitud.Controller.php';
     }
     
-    $PreguntaCController = new PreguntaCController();
+    $PreguntaCController = new SolicitudCController();
     $PreguntaCController->filter = "WHERE t41_f004 = '".$category."' AND t41_f006 = 1 ";
     $ResultPregunta = $PreguntaCController->Get();
     foreach ($ResultPregunta->records as $key => $Obj) {
@@ -17,12 +17,12 @@
     <div class="card-header" role="tab">
       <a href="#collapse<?php echo $Obj->Key ?>" data-toggle="collapse"><?php echo $Obj->Titulo ?></a>
       <ul class="list-icon">
-        <li class="ml-3"><?php echo $Obj->Pregunta ?></li>
+        <li class="ml-3"><?php echo $Obj->Solicitud ?></li>
       </ul>
     </div>
     <div class="collapse <?php echo $key == 0 ? 'show' : '' ?>" id="collapse<?php echo $Obj->Key ?>" data-parent="#accordion1" role="tabpanel">
       <div class="card-body">
-        <div id="listar-mensajes-pregunta-<?php echo $Obj->Key ?>">
+        <div id="listar-mensajes-Solicitud-<?php echo $Obj->Key ?>">
           <?php 
             if(count($Obj->Mensaje) > 0){
               foreach ($Obj->Mensaje as $key => $Obj_) {
@@ -33,7 +33,7 @@
                }else{
                 
                 if (!class_exists('ConsultecnicosController')) {
-                  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Consultecnico/Consultecnicos.Controller.php';
+                  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Solicitud/Ficrece/Solicitud.Controller.php';
                 }
 
             
@@ -61,7 +61,7 @@
               if($Obj_->Adjunto!=''){
                 ?>
               <span class="comment-meta">
-              <a target="_blank" href="../../public/images/img_spl/consultecnico/<?php echo $Obj_->Adjunto;?>">
+              <a target="_blank" href="../../public/images/img_spl/Ficrece/<?php echo $Obj_->Adjunto;?>">
               <i class="icon-download-cloud"></i>
               <?php echo $Obj_->Adjunto;?></a></span>
               <br/>
