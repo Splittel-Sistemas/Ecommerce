@@ -1,0 +1,145 @@
+<?php
+  if (!class_exists("Mensaje")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Solicitud/Ficrece/Mensaje.Model.php';
+  }
+  class SolicitudC{
+
+    protected $Connection;
+    protected $Tool;
+    
+    public $Nombre;
+    public $Correo;
+    public $Monto;
+    public $date;
+
+    public function SetNombre($Nombre){
+      if (empty($Nombre)) {
+        throw new Exception('Nombre es requerido');
+      }
+      $this->Nombre = $Nombre;
+    }public function SetCorreo($Correo){
+      if (empty($Correo)) {
+        throw new Exception('Correo es requerido');
+      }
+      $this->Correo = $Correo;
+    }public function SetMonto($Monto){
+      if (empty($Monto)) {
+        throw new Exception(' Monto es requerido');
+      }
+      $this->Monto = $Monto;
+    }public function Setdate($date){
+      if (empty($date)) {
+        throw new Exception('Fecha es requerido');
+      }
+      $this->date = $date;
+    }
+    
+    public function SetParameters($conn, $Tool){
+      $this->Connection = $conn;
+      $this->Tool = $Tool;
+    }
+  
+    /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function GetBy($filter){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM t41_ficrece_solicitud ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = false;
+
+        while ($row = $result->fetch_object()) {
+          $this->Key        =   $row->t41_pk01;
+          $this->Nombre     =   $row->t41_f001;
+          $this->Correo     =   $row->t41_f002;
+          $this->Titulo     =   $row->t41_f003;
+          $this->Categoria  =   $row->t41_f004;
+          $this->Solicitud   =   $row->t41_f005;
+          $data = true;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function Get($filter){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM t41_ficrece_solicitud ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        $Mensaje = new Mensaje();
+        $Mensaje->SetParameters($this->Connection, $this->Tool);
+
+        while ($row = $result->fetch_object()) {
+          $Solicitud = new SolicitudC();
+          $Solicitud->Key        =   $row->t41_pk01;
+          $Solicitud->Nombre     =   $row->t41_f001;
+          $Solicitud->Correo     =   $row->t41_f002;
+          $Solicitud->Titulo     =   $row->t41_f003;
+          $Solicitud->Categoria  =   $row->t41_f004;
+          $Solicitud->Solicitud   =   $row->t41_f005;
+          $Solicitud->Mensaje   =   $Mensaje->Get(" WHERE t41_pk01 = ".$Solicitud->Key." ", " ORDER BY t42_f098 ASC");
+          $data[] = $Solicitud;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+     /**
+     * Listar Pedido 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function Get_($filter){
+      try {
+        $SQLSTATEMENT = "SELECT *, count(t41_f004) as TotalSolicituds FROM t41_ficrece_solicitud ".$filter." ";
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        $Mensaje = new Mensaje();
+        $Mensaje->SetParameters($this->Connection, $this->Tool);
+
+        while ($row = $result->fetch_object()) {
+          $Solicitud = new SolicitudC();
+          $Solicitud->Total      =   $row->TotalSolicituds;
+          $data[] = $Solicitud;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function Add(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece(
+          '0',
+          '".$this->Nombre."',
+          '".$this->Correo."',
+          '".$this->Monto."',
+          '".$this->Fecha."',
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+  
+  }
