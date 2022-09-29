@@ -424,7 +424,10 @@ var existEcommerce_ = function(Codigo){
  //console.log(resultResponse);
       // agregar stock
       if(Stock)
-      Stock.innerHTML = resultResponse.ProductoExistencia
+        if(resultResponse.ProductoExistencia!='' && resultResponse.ProductoExistencia>0)
+          Stock.innerHTML = resultResponse.ProductoExistencia
+          else
+          Stock.innerHTML = '0.00'
       // agregar descricpión larga
       DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
       if(resultResponse.DescripcionCeo){
@@ -464,6 +467,7 @@ var existEcommerce_ = function(Codigo){
         document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
         nuevoPrecioPorLongitud(document.getElementById('longitud'))
       }else{
+        document.getElementById('precio-longitud').value = 0
         ProductoEspecial()
         getDescuentoByFamiliaProductosConfigurables()
       }
