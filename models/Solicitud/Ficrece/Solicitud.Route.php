@@ -17,11 +17,12 @@
     public function __construct(){
       $this->Tool = new Functions_tools();
     }
-
+    
     public function controller(){
       try {
-      /*   print_r($_FILES['file']['tmp_name']);
-       exit; */
+        
+      /*   print_r($_FILES['file3']);
+        exit; */
            
         $Action = isset($_POST["Action"]);
           switch ($Action) {
@@ -41,7 +42,7 @@
   }
 
   # Comprobación Autorización Ajax    
-  if ($_POST['ActionSolicitud']) { 
+  if (isset($_POST['ActionSolicitud'])) { 
     $SolicitudCRoute = new SolicitudCRoute();
     $SolicitudCRoute->controller();
     unset($SolicitudCRoute);

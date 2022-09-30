@@ -40,7 +40,18 @@ class SolicitudC
   public $MontoCredito;
   public $Plazo;
   public $Observaciones;
+  public $Doc1;
+  public $Doc2;
+  public $Doc3;
+  public $Doc4;
+  public $Doc5;
+  public $Doc6;
+  public $Doc7;
+  public $Doc8;
+  public $Doc9;
 
+
+  
   public function SetNombreSolicitud($NombreSolicitud)
   {
     if (empty($NombreSolicitud)) {
@@ -220,6 +231,78 @@ class SolicitudC
    
     $this->Plazo = $Plazo;
   }
+
+  public function SetDoc1($Doc1)
+  {
+    if (empty($Doc1)) {
+      throw new Exception('Documento 1 es requerido');
+    }
+    $this->Doc1 = $Doc1;
+  }
+  public function SetDoc2($Doc2)
+  {
+    if (empty($Doc2)) {
+      throw new Exception('Documento 2 es requerido');
+    }
+    $this->Doc2 = $Doc2;
+  }public function SetDoc3($Doc3)
+  {
+    if (empty($Doc3)) {
+      throw new Exception('Documento 3 es requerido');
+    }
+    $this->Doc3 = $Doc3;
+  }public function SetDoc4($Doc4)
+  {
+    if (empty($Doc4)) {
+      throw new Exception('Documento 4 es requerido');
+    }
+    $this->Doc4 = $Doc4;
+  }public function SetDoc5($Doc5)
+  {
+    if (empty($Doc5)) {
+      throw new Exception('Documento 5 es requerido');
+    }
+    $this->Doc5 = $Doc5;
+  }public function SetDoc6($Doc6)
+  {
+    if (empty($Doc6)) {
+      throw new Exception('Documento 6 es requerido');
+    }
+    $this->Doc6 = $Doc6;
+  }public function SetDoc7($Doc7)
+  {
+    if (empty($Doc7)) {
+      throw new Exception('Documento 7 es requerido');
+    }
+    $this->Doc7 = $Doc7;
+  }public function SetDoc8($Doc8)
+  {
+    if (empty($Doc8)) {
+      throw new Exception('Documento 8 es requerido');
+    }
+    $this->Doc8 = $Doc8;
+  }
+  public function SetDoc9($Doc9)
+  {
+    if (empty($Doc9)) {
+      throw new Exception('Documento 9 es requerido');
+    }
+    $this->Doc9 = $Doc9;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function SetParameters($conn, $Tool)
   {
     $this->Connection = $conn;
@@ -354,6 +437,16 @@ class SolicitudC
           '" . $this->MontoCredito. "',
           '" . $this->Plazo. "',
           '" . $this->Observaciones. "',
+          '" . $this->Doc1. "',
+          '" . $this->Doc2. "',
+          '" . $this->Doc3. "',
+          '" . $this->Doc4. "',
+          '" . $this->Doc5. "',
+          '" . $this->Doc6. "',
+          '" . $this->Doc7. "',
+          '" . $this->Doc8. "',
+          '" . $this->Doc9. "',
+
           '',
 
         @Result);", "@Result");

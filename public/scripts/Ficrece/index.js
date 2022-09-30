@@ -37,8 +37,28 @@ var EnviarSolicitud = function () {
   fda.append("Action", "create");
   fda.append("ActionSolicitud", true);
 
-  var file_data = $("#Doc1").prop("files")[0];
+
+  var file_data = $('#file').prop('files')[0];
   fda.append("file", file_data);
+ 
+  var file_data = $('#file2').prop('files')[0];
+  fda.append("file2", file_data);
+
+  var file_data = $('#file3').prop('files')[0];
+  fda.append("file3", file_data);
+ 
+  var file_data = $("#file4").prop("files")[0];
+  fda.append("file4", file_data);
+  var file_data = $("#file5").prop("files")[0];
+  fda.append("file5", file_data);
+  var file_data = $("#file6").prop("files")[0];
+  fda.append("file6", file_data);
+  var file_data = $("#file7").prop("files")[0];
+  fda.append("file7", file_data);
+  var file_data = $("#file8").prop("files")[0];
+  fda.append("file8", file_data);
+  var file_data = $("#file9").prop("files")[0];
+  fda.append("file9", file_data);
 
   $.ajax({
     url: "../../models/Solicitud/Ficrece/Solicitud.Route.php",
@@ -46,8 +66,9 @@ var EnviarSolicitud = function () {
     data: fda,
     contentType: false,
     processData: false,
-    dataType: "json",
+    dataType: "html",
     async: false,
+    cache: false,
     success: function (response) {
       if (!response.error) {
         templateAlert(

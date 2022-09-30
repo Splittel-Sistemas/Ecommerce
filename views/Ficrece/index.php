@@ -42,7 +42,7 @@
       <div class="col-2 padding-bottom-1x text-center">
       </div>
       <div class="col-8 padding-bottom-1x text-center">
-        <img class="rounded" src="../../public/images/img_spl/ficrece/FICRECE.png" alt="soluciones">
+        <img class="rounded" src="../../public/images/img_spl/ficrece/banner.png" alt="soluciones">
       </div>
       <div class="col-2 padding-bottom-1x text-center">
       </div>
@@ -54,23 +54,26 @@
       </div>
       <div class="col-8 padding-bottom-1x text-center">
         <h3><b>Invertimos en favor de tu rendimiento</b> </h3>
-        <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicaciones</b> con el impulso financiero requerido.
+        <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicacione</b> con el impulso financiero requerido.
           Ponemos a trabajar en su favor al fabricante Optronics y su línea de ensamble con el objetivo de ofrecer la calidad que
           los mayores estándares brindan.
+
           <br>
           <br>
           Nuestro programa de financiamiento <b> FICRECE</b> busca consolidar nuestra alianza comercial contigo, para lograrlo podemos
           otorgarte un crédito que nos permita trabajar juntos en cada conexión.
+
           <br>
           <br>
-          <b>Tenemos la propuesta financiera que apoyará tu proyecto: </b> </p>
+          <b>Tenemos la propuesta financiera que apoyará tu proyecto: </b>
+        </p>
       </div>
       <div class="col-2 padding-bottom-1x text-center">
       </div>
     </div>
     <div class="row text-center">
       <div class="col-12 padding-bottom-1x d-flex justify-content-center">
-        <button class="btn btn-danger " data-toggle="modal" data-target="#modal-ficrece"><i class="icon-credit-card icon-10"></i> Solicitar credito FICRECE</button>
+        <button class="btn btn " data-toggle="modal" data-target="#modal-ficrece"><img class="rounded" src="../../public/images/img_spl/ficrece/b.png" alt="soluciones"></button>
       </div>
     </div>
 
@@ -78,8 +81,9 @@
       <div class="col-2 padding-bottom-1x text-center">
       </div>
       <div class="col-8 padding-bottom-1x text-center">
-      <p style="text-align: center;" class="padding-top-1x"><b>Te apoyamos con una parte proporcional de la inversión total del proyecto que tienes en puerta,
-            estrechemos nuestra relación y juntos alcancemos un rendimiento más alto.</b> </p>
+        <p style="text-align: center;" class="padding-top-1x"><b>Te apoyamos con una parte proporcional de la inversión total del proyecto que tienes en puerta,
+            estrechemos nuestra relación y juntos alcancemos un rendimiento más alto.
+          </b> </p>
       </div>
       <div class="col-2 padding-bottom-1x text-center">
       </div>
@@ -88,7 +92,7 @@
       <div class="col-2 padding-bottom-1x text-center">
       </div>
       <div class="col-8 padding-bottom-1x text-center">
-        <img class="rounded" src="../../public/images/img_spl/ficrece/FICRECE.png" alt="soluciones">
+        <img class="rounded" src="../../public/images/img_spl/ficrece/3.png" alt="soluciones">
       </div>
       <div class="col-2 padding-bottom-1x text-center">
       </div>

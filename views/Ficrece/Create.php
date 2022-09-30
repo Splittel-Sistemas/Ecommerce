@@ -226,39 +226,39 @@
         <form class="row">
           <div class="col-sm-12 col-md-6 form-group">
             <label>1.- Escritura constitutiva y estatutos vigentes <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc1" name="Doc1">
+            <input class="form-control" type="file" id="file">
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>2.- Poder del representante legal <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc2" name="Doc2">
+            <input class="form-control" type="file" id="file2" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>3.- Identificación oficial del representante legal <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc3" name="Doc3">
+            <input class="form-control" type="file" id="file3" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>4.- Alta en Hacienda y RFC <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc4" name="Doc4">
+            <input class="form-control" type="file" id="file4" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>5.- Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc5" name="Doc5">
+            <input class="form-control" type="file" id="file5" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>6.- Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc6" name="Doc6">
+            <input class="form-control" type="file" id="file6" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>7.- Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc7" name="Doc7">
+            <input class="form-control" type="file" id="file7" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>8.- Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc8" name="Doc8">
+            <input class="form-control" type="file" id="file8" >
           </div>
           <div class="col-sm-12 col-md-6 form-group">
             <label>9.- Opinión de cumplimiento<strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="Doc9" name="Doc9">
+            <input class="form-control" type="file" id="file9" >
           </div>
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Pregunta</button>
