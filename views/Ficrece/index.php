@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
   <!-- <title> Contacto </title> -->
   <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
 </head>

@@ -1,67 +1,121 @@
-var EnviarSolicitud =  function(){
-    let Nombre  = document.getElementById('Nombre')
-    let Correo  = document.getElementById('Correo')
-    let Monto  = document.getElementById('Monto')
-    let Fecha  = document.getElementById('Fecha')
+var EnviarSolicitud = function () {
+ 
+  var fda = new FormData();
 
-    
-	ajax_("../../models/Solicitud/Ficrece/Solicitud.Route.php", "POST", "JSON", 
-	{ 
-        Action: 'create', 
-        ActionSolicitud : true,
-		Nombre : Nombre.value,
-        Correo : Correo.value,
-        Monto : Monto.value,
-        Fecha : Fecha.value,
-	}, 
-	function(response){
-        if(!response.error){
-            templateAlert("success", "Enviado", "La solicitud ha sido enviada", "center", "")
-            GlobalCloseModal('modal-ficrece')
-            window.location.href = "index.php?"
-        }else{
-            templateAlert("danger", "", response.message, "topRight", "")
-        }
-	}
-    
-    )
-}
+  fda.append("NombreSolicitud", $("#NombreSolicitud").val());
+  fda.append("Correo", $("#Correo").val());
+  fda.append("RazonSocial", $("#RazonSocial").val());
+  fda.append("DomicilioFiscal", $("#DomicilioFiscal").val());
+  fda.append("Colonia", $("#Colonia").val());
+  fda.append("Ciudad", $("#Ciudad").val());
+  fda.append("Cp", $("#Cp").val());
+  fda.append("Fax", $("#Fax").val());
+  fda.append("Rfc", $("#Rfc").val());
+  fda.append("FechaConstitucion", $("#FechaConstitucion").val());
+  fda.append("Curp", $("#Curp").val());
+  fda.append("Telefono", $("#Telefono").val());
+  fda.append("Giro", $("#Giro").val());
+  fda.append("FechaAlta", $("#FechaAlta").val());
+  fda.append("JefeDepto", $("#JefeDepto").val());
+  fda.append("Beneficiario", $("#Beneficiario").val());
+  fda.append("FormaPago", $("#FormaPago").val());
+  fda.append("Nombre1", $("#Nombre1").val());
+  fda.append("Domicilio1", $("#Domicilio1").val());
+  fda.append("Ciudad1", $("#Ciudad1").val());
+  fda.append("Telefono1", $("#Telefono1").val());
+  fda.append("Nombre2", $("#Nombre2").val());
+  fda.append("Domicilio2", $("#Domicilio2").val());
+  fda.append("Ciudad2", $("#Ciudad2").val());
+  fda.append("Telefono2", $("#Telefono2").val());
+  fda.append("Nombre3", $("#Nombre3").val());
+  fda.append("Domicilio3", $("#Domicilio3").val());
+  fda.append("Ciudad3", $("#Ciudad3").val());
+  fda.append("Telefono3", $("#Telefono3").val());
+  fda.append("MontoCredito", $("#MontoCredito").val());
+  fda.append("Plazo", $("#Plazo").val());
+  fda.append("Observaciones", $("#Observaciones").val());
+  fda.append("Action", "create");
+  fda.append("ActionSolicitud", true);
 
-var EnviarMensaje =  function(Elem){
-    let Mensaje  = document.getElementById('Mensaje-'+Elem.getAttribute('preguntakey'))
-	ajax_("../../models/Solicitud/Ficrece/Mensaje.Route.php", "POST", "JSON", 
-	{ 
-        Action: 'create', 
-        ActionMensaje : true,
-		Mensaje : Mensaje.value,
-        PreguntaKey: Elem.getAttribute('preguntakey'),
-	}, 
-	function(response){
-        console.log(response)   
-        if(!response.error){
-            Mensaje.value = ''
-            ListarMensajes(Elem.getAttribute('preguntakey'))
-        }
-	})
-}
+  var file_data = $("#Doc1").prop("files")[0];
+  fda.append("file", file_data);
+
+  $.ajax({
+    url: "../../models/Solicitud/Ficrece/Solicitud.Route.php",
+    type: "post",
+    data: fda,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    async: false,
+    success: function (response) {
+      if (!response.error) {
+        templateAlert(
+          "success",
+          "Enviado",
+          "La solicitud ha sido enviada",
+          "center",
+          ""
+        );
+       /*  GlobalCloseModal("modal-ficrece");
+        window.location.href = "index.php?"; */
+      } else {
+        templateAlert("danger", "", response.message, "topRight", "");
+      }
+    },
+  });
+
+
+};
+
+var EnviarMensaje = function (Elem) {
+  let Mensaje = document.getElementById(
+    "Mensaje-" + Elem.getAttribute("preguntakey")
+  );
+  ajax_(
+    "../../models/Solicitud/Ficrece/Mensaje.Route.php",
+    "POST",
+    "JSON",
+    {
+      Action: "create",
+      ActionMensaje: true,
+      Mensaje: Mensaje.value,
+      PreguntaKey: Elem.getAttribute("preguntakey"),
+    },
+    function (response) {
+      console.log(response);
+      if (!response.error) {
+        Mensaje.value = "";
+        ListarMensajes(Elem.getAttribute("preguntakey"));
+      }
+    }
+  );
+};
 
 // var Listar =  function(){
-//     ajax_('../../views/Consultecnico/List.php', 'POST', 'HTML', {}, 
+//     ajax_('../../views/Consultecnico/List.php', 'POST', 'HTML', {},
 //     function(response){
 //         document.getElementById('list-consultecnico').innerHTML = response
 //     })
 // }
 
 // var ListarCategorias =  function(){
-//     ajax_('../../views/Consultecnico/categorias.php', 'POST', 'HTML', {}, 
+//     ajax_('../../views/Consultecnico/categorias.php', 'POST', 'HTML', {},
 //     function(response){
 //         document.getElementById('listar-categorias-consultecnico').innerHTML = response
 //     })
 // }
 
-var ListarMensajes = function(PreguntaKey){
-    ajax_('../../views/Consultecnico/ListarMensajes.php', 'POST', 'HTML', {pregunta: PreguntaKey}, 
-    function(response){
-        document.getElementById('listar-mensajes-pregunta-'+PreguntaKey).innerHTML = response
-    })
-}
+var ListarMensajes = function (PreguntaKey) {
+  ajax_(
+    "../../views/Consultecnico/ListarMensajes.php",
+    "POST",
+    "HTML",
+    { pregunta: PreguntaKey },
+    function (response) {
+      document.getElementById(
+        "listar-mensajes-pregunta-" + PreguntaKey
+      ).innerHTML = response;
+    }
+  );
+};

@@ -20,9 +20,12 @@
 
     public function controller(){
       try {
-        $Action = $this->Tool->validate_isset_post("Action");
-        switch ($Action) {
-          case 'create':
+      /*   print_r($_FILES['file']['tmp_name']);
+       exit; */
+           
+        $Action = isset($_POST["Action"]);
+          switch ($Action) {
+          case "create":
             $SolicitudCController = new SolicitudCController();
 						$Result = $SolicitudCController->Create();
 						echo json_encode($Result, JSON_UNESCAPED_UNICODE);

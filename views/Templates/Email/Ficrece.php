@@ -35,10 +35,12 @@
                             <td><img class="banner-img" width="800" src="http://www.fibremex.com/ecomfmx/public.jpg" alt=""></td>
                           </tr>
                           <tr>
+                        
+
                             <td class="wrapper">
-                            <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>'.$data['Nombre'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['Correo'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['Monto'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>'.$data['NombreSolicitud'].'</p>
+                              <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['DomicilioFiscal'].'</p>
+                              <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['Observaciones'].'</p>
                               '.$comment.'
                               <p><br></p>
                               <p align="center">Este es un correo electrónico generado automáticamente</p>
