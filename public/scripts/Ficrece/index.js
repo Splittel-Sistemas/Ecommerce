@@ -43,12 +43,24 @@ var EnviarSolicitud = function () {
   fda.append("Observaciones", $("#Observaciones").val());
   fda.append("Action", "create");
   fda.append("ActionSolicitud", true);
+  var checkPERSONA = document.querySelector('input[name="PERSONA"]:checked');
 
-  var file_data = $("#file").prop("files")[0];
-  fda.append("file", file_data);
+  if (checkPERSONA.value != "MORAL") {
+    var file_data = '';
+    fda.append("file", file_data);
+  
+    var file_data = '';
+    fda.append("file2", file_data);
 
-  var file_data = $("#file2").prop("files")[0];
-  fda.append("file2", file_data);
+
+  } else {
+    var file_data = $("#file").prop("files")[0];
+    fda.append("file", file_data);
+  
+    var file_data = $("#file2").prop("files")[0];
+    fda.append("file2", file_data);
+  }
+ 
 
   var file_data = $("#file3").prop("files")[0];
   fda.append("file3", file_data);

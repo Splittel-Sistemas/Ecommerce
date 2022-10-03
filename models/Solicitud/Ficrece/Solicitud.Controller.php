@@ -104,12 +104,16 @@ class SolicitudCController
         $SolicitudCModel->SetObservaciones($this->Tool->Clear_data_for_sql($_POST['Observaciones']));
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
   /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
-        $ext1 = pathinfo( $_FILES['file']['name'],PATHINFO_EXTENSION );
-        $name1 =  ('1-'.$_POST['Rfc']. '.' . $ext1);
+
+
+       
         if(!mkdir('../../../public/images/img_spl/ficrece/Archivos/'.$_POST['Rfc'].'/', 0777, true)) {
 
           die('Fallo al crear las carpetas...');
       }
+      if(isset($_FILES['file']['tmp_name'])){
+        $ext1 = pathinfo( $_FILES['file']['name'],PATHINFO_EXTENSION );
+        $name1 =  ('1-'.$_POST['Rfc']. '.' . $ext1);
         move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/'.$_POST['Rfc'].'/' . $name1);
         #$file_nname = $_FILES['file']['name'];
         $SolicitudCModel->SetDoc1($name1);
@@ -119,6 +123,9 @@ class SolicitudCController
         move_uploaded_file($_FILES['file2']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/'.$_POST['Rfc'].'/' . $name2);
        # $file_nname2 = $_FILES['file2']['name'];
         $SolicitudCModel->SetDoc2($name2);
+
+      }
+     
 
 
         $ext3 = pathinfo( $_FILES['file3']['name'],PATHINFO_EXTENSION );
@@ -171,23 +178,17 @@ class SolicitudCController
 
           $data = [
             "NombreSolicitud" => $_POST['NombreSolicitud'],
-            "RazonSocial" => $_POST['RazonSocial'],
+            "MontoCredito" => $_POST['MontoCredito'],
             "Correo" => $_POST['Correo'],
             "Plazo" => $_POST['Plazo']
 
 
           ];
-
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-
-
-
           $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
           $Email->MailerBody = $TemplateFicrece->body($data);
-          //Extract an extension from the provided filename
-
           $Email->EmailSendEmail();
           unset($Email);
           unset($TemplateFicrece);

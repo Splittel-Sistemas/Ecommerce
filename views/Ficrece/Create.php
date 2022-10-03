@@ -15,6 +15,19 @@
   function check2() {
     document.getElementById("divs").setAttribute('style', 'display:none');
   }
+
+
+  function MORAL() {
+    document.getElementById("documento1").removeAttribute('style');
+    document.getElementById("documento2").removeAttribute('style');
+
+  }
+
+  function FISICA() {
+    document.getElementById("documento1").setAttribute('style', 'display:none');
+    document.getElementById("documento2").setAttribute('style', 'display:none');
+
+  }
 </script>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -36,6 +49,20 @@
       <div class="col-md-12" id="notify" data-offset-top="-1">
         <div class=" py-5 px-3 justify-content-center align-items-center">
           <form class="row">
+            <div class="col-sm-12 col-md-12 form-group text-center">
+            <div class="custom-control custom-radio ">
+                <input class="custom-control-input" type="radio" id="PERSONA-radio-2" value="MORAL" name="PERSONA" onclick="MORAL()" checked>
+                <label class="custom-control-label" for="PERSONA-radio-2">PERSONA MORAL</label>
+              </div>
+              <div class="custom-control custom-radio ">
+                <input class="custom-control-input" type="radio" id="PERSONA-radio-1" value="FISICA" name="PERSONA" onclick="FISICA()" >
+                <label class="custom-control-label" for="PERSONA-radio-1">PERSONA FISICA</label>
+              </div>
+           
+
+
+            </div>
+
             <div class="col-sm-12 col-md-6 form-group">
               <label>NOMBRE <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="NombreSolicitud" name="NombreSolicitud">
@@ -65,7 +92,7 @@
 
             <div class="col-sm-12 col-md-6 form-group">
               <label>C.P. <strong class="text-danger">*</strong></label>
-              <input class="form-control" type="text" id="Cp" name="Cp">
+              <input class="form-control" type="number" id="Cp" name="Cp" maxlength="4">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
               <label>FAX <strong class="text-danger">*</strong></label>
@@ -190,7 +217,7 @@
           <form class="row">
             <div class="col-sm-12 col-md-6 form-group">
               <label>MONTO DEL CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
-              <input class="form-control" type="text" id="MontoCredito" name="MontoCredito">
+              <input class="form-control" type="number" id="MontoCredito" name="MontoCredito">
               <small>indica la cantidad en dolares americanos</small>
             </div>
             <div class="col-sm-12 col-md-6 form-group text-center">
@@ -233,11 +260,11 @@
       <div class="col-md-12" id="notify" data-offset-top="-1">
         <div class=" py-5 px-3 justify-content-center align-items-center">
           <form class="row">
-            <div class="col-sm-12 col-md-6 form-group">
+            <div class="col-sm-12 col-md-6 form-group" id="documento1">
               <label>1.- Escritura constitutiva y estatutos vigentes <strong class="text-danger">*</strong></label>
               <input class="form-control" type="file" id="file">
             </div>
-            <div class="col-sm-12 col-md-6 form-group">
+            <div class="col-sm-12 col-md-6 form-group" id="documento2">
               <label>2.- Poder del representante legal <strong class="text-danger">*</strong></label>
               <input class="form-control" type="file" id="file2">
             </div>
