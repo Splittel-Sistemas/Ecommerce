@@ -172,8 +172,8 @@ class SolicitudCController
           $data = [
             "NombreSolicitud" => $_POST['NombreSolicitud'],
             "RazonSocial" => $_POST['RazonSocial'],
-            "DomicilioFiscal" => $_POST['DomicilioFiscal'],
-            "Observaciones" => $_POST['Observaciones']
+            "Correo" => $_POST['Correo'],
+            "Plazo" => $_POST['Plazo']
 
 
           ];

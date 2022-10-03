@@ -39,8 +39,8 @@
 
                             <td class="wrapper">
                             <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>'.$data['NombreSolicitud'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['DomicilioFiscal'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['Observaciones'].'</p>
+                              <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['Correo'].'</p>
+                              <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['MontoCredito'].'</p>
                               '.$comment.'
                               <p><br></p>
                               <p align="center">Este es un correo electrónico generado automáticamente</p>
