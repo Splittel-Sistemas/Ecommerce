@@ -297,7 +297,7 @@
               <input class="form-control" type="file" id="file9">
             </div>
             <div class="col-sm-12">
-              <button type="button" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Pregunta</button>
+              <button type="button" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Solicitud</button>
             </div>
           </form>
         </div>

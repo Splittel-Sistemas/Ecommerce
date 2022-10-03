@@ -236,12 +236,16 @@ class SolicitudC
 
   public function SetDoc1($Doc1)
   {
-  
+    if (empty($Doc1)) {
+      throw new Exception('1.- Escritura constitutiva y estatutos vigentes es requerido');
+    }
     $this->Doc1 = $Doc1;
   }
   public function SetDoc2($Doc2)
   {
-    
+    if (empty($Doc2)) {
+      throw new Exception('2.- Poder del representante legal es requerido');
+    }
     $this->Doc2 = $Doc2;
   }public function SetDoc3($Doc3)
   {
