@@ -184,7 +184,7 @@ class SolicitudCController
 
 
 
-          $Email->MailerListTo = [/* "christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx", */"ramon.olea@splittel.com"/* , "aaron.cuevas@splittel.com" */];
+          $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
           $Email->MailerBody = $TemplateFicrece->body($data);
           //Extract an extension from the provided filename
 
