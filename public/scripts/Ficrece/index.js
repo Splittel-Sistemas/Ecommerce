@@ -78,15 +78,15 @@ var EnviarSolicitud = function () {
     success: function (response) {
       
       if (!response.error) {
-        /*   templateAlert(
+          templateAlert(
           "success",
           "Enviado",
           "La solicitud ha sido enviada",
           "center",
           ""
-        ); */
-        /*  GlobalCloseModal("modal-ficrece");
-        window.location.href = "index.php?"; */
+        );
+         GlobalCloseModal("modal-ficrece");
+        window.location.href = "index.php?";
       } else {
         templateAlert("danger", "", response.message, "topRight", "");
       }
