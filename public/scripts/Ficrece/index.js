@@ -78,8 +78,8 @@ var EnviarSolicitud = function () {
           "center",
           ""
         );
-       /*  GlobalCloseModal("modal-ficrece");
-        window.location.href = "index.php?"; */
+        GlobalCloseModal("modal-ficrece");
+        window.location.href = "index.php?";
       } else {
         templateAlert("danger", "", response.message, "topRight", "");
       }

@@ -21,8 +21,6 @@
     public function controller(){
       try {
         
-      /*   print_r($_FILES['file3']);
-        exit; */
            
         $Action = isset($_POST["Action"]);
           switch ($Action) {
