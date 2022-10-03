@@ -100,7 +100,7 @@ class SolicitudCController
         $SolicitudCModel->SetCiudad3($this->Tool->Clear_data_for_sql($_POST['Ciudad3']));
         $SolicitudCModel->SetTelefono3($this->Tool->Clear_data_for_sql($_POST['Telefono3']));
         $SolicitudCModel->SetMontoCredito($this->Tool->Clear_data_for_sql($_POST['MontoCredito']));
-        $SolicitudCModel->SetPlazo($this->Tool->Clear_data_for_sql($_POST['Plazo']));
+        $SolicitudCModel->SetPlazo($_POST['Plazo']);
         $SolicitudCModel->SetObservaciones($this->Tool->Clear_data_for_sql($_POST['Observaciones']));
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
   /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */

@@ -1,5 +1,4 @@
 var EnviarSolicitud = function () {
- 
   var fda = new FormData();
 
   fda.append("NombreSolicitud", $("#NombreSolicitud").val());
@@ -32,21 +31,28 @@ var EnviarSolicitud = function () {
   fda.append("Ciudad3", $("#Ciudad3").val());
   fda.append("Telefono3", $("#Telefono3").val());
   fda.append("MontoCredito", $("#MontoCredito").val());
-  fda.append("Plazo", $("#Plazo").val());
+
+  var checkRadio = document.querySelector('input[name="Plazo"]:checked');
+
+  if (checkRadio.value != "otro") {
+    fda.append("Plazo", checkRadio.value);
+  } else {
+    fda.append("Plazo", $("#Otro").val());
+  }
+
   fda.append("Observaciones", $("#Observaciones").val());
   fda.append("Action", "create");
   fda.append("ActionSolicitud", true);
 
-
-  var file_data = $('#file').prop('files')[0];
+  var file_data = $("#file").prop("files")[0];
   fda.append("file", file_data);
- 
-  var file_data = $('#file2').prop('files')[0];
+
+  var file_data = $("#file2").prop("files")[0];
   fda.append("file2", file_data);
 
-  var file_data = $('#file3').prop('files')[0];
+  var file_data = $("#file3").prop("files")[0];
   fda.append("file3", file_data);
- 
+
   var file_data = $("#file4").prop("files")[0];
   fda.append("file4", file_data);
   var file_data = $("#file5").prop("files")[0];
@@ -66,27 +72,26 @@ var EnviarSolicitud = function () {
     data: fda,
     contentType: false,
     processData: false,
-    dataType: "html",
+    dataType: "json",
     async: false,
     cache: false,
     success: function (response) {
+      
       if (!response.error) {
-        templateAlert(
+        /*   templateAlert(
           "success",
           "Enviado",
           "La solicitud ha sido enviada",
           "center",
           ""
-        );
-       /*  GlobalCloseModal("modal-ficrece");
+        ); */
+        /*  GlobalCloseModal("modal-ficrece");
         window.location.href = "index.php?"; */
       } else {
         templateAlert("danger", "", response.message, "topRight", "");
       }
     },
   });
-
-
 };
 
 var EnviarMensaje = function (Elem) {

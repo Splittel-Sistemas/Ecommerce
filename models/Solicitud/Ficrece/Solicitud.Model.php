@@ -69,14 +69,14 @@ class SolicitudC
   public function SetRazonSocial($RazonSocial)
   {
     if (empty($RazonSocial)) {
-      throw new Exception(' RazonSocial es requerido');
+      throw new Exception(' RAZON SOCIAL  es requerido');
     }
     $this->RazonSocial = $RazonSocial;
   }
   public function SetDomicilioFiscal($DomicilioFiscal)
   {
     if (empty($DomicilioFiscal)) {
-      throw new Exception('DomicilioFiscal es requerido');
+      throw new Exception('DOMICILIO FISCAL es requerido');
     }
     $this->DomicilioFiscal = $DomicilioFiscal;
   }
@@ -89,13 +89,13 @@ class SolicitudC
   }public function SetCiudad($Ciudad)
   {
     if (empty($Ciudad)) {
-      throw new Exception('Nombre es requerido');
+      throw new Exception('CIUDAD es requerido');
     }
     $this->Ciudad = $Ciudad;
   }public function SetCp($Cp)
   {
     if (empty($Cp)) {
-      throw new Exception('Nombre es requerido');
+      throw new Exception('C.P. es requerido');
     }
     $this->Cp = $Cp;
   }public function SetFax($Fax)
@@ -105,13 +105,13 @@ class SolicitudC
   }public function SetRfc($Rfc)
   {
     if (empty($Rfc)) {
-      throw new Exception('Nombre es requerido');
+      throw new Exception('Rfc es requerido');
     }
     $this->Rfc = $Rfc;
   }public function SetFechaConstitucion($FechaConstitucion)
   {
     if (empty($FechaConstitucion)) {
-      throw new Exception('Nombre es requerido');
+      throw new Exception('FECHA CONSTITUCION es requerido');
     }
     $this->FechaConstitucion = $FechaConstitucion;
   }public function SetCurp($Curp)
@@ -130,55 +130,55 @@ class SolicitudC
   public function SetGiro($Giro)
   {
     if (empty($Giro)) {
-      throw new Exception('Giro es requerido');
+      throw new Exception('Giro del Negocio es requerido');
     }
     $this->Giro = $Giro;
   }public function SetFechaAlta($FechaAlta)
   {
     if (empty($FechaAlta)) {
-      throw new Exception('FechaAlta es requerido');
+      throw new Exception('Fecha de alta SHCP es requerido');
     }
     $this->FechaAlta = $FechaAlta;
   }public function SetJefeDepto($JefeDepto)
   {
     if (empty($JefeDepto)) {
-      throw new Exception('JefeDepto es requerido');
+      throw new Exception('JEFE DEL DEPTO. DE CUENTAS POR PAGAR, CORREO Y NÚMERO DE EXTENSIÓN  es requerido');
     }
     $this->JefeDepto = $JefeDepto;
   }public function SetBeneficiario($Beneficiario)
   {
     if (empty($Beneficiario)) {
-      throw new Exception('Beneficiario es requerido');
+      throw new Exception('NOMBRE DEL DUEÑO BENEFICIARIO es requerido');
     }
     $this->Beneficiario = $Beneficiario;
   }public function SetFormaPago($FormaPago)
   {
     if (empty($FormaPago)) {
-      throw new Exception('FormaPago es requerido');
+      throw new Exception('FORMA DE PAGO es requerido');
     }
     $this->FormaPago = $FormaPago;
   }public function SetNombre1($Nombre1)
   {
     if (empty($Nombre1)) {
-      throw new Exception('Nombre1 es requerido');
+      throw new Exception('Nombre de Referencia es requerido');
     }
     $this->Nombre1 = $Nombre1;
   }public function SetDomicilio1($Domicilio1)
   {
     if (empty($Domicilio1)) {
-      throw new Exception('Domicilio1 es requerido');
+      throw new Exception('Domicilio de Referencia es requerido');
     }
     $this->Domicilio1 = $Domicilio1;
   }public function SetCiudad1($Ciudad1)
   {
     if (empty($Ciudad1)) {
-      throw new Exception('Ciudad1 es requerido');
+      throw new Exception('Ciudad de Referencia es requerido');
     }
     $this->Ciudad1 = $Ciudad1;
   }public function SetTelefono1($Telefono1)
   {
     if (empty($Telefono1)) {
-      throw new Exception('Telefono1 es requerido');
+      throw new Exception('Telefono de Referencia es requerido');
     }
     $this->Telefono1 = $Telefono1;
   }
@@ -217,7 +217,7 @@ class SolicitudC
   }public function SetMontoCredito($MontoCredito)
   {
     if (empty($MontoCredito)) {
-      throw new Exception('MontoCredito es requerido');
+      throw new Exception('Monto del Credito es requerido');
     }
     $this->MontoCredito = $MontoCredito;
   }public function SetObservaciones($Observaciones)
@@ -228,64 +228,66 @@ class SolicitudC
     $this->Observaciones = $Observaciones;
   }public function SetPlazo($Plazo)
   {
-   
+    if (empty($Plazo)) {
+      throw new Exception('PLAZO DE CRÉDITO SOLICITADO es requerido');
+    }
     $this->Plazo = $Plazo;
   }
 
   public function SetDoc1($Doc1)
   {
     if (empty($Doc1)) {
-      throw new Exception('Documento 1 es requerido');
+      throw new Exception('1.- Escritura constitutiva y estatutos vigentes es requerido');
     }
     $this->Doc1 = $Doc1;
   }
   public function SetDoc2($Doc2)
   {
     if (empty($Doc2)) {
-      throw new Exception('Documento 2 es requerido');
+      throw new Exception('2.- Poder del representante legal es requerido');
     }
     $this->Doc2 = $Doc2;
   }public function SetDoc3($Doc3)
   {
     if (empty($Doc3)) {
-      throw new Exception('Documento 3 es requerido');
+      throw new Exception('3.- Identificación oficial del representante legal es requerido');
     }
     $this->Doc3 = $Doc3;
   }public function SetDoc4($Doc4)
   {
     if (empty($Doc4)) {
-      throw new Exception('Documento 4 es requerido');
+      throw new Exception('4.- Alta en Hacienda y RFC es requerido');
     }
     $this->Doc4 = $Doc4;
   }public function SetDoc5($Doc5)
   {
     if (empty($Doc5)) {
-      throw new Exception('Documento 5 es requerido');
+      throw new Exception('5.- Comprobante de domicilio (No mayor a 3 meses) es requerido');
     }
     $this->Doc5 = $Doc5;
   }public function SetDoc6($Doc6)
   {
     if (empty($Doc6)) {
-      throw new Exception('Documento 6 es requerido');
+      throw new Exception('6.- Estados Financieros de los últimos 3 meses es requerido');
     }
     $this->Doc6 = $Doc6;
   }public function SetDoc7($Doc7)
   {
     if (empty($Doc7)) {
-      throw new Exception('Documento 7 es requerido');
+      throw new Exception('7.- Estados de Cuenta bancarios es requerido');
     }
     $this->Doc7 = $Doc7;
   }public function SetDoc8($Doc8)
   {
     if (empty($Doc8)) {
-      throw new Exception('Documento 8 es requerido');
+      throw new Exception('8.- Autorización para solicitar reportes de crédito es requerido');
     }
     $this->Doc8 = $Doc8;
   }
   public function SetDoc9($Doc9)
   {
     if (empty($Doc9)) {
-      throw new Exception('Documento 9 es requerido');
+      throw new Exception('9.- Opinión de cumplimiento es requerido');
     }
     $this->Doc9 = $Doc9;
   }

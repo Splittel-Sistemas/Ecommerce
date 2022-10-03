@@ -7,6 +7,15 @@
     border-color: #BF202F;
   }
 </style>
+<script>
+  function check() {
+    document.getElementById("divs").removeAttribute('style');
+  }
+
+  function check2() {
+    document.getElementById("divs").setAttribute('style', 'display:none');
+  }
+</script>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">DATOS GENERALES</button>
@@ -27,65 +36,65 @@
       <div class="col-md-12" id="notify" data-offset-top="-1">
         <div class=" py-5 px-3 justify-content-center align-items-center">
           <form class="row">
-          <div class="col-sm-12 col-md-6 form-group">
-              <label>NOMBRE <strong class="text-danger"></strong></label>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>NOMBRE <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="NombreSolicitud" name="NombreSolicitud">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>CORREO <strong class="text-danger"></strong></label>
+              <label>CORREO <strong class="text-danger">*</strong></label>
               <input class="form-control" type="email" id="Correo" name="Correo">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>RAZON SOCIAL <strong class="text-danger"></strong></label>
+              <label>RAZON SOCIAL <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="RazonSocial" name="RazonSocial">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>DOMICILIO FISCAL: <strong class="text-danger"></strong></label>
+              <label>DOMICILIO FISCAL: <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="DomicilioFiscal" name="DomicilioFiscal">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>COLONIA <strong class="text-danger"></strong></label>
+              <label>COLONIA <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Colonia" name="Colonia">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>CIUDAD : <strong class="text-danger"></strong></label>
+              <label>CIUDAD : <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Ciudad" name="Ciudad">
             </div>
 
 
 
             <div class="col-sm-12 col-md-6 form-group">
-              <label>C.P. <strong class="text-danger"></strong></label>
+              <label>C.P. <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Cp" name="Cp">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>FAX <strong class="text-danger"></strong></label>
+              <label>FAX <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Fax" name="Fax">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>R.F.C. <strong class="text-danger"></strong></label>
+              <label>R.F.C. <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Rfc" name="Rfc">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>FECHA CONSTITUCION <strong class="text-danger"></strong></label>
+              <label>FECHA CONSTITUCION <strong class="text-danger">*</strong></label>
               <input class="form-control" type="date" id="FechaConstitucion" name="FechaConstitucion">
             </div>
 
 
             <div class="col-sm-12 col-md-6 form-group">
-              <label>CURP <strong class="text-danger"></strong></label>
+              <label>CURP <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Curp" name="Curp">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>TELEFONO<strong class="text-danger"></strong></label>
+              <label>TELEFONO<strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Telefono" name="Telefono">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>Giro del Negocio <strong class="text-danger"></strong></label>
+              <label>Giro del Negocio <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Giro" name="Giro">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>Fecha de alta SHCP <strong class="text-danger"></strong></label>
+              <label>Fecha de alta SHCP <strong class="text-danger">*</strong></label>
               <input class="form-control" type="date" id="FechaAlta" name="FechaAlta">
             </div>
 
@@ -95,11 +104,11 @@
             </div>
 
             <div class="col-sm-12 col-md-6 form-group">
-              <label>NOMBRE DEL DUEÑO BENEFICIARIO <strong class="text-danger"></strong></label>
+              <label>NOMBRE DEL DUEÑO BENEFICIARIO <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Beneficiario" name="Beneficiario">
             </div>
             <div class="col-sm-12 col-md-6 form-group">
-              <label>FORMA DE PAGO<strong class="text-danger"></strong></label>
+              <label>FORMA DE PAGO<strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="FormaPago" name="FormaPago">
             </div>
 
@@ -113,19 +122,19 @@
       <div class=" py-5 px-3 justify-content-center align-items-center">
         <form class="row">
           <div class="col-sm-12 col-md-6 form-group">
-            <label>Nombre <strong class="text-danger"></strong></label>
+            <label>Nombre <strong class="text-danger">*</strong></label>
             <input class="form-control" type="text" id="Nombre1" name="Nombre1">
           </div>
           <div class="col-sm-12 col-md-6 form-group">
-            <label>Domicilio <strong class="text-danger"></strong></label>
+            <label>Domicilio <strong class="text-danger">*</strong></label>
             <input class="form-control" type="text" id="Domicilio1" name="Domicilio1">
           </div>
           <div class="col-sm-12 col-md-6 form-group">
-            <label>Ciudad <strong class="text-danger"></strong></label>
+            <label>Ciudad <strong class="text-danger">*</strong></label>
             <input class="form-control" type="text" id="Ciudad1" name="Ciudad1">
           </div>
           <div class="col-sm-12 col-md-6 form-group">
-            <label>Telefono <strong class="text-danger"></strong></label>
+            <label>Telefono <strong class="text-danger">*</strong></label>
             <input class="form-control" type="text" id="Telefono1" name="Telefono1">
           </div>
 
@@ -188,29 +197,29 @@
               <label>PLAZO DE CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
 
               <div class="custom-control custom-radio ">
-                <input class="custom-control-input" type="radio" id="ex-radio-1"  value="21" name="Plazo">
-                <label class="custom-control-label"  for="ex-radio-1">21 DIAS</label>
+                <input class="custom-control-input" type="radio" id="ex-radio-1" value="21" name="Plazo" onclick="check2()" checked>
+                <label class="custom-control-label" for="ex-radio-1">21 DIAS</label>
               </div>
               <div class="custom-control custom-radio ">
-                <input class="custom-control-input" type="radio" id="ex-radio-2" value="30"  name="Plazo2" >
+                <input class="custom-control-input" type="radio" id="ex-radio-2" value="30" name="Plazo" onclick="check2()">
                 <label class="custom-control-label" for="ex-radio-2">30 DIAS</label>
               </div>
 
               <div class="custom-control custom-radio ">
-                <input class="custom-control-input" type="radio" id="ex-radio-2" value=""  name="Plazo" >
-                <label class="custom-control-label" for="ex-radio-2">OTRO</label>
+                <input class="custom-control-input" type="radio" id="ex-radio-3" value="otro" name="Plazo" onclick="check()">
+                <label class="custom-control-label" for="ex-radio-3">OTRO</label>
               </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 form-group">
-              <label>OTRO <strong class="text-danger"></strong></label>
+            <div class="col-sm-12 col-md-6 form-group" id="divs" style="display:none">
+              <label>OTRO <strong class="text-danger">*</strong></label>
               <input class="form-control" type="text" id="Otro" name="Otro">
             </div>
             <div class="col-sm-12 form-group">
-              <label>OBSERVACIONES <strong class="text-danger"></strong></label>
+              <label>OBSERVACIONES <strong class="text-danger">*</strong></label>
               <textarea class="form-control" name="Observaciones" id="Observaciones" rows="8"></textarea>
             </div>
-           <!--  <div class="col-sm-12">
+            <!--  <div class="col-sm-12">
               <button type="button" class="btn btn-primary float-right" onclick="EnviarPregunta()">Enviar Pregunta</button>
             </div> -->
           </form>
@@ -223,43 +232,43 @@
     <div class="row no-gutters">
       <div class="col-md-12" id="notify" data-offset-top="-1">
         <div class=" py-5 px-3 justify-content-center align-items-center">
-        <form class="row">
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>1.- Escritura constitutiva y estatutos vigentes <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file">
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>2.- Poder del representante legal <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file2" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>3.- Identificación oficial del representante legal <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file3" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>4.- Alta en Hacienda y RFC <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file4" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>5.- Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file5" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>6.- Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file6" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>7.- Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file7" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>8.- Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file8" >
-          </div>
-          <div class="col-sm-12 col-md-6 form-group">
-            <label>9.- Opinión de cumplimiento<strong class="text-danger"></strong></label>
-            <input class="form-control" type="file" id="file9" >
-          </div>
+          <form class="row">
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>1.- Escritura constitutiva y estatutos vigentes <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>2.- Poder del representante legal <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file2">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>3.- Identificación oficial del representante legal <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file3">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>4.- Alta en Hacienda y RFC <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file4">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>5.- Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file5">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>6.- Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file6">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>7.- Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file7">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>8.- Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file8">
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+              <label>9.- Opinión de cumplimiento<strong class="text-danger">*</strong></label>
+              <input class="form-control" type="file" id="file9">
+            </div>
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Pregunta</button>
             </div>
