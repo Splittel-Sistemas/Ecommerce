@@ -54,7 +54,7 @@
       </div>
       <div class="col-8 padding-bottom-1x text-center">
         <h3><b>Invertimos en favor de tu rendimiento</b> </h3>
-        <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicacione</b> con el impulso financiero requerido.
+        <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicaciones</b> con el impulso financiero requerido.
           Ponemos a trabajar en su favor al fabricante Optronics y su línea de ensamble con el objetivo de ofrecer la calidad que
           los mayores estándares brindan.
 
@@ -68,8 +68,7 @@
           <b>Tenemos la propuesta financiera que apoyará tu proyecto: </b>
         </p>
       </div>
-      <div class="col-2 padding-bottom-1x text-center">
-      </div>
+     
     </div>
     <div class="row text-center">
       <div class="col-12 padding-bottom-1x d-flex justify-content-center">
