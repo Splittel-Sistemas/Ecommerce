@@ -51,7 +51,7 @@ class SolicitudC
   public $Doc9;
 
 
-  
+
   public function SetNombreSolicitud($NombreSolicitud)
   {
     if (empty($NombreSolicitud)) {
@@ -86,41 +86,48 @@ class SolicitudC
       throw new Exception('Colonia es requerido');
     }
     $this->Colonia = $Colonia;
-  }public function SetCiudad($Ciudad)
+  }
+  public function SetCiudad($Ciudad)
   {
     if (empty($Ciudad)) {
       throw new Exception('CIUDAD es requerido');
     }
     $this->Ciudad = $Ciudad;
-  }public function SetCp($Cp)
+  }
+  public function SetCp($Cp)
   {
     if (empty($Cp)) {
       throw new Exception('C.P. es requerido');
     }
     $this->Cp = $Cp;
-  }public function SetFax($Fax)
+  }
+  public function SetFax($Fax)
   {
-    
+
     $this->Fax = $Fax;
-  }public function SetRfc($Rfc)
+  }
+  public function SetRfc($Rfc)
   {
     if (empty($Rfc)) {
       throw new Exception('Rfc es requerido');
     }
     $this->Rfc = $Rfc;
-  }public function SetFechaConstitucion($FechaConstitucion)
+  }
+  public function SetFechaConstitucion($FechaConstitucion)
   {
     if (empty($FechaConstitucion)) {
       throw new Exception('FECHA CONSTITUCION es requerido');
     }
     $this->FechaConstitucion = $FechaConstitucion;
-  }public function SetCurp($Curp)
+  }
+  public function SetCurp($Curp)
   {
     if (empty($Curp)) {
       throw new Exception('Curp es requerido');
     }
     $this->Curp = $Curp;
-  }public function SetTelefono($Telefono)
+  }
+  public function SetTelefono($Telefono)
   {
     if (empty($Telefono)) {
       throw new Exception('Telefono es requerido');
@@ -133,49 +140,57 @@ class SolicitudC
       throw new Exception('Giro del Negocio es requerido');
     }
     $this->Giro = $Giro;
-  }public function SetFechaAlta($FechaAlta)
+  }
+  public function SetFechaAlta($FechaAlta)
   {
     if (empty($FechaAlta)) {
       throw new Exception('Fecha de alta SHCP es requerido');
     }
     $this->FechaAlta = $FechaAlta;
-  }public function SetJefeDepto($JefeDepto)
+  }
+  public function SetJefeDepto($JefeDepto)
   {
     if (empty($JefeDepto)) {
       throw new Exception('JEFE DEL DEPTO. DE CUENTAS POR PAGAR, CORREO Y NÚMERO DE EXTENSIÓN  es requerido');
     }
     $this->JefeDepto = $JefeDepto;
-  }public function SetBeneficiario($Beneficiario)
+  }
+  public function SetBeneficiario($Beneficiario)
   {
     if (empty($Beneficiario)) {
       throw new Exception('NOMBRE DEL DUEÑO BENEFICIARIO es requerido');
     }
     $this->Beneficiario = $Beneficiario;
-  }public function SetFormaPago($FormaPago)
+  }
+  public function SetFormaPago($FormaPago)
   {
     if (empty($FormaPago)) {
       throw new Exception('FORMA DE PAGO es requerido');
     }
     $this->FormaPago = $FormaPago;
-  }public function SetNombre1($Nombre1)
+  }
+  public function SetNombre1($Nombre1)
   {
     if (empty($Nombre1)) {
       throw new Exception('Nombre de Referencia es requerido');
     }
     $this->Nombre1 = $Nombre1;
-  }public function SetDomicilio1($Domicilio1)
+  }
+  public function SetDomicilio1($Domicilio1)
   {
     if (empty($Domicilio1)) {
       throw new Exception('Domicilio de Referencia es requerido');
     }
     $this->Domicilio1 = $Domicilio1;
-  }public function SetCiudad1($Ciudad1)
+  }
+  public function SetCiudad1($Ciudad1)
   {
     if (empty($Ciudad1)) {
       throw new Exception('Ciudad de Referencia es requerido');
     }
     $this->Ciudad1 = $Ciudad1;
-  }public function SetTelefono1($Telefono1)
+  }
+  public function SetTelefono1($Telefono1)
   {
     if (empty($Telefono1)) {
       throw new Exception('Telefono de Referencia es requerido');
@@ -184,49 +199,59 @@ class SolicitudC
   }
   public function SetNombre2($Nombre2)
   {
-   
+
     $this->Nombre2 = $Nombre2;
-  }public function SetDomicilio2($Domicilio2)
+  }
+  public function SetDomicilio2($Domicilio2)
   {
-   
+
     $this->Domicilio2 = $Domicilio2;
-  }public function SetCiudad2($Ciudad2)
+  }
+  public function SetCiudad2($Ciudad2)
   {
-   
+
     $this->Ciudad2 = $Ciudad2;
-  }public function SetTelefono2($Telefono2)
+  }
+  public function SetTelefono2($Telefono2)
   {
-    
+
     $this->Telefono2 = $Telefono2;
-  } public function SetNombre3($Nombre3)
+  }
+  public function SetNombre3($Nombre3)
   {
-   
+
     $this->Nombre3 = $Nombre3;
-  }public function SetDomicilio3($Domicilio3)
+  }
+  public function SetDomicilio3($Domicilio3)
   {
-   
+
     $this->Domicilio3 = $Domicilio3;
-  }public function SetCiudad3($Ciudad3)
+  }
+  public function SetCiudad3($Ciudad3)
   {
-   
+
     $this->Ciudad3 = $Ciudad3;
-  }public function SetTelefono3($Telefono3)
+  }
+  public function SetTelefono3($Telefono3)
   {
-    
+
     $this->Telefono3 = $Telefono3;
-  }public function SetMontoCredito($MontoCredito)
+  }
+  public function SetMontoCredito($MontoCredito)
   {
     if (empty($MontoCredito)) {
       throw new Exception('Monto del Credito es requerido');
     }
     $this->MontoCredito = $MontoCredito;
-  }public function SetObservaciones($Observaciones)
+  }
+  public function SetObservaciones($Observaciones)
   {
     if (empty($Observaciones)) {
       throw new Exception('Observaciones es requerido');
     }
     $this->Observaciones = $Observaciones;
-  }public function SetPlazo($Plazo)
+  }
+  public function SetPlazo($Plazo)
   {
     if (empty($Plazo)) {
       throw new Exception('PLAZO DE CRÉDITO SOLICITADO es requerido');
@@ -247,37 +272,43 @@ class SolicitudC
       throw new Exception('2.- Poder del representante legal es requerido');
     }
     $this->Doc2 = $Doc2;
-  }public function SetDoc3($Doc3)
+  }
+  public function SetDoc3($Doc3)
   {
     if (empty($Doc3)) {
       throw new Exception('3.- Identificación oficial del representante legal es requerido');
     }
     $this->Doc3 = $Doc3;
-  }public function SetDoc4($Doc4)
+  }
+  public function SetDoc4($Doc4)
   {
     if (empty($Doc4)) {
       throw new Exception('4.- Alta en Hacienda y RFC es requerido');
     }
     $this->Doc4 = $Doc4;
-  }public function SetDoc5($Doc5)
+  }
+  public function SetDoc5($Doc5)
   {
     if (empty($Doc5)) {
       throw new Exception('5.- Comprobante de domicilio (No mayor a 3 meses) es requerido');
     }
     $this->Doc5 = $Doc5;
-  }public function SetDoc6($Doc6)
+  }
+  public function SetDoc6($Doc6)
   {
     if (empty($Doc6)) {
       throw new Exception('6.- Estados Financieros de los últimos 3 meses es requerido');
     }
     $this->Doc6 = $Doc6;
-  }public function SetDoc7($Doc7)
+  }
+  public function SetDoc7($Doc7)
   {
     if (empty($Doc7)) {
       throw new Exception('7.- Estados de Cuenta bancarios es requerido');
     }
     $this->Doc7 = $Doc7;
-  }public function SetDoc8($Doc8)
+  }
+  public function SetDoc8($Doc8)
   {
     if (empty($Doc8)) {
       throw new Exception('8.- Autorización para solicitar reportes de crédito es requerido');
@@ -407,53 +438,64 @@ class SolicitudC
     try {
       $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece(
           '0',
-          '" . $this->NombreSolicitud. "',
-          '" . $this->Correo. "',
-          '" . $this->RazonSocial. "',
-          '" . $this->DomicilioFiscal. "',
-          '" . $this->Colonia. "',
-          '" . $this->Ciudad. "',
-          '" . $this->Cp. "',
-          '" . $this->Fax. "',
-          '" . $this->Rfc. "',
-          '" . $this->FechaConstitucion. "',
-          '" . $this->Curp. "',
-          '" . $this->Telefono. "',
-          '" . $this->Giro. "',
-          '" . $this->FechaAlta. "',
-          '" . $this->JefeDepto. "',
-          '" . $this->Beneficiario. "',
-          '" . $this->FormaPago. "',
-          '" . $this->Nombre1. "',
-          '" . $this->Domicilio1. "',
-          '" . $this->Ciudad1. "',
-          '" . $this->Telefono1. "',
-          '" . $this->Nombre2. "',
-          '" . $this->Domicilio2. "',
-          '" . $this->Ciudad2. "',
-          '" . $this->Telefono2. "',
-          '" . $this->Nombre3. "',
-          '" . $this->Domicilio3. "',
-          '" . $this->Ciudad3. "',
-          '" . $this->Telefono3. "',
-          '" . $this->MontoCredito. "',
-          '" . $this->Plazo. "',
-          '" . $this->Observaciones. "',
-          '" . $this->Doc1. "',
-          '" . $this->Doc2. "',
-          '" . $this->Doc3. "',
-          '" . $this->Doc4. "',
-          '" . $this->Doc5. "',
-          '" . $this->Doc6. "',
-          '" . $this->Doc7. "',
-          '" . $this->Doc8. "',
-          '" . $this->Doc9. "',
+          '" . $this->NombreSolicitud . "',
+          '" . $this->Correo . "',
+          '" . $this->RazonSocial . "',
+          '" . $this->DomicilioFiscal . "',
+          '" . $this->Colonia . "',
+          '" . $this->Ciudad . "',
+          '" . $this->Cp . "',
+          '" . $this->Fax . "',
+          '" . $this->Rfc . "',
+          '" . $this->FechaConstitucion . "',
+          '" . $this->Curp . "',
+          '" . $this->Telefono . "',
+          '" . $this->Giro . "',
+          '" . $this->FechaAlta . "',
+          '" . $this->JefeDepto . "',
+          '" . $this->Beneficiario . "',
+          '" . $this->FormaPago . "',
+          '" . $this->Nombre1 . "',
+          '" . $this->Domicilio1 . "',
+          '" . $this->Ciudad1 . "',
+          '" . $this->Telefono1 . "',
+          '" . $this->Nombre2 . "',
+          '" . $this->Domicilio2 . "',
+          '" . $this->Ciudad2 . "',
+          '" . $this->Telefono2 . "',
+          '" . $this->Nombre3 . "',
+          '" . $this->Domicilio3 . "',
+          '" . $this->Ciudad3 . "',
+          '" . $this->Telefono3 . "',
+          '" . $this->MontoCredito . "',
+          '" . $this->Plazo . "',
+          '" . $this->Observaciones . "',
+          '" . $this->Doc1 . "',
+          '" . $this->Doc2 . "',
+          '" . $this->Doc3 . "',
+          '" . $this->Doc4 . "',
+          '" . $this->Doc5 . "',
+          '" . $this->Doc6 . "',
+          '" . $this->Doc7 . "',
+          '" . $this->Doc8 . "',
+          '" . $this->Doc9 . "',
 
           '',
           '',
+           '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+
 
         @Result);", "@Result");
-       
+
       return $result;
     } catch (Exception $e) {
       throw $e;
