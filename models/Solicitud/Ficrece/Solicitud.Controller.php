@@ -102,10 +102,13 @@ class SolicitudCController
         $SolicitudCModel->SetMontoCredito($this->Tool->Clear_data_for_sql($_POST['MontoCredito']));
         $SolicitudCModel->SetPlazo($_POST['Plazo']);
         $SolicitudCModel->SetObservaciones($this->Tool->Clear_data_for_sql($_POST['Observaciones']));
+        $SolicitudCModel->SetPERSONA($_POST['PERSONA']);
+
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
-
+       /*  print_r($_POST['PERSONA']);
+        exit; */
 
         if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
@@ -187,6 +190,8 @@ class SolicitudCController
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
           /*  $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
+           $Email->MailerListTo = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+
           $Email->MailerBody = $TemplateFicrece->body($data);
           $Email->EmailSendEmail();
           unset($Email);

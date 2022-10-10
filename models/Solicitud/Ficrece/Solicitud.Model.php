@@ -40,6 +40,7 @@ class SolicitudC
   public $MontoCredito;
   public $Plazo;
   public $Observaciones;
+  public $PERSONA;
   public $Doc1;
   public $Doc2;
   public $Doc3;
@@ -250,6 +251,10 @@ class SolicitudC
       throw new Exception('Observaciones es requerido');
     }
     $this->Observaciones = $Observaciones;
+  }
+  public function SetPERSONA($PERSONA)
+  {
+    $this->PERSONA = $PERSONA;
   }
   public function SetPlazo($Plazo)
   {
@@ -491,7 +496,8 @@ class SolicitudC
             '',
             '',
             '',
-            '',
+            '" . $this->PERSONA . "',
+
 
 
         @Result);", "@Result");

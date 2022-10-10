@@ -44,6 +44,7 @@ var EnviarSolicitud = function () {
   fda.append("Action", "create");
   fda.append("ActionSolicitud", true);
   var checkPERSONA = document.querySelector('input[name="PERSONA"]:checked');
+  fda.append("PERSONA", checkPERSONA.value);
 
   if (checkPERSONA.value != "MORAL") {
     var file_data = '';
@@ -156,4 +157,26 @@ var ListarMensajes = function (PreguntaKey) {
       ).innerHTML = response;
     }
   );
+};
+var addViewCheckout = function (Elem) {
+  let number = Elem.getAttribute("number");
+
+
+
+
+
+  $(".step-title").removeClass("completado").find("i:first").remove();
+  $(".process").removeClass("active");
+ /*  document.getElementById("process-" + number).classList.add("active"); */
+
+  $(".process").each(function (index, el) {
+    if (el.getAttribute("number") < number) {
+      $(el).children("h4").addClass("completado");
+    }
+  });
+
+  $(".completado").prepend('<i class="icon-check-circle"></i>');
+  $(".PartialCheckout").css("display", "none");
+ 
+
 };
