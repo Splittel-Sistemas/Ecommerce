@@ -254,7 +254,8 @@ class TemplatePedido
 					}
 				}
 				$html .= '				<tr style="width:100%;">
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $nombre . '</td>
+																' . $nombre . '
+
 														' . $nombrefactura . '
 														<td style="margin-bottom: 2px; ROWSPAN=6 text-align: left max-width:20%;">' . $Pedido->Paqueteria . '</span></td>
 
