@@ -15,8 +15,8 @@
       try {
         $comment="";
         $Principal = new TemplatePrincipal();
-        if(isset($data['Comentario']) && $data['Comentario']!=""){
-          $comment='<p align="center" style="margin-bottom:10px;"><strong>Comentario: </strong>'.$data['Comentario'].'</p>';
+        if(isset($data['Observaciones']) && $data['Observaciones']!=""){
+          $comment='<p align="center" style="margin-bottom:10px;"><strong>Observaciones: </strong>'.$data['Observaciones'].'</p>';
         }
         $html = $Principal->Head().'<body class="">
                 <span class="preheader">Ecommerce Grupo Splittel</span>
@@ -39,8 +39,16 @@
 
                             <td class="wrapper">
                             <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>'.$data['NombreSolicitud'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['Correo'].'</p>
-                              <p align="center" style="margin-bottom:10px;"><strong>Monto: </strong>'.$data['MontoCredito'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Rfc: </strong>'.$data['Rfc'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Curp: </strong>'.$data['Curp'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>'.$data['Telefono'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>'.$data['Correo'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>'.$data['RazonSocial'].'</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>PERSONA '.$data['PERSONA'].' </strong></p>
+
+                              <p align="center" style="margin-bottom:10px;"><strong>Monto Solicitado: </strong>'.$data['MontoCredito'].'</p>
+                              <p align="center" style="margin-bottom:10px;"><strong>Dias Solicitados : </strong>'.$data['Plazo'].'</p>
+
                               '.$comment.'
                               <p><br></p>
                               <p align="center">Este es un correo electrónico generado automáticamente</p>

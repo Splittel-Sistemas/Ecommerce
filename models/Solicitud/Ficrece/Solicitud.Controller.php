@@ -182,8 +182,16 @@ class SolicitudCController
             "NombreSolicitud" => $_POST['NombreSolicitud'],
             "MontoCredito" => $_POST['MontoCredito'],
             "Correo" => $_POST['Correo'],
-            "Plazo" => $_POST['Plazo']
+            "Plazo" => $_POST['Plazo'],
+            "Rfc" => $_POST['Rfc'],
+            "RazonSocial" => $_POST['RazonSocial'],
+            "FormaPago" => $_POST['FormaPago'],
+            "Telefono" => $_POST['Telefono'],
+            "Curp" => $_POST['Curp'],
+            "Observaciones" => $_POST['Observaciones'],
+            "PERSONA" => $_POST['PERSONA']
 
+            
 
           ];
           $Email = new Email();

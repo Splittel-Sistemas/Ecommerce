@@ -138,7 +138,7 @@
 
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>C.P. <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="number" id="Cp" name="Cp" maxlength="4">
+                  <input class="form-control form-control-2" type="number" id="Cp" name="Cp" maxlength="4" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>FAX <strong class="text-danger">*</strong></label>
@@ -160,7 +160,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>TELEFONO<strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono">
+                  <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>Giro del Negocio <strong class="text-danger">*</strong></label>
@@ -208,7 +208,7 @@
               </div>
               <div class="col-sm-12 col-md-6 form-group">
                 <label>Telefono <strong class="text-danger">*</strong></label>
-                <input class="form-control form-control-2" type="text" id="Telefono1" name="Telefono1">
+                <input class="form-control form-control-2" type="tel" id="Telefono1" name="Telefono1" onkeyup="this.value=Numeros(this.value)">
               </div>
 
             </form>
@@ -228,7 +228,7 @@
               </div>
               <div class="col-sm-12 col-md-6 form-group">
                 <label>Telefono <strong class="text-danger"></strong></label>
-                <input class="form-control form-control-2" type="text" id="Telefono2" name="Telefono2">
+                <input class="form-control form-control-2" type="text" id="Telefono2" name="Telefono2" onkeyup="this.value=Numeros(this.value)">
               </div>
 
             </form>
@@ -247,7 +247,7 @@
               </div>
               <div class="col-sm-12 col-md-6 form-group">
                 <label>Telefono <strong class="text-danger"></strong></label>
-                <input class="form-control form-control-2" type="text" id="Telefono3" name="Telefono3">
+                <input class="form-control form-control-2" type="text" id="Telefono3" name="Telefono3" onkeyup="this.value=Numeros(this.value)">
               </div>
 
             </form>
@@ -261,7 +261,7 @@
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>MONTO DEL CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito">
+                  <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito" >
                   <small>indica la cantidad en dolares americanos</small>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group text-center">
@@ -290,9 +290,7 @@
                   <label>OBSERVACIONES <strong class="text-danger">*</strong></label>
                   <textarea class="form-control form-control-2" name="Observaciones" id="Observaciones" rows="8"></textarea>
                 </div>
-                <!--  <div class="col-sm-12">
-              <button type="button" class="btn btn-primary float-right" onclick="EnviarPregunta()">Enviar Pregunta</button>
-            </div> -->
+              
               </form>
             </div>
           </div>
