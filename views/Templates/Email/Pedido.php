@@ -249,7 +249,7 @@ class TemplatePedido
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 						if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
-							$nombrefactura = $Pedido->DatosFacturacionKey == '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+							$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
 						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
 					}
 				}
@@ -337,17 +337,15 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $DatosFacturacion->RFC . '</span></td>';
 						}
 					} else {
-						$html .= 'dsfdsfdsf';
+						$html .= '';
 					};
 				} else {
-					if ($Pedido->DatosFacturacionKey != '') {
+					
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
 								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
 						}
-					} else {
-						$html .= '';
-					};
+					
 				};
 				/* fin fcturacion */
 				$html .= '	
