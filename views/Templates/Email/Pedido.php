@@ -187,14 +187,15 @@ class TemplatePedido
 				$DatosFacturacionController->order = "";
 				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
+				
 				$Pedido = $PedidoController->getBy();
 				/* if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+					$nombrefactura = $Pedido->DatosFacturacionKey != null ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
 
 				}else{
 
-					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+					$nombrefactura = $Pedido->DatosFacturacionKey != null ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
 
 				} */
 
@@ -244,7 +245,7 @@ class TemplatePedido
 				/* FIN DATOS DE FACTURACION*/
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+					$nombrefactura = $Pedido->DatosFacturacionKey != null ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
 					$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>';
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
@@ -281,7 +282,7 @@ class TemplatePedido
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
-					if ($Pedido->DatosFacturacionKey != '') {
+					if ($Pedido->DatosFacturacionKey != null) {
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
@@ -291,7 +292,7 @@ class TemplatePedido
 						$html .= '';
 					};
 				} else {
-					if ($Pedido->DatosFacturacionKey != '') {
+					if ($Pedido->DatosFacturacionKey != null) {
 
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
@@ -330,7 +331,7 @@ class TemplatePedido
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
-					if ($Pedido->DatosFacturacionKey != '') {
+					if ($Pedido->DatosFacturacionKey != null) {
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
@@ -340,14 +341,11 @@ class TemplatePedido
 						$html .= '';
 					};
 				} else {
-					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
 								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
 						}
-					} else {
-						$html .= '';
-					};
+					
 				};
 				/* fin fcturacion */
 				$html .= '	
