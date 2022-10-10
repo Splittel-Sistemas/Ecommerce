@@ -284,7 +284,7 @@
 
                 <div class="col-sm-12 col-md-6 form-group" id="divs" style="display:none">
                   <label>OTRO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="Otro" name="Otro">
+                  <input class="form-control form-control-2" type="text" id="Otro" name="Otro"  onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 form-group">
                   <label>OBSERVACIONES <strong class="text-danger">*</strong></label>
