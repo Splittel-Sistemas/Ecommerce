@@ -188,8 +188,15 @@ class TemplatePedido
 				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
-				$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+				/* if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
+					$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+
+				}else{
+
+					$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+
+				} */
 
 
 				$pedidoCostoEnvio = $Pedido->GetEnvio();
@@ -235,7 +242,15 @@ class TemplatePedido
 				}
 
 				/* FIN DATOS DE FACTURACION*/
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
+					$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+				} else {
+					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
+						if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
+							$nombrefactura = !empty($Pedido->DatosFacturacionKey) ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+					}
+				}
 				$html .= '				<tr style="width:100%;">
 														<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>
 														' . $nombrefactura . '
@@ -288,7 +303,7 @@ class TemplatePedido
 
 
 														
-														<td style="margin-bottom: 2px; text-align: left max-width:10%;"></span></td>
+														
 
 														
 														</tr>
