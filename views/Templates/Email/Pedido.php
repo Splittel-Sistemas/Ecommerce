@@ -248,8 +248,7 @@ class TemplatePedido
 					$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>';
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-						if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
-							$nombrefactura = $Pedido->DatosFacturacionKey == '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+							$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
 						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
 					}
 				}
@@ -272,7 +271,6 @@ class TemplatePedido
 					}
 				} else {
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						if ($Pedido->DatosEnvioKey == $GetShipToAdress->Adress)
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
 					}
 				};
@@ -294,7 +292,6 @@ class TemplatePedido
 					if ($Pedido->DatosFacturacionKey != '') {
 
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
 								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
@@ -339,10 +336,9 @@ class TemplatePedido
 					} else {
 						$html .= '';
 					};
-				} else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+				} else {
 					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							if ($Pedido->DatosFacturacionKey == $GetBillToAdress->Adress)
 								$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
 						}
 					} else {
