@@ -256,7 +256,8 @@ class TemplatePedido
 																' . $nombre . '
 
 														' . $nombrefactura . '
-														<td style="margin-bottom: 2px; rowspan="3" text-align: left max-width:20%;"></span></td>
+														<td style=" text-align: left"  rowspan="6">' . $Pedido->Paqueteria . '</span></td>
+
 
 														
 														</tr>
@@ -302,7 +303,6 @@ class TemplatePedido
 														
 
 
-				<td style=" rowspan="6" text-align: left">' . $Pedido->Paqueteria . '</span></td>
 														
 														
 
