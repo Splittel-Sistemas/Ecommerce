@@ -98,17 +98,7 @@
 
   </div>
 
-  <!-- Leave a Review-->
-  <div class="modal fade" id="modal-ficrece">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-body-ficrece">
-          <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Ficrece/Create.php'; ?>
 
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 
   </div>
