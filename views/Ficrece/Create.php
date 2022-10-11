@@ -62,10 +62,10 @@
         <h4 class="step-title">2. Referencias Comerciales</h4>
       </a>
       <a class="step process" id="process-3" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" number="3" onclick="addViewCheckout(this)">
-        <h4 class="step-title">3. Datos del Credito</h4>
+        <h4 class="step-title">3. Datos del Crédito</h4>
       </a>
       <a class="step process" id="process-4" number="4" class="nav-link" id="pills-documentos-tab" data-toggle="pill" data-target="#pills-documentos" type="button" role="tab" aria-controls="pills-documentos" aria-selected="false" onclick="addViewCheckout(this)">
-        <h4 class="step-title">4. Documentacion</h4>
+        <h4 class="step-title">4. Documentación</h4>
       </a>
 
     </div>
