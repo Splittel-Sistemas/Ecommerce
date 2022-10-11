@@ -289,19 +289,20 @@ class TemplatePedido
 						$html .= '';
 					};
 				} else {
-				/* 	if ($Pedido->DatosFacturacionKey != '') {
+					if ($Pedido->DatosFacturacionKey != '') {
 
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
 						$html .= '';
-					}; */
+					};
 				};
 				$html .= '	
 														
 
 
+				<td style=" rowspan="6" text-align: left">' . $Pedido->Paqueteria . '</span></td>
 														
 														
 
@@ -349,7 +350,6 @@ class TemplatePedido
 				$html .= '	
 														
 														
-				<td style=" rowspan="3" text-align: left">' . $Pedido->Paqueteria . '</span></td>
 														</tr>
 													
 													
