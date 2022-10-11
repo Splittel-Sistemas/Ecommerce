@@ -99,7 +99,7 @@ var EnviarSolicitud = function () {
           ""
         );
          GlobalCloseModal("modal-ficrece");
-        window.location.href = "index.php?";
+        window.location.href = "Ficrece.php";
       } else {
         templateAlert("danger", "", response.message, "topRight", "");
       }

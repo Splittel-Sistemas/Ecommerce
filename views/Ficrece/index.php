@@ -52,6 +52,8 @@
         <div class="col-1 padding-bottom-1x text-center">
         </div>
         <div class="col-10 padding-bottom-1x text-center">
+        <br>
+            <br>
           <h3><b>Invertimos en favor de tu rendimiento</b> </h3>
           <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicaciones</b> con el impulso financiero requerido.
             Ponemos a trabajar en su favor al fabricante Optronics y su línea de ensamble con el objetivo de ofrecer la calidad que

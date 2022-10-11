@@ -53,7 +53,15 @@
 
     }
   </script>
-  <div class="container padding-top-3x padding-bottom-3x mb-2">
+  <div class="container padding-top-1x padding-bottom-3x mb-2">
+  <div class="row ">
+        <div class="col-1 padding-bottom-1x text-center">
+        </div>
+        <div class="col-10 padding-bottom-1x text-center">
+          <img class="rounded" src="../../public/images/img_spl/ficrece/formlulario.jpg">
+        </div>
+      
+      </div>
   <div class="steps flex-sm-nowrap mb-5">
       <a class="step process active" id="process-1" number="1" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onclick="addViewCheckout(this)">
         <h4 class="step-title completado"><i class="icon-check-circle"></i>1. Datos Generales</h4>
