@@ -42,10 +42,7 @@
           <p style="text-align: center;" class="padding-top-1x">Agradecemos tu interés en la línea de crédito que en Fibremex S. A. de C. V. ofrecemos. 
             <br>
             <br>
-            Para conocer el resultado del crédito solicitado, te pedimos estar al pendiente de la respuesta en un plazo no mayor a 72 horas. 
-
-            <br>
-            <br>
+            El resultado de tu crédito solicitado te será dado a conocer en un plazo no mayor a  <b>72 horas</b> . 
             Nuestro personal del área de crédito y cobranza está a tu disposición para aclarar cualquier duda o conocer la respuesta a su solicitud.
           </p>
         </div>
