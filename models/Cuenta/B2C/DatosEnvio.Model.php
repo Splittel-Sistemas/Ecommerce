@@ -274,7 +274,7 @@
         while ($row = $result->fetch_object()) {
           $DatosEnvio = new DatosEnvio();
           $DatosEnvio->email_ejecutivo  = $row->email_ejecutivo;  
-       
+          print_r($DatosEnvio->email_ejecutivo);
           $data[] = $DatosEnvio;
         }
         unset($DatosEnvio);  

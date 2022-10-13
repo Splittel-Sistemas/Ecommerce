@@ -346,6 +346,9 @@ class TemplatePedido
 						$html .= '';
 					};
 				};
+				$DatosEnvioController = new DatosEnvioController();
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->order = "";
 				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
 
 				/* fin fcturacion */
