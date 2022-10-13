@@ -374,10 +374,16 @@ class TemplatePedido
 															<br>
 															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
 															';
+															if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+																foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
+																	$html .= '<p align="center">>Ejecutivo: '.$DatosEnvio->email_ejecutivo.'</p>';
+																}
+															} else {
+											
+																$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+															};
 															
-															foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
-																$html .= '<p align="center">'.$DatosEnvio->email_ejecutivo.'</p>';
-															}
 															$html .= '
 														</td>
 													</tr>
