@@ -346,6 +346,8 @@ class TemplatePedido
 						$html .= '';
 					};
 				};
+				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
+
 				/* fin fcturacion */
 				$html .= '	
 														
@@ -368,6 +370,7 @@ class TemplatePedido
 															<p align="center">Este es un correo electrónico generado automáticamente</p>
 															<br>
 															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
+															<p align="center">'.$ResultDatosCorreo->email_ejecutivo.'</p>
 
 															
 														</td>

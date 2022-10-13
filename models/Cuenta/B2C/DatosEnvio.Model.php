@@ -20,6 +20,7 @@
     public $Referencia;
     public $Activo;
     public $ClienteKey;
+    public $email_ejecutivo;
 
     public function SetParameters($conn, $Tool){
       $this->conn = $conn;
@@ -175,6 +176,8 @@
       return $this->Referencia; 
     }public function GetActivo(){
       return $this->Activo; 
+    }public function Getemail_ejecutivo(){
+      return $this->email_ejecutivo; 
     }
     /**
      * Description
@@ -246,6 +249,32 @@
           $DatosEnvio->Colonia        = $row->colonia;  
           $DatosEnvio->Referencia     = $row->referencia;
           $DatosEnvio->Activo         = $row->activo;
+          $data[] = $DatosEnvio;
+        }
+        unset($DatosEnvio);  
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+    /**
+     * Description
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */ 
+    
+    
+     public function GetCliente($filter, $orderBy){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM login_cliente ".$filter." ".$orderBy;
+        $result = $this->conn->QueryReturn($SQLSTATEMENT);
+        $data = [];
+        while ($row = $result->fetch_object()) {
+          $DatosEnvio = new DatosEnvio();
+          $DatosEnvio->email_ejecutivo  = $row->email_ejecutivo;  
+       
           $data[] = $DatosEnvio;
         }
         unset($DatosEnvio);  

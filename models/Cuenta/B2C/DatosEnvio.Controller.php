@@ -47,6 +47,27 @@
      *
      * @return int $b Bar
      */
+    public function getEmailEjecutivo(){
+      try{
+        if (!$this->conn->conexion()->connect_error) {
+          $DatosEnvio = new DatosEnvio();
+          $DatosEnvio->SetParameters($this->conn, $this->Tool);
+          $items = $DatosEnvio->GetCliente($this->filter, $this->orderBy);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }else{
+          throw new Exception("No se pueden obtener los datos maestros! por favor contactanos ");
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+    /**
+     * 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
     public function getBy(){
       try{
         if (!$this->conn->conexion()->connect_error) {
