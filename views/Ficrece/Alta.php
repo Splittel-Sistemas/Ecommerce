@@ -169,7 +169,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>NÚMERO INT. / EXT.<strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="NumeroInt" name="NumeroInt" onkeyup="this.value=Numeros(this.value)">
+                  <input class="form-control form-control-2" type="text" id="NumeroInt" name="NumeroInt" ">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>COLONIA <strong class="text-danger">*</strong></label>

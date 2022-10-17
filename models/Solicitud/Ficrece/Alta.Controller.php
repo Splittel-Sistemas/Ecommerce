@@ -64,7 +64,7 @@ class SolicitudCController
     }
   }
 
- 
+
   public function Alta()
   {
     try {
@@ -73,29 +73,29 @@ class SolicitudCController
 
         $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
 
-     /*    print_r($_POST);
-        exit;
- */
-        
-        $SolicitudCModel->SetRazonSocial($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetRfc($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetDomicilioFiscal($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetNombreSolicitud($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetDepartamento($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetTitulo($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetTelefono($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetCorreo($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetCorreEjecutivo($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetNummeroInt($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetCalle($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetColonia($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetCuidad($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetCP($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetEstado($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetNombreComercial($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetWeb($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetvaloresCheck($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
-        $SolicitudCModel->SetDoc1($this->Tool->Clear_data_for_sql($_POST['NombreSolicitud']));
+        /*  print_r($_POST);
+        exit; */
+
+
+        $SolicitudCModel->SetRazonSocial($_POST['RazonSocial']);
+        $SolicitudCModel->SetRfc($_POST['Rfc']);
+        $SolicitudCModel->SetDomicilioFiscal($_POST['DomicilioFiscal']);
+        $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
+        $SolicitudCModel->SetDepartamento($_POST['Departamento']);
+        $SolicitudCModel->SetTitulo($_POST['Titulo']);
+        $SolicitudCModel->SetTelefono($_POST['Telefono']);
+        $SolicitudCModel->SetCorreo($_POST['Correo']);
+        $SolicitudCModel->SetCorreEjecutivo($_POST['CorreEjecutivo']);
+        $SolicitudCModel->SetNummeroInt($_POST['NummeroInt']);
+        $SolicitudCModel->SetCalle($_POST['Calle']);
+        $SolicitudCModel->SetColonia($_POST['Colonia']);
+        $SolicitudCModel->SetCuidad($_POST['Cuidad']);
+        $SolicitudCModel->SetCP($_POST['CP']);
+        $SolicitudCModel->SetEstado($_POST['Estado']);
+        $SolicitudCModel->SetNombreComercial($_POST['NombreComercial']);
+        $SolicitudCModel->SetWeb($_POST['Web']);
+        $SolicitudCModel->SetvaloresCheck($_POST['valoresCheck']);
+
 
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
@@ -123,7 +123,7 @@ class SolicitudCController
         if (!$ResultSolicitud['error']) {
 
           $data = [
-          /*   "NombreSolicitud" => $_POST['NombreSolicitud'],
+            /*   "NombreSolicitud" => $_POST['NombreSolicitud'],
             "MontoCredito" => $_POST['MontoCredito'],
             "Correo" => $_POST['Correo'],
             "Plazo" => $_POST['Plazo'],
@@ -134,15 +134,12 @@ class SolicitudCController
             "Curp" => $_POST['Curp'],
             "Observaciones" => $_POST['Observaciones'],
             "PERSONA" => $_POST['PERSONA']
- */
-
-
-          ];
+ */];
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "ALTA CLIENTE";
           /*  $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
-             $Email->MailerListTo = ["ramon.olea@splittel.com"];
+          $Email->MailerListTo = ["ramon.olea@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);
           $Email->EmailSendEmail();
