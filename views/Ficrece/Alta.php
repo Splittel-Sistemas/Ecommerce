@@ -58,7 +58,7 @@
       <div class="col-1 padding-bottom-1x text-center">
       </div>
       <div class="col-10 padding-bottom-1x text-center">
-        <img class="rounded" src="../../public/images/img_spl/ficrece/formlulario.jpg">
+     <!--    <img class="rounded" src="../../public/images/img_spl/ficrece/formlulario.jpg"> -->
       </div>
 
     </div>
