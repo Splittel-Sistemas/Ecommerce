@@ -12,7 +12,9 @@ var EnviarAlta = function () {
   fda.append("Titulo", $("#Titulo").val());
   fda.append("Telefono", $("#Telefono").val());
   fda.append("Correo", $("#Correo").val());
-  fda.append("CorreEjecutivo", $("#CorreEjecutivo").val());
+  let params = new URLSearchParams(location.search);
+  var CorreEjecutivo = params.get("ejecutivo");
+  fda.append("CorreEjecutivo", CorreEjecutivo);
   fda.append("NummeroInt", $("#NumeroInt").val());
   fda.append("Calle", $("#Calle").val());
   fda.append("Colonia", $("#Colonia").val());

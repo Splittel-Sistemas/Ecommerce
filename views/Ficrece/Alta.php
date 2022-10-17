@@ -152,8 +152,8 @@
                   <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>CORREO EJECUTIVO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="email" id="CorreEjecutivo" name="CorreEjecutivo">
+               <!--    <label>CORREO EJECUTIVO <strong class="text-danger">*</strong></label>
+                  <input class="form-control form-control-2" type="email" id="CorreEjecutivo" name="CorreEjecutivo"> -->
                 </div>
                 <br>
                 <br> <br>
