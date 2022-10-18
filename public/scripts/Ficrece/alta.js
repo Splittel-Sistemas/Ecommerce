@@ -51,7 +51,7 @@ var EnviarAlta = function () {
           ""
         );
         GlobalCloseModal("modal-ficrece");
-        window.location.href = "Alta.php";
+        window.location.href = "Mensaje.php";
       } else {
         templateAlert("danger", "", response.message, "topRight", "");
       }
