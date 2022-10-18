@@ -28,7 +28,8 @@
         <div class="col-1 padding-bottom-1x text-center">
         </div>
         <div class="col-10 padding-bottom-1x text-center">
-         <!--  <img class="rounded" src="../../public/images/img_spl/ficrece/banner.png" alt="soluciones"> -->
+        <img class="rounded" src="../../public/images/img_spl/ficrece/BannerFibre.jpg">
+
         </div>
 
       </div>
@@ -39,7 +40,7 @@
         </div>
         <div class="col-10 padding-bottom-1x text-center">
           <br>
-          <p style="text-align: center;" class="padding-top-1x">Agradecemos tu interés en Fibremex S. A. de C. V. ofrecemos.
+          <p style="text-align: center;" class="padding-top-1x">Agradecemos tu interés en Fibremex S. A. de C. V. 
             <br>
             <br>
 

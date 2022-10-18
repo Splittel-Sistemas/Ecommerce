@@ -11,7 +11,7 @@ if (!class_exists("SolicitudC")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Ficrece/Alta.Model.php';
 }
 if (!class_exists("Email")) {
-  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Email.php';
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Emailadd.php';
 }
 if (!class_exists("TemplateFicrece")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Alta.php';
@@ -115,8 +115,12 @@ class SolicitudCController
         $SolicitudCModel->SetDoc1($name1);
 
 
+        $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
 
-
+        // Check whether submitted data is not empty 
+        // File path config 
+        $fileName =  iconv("UTF-8", "ISO-8859-1", basename($_FILES["file"]["name"]));
+        $targetFilePath = $uploadDir . $fileName;
 
         $ResultSolicitud = $SolicitudCModel->Add();
 
@@ -134,6 +138,9 @@ class SolicitudCController
           ];
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
+
+          $Email->AddAttachment($targetFilePath);
+
           $Email->MailerSubject = "ALTA CLIENTE";
           /*  $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
           $Email->MailerListTo = ["ramon.olea@splittel.com"];

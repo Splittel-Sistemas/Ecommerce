@@ -41,8 +41,8 @@ class TemplateFicrece
                           <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $data['Telefono'] . '</p>
                           <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>' . $data['Correo'] . '</p>
                           <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>' . $data['RazonSocial'] . '</p>
-                          <p align="center" style="margin-bottom:10px;">Ciudad ' . $data['Ciudad'] . ' /p>
-                          <p align="center" style="margin-bottom:10px;">Estado ' . $data['Estado'] . ' /p>
+                          <p align="center" style="margin-bottom:10px;">Ciudad ' . $data['Ciudad'] . ' </p>
+                          <p align="center" style="margin-bottom:10px;">Estado ' . $data['Estado'] . ' </p>
 
                             <p><br></p>
                             <p align="center">Este es un correo electrónico generado automáticamente</p>
