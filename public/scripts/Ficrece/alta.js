@@ -1,4 +1,4 @@
-// https://parzibyte.me/blog
+
 const MAXIMO_TAMANIO_BYTES = 5000000 ; // 1MB = 1 millón de bytes
 
 // Obtener referencia al elemento
