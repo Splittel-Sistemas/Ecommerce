@@ -10,11 +10,11 @@ if (!class_exists("Functions_tools")) {
 if (!class_exists("SolicitudC")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Ficrece/Alta.Model.php';
 }
-
+if (!class_exists("Email")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Emailadd.php';
+}
 if (!class_exists("TemplateFicrece")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Alta.php';
-  require_once $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Librerias/PHPMailer/class.phpmailer.php';
-  require_once $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Librerias/PHPMailer/class.smtp.php';
 }
 
 /**
@@ -126,59 +126,29 @@ class SolicitudCController
 
         if (!$ResultSolicitud['error']) {
 
+          $data = [
+            "NombreSolicitud" => $_POST['NombreSolicitud'],
+            "Telefono" => $_POST['Telefono'],
+            "Correo" => $_POST['Correo'],
+            "Rfc" => $_POST['Rfc'],
+            "RazonSocial" => $_POST['RazonSocial'],
+            "CorreEjecutivo" => $_POST['CorreEjecutivo'],
+            "Ciudad" => $_POST['Cuidad'],
+            "Estado" => $_POST['Estado']
+          ];
+          $Email = new Email();
+          $TemplateFicrece = new TemplateFicrece();
 
+          $Email->AddAttachment($targetFilePath);
 
+          $Email->MailerSubject = "ALTA CLIENTE";
+          /*  $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
+          $Email->MailerListTo = ["ramon.olea@splittel.com"];
 
-
-
-
-          $mensaje = ('<html>
-          <body>
-             
-              </table>
-          </body>
-      </html>');
-          $puerto = "587";
-          $host = "mail.fibremex.com";
-          $email = "notificaciones@fibremex.com";
-          $password = "D6.aWs!F@xwD";
-          //Este bloque es importante
-          $mail = new PHPMailer();
-          $mail->IsSMTP();
-          //$mail->SMTPDebug = 3; 
-          $mail->SMTPAutoTLS = false;
-          $mail->SMTPAuth = true;
-          $mail->SMTPSecure = false;
-          $mail->Host = $host;
-          $mail->Port = $puerto;
-          //Nuestra cuenta
-          $mail->Username = $email;
-          $mail->Password = $password; //Su password 
-          $mail->AddAttachment($targetFilePath);
-          $asunto    = 'Solicitud de  ';
-          $mail->Subject = $asunto;
-          $mail->Body = $mensaje;
-          //Mails
-          $mail->AddAddress('ramon.olea@splittel.com');
-
-          /*  $query_registro1 = "SELECT email FROM signup WHERE activo='si' AND rol>=4 AND id_area=3";
-       $consu_registro1 = $conexion -> query($query_registro1);
-       while($execu_registro1 = $consu_registro1->fetch_array(MYSQLI_BOTH)){
-           $mail->AddAddress($execu_registro1['email']);
-       }
-       $query_registro2 = "SELECT email FROM signup WHERE activo='si' AND rol>=2 AND id_area=19";
-       $consu_registro2 = $conexion -> query($query_registro2);
-       while($execu_registro2 = $consu_registro2->fetch_array(MYSQLI_BOTH)){
-           $mail->AddCC($execu_registro2['email']);
-       } */
-          $mail->AddBCC('ramon.olea@splittel.com');
-          /*      $mail->AddBCC('aaron.cuevas@fibremex.com.mx'); */
-
-          $mail->MsgHTML($mensaje);
-
-          //Avisar si fue enviado o no y dirigir al index
-
-          $mail->send();
+          $Email->MailerBody = $TemplateFicrece->body($data);
+          $Email->EmailSendEmail();
+          unset($Email);
+          unset($TemplateFicrece);
         }
 
         return $ResultSolicitud;
