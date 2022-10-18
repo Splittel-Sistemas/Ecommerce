@@ -115,11 +115,12 @@ class SolicitudCController
         $SolicitudCModel->SetDoc1($name1);
 
 
+
         $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
 
         // Check whether submitted data is not empty 
         // File path config 
-        $fileName =  iconv("UTF-8", "ISO-8859-1", basename($_FILES["file"]["name"]));
+        $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
         $targetFilePath = $uploadDir . $fileName;
 
         $ResultSolicitud = $SolicitudCModel->Add();
