@@ -558,7 +558,7 @@ class SolicitudCController
                     <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT.: </strong>' . $_POST['NummeroInt'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT. : </strong>' . $_POST['NummeroInt'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . $_POST['Colonia'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CIUDAD / MUNICIPIO: </strong>' . $_POST['Cuidad'] . '  </p>

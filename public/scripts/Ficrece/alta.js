@@ -58,7 +58,7 @@ var EnviarAlta = function () {
 
   var file_data = $("#file").prop("files")[0];
   fda.append("file", file_data);
-  if (CorreEjecutivo != null || CorreEjecutivo != '') {
+  if (CorreEjecutivo != null) {
     $.ajax({
       url: "../../models/Solicitud/Ficrece/Alta.Route.php",
       type: "post",
