@@ -555,8 +555,8 @@ class SolicitudCController
                     <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $_POST['Telefono'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>' . $_POST['Correo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>' . $_POST['RazonSocial'] . '</p>
-                    <p align="center" style="margin-bottom:10px;">Ciudad ' . $_POST['Ciudad'] . ' </p>
-                    <p align="center" style="margin-bottom:10px;">Estado ' . $_POST['Estado'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>Ciudad ' . $_POST['Ciudad'] . ' </strong> </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>Estado ' . $_POST['Estado'] . ' </strong> </p>
 
                       <p><br></p>
                       <p align="center">Este es un correo electrónico generado automáticamente</p>
