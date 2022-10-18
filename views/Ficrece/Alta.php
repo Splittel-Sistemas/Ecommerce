@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>TELÉFONO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono">
+                  <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono" onkeyup="this.value=Numeros(this.value)">
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>CÓDIGO POSTAL<strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="CP" name="CP">
+                  <input class="form-control form-control-2" type="text" id="CP" name="CP" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>ESTADO<strong class="text-danger">*</strong></label>

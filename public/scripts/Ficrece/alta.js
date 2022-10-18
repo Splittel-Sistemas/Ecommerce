@@ -41,7 +41,6 @@ var EnviarAlta = function () {
     async: false,
     cache: false,
     success: function (response) {
-      console.log(response);
       if (!response.error) {
         templateAlert(
           "success",

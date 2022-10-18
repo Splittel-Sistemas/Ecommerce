@@ -123,18 +123,15 @@ class SolicitudCController
         if (!$ResultSolicitud['error']) {
 
           $data = [
-            /*   "NombreSolicitud" => $_POST['NombreSolicitud'],
-            "MontoCredito" => $_POST['MontoCredito'],
+            "NombreSolicitud" => $_POST['NombreSolicitud'],
+            "Telefono" => $_POST['Telefono'],
             "Correo" => $_POST['Correo'],
-            "Plazo" => $_POST['Plazo'],
             "Rfc" => $_POST['Rfc'],
             "RazonSocial" => $_POST['RazonSocial'],
-            "FormaPago" => $_POST['FormaPago'],
-            "Telefono" => $_POST['Telefono'],
-            "Curp" => $_POST['Curp'],
-            "Observaciones" => $_POST['Observaciones'],
-            "PERSONA" => $_POST['PERSONA']
- */];
+            "CorreEjecutivo" => $_POST['CorreEjecutivo'],
+            "Ciudad" => $_POST['Cuidad'],
+            "Estado" => $_POST['Estado']
+          ];
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "ALTA CLIENTE";
