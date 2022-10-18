@@ -548,15 +548,26 @@ class SolicitudCController
                     </tr>
                     <tr>
                   
-
+                 
                     <td class="wrapper">
-                    <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>' . $_POST['NombreSolicitud'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Rfc: </strong>' . $_POST['Rfc'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $_POST['Telefono'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>' . $_POST['Correo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>' . $_POST['RazonSocial'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Ciudad ' . $_POST['Ciudad'] . ' </strong> </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Estado ' . $_POST['Estado'] . ' </strong> </p>
+                    <p align="center" style="margin-bottom:10px;"><strong> RAZON SOCIAL: </strong>' . $_POST['RazonSocial'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>RFC: </strong>' . $_POST['Rfc'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DIRECCIÓN FISCAL: </strong>' . $_POST['DomicilioFiscal'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMPLETO: </strong>' . $_POST['NombreSolicitud'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DEPARTAMENTO: </strong>' . $_POST['Departamento'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT.: </strong>' . $_POST['NummeroInt'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . $_POST['Colonia'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CIUDAD / MUNICIPIO: </strong>' . $_POST['Cuidad'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CÓDIGO POSTAL: </strong>' . $_POST['CP'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>ESTADO: </strong>' . $_POST['Estado'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>GIRO DE LA EMPRESA: </strong> ' . $_POST['valoresCheck'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMERCIAL: </strong> ' . $_POST['NombreComercial'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>PÁGINA WEB: </strong> ' . $_POST['Web'] . ' </p>
+
 
                       <p><br></p>
                       <p align="center">Este es un correo electrónico generado automáticamente</p>
@@ -620,8 +631,8 @@ class SolicitudCController
 
 
           $mail->AddBCC('ramon.olea@splittel.com');
-          $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
-
+       /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
+ */
           $mail->MsgHTML($mensaje);
 
           //Avisar si fue enviado o no y dirigir al index

@@ -1,28 +1,30 @@
-
-const MAXIMO_TAMANIO_BYTES = 5000000 ; // 1MB = 1 millón de bytes
+const MAXIMO_TAMANIO_BYTES = 5000000; // 1MB = 1 millón de bytes
 
 // Obtener referencia al elemento
 const $miInput = document.querySelector("#file");
 
 $miInput.addEventListener("change", function () {
-	// si no hay archivos, regresamos
-	if (this.files.length <= 0) return;
+  // si no hay archivos, regresamos
+  if (this.files.length <= 0) return;
 
-	// Validamos el primer archivo únicamente
-	const archivo = this.files[0];
-	if (archivo.size > MAXIMO_TAMANIO_BYTES) {
-		const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
-/* 		alert(`El tamaño máximo es ${tamanioEnMb} MB`); */
-    templateAlert("danger", "", `El tamaño máximo es ${tamanioEnMb} MB`, "topCenter", "");
-		// Limpiar
-		$miInput.value = "";
-	} else {
-		// Validación pasada. Envía el formulario o haz lo que tengas que hacer
-	}
+  // Validamos el primer archivo únicamente
+  const archivo = this.files[0];
+  if (archivo.size > MAXIMO_TAMANIO_BYTES) {
+    const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
+    /* 		alert(`El tamaño máximo es ${tamanioEnMb} MB`); */
+    templateAlert(
+      "danger",
+      "",
+      `El tamaño máximo es ${tamanioEnMb} MB`,
+      "topCenter",
+      ""
+    );
+    // Limpiar
+    $miInput.value = "";
+  } else {
+    // Validación pasada. Envía el formulario o haz lo que tengas que hacer
+  }
 });
-
-
-
 
 var EnviarAlta = function () {
   let valoresCheck = [];
@@ -56,32 +58,41 @@ var EnviarAlta = function () {
 
   var file_data = $("#file").prop("files")[0];
   fda.append("file", file_data);
-
-  $.ajax({
-    url: "../../models/Solicitud/Ficrece/Alta.Route.php",
-    type: "post",
-    data: fda,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    async: false,
-    cache: false,
-    success: function (response) {
-      if (!response.error) {
-        templateAlert(
-          "success",
-          "Enviado",
-          "La solicitud ha sido enviada",
-          "center",
-          ""
-        );
-        GlobalCloseModal("modal-ficrece");
-        window.location.href = "Mensaje.php";
-      } else {
-        templateAlert("danger", "", response.message, "topRight", "");
-      }
-    },
-  });
+  if (CorreEjecutivo != null) {
+    $.ajax({
+      url: "../../models/Solicitud/Ficrece/Alta.Route.php",
+      type: "post",
+      data: fda,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      async: false,
+      cache: false,
+      success: function (response) {
+        if (!response.error) {
+          templateAlert(
+            "success",
+            "Enviado",
+            "La solicitud ha sido enviada",
+            "center",
+            ""
+          );
+          GlobalCloseModal("modal-ficrece");
+          window.location.href = "Mensaje.php";
+        } else {
+          templateAlert("danger", "", response.message, "topRight", "");
+        }
+      },
+    });
+  } else {
+    templateAlert(
+      "danger",
+      "",
+      "FALTA EL CORREO DEL EJECUTIVO",
+      "topRight",
+      ""
+    );
+  }
 };
 
 var EnviarMensaje = function (Elem) {

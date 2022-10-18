@@ -32,7 +32,7 @@ class SolicitudC
   public function SetRazonSocial($RazonSocial)
   {
     if (empty($RazonSocial)) {
-      throw new Exception('Nombre es requerido');
+      throw new Exception('RAZON SOCIAL es requerido');
     }
     $this->RazonSocial = $RazonSocial;
   }
@@ -46,14 +46,14 @@ class SolicitudC
   public function SetDomicilioFiscal($DomicilioFiscal)
   {
     if (empty($DomicilioFiscal)) {
-      throw new Exception(' RAZON SOCIAL  es requerido');
+      throw new Exception('DIRECCIÓN FISCAL es requerido');
     }
     $this->DomicilioFiscal = $DomicilioFiscal;
   }
   public function SetNombreSolicitud($NombreSolicitud)
   {
     if (empty($NombreSolicitud)) {
-      throw new Exception(' RAZON SOCIAL  es requerido');
+      throw new Exception('NOMBRE COMPLETO es requerido');
     }
     $this->NombreSolicitud = $NombreSolicitud;
   }
@@ -70,28 +70,26 @@ class SolicitudC
   public function SetTelefono($Telefono)
   {
     if (empty($Telefono)) {
-      throw new Exception(' Telefono es requerido');
+      throw new Exception('Telefono es requerido');
     }
     $this->Telefono = $Telefono;
   }
   public function SetCorreo($Correo)
   {
     if (empty($Correo)) {
-      throw new Exception(' Correo es requerido');
+      throw new Exception('Correo es requerido');
     }
     $this->Correo = $Correo;
   }
   public function SetCorreEjecutivo($CorreEjecutivo)
   {
-    if (empty($CorreEjecutivo)) {
-      throw new Exception(' CorreEjecutivo es requerido');
-    }
+    
     $this->CorreEjecutivo = $CorreEjecutivo;
   }
   public function SetNummeroInt($NummeroInt)
   {
     if (empty($NummeroInt)) {
-      throw new Exception(' NummeroInt es requerido');
+      throw new Exception(' NÚMERO INT. / EXT es requerido');
     }
     $this->NummeroInt = $NummeroInt;
   }
@@ -113,14 +111,14 @@ class SolicitudC
   public function SetCuidad($Cuidad)
   {
     if (empty($Cuidad)) {
-      throw new Exception(' Cuidad es requerido');
+      throw new Exception(' IUDAD / MUNICIPIO es requerido');
     }
     $this->Cuidad = $Cuidad;
   }
   public function SetCP($CP)
   {
     if (empty($CP)) {
-      throw new Exception(' CP es requerido');
+      throw new Exception(' CODIGO POSTAL es requerido');
     }
     $this->CP = $CP;
   }
