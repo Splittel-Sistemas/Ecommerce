@@ -277,7 +277,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>Constancia de situación fiscal en PDF.<strong class="text-danger"></strong></label>
-                  <input class="form-control form-control-2" type="file" id="file">
+                  <input class="form-control form-control-2" type="file" id="file" accept="application/pdf">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
 
