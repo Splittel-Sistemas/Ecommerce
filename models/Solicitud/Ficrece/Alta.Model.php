@@ -39,7 +39,7 @@ class SolicitudC
   public function SetRfc($Rfc)
   {
     if (empty($Rfc)) {
-      throw new Exception('Rfc es requerido');
+      throw new Exception('RFC es requerido');
     }
     $this->Rfc = $Rfc;
   }
@@ -111,7 +111,7 @@ class SolicitudC
   public function SetCuidad($Cuidad)
   {
     if (empty($Cuidad)) {
-      throw new Exception(' IUDAD / MUNICIPIO es requerido');
+      throw new Exception(' CIUDAD / MUNICIPIO es requerido');
     }
     $this->Cuidad = $Cuidad;
   }
