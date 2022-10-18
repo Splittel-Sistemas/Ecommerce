@@ -621,17 +621,20 @@ class SolicitudCController
           //Nuestra cuenta
           $mail->Username = $email;
           $mail->Password = $password; //Su password 
-          $mail->AddAttachment($targetFilePath);
+          if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+            $mail->AddAttachment($targetFilePath);
+          }
           $asunto    = 'Alta Cliente';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
           //Mails
+
           $mail->AddAddress('marketing.directo@splittel.com');
-            $mail->AddCC($_POST['CorreEjecutivo']);
+          $mail->AddCC($_POST['CorreEjecutivo']);
 
 
           $mail->AddBCC('ramon.olea@splittel.com');
-       /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
+          /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
  */
           $mail->MsgHTML($mensaje);
 
