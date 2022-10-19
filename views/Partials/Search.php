@@ -47,7 +47,7 @@ if (isset($_POST["Descripcion"])) {
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != "") {
 
-      $like2 .= " OR codigo LIKE '%" . $e[$i] . "%'";
+      $like2 .= " OR codigo LIKE '%" . $e[$i] . "%' ";
     }
   }
 
@@ -90,7 +90,7 @@ if (isset($_POST["Descripcion"])) {
 
   //BUSCADOR DE PRODUCTOS FIJOS
   $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE (desc_producto LIKE '%" . $_POST["Descripcion"] . "%'  $like  OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2 )  ";
+  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $_POST["Descripcion"] . "%'   $like   OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2) AND producto_activo = 'si' )  ";
   $ProductoController->order = " LIMIT 6";
   $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
@@ -124,7 +124,7 @@ if (isset($_POST["Descripcion"])) {
     }
   }
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat) AND activo='si' ";
+  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat) AND activo='si'  ";
   $SubcategoriasN1Controller->order = "LIMIT 6";
   $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
   if ($ResultSubcategoriasN1->count > 0) {
