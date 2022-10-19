@@ -57,6 +57,13 @@ class SolicitudC
     }
     $this->NombreSolicitud = $NombreSolicitud;
   }
+  public function SetCorreEjecutivo($CorreEjecutivo)
+  {
+   /*  if (empty($CorreEjecutivo)) {
+      throw new Exception('El Correo del Ejecutivo es requerido');
+    } */
+    $this->CorreEjecutivo = $CorreEjecutivo;
+  }
   public function SetDepartamento($Departamento)
   {
 
@@ -81,22 +88,18 @@ class SolicitudC
     }
     $this->Correo = $Correo;
   }
-  public function SetCorreEjecutivo($CorreEjecutivo)
-  {
-    
-    $this->CorreEjecutivo = $CorreEjecutivo;
-  }
+
   public function SetNummeroInt($NummeroInt)
   {
     if (empty($NummeroInt)) {
-      throw new Exception(' NÚMERO INT. / EXT es requerido');
+      throw new Exception('NÚMERO INT. / EXT es requerido');
     }
     $this->NummeroInt = $NummeroInt;
   }
   public function SetCalle($Calle)
   {
     if (empty($Calle)) {
-      throw new Exception(' Calle es requerido');
+      throw new Exception('Calle es requerido');
     }
     $this->Calle = $Calle;
   }
@@ -104,28 +107,28 @@ class SolicitudC
   public function SetColonia($Colonia)
   {
     if (empty($Colonia)) {
-      throw new Exception(' Colonia es requerido');
+      throw new Exception('Colonia es requerido');
     }
     $this->Colonia = $Colonia;
   }
   public function SetCuidad($Cuidad)
   {
     if (empty($Cuidad)) {
-      throw new Exception(' CIUDAD / MUNICIPIO es requerido');
+      throw new Exception('CIUDAD / MUNICIPIO es requerido');
     }
     $this->Cuidad = $Cuidad;
   }
   public function SetCP($CP)
   {
     if (empty($CP)) {
-      throw new Exception(' CODIGO POSTAL es requerido');
+      throw new Exception('CODIGO POSTAL es requerido');
     }
     $this->CP = $CP;
   }
   public function SetEstado($Estado)
   {
     if (empty($Estado)) {
-      throw new Exception(' Estado es requerido');
+      throw new Exception('Estado es requerido');
     }
     $this->Estado = $Estado;
   }
@@ -142,7 +145,7 @@ class SolicitudC
   public function SetvaloresCheck($valoresCheck)
   {
     if (empty($valoresCheck)) {
-      throw new Exception(' GIRO DE LA EMPRESA es requerido');
+      throw new Exception('GIRO DE LA EMPRESA es requerido');
     }
     $this->valoresCheck = $valoresCheck;
   }

@@ -40,8 +40,10 @@ var EnviarAlta = function () {
   fda.append("Titulo", $("#Titulo").val());
   fda.append("Telefono", $("#Telefono").val());
   fda.append("Correo", $("#Correo").val());
-  let params = new URLSearchParams(location.search);
-  var CorreEjecutivo = params.get("ejecutivo");
+  /*   let params = new URLSearchParams(location.search);
+  var CorreEjecutivo = params.get("ejecutivo"); */
+
+  var CorreEjecutivo = $("#ejecutivo").val();
   fda.append("CorreEjecutivo", CorreEjecutivo);
   fda.append("NummeroInt", $("#NumeroInt").val());
   fda.append("Calle", $("#Calle").val());
@@ -58,7 +60,7 @@ var EnviarAlta = function () {
 
   var file_data = $("#file").prop("files")[0];
   fda.append("file", file_data);
-  if (CorreEjecutivo != null) {
+  if (CorreEjecutivo != "") {
     $.ajax({
       url: "../../models/Solicitud/Ficrece/Alta.Route.php",
       type: "post",

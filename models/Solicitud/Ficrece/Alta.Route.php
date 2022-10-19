@@ -17,7 +17,8 @@
     
     public function controller(){
       try {
-      
+       /*  print_r($_POST['CorreEjecutivo']);
+        exit; */
         $Action = isset($_POST["Action"]);
           switch ($Action) {
           case "create":

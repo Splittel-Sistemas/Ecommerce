@@ -120,7 +120,31 @@
                   <input class="form-control form-control-2" type="text" id="DomicilioFiscal" name="DomicilioFiscal">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-
+                  <label for="validationCustom06">EJECUTIVO <strong class="text-danger">*</strong></label>
+                  <select class="form-control form-control-2" id="ejecutivo" required>
+                    <option value=<?= isset($_GET['ejecutivo']) ? $_GET['ejecutivo']  : ''; ?>>
+                      <?php
+                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == 'Dallas@splittel.com') {
+                        echo 'asdasdsad';
+                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
+                        echo 'asdasdsad';
+                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
+                        echo 'asdasdsad';
+                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
+                        echo 'asdasdsad';
+                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'ramon.olea@splittel.com') {
+                        echo 'ramon.olea ';
+                      } else {
+                        echo 'Seleccione un Ejecutivo';
+                      };
+                      ?>
+                    </option>
+                    <option value="Dallas@splittel.com">Dallas</option>
+                    <option value="Housto@splittel.com">Houston</option>
+                    <option value="LosAn@splittel.com">Los Angeles</option>
+                    <option value="Miami@splittel.com">Miami</option>
+                    <option value="NewYo@splittel.com">New York</option>
+                  </select>
                 </div>
                 <br>
                 <br> <br>
@@ -140,7 +164,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>TÍTULO <strong class="text-danger"></strong></label>
-                  <input class="form-control form-control-2" type="text" id="Titulo" name="Titulo" maxlength="4" >
+                  <input class="form-control form-control-2" type="text" id="Titulo" name="Titulo" maxlength="4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>TELÉFONO <strong class="text-danger">*</strong></label>
@@ -152,7 +176,7 @@
                   <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-               <!--    <label>CORREO EJECUTIVO <strong class="text-danger">*</strong></label>
+                  <!--    <label>CORREO EJECUTIVO <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="email" id="CorreEjecutivo" name="CorreEjecutivo"> -->
                 </div>
                 <br>
@@ -171,7 +195,7 @@
                   <label>NÚMERO INT. / EXT.<strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="NumeroInt" name="NumeroInt" ">
                 </div>
-                <div class="col-sm-12 col-md-6 form-group">
+                <div class=" col-sm-12 col-md-6 form-group">
                   <label>COLONIA <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Colonia" name="Colonia">
                 </div>
@@ -199,19 +223,19 @@
                 <div class="col-sm-12 col-md-12 form-group text-center">
 
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Integrador" id="Integrador"  >
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Integrador" id="Integrador">
                     <label class="custom-control-label" for="Integrador">Integrador</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Distribuidor" id="Distribuidor">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Distribuidor" id="Distribuidor">
                     <label class="custom-control-label" for="Distribuidor">Distribuidor</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Fabricante" id="Fabricante">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Fabricante" id="Fabricante">
                     <label class="custom-control-label" for="Fabricante">Fabricante</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="ISP" id="ISP">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="ISP" id="ISP">
                     <label class="custom-control-label" for="ISP">ISP</label>
                   </div>
 
@@ -220,19 +244,19 @@
                 <div class="col-sm-12 col-md-12 form-group text-center">
 
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Constructora" id="Constructora">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Constructora" id="Constructora">
                     <label class="custom-control-label" for="Constructora">Constructora</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Gobierno" id="Gobierno">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Gobierno" id="Gobierno">
                     <label class="custom-control-label" for="Gobierno">Gobierno</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Usuario" id="Usuario">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Usuario" id="Usuario">
                     <label class="custom-control-label" for="Usuario">Usuario</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Carrier" id="Carrier">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Carrier" id="Carrier">
                     <label class="custom-control-label" for="Carrier">Carrier</label>
                   </div>
 
@@ -241,19 +265,19 @@
                 <div class="col-sm-12 col-md-12 form-group text-center">
 
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Consultor" id="Consultor">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Consultor" id="Consultor">
                     <label class="custom-control-label" for="Consultor">Consultor</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Educación" id="Educación">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Educación" id="Educación">
                     <label class="custom-control-label" for="Educación">Educación</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="CFE" id="CFE">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="CFE" id="CFE">
                     <label class="custom-control-label" for="CFE">CFE</label>
                   </div>
                   <div class="custom-control custom-checkbox custom-control-inline  col-md-2">
-                    <input class="custom-control-input" type="checkbox" name="checks[]"   value="Otro" id="Otro">
+                    <input class="custom-control-input" type="checkbox" name="checks[]" value="Otro" id="Otro">
                     <label class="custom-control-label" for="Otro">Otro</label>
                   </div>
 

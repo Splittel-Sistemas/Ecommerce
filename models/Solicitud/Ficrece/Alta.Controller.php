@@ -102,25 +102,26 @@ class SolicitudCController
 
         /*  print_r($_POST['PERSONA']);
         exit; */
+        if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
 
-        if (!mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
+          if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
 
-          /*  die('Fallo al crear las carpetas...'); */
+            $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
+            #$file_nname = $_FILES['file']['name'];
+            $SolicitudCModel->SetDoc1($name1);
+
+
+            $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
+
+            // Check whether submitted data is not empty 
+            // File path config 
+            $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
+            $targetFilePath = $uploadDir . $fileName;
+          }
         }
 
-        $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-        $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
-        move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
-        #$file_nname = $_FILES['file']['name'];
-        $SolicitudCModel->SetDoc1($name1);
-
-
-        $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
-
-        // Check whether submitted data is not empty 
-        // File path config 
-        $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
-        $targetFilePath = $uploadDir . $fileName;
 
         $ResultSolicitud = $SolicitudCModel->Add();
 
