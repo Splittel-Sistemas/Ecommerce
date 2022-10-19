@@ -12,12 +12,16 @@
   <!-- Header -->
   <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
   <?php
-  if (!class_exists("ContactoController")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Contacto/Contacto.Controller.php';
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Contacto/Ejecutivos.Controller.php';
+  $ContactoController = new EjecutivosController();
+  $Contacto = $ContactoController->get_Ejecutivos();
+  if (isset($_GET['ejecutivo'])) {
+    $EjecutivoController = new EjecutivosController();
+    $EjecutivoController->filter = "AND email ='" . $_GET['ejecutivo'] . " '";
+    $Ejecutivo = $EjecutivoController->getBy();
   }
-  $ContactoController = new ContactoController();
-  $Contacto = $ContactoController->GetBy();
   ?>
+
 
 
 
@@ -122,28 +126,21 @@
                 <div class="col-sm-12 col-md-6 form-group">
                   <label for="validationCustom06">EJECUTIVO <strong class="text-danger">*</strong></label>
                   <select class="form-control form-control-2" id="ejecutivo" required>
-                    <option value=<?= isset($_GET['ejecutivo']) ? $_GET['ejecutivo']  : ''; ?>>
+                    <option value=<?= isset($_GET['ejecutivo']) ? $Ejecutivo->email  : ''; ?>>
                       <?php
-                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == 'Dallas@splittel.com') {
-                        echo 'asdasdsad';
-                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
-                        echo 'asdasdsad';
-                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
-                        echo 'asdasdsad';
-                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'Dallas@splittel.com') {
-                        echo 'asdasdsad';
-                      } else if (isset($_GET['ejecutivo']) &&  $_GET['ejecutivo'] == 'ramon.olea@splittel.com') {
-                        echo 'ramon.olea ';
-                      } else {
+                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == $Ejecutivo->email) {
+                        echo $Ejecutivo->nombre ." ". $Ejecutivo->apellidos;
+                      }else {
                         echo 'Seleccione un Ejecutivo';
                       };
+
                       ?>
+                      <?php foreach ($Contacto->records as $key => $data) { ?>
+
                     </option>
-                    <option value="Dallas@splittel.com">Dallas</option>
-                    <option value="Housto@splittel.com">Houston</option>
-                    <option value="LosAn@splittel.com">Los Angeles</option>
-                    <option value="Miami@splittel.com">Miami</option>
-                    <option value="NewYo@splittel.com">New York</option>
+                    <option value=<?= $data->email ?>><?= $data->nombre . " " . $data->apellidos ?></option>
+
+                  <?php } ?>
                   </select>
                 </div>
                 <br>
