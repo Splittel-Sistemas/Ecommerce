@@ -129,18 +129,28 @@
                     <option value=<?= isset($_GET['ejecutivo']) ? $Ejecutivo->email  : ''; ?>>
                       <?php
                       if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == $Ejecutivo->email) {
-                        echo $Ejecutivo->nombre ." ". $Ejecutivo->apellidos;
-                      }else {
+                        echo $Ejecutivo->nombre . " " . $Ejecutivo->apellidos;
+                      } else {
                         echo 'Seleccione un Ejecutivo';
                       };
 
                       ?>
-                      <?php foreach ($Contacto->records as $key => $data) { ?>
 
                     </option>
-                    <option value=<?= $data->email ?>><?= $data->nombre . " " . $data->apellidos ?></option>
+                    <?php foreach ($Contacto->records as $key => $data) { ?>
+                      <?php
+                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == $data->email) {
+                        
+                      } else {
+                      ?>
+                        <option value=<?= $data->email ?>><?= $data->nombre . " " . $data->apellidos ?></option>
+                      <?php
 
-                  <?php } ?>
+
+                      };
+
+                      ?>
+                    <?php } ?>
                   </select>
                 </div>
                 <br>
