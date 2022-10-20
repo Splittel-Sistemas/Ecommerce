@@ -499,7 +499,7 @@
   <!-- scripts JS -->
   <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
   <!--  -->
-  <script type="text/javascript" src="../../public/scripts/Ficrece/alta.js?id=<?php echo rand() ?>"></script>
+  <script type="text/javascript" src="../../public/scripts/altalead/alta.js?id=<?php echo rand() ?>"></script>
 </body>
 
 </html>

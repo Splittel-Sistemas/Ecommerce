@@ -90,7 +90,7 @@ var EnviarAlta = function () {
     templateAlert(
       "danger",
       "",
-      "FALTA EL CORREO DEL EJECUTIVO",
+      "SELECCIONE UN EJECUTIVO",
       "topRight",
       ""
     );
