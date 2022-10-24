@@ -53,7 +53,8 @@
         $costo = 0;
 
         if($Obj->count > 0){
-          foreach ($Obj->records as $key => $data) {			
+          foreach ($Obj->records as $key => $data) {	
+         	
             if(!($data->ProductoCodigo == '') && $data->ProductoCodigoConfigurable == ''){
               # Producto Fijo		
               $ImgUrl = file_exists("../../public/images/img_spl/productos/".$data->ProductoCodigo."/thumbnail/".$data->ProductoImgPrincipal."") 
@@ -139,6 +140,45 @@
             ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->GetDescripcion().".jpg" 
             : "../../public/images/img_spl/notfound.png" 
       ?>
+      <?php
+          if(($data->DetalleCodigoConfigurable != '' && $data->ProductoExistencia == 0 &&  $data->TiempoEntrega!='')
+          || ($data->DetalleCodigoConfigurable != '' && $data->TiempoEntrega!='' && $data->DetalleCantidad > $data->ProductoExistencia) ){
+      ?>
+      <!-- Producto -->
+      <td>
+            <div class="product-item">
+              <a class="product-thumb" href="../Productos/configurables.php?codigo=<?php echo $data->DetalleCodigoConfigurable;?>">
+                <img src="<?php echo $ImgUrl; ?>" alt="Product">
+              </a>
+              <div class="product-info">
+                <h4 class="product-title">
+                  <a  href="../Productos/configurables.php?codigo=<?php echo $data->DetalleCodigoConfigurable;?>"><?php echo $data->ProductoConfigurableNombre;?></a>
+                </h4>
+                <span><em>Clave:</em> <?php echo $data->DetalleCodigo;?></span>
+              </div>
+            </div>
+          </td>
+           <!-- Cantidad -->
+          <td class="text-center">
+            <?php echo $data->DetalleCantidad?>
+          </td>
+          <!-- Producto especial en fabricación -->
+          <td class="text-center text-lg">
+            <ul class="list-unstyled"><li class="text-md text-success">Tiempo de fabricación. <?php echo $data->TiempoEntrega;?></li></ul>
+          </td>
+          <!-- Subtotal -->
+          <td class="text-center text-lg">
+            $ <?php echo $data->DetalleSubtotal ?>
+          </td>
+          <!-- Eliminar -->
+          <td class="text-center">
+            <a class="remove-from-cart" href="#" data-toggle="tooltip" title="Eliminar producto">
+              <i class="icon-x"  onclick="DeleteProducto(<?php echo $data->DetalleKey?>, '<?php echo $data->DetalleCodigo ?>')"></i>
+            </a>
+          </td>
+      <?php
+          }else{
+      ?>
           <!-- Producto -->
           <td>
             <div class="product-item">
@@ -163,7 +203,7 @@
                     $StockClass = "h6 bg-danger text-white"; 
                     $AlertStock = false;
                     $cont++;
-                  }else if($data->DetalleCantidad > $data->ProductoExistencia){ 
+                  }else if($data->DetalleCantidad > $data->ProductoExistencia ){ 
                     $StockClass = "h6 bg-warning text-white"; 
                     $cont1++;
                   }else{ 
@@ -202,6 +242,8 @@
               <i class="icon-x"  onclick="DeleteProducto(<?php echo $data->DetalleKey?>, '<?php echo $data->DetalleCodigo ?>')"></i>
             </a>
           </td>
+
+          <?php } ?>
       <?php 
           }else if(!($data->DetalleCodigoConfigurable == '')){
           # Producto Configurable
