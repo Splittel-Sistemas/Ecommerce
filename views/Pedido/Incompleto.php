@@ -39,6 +39,8 @@
             } 
           
             $OpenPayController = new OpenPayController();
+            if(isset($_SESSION["Ecommerce-OpenPay-Bank-Id"]) && $_SESSION["Ecommerce-OpenPay-Bank-Id"]!=''){
+
             $result = $OpenPayController->GetCharge($_SESSION["Ecommerce-OpenPay-Bank-Id"]);
 
             $ErrorOpenPayController = new ErrorOpenPayController();
@@ -52,6 +54,9 @@
           <?php }else{ ?>
           <p class="card-text">Vuelva a intentar de lo contrario favor de contactar a su ejecutivo de ventas.</p>
           <?php } ?>
+          <?php } else {?>
+            <p class="card-text">Vuelva a intentar de lo contrario favor de contactar a su ejecutivo de ventas.</p>
+            <?php } ?>
           <p class="card-text"> 
             <u>Para volver a iniciar su proceso de compra</u>
           </p>
