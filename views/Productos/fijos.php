@@ -101,17 +101,6 @@
             <div class="col-lg-1 col-md-8 order-md-2">
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-1 col-md-8 order-md-2">
-            </div>
-            <div class="col-lg-10 col-md-8 order-md-2">
-              <p class="text-muted text-justify">Para comprar este producto</p>
-              <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí</a>
-            </div>
-            <div class="col-lg-1 col-md-8 order-md-2">
-
-            </div>
-          </div>
         </div>
       <?php
       }
