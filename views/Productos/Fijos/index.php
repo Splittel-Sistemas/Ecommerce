@@ -198,7 +198,8 @@ $Comentarios = $ComentariosController->Comentarios_();
     <?php if (!isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
     <br>
     <p class="text-muted text-justify">Para comprar este producto
-      <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí</a>
+            <br>
+      <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí.</a>
     </p>
     <?php } ?>
 

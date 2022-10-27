@@ -133,8 +133,11 @@
         <div class="pt-1 mb-4"><span class="text-medium">CLAVE:</span> <span id="Clave" class="styleClave"></span>
           <?php if (!isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
             <br>
+            <br>
+            <br>
+
             <p class="text-muted text-justify">Para comprar este producto
-              <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí</a>
+              <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí.</a>
             </p>
           <?php } ?>
 
