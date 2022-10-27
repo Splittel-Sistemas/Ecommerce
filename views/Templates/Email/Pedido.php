@@ -374,7 +374,7 @@ class TemplatePedido
 															<br>
 															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
 															';
-															if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+															if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
 
 																foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 																	$html .= '<p align="center">>Ejecutivo: '.$DatosEnvio->email_ejecutivo.'</p>';
