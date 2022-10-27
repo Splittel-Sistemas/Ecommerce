@@ -137,7 +137,7 @@
             <br>
 
             <p class="text-muted text-justify">Para comprar este producto
-              <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí.</a>
+              <a href="<?php echo include  $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Login/'; ?>">inicia sesión aquí.</a>
             </p>
           <?php } ?>
 
