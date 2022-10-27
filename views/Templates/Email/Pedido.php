@@ -377,7 +377,7 @@ class TemplatePedido
 															if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
 
 																foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
-																	$html .= '<p align="center">>Ejecutivo: '.$DatosEnvio->email_ejecutivo.'</p>';
+																	$html .= '<p align="center">Ejecutivo: '.$DatosEnvio->email_ejecutivo.'</p>';
 																}
 															} else {
 											
