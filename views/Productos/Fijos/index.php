@@ -199,7 +199,7 @@ $Comentarios = $ComentariosController->Comentarios_();
     <br>
     <p class="text-muted text-justify">Para comprar este producto
             <br>
-      <a href="https://fibremex.com/fibra-optica/views/Login/">inicia sesión aquí.</a>
+      <a href="../Login/">inicia sesión aquí.</a>
     </p>
     <?php } ?>
 
