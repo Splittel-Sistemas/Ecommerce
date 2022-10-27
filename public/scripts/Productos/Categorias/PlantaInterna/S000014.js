@@ -239,7 +239,12 @@ var JumpersMonomodo = function(){
         NewPulidoConector2 = PulidoConector1.value
       }
     }
-  
+    //inhabilita cero halogeno 3mm
+    if(TipoCubierta.value=="ZH"){
+      StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+      if(Diametro.value==3)
+        Diametro.selectedIndex = 0
+    }
     
     if (Longitud.value > 0 && Longitud.value <= 999) {
       NewLongitud = NumeroConCeros(Longitud.value, 4)

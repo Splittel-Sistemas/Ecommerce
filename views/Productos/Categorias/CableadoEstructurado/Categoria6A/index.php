@@ -31,7 +31,9 @@
       <div class="form-group mb-0">
         <label id="Longitud_1IdText">Longitud (pies)</label>
         <select class="form-control" id="Longitud_1" name="Longitud_1" onchange="Categoria6A()">
+            <option value="02">2</option>
             <option value="03">3</option>
+            <option value="05">5</option>
             <option value="07">7</option>
             <option value="10">10</option>
             <option value="15">15</option>
