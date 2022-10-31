@@ -385,7 +385,7 @@ class TemplatePedido
 			} else {
 
 				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
-					if ($DatosEnvio->email_ejecutiv == '' || $DatosEnvio->email_ejecutiv == null) {
+					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
 						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
 					}else{
 					$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
