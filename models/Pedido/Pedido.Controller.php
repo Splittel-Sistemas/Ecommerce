@@ -2,29 +2,40 @@
 
 @session_start();
 if (!class_exists('Connection')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
-}if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Functions_tools.php';
-}if (!class_exists('Pedido_')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Model.php';
-}if (!class_exists('SalesQuatation_')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/B2B/SalesQuatation.Model.php';
-}if (!class_exists("Email")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
-}if (!class_exists("TemplatePedido")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Pedido.php';
-}if (!class_exists("TemplateCostoEnvio")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/CostoEnvio.php';
-}if (!class_exists('DetalleController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
-}if (!class_exists("UpdateRefDeliveryController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Ecommerce/UpdateRefDelivery.Controller.php';
-}if (!class_exists("Webhook")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Logs/Webhook.Model.php';
-}if (!class_exists("GeDocumentsPointsController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/Document/GeDocumentsPoints.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Tools/Connection.php';
 }
-class PedidoController{
+if (!class_exists('Functions_tools')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Tools/Functions_tools.php';
+}
+if (!class_exists('Pedido_')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Pedido.Model.php';
+}
+if (!class_exists('SalesQuatation_')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/B2B/SalesQuatation.Model.php';
+}
+if (!class_exists("Email")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Email.php';
+}
+if (!class_exists("TemplatePedido")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Pedido.php';
+}
+if (!class_exists("TemplateCostoEnvio")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/CostoEnvio.php';
+}
+if (!class_exists('DetalleController')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Detalle.Controller.php';
+}
+if (!class_exists("UpdateRefDeliveryController")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Ecommerce/UpdateRefDelivery.Controller.php';
+}
+if (!class_exists("Webhook")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Logs/Webhook.Model.php';
+}
+if (!class_exists("GeDocumentsPointsController")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Document/GeDocumentsPoints.Controller.php';
+}
+class PedidoController
+{
     protected $Connection;
     protected $Tool;
     protected $PedidoModel;
@@ -32,11 +43,13 @@ class PedidoController{
     public $filter;
     public $order;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->Connection = new Connection();
         $this->Tool = new Functions_tools();
     }
-    public function SetParameters(){
+    public function SetParameters()
+    {
         $this->Connection = $conn;
         $this->Tool = $Tool;
     }
@@ -50,17 +63,20 @@ class PedidoController{
                 foreach ($dataPedido as $key => $pedido) {
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
-                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '".$pedido->ClienteKey."' ");
-                    if($ClienteExiste){
+                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "' ");
+                    if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
-                        $_SESSION['Ecommerce-ClienteTipo'] = $pedido->Tipo;
-                        $_SESSION['Ecommerce-ClienteNombre'] = $pedido->Nombre." ".$pedido->Apellidos ;
+                        foreach ($ClienteExiste as $key => $cliente) {
+
+                            $_SESSION['Ecommerce-ClienteTipo'] = $cliente->Tipo;
+                            $_SESSION['Ecommerce-ClienteNombre'] = $cliente->Nombre . " " . $cliente->Apellidos;
+                        }
 
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();
-                        $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'];
+                        $Email->MailerSubject = " Ecommerce - Pedido #" . $_SESSION['Ecommerce-PedidoKey'];
                         $Email->MailerBody = $TemplatePedido->body();
                         $Email->MailerListTo = [$ClienteModel->GetEmail()];
                         $Email->MailerListBCC = [$ClienteModel->GetEmailEjecutivo()];
@@ -75,26 +91,28 @@ class PedidoController{
                         unset($_SESSION['Ecommerce-PedidoKey']);
                     }
                 }
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function getBy(){
+    public function getBy()
+    {
         try {
-          if (!$this->Connection->conexion()->connect_error) {
-            $PedidoModel = new Pedido_(); 
-            $PedidoModel->SetParameters($this->Connection, $this->Tool);
-            $PedidoModel->GetBy($this->filter, $this->order);
-            return $PedidoModel;
-          }
+            if (!$this->Connection->conexion()->connect_error) {
+                $PedidoModel = new Pedido_();
+                $PedidoModel->SetParameters($this->Connection, $this->Tool);
+                $PedidoModel->GetBy($this->filter, $this->order);
+                return $PedidoModel;
+            }
         } catch (Exception $e) {
-          throw $e;
+            throw $e;
         }
-      }
-    public function get(){
+    }
+    public function get()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
@@ -102,103 +120,109 @@ class PedidoController{
                 $result = $PedidoModel->Get($this->filter, $this->order);
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $result, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListPedidoB2B(){
+    public function ListPedidoB2B()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND t12_f004 = 'completed' AND tipo_pedido = 'NORMAL' ","");
+                $data = $PedidoModel->ListPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND t12_f004 = 'completed' AND tipo_pedido = 'NORMAL' ", "");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListPedidoB2B_(){
+    public function ListPedidoB2B_()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND tipo_pedido = 'CANJEO' ","");
+                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND tipo_pedido = 'CANJEO' ", "");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function GetPedidoB2B_(){
+    public function GetPedidoB2B_()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND metodo_pago = 99 AND tipo_pedido = 'NORMAL' ","");
+                $data = $PedidoModel->GetPedidoB2B("WHERE t06_f006 <> 0 AND t06_f010 <= 150 AND metodo_pago = 99 AND tipo_pedido = 'NORMAL' ", "");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function GetPedidoB2B(){
+    public function GetPedidoB2B()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetPedidoB2B($this->filter,$this->order);
+                $data = $PedidoModel->GetPedidoB2B($this->filter, $this->order);
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListPedidoB2C(){
+    public function ListPedidoB2C()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoB2C("WHERE estatus = 'P' AND t05_f008 <> 0 AND t05_f011 <= 150 AND t12_f004 = 'completed' ","");
+                $data = $PedidoModel->ListPedidoB2C("WHERE estatus = 'P' AND t05_f008 <> 0 AND t05_f011 <= 150 AND t12_f004 = 'completed' ", "");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function PedidosPagoBancoTranferenciaCompleta(){
+    public function PedidosPagoBancoTranferenciaCompleta()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoPagoBanco("WHERE t12_f003 = 0 AND t12_f004 = 'completed' AND t12_f006 = 'bank_account' ","");
+                $data = $PedidoModel->ListPedidoPagoBanco("WHERE t12_f003 = 0 AND t12_f004 = 'completed' AND t12_f006 = 'bank_account' ", "");
                 foreach ($data as $key => $row) {
                     $Email = new Email(true);
                     $TemplatePedido = new TemplatePedido();
-                    $Email->MailerSubject = " Ecommerce - Pedido #".$row->Key;
+                    $Email->MailerSubject = " Ecommerce - Pedido #" . $row->Key;
                     $Email->MailerBody = $TemplatePedido->EcommercePedidoPagoBanco($row->Key);
                     $Email->MailerListTo = [$row->Correo];
                     $Email->MailerListBCC = [$row->CorreoEjecutivo];
                     $Email->EmailSendEmail();
-                    
+
                     $Webhook = new Webhook();
                     $Webhook->SetParameters($this->Connection, $this->Tool);
                     $Webhook->SetPedidoKey($row->Key);
@@ -211,64 +235,68 @@ class PedidoController{
                 }
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListPedidoB2C_(){
+    public function ListPedidoB2C_()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->ListPedidoB2C($this->filter,$this->order);
+                $data = $PedidoModel->ListPedidoB2C($this->filter, $this->order);
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListInfoPagoBanco(){
+    public function ListInfoPagoBanco()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND t12_f004 = 'in_progress' "," ORDER BY id DESC LIMIT 1");
+                $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " AND t12_f004 = 'in_progress' ", " ORDER BY id DESC LIMIT 1");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ListInfoPagoBanco_($PedidoKey){
+    public function ListInfoPagoBanco_($PedidoKey)
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND id = ".$PedidoKey." AND t12_f004 = 'in_progress' "," ORDER BY id DESC LIMIT 1");
+                $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " AND id = " . $PedidoKey . " AND t12_f004 = 'in_progress' ", " ORDER BY id DESC LIMIT 1");
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function PaqueteriaPaqueteRecibido(){
+    public function PaqueteriaPaqueteRecibido()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $ResultPedido = $PedidoModel->Get("where numero_guia_estatus = 'OK' and recibio <> '' and estatus_recibio_paquete = 0 ","");
+                $ResultPedido = $PedidoModel->Get("where numero_guia_estatus = 'OK' and recibio <> '' and estatus_recibio_paquete = 0 ", "");
                 $UpdateRefDeliveryController = new UpdateRefDeliveryController();
                 foreach ($ResultPedido as $key => $Pedido) {
                     $UpdateRefDeliveryController->NumEcommerce  = $Pedido->Key;
@@ -276,34 +304,36 @@ class PedidoController{
                     $UpdateRefDeliveryController->DateDelivery  = $Pedido->FechaRecibido;
                     $UpdateRefDeliveryController->Received      = $Pedido->Recibio;
                     $result = $UpdateRefDeliveryController->create();
-                    if($result->UpdateRefDeliveryResult->ErrorCode == 0){
-                        $PedidoModel->UpdateStatusPackageDelivered("where id = ".$Pedido->Key);
+                    if ($result->UpdateRefDeliveryResult->ErrorCode == 0) {
+                        $PedidoModel->UpdateStatusPackageDelivered("where id = " . $Pedido->Key);
                     }
                 }
                 unset($PedidoModel);
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ActualizarCliente(){
+    public function ActualizarCliente()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->UpdateCliente("WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." AND activo = 'si' ");
+                $data = $PedidoModel->UpdateCliente("WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " AND activo = 'si' ");
                 unset($PedidoModel);
                 return $data;
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function CostoEnvio(){
+    public function CostoEnvio()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
@@ -312,7 +342,7 @@ class PedidoController{
                 $PedidoModel->SetEnvio(1);
                 $PedidoModel->SetDatosEnvioKey($_POST['datosEnvio']);
                 $ResultPedido = $PedidoModel->UpdateCostoEnvio();
-                if(!$ResultPedido['error']){
+                if (!$ResultPedido['error']) {
                     $Email = new Email();
                     $TemplateCostoEnvio = new TemplateCostoEnvio();
                     $Email->MailerSubject = "Solicitud costo de envio";
@@ -325,14 +355,15 @@ class PedidoController{
                 }
                 unset($PedidoModel);
                 return $ResultPedido;
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function ActualizarTipoCambio(){
+    public function ActualizarTipoCambio()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
@@ -342,55 +373,57 @@ class PedidoController{
                 $ResultPedido = $PedidoModel->UpdateTipoCambio();
                 unset($PedidoModel);
                 return $ResultPedido;
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function CuentaCotizacion(){
+    public function CuentaCotizacion()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
-              
+
 
                 $_SESSION['Ecommerce-PedidoKey'] = $_POST['PedidoKey'];
-             
-                $this->filter = "WHERE id =  ".$_SESSION['Ecommerce-PedidoKey']." ";
+
+                $this->filter = "WHERE id =  " . $_SESSION['Ecommerce-PedidoKey'] . " ";
                 $this->order = "";
                 $Pedido = $this->getBy();
-               
+
                 $_SESSION["Ecommerce-OpenPay-3DSecure-Id"] =   $Pedido->Getid_openpay();
                 $_SESSION['Ecommerce-CostoEnvio'] =  2;
-                if($Pedido->GetEnvio() == ''){
+                if ($Pedido->GetEnvio() == '') {
                     # actualizar tipo de cambio
                     $PedidoTipoCambio = $this->ActualizarTipoCambio();
-                    if(!$PedidoTipoCambio['error']){
+                    if (!$PedidoTipoCambio['error']) {
                         $DetalleController = new DetalleController();
                         $DetalleController->DetallePedidoActualizar();
                         unset($Pedido);
                         unset($DetalleController);
                         return $PedidoTipoCambio;
-                    }else{
+                    } else {
                         throw new Exception("No se pudo actualizar tipo de cambio para el pedido actual!");
                     }
-                }else if($Pedido->GetEnvio() == 0){
+                } else if ($Pedido->GetEnvio() == 0) {
                     # existe costo de envio y no se puede modificar nada 
                     $_SESSION['Ecommerce-CostoEnvio'] =  0;
                     return $this->Tool->Message_return(false,  "Pedido", null, false);
-                }else if($Pedido->GetEnvio() == 1){
+                } else if ($Pedido->GetEnvio() == 1) {
                     # se solicito costo de envio  no se puede modificar nada
                     $_SESSION['Ecommerce-CostoEnvio'] =  1;
                     return $this->Tool->Message_return(false,  "Pedido", null, false);
                 }
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function LineaCredito(){
+    public function LineaCredito()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
@@ -401,19 +434,20 @@ class PedidoController{
                 $ResultPedido = $PedidoModel->PedidoLineaCredito();
                 unset($PedidoModel);
                 return $ResultPedido;
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function PuntosPagoCredito(){
+    public function PuntosPagoCredito()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $GeDocumentsPointsController = new GeDocumentsPointsController();
                 $ResultGeDocumentsPoints = $GeDocumentsPointsController->get();
-                if(count($ResultGeDocumentsPoints->GeDocumentsPointsResult->Records->DocumentPoints) > 0){
+                if (count($ResultGeDocumentsPoints->GeDocumentsPointsResult->Records->DocumentPoints) > 0) {
                     $PedidoModel = new Pedido_();
                     $PedidoModel->SetParameters($this->Connection, $this->Tool);
                     foreach ($ResultGeDocumentsPoints->GeDocumentsPointsResult->Records->DocumentPoints as $key => $Points) {
@@ -422,25 +456,26 @@ class PedidoController{
                         $PedidoModel->PedidoUpdateEstatusPuntosPagoCredito();
                     }
                 }
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor de ponerte en contacto con tu ejecutivo");
             }
         } catch (Exception $e) {
             throw $e;
         }
     }
-    public function pagoCredito(){
+    public function pagoCredito()
+    {
         try {
             if (!$this->Connection->conexion()->connect_error) {
-               if (isset($_SESSION['Ecommerce-PedidoKey']) && !is_null($_SESSION['Ecommerce-PedidoKey'])) {
+                if (isset($_SESSION['Ecommerce-PedidoKey']) && !is_null($_SESSION['Ecommerce-PedidoKey'])) {
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
-                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '".$_SESSION['Ecommerce-ClienteKey']."' ");
+                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $_SESSION['Ecommerce-ClienteKey'] . "' ");
 
                     if ($ClienteExiste) {
                         $PedidoModel = new Pedido_();
                         $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                        $ExistePedido = $PedidoModel->GetBy("WHERE id = '".$_SESSION['Ecommerce-PedidoKey']."' ");
+                        $ExistePedido = $PedidoModel->GetBy("WHERE id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                         if ($ExistePedido) {
                             # actualizar pedido b2b al pagar por linea de credito
                             $PedidoModel->SetMetodoPago(99);
@@ -471,45 +506,45 @@ class PedidoController{
                                 if (!$ResultSalesQuatation['error']) {
                                     $Email = new Email(true);
                                     $TemplatePedido = new TemplatePedido();
-                                    $Email->MailerSubject = " Ecommerce - Pedido #".$_SESSION['Ecommerce-PedidoKey'].' - Credito';
+                                    $Email->MailerSubject = " Ecommerce - Pedido #" . $_SESSION['Ecommerce-PedidoKey'] . ' - Credito';
                                     $Email->MailerBody = $TemplatePedido->body();
                                     $Email->MailerListTo = [$ClienteModel->GetEmail()];
                                     $Email->MailerListBCC = [$ClienteModel->GetEmailEjecutivo()];
                                     $Email->EmailSendEmail();
                                     unset($Email);
                                     unset($TemplatePedido);
-                                    
+
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
                                     unset($_SESSION['Ecommerce-PedidoKey']);
                                     unset($SalesQuatationController);
                                     unset($ResultSalesQuatation);
                                     return $ResultPedido;
-                                }else{
+                                } else {
                                     throw new Exception("No se pudo guardar la información acerca de tu pedido B2B, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                                 }
-                            }else{
+                            } else {
                                 return $ResultPedido;
                             }
-                        }else{
+                        } else {
                             unset($ClienteModel);
                             unset($ClienteExiste);
                             unset($PedidoModel);
                             unset($PedidoExiste);
                             throw new Exception("No se encuentra información del pedido solicitado, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                         }
-                    }else{
+                    } else {
                         unset($ClienteModel);
                         unset($ClienteExiste);
                         throw new Exception("No se encuentra información acerca del cliente!");
                     }
-                }else{
+                } else {
                     throw new Exception("No existe Pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
                 }
-            }else{
+            } else {
                 throw new Exception("No hay datos maestros, por favor contacta con tu ejecutivo!");
             }
         } catch (Exception $e) {
             throw $e;
         }
-    }    
+    }
 }
