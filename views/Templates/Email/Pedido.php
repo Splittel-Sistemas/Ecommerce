@@ -350,7 +350,7 @@ class TemplatePedido
 				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosEnvioController->order = "";
 				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
-				
+
 				/* fin fcturacion */
 				$html .= '	
 														
@@ -374,17 +374,26 @@ class TemplatePedido
 															<br>
 															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
 															';
-															if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+			if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
 
-																foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
-																	$html .= '<p align="center">Ejecutivo: '.$DatosEnvio->email_ejecutivo.'</p>';
-																}
-															} else {
-											
-																$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
-															};
-															
-															$html .= '
+				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
+					$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
+				}
+			} else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+				$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+			} else {
+
+				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
+					if ($DatosEnvio->email_ejecutiv == '' || $DatosEnvio->email_ejecutiv == null) {
+						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+					}else{
+					$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
+					}
+				}
+			}
+
+			$html .= '
 														</td>
 													</tr>
 
