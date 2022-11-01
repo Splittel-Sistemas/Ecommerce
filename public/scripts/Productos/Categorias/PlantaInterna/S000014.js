@@ -116,6 +116,14 @@ var JumpersMultimodo = function(){
     }
   }
 
+  if(TipoCubierta.value=="RI" && (MultimodoTipoFibra.value=="62" || MultimodoTipoFibra.value=="50")){
+    StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1,2])
+  }else{
+    StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+    if(Diametro.value==3)
+      Diametro.selectedIndex = 0
+  }
+
   if (Longitud.value > 0 && Longitud.value <= 999) {
     NewLongitud = NumeroConCeros(Longitud.value, 4)
     CodigoGenerado = Marca+Familia+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value+NewLongitud+TipoCubierta.value+Diametro.value
