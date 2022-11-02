@@ -54,12 +54,8 @@ var Success = function (response) {
     "JSON",
     data,
     function (response) {
-      console.log(response.error_code);
-      console.log(response.error);
-      console.log(response.http_code);
 
-
-      if (response.completed) {
+      if (response.error == true) {
         document.getElementById("modal-body-3d-secure").innerHTML =
           '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' +
           response.openpay.url +
