@@ -54,7 +54,11 @@ var Success = function (response) {
     "JSON",
     data,
     function (response) {
-      console.log(response);
+      console.log(response.error_code);
+      console.log(response.error);
+      console.log(response.http_code);
+
+
       if (response.completed) {
         document.getElementById("modal-body-3d-secure").innerHTML =
           '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' +
@@ -62,10 +66,11 @@ var Success = function (response) {
           '" allowfullscreen></iframe></div>';
         GlobalOpenModal("modal-3d-secure");
       } else {
-        document.getElementById("modal-body-3d-secure").innerHTML =
-        '<div class="embed-responsive embed-responsive-16by9"> Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor </div>';
-        alert("Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor ");
-        GlobalOpenModal("modal-3d-secure");
+        Alerts(
+          "AlertCart",
+          "warning",
+          " Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor"
+        );
       }
     }
   );
