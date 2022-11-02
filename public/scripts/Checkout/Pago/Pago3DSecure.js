@@ -55,7 +55,7 @@ var Success = function (response) {
     data,
     function (response) {
 
-      if (response.error == true) {
+      if (response.error != true) {
         document.getElementById("modal-body-3d-secure").innerHTML =
           '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' +
           response.openpay.url +
