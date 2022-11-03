@@ -63,15 +63,13 @@ class PedidoController
                 foreach ($dataPedido as $key => $pedido) {
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
-                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "' ");
+                    $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
                     if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
-                        print_r($ClienteExiste );
-                        exit;
+
                         foreach ($ClienteExiste as $key => $cliente) {
-                        print_r($cliente);
 
                             $_SESSION['Ecommerce-ClienteTipo'] = $cliente->Tipo;
                             $_SESSION['Ecommerce-ClienteNombre'] = $cliente->Nombre . " " . $cliente->Apellidos;
