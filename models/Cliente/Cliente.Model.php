@@ -106,7 +106,7 @@ class Cliente{
     public function GetBy($filter){
       try {
         $SQLSTATEMENT = "SELECT * FROM listar_cliente_data ".$filter." ";
-        echo $SQLSTATEMENT;
+        // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = false;
 
