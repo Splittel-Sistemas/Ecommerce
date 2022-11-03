@@ -69,6 +69,7 @@ class PedidoController
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
                         print_r($ClienteExiste );
+                        exit;
                         foreach ($ClienteExiste as $key => $cliente) {
                         print_r($cliente);
 
