@@ -273,8 +273,9 @@ class TemplatePedido
 					}
 				} else {
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Adress  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+						}
 					}
 				};
 
