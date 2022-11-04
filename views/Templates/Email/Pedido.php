@@ -203,7 +203,7 @@ class TemplatePedido
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
 
 				$DatosEnvioController = new DatosEnvioController();
-				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " and id = ".$pedidoDatosEnvio." ";
 				$DatosEnvioController->order = "";
 				$ResultDatosEnvioController = $DatosEnvioController->get();
 				/* DATOS DE ENVIO DE SAP */
