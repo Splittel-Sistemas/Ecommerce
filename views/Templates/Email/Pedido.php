@@ -264,21 +264,18 @@ class TemplatePedido
 														</tr>
 														<tr style="width:100%;">';
 
-				/* datos de envio */
-				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+			/* datos de envio */
+			if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
-					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
-					}
-				} else {
-
-					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-					/* 	if ($GetShipToAdress->Address == $pedidoDatosEnvio) { */
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Address . ' No Ext. ' . $pedidoDatosEnvio . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
-					/* 	} */
-					}
-				};
+				foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
+				}
+			} else {
+				foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">AQUI: ' .$Pedido->GetDatosEnvioKey() . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+				}
+			};
 
 				/* datos de facturacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
@@ -288,10 +285,10 @@ class TemplatePedido
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección:' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
 					} else {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
+						$html .= '';
 					};
 				} else {
 					if ($Pedido->DatosFacturacionKey != '') {
@@ -300,7 +297,7 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
 					};
 				};
 				$html .= '	
