@@ -209,6 +209,7 @@ class TemplatePedido
 				/* DATOS DE ENVIO DE SAP */
 				try {
 					$GetShipToAdressController = new GetShipToAdressController();
+					
 					$resultGetShipToAdressController = $GetShipToAdressController->get();
 					$ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
 					//print_r($resultGetShipToAdressController);
