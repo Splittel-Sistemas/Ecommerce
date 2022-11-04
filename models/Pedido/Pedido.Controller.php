@@ -71,7 +71,7 @@ class PedidoController
 
                      
 
-                          $_SESSION['Ecommerce-ClienteTipo'] = $ClienteExiste->Tipo;
+                         $_SESSION['Ecommerce-ClienteTipo'] = $ClienteExiste->Tipo;
                          $_SESSION['Ecommerce-ClienteNombre'] = $ClienteExiste->Nombre . " " . $ClienteExiste->Apellidos;
 
                         $Email = new Email(true);

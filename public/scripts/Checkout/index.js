@@ -123,8 +123,8 @@ var addViewCheckout = function (Elem) {
         return false;
       }
     }
-    /* if ($(".datosEnvioTelefono")[0]) {
-      if ($(".datosEnvioTelefono")[0].value == "") {
+    if ($(".datosEnvioTelefono")[0]) {
+      /* if ($(".datosEnvioTelefono")[0].value == "") {
         toastAlert(
           "danger",
           "",
@@ -133,8 +133,8 @@ var addViewCheckout = function (Elem) {
           "icon-ban"
         );
         return false;
-      }
-    } */
+      } */
+    }
     if ($(".datosEnvioCorreo")[0]) {
       if ($(".datosEnvioCorreo")[0].value == "") {
         toastAlert(
