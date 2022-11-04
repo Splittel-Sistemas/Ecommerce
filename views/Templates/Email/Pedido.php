@@ -209,7 +209,7 @@ class TemplatePedido
 				/* DATOS DE ENVIO DE SAP */
 				try {
 					$GetShipToAdressController = new GetShipToAdressController();
-					
+
 					$resultGetShipToAdressController = $GetShipToAdressController->get();
 					$ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
 					//print_r($resultGetShipToAdressController);
@@ -272,8 +272,11 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
 				} else {
+
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">AQUI: ' . $GetShipToAdress->Street . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+						if ($GetShipToAdress->Address == $pedidoDatosEnvio ) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+						}
 					}
 				};
 
@@ -288,7 +291,8 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
 					} else {
-						$html .= '';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
+
 					};
 				} else {
 					if ($Pedido->DatosFacturacionKey != '') {
@@ -297,7 +301,7 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
-						$html .= '';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
 					};
 				};
 				$html .= '	
@@ -388,8 +392,8 @@ class TemplatePedido
 				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
 						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
-					}else{
-					$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
+					} else {
+						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
 				}
 			}
