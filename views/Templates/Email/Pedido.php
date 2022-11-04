@@ -274,9 +274,9 @@ class TemplatePedido
 				} else {
 
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						if ($GetShipToAdress->Address == $pedidoDatosEnvio) {
+					/* 	if ($GetShipToAdress->Address == $pedidoDatosEnvio) { */
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Address . ' No Ext. ' . $pedidoDatosEnvio . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
-						}
+					/* 	} */
 					}
 				};
 
@@ -288,7 +288,7 @@ class TemplatePedido
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: fact' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección:' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
 					} else {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
@@ -297,7 +297,7 @@ class TemplatePedido
 					if ($Pedido->DatosFacturacionKey != '') {
 
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: fact ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">td>';
