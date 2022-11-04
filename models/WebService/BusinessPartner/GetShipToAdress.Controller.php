@@ -37,7 +37,7 @@
         if (!$this->conn->conexion()->connect_error) {
           $ClienteModel = new Cliente(); 
           $ClienteModel->SetParameters($this->conn, $this->Tool);
-          $ClienteExiste = $ClienteModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ");
+          $ClienteExiste = $ClienteModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." LIMIT 1  ");
 
           if ($ClienteExiste) {
             $ContactoModel = new Contacto_();
