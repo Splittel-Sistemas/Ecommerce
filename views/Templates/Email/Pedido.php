@@ -320,8 +320,11 @@ class TemplatePedido
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
 					}
 				} else {
-
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>';
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
+						}
+					}
 				};
 
 
