@@ -274,7 +274,7 @@ class TemplatePedido
 				} else {
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">AQUI: ' . $GetShipToAdress->Address  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . 'dfgdg'.$GetShipToAdress->Address.'</span></td>';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Adress  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
 					}
 				};
 
