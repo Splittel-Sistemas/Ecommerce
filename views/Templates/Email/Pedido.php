@@ -264,18 +264,22 @@ class TemplatePedido
 														</tr>
 														<tr style="width:100%;">';
 
-			/* datos de envio */
-			if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+				/* datos de envio */
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
-				foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
+					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
+					}
+				} else {
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+				if ($GetShipToAdress->Address  == 'sad') {
+
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">AQUI: ' . $GetShipToAdress->Address  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+					}
 				}
-			} else {
-				foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">AQUI: ' .$GetShipToAdress->Address  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
-				}
-			};
+
+				};
 
 				/* datos de facturacion */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
@@ -288,7 +292,7 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
 					} else {
-						$html .= '';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
 					};
 				} else {
 					if ($Pedido->DatosFacturacionKey != '') {
