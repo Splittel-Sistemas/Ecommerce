@@ -11,7 +11,8 @@
     $GetShipToAdressController = new GetShipToAdressController();
     $resultGetShipToAdressController = $GetShipToAdressController->get();
     $ErrorCode = $resultGetShipToAdressController->GetShipToAdressResult->ErrorCode;
-    // print_r($resultGetShipToAdressController);
+   print_r($resultGetShipToAdressController);
+   exit;
   } catch (Exception $e) {
     $ErrorCode = -100;
   }
