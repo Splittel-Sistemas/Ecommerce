@@ -54,12 +54,9 @@ var Success = function (response) {
     "JSON",
     data,
     function (response) {
-
+      console.log(response);
       if (response.error != true) {
-        document.getElementById("modal-body-3d-secure").innerHTML =
-          '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' +
-          response.openpay.url +
-          '" allowfullscreen></iframe></div>';
+        document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
         GlobalOpenModal("modal-3d-secure");
       } else {
         Alerts(
