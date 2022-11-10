@@ -474,7 +474,7 @@ class OpenPayController
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
                         # comprobar si el cargo se completo exitosamente!
                             
-                        if ($ResultCharge->status == 'completed' ) {
+                        if ($ResultCharge->status == 'completed' || $ResultCharge->status == 'charge_pending') {
                             # Pedido 
                             $PedidoModel = new Pedido_();
                             $PedidoModel->SetParameters($this->Connection,  $this->Tool);
