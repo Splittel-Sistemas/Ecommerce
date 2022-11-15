@@ -355,7 +355,8 @@ class Functions_tools
 
     public function validate_sin_stock($intentos){
         try {
-            if(($intentos % 25) == 0 || $intentos == 0){
+            //if(($intentos % 25) == 0 || $intentos == 0){
+            if($intentos == 0){
                 return true;
             }
             return false;
