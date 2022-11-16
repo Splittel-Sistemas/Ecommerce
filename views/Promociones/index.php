@@ -40,8 +40,11 @@
             <div class="row">
             <?php foreach ($responseI as $row ): 
               if($row->link!=''){ 
+                $target="";
+                if($row->pestana=='si')
+                  $target="_blank";
                 ?>
-            <a class="text-decoration-none"  href="<?php echo $row->link;?>" ">
+            <a class="text-decoration-none"  href="<?php echo $row->link;?>" target="<?php echo $target;?>" >
             <?php }?>
             <div class="row align-items-center padding-bottom-2x padding-top-2x" >
                     <div class="col-md-5">
