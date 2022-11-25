@@ -44,7 +44,7 @@
             <br>
             <br>
 
-            Nuestro personal del área de crédito y cobranza está a tu disposición para aclarar cualquier duda o conocer la respuesta a su solicitud.
+            Nuestro personal del área de ventas está a tu disposición para aclarar cualquier duda o conocer la respuesta a su solicitud.
           </p>
         </div>
 
