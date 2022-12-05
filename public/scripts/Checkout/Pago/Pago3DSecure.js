@@ -55,15 +55,19 @@ var Success = function (response) {
     data,
     function (response) {
       console.log(response);
+      console.log(response.message);
+    
+
       if (response.error != true) {
         document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
         GlobalOpenModal("modal-3d-secure");
       } else {
         Alerts(
           "AlertCart",
-          "warning",
-          " Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor"
-        );
+          "danger",
+          //" Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor"
+           "ERROR: " +response.message
+          );
       }
     }
   );
