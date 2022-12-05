@@ -66,7 +66,7 @@ var Success = function (response) {
           "AlertCart",
           "danger",
           //" Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor"
-           "ERROR: " +response.message
+           " ERROR:  " +response.message + " Verifique con su banco por favor."
           );
       }
     }
