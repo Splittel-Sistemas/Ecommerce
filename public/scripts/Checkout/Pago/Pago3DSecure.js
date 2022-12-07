@@ -56,7 +56,7 @@ var Success = function (response) {
     function (response) {
       console.log(response);
       console.log(response.message);
-    
+      $('#Pago').show();
 
       if (response.error != true) {
         document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
@@ -89,7 +89,7 @@ var PagarPedido3DSecure = function (Elem) {
   let ExpirationMonth = CleanSpaces(document.getElementById("exp_month").value);
   let ExpirationYear = CleanSpaces(document.getElementById("exp_year").value);
   let Cvv2 = CleanSpaces(document.getElementById("cvc").value);
-
+  $('#Pago').hide();
   if (OpenPay.card.validateCardNumber(CardNumber)) {
     if (OpenPay.card.validateCVC(Cvv2)) {
       if (OpenPay.card.validateExpiry(ExpirationMonth, ExpirationYear)) {
@@ -106,12 +106,15 @@ var PagarPedido3DSecure = function (Elem) {
             Success,
             Errorr
           );
+          
         } else {
           Alerts(
             "AlertCart",
             "warning",
             "Recuerda que no puedes superar los 100000 pesos"
           );
+      $('#Pago').show();
+
         }
       } else {
         addViewCheckout(document.getElementById("process-3"));
@@ -120,6 +123,8 @@ var PagarPedido3DSecure = function (Elem) {
           "warning",
           "¡<strong> Fecha de expiración </strong> no valida!"
         );
+      $('#Pago').show();
+
       }
     } else {
       addViewCheckout(document.getElementById("process-3"));
@@ -128,6 +133,8 @@ var PagarPedido3DSecure = function (Elem) {
         "warning",
         "¡El <strong> Código de seguridad </strong> no es valido!"
       );
+      $('#Pago').show();
+
     }
   } else {
     addViewCheckout(document.getElementById("process-3"));
@@ -136,6 +143,8 @@ var PagarPedido3DSecure = function (Elem) {
       "warning",
       "¡El <strong> número de tarjeta </strong> no es valida!"
     );
+    $('#Pago').show();
+
   }
 };
 

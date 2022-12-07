@@ -79,7 +79,7 @@
       <span class="hidden-xs-down">Pagar&nbsp;</span><i class="icon-arrow-right"></i>
     </a>
   <?php } else { ?>
-    <a class="btn btn-primary" onclick="PagarPedido3DSecure(this)">
+    <a class="btn btn-primary" id="Pago" onclick="PagarPedido3DSecure(this);">
       <span class="hidden-xs-down">Pagar&nbsp;</span><i class="icon-arrow-right"></i>
     </a>
   <?php }
