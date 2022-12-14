@@ -33,8 +33,8 @@
   </style>
   <script>
     function f1() {
-      document.getElementById("nombreR").innerHTML = "JEFE DEL DEPTO. DE CUENTAS POR PAGAR Y NÚMERO DE EXTENSIÓN "
-      document.getElementById("nameBene").innerHTML = "NOMBRE DEL DUEÑO BENEFICIARIO"
+      document.getElementById("nombreR").innerHTML = "Jefe del depto. de cuentas por pagar y número de extensión : "
+      document.getElementById("nameBene").innerHTML = "Nombre del dueño beneficiario :"
       document.getElementById("LuNaci1").setAttribute('style', 'display:none');
       document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
     }
@@ -55,11 +55,11 @@
       document.getElementById("documento2").removeAttribute('style');
       document.getElementById("jefeD").removeAttribute('style');
       document.getElementById("FCons").removeAttribute('style');
-     
+
       document.getElementById("LuNaci1").setAttribute('style', 'display:none');
       document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
-      document.getElementById("nombreR").innerHTML = "JEFE DEL DEPTO. DE CUENTAS POR PAGAR Y NÚMERO DE EXTENSIÓN "
-      document.getElementById("nameBene").innerHTML = "NOMBRE DEL DUEÑO BENEFICIARIO"
+      document.getElementById("nombreR").innerHTML = "Jefe del depto. de cuentas por pagar y número de extensión : "
+      document.getElementById("nameBene").innerHTML = "Nombre del dueño beneficiario :"
 
 
     }
@@ -71,8 +71,8 @@
       document.getElementById("FCons").setAttribute('style', 'display:none');
       document.getElementById("LuNaci1").removeAttribute('style');
       document.getElementById("Nacionalidad1").removeAttribute('style');
-      document.getElementById("nombreR").innerHTML = "NOMBRE"
-      document.getElementById("nameBene").innerHTML = "Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito)"
+      document.getElementById("nombreR").innerHTML = "Nombre :"
+      document.getElementById("nameBene").innerHTML = "Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito) :"
 
 
     }
@@ -120,114 +120,114 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" px-3 justify-content-center align-items-center">
-            <h2 class="text-center">DATOS GENERALES</h2>
-            <br><br>
+              <h2 class="text-center">DATOS GENERALES</h2>
+              <br><br>
               <form class="row">
-            
+
                 <div class="col-sm-12 col-md-2 form-group">
                 </div>
 
                 <div class="col-sm-12 col-md-4 form-group">
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="PERSONA-radio-2" value="MORAL" name="PERSONA" onclick="MORAL()" checked>
-                    <label class="custom-control-label" for="PERSONA-radio-2">PERSONA MORAL</label>
+                    <label class="custom-control-label" for="PERSONA-radio-2">Persona moral</label>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-4 form-group">
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="PERSONA-radio-1" value="FISICA" name="PERSONA" onclick="FISICA()">
-                    <label class="custom-control-label" for="PERSONA-radio-1">PERSONA FISICA</label>
+                    <label class="custom-control-label" for="PERSONA-radio-1">Persona física</label>
                   </div>
                 </div>
 
-
+                <br><br>
                 <div class="col-sm-12 col-md-2 form-group">
                 </div>
 
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>RAZON SOCIAL <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Razón social :</label>
                   <input class="form-control form-control-2" type="text" id="RazonSocial" name="RazonSocial">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>DOMICILIO FISCAL: <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Domicilio fiscal : </label>
                   <input class="form-control form-control-2" type="text" id="DomicilioFiscal" name="DomicilioFiscal">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>COLONIA <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Colonia :</label>
                   <input class="form-control form-control-2" type="text" id="Colonia" name="Colonia">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>CIUDAD : <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Ciudad : </label>
                   <input class="form-control form-control-2" type="text" id="Ciudad" name="Ciudad">
                 </div>
 
 
                 <div class="col-sm-12 col-md-12 form-group">
                   <label>
-                    <p id="nombreR"> <strong class="text-danger">*</strong></p>
+                    <strong class="text-danger">*</strong><p id="nombreR"> </p>
                   </label>
                   <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>CORREO <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Correo :</label>
                   <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>C.P. <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>C.P. :</label>
                   <input class="form-control form-control-2" type="number" id="Cp" name="Cp" maxlength="4" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>FAX <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>FAX :</label>
                   <input class="form-control form-control-2" type="text" id="Fax" name="Fax">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>R.F.C. <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>R.F.C. :</label>
                   <input class="form-control form-control-2" type="text" id="Rfc" name="Rfc">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="LuNaci1">
-                  <label>LUGAR Y FECHA DE NACIMIENTO<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Lugar y fecha de nacimiento :</label>
                   <input class="form-control form-control-2" type="text" id="LuNaci" name="LuNaci">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="Nacionalidad1">
-                  <label>NACIONALIDAD<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Nacionalidad :</label>
                   <input class="form-control form-control-2" type="text" id="Nacionalidad" name="Nacionalidad">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="FCons">
-                  <label>FECHA CONSTITUCION <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Fecha constitución :</label>
                   <input class="form-control form-control-2" type="date" id="FechaConstitucion" name="FechaConstitucion">
                 </div>
 
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>CURP <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>CURP :</label>
                   <input class="form-control form-control-2" type="text" id="Curp" name="Curp">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>TELEFONO<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Teléfono :</label>
                   <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Giro del Negocio <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Giro del negocio :</label>
                   <input class="form-control form-control-2" type="text" id="Giro" name="Giro">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Fecha de alta SHCP <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Fecha de alta SHCP :</label>
                   <input class="form-control form-control-2" type="date" id="FechaAlta" name="FechaAlta">
                 </div>
 
                 <div class="col-sm-12 form-group" id="jefeD">
-                  <label>JEFE DEL DEPTO. DE CUENTAS POR PAGAR, CORREO Y NÚMERO DE EXTENSIÓN <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Jefe del depto. de cuentas por pagar y número de extensión : </label>
                   <textarea class="form-control form-control-2" name="JefeDepto" id="JefeDepto" rows="4"></textarea>
                 </div>
 
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label id="nameBene"><strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label id="nameBene"></label>
                   <input class="form-control form-control-2" type="text" id="Beneficiario" name="Beneficiario">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>FORMA DE PAGO<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Forma de pago :</label>
                   <input class="form-control form-control-2" type="text" id="FormaPago" name="FormaPago">
                 </div>
 
@@ -239,23 +239,23 @@
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="col-md-12" id="notify" data-offset-top="-1">
           <div class=" py-5 px-3 justify-content-center align-items-center">
-          <h2 class="text-center">REFERENCIAS COMERCIALES (PROVEEDORES CON LOS QUE TENGA CRÉDITO)</h2>
+            <h2 class="text-center">REFERENCIAS COMERCIALES (PROVEEDORES CON LOS QUE TENGA CRÉDITO)</h2>
             <br><br>
             <form class="row">
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Nombre <strong class="text-danger">*</strong></label>
+                <strong class="text-danger">*</strong><label>Nombre </label>
                 <input class="form-control form-control-2" type="text" id="Nombre1" name="Nombre1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Domicilio <strong class="text-danger">*</strong></label>
+                <strong class="text-danger">*</strong><label>Domicilio </label>
                 <input class="form-control form-control-2" type="text" id="Domicilio1" name="Domicilio1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Ciudad <strong class="text-danger">*</strong></label>
+                <strong class="text-danger">*</strong><label>Ciudad </label>
                 <input class="form-control form-control-2" type="text" id="Ciudad1" name="Ciudad1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Telefono <strong class="text-danger">*</strong></label>
+                <strong class="text-danger">*</strong><label>Telefono </label>
                 <input class="form-control form-control-2" type="tel" id="Telefono1" name="Telefono1" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -306,38 +306,38 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" py-5 px-3 justify-content-center align-items-center">
-            <h2 class="text-center">DATOS DEL CRÉDITO</h2>
-            <br><br>
+              <h2 class="text-center">DATOS DEL CRÉDITO</h2>
+              <br><br>
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>MONTO DEL CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Monto del crédito solicitado :</label>
                   <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito">
                   <small>indica la cantidad en dolares americanos</small>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group text-center">
-                  <label>PLAZO DE CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Plazo del crédito solicitado :</label>
 
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="ex-radio-1" value="21" name="Plazo" onclick="check2()" checked>
-                    <label class="custom-control-label" for="ex-radio-1">21 DIAS</label>
+                    <label class="custom-control-label" for="ex-radio-1">21 Días </label>
                   </div>
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="ex-radio-2" value="30" name="Plazo" onclick="check2()">
-                    <label class="custom-control-label" for="ex-radio-2">30 DIAS</label>
+                    <label class="custom-control-label" for="ex-radio-2">30 Días </label>
                   </div>
 
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="ex-radio-3" value="otro" name="Plazo" onclick="check()">
-                    <label class="custom-control-label" for="ex-radio-3">OTRO</label>
+                    <label class="custom-control-label" for="ex-radio-3">Otro</label>
                   </div>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group" id="divs" style="display:none">
-                  <label>OTRO <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Otro </label>
                   <input class="form-control form-control-2" type="text" id="Otro" name="Otro" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 form-group">
-                  <label>OBSERVACIONES <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Observaciones </label>
                   <textarea class="form-control form-control-2" name="Observaciones" id="Observaciones" rows="8"></textarea>
                 </div>
 
@@ -351,43 +351,43 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" py-5 px-3 justify-content-center align-items-center">
-            <h2 class="text-center">Solo se procederá a la validación de este convenio anexando al mismo copia de los siguientes documentos: </h2>
-            <br><br>
+              <h2 class="text-center">Solo se procederá a la validación de este convenio anexando al mismo copia de los siguientes documentos: </h2>
+              <br><br>
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group" id="documento1">
-                  <label>Escritura constitutiva y estatutos vigentes <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Escritura constitutiva y estatutos vigentes </label>
                   <input class="form-control form-control-2" type="file" id="file">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="documento2">
-                  <label>Poder del representante legal <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Poder del representante legal </label>
                   <input class="form-control form-control-2" type="file" id="file2">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Identificación oficial del representante legal <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Identificación oficial del representante legal </label>
                   <input class="form-control form-control-2" type="file" id="file3">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Alta en Hacienda y RFC <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Alta en Hacienda y RFC </label>
                   <input class="form-control form-control-2" type="file" id="file4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Comprobante de domicilio (No mayor a 3 meses) </label>
                   <input class="form-control form-control-2" type="file" id="file5">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados</label>
                   <input class="form-control form-control-2" type="file" id="file6">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles </label>
                   <input class="form-control form-control-2" type="file" id="file7">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 </label>
                   <input class="form-control form-control-2" type="file" id="file8">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Opinión de cumplimiento<strong class="text-danger">*</strong></label>
+                  <strong class="text-danger">*</strong><label>Opinión de cumplimiento</label>
                   <input class="form-control form-control-2" type="file" id="file9">
                 </div>
                 <div class="col-sm-12">
