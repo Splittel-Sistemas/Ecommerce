@@ -501,10 +501,8 @@ class SolicitudC
             '',
             '',
             '" . $this->PERSONA . "',
+'',
             '',
-            '',
-
-
 
         @Result);", "@Result");
 
