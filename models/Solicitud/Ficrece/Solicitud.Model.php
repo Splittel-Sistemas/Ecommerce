@@ -50,6 +50,8 @@ class SolicitudC
   public $Doc7;
   public $Doc8;
   public $Doc9;
+  public $Nacionalidad;
+  public $LuNaci;
 
 
 
@@ -328,15 +330,21 @@ class SolicitudC
     $this->Doc9 = $Doc9;
   }
 
+  public function SetLugar($LuNaci)
+  {
+    if (empty($LuNaci)) {
+      throw new Exception('Lugar de nacimiento es requerido');
+    }
+    $this->LuNaci = $LuNaci;
+  }
 
-
-
-
-
-
-
-
-
+  public function SetNacionalidad($Nacionalidad)
+  {
+    if (empty($Nacionalidad)) {
+      throw new Exception('Nacionalidad es requerido');
+    }
+    $this->Nacionalidad = $Nacionalidad;
+  }
 
 
 
@@ -441,7 +449,7 @@ class SolicitudC
   public function Add()
   {
     try {
-      $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece(
+      $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece2(
           '0',
           '" . $this->NombreSolicitud . "',
           '" . $this->Correo . "',
@@ -497,6 +505,8 @@ class SolicitudC
             '',
             '',
             '" . $this->PERSONA . "',
+            '" . $this->LuNaci . "',
+            '" . $this->Nacionalidad . "',
 
 
 

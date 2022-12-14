@@ -32,6 +32,15 @@
     }
   </style>
   <script>
+    function f1() {
+      document.getElementById("nombreR").innerHTML = "JEFE DEL DEPTO. DE CUENTAS POR PAGAR Y NÚMERO DE EXTENSIÓN "
+      document.getElementById("nameBene").innerHTML = "NOMBRE DEL DUEÑO BENEFICIARIO"
+      document.getElementById("LuNaci1").setAttribute('style', 'display:none');
+      document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
+    }
+
+    window.onload = f1;
+
     function check() {
       document.getElementById("divs").removeAttribute('style');
     }
@@ -44,25 +53,40 @@
     function MORAL() {
       document.getElementById("documento1").removeAttribute('style');
       document.getElementById("documento2").removeAttribute('style');
+      document.getElementById("jefeD").removeAttribute('style');
+      document.getElementById("FCons").removeAttribute('style');
+     
+      document.getElementById("LuNaci1").setAttribute('style', 'display:none');
+      document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
+      document.getElementById("nombreR").innerHTML = "JEFE DEL DEPTO. DE CUENTAS POR PAGAR Y NÚMERO DE EXTENSIÓN "
+      document.getElementById("nameBene").innerHTML = "NOMBRE DEL DUEÑO BENEFICIARIO"
+
 
     }
 
     function FISICA() {
       document.getElementById("documento1").setAttribute('style', 'display:none');
       document.getElementById("documento2").setAttribute('style', 'display:none');
+      document.getElementById("jefeD").setAttribute('style', 'display:none');
+      document.getElementById("FCons").setAttribute('style', 'display:none');
+      document.getElementById("LuNaci1").removeAttribute('style');
+      document.getElementById("Nacionalidad1").removeAttribute('style');
+      document.getElementById("nombreR").innerHTML = "NOMBRE"
+      document.getElementById("nameBene").innerHTML = "Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito)"
+
 
     }
   </script>
   <div class="container padding-top-1x padding-bottom-3x mb-2">
-  <div class="row ">
-        <div class="col-1 padding-bottom-1x text-center">
-        </div>
-        <div class="col-10 padding-bottom-1x text-center">
-          <img class="rounded" src="../../public/images/img_spl/ficrece/formlulario.jpg">
-        </div>
-      
+    <div class="row ">
+      <div class="col-1 padding-bottom-1x text-center">
       </div>
-  <div class="steps flex-sm-nowrap mb-5">
+      <div class="col-10 padding-bottom-1x text-center">
+        <img class="rounded" src="../../public/images/img_spl/ficrece/formlulario.jpg">
+      </div>
+
+    </div>
+    <div class="steps flex-sm-nowrap mb-5">
       <a class="step process active" id="process-1" number="1" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onclick="addViewCheckout(this)">
         <h4 class="step-title completado"><i class="icon-check-circle"></i>1. Datos Generales</h4>
       </a>
@@ -77,7 +101,7 @@
       </a>
 
     </div>
-   <!--  <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
+    <!--  <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
       <li class="nav-item " role="presentation">
         <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">1. DATOS GENERALES</button>
       </li>
@@ -96,7 +120,10 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" px-3 justify-content-center align-items-center">
+            <h2 class="text-center">DATOS GENERALES</h2>
+            <br><br>
               <form class="row">
+            
                 <div class="col-sm-12 col-md-2 form-group">
                 </div>
 
@@ -117,14 +144,7 @@
                 <div class="col-sm-12 col-md-2 form-group">
                 </div>
 
-                <div class="col-sm-12 col-md-6 form-group">
-                  <label>NOMBRE <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
-                </div>
-                <div class="col-sm-12 col-md-6 form-group">
-                  <label>CORREO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
-                </div>
+
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>RAZON SOCIAL <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="RazonSocial" name="RazonSocial">
@@ -143,7 +163,16 @@
                 </div>
 
 
-
+                <div class="col-sm-12 col-md-12 form-group">
+                  <label>
+                    <p id="nombreR"> <strong class="text-danger">*</strong></p>
+                  </label>
+                  <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
+                </div>
+                <div class="col-sm-12 col-md-6 form-group">
+                  <label>CORREO <strong class="text-danger">*</strong></label>
+                  <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
+                </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>C.P. <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="number" id="Cp" name="Cp" maxlength="4" onkeyup="this.value=Numeros(this.value)">
@@ -156,7 +185,15 @@
                   <label>R.F.C. <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Rfc" name="Rfc">
                 </div>
-                <div class="col-sm-12 col-md-6 form-group">
+                <div class="col-sm-12 col-md-6 form-group" id="LuNaci1">
+                  <label>LUGAR Y FECHA DE NACIMIENTO<strong class="text-danger">*</strong></label>
+                  <input class="form-control form-control-2" type="text" id="LuNaci" name="LuNaci">
+                </div>
+                <div class="col-sm-12 col-md-6 form-group" id="Nacionalidad1">
+                  <label>NACIONALIDAD<strong class="text-danger">*</strong></label>
+                  <input class="form-control form-control-2" type="text" id="Nacionalidad" name="Nacionalidad">
+                </div>
+                <div class="col-sm-12 col-md-6 form-group" id="FCons">
                   <label>FECHA CONSTITUCION <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="date" id="FechaConstitucion" name="FechaConstitucion">
                 </div>
@@ -179,13 +216,14 @@
                   <input class="form-control form-control-2" type="date" id="FechaAlta" name="FechaAlta">
                 </div>
 
-                <div class="col-sm-12 form-group">
+                <div class="col-sm-12 form-group" id="jefeD">
                   <label>JEFE DEL DEPTO. DE CUENTAS POR PAGAR, CORREO Y NÚMERO DE EXTENSIÓN <strong class="text-danger">*</strong></label>
                   <textarea class="form-control form-control-2" name="JefeDepto" id="JefeDepto" rows="4"></textarea>
                 </div>
 
+
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>NOMBRE DEL DUEÑO BENEFICIARIO <strong class="text-danger">*</strong></label>
+                  <label id="nameBene"><strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Beneficiario" name="Beneficiario">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
@@ -201,6 +239,8 @@
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="col-md-12" id="notify" data-offset-top="-1">
           <div class=" py-5 px-3 justify-content-center align-items-center">
+          <h2 class="text-center">REFERENCIAS COMERCIALES (PROVEEDORES CON LOS QUE TENGA CRÉDITO)</h2>
+            <br><br>
             <form class="row">
               <div class="col-sm-12 col-md-6 form-group">
                 <label>Nombre <strong class="text-danger">*</strong></label>
@@ -266,10 +306,12 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" py-5 px-3 justify-content-center align-items-center">
+            <h2 class="text-center">DATOS DEL CRÉDITO</h2>
+            <br><br>
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group">
                   <label>MONTO DEL CRÉDITO SOLICITADO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito" >
+                  <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito">
                   <small>indica la cantidad en dolares americanos</small>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group text-center">
@@ -292,13 +334,13 @@
 
                 <div class="col-sm-12 col-md-6 form-group" id="divs" style="display:none">
                   <label>OTRO <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="Otro" name="Otro"  onkeyup="this.value=Numeros(this.value)">
+                  <input class="form-control form-control-2" type="text" id="Otro" name="Otro" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 form-group">
                   <label>OBSERVACIONES <strong class="text-danger">*</strong></label>
                   <textarea class="form-control form-control-2" name="Observaciones" id="Observaciones" rows="8"></textarea>
                 </div>
-              
+
               </form>
             </div>
           </div>
@@ -309,41 +351,43 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" py-5 px-3 justify-content-center align-items-center">
+            <h2 class="text-center">Solo se procederá a la validación de este convenio anexando al mismo copia de los siguientes documentos: </h2>
+            <br><br>
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group" id="documento1">
-                  <label>1.- Escritura constitutiva y estatutos vigentes <strong class="text-danger">*</strong></label>
+                  <label>Escritura constitutiva y estatutos vigentes <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="documento2">
-                  <label>2.- Poder del representante legal <strong class="text-danger">*</strong></label>
+                  <label>Poder del representante legal <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file2">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>3.- Identificación oficial del representante legal <strong class="text-danger">*</strong></label>
+                  <label>Identificación oficial del representante legal <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file3">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>4.- Alta en Hacienda y RFC <strong class="text-danger">*</strong></label>
+                  <label>Alta en Hacienda y RFC <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>5.- Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger">*</strong></label>
+                  <label>Comprobante de domicilio (No mayor a 3 meses) <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file5">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>6.- Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger">*</strong></label>
+                  <label>Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados<strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file6">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>7.- Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger">*</strong></label>
+                  <label>Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file7">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>8.- Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger">*</strong></label>
+                  <label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file8">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>9.- Opinión de cumplimiento<strong class="text-danger">*</strong></label>
+                  <label>Opinión de cumplimiento<strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file9">
                 </div>
                 <div class="col-sm-12">
