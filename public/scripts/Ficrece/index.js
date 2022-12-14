@@ -31,6 +31,8 @@ var EnviarSolicitud = function () {
   fda.append("Ciudad3", $("#Ciudad3").val());
   fda.append("Telefono3", $("#Telefono3").val());
   fda.append("MontoCredito", $("#MontoCredito").val());
+ 
+
 
   var checkRadio = document.querySelector('input[name="Plazo"]:checked');
 
@@ -52,7 +54,8 @@ var EnviarSolicitud = function () {
   
     var file_data = '';
     fda.append("file2", file_data);
-
+    fda.append("Nacionalidad", "");
+    fda.append("LuNaci", "");
 
   } else {
     var file_data = $("#file").prop("files")[0];
@@ -60,6 +63,8 @@ var EnviarSolicitud = function () {
   
     var file_data = $("#file2").prop("files")[0];
     fda.append("file2", file_data);
+    fda.append("Nacionalidad", $("#Nacionalidad").val());
+    fda.append("LuNaci", $("#LuNaci").val());
   }
  
 
