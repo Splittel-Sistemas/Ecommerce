@@ -33,8 +33,8 @@
   </style>
   <script>
     function f1() {
-      document.getElementById("nombreR").innerHTML = "Jefe del depto. de cuentas por pagar y número de extensión : "
-      document.getElementById("nameBene").innerHTML = "Nombre del dueño beneficiario :"
+      document.getElementById("nombreR").innerHTML = "<strong class='text-danger'>*</strong> Jefe del depto. de cuentas por pagar y número de extensión : "
+      document.getElementById("nameBene").innerHTML = "<strong class='text-danger'>*</strong> Nombre del dueño beneficiario :"
       document.getElementById("LuNaci1").setAttribute('style', 'display:none');
       document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
     }
@@ -58,8 +58,8 @@
 
       document.getElementById("LuNaci1").setAttribute('style', 'display:none');
       document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
-      document.getElementById("nombreR").innerHTML = "Jefe del depto. de cuentas por pagar y número de extensión : "
-      document.getElementById("nameBene").innerHTML = "Nombre del dueño beneficiario :"
+      document.getElementById("nombreR").innerHTML = " <strong class='text-danger'>*</strong> Jefe del depto. de cuentas por pagar y número de extensión : "
+      document.getElementById("nameBene").innerHTML = " <strong class='text-danger'>*</strong> Nombre del dueño beneficiario :"
 
 
     }
@@ -71,8 +71,8 @@
       document.getElementById("FCons").setAttribute('style', 'display:none');
       document.getElementById("LuNaci1").removeAttribute('style');
       document.getElementById("Nacionalidad1").removeAttribute('style');
-      document.getElementById("nombreR").innerHTML = "Nombre :"
-      document.getElementById("nameBene").innerHTML = "Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito) :"
+      document.getElementById("nombreR").innerHTML = " <strong class='text-danger'>*</strong> Nombre :"
+      document.getElementById("nameBene").innerHTML = " <strong class='text-danger'>*</strong> Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito) :"
 
 
     }
@@ -165,7 +165,7 @@
 
                 <div class="col-sm-12 col-md-12 form-group">
                   <label>
-                    <strong class="text-danger">*</strong><p id="nombreR"> </p>
+                    <strong class="text-danger"></strong><p id="nombreR"> </p>
                   </label>
                   <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
                 </div>
@@ -223,7 +223,7 @@
 
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <strong class="text-danger">*</strong><label id="nameBene"></label>
+                  <strong class="text-danger"></strong><label id="nameBene"></label>
                   <input class="form-control form-control-2" type="text" id="Beneficiario" name="Beneficiario">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
@@ -255,7 +255,7 @@
                 <input class="form-control form-control-2" type="text" id="Ciudad1" name="Ciudad1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <strong class="text-danger">*</strong><label>Telefono </label>
+                <strong class="text-danger">*</strong><label>Teléfono </label>
                 <input class="form-control form-control-2" type="tel" id="Telefono1" name="Telefono1" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -275,7 +275,7 @@
                 <input class="form-control form-control-2" type="text" id="Ciudad2" name="Ciudad2">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Telefono <strong class="text-danger"></strong></label>
+                <label>Teléfono <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Telefono2" name="Telefono2" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -294,7 +294,7 @@
                 <input class="form-control form-control-2" type="text" id="Ciudad3" name="Ciudad3">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Telefono <strong class="text-danger"></strong></label>
+                <label>Teléfono <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Telefono3" name="Telefono3" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -312,7 +312,7 @@
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Monto del crédito solicitado :</label>
                   <input class="form-control form-control-2" type="number" id="MontoCredito" name="MontoCredito">
-                  <small>indica la cantidad en dolares americanos</small>
+                  <small>indica la cantidad en dólares americanos</small>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group text-center">
                   <strong class="text-danger">*</strong><label>Plazo del crédito solicitado :</label>
