@@ -72,6 +72,7 @@
         <select class="form-control" id="MonomodoTipoFibra" name="MonomodoTipoFibra" onchange="JumpersFibraOptica()">
           <option value="09">Monomodo Bend Radius G657A1</option>
           <option value="29">Monomodo Bend Radius G657A2</option>
+          <option value="09">Monomodo Bend Radius G657A2</option>
         </select>
       </div>
     </div> 

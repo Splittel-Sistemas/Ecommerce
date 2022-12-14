@@ -197,6 +197,8 @@ var JumpersMonomodo = function(){
     StyleDisplayNoneOrBlock_2(PulidoConector1, 'block', [0,1])
     StyleDisplayNoneOrBlock_2(PulidoConector2, 'block', [0,1])
     StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1,2])
+
+    StyleDisplayNoneOrBlock_2(MonomodoTipoFibra, 'block', [0,1,2])
     
     if (Conector2.value == "MU" || Conector2.value == "ST" ) {
       PulidoConector2[0].style.display = "none"
@@ -253,6 +255,14 @@ var JumpersMonomodo = function(){
       if(Diametro.value==3)
         Diametro.selectedIndex = 0
     }
+    if(Diametro.selectedIndex == 0 || Diametro.selectedIndex == 2){
+      StyleDisplayNoneOrBlock_2(MonomodoTipoFibra, 'none', [1,2])
+      MonomodoTipoFibra.selectedIndex=0
+    }else{
+      StyleDisplayNoneOrBlock_2(MonomodoTipoFibra, 'none', [0,1])
+      MonomodoTipoFibra.selectedIndex=2
+    }
+
     
     if (Longitud.value > 0 && Longitud.value <= 999) {
       NewLongitud = NumeroConCeros(Longitud.value, 4)
