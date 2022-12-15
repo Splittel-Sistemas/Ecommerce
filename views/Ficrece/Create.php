@@ -243,19 +243,19 @@
             <br><br>
             <form class="row">
               <div class="col-sm-12 col-md-6 form-group">
-                <strong class="text-danger">*</strong><label>Nombre </label>
+                <strong class="text-danger">*</strong><label>Nombre : </label>
                 <input class="form-control form-control-2" type="text" id="Nombre1" name="Nombre1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <strong class="text-danger">*</strong><label>Domicilio </label>
+                <strong class="text-danger">*</strong><label>Domicilio : </label>
                 <input class="form-control form-control-2" type="text" id="Domicilio1" name="Domicilio1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <strong class="text-danger">*</strong><label>Ciudad </label>
+                <strong class="text-danger">*</strong><label>Ciudad : </label>
                 <input class="form-control form-control-2" type="text" id="Ciudad1" name="Ciudad1">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <strong class="text-danger">*</strong><label>Teléfono </label>
+                <strong class="text-danger">*</strong><label>Teléfono : </label>
                 <input class="form-control form-control-2" type="tel" id="Telefono1" name="Telefono1" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -263,19 +263,19 @@
 
             <form class="row">
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Nombre <strong class="text-danger"></strong></label>
+                <label>Nombre : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Nombre2" name="Nombre2">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Domicilio <strong class="text-danger"></strong></label>
+                <label>Domicilio : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Domicilio2" name="Domicilio2">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Ciudad <strong class="text-danger"></strong></label>
+                <label>Ciudad : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Ciudad2" name="Ciudad2">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Teléfono <strong class="text-danger"></strong></label>
+                <label>Teléfono : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Telefono2" name="Telefono2" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -286,15 +286,15 @@
                 <input class="form-control form-control-2" type="text" id="Nombre3" name="Nombre3">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Domicilio <strong class="text-danger"></strong></label>
+                <label>Domicilio : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Domicilio3" name="Domicilio3">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Ciudad <strong class="text-danger"></strong></label>
+                <label>Ciudad : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Ciudad3" name="Ciudad3">
               </div>
               <div class="col-sm-12 col-md-6 form-group">
-                <label>Teléfono <strong class="text-danger"></strong></label>
+                <label>Teléfono : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Telefono3" name="Telefono3" onkeyup="this.value=Numeros(this.value)">
               </div>
 
@@ -328,16 +328,16 @@
 
                   <div class="custom-control custom-radio ">
                     <input class="custom-control-input" type="radio" id="ex-radio-3" value="otro" name="Plazo" onclick="check()">
-                    <label class="custom-control-label" for="ex-radio-3">Otro</label>
+                    <label class="custom-control-label" for="ex-radio-3">Otro </label>
                   </div>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group" id="divs" style="display:none">
-                  <strong class="text-danger">*</strong><label>Otro </label>
+                  <strong class="text-danger">*</strong><label>Otro :</label>
                   <input class="form-control form-control-2" type="text" id="Otro" name="Otro" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 form-group">
-                  <strong class="text-danger">*</strong><label>Observaciones </label>
+                  <strong class="text-danger">*</strong><label>Observaciones :</label>
                   <textarea class="form-control form-control-2" name="Observaciones" id="Observaciones" rows="8"></textarea>
                 </div>
 
