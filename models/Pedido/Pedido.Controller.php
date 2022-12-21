@@ -66,19 +66,18 @@ class PedidoController
                     $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
                     $Cliente = $ClienteModel->Get("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 " ,"");
 
-                    print_r($Cliente);
-                    print_r($Cliente->Tipo);
+                  
 
                     if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
 
-                     
-
-                         $_SESSION['Ecommerce-ClienteTipo'] = $Cliente->Tipo;
-                         $_SESSION['Ecommerce-ClienteNombre'] = $Cliente->Nombre . " " . $Cliente->Apellidos;
-
+                        foreach ($Cliente as $key => $DCliente) {
+                            print_r($DCliente);
+                         $_SESSION['Ecommerce-ClienteTipo'] = $DCliente->Tipo;
+                         $_SESSION['Ecommerce-ClienteNombre'] = $DCliente->Nombre . " " . $DCliente->Apellidos;
+                        }
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();
                         $Email->MailerSubject = " Ecommerce - Pedido #" . $_SESSION['Ecommerce-PedidoKey'];
