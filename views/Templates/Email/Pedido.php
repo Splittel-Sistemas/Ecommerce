@@ -390,7 +390,7 @@ class TemplatePedido
 			} else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 				$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
-			} else {
+			}/*  else {
 
 				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
@@ -399,7 +399,7 @@ class TemplatePedido
 						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
 				}
-			}
+			} */
 
 			$html .= '
 														</td>
