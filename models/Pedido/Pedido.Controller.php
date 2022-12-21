@@ -74,7 +74,6 @@ class PedidoController
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
 
                         foreach ($Cliente as $key => $DCliente) {
-                            print_r($DCliente->Tipo);
                          $_SESSION['Ecommerce-ClienteTipo'] = $DCliente->Tipo;
                          $_SESSION['Ecommerce-ClienteNombre'] = $DCliente->Nombre . " " . $DCliente->Apellidos;
                         }

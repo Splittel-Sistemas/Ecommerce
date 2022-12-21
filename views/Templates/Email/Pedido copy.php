@@ -188,6 +188,16 @@ class TemplatePedido
 				$ResultDatosFacturacionController = $DatosFacturacionController->get();
 				# obtención de subtotal iva y total del pedido actual
 				$Pedido = $PedidoController->getBy();
+				/* if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+
+				}else{
+
+					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
+
+				} */
+
 
 				$pedidoCostoEnvio = $Pedido->GetEnvio();
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
@@ -232,21 +242,18 @@ class TemplatePedido
 					$listGetBillToAdress = $resultGetBillToAdressController->GetBillToAdressResult->Records->BussinessPartnerAdresses;
 				}
 
-
 				/* FIN DATOS DE FACTURACION*/
-				
-			
-				$DatosEnvioController = new DatosEnvioController();
-				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
-				$DatosEnvioController->order = "";
-				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
-
-
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
 					$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>';
-					$html .= '				<tr style="width:100%;">
+				} else {
+					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
+						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
+					}
+				}
+				$html .= '				<tr style="width:100%;">
 																' . $nombre . '
 
 														' . $nombrefactura . '
@@ -256,13 +263,24 @@ class TemplatePedido
 														
 														</tr>
 														<tr style="width:100%;">';
-														/* DATOS DE ENVIO  */
+
+				/* datos de envio */
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
+				} else {
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+						}
+					}
+				};
 
-					/* FACTURACION DATOS */
+				/* datos de facturacion */
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 
 					if ($Pedido->DatosFacturacionKey != '') {
@@ -274,17 +292,50 @@ class TemplatePedido
 					} else {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
 					};
+				} else {
+					if ($Pedido->DatosFacturacionKey != '') {
 
-					$html .= '</tr><tr style="width:100%;">
-														';
-
-					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-															$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
-														}
-
+						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
+						}
+					} else {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
+					};
+				};
+				$html .= '	
+														
 
 
 														
+														
+
+														
+														</tr>
+														<tr style="width:100%;">
+														';
+
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
+					}
+				} else {
+					/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
+						}
+					} */
+					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>';
+
+				};
+
+
+
+
+				/* factuacion */
+				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+
+
 					if ($Pedido->DatosFacturacionKey != '') {
 
 
@@ -294,65 +345,7 @@ class TemplatePedido
 					} else {
 						$html .= '';
 					};
-
-					$html .= '	</tr></tbody></table>
-
-
-					<div style="text-align:right">
-					<div style="float: right">
-					</div>
-					</div>
-					<p><br></p>
-					<p align="center">Este es un correo electrónico generado automáticamente</p>
-					<br>
-					<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
-					';
-
-
-														
 				} else {
-					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
-						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
-					}
-					$html .= '				<tr style="width:100%;">
-																' . $nombre . '
-
-														' . $nombrefactura . '
-														<td style=" text-align: left"  rowspan="6">' . $Pedido->Paqueteria . '</span></td>
-
-
-														
-														</tr>
-														<tr style="width:100%;">';
-														/* DATOS DE ENVIO  */
-					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
-						}
-					}
-
-					/* fACTURACION DATOS 
-					*/
-					if ($Pedido->DatosFacturacionKey != '') {
-
-						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
-						}
-					} else {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
-					};
-
-
-					$html .= '</tr><tr style="width:100%;">
-														';
-
-														/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
-						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
-						}
-					} */
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>';
 					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
@@ -360,22 +353,44 @@ class TemplatePedido
 					} else {
 						$html .= '';
 					};
-					$html .= '	</tr></tbody></table>
+				};
+				$DatosEnvioController = new DatosEnvioController();
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->order = "";
+				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
+
+				/* fin fcturacion */
+				$html .= '	
+														
+														
+														</tr>
+													
+													
+												
+													';
+			}
+			$html .= '</tbody>
+														</table>
 
 
-					<div style="text-align:right">
-					<div style="float: right">
-					</div>
-					</div>
-					<p><br></p>
-					<p align="center">Este es un correo electrónico generado automáticamente</p>
-					<br>
-					<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
-					';
-				}//FIN ELSE
+															<div style="text-align:right">
+															<div style="float: right">
+															</div>
+															</div>
+															<p><br></p>
+															<p align="center">Este es un correo electrónico generado automáticamente</p>
+															<br>
+															<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
+															';
+			if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
 
+				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
+					$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
+				}
+			} else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
-			
+				$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+			} else {
 
 				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
@@ -384,9 +399,8 @@ class TemplatePedido
 						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
 				}
-		
 			}
-		
+
 			$html .= '
 														</td>
 													</tr>
