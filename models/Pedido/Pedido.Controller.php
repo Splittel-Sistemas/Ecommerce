@@ -64,6 +64,7 @@ class PedidoController
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
                     $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
+                    print_r($ClienteExiste);
                     if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
