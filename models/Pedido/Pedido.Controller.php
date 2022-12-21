@@ -64,15 +64,17 @@ class PedidoController
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
                     $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
+                    $DatosCliente = $ClienteModel->GetBydatos("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
+
                     if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
 
-                        foreach ($ClienteExiste as $key => $DatosCliente) {
+                        foreach ($DatosCliente as $key => $Cliente) {
 
-                         $_SESSION['Ecommerce-ClienteTipo'] = $DatosCliente->Tipo;
-                         $_SESSION['Ecommerce-ClienteNombre'] = $DatosCliente->Nombre . " " . $DatosCliente->Apellidos;
+                         $_SESSION['Ecommerce-ClienteTipo'] = $Cliente->Tipo;
+                         $_SESSION['Ecommerce-ClienteNombre'] = $Cliente->Nombre . " " . $Cliente->Apellidos;
                         }
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();

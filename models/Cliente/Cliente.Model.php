@@ -142,7 +142,45 @@ class Cliente{
         throw $e;
       }
     }
+    public function GetBydatos($filter){
+        try {
+            $SQLSTATEMENT = "SELECT * FROM listar_cliente_data ".$filter." ";
 
+          // echo $SQLSTATEMENT;
+          $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+          $data = [];
+  
+          while ($row = $result->fetch_object()) {
+            $this->ClienteKey     =   $row->id_cliente;
+            $this->Nombre         =   $row->nombre;
+            $this->Apellidos      =   $row->apellidos;
+            $this->Telefono       =   $row->telefono;
+            $this->Email          =   $row->email;
+            $this->Password       =   $row->password;
+            $this->FechaIngreso   =   $row->fecha_registro;
+            $this->Tipo           =   $row->tipo_cliente;
+            $this->Ingreso        =   $row->ingreso;
+            $this->EmailEjecutivo =   $row->email_ejecutivo;
+            $this->Descuento      =   $row->descuento;
+            $this->DiasCredito      =   $row->dias_credito;
+  
+            # si el cliente es un usuario B2B
+            if ($this->Tipo == 'B2B') {
+                $this->CardCode      =   $row->cardcode_b2b;
+                $this->Sociedad      =   $row->sociedad_b2b;
+                $this->PasswordB2b   =   $row->pass_b2b;
+            }else{
+                $this->CardCode      =   $row->cardcode_b2c;
+                $this->Sociedad      =   $row->sociedad_b2c;
+                $this->PasswordB2b   =   $row->password_b2c;
+            }
+        }
+
+          return $data;
+        } catch (Exception $e) {
+          throw $e;
+        }
+      }
     public function Get($filter, $order){
       try {
         $SQLSTATEMENT = "SELECT * FROM login_cliente ".$filter." ".$order;
