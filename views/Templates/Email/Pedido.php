@@ -234,14 +234,23 @@ class TemplatePedido
 
 
 				/* FIN DATOS DE FACTURACION*/
-				
-			
+
+
 				$DatosEnvioController = new DatosEnvioController();
 				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
 				$DatosEnvioController->order = "";
 				$ResultDatosCorreo = $DatosEnvioController->getEmailEjecutivo();
 
 
+
+
+
+
+
+
+
+
+				/* CLIENTE TIPO B2C */
 				if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 					$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>' : '';
@@ -256,7 +265,7 @@ class TemplatePedido
 														
 														</tr>
 														<tr style="width:100%;">';
-														/* DATOS DE ENVIO  */
+					/* DATOS DE ENVIO  */
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
@@ -279,12 +288,12 @@ class TemplatePedido
 														';
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-															$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
-														}
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $DatosEnvio->Telefono . '</span></td>';
+					}
 
 
 
-														
+
 					if ($Pedido->DatosFacturacionKey != '') {
 
 
@@ -307,9 +316,16 @@ class TemplatePedido
 					<br>
 					<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
 					';
+					foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
+
+						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+					}
 
 
-														
+
+
+
+					/* CLIENTE TIPO B2B */
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
@@ -325,7 +341,7 @@ class TemplatePedido
 														
 														</tr>
 														<tr style="width:100%;">';
-														/* DATOS DE ENVIO  */
+					/* DATOS DE ENVIO  */
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
@@ -347,7 +363,7 @@ class TemplatePedido
 					$html .= '</tr><tr style="width:100%;">
 														';
 
-														/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+					/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
 						}
@@ -372,22 +388,30 @@ class TemplatePedido
 					<br>
 					<p align="center">Si tienes alguna duda, contáctanos: 800 134 26 90</p>
 					';
-				}//FIN ELSE
+					foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 
-
-			
-
-				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
-					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
-						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
-					} else {
 						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
-				}
-		
-			}
-		
-			$html .= '
+				} //FIN ELSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				$html .= '
 														</td>
 													</tr>
 
@@ -420,7 +444,8 @@ class TemplatePedido
 								</table>
 							</body>
 						</html>';
-			return $html;
+				return $html;
+			}
 		} catch (Exception $e) {
 			throw $e;
 		}
