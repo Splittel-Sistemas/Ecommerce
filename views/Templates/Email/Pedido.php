@@ -250,7 +250,7 @@ class TemplatePedido
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
-						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
+						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: PRUEBA' . $GetBillToAdress->CardName . '</span></td>';
 					}
 				}
 				$html .= '				<tr style="width:100%;">
