@@ -69,11 +69,11 @@ class PedidoController
                         $_SESSION['Ecommerce-PedidoKey'] = $pedido->Key;
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
 
-                     
+                        foreach ($ClienteExiste as $key => $DatosCliente) {
 
-                         $_SESSION['Ecommerce-ClienteTipo'] = $ClienteExiste->Tipo;
-                         $_SESSION['Ecommerce-ClienteNombre'] = $ClienteExiste->Nombre . " " . $ClienteExiste->Apellidos;
-
+                         $_SESSION['Ecommerce-ClienteTipo'] = $DatosCliente->Tipo;
+                         $_SESSION['Ecommerce-ClienteNombre'] = $DatosCliente->Nombre . " " . $DatosCliente->Apellidos;
+                        }
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();
                         $Email->MailerSubject = " Ecommerce - Pedido #" . $_SESSION['Ecommerce-PedidoKey'];
