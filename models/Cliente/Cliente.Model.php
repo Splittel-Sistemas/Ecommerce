@@ -148,7 +148,7 @@ class Cliente{
 
           // echo $SQLSTATEMENT;
           $result = $this->Connection->QueryReturn($SQLSTATEMENT);
-          $data = [];
+          $data = array();
   
           while ($row = $result->fetch_object()) {
             $this->ClienteKey     =   $row->id_cliente;

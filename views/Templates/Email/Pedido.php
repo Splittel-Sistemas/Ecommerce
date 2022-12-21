@@ -249,7 +249,7 @@ class TemplatePedido
 					$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Cliente: </span>' . $_SESSION['Ecommerce-ClienteNombre'] . '</td>';
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: no ' . $GetBillToAdress->CardName . '</span></td>' : '';
 						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
 					}
 				}
@@ -390,7 +390,7 @@ class TemplatePedido
 			} else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
 
 				$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
-			}/*  else {
+			} else {
 
 				foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 					if ($DatosEnvio->email_ejecutivo == '' || $DatosEnvio->email_ejecutivo == null) {
@@ -399,7 +399,7 @@ class TemplatePedido
 						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
 				}
-			} */
+			}
 
 			$html .= '
 														</td>
