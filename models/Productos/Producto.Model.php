@@ -201,6 +201,7 @@
           $Obj->FichaRuta                         =   $row->ruta;
           $Obj->Destacado                         =   $row->destacado;
           $Obj->Certificado                       =   $this->ExistCert($row->codigo);
+          $Obj->ConfigurableFijo                  =   $row->configurablefijo;
           $data[] = $Obj;
         }
         return $data;
