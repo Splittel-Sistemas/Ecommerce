@@ -98,13 +98,17 @@ if (isset($_POST["Descripcion"])) {
 
   foreach ($ResultProducto_->records as $key => $Obj) {
 
-    ?>
-
-    <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion); ?>">
+    if($Obj->ProductoCodigoConfigurable!='' && $Obj->ConfigurableFijo=='no'){?>
+      <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($Obj->ProductoCodigoConfigurable); ?>">
       <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
+    </a>
+    <?php }else{ ?>
+    <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion); ?>">
+    <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
     </a>
 
     <?php
+    }
   }
   unset($ProductoController);
   unset($ResultProducto_);
