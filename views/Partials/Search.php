@@ -128,7 +128,7 @@ if (isset($_POST["Descripcion"])) {
     }
   }
   $clave = "";
-  $div = $telefono = str_split($_POST["Descripcion"], 5);
+  $div = $telefono = str_split($_POST["Descripcion"], 4);
 
   foreach($div as $value){
    /*  echo $value."<br/>"; */
