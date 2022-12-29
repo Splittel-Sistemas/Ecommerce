@@ -78,7 +78,7 @@ if (isset($_POST["Descripcion"])) {
         <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->CategoriasKey; ?>&id_gpo=<?php echo $Subcategoria_->Key; ?>">
           <?php echo $Subcategoria_->Descripcion; ?>
         </a>
-    <?php
+      <?php
       }
     }
   }
@@ -98,14 +98,14 @@ if (isset($_POST["Descripcion"])) {
 
   foreach ($ResultProducto_->records as $key => $Obj) {
 
-    if($Obj->ProductoCodigoConfigurable!='' && $Obj->ConfigurableFijo=='no'){?>
+    if ($Obj->ProductoCodigoConfigurable != '' && $Obj->ConfigurableFijo == 'no') { ?>
       <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($Obj->ProductoCodigoConfigurable); ?>">
-      <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
-    </a>
-    <?php }else{ ?>
-    <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion); ?>">
-    <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
-    </a>
+        <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
+      </a>
+    <?php } else { ?>
+      <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion); ?>">
+        <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
+      </a>
 
     <?php
     }
@@ -130,10 +130,10 @@ if (isset($_POST["Descripcion"])) {
   $clave = "";
   $div = $telefono = str_split($_POST["Descripcion"], 4);
 
-  foreach($div as $value){
-   /*  echo $value."<br/>"; */
+  foreach ($div as $value) {
+    /*  echo $value."<br/>"; */
     $clave .= " OR clave LIKE '%" . $value . "%'";
-}
+  }
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
   $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat  OR clave LIKE '%" . $_POST["Descripcion"] . "%' $clave ) AND activo='si'  ";
   $SubcategoriasN1Controller->order = "LIMIT 6";

@@ -5,6 +5,20 @@
  *
  * @return {number} b - Bar
  */
+$(document).ready(function () {
+  const checkbox = $("#mostrador");
+
+  checkbox.change(function (event) {
+    var checkbox = event.target;
+    if (checkbox.checked) {
+      //Checkbox has been checked
+      $("#check").val("Recoger en mostrador: ");
+    } else {
+      //Checkbox has been unchecked
+      $("#check").val("");
+    }
+  });
+});
 var datosViewResumenCheckoutPedido = function () {
   let lineaCredito = false;
   let metodoPago = "";
@@ -12,6 +26,8 @@ var datosViewResumenCheckoutPedido = function () {
   let requiereFactura = document.getElementById("RequiereFactura");
   let checkDatosEnvio = getChecked(".datosEnvio");
   let checkDatosFacturacion = getChecked(".datosFacturacion");
+  let check = document.getElementById("check");
+
   let Paqueteria = document.getElementById("paqueteria");
   let pagoBanco = document.getElementById("pagoBanco");
 
@@ -57,7 +73,7 @@ var datosViewResumenCheckoutPedido = function () {
         ).innerHTML;
 
       document.getElementById("resumen-paqueteria").innerHTML =
-        Paqueteria.value;
+        check.value + Paqueteria.value;
 
       if (requiereFactura.checked) {
         document.getElementById(
@@ -186,7 +202,7 @@ var addViewCheckout = function (Elem) {
   $(".completado").prepend('<i class="icon-check-circle"></i>');
   $(".PartialCheckout").css("display", "none");
   document.getElementById("PartialCheckout-" + number).style.display = "block";
-  if(number == 3){
+  if (number == 3) {
     datosViewResumenCheckoutPedido();
     validateCreditAvailable();
   }
@@ -194,7 +210,6 @@ var addViewCheckout = function (Elem) {
   if (number == 4) {
     datosViewResumenCheckoutPedido();
   }
-
 };
 /**
  * mostrar CFDIUser escenario B2C
@@ -225,14 +240,13 @@ var facturacionBb2MXP = function (Elem) {
   // metodo pago por linea de credito solo si es cliente B2B
   if (Elem.getAttribute("cliente") == "B2B") {
     if (Elem.value == "MXP") {
-      if(document.getElementById("credito-cliente-b2b"))
+      if (document.getElementById("credito-cliente-b2b"))
         document.getElementById("credito-cliente-b2b").style.display = "none";
-      if(document.getElementById("lineaCredito"))
+      if (document.getElementById("lineaCredito"))
         document.getElementById("lineaCredito").checked = false;
-   
     } else {
-      validateCreditAvailable(Elem)
-      if(document.getElementById("credito-cliente-b2b"))
+      validateCreditAvailable(Elem);
+      if (document.getElementById("credito-cliente-b2b"))
         document.getElementById("credito-cliente-b2b").style.display = "block";
     }
   }
@@ -251,8 +265,7 @@ var facturacionBb2MXP = function (Elem) {
  *
  * @return {number} b - Bar
  */
- var validateCreditAvailable = function () {
-
+var validateCreditAvailable = function () {
   let monedaPago = getChecked(".monedaPago");
 
   ajax_(
@@ -264,7 +277,6 @@ var facturacionBb2MXP = function (Elem) {
     },
     function (response) {
       document.getElementById("CreditValid").innerHTML = response;
-
     }
   );
 };

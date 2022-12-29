@@ -1,9 +1,15 @@
 <h4 class="text-center text-md-left">Método de envío (opcional)</h4>
 <hr class="padding-bottom-1x">
 <div class="row">
-  <div class="col-md-12 col-12">
-    <label class="text-center text-md-left">Referencia para paquetería</label>  &nbsp; &nbsp; &nbsp;   <span class="product-badge bg-warning border-default text-body text-white"><p>Si requiere recoger en nuestro CEDIS, favor de especificar en este apartado "Recoger en mostrador".</p></span>
+  <div class="col-md-12 col-12 custom-control custom-checkbox">
+    <label class="text-center text-md-left ">Referencia para paquetería</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <input class="custom-control-input" type="checkbox" id="mostrador">
+    <label class="custom-control-label" for="mostrador"> <span class="product-badge bg-warning border-default text-body text-white">
+        <p> Recoger en mostrador </p>
+      </span></label>
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
+    <input id="check" name="check" class="form-control" value="" type="hidden" />
+
   </div>
   <hr class="mt-3">
   <div class="col-md-12">

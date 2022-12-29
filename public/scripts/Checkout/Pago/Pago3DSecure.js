@@ -8,6 +8,7 @@ var Success = function (response) {
   let monedaPago = getChecked(".monedaPago");
   let metodoPago = "tarjeta";
   let paqueteria = document.getElementById("paqueteria");
+  let check = document.getElementById('check')
   let referencia = document.getElementById("referencia-pedido-resumen");
   let cfdiUser = document.getElementById("CFDIUser");
   let requiereFactura = document.getElementById("RequiereFactura");
@@ -19,7 +20,7 @@ var Success = function (response) {
     ActionOpenPay: true,
     datosEnvio: checkDatosEnvio,
     datosFacturacion: checkDatosFacturacion,
-    paqueteria: paqueteria.value,
+    paqueteria: check.value + paqueteria.value,
     monedaPago: monedaPago,
     metodoPago: metodoPago,
     tokenId: tokenId,
