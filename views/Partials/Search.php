@@ -127,8 +127,15 @@ if (isset($_POST["Descripcion"])) {
       $cat .= " OR desc_subcategoria LIKE '%" . $e[$i] . "%'";
     }
   }
+  $clave = "";
+  $div = $telefono = str_split($_POST["Descripcion"], 5);
+
+  foreach($div as $value){
+   /*  echo $value."<br/>"; */
+    $clave .= " OR clave LIKE '%" . $value . "%'";
+}
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat  OR clave LIKE '%" . $_POST["Descripcion"] . "%') AND activo='si'  ";
+  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat  OR clave LIKE '%" . $_POST["Descripcion"] . "%' $clave ) AND activo='si'  ";
   $SubcategoriasN1Controller->order = "LIMIT 6";
   $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
   if ($ResultSubcategoriasN1->count > 0) {
