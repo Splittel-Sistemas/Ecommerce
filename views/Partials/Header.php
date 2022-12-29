@@ -75,7 +75,7 @@
           </div>
           <form class="input-group"><span class="input-group-btn">
           <button type="submit"><i class="icon-search"></i></button></span>
-          <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="Buscador(this)">
+          <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off"  onpaste="Buscador(this)" onkeyup="Buscador(this)">
           <div class="row" style="position: absolute; z-index: 100">
             <div class="col-md-12 margin-bottom-2x">
               <nav class="list-group lista-productos" id="lista-productos-0">
