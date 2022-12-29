@@ -2,7 +2,7 @@
 <hr class="padding-bottom-1x">
 <div class="row">
   <div class="col-md-12 col-12">
-    <label class="text-center text-md-left">Referencia para paquetería</label>
+    <label class="text-center text-md-left">Referencia para paquetería</label>  &nbsp; &nbsp; &nbsp;   <span class="product-badge bg-warning border-default text-body text-white"><p>Si requiere recoger en nuestro CEDIS, favor de especificar en este apartado "Recoger en mostrador".</p></span>
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
   </div>
   <hr class="mt-3">
