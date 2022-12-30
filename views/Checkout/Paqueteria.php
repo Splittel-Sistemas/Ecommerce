@@ -5,7 +5,7 @@
     <label class="text-center text-md-left ">Referencia para paquetería</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     <input class="custom-control-input" type="checkbox" id="mostrador">
     <label class="custom-control-label" for="mostrador"> <span class="product-badge bg-warning border-default text-body text-white">
-        <p> Recoger en mostrador </p>
+        <p> Recoger en mostrador - Querétaro </p>
       </span></label>
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
     <input id="check" name="check" class="form-control" value="" type="hidden" />
