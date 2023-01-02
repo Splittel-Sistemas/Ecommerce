@@ -48,8 +48,8 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 
 
     <!-- Search / Categories-->
-    <div class="search-box-wrap d-flex">
-      <div class="search-box-inner align-self-center">
+    <div class="search-box-wrap d-flex" >
+      <div class="search-box-inner align-self-center" id="busqueda">
         <div class="search-box d-flex">
           <div class="btn-group categories-btn">
             <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="icon-menu text-lg"></i>&nbsp;Categor&iacute;as</button>
