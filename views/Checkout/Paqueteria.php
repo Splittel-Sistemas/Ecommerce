@@ -3,13 +3,21 @@
 <div class="row">
   <div class="col-md-12 col-12 custom-control custom-checkbox">
     <label class="text-center text-md-left ">Referencia para paquetería</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <input class="custom-control-input" type="checkbox" id="mostrador">
     <label class="custom-control-label" for="mostrador"> <span class="product-badge bg-warning border-default text-body text-white">
-        <p> Recoger en mostrador - Querétaro </p>
-      </span></label>
+    <input class="custom-control-input" type="checkbox" id="mostrador">
+        
+    <p> Recoger en mostrador - Querétaro  </p>
+      </span>
+    
+    </label>&nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <label class="text-center text-md-left "> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="https://goo.gl/maps/C5Xk1fQ28GP6x3Qz7" target="_blank"  >
+      <img src="../../public/images/img_spl/productos/map.png"  >
+    </a></label>
+
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
     <input id="check" name="check" class="form-control" value="" type="hidden" />
-
+    
   </div>
   <hr class="mt-3">
   <div class="col-md-12">
@@ -20,7 +28,7 @@
       <li>La programación de materiales de volumen serán bajo disponibilidad de unidades, se puede extender de 24 a 48 hrs.</li>
       <li>La descarga especial (carretes completos, tarimas, etc) corresponden al cliente receptor, aquellas que comprendan utilizar maquinaria o personal extra.</li>
       <li>Horario entrega: las salidas serán en 2 ciclos durante el transcurso del día, el primero a las 09:00 am y el segundo a las 15:00 hrs.</li>
-      <li>Las entregas se realizan en el transcurso del día bajo la programación de ruta indicada por el repartidor.</li>
+      <li></li>Las entregas se realizan en el transcurso del día bajo la programación de ruta indicada por el repartidor.</li>
 
 
     </ul>
