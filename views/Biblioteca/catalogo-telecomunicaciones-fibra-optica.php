@@ -43,7 +43,7 @@
       <!-- Content-->
       <div class="col-xl-12 col-lg-12 order-lg-12">
         <!-- Post Meta-->
-        <iframe src="https://publicaciones.fibremex.com/catalogo-telecomunicacioiones-fibremex/page/1" width="820" height="620" style="border:none;" allowfullscreen></iframe>
+        <iframe src="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/1" width="820" height="620" style="border:none;" allowfullscreen></iframe>
 
       </div>
     </div>
