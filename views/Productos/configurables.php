@@ -240,9 +240,18 @@
               <?php }?>
               <td class="text-center align-middle">
                 <input type="hidden" name="ProductoCantidad-<?php echo $Obj_->Codigo;?>" id="ProductoCantidad-<?php echo $Obj_->Codigo;?>" value="1">
-                <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" onclick="add(this)">
+
+                <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
+                  <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" onclick="AgregarArticulo(this)"  >
                   <i class="icon-shopping-cart"></i> 
-                </button>
+                </button>                <?php }else{ ?>
+                <a class="product-button" href="../Login/" >   <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" onclick="AgregarArticulo(this)"  >
+                  <i class="icon-shopping-cart"></i> 
+                </button> </a>
+                <?php } ?>
+
+
+              
               </td>
             </tr>
             <?php 
