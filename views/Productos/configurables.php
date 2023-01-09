@@ -25,6 +25,9 @@
   if (!class_exists("SubmenuController")) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Submenu/Submenu.Controller.php';
   }
+  if (!class_exists("ProductoController")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+  }
   $CategoriaController = new CategoriaController();
   $CategoriaController->filter = "WHERE codigo = '" . $_GET['codigo'] . "' ";
   $CategoriaController->order = "";
@@ -180,7 +183,7 @@
         <ul class="nav nav-tabs justify-content-center" role="tablist">
           <li class="nav-item"><a class="nav-link active" href="#description" data-toggle="tab" role="tab">Descripción</a></li>
           <li class="nav-item"><a class="nav-link" href="#adicional" data-toggle="tab" role="tab">Información adicional</a></li>
-          <!-- <li class="nav-item"><a class="nav-link" href="#inf3" data-toggle="tab" role="tab">Relacionados</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="#inf3" data-toggle="tab" role="tab">Relacionados</a></li>
           <li class="nav-item"><a class="nav-link" href="#inf4" data-toggle="tab" role="tab">Comentarios</a></li>
           <!-- <li class="nav-item"><a class="nav-link" href="#inf5" data-toggle="tab" role="tab">360</a></li> -->
         </ul>
@@ -192,7 +195,63 @@
             <!-- inclusion de información necesaria adicional del producto mediante JavaScript -->
           </div>
           <div class="tab-pane fade" id="inf3" role="tabpanel">
-            <!-- inclusion de información necesaria productos relacionados -->
+          <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-default">
+              <tr>
+                <th class="text-center" style="width: 10%;">Imagen</th>
+                <th class="text-center" style="width: 10%;">Clave</th>
+                <th class="text-center" style="width: 50%;">Descripción</th>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){?>
+                <th class="text-center" style="width: 10%;">Precio</th>
+                <th class="text-center" style="width: 10%;">Stock</th>
+              <?php }?>
+                <th class="text-center" style="width: 10%;">Agregar</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php 
+              if (!class_exists("RelacionadosController")) {
+                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Relacionados.Controller.php';
+              }
+              $RelacionadosController = new RelacionadosController();
+              $RelacionadosController->filter = "WHERE tipo='fijo' AND id_codigo = '".$Obj->ProductosRelacionados."' ";
+              $RelacionadosController->order = "";
+              $ResultProductosRelacionados = $RelacionadosController->Configurables();
+              if($ResultProductosRelacionados->count > 0){
+                foreach ($ResultProductosRelacionados->records as $key => $ProductoRelacionado) {
+                  $ProductoController = new ProductoController();
+                  $ProductoController->filter = "WHERE codigo = '".$ProductoRelacionado->Codigo."' AND activo = 'si' ";
+                  $Obj_ = $ProductoController->GetBy();
+                  $imgUrl = file_exists("../../public/images/img_spl/productos/".$Obj_->Codigo."/thumbnail/".$Obj_->ImgPrincipal."") 
+                            ? "../../public/images/img_spl/productos/".$Obj_->Codigo."/thumbnail/".$Obj_->ImgPrincipal."" 
+                            : $_SESSION['Ecommerce-ImgNotFound1'];
+
+            ?>
+            <tr>
+              <td scope="row" class="text-center align-middle">
+                <a href="fijos.php?id_prd=<?php echo $Obj_->Codigo?>"><img  src="<?php echo $imgUrl; ?>" /></a>
+              </td>
+              <td class="text-center align-middle"><span class="styleClave"><?php echo $Obj_->Codigo; ?></span></td>
+              <td class="text-center align-middle"><?php echo $Obj_->Descripcion; ?></td>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){?>
+              <td class="text-center align-middle">$<?php echo bcdiv($Obj_->Precio-($Obj_->Precio*($Obj_->Descuento/100)),1,3); ?> USD</td>
+              <td class="text-center align-middle"><?php echo $Obj_->Existencia; ?></td>
+              <?php }?>
+              <td class="text-center align-middle">
+                <input type="hidden" name="ProductoCantidad-<?php echo $Obj_->Codigo;?>" id="ProductoCantidad-<?php echo $Obj_->Codigo;?>" value="1">
+                <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" onclick="add(this)">
+                  <i class="icon-shopping-cart"></i> 
+                </button>
+              </td>
+            </tr>
+            <?php 
+                }
+              } 
+            ?>
+            </tbody>
+          </table>
+        </div>  
           </div>
           <div class="tab-pane fade" id="inf4" role="tabpanel">
             <!-- Reviews-->

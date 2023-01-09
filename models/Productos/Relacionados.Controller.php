@@ -39,4 +39,18 @@ if (!class_exists("Connection")) {
 			}
 		}
 
+		public function Configurables(){
+			try {
+				if (!$this->conn->conexion()->connect_error) {
+					$RelacionadoModel = new Relacionados_(); 
+					$RelacionadoModel->SetParameters($this->conn, $this->Tool);
+					$items = $RelacionadoModel->ListConfigurables($this->filter, $this->order);
+					unset($RelacionadoModel);
+					return $this->Tool->Message_return(false, "", $items, false);
+				}
+			} catch (Exception $e) {
+				throw $e;
+			}
+		}
+
 	}
