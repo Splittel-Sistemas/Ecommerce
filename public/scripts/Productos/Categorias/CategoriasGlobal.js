@@ -478,6 +478,37 @@ var existEcommerce_ = function(Codigo){
   })
 }
 
+var existJumper_ = function(Codigo){
+  console.log(Codigo)
+  hhh = 1
+  ajax_("../../models/Productos/Producto.Route.php", "POST", "JSON", 
+  { 
+    Action: 'get', 
+    ActionProducto: true, 
+    Codigo: Codigo
+  }, 
+  function(response){
+    if (!response.error && response.count > 0) {
+      let resultResponse =  response.records[0]
+      let Stock = document.getElementById('add-stock')
+ //console.log(resultResponse);
+      // agregar stock
+      if(Stock)
+        if(resultResponse.ProductoExistencia!='' && resultResponse.ProductoExistencia>0)
+          Stock.innerHTML = resultResponse.ProductoExistencia
+          else
+          Stock.innerHTML = '0.00'
+     
+    }else{
+      let Stock = document.getElementById('add-stock')
+      Stock.innerHTML = '0.00'
+    }
+  })
+}
+
+
+
+
 var nuevoPrecioPorLongitud = function(Elem){
   document.getElementById('quantity').value = Elem.value
   if (Elem.value > 0 && Elem.value != "") {

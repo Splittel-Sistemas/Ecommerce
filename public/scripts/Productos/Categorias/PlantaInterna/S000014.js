@@ -162,6 +162,7 @@ var JumpersMultimodo = function(){
   ListProductoAdicional('OPJULCP')
   agregarFichaTecnicaConfigurable('OPJULCP')
   agregarCertificadoConfigurable(CodigoGenerado)
+  existJumper_(CodigoGenerado)
 }
 
 var JumpersMonomodo = function(){
@@ -302,6 +303,7 @@ var JumpersMonomodo = function(){
     ListProductoAdicional('OPJULCU')
     agregarFichaTecnicaConfigurable('OPJULCU')
     agregarCertificadoConfigurable(CodigoGenerado)
+    existJumper_(CodigoGenerado)
 }
 
 var JumpersEspeciales = function(){
@@ -451,6 +453,7 @@ var JumpersEspeciales = function(){
   }
   agregarFichaTecnicaConfigurable('OPJUESP')
   agregarCertificadoConfigurable(CodigoGenerado)
+  existJumper_(CodigoGenerado)
 }
 
 var JumpersArmados = function(){
@@ -589,6 +592,7 @@ var JumpersArmados = function(){
     ListProductoAdicional('OPJURA3')
     agregarFichaTecnicaConfigurable('OPJURA3')
     agregarCertificadoConfigurable(CodigoGenerado)
+    existJumper_(CodigoGenerado)
 }
 
 
