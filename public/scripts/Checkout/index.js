@@ -47,7 +47,6 @@ var datosViewResumenCheckoutPedido = function () {
     },
     function (response) {
       document.getElementById("PartialCheckout-4").innerHTML = response;
-
       if (lineaCredito) {
         metodoPago = '<span class="text-muted">Pago a crédito </span>';
       } else if (pagoBanco.checked) {
@@ -241,7 +240,8 @@ var facturacionBb2MXP = function (Elem) {
   if (Elem.getAttribute("cliente") == "B2B") {
     if (Elem.value == "MXP") {
       if (document.getElementById("credito-cliente-b2b"))
-        document.getElementById("credito-cliente-b2b").style.display = "none";
+        /*      document.getElementById("credito-cliente-b2b").style.display = "none"; */
+        document.getElementById("credito-cliente-b2b").style.display = "block";
       if (document.getElementById("lineaCredito"))
         document.getElementById("lineaCredito").checked = false;
     } else {
@@ -268,15 +268,40 @@ var facturacionBb2MXP = function (Elem) {
 var validateCreditAvailable = function () {
   let monedaPago = getChecked(".monedaPago");
 
-  ajax_(
+  /* ajax_(
     "../../views/Checkout/Credito.php",
     "POST",
     "HTML",
     {
       monedaPago: monedaPago,
     },
+    
     function (response) {
+      document.getElementById('monedaPagoMXN').disabled = false;
       document.getElementById("CreditValid").innerHTML = response;
     }
-  );
+  ); */
+
+  $.ajax({
+    type: "POST",
+    url: "../../views/Checkout/Credito.php",
+    data: {
+      monedaPago: monedaPago,
+    },
+    dataType: "HTML",
+    sync: false,
+    beforeSend: function () {
+      //imagen de carga
+      $("#exampleModalScrollable").modal("show");
+    },
+    error: function () {
+      alert("error petición ajax");
+    },
+    success: function (response) {
+      $("#exampleModalScrollable").modal("hide");
+
+      document.getElementById("monedaPagoMXN").disabled = false;
+      document.getElementById("CreditValid").innerHTML = response;
+    },
+  });
 };

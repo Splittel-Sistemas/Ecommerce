@@ -31,7 +31,7 @@
     <label class="custom-control-label" for="monedaPagoUSD">USD</label>
   </div>
   <div class="custom-control custom-radio custom-control-inline">
-    <input class="custom-control-input monedaPago" type="radio" id="monedaPagoMXN" name="monedaPago" value="MXP" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)">
+    <input class="custom-control-input monedaPago" type="radio" id="monedaPagoMXN" name="monedaPago" value="MXP" cliente="<?php echo $_SESSION['Ecommerce-ClienteTipo'] ?>" onchange="facturacionBb2MXP(this)" disabled>
     <label class="custom-control-label" for="monedaPagoMXN">MXP</label>
   </div>
 </div>
@@ -302,6 +302,27 @@
           <button type="button" class="btn btn-warning btn-block" onclick="Verificar()">Validar codigo</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Cargando Espere</h5>
+     
+      </div>
+      <div class="modal-body" id="exampleModalScrollablebody">
+        <div class="row">
+          <div class="col-md-8 offset-4">
+
+      <div class="spinner-grow text-primary text-center" role="status"><span class="sr-only">Loading...</span> </div>
+
+          </div>
+        </div>
+      </div>
+    
     </div>
   </div>
 </div>

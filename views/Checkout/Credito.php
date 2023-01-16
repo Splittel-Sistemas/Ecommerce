@@ -53,12 +53,14 @@ if (!class_exists("Functions_tools")) {
             $GetBussinesPartnerController = new GetBussinesPartnerController();
             $resultGetBussinesPartnerController = $GetBussinesPartnerController->get();
             $ErrorCode = $resultGetBussinesPartnerController->GetBussinesPartnerResult->ErrorCode;
-            // print_r($resultGetBussinesPartnerController);
+          /*  print_r($resultGetBussinesPartnerController); */
           } catch (Exception $e) {
             $ErrorCode = -100;
           }
           if ($ErrorCode == 0) {
             $clienteCredito = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->CreditLine;
+            $Currency = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->Currency;
+
 ?>
 <div class="card" id="credito-cliente-b2b">
         <div class="card-header" role="tab">
@@ -70,7 +72,7 @@ if (!class_exists("Functions_tools")) {
                 <?php
                 $clienteCreditoDisponible = $clienteCredito;
                 ?>
-                $<?php echo $clienteCreditoDisponible; ?></span> USD.</p>
+                $<?php echo $clienteCreditoDisponible; ?></span> <?=  $Currency ?>.</p>
                 <div class="custom-control custom-checkbox d-block">
                     <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito" onchange="LineaCreditoTipoCambio(this)">
                     <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta orden.</label>
