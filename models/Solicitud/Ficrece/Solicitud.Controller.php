@@ -106,8 +106,8 @@ class SolicitudCController
         $SolicitudCModel->SetLugar($_POST['LuNaci']);
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
-        print_r($_POST);
-        exit;
+      /*   print_r($_POST);
+        exit; */
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
@@ -116,7 +116,7 @@ class SolicitudCController
 
         if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
-          /*  die('Fallo al crear las carpetas...'); */
+           die('Fallo al crear las carpetas...');
         }
         if (isset($_FILES['file']['tmp_name'])) {
           $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
