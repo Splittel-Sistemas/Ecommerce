@@ -106,8 +106,8 @@ class SolicitudCController
         $SolicitudCModel->SetLugar($_POST['LuNaci']);
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
-      /*   print_r($_POST);
-        exit; */
+        print_r($_POST);
+        exit;
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
