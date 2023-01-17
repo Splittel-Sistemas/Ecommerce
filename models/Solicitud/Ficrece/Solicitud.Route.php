@@ -21,7 +21,8 @@
     public function controller(){
       try {
         
-           
+             print_r($_POST);
+        exit;
         $Action = isset($_POST["Action"]);
           switch ($Action) {
           case "create":
