@@ -113,11 +113,11 @@ class SolicitudCController
 
        /*  print_r($_POST['PERSONA']);
         exit; */
-
-        if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
+        mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true);
+       /*  if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
            die('Fallo al crear las carpetas...');
-        }
+        } */
         if (isset($_FILES['file']['tmp_name'])) {
           $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
           $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
