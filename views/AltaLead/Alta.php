@@ -314,7 +314,7 @@
 
                 </div>
                 <div class="col-sm-12 col-md-12 form-group text-center">
-                  <button type="button" class="btn btn-primary " onclick="EnviarAlta()">Enviar Solicitud</button>
+                  <button type="button" id="botonenviar" class="btn btn-primary " onclick="EnviarAlta()">Enviar Solicitud</button>
                 </div>
                 <br>
                 <br>

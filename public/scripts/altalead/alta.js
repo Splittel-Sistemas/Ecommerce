@@ -27,6 +27,7 @@ $miInput.addEventListener("change", function () {
 });
 
 var EnviarAlta = function () {
+  $("#botonenviar").hide();
   let valoresCheck = [];
 
   var fda = new FormData();
@@ -72,6 +73,8 @@ var EnviarAlta = function () {
       cache: false,
       success: function (response) {
         if (!response.error) {
+          $("#botonenviar").show();
+
           templateAlert(
             "success",
             "Enviado",
@@ -82,18 +85,16 @@ var EnviarAlta = function () {
           GlobalCloseModal("modal-ficrece");
           window.location.href = "Mensaje.php";
         } else {
+          $("#botonenviar").show();
+
           templateAlert("danger", "", response.message, "topRight", "");
         }
       },
     });
   } else {
-    templateAlert(
-      "danger",
-      "",
-      "SELECCIONE UN EJECUTIVO",
-      "topRight",
-      ""
-    );
+    $("#botonenviar").show();
+
+    templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
   }
 };
 

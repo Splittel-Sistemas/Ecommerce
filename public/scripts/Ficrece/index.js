@@ -1,4 +1,5 @@
 var EnviarSolicitud = function () {
+  $("#botonenviar").hide();
   var fda = new FormData();
 
   fda.append("NombreSolicitud", $("#NombreSolicitud").val());
@@ -96,6 +97,8 @@ var EnviarSolicitud = function () {
     success: function (response) {
       
       if (!response.error) {
+        $("#botonenviar").show();
+
           templateAlert(
           "success",
           "Enviado",
@@ -106,6 +109,8 @@ var EnviarSolicitud = function () {
          GlobalCloseModal("modal-ficrece");
         window.location.href = "Ficrece.php";
       } else {
+        $("#botonenviar").show();
+
         templateAlert("danger", "", response.message, "topRight", "");
       }
     },
