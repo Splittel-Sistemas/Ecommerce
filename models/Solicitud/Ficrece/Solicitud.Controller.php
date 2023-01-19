@@ -201,8 +201,8 @@ class SolicitudCController
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-          /*  $Email->MailerListTo = ["christian.morales@splittel.com", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
-           $Email->MailerListTo = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+           $Email->MailerListTo = ["christian.morales@fibremex.com.mx", "lorena.sanchez@fibremex.com.mx","ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+         /*   $Email->MailerListTo = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"]; */
 
           $Email->MailerBody = $TemplateFicrece->body($data);
           $Email->EmailSendEmail();
