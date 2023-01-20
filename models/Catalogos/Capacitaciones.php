@@ -37,7 +37,7 @@ class CatalogoCapacitaciones{
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
         $SQLSTATEMENT = "SELECT * FROM menu_capacitaciones ".$filter." ".$order;
-        // echo $SQLSTATEMENT;
+         //echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {
           $items[] = $row;
@@ -62,8 +62,8 @@ class CatalogoCapacitaciones{
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
         //$SQLSTATEMENT = "SELECT title, replace(start,' ','T') AS start,replace(end,' ','T') AS end,color FROM menu_capacitaciones_eventos ".$filter." ".$order;
-       $SQLSTATEMENT="SELECT comillas,imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
-       // echo $SQLSTATEMENT;
+       $SQLSTATEMENT="SELECT id,comillas,imagen,descripcion1,title1,costo,link,descripcion,fecha,title, date(start) AS start,DATE_FORMAT(START,'%H:%i') AS Hora,id_solucion FROM menu_capacitaciones_eventos ".$filter." ".$order;
+      // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {
           $items[] = $row;
@@ -119,7 +119,7 @@ class CatalogoCapacitaciones{
         $this->conn->QueryReturn($SQLSTATEMENT);
        $SQLSTATEMENT="SELECT MONTH(START) mes_num, YEAR(START) anio, DATE_FORMAT((START),'%M') mes_nombre
                         FROM menu_capacitaciones_eventos 
-                        WHERE MONTH(START) >= MONTH(NOW())
+                        WHERE MONTH(START) >= MONTH(NOW()) ".$filter."
                         AND YEAR(START) >= YEAR(NOW())
                         GROUP BY MONTH(START), YEAR(START);";
        // echo $SQLSTATEMENT;

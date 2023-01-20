@@ -193,7 +193,7 @@
             </li>
             <li>
               <span class="mega-menu-title">CURSOS PRESENCIALES</span>
-                  <ul class="sub-menu">
+                  <ul class="sub-menu" >
                   <li>
                   <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica" >
                   ¿Qué es Develop?

@@ -170,9 +170,9 @@
               </ul>
             </li>
             <li><span class="mega-menu-title">SEMINARIOS ONLINE</span>
-            <section class="widget widget-categories">
-              <ul class="sub-menu">
-                <li>
+            <section class="widget widget-categories " >
+              <ul class="sub-menu" >
+                <li >
                   <a href="../Capacitaciones/2-seminarios-online" >
                   ¿Qué es Insider?
                   </a>
