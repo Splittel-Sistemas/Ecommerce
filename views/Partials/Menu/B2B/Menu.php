@@ -143,11 +143,12 @@
           <a href="#">Capacitaciones</a>
             <ul class="mega-menu">
             <li><span class="mega-menu-title">FINTEC</span>
-              <ul class="sub-menu">
+              <ul class="sub-menu text-center">
                 <li>
                   <a class="d-inline-block" href="../Capacitaciones/1-fintec">
-                  <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/>
+                  <!-- <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/> -->
                   ¿Qué es Fintec?
+
                   </a>
                 </li>
                 <!--
@@ -160,7 +161,7 @@
               -->
                 <li>
                   <a class="d-inline-block m-1" href="../Capacitaciones/1-fintec">
-                  <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg"/>
+                  <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg"  style="width:200px;height:200px;" />
                 
                   </a>
                 </li>

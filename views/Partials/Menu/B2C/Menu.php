@@ -146,10 +146,10 @@
           <a href="#">Capacitaciones</a>
             <ul class="mega-menu">
             <li><span class="mega-menu-title">FINTEC</span>
-              <ul class="sub-menu">
+              <ul class="sub-menu text-center">
                 <li>
                   <a class="d-inline-block" href="../Capacitaciones/1-fintec">
-                  <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/>
+                <!--   <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/> -->
                   ¿Qué es Fintec?
                   </a>
                 </li>
@@ -163,13 +163,14 @@
               -->
                 <li>
                   <a class="d-inline-block m-1" href="../Capacitaciones/1-fintec">
-                  <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg"/>
+                  <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg" style="width:200px;height:200px;" />
                 
                   </a>
                 </li>
               </ul>
             </li>
             <li><span class="mega-menu-title">SEMINARIOS ONLINE</span>
+            <section class="widget widget-categories">
               <ul class="sub-menu">
                 <li>
                   <a href="../Capacitaciones/2-seminarios-online" >
@@ -192,9 +193,11 @@
                       </li>
                       <?php endforeach ?>
               </ul>
+              </section>
             </li>
             <li>
               <span class="mega-menu-title">CURSOS PRESENCIALES</span>
+              <section class="widget widget-categories">
                   <ul class="sub-menu">
                   <li>
                   <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica" >
@@ -218,9 +221,11 @@
                       <?php endforeach ?>
                     <?php endif ?> 
                   </ul>
+                  </section>
             </li>
             <li>
               <span class="mega-menu-title">CERTIFICACIÓN OPTRONICS</span>
+              <section class="widget widget-categories">
                   <ul class="sub-menu">
                   <li>
                     <a href="../Capacitaciones/4-partners" >
@@ -233,6 +238,7 @@
                     </a>
                   </li>
                   </ul>
+                  </section>
             </li>
           </ul>
         </li>
