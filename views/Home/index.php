@@ -74,9 +74,14 @@
       </div>
     </section>
     <!-- Top Categorias-->
+    <h1 class="h3 padding-top-2x text-center">  Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
+    
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around">
+    
       <div class="d-flex justify-content-between col-md-12 col-lg-12 col-12">
+        
         <div class="row col-md-12 col-lg-12 col-12">
+        
           <?php
             if (!class_exists("CategoriaController")) {
               include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Categorias/Categoria.Controller.php';
@@ -268,9 +273,9 @@
               <?php //endif ?>
                 <div class="post-body " >
                  
-                  <h1 class="post-title featured_products_content_1" >
+                  <h2 class="post-title featured_products_content_1" >
                     <a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a>
-                  </h1>
+                  </h2>
                   <p class="product-title featured_products_content_1" ><?php echo $row->BlogContenido;?> 
                     <a href='../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>'>Ver más</a>
                   </p>
