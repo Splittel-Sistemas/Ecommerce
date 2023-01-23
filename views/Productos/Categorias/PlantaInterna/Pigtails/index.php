@@ -7,7 +7,7 @@
           <option value="62">Multimodo OM1</option>
           <option value="50">Multimodo OM2</option>
           <option value="55">Multimodo OM3</option>
-          <option value="57" style="display:none">Multimodo OM4</option>
+          <option value="57">Multimodo OM4</option>
         </select>
       </div>
     </div> 
