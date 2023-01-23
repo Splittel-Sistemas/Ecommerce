@@ -84,7 +84,7 @@
           <option value="P" position="2">PC</option>
           <?php endif ?>
           <option value="A" position="0">APC</option>
-          <option value="U" position="1">UPC</option>
+          <option value="U" position="1" selected>UPC</option>
           <?php if ($_GET['codigo'] == 'C17'): ?>
           <option value="P" position="2">PC</option>
           <?php endif ?>
@@ -99,7 +99,7 @@
           <option value="P" position="2">PC</option>
           <?php endif ?>
           <option value="A" position="0">APC</option>
-          <option value="U" position="1">UPC</option>
+          <option value="U" position="1" selected>UPC</option>
           <?php if ($_GET['codigo'] == 'C17'): ?>
           <option value="P" position="2">PC</option>
           <?php endif ?>
@@ -124,7 +124,7 @@
         <label for="quantity">Número de hilos</label>
         <select class="form-control" id="NumeroHilos" name="NumeroHilos" onchange="JumpersFibraOptica()">
           <option value="S">Simplex</option>
-          <option value="D">Duplex</option>
+          <option value="D" selected>Duplex</option>
         </select>
       </div>
     </div> 
@@ -133,7 +133,7 @@
         <label for="quantity">Diámetro de cable</label>
         <select class="form-control" id="Diametro" name="Diametro" onchange="JumpersFibraOptica()">
           <option value="1">1.6 mm</option>
-          <option value="2">2 mm</option>
+          <option value="2" selected>2 mm</option>
           <option value="3">3 mm</option>
         </select>
       </div>
