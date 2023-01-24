@@ -7,14 +7,14 @@
       include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
       }
       $CatalogoCursos = new CatalogoCapacitaciones();
-      $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 7", false)->records;
+     // $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 7", false)->records;
       //echo $Json= json_encode($response);
 ?>
 <div class="row">
 <?php foreach ($responseI as $row ): 
     
     ?>
- <span id="I<?php echo $row->id?>" class="padding-bottom-1x"> </span>      
+<!--  <span id="I<?php echo $row->id?>" class="padding-bottom-1x"> </span>      
 <div class="row align-items-center padding-bottom-2x padding-top-2x" >
         <div class="col-md-5">
           
@@ -31,7 +31,7 @@
           <a style="color: #BF202F;" class="text-decoration-none" target="_blank" href="<?php echo $row->link;?>"><u>Aparta tu lugar aquí</u>&nbsp;</a>
         </div>
 </div>
-      <hr style="width:100%; height: 15px;" id="I<?php echo $row->id?>">
+      <hr style="width:100%; height: 15px;" id="I<?php echo $row->id?>"> -->
  <?php endforeach ?>
 </div>
 <div class="row">
