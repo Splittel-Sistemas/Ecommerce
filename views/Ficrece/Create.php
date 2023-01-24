@@ -383,7 +383,7 @@
                   <input class="form-control form-control-2" type="file" id="file7">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <strong class="text-danger">*</strong><label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 </label>
+                  <strong class="text-danger">*</strong><label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <br> <a href="../../public/images/img_spl/ficrece/ADM-FOR-520.doc">Descarga aqui.</a></label> 
                   <input class="form-control form-control-2" type="file" id="file8">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">

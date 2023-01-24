@@ -240,7 +240,8 @@ var facturacionBb2MXP = function (Elem) {
   if (Elem.getAttribute("cliente") == "B2B") {
     if (Elem.value == "MXP") {
       if (document.getElementById("credito-cliente-b2b"))
-        /*      document.getElementById("credito-cliente-b2b").style.display = "none"; */
+          /*   document.getElementById("credito-cliente-b2b").style.display = "none"; */
+       /*    validateCreditAvailable(Elem); */
         document.getElementById("credito-cliente-b2b").style.display = "block";
       if (document.getElementById("lineaCredito"))
         document.getElementById("lineaCredito").checked = false;
@@ -281,7 +282,6 @@ var validateCreditAvailable = function () {
       document.getElementById("CreditValid").innerHTML = response;
     }
   ); */
-
   $.ajax({
     type: "POST",
     url: "../../views/Checkout/Credito.php",
