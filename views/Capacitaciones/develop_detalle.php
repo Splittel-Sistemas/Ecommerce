@@ -89,8 +89,8 @@
                       }else{
                       
                     }*/ ?>
-                    <td style="background-color:<?php echo $colorBack; ?>"><small><?php echo $row1->title; ?></small></td>
-                    <td style="background-color:<?php echo $colorBack; ?>"><small><?php echo $row1->descripcion; ?></small></td>
+                    <td style="background-color:<?php echo $colorBack; ?>"><small><b>  <?php echo $row1->title; ?></b></small></td>
+                    <td style="background-color:<?php echo $colorBack; ?>"><small><?php echo $row1->title1; ?></small></td>
                     <td style="background-color:<?php echo $colorBack; ?>"><small><?php echo $row1->fecha; ?></small></td>
                     <td style="text-align:center; background-color:<?php echo $colorBack; ?>;"><small><?php echo $row1->costo; ?></small></td>
                     <td style="text-align:center; width:10%; background-color:<?php echo $colorBack; ?>">
