@@ -7,11 +7,11 @@
       include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
       }
       $CatalogoCursos = new CatalogoCapacitaciones();
-      $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 7", false)->records;
+     # $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 7", false)->records;
       //echo $Json= json_encode($response);
 ?>
-<div class="row">
-<?php foreach ($responseI as $row ): 
+<!-- <div class="row">
+<?php #foreach ($responseI as $row ): 
     
     ?>
  <span id="I<?php echo $row->id?>" class="padding-bottom-1x"> </span>      
@@ -32,8 +32,8 @@
         </div>
 </div>
       <hr style="width:100%; height: 15px;" id="I<?php echo $row->id?>">
- <?php endforeach ?>
-</div>
+ <?php #endforeach ?>
+</div> -->
 <div class="row">
 <div class="padding-top-2x" >
 <h2 class="text-center"><b>Obtén tu constancia INSIDER y recibe grandes beneficios</b></h2>
