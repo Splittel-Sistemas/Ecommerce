@@ -44,6 +44,7 @@
     <div class="product-card-body">
       <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
       <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+      <br><br>
       <!-- validar si existe variable de sesión -->
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
       <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
