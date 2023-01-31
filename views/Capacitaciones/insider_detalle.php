@@ -20,7 +20,7 @@
         ?>
           <span id="I<?php echo $row->id ?>" class="padding-bottom-1x"> </span>
           <div class="row align-items-center padding-bottom-2x padding-top-2x">
-            <div class="col-md-5 padding-bottom-1x">
+            <div class="col-md-5 ">
 
               <img class="d-block m-auto img-thumbnail " src="../../public/images/img_spl/capacitaciones/<?php echo $row->imagen; ?>" alt="<?php echo $row->title1; ?>">
 
@@ -28,10 +28,10 @@
             <div class="col-md-7 text-md-left text-center">
               <div class="mt-30 hidden-md-up"></div>
               <h2><b><?php echo $row->title1; ?></b></h2>
-              <p class="text-muted" style="text-align: justify;">
+              <p class="text-muted" style="text-align: justify;font-size:14px;">
                 Fecha: <?php echo nl2br($row->start); ?><br />
                 Hora: <?php echo nl2br($row->Hora); ?> am</p>
-              <p class="text-muted" style="text-align: justify;"><?php echo nl2br($row->descripcion1); ?></p>
+              <p class="text-muted" style="text-align: justify;font-size:14px;"><?php echo nl2br($row->descripcion1); ?></p>
               <a style="color: #BF202F;" class="text-decoration-none" target="_blank" href="<?php echo $row->link; ?>"><u>Aparta tu lugar aquí</u>&nbsp;</a>
             </div>
           </div>
