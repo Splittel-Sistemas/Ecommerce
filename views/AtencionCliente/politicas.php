@@ -48,7 +48,10 @@
                   break;  
                 case 5:
                   echo '<img src="../../public/images/img_spl/politicas/rastreo.jpg" alt="Rastreo">';
-                  break;           
+                  break;  
+                  case 6:
+                    echo '<img src="../../public/images/img_spl/politicas/condiciones_comerciales.jpg" alt="Condiciones comerciales">';
+                    break;         
                 default:
                   echo "No se encontro la opción solicitada";
                   break;
