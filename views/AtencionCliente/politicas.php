@@ -65,10 +65,10 @@
         <!-- Sidebar          -->
         <div class="col-lg-3 col-5">
           <nav class="list-group">
-            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==5){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=5"><i class="icon-clipboard"></i>Rastreo de pedidos</a>
+          <!--   <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==5){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=5"><i class="icon-clipboard"></i>Rastreo de pedidos</a>
             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==1){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=1"><i class="icon-truck"></i>Envíos y entregas</a>
             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==2){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=2"><i class="icon-refresh-ccw"></i>Devoluciones</a>
-            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==3){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=3"><i class="icon-book-open"></i>Garantías</a>
+            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==3){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=3"><i class="icon-book-open"></i>Garantías</a> -->
 <!--             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==4){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=4"><i class="icon-users"></i>Condiciones comerciales</a>
  -->            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==6){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=6"><i class="icon-users"></i>Terminos y Condiciones comerciales</a>
 
