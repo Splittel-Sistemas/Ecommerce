@@ -20,7 +20,8 @@ var CableServicio412 = function(){
   let NewLongitud = Longitud.value >= 3 && Longitud.value <= 9 ? "0"+Longitud.value*10 : Longitud.value*10
   let CodigoGenerado = ""
   document.getElementById('CostoProducto').value = "" 
-  document.getElementById('Costo').innerHTML = "$ "
+  if(document.getElementById('Costo'))
+    document.getElementById('Costo').innerHTML = "$ "
   // Agregación de codigo para la vista en el identificador
   if(Longitud.value <= 99 && Longitud.value >= 3){
     CodigoGenerado = Marca+Familia+TipoFibra+NumeroHilos.value+TipoCable+Con+NewLongitud+Diametro.value
