@@ -19,7 +19,7 @@
 
         ?>
           <span id="I<?php echo $row->id ?>" class="padding-bottom-1x"> </span>
-          <div class="row align-items-center padding-bottom-2x padding-top-2x">
+          <div class="row align-items-center padding-bottom-2x padding-top-1x">
             <div class="col-md-5 ">
 
               <img class="d-block m-auto img-thumbnail " src="../../public/images/img_spl/capacitaciones/<?php echo $row->imagen; ?>" alt="<?php echo $row->title1; ?>">
@@ -50,7 +50,7 @@
 
         <div class="padding-top-1x gallery-wrapper">
           <div class="gallery-item" style="margin-bottom:0px;">
-            <img src="../../public/images/img_spl/capacitaciones/beneficios-Insider1.jpg">
+            <img src="../../public/images/img_spl/capacitaciones/beneficios-Insider1.png">
           </div>
         </div>
       </div>

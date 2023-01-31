@@ -69,7 +69,9 @@
             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==1){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=1"><i class="icon-truck"></i>Envíos y entregas</a>
             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==2){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=2"><i class="icon-refresh-ccw"></i>Devoluciones</a>
             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==3){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=3"><i class="icon-book-open"></i>Garantías</a>
-            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==4){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=4"><i class="icon-users"></i>Condiciones comerciales</a>
+<!--             <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==4){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=4"><i class="icon-users"></i>Condiciones comerciales</a>
+ -->            <a class="list-group-item <?php if(isset($_GET['idc']) && $_GET['idc']==6){ echo "active";}?>" href="../AtencionCliente/politicas.php?idc=6"><i class="icon-users"></i>Terminos y Condiciones comerciales</a>
+
           </nav>
         </div>
         <!-- Categories-->
@@ -90,7 +92,10 @@
                 break; 
               case 5:
                 include('Politicas/rastreo_pedidos.php');
-                break;              
+                break;    
+                case 6:
+                  include('Politicas/Terminos_condiciones.php');
+                  break;             
               default:
                 echo "No se encontro la opción solicitada";
                 break;
