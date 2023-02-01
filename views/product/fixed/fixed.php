@@ -42,25 +42,21 @@
       <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
     </a>
     <div class="product-card-body">
-      <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a>
+      <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
       <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      <br>
       
-      </div>
+        <!-- <?php if(strlen($obj->ProductoDescripcion) >= 50 ){ echo'<br>' ;} ?> -->
       
       <!-- validar si existe variable de sesión -->
-        
-        <div class="product-category"  >
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
-        &nbsp;&nbsp;    &nbsp;&nbsp;    &nbsp;&nbsp;    &nbsp;&nbsp;    &nbsp;&nbsp;    &nbsp;&nbsp;
+        <br>
       <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
         $<?php echo $priceUSD ?> USD
       </h4>
       <?php } ?>
-
-      </div>
     </div>
-    <div class="product-button-group" >
+    <div class="product-button-group">
       <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" value="1">
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
       <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
@@ -72,7 +68,6 @@
     </div>
   </div>
 </div>
-
 <?php 
   unset($urlDetailProduct);
   unset($urlImg);
