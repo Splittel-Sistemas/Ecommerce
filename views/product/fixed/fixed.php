@@ -43,15 +43,12 @@
     </a>
     <div class="product-card-body">
       <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-      <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
-      <br>
+      <h3 class="product-title mh-100  "  style=" height: 90px;"><a href="<?php echo $urlDetailProduct ?>" ><?php echo $obj->ProductoDescripcion ?></a></h3>
       
-        <!-- <?php if(strlen($obj->ProductoDescripcion) >= 50 ){ echo'<br>' ;} ?> -->
       
       <!-- validar si existe variable de sesión -->
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
-        <br>
-      <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
+      <h4 class="product-price mh-100" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
         $<?php echo $priceUSD ?> USD
       </h4>
       <?php } ?>
