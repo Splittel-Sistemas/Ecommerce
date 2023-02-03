@@ -80,7 +80,7 @@
                 $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND  id_curso=".$response->id, "LIMIT 1", false)->records[0];
                 
               ?>
-                <p><b>Nuestro próximo curso es: <?php echo nl2br($responseI->fecha)?></b></p>
+                <p><b><?php echo nl2br($responseI->comillas)?></b></p>
               <?php
               
               ?>

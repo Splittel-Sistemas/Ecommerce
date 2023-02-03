@@ -2,7 +2,11 @@
   if (!class_exists('ComentariosController')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Productos/Comentarios.Controller.php';
   }
+  $cn=1;
+  $cn2=1;
+  $totalElements= count($getProduct->records);
   foreach ($getProduct->records as $key => $obj) { 
+
     $urlDetailProduct = "../Productos/fijos.php?id_prd=".$obj->ProductoCodigo."&nom=".url_amigable($obj->ProductoDescripcion); #url detalle del producto
     $urlImg = "../../public/images/img_spl/productos/".$obj->ProductoCodigo."/thumbnail/".$obj->ProductoImgPrincipal; #url imagen del producto
     $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
@@ -10,8 +14,13 @@
     $priceUSD = bcdiv($calculatePrice,1,3);
     $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'],3);
 ?>
-<div class="<?php echo $columnas ?>">
-  <div class="product-card mb-30">
+<?php 
+  if($cn%$cn2==0){
+    $cn2=$cn2+4;?>
+<div class="row SameHeight">
+<?php }?>
+<div class="<?php echo $columnas ?> d-flex align-items-stretch">
+  <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
     <div class="rating-stars">
       <?php 
         $ComentariosController = new ComentariosController();
@@ -41,27 +50,27 @@
     <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
       <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
     </a>
-    <div class="product-card-body">
-      <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-      <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
-      <br>
-      
-        <!-- <?php if(strlen($obj->ProductoDescripcion) >= 50 ){ echo'<br>' ;} ?> -->
-      
+    <div class="product-card-body  classAbsolute " >
+      <div style="height:100%;">
+      <div class="product-category "><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+      <h3 class="product-title "><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a>
+      </h3>
+    
       <!-- validar si existe variable de sesión -->
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
-        <br>
-      <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
+        
+      <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
         $<?php echo $priceUSD ?> USD
       </h4>
       <?php } ?>
+      </div>
     </div>
-    <div class="product-button-group">
+    <div class="product-button-group ">
       <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo;?>" value="1">
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
-      <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
+      <a class="product-button"  href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo;?>" onclick="AgregarArticulo(this)">
       <?php }else{ ?>
-      <a class="product-button" href="../Login/">
+      <a class="product-button"  href="../Login/">
       <?php } ?>
         <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
       </a>
@@ -69,6 +78,10 @@
   </div>
 </div>
 <?php 
+if($cn%4==0 || $cn==$totalElements){?>
+      </div>
+<?php }
+$cn++;
   unset($urlDetailProduct);
   unset($urlImg);
   unset($newUrlImg);

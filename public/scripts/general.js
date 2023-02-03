@@ -84,6 +84,36 @@ var altura = function(classs) {
   });
 }
 
+var PositionAltura =function(classs) {
+  let altura_arr1 = new Array();
+  $(classs).each(function(){//RECORREMOS TODOS LOS CONTENEDORES, DEBEN TENER LA MISMA CLASE
+    let elems = $(this); //LES SACAMOS LA ALTURA
+    children=(elems[0].children)
+    //console.log(elems[0].children.innerHTML)
+    var mayor = 0;
+    for (var i = 0; i < children.length; i++) {
+     
+      var rowHeight = (children[i].getElementsByClassName('classAbsolute')[0].clientHeight);
+      
+              if (rowHeight > mayor)
+              {
+                  mayor = rowHeight
+              }
+      
+    }
+    console.log('***********************************************')
+    console.log(mayor)
+    for (var i = 0; i < children.length; i++) {
+     
+      var newThis=children[i].getElementsByClassName('classAbsolute')[0];
+      $(newThis).css('height',mayor);
+    }
+   // console.log(mayor)
+    console.log('***********************************************')
+  });
+  //console.log(classs)
+  //console.log(altura_arr1)
+}
 
 var templateAlert = function(classs, title, message, position, icon){
   let configiziToast = {

@@ -333,8 +333,12 @@
     <script>
       altura('.featured_products_card')
       altura('.featured_products_content')
+      altura('.featured_products_price')
       altura('.featured_products_card_1')
       altura('.featured_products_content_1')
+      
+      PositionAltura('.SameHeight')
+
     </script>
   </body>
 </html>
