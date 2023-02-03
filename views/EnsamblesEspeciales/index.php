@@ -125,28 +125,19 @@
         <br><br>
         <div class="row">
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-
-          <a href="../Productos/categorias.php?id_sbct=12" style="color: black;text-decoration: none;">
             <img class="rounded" src="../../public/images/img_spl/transformacion/9-cables-preconectorizados.jpg" alt="soluciones">
             <h3> <b>Cables
                 preconectorizados
               </b> </h3>
-              </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_ct=A5&nom=sistema-de-cobre" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/10-patch-cords-de-cable-UTP.jpg" alt="soluciones">
             <h3> <b> Patch cords
                 de cable UTP</b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=47&nom=divisores-opticos" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/11-Splitter.jpg" alt="soluciones">
             <h3> <b> Splitter</b> </h3>
-              </a>
           </div>
 
 
@@ -154,26 +145,17 @@
         <br><br>
         <div class="row">
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=52&id_gpo=80&nom=interior-exterior" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/12-cables-drop-para-antena.jpg" alt="soluciones">
             <h3> <b> Cables drop
                 para antena</b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=8&nom=jumpers-de-fibra-optica" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/13-Jumpers.jpg" alt="soluciones">
             <h3> <b> Jumpers</b> </h3>
-              </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=10" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/14-Pigtails.jpg" alt="soluciones">
             <h3> <b> Pigtails </b> </h3>
-              </a>
           </div>
 
 
@@ -181,28 +163,19 @@
         <br><br>
         <div class="row">
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/configurables.php?codigo=C88" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/15-Bobinas-de-lanzamiento.jpg" alt="soluciones">
             <h3> <b> Bobinas de
                 lanzamiento </b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=15" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/16-Distribuidores-preconectorizados.jpg" alt="soluciones">
             <h3> <b> Distribuidores
                 preconectorizados </b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=48&nom=cajas-de-distribucion-tipo-roseta-accesorios-fttx" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/17-Rosetas-conectorizadas.jpg" alt="soluciones">
             <h3> <b> Rosetas
                 conectorizadas </b> </h3>
-                  </a>
           </div>
 
 
@@ -210,27 +183,18 @@
         <br><br>
         <div class="row">
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/configurables.php?codigo=C38&nom=cable-de-servicio-de-fibra-optica-4-8-hilos" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/18-Cables-de-servicio.jpg" alt="soluciones">
             <h3> <b> Cables de
                 servicio </b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=56" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/19-Cierres-de-empalme.jpg" alt="soluciones">
             <h3> <b> Cierres de
                 empalme</b> </h3>
-                  </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
-          <a href="../Productos/categorias.php?id_sbct=9&nom=solucion-mpo-mtp" style="color: black;text-decoration: none;">
-
             <img class="rounded" src="../../public/images/img_spl/transformacion/20-MPO.jpg" alt="soluciones">
             <h3> <b> MPO </b> </h3>
-              </a>
           </div>
 
 
