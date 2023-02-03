@@ -185,7 +185,7 @@
 
             <img class="rounded" src="../../public/images/img_spl/transformacion/15-Bobinas-de-lanzamiento.jpg" alt="soluciones">
             <h3> <b> Bobinas de
-                lanzamiento </b> </h3>
+                lanzamiento  </b> </h3>
                   </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
