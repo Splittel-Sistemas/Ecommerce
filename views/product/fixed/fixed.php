@@ -50,16 +50,13 @@
     <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
       <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
     </a>
-    <div class="product-card-body  classAbsolute " >
-      <div style="height:100%;">
-      <div class="product-category "><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-      <h3 class="product-title "><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a>
-      </h3>
-    
+    <div class="product-card-body">
+      <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+      <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+      <br><br>
       <!-- validar si existe variable de sesión -->
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
-        
-      <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
+      <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
         $<?php echo $priceUSD ?> USD
       </h4>
       <?php } ?>
