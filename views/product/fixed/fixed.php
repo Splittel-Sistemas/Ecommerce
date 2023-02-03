@@ -50,7 +50,6 @@
     <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
       <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
     </a>
-<<<<<<< HEAD
     <div class="product-card-body  classAbsolute " >
       <div style="height:100%;">
       <div class="product-category "><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
@@ -61,8 +60,6 @@
       <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
         
       <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN;?> MXP">
-=======
->>>>>>> master
         $<?php echo $priceUSD ?> USD
       </h4>
       <?php } ?>
