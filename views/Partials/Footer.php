@@ -34,7 +34,7 @@
         <section class="widget widget-links widget-light-skin">
           <h3 class="widget-title">Atención al Cliente</h3>
           <ul>
-            <li><a href="../AtencionCliente/servicio_cliente.php">Servicio al Cliente</a></li>
+            <li><a href="../AtencionCliente/politicas.php?idc=6">Servicio al Cliente</a></li>
             <li><a href="../Contacto/">Contacto</a></li>
             <li><a href="../AtencionCliente/faqs.php?idc=1">Preguntas Frecuentes</a></li>
             <li><a href="../AtencionCliente/politicas_privacidad.php">Políticas de Privacidad</a></li>
