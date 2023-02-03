@@ -64,7 +64,7 @@
                                         echo nl2br($response->texto1_1);
                                         ?></p>
         <?php if (!empty($response->titulo2)) : ?>
-          <div class="text-muted opacity-75 padding-top-1x"><?php echo $response->titulo2; ?>
+          <div class="text-muted opacity-75 padding-top-3x"><?php echo $response->titulo2; ?>
             <hr class="padding-top-1x">
           </div>
 
