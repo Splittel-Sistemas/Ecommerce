@@ -17,7 +17,7 @@
 <?php 
   if($cn%$cn2==0){
     $cn2=$cn2+4;?>
-<div class="row SameHeight">
+<div class="row SameHeight col-lg-12">
 <?php }?>
 <div class="<?php echo $columnas ?> d-flex align-items-stretch">
   <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
