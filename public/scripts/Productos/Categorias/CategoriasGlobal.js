@@ -50,7 +50,8 @@ var StyleDisplayNoneOrBlock = function(Elem, Propiedad){
  *
  */
 var nameLabel = function(Text){
-  document.getElementById('changename').innerHTML = Text
+  if(document.getElementById('changename'))
+    document.getElementById('changename').innerHTML = Text
 }
 /**
  * Envio de codigo para mostrarlo en el DOM
