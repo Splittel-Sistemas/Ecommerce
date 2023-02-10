@@ -202,6 +202,23 @@ var ADDSMini = function(){
   
 }
 
+var ADDSAccess = function(){
+  let MaterialCubierta = "B"
+  let MaterialTuboHolgado = "2"
+  let TipoConstruccion = "B"
+  let CVE = "SAG"
+  let DirectorioImgProducto = "OPCFOCE09SAGXXB2B" 
+  // Codigo Generado de acuerdo a las opciones selecionadas
+  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+CVE+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(DirectorioImgProducto)
+  ListProductoAdicional(DirectorioImgProducto)
+  // Agreación de codigo para la vista en el identificador
+  showClave(CodigoGenerado)
+  existEcommerce_(CodigoGenerado)
+ 
+}
+
 var contremove = 0
 var CableExterior = function() {
   switch(Cable.value){
@@ -242,6 +259,9 @@ var CableExterior = function() {
     break;
     case 'ADSSMN' : 
       ADDSMini()
+    break;
+    case 'ADSSAP' : 
+      ADDSAccess()
     break;
     default:
       templateAlert("danger", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")

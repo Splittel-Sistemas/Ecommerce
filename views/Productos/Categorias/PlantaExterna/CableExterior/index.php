@@ -16,6 +16,9 @@
   }elseif ($_GET['codigo'] == 'C98') {
     $_SESSION['FamiliaCable'] = "";
     include 'ADSSMN.php';
+  }elseif ($_GET['codigo'] == 'C99') {
+    $_SESSION['FamiliaCable'] = "";
+    include 'ADSSAP.php';
   }elseif ($_GET['codigo'] == 'C8') {
     include 'MiniFigura8.php';
   }else{
