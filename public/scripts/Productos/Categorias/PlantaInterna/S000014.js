@@ -126,6 +126,7 @@ var JumpersMultimodo = function(){
 
   if(MultimodoTipoFibra.value == "57" ){
     StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [0,1])
+    TipoCubierta.selectedIndex = 2
   }else{
     StyleDisplayNoneOrBlock_2(TipoCubierta, 'block', [0,1,2])
   }
