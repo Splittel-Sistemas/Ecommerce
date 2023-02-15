@@ -124,6 +124,13 @@ var JumpersMultimodo = function(){
       Diametro.selectedIndex = 0
   }
 
+  if(MultimodoTipoFibra.value == "57" ){
+    StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [0,1])
+  }else{
+    StyleDisplayNoneOrBlock_2(TipoCubierta, 'block', [0,1,2])
+  }
+
+
   if (Longitud.value > 0 && Longitud.value <= 999) {
     NewLongitud = NumeroConCeros(Longitud.value, 4)
     CodigoGenerado = Marca+Familia+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value+NewLongitud+TipoCubierta.value+Diametro.value
