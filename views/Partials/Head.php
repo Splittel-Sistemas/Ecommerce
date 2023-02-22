@@ -68,7 +68,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 -->
+<?php
+ if(strpos($_SERVER['REQUEST_URI'],'Login')!== false){
+?>
+<!-- Event snippet for Clic a comprar producto conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-1069545026/epZSCLaU0Y0YEMLs__0D'});
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1069545026"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-1069545026');
+</script>
+
+<?php
+ } 
+?>
 <?php 
 	@session_start();
 	$_SESSION['Ecommerce-ClienteDescuento'] = isset($_SESSION['Ecommerce-ClienteDescuento']) && $_SESSION['Ecommerce-ClienteDescuento'] > 0 ? $_SESSION['Ecommerce-ClienteDescuento'] : 0;
