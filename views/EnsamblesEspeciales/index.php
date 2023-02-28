@@ -245,7 +245,7 @@
         <div class="gallery-wrapper" style="padding-top:2px">
           <div class="gallery-item" style="padding-top:2px">
             <img class="rounded" src="../../public/images/img_spl/transformacion/21-ensambles.jpg" alt="soluciones">
-            <span class="caption"><?php //echo $response->titulo;
+            <span class="caption"><?php //echo $response->titulo; 
                                   ?></span>
           </div>
         </div>
