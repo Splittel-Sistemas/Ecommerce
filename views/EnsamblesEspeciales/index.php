@@ -35,7 +35,7 @@
           Contar con ensambles a la medida en tu proyecto de redes de fibra óptica o cobre te garantizará tener equipos sin daños, con la calidad de fábrica y de fácil y práctica instalación. Además de ofrecerte un diseño de red adaptable, nuestros ensambles especiales están listos para que tú puedas obtener un mayor rendimiento de tu inversión. Para lograrlo, ponemos a tu disposición la línea de ensamble Optronics que adaptará a tus medidas los ensambles especiales, con las características que tu proyecto requiere.
           <br><br>
 
-          Porque sabemos que cada proyecto es único, ofrecemos soluciones preconectorizadas para cumplir tus necesidades específicas de conectividad.
+          Porque sabemos que cada proyecto es único, ofrecemos soluciones preconectorizadas para cumplir tus necesidades específicas de conectividad. 
         </p>
         <br><br>
         <div class="col-lg-12 col-md-8 order-md-2 text-center">
