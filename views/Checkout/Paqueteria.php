@@ -1,23 +1,39 @@
 <h4 class="text-center text-md-left">Método de envío (opcional)</h4>
 <hr class="padding-bottom-1x">
 <div class="row">
-  <div class="col-md-12 col-12 custom-control custom-checkbox">
+  <!-- <div class="col-md-12 col-12 custom-control custom-checkbox">
     <label class="text-center text-md-left ">Referencia para paquetería</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <label class="custom-control-label" for="mostrador"> <span class="product-badge bg-warning border-default text-body text-white">
-    <input class="custom-control-input" type="checkbox" id="mostrador">
-        
-    <p> Recoger en mostrador - Querétaro  </p>
-      </span>
-    
-    </label>&nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <label class="text-center text-md-left "> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <a href="https://goo.gl/maps/C5Xk1fQ28GP6x3Qz7" target="_blank"  >
-      <img src="../../public/images/img_spl/productos/map.png"  >
-    </a></label>
+    <label class="custom-control-label" for=""> <span class="product-badge bg-warning border-default text-body text-white">
+        <input class="custom-control-input" type="checkbox">
 
+        <p> Recoger en mostrador - Querétaro </p>
+      </span>
+
+    </label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+
+
+
+  </div> -->
+  <div div class="custom-control custom-checkbox   col-md-12">
+    <label class="text-center text-md-left ">Referencia para paquetería</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+    <input class="custom-control-input" type="checkbox" id="mostrador">
+    <label class="custom-control-label" for="mostrador" style="padding-left: 10;">
+      <span class="product-badge bg-warning border-default text-body text-white">
+
+        <p> Recoger en mostrador - Querétaro </p>
+      </span></label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+       <label class="text-center text-md-left ">
+      <a href="https://goo.gl/maps/C5Xk1fQ28GP6x3Qz7" target="_blank">
+        <img src="../../public/images/img_spl/productos/map.png">
+      </a></label>
+
+  </div>
+  <br>
+  <div class="col-md-12">
     <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
     <input id="check" name="check" class="form-control" value="" type="hidden" />
-    
   </div>
   <hr class="mt-3">
   <div class="col-md-12">
