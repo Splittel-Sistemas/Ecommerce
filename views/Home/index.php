@@ -179,6 +179,9 @@
           ?>
           <div class="col-sm-3">
             <div class="product-card mb-30">
+            <?=  $variable = isset($obj->Leyenda) ? '<div class="product-badge bg-danger">'.$obj->Leyenda.'</div>' : ""; ?>
+
+
               <div class="rating-stars">
                 <?php 
                   $ComentariosController = new ComentariosController();
@@ -209,6 +212,7 @@
                 <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
               </a>
               <div class="product-card-body">
+                
                 <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                 <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                 <!-- validar si existe variable de sesión -->

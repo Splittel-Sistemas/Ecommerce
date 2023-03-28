@@ -25,6 +25,7 @@
     public $Manejado;
     public $ImgPrincipal;
     public $Destacado;
+    public $Leyenda;
 
     protected $Connection;
     protected $Tool;
@@ -202,6 +203,7 @@
           $Obj->Destacado                         =   $row->destacado;
           $Obj->Certificado                       =   $this->ExistCert($row->codigo);
           $Obj->ConfigurableFijo                  =   $row->configurablefijo;
+          $Obj->Leyenda                  =   $row->leyenda;
           $data[] = $Obj;
         }
         return $data;
@@ -363,6 +365,8 @@
           $this->MetaKey                           =   $row->meta_key;
           $this->MetaDescription                   =   $row->meta_description;
           $this->Certificado                       =   $this->ExistCert($row->codigo);
+          $this->Leyenda                           =   $row->leyenda;
+
           $data = true;
         }
         return $data;

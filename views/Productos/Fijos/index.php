@@ -96,6 +96,7 @@ $Comentarios = $ComentariosController->Comentarios_();
   <!-- Poduct Gallery-->
   <div class="col-md-6">
     <div class="product-gallery">
+      <?=  $variable = isset($Obj->Leyenda) ? '<div class="product-badge bg-danger">'.$Obj->Leyenda.'</div>' : ""; ?>
       <div class="gallery-wrapper">
         <div class="gallery-item video-btn text-center">
           <?php
@@ -196,11 +197,11 @@ $Comentarios = $ComentariosController->Comentarios_();
 
     <p class="text-muted text-justify"><?php echo $Obj->DescripcionLarga; ?></p>
     <?php if (!isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
-    <br>
-    <p class="text-muted text-justify">Para comprar este producto
-            <br>
-      <a href="../Login/">inicia sesión aquí.</a>
-    </p>
+      <br>
+      <p class="text-muted text-justify">Para comprar este producto
+        <br>
+        <a href="../Login/">inicia sesión aquí.</a>
+      </p>
     <?php } ?>
 
     <div class="row align-items-end ">
@@ -216,12 +217,13 @@ $Comentarios = $ComentariosController->Comentarios_();
             <button style="background-color: #bc2130" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj->Descuento ?>" codigo="<?php echo $Obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
               <i class="icon-bag"></i> Agregar al carrito</button>
           </div>
-        <?php } ?>
-        <?php if ($Obj->ProductoCostoEnvio == 'no') { ?>
-          <div class="col-sm-4 align-self-end">
-            <img src="../../public/images/img_spl/productos/envio-gratis.png" width="80%" height="80%" />
-          </div>
       <?php }
+      } ?>
+      <?php if ($Obj->ProductoCostoEnvio == 'no') { ?>
+        <div class="col-sm-4 align-self-end">
+          <img src="../../public/images/img_spl/productos/envio-gratis.png" width="80%" height="80%" />
+        </div>
+      <?php
       } ?>
     </div>
   </div>
