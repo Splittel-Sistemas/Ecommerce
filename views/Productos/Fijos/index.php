@@ -96,7 +96,7 @@ $Comentarios = $ComentariosController->Comentarios_();
   <!-- Poduct Gallery-->
   <div class="col-md-6">
     <div class="product-gallery">
-      <?=  $variable = isset($Obj->Leyenda) ? '<div class="product-badge bg-danger">'.$Obj->Leyenda.'</div>' : ""; ?>
+    <?=  $variable =$Obj->Leyenda != "" ? '<div class="product-badge bg-danger">'.$Obj->Leyenda.'</div>' : ""; ?>
       <div class="gallery-wrapper">
         <div class="gallery-item video-btn text-center">
           <?php

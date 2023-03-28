@@ -21,7 +21,7 @@ foreach ($getProduct->records as $key => $obj) {
     <?php } ?>
     <div class="<?php echo $columnas ?> d-flex align-items-stretch">
       <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
-        <?=  $variable = isset($obj->Leyenda) ? '<div class="product-badge bg-danger">'.$obj->Leyenda.'</div>' : ""; ?>
+        <?=  $variable =$obj->Leyenda != "" ? '<div class="product-badge bg-danger">'.$obj->Leyenda.'</div>' : ""; ?>
 
         <div class="rating-stars">
           <?php

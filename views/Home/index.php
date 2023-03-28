@@ -179,7 +179,7 @@
           ?>
           <div class="col-sm-3">
             <div class="product-card mb-30">
-            <?=  $variable = isset($obj->Leyenda) ? '<div class="product-badge bg-danger">'.$obj->Leyenda.'</div>' : ""; ?>
+            <?=  $variable =$obj->Leyenda != "" ? '<div class="product-badge bg-danger">'.$obj->Leyenda.'</div>' : ""; ?>
 
 
               <div class="rating-stars">
