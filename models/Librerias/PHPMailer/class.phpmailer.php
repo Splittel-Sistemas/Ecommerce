@@ -69,7 +69,7 @@ class PHPMailer
      * The From name of the message.
      * @var string
      */
-    public $FromName = 'NOTIFICACIONES ECOMMERCE';
+    public $FromName = 'ECOMMERCE';
     /**
      * The Sender email (Return-Path) of the message.
      * If not empty, will be sent via -f to sendmail or as 'MAIL FROM' in smtp mode.
