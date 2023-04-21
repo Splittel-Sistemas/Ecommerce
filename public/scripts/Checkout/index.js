@@ -27,7 +27,7 @@ var datosViewResumenCheckoutPedido = function () {
   let checkDatosEnvio = getChecked(".datosEnvio");
   let checkDatosFacturacion = getChecked(".datosFacturacion");
   let check = document.getElementById("check");
-
+  
   let Paqueteria = document.getElementById("paqueteria");
   let pagoBanco = document.getElementById("pagoBanco");
 
@@ -66,11 +66,24 @@ var datosViewResumenCheckoutPedido = function () {
         document.getElementById(
           "datosEnvio-direccion-" + checkDatosEnvio
         ).innerHTML;
-      document.getElementById("resumen-datosEnvio-telefono").innerHTML =
+        document.getElementById("resumen-datosEnvio-telefono").innerHTML =
         document.getElementById(
           "datosEnvio-telefono-" + checkDatosEnvio
-        ).innerHTML;
+        ).value;
+        document.getElementById("resumen-datosEnvio-telefono2").innerHTML =
+        document.getElementById(
+          "datosEnvio-telefono-" + checkDatosEnvio
+        ).value;
+      document.getElementById("resumen-datosEnvio-nombre").innerHTML =
+        document.getElementById(
+          "datosEnvio-nombre-" + checkDatosEnvio
+        ).value;
 
+        document.getElementById("resumen-datosEnvio-correo").innerHTML =
+        document.getElementById(
+          "datosEnvio-correo-" + checkDatosEnvio
+        ).value;
+        
       document.getElementById("resumen-paqueteria").innerHTML =
         check.value + Paqueteria.value;
 
@@ -114,7 +127,6 @@ var datosViewResumenCheckoutPedido = function () {
  */
 var addViewCheckout = function (Elem) {
   let number = Elem.getAttribute("number");
-
   if (!(number == 1)) {
     if ($(".datosEnvio").length == 0) {
       toastAlert(
@@ -138,8 +150,8 @@ var addViewCheckout = function (Elem) {
         return false;
       }
     }
-    if ($(".datosEnvioTelefono")[0]) {
-      /* if ($(".datosEnvioTelefono")[0].value == "") {
+  /*   if ($(".datosEnvioTelefono")[0]) {
+      if ($(".datosEnvioTelefono")[0].value == "") {
         toastAlert(
           "danger",
           "",
@@ -148,8 +160,8 @@ var addViewCheckout = function (Elem) {
           "icon-ban"
         );
         return false;
-      } */
-    }
+      }
+    } */
     if ($(".datosEnvioCorreo")[0]) {
       if ($(".datosEnvioCorreo")[0].value == "") {
         toastAlert(

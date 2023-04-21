@@ -37,6 +37,11 @@
       <li><span class="text-muted">Cliente: </span><?php echo $_SESSION['Ecommerce-ClienteNombre'] ?></li>
       <li><span class="text-muted">Dirección: </span> <span id="resumen-datosEnvio-direccion"></span></li>
       <li><span class="text-muted">Teléfono: </span> <span id="resumen-datosEnvio-telefono"></span></li>
+        <br>
+      <li><h5>Datos de Contacto:</h5></li>
+      <li><span class="text-muted">Contacto: </span> <span id="resumen-datosEnvio-nombre"></span></li>
+      <li><span class="text-muted">Correo: </span> <span id="resumen-datosEnvio-correo"></span></li>
+      <li><span class="text-muted">Teléfono: </span> <span id="resumen-datosEnvio-telefono2"></span></li>
     </ul>
   </div>
   <?php if ($_POST['requiereFactura'] == 'true') { ?>
