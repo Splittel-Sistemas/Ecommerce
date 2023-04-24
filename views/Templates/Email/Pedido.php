@@ -377,7 +377,7 @@ class TemplatePedido
 						$html .= '';
 					};
 					$html .= '	</tr>
-					<tr style="width:100%;">
+					<tr style="width:100%;margin-bottom: 20px;">
 					<td></td>
 					<td></td>
 					</tr>
