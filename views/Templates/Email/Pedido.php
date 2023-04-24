@@ -387,7 +387,7 @@ class TemplatePedido
 
 
 					$html .= '
-					<th style="margin-bottom: 20px; max-width:20%;">Paquetería</th>
+					<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Paquetería</th>
 
 					</tr>
 
