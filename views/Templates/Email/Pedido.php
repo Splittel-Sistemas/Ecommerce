@@ -377,7 +377,10 @@ class TemplatePedido
 						$html .= '';
 					};
 					$html .= '	</tr>
-					
+					<tr style="width:100%;">
+					<td></td>
+					<td></td>
+					</tr>
 					<tr style="width:100%;margin-bottom: 20px;">';
 
 					$html .= '
@@ -424,7 +427,6 @@ class TemplatePedido
 					$html .= '
 					<td></td>
 					</tr>
-					
 					
 					</tbody></table>
 
