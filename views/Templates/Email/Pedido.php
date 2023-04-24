@@ -363,12 +363,12 @@ class TemplatePedido
 					$html .= '</tr><tr style="width:100%;">
 														';
 
-					/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
 						}
-					} */
-					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>';
+					}
+				/* 	$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>'; */
 					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
@@ -378,13 +378,17 @@ class TemplatePedido
 					};
 					$html .= '	</tr>
 					
-					<tr>
+					<tr style="width:100%;">
 					<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de Contacto:</th>
 					<td></td>
 					<td></td>
-					<td>Cliente</td>
-					<td>Cliente</td>
-					<td>Cliente</td>
+					</tr>
+
+					<tr style="width:100%;">
+
+					<td >Contacto: FACTURACION</td>
+					<td>CORREO: SADASDASDASKDASD</td>
+					<td>Telefono: 6464612654</td>
 
 					</tr>
 					
