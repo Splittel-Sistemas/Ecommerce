@@ -151,13 +151,13 @@ class TemplatePedido
 														<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 															 <thead>
 																<tr style="width:100%;">
-																	<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de envió:</th>
+																	<th style="margin-bottom: 20px;  max-width:50%;">Datos de envió:</th>
 																	';
 			if ($Pedido->DatosFacturacionKey == '') {
 
 				$html .= '';
 			} else {
-				$html .= '<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>';
+				$html .= '<th style="margin-bottom: 20px;  max-width:50%;">Datos de Facturación:</th>';
 			};
 
 			$html .= '
@@ -329,8 +329,8 @@ class TemplatePedido
 					/* CLIENTE TIPO B2B */
 				} else {
 					foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
-						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
+						$nombrefactura = $Pedido->DatosFacturacionKey != '' ? '<td style="margin-bottom: 2px; text-align: left max-width:50%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>' : '';
+						$nombre = '<td style="margin-bottom: 2px; text-align: left max-width:50%;">Cliente: ' . $GetBillToAdress->CardName . '</span></td>';
 					}
 					$html .= '				<tr style="width:100%;">
 																' . $nombre . '
@@ -344,7 +344,7 @@ class TemplatePedido
 					/* DATOS DE ENVIO  */
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:50%;">Dirección: ' . $GetShipToAdress->Street  . ' No Ext. ' . $GetShipToAdress->StreetNo . ' Col. ' . $GetShipToAdress->Block . '</span></td>';
 						}
 					}
 
@@ -353,10 +353,10 @@ class TemplatePedido
 					if ($Pedido->DatosFacturacionKey != '') {
 
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:50%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td>';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:50%;"></td>';
 					};
 
 
@@ -365,13 +365,13 @@ class TemplatePedido
 
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 8px; text-align: left max-width:10%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:50%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
 						}
 					}
 					/* 	$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>'; */
 					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
+							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:50%;">RFC: ' . $GetBillToAdress->FederalTaxID . '</span></td>';
 						}
 					} else {
 						$html .= '';
@@ -381,14 +381,14 @@ class TemplatePedido
 					<tr style="width:100%;margin-bottom: 20px;">';
 
 					$html .= '
-					<th style=" text-align: left; max-width:20%;">Datos de Contacto:</th>
+					<th style=" text-align: left; max-width:50%;">Datos de Contacto:</th>
 					';
 
 
 
 					$html .= '
 					<td></td>
-					<th style="margin-bottom: 20px; max-width:20%;">Paquetería</th>
+					<th style="margin-bottom: 20px; max-width:50%;">Paquetería</th>
 					</tr>
 
 					<tr style="width:100%;">
