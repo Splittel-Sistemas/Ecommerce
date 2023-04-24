@@ -212,8 +212,8 @@ class TemplatePedido
 					$listGetShipToAdress = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
 				}
 				/* FIN DATOS DE ENVIO SAP */
-					print_r($listGetShipToAdress);
-
+				/* 	print_r($listGetShipToAdress);
+ 				*/
 				/* DATOS DE FACTURACION SAP */
 
 
@@ -382,7 +382,7 @@ class TemplatePedido
 					<tr style="width:100%;">';
 
 					$html .= '
-					<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de Contacto:</th>
+					<th style=" text-align: left; max-width:20%;">Datos de Contacto:</th>
 					';
 
 
@@ -394,8 +394,11 @@ class TemplatePedido
 
 					<tr style="width:100%;">
 					';
-					$html .= '
-					<td >Contacto: FACTURACION</td>		';
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td">Contacto: ' . $GetShipToAdress->ContactPerson->Name . '</span></td>';
+						}
+					}
 
 
 
@@ -405,10 +408,11 @@ class TemplatePedido
 					</tr>
 					<tr style="width:100%;">
 					';
-					$html .= '
-					<td>CORREO: relecyt@live.com.mx;aguzman@relecyt.com.mx</td>
-
-					';
+					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
+							$html .= '<td">Correo: ' . $GetShipToAdress->ContactPerson->Email . '</span></td>';
+						}
+					}
 					$html .= '
 					<td></td>
 					<td></td>
@@ -443,24 +447,6 @@ class TemplatePedido
 						$html .= '<p align="center">Ejecutivo: ' . $DatosEnvio->email_ejecutivo . '</p>';
 					}
 				} //FIN ELSE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				$html .= '
 														</td>
 													</tr>
