@@ -212,7 +212,7 @@ class TemplatePedido
 					$listGetShipToAdress = $resultGetShipToAdressController->GetShipToAdressResult->Records->BussinessPartnerAdresses;
 				}
 				/* FIN DATOS DE ENVIO SAP */
-				print_r($listGetShipToAdress);
+
 				/* DATOS DE FACTURACION SAP */
 
 
@@ -363,11 +363,11 @@ class TemplatePedido
 					$html .= '</tr><tr style="width:100%;">
 														';
 
-					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
+					/* foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
 						}
-					}
+					} */
 					$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>';
 					if ($Pedido->DatosFacturacionKey != '') {
 						foreach ($listGetBillToAdress as $key => $GetBillToAdress) {
@@ -376,7 +376,20 @@ class TemplatePedido
 					} else {
 						$html .= '';
 					};
-					$html .= '	</tr></tbody></table>
+					$html .= '	</tr>
+					
+					<tr>
+					<th style="margin-bottom: 20px; text-align: left; max-width:20%;">Datos de Contacto:</th>
+					<td></td>
+					<td></td>
+					<td>Cliente</td>
+					<td>Cliente</td>
+					<td>Cliente</td>
+
+					</tr>
+					
+					
+					</tbody></table>
 
 
 					<div style="text-align:right">
