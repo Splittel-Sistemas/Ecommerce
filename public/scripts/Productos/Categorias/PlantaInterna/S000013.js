@@ -26,6 +26,7 @@ var SimplexDuplexCont = 0;
 var SimplexDuplexCont1 = 0;
 
 var CableSimplexDuplex = function(){
+  let cvefijo = 'YO'
   let TipoFibra = document.getElementById('TipoFibra')
   let NumeroHilos = document.getElementById('NumeroHilos')
   let DiametroCable = document.getElementById('DiametroCable')
@@ -45,7 +46,7 @@ var CableSimplexDuplex = function(){
   }
   DirectorioImgProducto = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value; 
   // Codigo Generado de acuerdo a las opciones selecionadas
-  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value+DiametroCable.value+TipoCubierta.value
+  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value+DiametroCable.value+TipoCubierta.value+cvefijo
   // Agreación de codigo para la vista en el identificador
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
