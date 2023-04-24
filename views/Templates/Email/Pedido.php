@@ -160,7 +160,7 @@ class TemplatePedido
 				$html .= '<th style="margin-bottom: 20px; text-align: left; max-width:50%;">Datos de Facturación:</th>';
 			};
 
-			$html .= '<th style="margin-bottom: 20px; max-width:20%;">Paquetería</th>
+			$html .= '
 																	
 																</tr>
 															</thead>
@@ -336,7 +336,6 @@ class TemplatePedido
 																' . $nombre . '
 
 														' . $nombrefactura . '
-														<td style=" text-align: left"  rowspan="6">' . $Pedido->Paqueteria . '</span></td>
 
 
 														
@@ -357,7 +356,7 @@ class TemplatePedido
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $GetBillToAdress->Street . ' No Ext. ' . $GetBillToAdress->StreetNo . ' Col. ' . $GetBillToAdress->Block . '</span></td>';
 						}
 					} else {
-						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
+						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td>';
 					};
 
 
@@ -366,7 +365,7 @@ class TemplatePedido
 
 					foreach ($listGetShipToAdress as $key => $GetShipToAdress) {
 						if ($GetShipToAdress->Adress == $Pedido->GetDatosEnvioKey()) {
-							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
+							$html .= '<td style="margin-bottom: 8px; text-align: left max-width:10%;">Teléfono: ' . $GetShipToAdress->ContactPerson->Telphone . '</span></td>';
 						}
 					}
 					/* 	$html .= '<td style="margin-bottom: 2px; text-align: left max-width:10%;"> </span></td>'; */
@@ -379,7 +378,7 @@ class TemplatePedido
 					};
 					$html .= '	</tr>
 					
-					<tr style="width:100%;">';
+					<tr style="width:100%;margin-bottom: 20px;">';
 
 					$html .= '
 					<th style=" text-align: left; max-width:20%;">Datos de Contacto:</th>
@@ -389,7 +388,7 @@ class TemplatePedido
 
 					$html .= '
 					<td></td>
-					<td></td>
+					<th style="margin-bottom: 20px; max-width:20%;">Paquetería</th>
 					</tr>
 
 					<tr style="width:100%;">
@@ -401,10 +400,10 @@ class TemplatePedido
 					}
 
 
-
+					/* rowspan="6" */
 					$html .= '
 					<td></td>
-					<td></td>
+					<td style=" text-align: left" >' . $Pedido->Paqueteria . '</span></td>
 					</tr>
 					<tr style="width:100%;">
 					';
