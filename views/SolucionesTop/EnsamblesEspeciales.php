@@ -21,7 +21,7 @@
         <!-- Gallery-->
         <div class="gallery-wrapper">
           <div class="gallery-item">
-            <img class="rounded" src="../../public/images/img_spl/transformacion/1 baner-principal.jpg" alt="soluciones">
+            <img class="rounded" src="../../public/images/img_spl/transformacion/1 baner-principal.png" alt="soluciones">
             <span class="caption"><?php //echo $response->titulo;
                                   ?></span>
           </div>
