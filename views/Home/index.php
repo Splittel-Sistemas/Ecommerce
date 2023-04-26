@@ -79,35 +79,35 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <!-- Top Categorias-->
     <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
-    <div class="row  ">
-      <?php
-      if (!class_exists("CategoriaController")) {
-        include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
-      }
-      $CategoriaController = new CategoriaController();
-      $CategoriaController->filter = "WHERE activo='si'";
-      $CategoriaController->order = "";
-      $ResultCategoria = $CategoriaController->get();
-      $CategoriaCont3 = 1;
-
-      foreach ($ResultCategoria->records as $key => $Categoria) {
-
-      ?>
-        <div class="col">
-          <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion); ?>">
-            <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img ?>'" onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>'" class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>" alt="Categorias">
-            <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
-          </a>
-          <p class="text-sm text-muted mb-0"></p>
-        </div>
-      <?php if ($CategoriaCont3 == 4 ) {
-          echo '<div class="w-100 d-xs-block d-md-none"></div>';
+      <div class="row  ">
+        <?php
+        if (!class_exists("CategoriaController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
         }
-        $CategoriaCont3++;
-      } ?>
+        $CategoriaController = new CategoriaController();
+        $CategoriaController->filter = "WHERE activo='si'";
+        $CategoriaController->order = "";
+        $ResultCategoria = $CategoriaController->get();
+        $CategoriaCont3 = 1;
+
+        foreach ($ResultCategoria->records as $key => $Categoria) {
+
+        ?>
+          <div class="col">
+            <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion); ?>">
+              <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img ?>'" onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>'" class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>" alt="Categorias">
+              <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
+            </a>
+            <p class="text-sm text-muted mb-0"></p>
+          </div>
+        <?php if ($CategoriaCont3 == 4) {
+            echo '<div class="w-100 d-xs-block d-md-none"></div>';
+          }
+          $CategoriaCont3++;
+        } ?>
 
 
-    </div>
+      </div>
     </section>
 
     <!-- <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around d-none d-sm-none d-lg-block">
@@ -183,9 +183,118 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       </div>
     </section>
 
-    <!-- Cables de fibra óptica -->
+    <!-- PRODUCTOS -->
+    <section class="container padding-top-2x padding-bottom-2x mb-2 ">
+      <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
+      <div class="row  ">
+        <?php
+        if (!class_exists("ProductoController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+        }
+        $ProductoController = new ProductoController();
+        $ProductoController->filter = "WHERE destacado='si' AND destacado='si' ";
+        $ProductoController->order = "";
+        $getProduct = $ProductoController->GetProductosFijos_();
+
+        $CategoriaContxs = 1;
+        $CategoriaContmd = 1;
+
+        if ($getProduct->count > 0) {
+
+          if (!class_exists('ComentariosController')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
+          }
+          foreach ($getProduct->records as $key => $obj) {
+            $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+            $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
+            $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
+            $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
+            $priceUSD = bcdiv($calculatePrice, 1, 3);
+            $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+
+        ?>
+            <div class="col">
+              <div class="product-card mb-30">
+                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+
+                <br><br>
+                <div class="rating-stars">
+                  <?php
+                  $ComentariosController = new ComentariosController();
+                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                  $Comentarios = $ComentariosController->Comentarios();
+
+                  if ($Comentarios->count > 0) {
+                    $RecordsComentarios = $Comentarios->records[0];
+                    $Promedio = (int)$RecordsComentarios->Promedio;
+                    for ($i = 0; $i < 5; $i++) {
+                      if ($i < $Promedio) {
+                  ?>
+                        <i class="icon-star filled"></i>
+                      <?php } else { ?>
+                        <i class="icon-star"></i>
+                    <?php }
+                    }
+                  } else { ?>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                  <?php }
+                  unset($ComentariosController);
+                  unset($Comentarios);
+                  ?>
+                </div>
+                <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
+                  <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
+                </a>
+                <div class="product-card-body">
+
+                  <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <!-- validar si existe variable de sesión -->
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                      $<?php echo $priceUSD ?> USD
+                    </h4>
+                  <?php } ?>
+                </div>
+                <div class="product-button-group">
+                  <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
+                    <?php } else { ?>
+                      <a class="product-button" href="../Login/">
+                      <?php } ?>
+                      <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
+                      </a>
+                </div>
+              </div>
+            </div>
+
+        <?php
+            if ($CategoriaCont3 == 2 || $CategoriaCont3 == 4 || $CategoriaCont3 == 6 || $CategoriaCont3 == 8) {
+              echo '<div class="w-100 d-xs-block d-md-none"></div>';
+            }
+            if ($CategoriaCont3 == 4 || $CategoriaCont3 == 8) {
+              echo '<div class="w-100 d-md-block d-xs-none"></div>';
+            }
+            $CategoriaCont3++;
+            unset($urlDetailProduct);
+            unset($urlImg);
+            unset($newUrlImg);
+            unset($calculatePrice);
+            unset($priceUSD);
+            unset($priceMXN);
+          }
+        } ?>
+
+
+      </div>
+    </section>
     <!-- Featured Products -->
-    <section class="container padding-top-2x padding-bottom-2x mb-2">
+    <!--   <section class="container padding-top-2x padding-bottom-2x mb-2 d-none d-sm-none d-md-block">
       <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
       <div class="row">
         <?php
@@ -250,7 +359,6 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
-                  <!-- validar si existe variable de sesión -->
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
@@ -280,7 +388,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         }
         ?>
       </div>
-    </section>
+    </section> -->
 
     <!-- ULTIMOS BLOGS -->
     <section class="fw-section padding-top-2x padding-bottom-2x">
@@ -401,16 +509,10 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <section class="container padding-top-3x padding-bottom-2x">
       <div class="row">
         <div class="col-md-4 col-sm-6 text-center "><img class="d-block img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/servicios/01.png" alt="Gran Stock">
-          <h6 class="mb-2">&nbsp;</h6>
-          <p class="text-sm text-muted mb-0">&nbsp;</p>
         </div>
         <div class="col-md-4 col-sm-6 text-center "><img class="d-block img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/servicios/02.png" alt="Entregas al dia siguiente">
-          <h6 class="mb-2">&nbsp;</h6>
-          <p class="text-sm text-muted mb-0">&nbsp;</p>
         </div>
         <div class="col-md-4 col-sm-6 text-center "><img class="d-block img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/servicios/03.png" alt="Abrimos de lunes a sabado">
-          <h6 class="mb-2">&nbsp;</h6>
-          <p class="text-sm text-muted mb-0">&nbsp;</p>
         </div>
       </div>
     </section>
