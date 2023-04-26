@@ -105,12 +105,21 @@
             </li>
           </ul>
         </li>
-        <li class="has-submenu <?php if(trim($path) == "EnsamblesEspeciales"){?>active<?php }?>">
+        <li class="has-submenu <?php if (trim($path) == "SolucionesTop") { ?>active<?php } ?>">
+         <a >Soluciones Top</a> <!-- href="../SolucionesTop/" -->
+         <ul class="sub-menu">
+           <li class="has-submenu <?php if (trim($path) == "SolucionesTop/EnsamblesEspeciales.php") { ?>active<?php } ?>">
+             <a href="../SolucionesTop/EnsamblesEspeciales.php">Ensambles Especiales</a>
+           </li>
+         </ul>
+       </li>
+       <!--  <li class="has-submenu <?php if(trim($path) == "EnsamblesEspeciales"){?>active<?php }?>">
           <a href="../EnsamblesEspeciales/">Ensambles Especiales</a> 
         </li>
         <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
           <a href="../Soluciones/">Soluciones</a>
-        </li>
+        </li> -->
+       
         <!--
         <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
           <a href="#">Soluciones</a> 
