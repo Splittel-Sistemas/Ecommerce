@@ -257,7 +257,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
 
         ?>
-            <div class="col " style="padding-right: 10px;padding-left: 10px;">
+            <div class="col " style="padding-right: 5px;padding-left: 5px;">
               <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
                 <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
 
