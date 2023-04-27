@@ -138,7 +138,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             <p class="text-sm text-muted mb-0"></p>
           </div>
         <?php if ($CategoriaCont3 == 4) {
-            echo '<div class="w-100 d-xs-block d-md-none"></div>';
+            echo '<div class="w-100 d-xs-block  d-sm-block d-md-none d-lg-none d-md-none "></div>';
           }
           $CategoriaCont3++;
         } ?>
@@ -221,8 +221,8 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     </section>
 
     <!-- PRODUCTOS -->
-    <section class="container padding-top-2x padding-bottom-2x mb-2 d-xs-block d-sm-none d-md-none d-lg-none">
-      <h2 class="h3 pb-3 text-center">Productos Destacados </h2>
+    <section class="container padding-top-2x padding-bottom-2x mb-2 d-xs-block d-sm-block d-md-none d-lg-none">
+      <h2 class="h3 pb-3 text-center">Productos Destacados MOBILE</h2>
       <?php
       $cn = 1;
       $cn2 = 1;
@@ -299,11 +299,11 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                     <h3 class="product-title" style="height:60px; overflow-y: scroll;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
-                    } ?>
+                     ?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
-                    <?php ?>
+                    <?php }?>
                   </div>
 
                 </div>
@@ -322,7 +322,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
         <?php
             if ($CategoriaContxs == 2 || $CategoriaContxs == 4 || $CategoriaContxs == 6 || $CategoriaContxs == 8 || $CategoriaContxs == 10) {
-              echo '<div class="w-100 d-xs-block  d-sm-none d-md-none d-lg-none"></div>';
+              echo '<div class="w-100 d-xs-block  d-sm-block d-md-none d-lg-none"></div>';
             }
 
             $CategoriaContxs++;
@@ -344,7 +344,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <!-- Featured Products -->
 
 
-    <section class="container padding-top-2x padding-bottom-2x mb-2 d-none d-xs-none  d-sm-block d-md-block d-lg-block d-md-block">
+    <section class="container padding-top-2x padding-bottom-2x mb-2 d-none d-xs-none  d-sm-none d-md-block d-lg-block d-md-block">
       <h2 class="h3 pb-3 text-center">Productos Destacados</h2>
       <div class="row">
         <?php
