@@ -257,7 +257,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
 
         ?>
-            <div class="col " style="padding-right: 5px;padding-left: 5px;">
+            <div class="col " style="padding-right: 1px;padding-left: 1px;">
               <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
                 <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
 
@@ -292,11 +292,11 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                 <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
                   <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
                 </a>
-                <div class="product-card-body classAbsolute">
+                <div class="product-card-body classAbsolute" style="padding: 0px 0px;">
                   <div style="height:100%;">
 
                     <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-                    <h3 class="product-title" style="height:60px; overflow-y: scroll;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                    <h3 class="product-title" style="height:60px; overflow-y: scroll;padding:0px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
                      ?>
@@ -581,7 +581,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           nav: false,
           center: true,
           dots: false,
-          loop: true,
+          loop: false,
           autoplay: true,
           autoWidth : true,
           autoplayTimeout: 7000,
