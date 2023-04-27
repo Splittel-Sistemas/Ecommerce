@@ -100,7 +100,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           $ImgIzquierda = '../../public/images/img_spl/slide/img1/' . $Slide->PathImg1;
           // $ImgDerecha = '../../public/images/img_spl/slide/img2/'.$Slide->PathImg2;
         ?>
-          <div class="item">
+          <div class="item cloned" style="width:600px" >
             <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
                 <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
@@ -583,6 +583,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           dots: false,
           loop: true,
           autoplay: true,
+          autoWidth : true,
           autoplayTimeout: 7000,
           items: 1,
           rtl: false,
