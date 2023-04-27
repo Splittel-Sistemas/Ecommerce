@@ -39,7 +39,8 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 <!-- Header-->
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="site-header navbar-sticky">
-  <!-- Topbar-->
+
+
   <div class="topbar d-flex justify-content-between">
     <!-- Logo-->
     <div class="site-branding d-flex">
@@ -48,7 +49,7 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 
 
     <!-- Search / Categories-->
-    <div class="search-box-wrap d-flex" >
+    <div class="search-box-wrap d-flex">
       <div class="search-box-inner align-self-center" id="busqueda">
         <div class="search-box d-flex">
           <div class="btn-group categories-btn">
@@ -95,12 +96,12 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
       <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
           <div><i class="icon-menu"></i><span class="text-label">Menu</span></div>
         </a></div>
-      <div class="toolbar-item hidden-on-mobile col-md-6">
+      <div class="toolbar-item  col-md-6">
         <a href="javascript:void(0);">
           <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Login/seguridad.php';  ?>
           <div id="dataInterna" primero="<?php echo $_SESSION['AuthUser']; ?>" segundo="<?php echo $_SESSION['AuthPassword']; ?>">
             <span class="text-label">
-              <strong>TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate']; ?> MXP
+              <strong class="hidden-on-mobile">TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate']; ?> MXP
             </span>
           </div>
         </a>
@@ -173,14 +174,15 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
             </div>
       </div>
 
-      <div id="ListResumenProductosCarrito" class="toolbar-item">
+      <div id="ListResumenProductosCarrito" class="toolbar-item hidden-on-mobile">
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Carrito/Resumen/index.php'; ?>
       </div>
     </div>
+
     <!-- Mobile Menu-->
     <div class="mobile-menu">
       <!-- Search Box-->
-      <div class="mobile-search">
+      <!-- <div class="mobile-search">
         <form class="input-group" method="get"><span class="input-group-btn">
             <button type="submit"><i class="icon-search"></i></button></span>
           <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
@@ -192,37 +194,29 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
             </div>
           </div>
         </form>
-      </div>
+      </div> -->
       <!-- Toolbar-->
       <div class="toolbar">
-        <div class="toolbar-item">
-          <a href="javascript:void(0);">
-            <div>
-              <div>
-                <span class="text-label">
-                  <strong>TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate']; ?> MXP
-                </span>
-              </div>
-            </div>
-          </a>
+        <div id="ListResumenProductosCarrito" class="toolbar-item ">
+          <?php include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Carrito/Resumen/index.php'; ?>
         </div>
 
         <div class="toolbar-item">
           <?php if (isset($_SESSION['Ecommerce-ClienteNombre'])) { ?>
-            <a href="javascript:void()">
+            <a href="../Cuenta/index.php?menu=1">
             <?php } else { ?>
-              <a href="javascript:void()">
+              <a href="../Login/">
               <?php } ?>
               <div>
                 <i class="icon-user"></i><span class="text-label"></span> <?php echo isset($_SESSION['Ecommerce-ClienteNombre']) ? $_SESSION['Ecommerce-ClienteNombre'] : 'Iniciar sesión' ?>
               </div>
               </a>
-              <div class="toolbar-dropdown cart-dropdown widget-cart">
+              <div class="toolbar-dropdown cart-dropdown widget-cart ">
                 <!-- Entry-->
                 <div class="entry">
                   <div class="entry-thumb"> <a href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
                   <div class="entry-content">
-                    <h4 class="entry-title"> <a href="javascript:void()">Telefono</a> </h4>
+                    <h4 class="entry-title"> <a href="javascript:void()">Teléfono</a> </h4>
                     <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>"><?php echo '01 800 ' . $Contacto->GetTelefono(); ?></a>
                   </div>
                 </div>
@@ -239,20 +233,18 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
                   <div class="entry-thumb"> <a href="/fibra-optica/views/Consultecnico" style="text-decoration: none; font-size: 20px;"> <i class="icon-link"></i> </a> </div>
                   <div class="entry-content">
                     <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Consultecnico','_self');" href="javascript:void(0)">Ir a Consultecnico</a> </h4>
-                    <!--  <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Consultecnico">Ir a consultecnico</a>  -->
                   </div>
                 </div>
                 <?php if (!isset($_SESSION['Ecommerce-ClienteNombre'])) : ?>
                   <p class="text-xs mb-3 pt-2">Inicie sesión en su cuenta o registre una nueva para tener control total sobre sus pedidos.</p>
                   <a class="btn btn-primary btn-sm btn-block" href="../Login/">Iniciar Sesión</a>
-                  <!-- <p class="text-xs text-muted mb-2">¿Nuevo Cliente?&nbsp;<a href="../Login/registro.php">Registrar</a></p>  -->
+                  <!-- <p class="text-xs text-muted mb-2">¿Nuevo Cliente?&nbsp;<a href="../Login/registro.php">Registrar</a></p> -->
                 <?php else : ?>
                   <!-- Entry-->
                   <div class="entry">
                     <div class="entry-thumb"> <a href="fibra-optica/views/Cuenta/index.php?menu=1" style="text-decoration: none; font-size: 20px;"> <i class="icon-user"></i> </a> </div>
                     <div class="entry-content">
                       <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Cuenta/index.php?menu=1','_self');" href="javascript:void(0)">Ir a mi cuenta</a> </h4>
-                      <!--<a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Cuenta/index.php?menu=1">Ir a mi cuenta</a>  -->
                     </div>
                   </div>
                   <!-- Entry-->
@@ -260,7 +252,6 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
                     <div class="entry-thumb"> <a href="/fibra-optica/views/Login/logout.php" style="text-decoration: none; font-size: 20px;"> <i class="icon-power"></i> </a> </div>
                     <div class="entry-content">
                       <h4 class="entry-title"> <a onclick="window.open('/fibra-optica/views/Login/logout.php','_self');" href="javascript:void(0)">Salir</a> </h4>
-                      <!-- <a class="entry-meta" style="text-decoration: none;" href="/fibra-optica/views/Login/logout.php">salir</a>  -->
                     </div>
                   </div>
                 <?php endif ?>
@@ -268,6 +259,15 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
         </div>
 
       </div>
+      <?php if (isset($_SESSION['Ecommerce-ClienteNombre'])) : ?>
+        <div class="toolbar">
+          <div class="toolbar-item " style="height:50px">
+            <a onclick="window.open('/fibra-optica/views/Login/logout.php','_self');" href="javascript:void(0)"><i class="icon-power"></i> Salir</a>
+
+          </div>
+
+        </div>
+      <?php endif ?>
 
       <!-- Slideable (Mobile) Menu-->
       <?php
@@ -289,7 +289,25 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 
 
   </div>
+  <div class="topbar d-flex justify-content-between col-md-12  d-lg-none visible-on-mobile">
+    <!-- Topbar-->
 
+    <div class="site-branding col-12">
+      <div class="mobile-search ">
+        <form class="input-group" method="get"><span class="input-group-btn">
+            <button type="submit"><i class="icon-search"></i></button></span>
+          <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
+          <div class="row" style="position: absolute; z-index: 100">
+            <div class="col-md-12 margin-bottom-2x">
+              <nav class="list-group lista-productos" id="lista-productos-1">
+
+              </nav>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <!-- Menu normal  -->
 
   <?php

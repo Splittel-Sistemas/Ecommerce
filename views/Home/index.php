@@ -300,7 +300,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
                      ?>
-                    <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                    <h4 class="product-price" data-toggle="tooltip" style="padding: 0px 0px;" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
                     <?php }?>
