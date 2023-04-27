@@ -19,7 +19,7 @@ if (!class_exists("Connection")) {
 class CatalogoCursos{
   protected $conn;
   protected $Tool;
-  protected $Correo = ["marketing.directo@splittel.com"];
+  protected $Correo = ["ramon.olea@splittel.com"];
   
   public function __construct(){
     $this->conn = new Connection();
