@@ -296,7 +296,7 @@
         <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
         <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
         <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="SolucionesTop">
-        <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="EnsamblesEspeciales">
+        <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="Ensambles Especiales">
         <div class="row">
           <div class="col-sm-6 form-group">
             <label for="validationCustom04">Nombre</label>

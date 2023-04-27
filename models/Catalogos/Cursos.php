@@ -19,7 +19,7 @@ if (!class_exists("Connection")) {
 class CatalogoCursos{
   protected $conn;
   protected $Tool;
-  protected $Correo = ["ramon.olea@splittel.com"];
+  protected $Correo = ["marketing.directo@splittel.com"];
   
   public function __construct(){
     $this->conn = new Connection();
@@ -81,6 +81,10 @@ class CatalogoCursos{
           }elseif($this->Descripcion == 'catalogo'){
             $Email->MailerSubject = utf8_decode("Descarga de catálogo");
             $Email->MailerBody = $EmailTest->DesCatalogo($this->Catalogo);
+          }elseif($this->Descripcion == 'SolucionesTop'){
+            $Email->MailerSubject = "SolucionesTop";
+            $this->Correo = ['cursos@fibremex.com.mx','marketing.directo@splittel.com'];
+            $Email->MailerBody = $EmailTest->cursos($this->Curso);
           }else{
             $Email->MailerSubject = "Curso";
             $this->Correo = ['cursos@fibremex.com.mx'];
