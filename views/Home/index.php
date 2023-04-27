@@ -266,7 +266,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                   echo '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>';
                 } else {
                 ?>
-                  <div class="rating-stars">
+                  <!-- <div class="rating-stars">
                     <?php
                     $ComentariosController = new ComentariosController();
                     $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
@@ -293,7 +293,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                     unset($ComentariosController);
                     unset($Comentarios);
                     ?>
-                  </div>
+                  </div> -->
 
                 <?php
                 }
