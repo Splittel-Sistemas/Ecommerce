@@ -29,7 +29,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
     <!-- Main Slider -->
     <section class="hero-slider" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-      <div style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
+      <div style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true,&quot;navContainer&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
         <!--
         <div class="item">
           <div class="container padding-top-2x">
@@ -77,6 +77,10 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             </div>
           </div>
         <?php } ?>
+        <div class="owl-nav">
+        <div class="owl-prev">prev</div>
+        <div class="owl-next">next</div>
+    </div>
       </div>
     </section>
     <!-- Top Categorias-->
