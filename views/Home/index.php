@@ -15,7 +15,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
   <head>
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
- 
+
   </head>
   <!-- Body-->
 
@@ -28,9 +28,9 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <!-- Header -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
 
-    <!-- Main Slider -->
-    <section class="hero-slider owl-slider" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-      <div id="carousel"  style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" >
+    <!-- Main Slider  ESCRITORIO-->
+    <section class="hero-slider d-none d-xs-none  d-sm-block d-md-block d-lg-block d-md-block" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
+      <div style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
         <!--
         <div class="item">
           <div class="container padding-top-2x">
@@ -70,7 +70,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           <div class="item">
             <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
-              <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
+                <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
               </a>
             </div>
           </div>
@@ -79,8 +79,36 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     </section>
 
 
+    <!-- mobile -->
+
+     
+    <section class="hero-slider owl-slider d-xs-block  d-sm-none d-md-none d-lg-none d-md-none" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
+      <div id="carousel" style="min-height:auto;display:flex; align-items:center;" class="owl-carousel  carrusel large-controls dots-inside " >
+        <?php
+        if (!class_exists('SlideController')) {
+          include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/Slide.Controller.php';
+        }
+        $SlideController = new SlideController();
+        $ResultSlide = $SlideController->get();
+        foreach ($ResultSlide->records as $key => $Slide) {
+          $linkIzquierda = $Slide->UrlImg1 == '' ? '#' : $Slide->UrlImg1;
+          // $linkDerecha = $Slide->UrlImg2 == '' ? '#' : $Slide->UrlImg2;
+          $ImgIzquierda = '../../public/images/img_spl/slide/img1/' . $Slide->PathImg1;
+          // $ImgDerecha = '../../public/images/img_spl/slide/img2/'.$Slide->PathImg2;
+        ?>
+          <div class="item">
+            <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
+              <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
+                <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
+              </a>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
 
     
+    </section>
+
     <!-- Top Categorias-->
     <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
@@ -544,17 +572,19 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       altura('.featured_products_card_1')
       altura('.featured_products_content_1')
     </script>
-     <script type="text/javascript">$('.owl-carousel').owlCarousel({
-    nav:false,
-    center:true,
-    dots:false,
-    loop:true,
-    autoplay:true,
-    autoplayTimeout:7000,
-    items:1,
-    rtl:true,
-    lazyLoad: true,rtl:true,
-})</script>
+  <script type="text/javascript">
+        $('.carrusel').owlCarousel({
+          nav: false,
+          center: true,
+          dots: false,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 7000,
+          items: 1,
+          rtl: false,
+          lazyLoad: true
+        })
+      </script>
   </body>
 
   </html>
