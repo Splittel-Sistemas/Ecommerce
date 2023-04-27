@@ -81,13 +81,16 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
     <!-- mobile -->
 
-     
+
     <section class="hero-slider owl-slider d-xs-block  d-sm-none d-md-none d-lg-none d-md-none" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-     <style>.hero-slider>.owl-carousel.dots-inside .owl-dots{
-      background-color:#991d1d00;border:1px solid #991d1d00
-     }</style>
-    
-    <div id="carousel" style="min-height:auto;display:flex; align-items:center;" class="owl-carousel  carrusel large-controls dots-inside " >
+      <style>
+        .hero-slider>.owl-carousel.dots-inside .owl-dots {
+          background-color: #991d1d00;
+          border: 1px solid #991d1d00
+        }
+      </style>
+
+      <div id="carousel" style="min-height:auto;display:flex; align-items:center;" class="owl-carousel  carrusel large-controls dots-inside ">
         <?php
         if (!class_exists('SlideController')) {
           include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/Slide.Controller.php';
@@ -100,7 +103,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           $ImgIzquierda = '../../public/images/img_spl/slide/img1/' . $Slide->PathImg1;
           // $ImgDerecha = '../../public/images/img_spl/slide/img2/'.$Slide->PathImg2;
         ?>
-          <div class="item cloned" style="width:600px" >
+          <div class="item cloned" style="width:600px">
             <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
                 <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
@@ -110,13 +113,13 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         <?php } ?>
       </div>
 
-    
+
     </section>
 
     <!-- Top Categorias-->
     <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
-      <div class="row  " >
+      <div class="row  ">
         <?php
         if (!class_exists("CategoriaController")) {
           include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
@@ -257,53 +260,59 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
 
         ?>
-            <div class="col " style="padding-right: 1px;padding-left: 1px;">
+            <div class="col " style="padding-right: 5px;padding-left: 5px;">
               <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
-                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+                <?php if ($obj->Leyenda != "") {
+                  echo '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>';
+                } else {
+                ?>
+                  <div class="rating-stars">
+                    <?php
+                    $ComentariosController = new ComentariosController();
+                    $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                    $Comentarios = $ComentariosController->Comentarios();
 
-                <!-- <div class="rating-stars">
-                  <?php
-                  $ComentariosController = new ComentariosController();
-                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
-                  $Comentarios = $ComentariosController->Comentarios();
-
-                  if ($Comentarios->count > 0) {
-                    $RecordsComentarios = $Comentarios->records[0];
-                    $Promedio = (int)$RecordsComentarios->Promedio;
-                    for ($i = 0; $i < 5; $i++) {
-                      if ($i < $Promedio) {
-                  ?>
-                        <i class="icon-star filled"></i>
-                      <?php } else { ?>
-                        <i class="icon-star"></i>
+                    if ($Comentarios->count > 0) {
+                      $RecordsComentarios = $Comentarios->records[0];
+                      $Promedio = (int)$RecordsComentarios->Promedio;
+                      for ($i = 0; $i < 5; $i++) {
+                        if ($i < $Promedio) {
+                    ?>
+                          <i class="icon-star filled"></i>
+                        <?php } else { ?>
+                          <i class="icon-star"></i>
+                      <?php }
+                      }
+                    } else { ?>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
                     <?php }
-                    }
-                  } else { ?>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                  <?php }
-                  unset($ComentariosController);
-                  unset($Comentarios);
-                  ?>
-                </div> -->
+                    unset($ComentariosController);
+                    unset($Comentarios);
+                    ?>
+                  </div>
+
+                <?php
+                }
+                ?>
                 <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
                   <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
                 </a>
-                <div class="product-card-body classAbsolute" style="padding: 0px 0px;">
+                <div class="product-card-body classAbsolute">
                   <div style="height:100%;">
 
                     <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-                    <h3 class="product-title" style="height:60px; overflow-y: scroll;padding:0px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                    <h3 class="product-title" style="height:60px; overflow-y: scroll;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
-                     ?>
-                    <h4 class="product-price" data-toggle="tooltip" style="padding: 0px 0px;" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
-                      $<?php echo $priceUSD ?> USD
-                    </h4>
-                    <?php }?>
+                    ?>
+                      <h4 class="product-price" data-toggle="tooltip" style="padding: 0px 0px;" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                        $<?php echo $priceUSD ?> USD
+                      </h4>
+                    <?php } ?>
                   </div>
 
                 </div>
@@ -576,20 +585,20 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       altura('.featured_products_card_1')
       altura('.featured_products_content_1')
     </script>
-  <script type="text/javascript">
-        $('.carrusel').owlCarousel({
-          nav: false,
-          center: true,
-          dots: false,
-          loop: false,
-          autoplay: true,
-          autoWidth : true,
-          autoplayTimeout: 7000,
-          items: 1,
-          rtl: false,
-          lazyLoad: true
-        })
-      </script>
+    <script type="text/javascript">
+      $('.carrusel').owlCarousel({
+        nav: false,
+        center: true,
+        dots: false,
+        loop: true,
+        autoplay: true,
+        autoWidth: true,
+        autoplayTimeout: 7000,
+        items: 1,
+        rtl: false,
+        lazyLoad: true
+      })
+    </script>
   </body>
 
   </html>
