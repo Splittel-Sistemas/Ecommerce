@@ -15,6 +15,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
   <head>
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
+ 
   </head>
   <!-- Body-->
 
@@ -28,8 +29,8 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
 
     <!-- Main Slider -->
-    <section class="hero-slider" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-      <div style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true,&quot;navContainer&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
+    <section class="hero-slider owl-slider" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
+      <div id="carousel"  style="min-height:auto;display:flex; align-items:center;" class="owl-carousel large-controls dots-inside" >
         <!--
         <div class="item">
           <div class="container padding-top-2x">
@@ -69,20 +70,17 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           <div class="item">
             <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
-                <!--                 <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
-                    -->
-                <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
-
+              <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="img-fluid d-block mx-auto" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
               </a>
             </div>
           </div>
         <?php } ?>
-        <div class="owl-nav">
-        <div class="owl-prev">prev</div>
-        <div class="owl-next">next</div>
-    </div>
       </div>
     </section>
+
+
+
+    
     <!-- Top Categorias-->
     <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
@@ -269,11 +267,11 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                     <h3 class="product-title" style="height:60px; overflow-y: scroll;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
-                   ?>
+                    } ?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
-                    <?php   }?>
+                    <?php ?>
                   </div>
 
                 </div>
@@ -546,6 +544,17 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       altura('.featured_products_card_1')
       altura('.featured_products_content_1')
     </script>
+     <script type="text/javascript">$('.owl-carousel').owlCarousel({
+    nav:false,
+    center:true,
+    dots:false,
+    loop:true,
+    autoplay:true,
+    autoplayTimeout:7000,
+    items:1,
+    rtl:true,
+    lazyLoad: true,rtl:true,
+})</script>
   </body>
 
   </html>
