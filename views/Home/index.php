@@ -116,7 +116,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <!-- Top Categorias-->
     <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
-      <div class="row  ">
+      <div class="row  " >
         <?php
         if (!class_exists("CategoriaController")) {
           include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
@@ -130,7 +130,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         foreach ($ResultCategoria->records as $key => $Categoria) {
 
         ?>
-          <div class="col">
+          <div class="col" style="padding-right: 0px;padding-left: 0px;">
             <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion); ?>">
               <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img ?>'" onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>'" class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>" alt="Categorias">
               <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
@@ -222,7 +222,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
     <!-- PRODUCTOS -->
     <section class="container padding-top-2x padding-bottom-2x mb-2 d-xs-block d-sm-block d-md-none d-lg-none">
-      <h2 class="h3 pb-3 text-center">Productos Destacados MOBILE</h2>
+      <h2 class="h3 pb-3 text-center">Productos Destacados </h2>
       <?php
       $cn = 1;
       $cn2 = 1;
@@ -257,7 +257,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
 
         ?>
-            <div class="col ">
+            <div class="col " style="padding-right: 0px;padding-left: 0px;">
               <div class="product-card mb-30 " style="height:auto; word-wrap: break-word;">
                 <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
 
