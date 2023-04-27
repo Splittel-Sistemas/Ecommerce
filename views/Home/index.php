@@ -83,7 +83,11 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
      
     <section class="hero-slider owl-slider d-xs-block  d-sm-none d-md-none d-lg-none d-md-none" style="min-height:auto; background-image: url(../../public/images/img/hero-slider/main-bg1.webp);">
-      <div id="carousel" style="min-height:auto;display:flex; align-items:center;" class="owl-carousel  carrusel large-controls dots-inside " >
+     <style>.hero-slider>.owl-carousel.dots-inside .owl-dots{
+      background-color:#991d1d00;border:1px solid #991d1d00
+     }</style>
+    
+    <div id="carousel" style="min-height:auto;display:flex; align-items:center;" class="owl-carousel  carrusel large-controls dots-inside " >
         <?php
         if (!class_exists('SlideController')) {
           include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/Slide.Controller.php';
