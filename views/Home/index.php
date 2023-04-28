@@ -301,7 +301,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                 <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
                   <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
                 </a>
-                <div class="product-card-body classAbsolute">
+                <div class="product-card-body ">
                   <div style="height:100%;">
 
                     <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
