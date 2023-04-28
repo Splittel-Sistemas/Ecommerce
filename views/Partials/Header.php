@@ -93,9 +93,7 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
     </div>
     <!-- Toolbar-->
     <div class="toolbar d-flex">
-      <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
-          <div><i class="icon-menu"></i><span class="text-label">Menu</span></div>
-        </a></div>
+     
       <div class="toolbar-item  col-md-6">
         <a href="javascript:void(0);">
           <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Login/seguridad.php';  ?>
@@ -105,7 +103,9 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
             </span>
           </div>
         </a>
-      </div>
+      </div> <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
+          <div><i class="icon-menu"></i><span class="text-label">Menu</span></div>
+        </a></div>
 
       <?php
       $ContactoController = new ContactoController();
