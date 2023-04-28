@@ -133,10 +133,11 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         foreach ($ResultCategoria->records as $key => $Categoria) {
 
         ?>
-          <div class="col" style="padding-right: 0px;padding-left: 0px;">
+          <div class="col text-center" style="padding-right: 0px;padding-left: 0px;">
             <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion); ?>">
               <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img ?>'" onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>'" class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>" alt="Categorias">
               <h6 style="font-size: 12px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
+              
             </a>
             <p class="text-sm text-muted mb-0"></p>
           </div>
