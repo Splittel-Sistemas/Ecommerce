@@ -136,7 +136,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           <div class="col" style="padding-right: 0px;padding-left: 0px;">
             <a style="text-decoration:none" href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion); ?>">
               <img style="hover:color:red" onmouseover="this.src='../../public/images/img_spl/categorias/a_<?php echo $Categoria->Img ?>'" onmouseout="this.src='../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>'" class="d-block w-75 img-thumbnail rounded mx-auto mb-4" src="../../public/images/img_spl/categorias/<?php echo $Categoria->Img ?>" alt="Categorias">
-              <h6 style="font-size: 15px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
+              <h6 style="font-size: 12px;" class="mb-2" onMouseOver="this.style.color='#006da3'" onMouseOut="this.style.color='black'"><?php echo $Categoria->Descripcion ?></h6>
             </a>
             <p class="text-sm text-muted mb-0"></p>
           </div>
@@ -301,10 +301,10 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                 <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
                   <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
                 </a>
-                <div class="product-card-body ">
+                <div class="product-card-body " style="padding:0px;">
                   <div style="height:100%;">
 
-                    <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                    <div class="product-category" style="font-size: 10px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                     <h3 class="product-title" style="height:60px; overflow-y: scroll;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
