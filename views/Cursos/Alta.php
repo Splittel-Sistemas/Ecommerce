@@ -72,11 +72,11 @@
 
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Nombre del curso:<strong class="text-danger">*</strong></label>
+                  <label class="text-uppercase">Nombre del curso: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="name" name="name">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Fecha:<strong class="text-danger">*</strong></label>
+                  <label class="text-uppercase">Fecha: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="date" id="date" name="date">
                 </div>
 
@@ -119,15 +119,15 @@
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Correo Empresarial:<strong class="text-danger">*</strong></label>
+                  <label class="text-uppercase">Correo Empresarial: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="email" id="CorreoEmpresarial" name="CorreoEmpresarial">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Correo Personal:<strong class="text-danger">*</strong></label>
+                  <label class="text-uppercase">Correo Personal: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="email" id="CorrePersonal" name="CorrePersonal">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">WhatsApp personal:<strong class="text-danger">*</strong></label>
+                  <label class="text-uppercase">WhatsApp personal: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
@@ -162,7 +162,7 @@
                       1 vez y en el ciclo inmediato (validando disponibilidad al momento de la
                       reprogramación). En caso de que el cliente no se presente y no se cuente con
                       notificación de ausencia, se procederá con el cobro total del curso.</p>
-                    <p><strong class="text-danger"> 5.</strong> El registro por participante es de manera individual por lo que,deberá </p>
+                    <p><strong class="text-danger"> 5.</strong> El registro por participante es de manera individual por lo que, deberá </p>
                   </ul>
                 </div>
                 <div class="col-md-6 margin-top-2x">
@@ -177,7 +177,7 @@
                       24 hrs de anticipación, de lo contrario no se asegura la entrada del nuevo
                       participante a las instalaciones.</p>
                     <p><strong class="text-danger"> 7.</strong> En el caso de que el participante no se presente el día del curso y no haya
-                      previa notificación, se dará por pérdido el curso y no habrá posibilidad de de
+                      previa notificación, se dará por pérdido el curso y no habrá posibilidad de
                       reprogramación.</p>
                     <p><strong class="text-danger"> 8.</strong> Para el certificado de participación, se tomará en cuenta el nombre del
                       asistente y el nombre de la empresa (nombre comercial o de facturación) que
@@ -198,7 +198,7 @@
                 <div class="col-sm-12 col-md-12 form-group text-center">
                   <hr class="margin-bottom-1x">
 
-                  <button type="button" id="botonenviar" class="btn btn-primary " onclick="EnviarAlta()">Enviar Solicitud</button>
+                  <button type="button" id="botonenviar" class="btn btn-primary " onclick="EnviarAlta()">Enviar</button>
 
                 </div>
                 <div class="col-md-8 margin-top-2x text-left">
