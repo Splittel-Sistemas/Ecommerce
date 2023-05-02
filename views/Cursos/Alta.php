@@ -73,7 +73,15 @@
 
                 <div class="col-sm-12 col-md-6 form-group">
                   <label class="text-uppercase">Nombre del curso: <strong class="text-danger">*</strong></label>
-                  <input class="form-control form-control-2" type="text" id="name" name="name">
+                  <select class="form-control form-control-2" id="name" name="name" required>
+                  <option value="">Selecciona una opcion</option>
+                    <option value="Planta Interna de Fibra Óptica">Planta Interna de Fibra Óptica</option>
+                    <option value="Planta Externa de Fibra Óptica">Planta Externa de Fibra Óptica</option>
+                    <option value="Método de Soplado">Método de Soplado</option>
+                    <option value="Fibra hasta el Usuario Redes Ópticas Pasivas">Fibra hasta el Usuario Redes Ópticas Pasivas</option>
+                    <option value="Cableado Estructurado">Cableado Estructurado </option>
+                    <option value="Certificación Partners">Certificación Partners</option>
+                  </select>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <label class="text-uppercase">Fecha: <strong class="text-danger">*</strong></label>
