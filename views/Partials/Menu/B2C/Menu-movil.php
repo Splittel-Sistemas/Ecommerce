@@ -27,9 +27,21 @@
             <?php endforeach ?>
             </ul>
           </li>
-          <li class="has-children <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
+         <!--  <li class="has-children <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
             <span><a href="../Soluciones/">Soluciones</a></span>
+          </li> -->
+
+          <li class="has-children">
+            <span><a href="#">Soluciones Top</a><span class="sub-menu-toggle"></span></span>
+            <ul class="slideable-submenu">
+               <li><a href="../SolucionesTop/EnsamblesEspeciales.php">Ensambles Especiales</a></li>
+            <!--    <li><a href="../Capacitaciones/2-insider">INSIDER</a></li> 
+               <li><a href="../Capacitaciones/3-develop">DEVELOP</a></li> 
+               <li><a href="../Capacitaciones/4-partners">CERTIFICACIÓN OPTRONICS</a></li>  -->
+          </ul>
           </li>
+
+
           <!--
           <li class="has-children">
             <span>
