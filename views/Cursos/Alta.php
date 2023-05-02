@@ -171,7 +171,7 @@
                   <ul class="text-left">
                     <p> presentarse de manera presencial únicamente la persona inscrita; No se permitirá
                       el acceso a las instalaciones a cualquier otra persona ajena a la empresa que
-                      contrata el servicio1</p>
+                      contrata el servicio</p>
                     <p><strong class="text-danger"> 6.</strong> Cuando surja algún cambio de participante, será necesario notificar a su
                       ejecutivo de ventas y al correo marketing.directo@splittel.com con un mínimo de
                       24 hrs de anticipación, de lo contrario no se asegura la entrada del nuevo
