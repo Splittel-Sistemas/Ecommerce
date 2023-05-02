@@ -589,10 +589,10 @@ class SolicitudCursosController
           //Mails
           $mail->From = 'marketing.directo@splittel.com';
 
-          $mail->AddCC('marketing.directo@splittel.com');
+          $mail->AddAddress('marketing.directo@splittel.com'); // FROM 
 
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
-           $mail->AddBCC('ramon.olea@splittel.com');
+           $mail->AddBCC('ramon.olea@splittel.com'); //BCC COPIA OCULTA
          
       
           $mail->MsgHTML($mensaje);
