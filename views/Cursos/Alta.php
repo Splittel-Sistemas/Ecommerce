@@ -106,11 +106,11 @@
                   <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Empresa: <strong class="text-danger"></strong></label>
+                  <label class="text-uppercase">Empresa: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Empresa" name="Empresa">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Puesto: <strong class="text-danger"></strong></label>
+                  <label class="text-uppercase">Puesto: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="text" id="Puesto" name="Puesto" maxlength="4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
@@ -127,8 +127,8 @@
                   <input class="form-control form-control-2" type="email" id="CorrePersonal" name="CorrePersonal">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label class="text-uppercase">Whats App personal:<strong class="text-danger"></strong></label>
-                  <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp">
+                  <label class="text-uppercase">WhatsApp personal:<strong class="text-danger">*</strong></label>
+                  <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp" onkeyup="this.value=Numeros(this.value)">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
 
