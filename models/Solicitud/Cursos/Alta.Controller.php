@@ -526,7 +526,7 @@ class SolicitudCursosController
                     <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $_POST['Telefono'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Empresarial: </strong>' . $_POST['CorreoEmpresarial'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Personal: </strong>' . $_POST['CorrePersonal'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Whats App personal : </strong>' . $_POST['Whatsapp'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>WhatsApp personal : </strong>' . $_POST['Whatsapp'] . '</p>
 
                    
 
