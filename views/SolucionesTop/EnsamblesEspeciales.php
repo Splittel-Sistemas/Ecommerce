@@ -290,14 +290,15 @@
 
     <div class="col-lg-12 text-center">
       <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x"> </h6>
-      <h6 class="text-muted text-center text-normal ">Nuestros asesores están listos para atender tus dudas. Si deseas más información sobre nuestro servicio de ensambles a la medida contacta a tu ejecutivo de cuentas o déjanos tus datos en el siguiente formulario. </h6>
-      <hr class="margin-bottom-1x margin-top-2x">
+      <h6 class="text-muted text-center text-normal ">Nuestros asesores están listos para atender tus dudas. Si deseas más información sobre nuestro servicio de ensambles a la medida contacta a tu ejecutivo de cuentas o haz clic en el siguiente botón. </h6>
+   
+      <!--  
+           <hr class="margin-bottom-1x margin-top-2x">
       <form id="form-cursos">
         <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
         <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
         <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="SolucionesTop">
-        <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="Ensambles Especiales">
-        <div class="row">
+        <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="Ensambles Especiales"> <div class="row">
           <div class="col-sm-6 form-group">
             <label for="validationCustom04">Nombre</label>
             <input class="form-control cursos" type="text" name="Nombre" id="Nombre" required>
@@ -317,10 +318,15 @@
             <label>Telefono</label>
             <input class="form-control cursos" type="text" name="Telefono" id="Telefono" required>
           </div>
-        </div>
+        </div> 
         <button type="button" class="btn btn-primary" onclick="EmailCursos(this)">Enviar</button>
         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-      </form>
+      </form>-->
+      <br>
+      <a style="text-decoration:none" target="_blank"  href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20ENSAMBLES%20ESPECIALES">
+        <img class="img-responsive" src="../../public/images/img_spl/transformacion/boton-solicita-maas-información.png" style="width:40%;height:40%;">
+
+      </a>
     </div>
   </div>
 
