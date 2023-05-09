@@ -24,19 +24,25 @@
             <?php endforeach ?>
             </ul>
           </li>
-         <!--  <li class="has-children <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
-            <span><a href="../Soluciones/">Soluciones</a></span>
-          </li> -->
+         
 
           <li class="has-children">
             <span><a href="#">Soluciones Top</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
-               <li><a href="../SolucionesTop/EnsamblesEspeciales.php">Ensambles Especiales</a></li>
-            <!--    <li><a href="../Capacitaciones/2-insider">INSIDER</a></li> 
-               <li><a href="../Capacitaciones/3-develop">DEVELOP</a></li> 
-               <li><a href="../Capacitaciones/4-partners">CERTIFICACIÓN OPTRONICS</a></li>  -->
-          </ul>
-          </li>
+           <?php
+            $SolucionesTopController = new SolucionesTopController();
+            $SolucionesTopController->filter = "WHERE activo = 'si' ";
+            $SolucionesTopController->order = "";
+            $responseSolucionesTop = $SolucionesTopController->Get();
+            foreach ($responseSolucionesTop->records as $SolucionesTop  => $row) :
+            ?>
+
+             <li>
+               <a href="../<?php echo $row->Ruta;  ?>"><?php echo $row->Nombre; ?></a>
+             </li>
+           <?php endforeach ?>
+         </ul>
+       </li>
           <!--
           <li class="has-children">
             <span>

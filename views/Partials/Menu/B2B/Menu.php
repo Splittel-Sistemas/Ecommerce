@@ -105,39 +105,25 @@
             </li>
           </ul>
         </li>
+      
+       
         <li class="has-submenu <?php if (trim($path) == "SolucionesTop") { ?>active<?php } ?>">
-         <a >Soluciones Top</a> <!-- href="../SolucionesTop/" -->
+         <a href="#">Soluciones Top</a>
          <ul class="sub-menu">
-           <li class="has-submenu <?php if (trim($path) == "SolucionesTop/EnsamblesEspeciales.php") { ?>active<?php } ?>">
-             <a href="../SolucionesTop/EnsamblesEspeciales.php">Ensambles Especiales</a>
-           </li>
+           <?php
+            $SolucionesTopController = new SolucionesTopController();
+            $SolucionesTopController->filter = "WHERE activo = 'si' ";
+            $SolucionesTopController->order = "";
+            $responseSolucionesTop = $SolucionesTopController->Get();
+            foreach ($responseSolucionesTop->records as $SolucionesTop  => $row) :
+            ?>
+
+             <li>
+               <a href="../<?php echo $row->Ruta;  ?>"><?php echo $row->Nombre; ?></a>
+             </li>
+           <?php endforeach ?>
          </ul>
        </li>
-       <!--  <li class="has-submenu <?php if(trim($path) == "EnsamblesEspeciales"){?>active<?php }?>">
-          <a href="../EnsamblesEspeciales/">Ensambles Especiales</a> 
-        </li>
-        <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
-          <a href="../Soluciones/">Soluciones</a>
-        </li> -->
-       
-        <!--
-        <li class="has-submenu <?php if(trim($path) == "Soluciones"){?>active<?php }?>">
-          <a href="#">Soluciones</a> 
-            <ul class="sub-menu">
-            <?php 
-              $SolucionesController = new SolucionesController();
-              $SolucionesController->filter = "WHERE activo = 'si' ";
-              $SolucionesController->order = "";
-              $responseSoluciones = $SolucionesController->get(false); 
-
-              foreach ($responseSoluciones->records as $Soluciones): ?>
-              <li>
-                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
-              </li>
-            <?php endforeach ?> 
-            </ul>
-        </li>
-              -->
         <!--
         <li class="has-submenu <?php if(trim($path) == "Cursos"){?>active<?php }?>">
           <a href="#">Cursos</a>

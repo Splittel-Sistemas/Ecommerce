@@ -31,37 +31,25 @@
             <span><a href="../Soluciones/">Soluciones</a></span>
           </li> -->
 
+     
+
           <li class="has-children">
             <span><a href="#">Soluciones Top</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
-               <li><a href="../SolucionesTop/EnsamblesEspeciales.php">Ensambles Especiales</a></li>
-            <!--    <li><a href="../Capacitaciones/2-insider">INSIDER</a></li> 
-               <li><a href="../Capacitaciones/3-develop">DEVELOP</a></li> 
-               <li><a href="../Capacitaciones/4-partners">CERTIFICACIÓN OPTRONICS</a></li>  -->
-          </ul>
-          </li>
+           <?php
+            $SolucionesTopController = new SolucionesTopController();
+            $SolucionesTopController->filter = "WHERE activo = 'si' ";
+            $SolucionesTopController->order = "";
+            $responseSolucionesTop = $SolucionesTopController->Get();
+            foreach ($responseSolucionesTop->records as $SolucionesTop  => $row) :
+            ?>
 
-
-          <!--
-          <li class="has-children">
-            <span>
-              <a href="#">Soluciones</a><span class="sub-menu-toggle"></span>
-            </span>
-            <ul class="slideable-submenu">
-            <?php 
-              $SolucionesController = new SolucionesController();
-              $SolucionesController->filter = "WHERE activo = 'si' ";
-              $SolucionesController->order = "";
-              $responseSoluciones = $SolucionesController->get(false); 
-
-              foreach ($responseSoluciones->records as $Soluciones): ?>
-              <li>
-                <a  href="../Soluciones/<?php echo $Soluciones->SolucionesKey;?>-<?php echo url_amigable($Soluciones->Descripcion);?>"><?php echo $Soluciones->Descripcion;?></a>
-              </li>
-              <?php endforeach ?> 
-            </ul>
-          </li>
-              -->
+             <li>
+               <a href="../<?php echo $row->Ruta;  ?>"><?php echo $row->Nombre; ?></a>
+             </li>
+           <?php endforeach ?>
+         </ul>
+       </li>
           <!--
           <li class="has-children <?php if(trim($path) == "Cursos"){?>active<?php }?>">
             <span><a href="#">Cursos</a><span class="sub-menu-toggle"></span></span>

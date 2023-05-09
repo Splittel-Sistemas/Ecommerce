@@ -6,6 +6,7 @@ if (!class_exists("CategoriaController")) {
 if (!class_exists("SolucionesController")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Soluciones/Soluciones.Controller.php';
 }
+
 if (!class_exists("SubcategoriasController")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Subcategorias/Subcategorias.Controller.php';
 }
@@ -14,6 +15,9 @@ if (!class_exists("ContactoControlller")) {
 }
 if (!class_exists("SubmenuController")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Submenu/Submenu.Controller.php';
+}
+if (!class_exists("SolucionesTopController")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/SolucionesTop/SolucionesTop.Controller.php';
 }
 # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
 if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
