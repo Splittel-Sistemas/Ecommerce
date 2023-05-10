@@ -70,10 +70,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono1_img ?>"></a>
 
               </h6>
-              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
-                 <?= $row->Texto_icono1 ?>
-
-              </p>
+              
             </div>
            
 
@@ -83,10 +80,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
-                 <?= $row->Texto_icono2 ?>
-
-              </p>
+             
             </div>
 
             <div class="col-lg-2 col-md-2 order-md-2">
@@ -95,10 +89,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
-                 <?= $row->Texto_icono3 ?>
-
-              </p>
+              
             </div>
 
             <div class="col-lg-2 col-md-2 order-md-2">
@@ -107,10 +98,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono4_img ?>"></a>
 
               </h6>
-              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
-                 <?= $row->Texto_icono4 ?>
-
-              </p>
+              
             </div>
 
             <div class="col-lg-2 col-md-2 order-md-2">
@@ -119,10 +107,10 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono5_img ?>"></a>
 
               </h6>
-              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
-                 <?= $row->Texto_icono5 ?>
+              <!-- <p class=" opacity-75 " style="font-size: 13px;width: 200px;">#$row->Texto_icono5 
+                 
 
-              </p>
+              </p> -->
             </div>
             <div class="col-lg-1 col-md-1 order-md-2">
             </div>
