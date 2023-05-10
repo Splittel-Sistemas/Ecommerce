@@ -70,7 +70,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono1_img ?>"></a>
 
               </h6>
-              <p class="text-center  opacity-75 ">
+              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
                  <?= $row->Texto_icono1 ?>
 
               </p>
@@ -83,7 +83,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <p class="text-center  opacity-75 ">
+              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
                  <?= $row->Texto_icono2 ?>
 
               </p>
@@ -95,7 +95,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <p class="text-center  opacity-75 ">
+              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
                  <?= $row->Texto_icono3 ?>
 
               </p>
@@ -103,11 +103,11 @@
 
             <div class="col-lg-2 col-md-2 order-md-2">
 
-              <h6 class="text-muted text-center text-normal ">
+              <h6 class="text-muted  text-normal ">
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono4_img ?>"></a>
 
               </h6>
-              <p class="text-center  opacity-75 ">
+              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
                  <?= $row->Texto_icono4 ?>
 
               </p>
@@ -119,7 +119,7 @@
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Icono5_img ?>"></a>
 
               </h6>
-              <p class="text-center  opacity-75 ">
+              <p class=" opacity-75 " style="font-size: 13px;width: 200px;">
                  <?= $row->Texto_icono5 ?>
 
               </p>
@@ -230,35 +230,43 @@
 
             <!-- PRODUCTOS -->
             <div class="col-lg-3 col-md-3 order-md-2">
+            <a href=" <?= $row->j1_link ?>" style="color: black;text-decoration: none;" target="_blank">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/jumpers/" . $row->J1_img ?>"></a>
 
               </h6>
+              </a>
 
             </div>
             <div class="col-lg-3 col-md-3 order-md-2">
+            <a href=" <?= $row->j2_link ?>" style="color: black;text-decoration: none;" target="_blank">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/jumpers/" . $row->J2_img ?>"></a>
 
               </h6>
+              </a>
 
             </div>
             <div class="col-lg-3 col-md-3 order-md-2">
+            <a href=" <?= $row->j3_link ?>" style="color: black;text-decoration: none;" target="_blank">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/jumpers/" . $row->J3_img ?>"></a>
 
               </h6>
+              </a>
 
             </div>
             <div class="col-lg-3 col-md-3 order-md-2">
+            <a href=" <?= $row->j4_link ?>" style="color: black;text-decoration: none;" target="_blank">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/jumpers/" . $row->J4_img ?>"></a>
 
               </h6>
+              </a>
 
             </div>
             <!-- BOTON -->
@@ -268,7 +276,7 @@
                 <?= $row->Texto3 ?>
               </h6>
 
-              <h6 class="text-muted text-center text-normal margin-top-3x">
+              <h6 class="text-muted text-center text-normal margin-top-1x">
                 <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola! Me gustario obtener informacion sobre las soluciones"><img src="../../public/images/img_spl/solucionestop/boton/Boton.png"></a>
               </h6>
 

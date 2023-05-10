@@ -35,6 +35,10 @@ class SolucionesTop
   public $J4_img;
   public $Texto3;
   public $Activo;
+  public $j1_link;
+  public $j2_link;
+  public $j3_link;
+  public $j4_link;
 
 
 
@@ -94,7 +98,10 @@ class SolucionesTop
         $this->J4_img  =$row->j4_img;
         $this->Texto3  =$row->texto3;
         $this->Activo  =$row->activo;
-
+        $this->j1_link  =$row->j1_link;
+        $this->j2_link  =$row->j2_link;
+        $this->j3_link  =$row->j3_link;
+        $this->j4_link  =$row->j4_link;
         $data = true;
       }
       return $data;
@@ -146,6 +153,10 @@ class SolucionesTop
         $SolucionesTop->J4_img  =$row->j4_img;
         $SolucionesTop->Texto3  =$row->texto3;
         $SolucionesTop->Activo  =$row->activo;
+        $SolucionesTop->j1_link  =$row->j1_link;
+        $SolucionesTop->j2_link  =$row->j2_link;
+        $SolucionesTop->j3_link  =$row->j3_link;
+        $SolucionesTop->j4_link  =$row->j4_link;
         $data[] = $SolucionesTop;
       }
       unset($SolucionesTop);
