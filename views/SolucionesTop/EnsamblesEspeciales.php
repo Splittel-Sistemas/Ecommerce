@@ -324,7 +324,7 @@
       </form>-->
       <br>
       <a style="text-decoration:none" target="_blank"  href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20ENSAMBLES%20ESPECIALES">
-        <img class="img-responsive" src="../../public/images/img_spl/transformacion/boton-solicita-maas-información.png" style="width:40%;height:40%;">
+        <img class="img-responsive" src="../../public/images/img_spl/transformacion/boton-solicita-maas-información.png" style="width:40%;height:40%;" alt="">
 
       </a>
     </div>
@@ -332,7 +332,7 @@
 
   <div class="col-lg-12 text-center">
 
-    <img class="img-responsive" src="../../public/images/img_spl/transformacion/24-Iso.jpg" style="width:70%;height:50%;">
+    <img class="img-responsive" src="../../public/images/img_spl/transformacion/24-Iso.jpg" style="width:70%;height:50%;" alt="">
 
 
   </div>
