@@ -34,6 +34,7 @@ class SolucionesTop
   public $j2_link;
   public $j3_link;
   public $j4_link;
+  public $bannerlink;
 
 
 
@@ -92,6 +93,8 @@ class SolucionesTop
         $this->j2_link  =$row->j2_link;
         $this->j3_link  =$row->j3_link;
         $this->j4_link  =$row->j4_link;
+        $this->bannerlink  =$row->bannerlink;
+
         $data = true;
       }
       return $data;
@@ -142,6 +145,8 @@ class SolucionesTop
         $SolucionesTop->j2_link  =$row->j2_link;
         $SolucionesTop->j3_link  =$row->j3_link;
         $SolucionesTop->j4_link  =$row->j4_link;
+        $SolucionesTop->bannerlink  =$row->bannerlink;
+
         $data[] = $SolucionesTop;
       }
       unset($SolucionesTop);

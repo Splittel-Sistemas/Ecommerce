@@ -118,18 +118,20 @@
 
             <!-- BANNER 3-->
             <div class="col-lg-12 col-md-12 order-md-2 margin-top-2x">
+            <a href=" <?= $row->bannerlink ?>" style="color: black;text-decoration: none;"target="_blank">
 
-              <div class="gallery-wrapper">
-                <div class="gallery-item">
+              <div class="">
+                <div class="">
                   <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner3 ?>" alt="soluciones">
                   <span class="caption"><?php //echo $response->titulo;
                                         ?></span>
                 </div>
               </div>
+              </a>
 
             </div>
-
-
+          
+            
 
             <!-- APLICACIONES -->
             <div class="col-lg-12 col-md-8 order-md-2">
