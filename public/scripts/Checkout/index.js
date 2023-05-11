@@ -27,9 +27,10 @@ var datosViewResumenCheckoutPedido = function () {
   let checkDatosEnvio = getChecked(".datosEnvio");
   let checkDatosFacturacion = getChecked(".datosFacturacion");
   let check = document.getElementById("check");
-  
+
   let Paqueteria = document.getElementById("paqueteria");
   let pagoBanco = document.getElementById("pagoBanco");
+  let ClienteTipo = $("#tipodecliente").val();
 
   if (document.getElementById("lineaCredito")) {
     lineaCredito = document.getElementById("lineaCredito").checked;
@@ -66,24 +67,22 @@ var datosViewResumenCheckoutPedido = function () {
         document.getElementById(
           "datosEnvio-direccion-" + checkDatosEnvio
         ).innerHTML;
-        document.getElementById("resumen-datosEnvio-telefono").innerHTML =
-        document.getElementById(
-          "datosEnvio-telefono-" + checkDatosEnvio
-        ).value;
+      document.getElementById("resumen-datosEnvio-telefono").innerHTML =
+        document.getElementById("datosEnvio-telefono-" + checkDatosEnvio).value;
+
+      if (ClienteTipo == "B2B") {
+        console.log(ClienteTipo);
+        document.getElementById("resumen-datosEnvio-nombre").innerHTML =
+          document.getElementById("datosEnvio-nombre-" + checkDatosEnvio).value;
+
         document.getElementById("resumen-datosEnvio-telefono2").innerHTML =
-        document.getElementById(
-          "datosEnvio-telefono-" + checkDatosEnvio
-        ).value;
-      document.getElementById("resumen-datosEnvio-nombre").innerHTML =
-        document.getElementById(
-          "datosEnvio-nombre-" + checkDatosEnvio
-        ).value;
+          document.getElementById(
+            "datosEnvio-telefono-" + checkDatosEnvio
+          ).value;
 
         document.getElementById("resumen-datosEnvio-correo").innerHTML =
-        document.getElementById(
-          "datosEnvio-correo-" + checkDatosEnvio
-        ).value;
-        
+          document.getElementById("datosEnvio-correo-" + checkDatosEnvio).value;
+      }
       document.getElementById("resumen-paqueteria").innerHTML =
         check.value + Paqueteria.value;
 
@@ -150,7 +149,7 @@ var addViewCheckout = function (Elem) {
         return false;
       }
     }
-  /*   if ($(".datosEnvioTelefono")[0]) {
+    /*   if ($(".datosEnvioTelefono")[0]) {
       if ($(".datosEnvioTelefono")[0].value == "") {
         toastAlert(
           "danger",
@@ -252,8 +251,8 @@ var facturacionBb2MXP = function (Elem) {
   if (Elem.getAttribute("cliente") == "B2B") {
     if (Elem.value == "MXP") {
       if (document.getElementById("credito-cliente-b2b"))
-            document.getElementById("credito-cliente-b2b").style.display = "none";
-       /*    validateCreditAvailable(Elem); */
+        document.getElementById("credito-cliente-b2b").style.display = "none";
+      /*    validateCreditAvailable(Elem); */
       /*   document.getElementById("credito-cliente-b2b").style.display = "block"; */
       if (document.getElementById("lineaCredito"))
         document.getElementById("lineaCredito").checked = false;
@@ -312,8 +311,10 @@ var validateCreditAvailable = function () {
     success: function (response) {
       $("#exampleModalScrollable").modal("hide");
 
+      //if (ClienteTipo == "B2B") {
       document.getElementById("monedaPagoMXN").disabled = false;
       document.getElementById("CreditValid").innerHTML = response;
+      //}
     },
   });
 };

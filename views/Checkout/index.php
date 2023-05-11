@@ -86,6 +86,8 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         </div>
       </div>
     </div>
+    <input type="hidden" value="<?= $_SESSION['Ecommerce-ClienteTipo']?>" id="tipodecliente">
+
     <!-- Modal -->
     <div class="modal fade" id="modal-datos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
