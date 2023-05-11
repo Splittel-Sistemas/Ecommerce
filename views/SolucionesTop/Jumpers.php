@@ -260,7 +260,7 @@
 
             </div>
             <!-- BOTON -->
-            <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x">
+            <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
 
               <h6 class="text-muted text-center text-normal ">
                 <?= $row->Texto3 ?>
