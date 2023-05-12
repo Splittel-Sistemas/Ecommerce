@@ -165,7 +165,8 @@
 
                 <div class="col-sm-12 col-md-12 form-group">
                   <label>
-                    <strong class="text-danger"></strong><p id="nombreR"> </p>
+                    <strong class="text-danger"></strong>
+                    <p id="nombreR"> </p>
                   </label>
                   <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
                 </div>
@@ -356,42 +357,42 @@
               <form class="row">
                 <div class="col-sm-12 col-md-6 form-group" id="documento1">
                   <strong class="text-danger">*</strong><label>Escritura constitutiva y estatutos vigentes </label>
-                  <input class="form-control form-control-2" type="file" id="file">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file" >
                 </div>
                 <div class="col-sm-12 col-md-6 form-group" id="documento2">
                   <strong class="text-danger">*</strong><label>Poder del representante legal </label>
-                  <input class="form-control form-control-2" type="file" id="file2">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file2">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Identificación oficial del representante legal </label>
-                  <input class="form-control form-control-2" type="file" id="file3">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file3">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Alta en Hacienda y RFC </label>
-                  <input class="form-control form-control-2" type="file" id="file4">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Comprobante de domicilio (No mayor a 3 meses) </label>
-                  <input class="form-control form-control-2" type="file" id="file5">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file5">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Estados Financieros de los últimos 3 meses (Balance General y Estado de Resultados) desglosados por mes, para ver como cerro cada uno y firmados</label>
-                  <input class="form-control form-control-2" type="file" id="file6">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file6">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Estados de Cuenta bancarios de los últimos 3 meses (Solo Carátula) con total de depositos y retiros visibles </label>
-                  <input class="form-control form-control-2" type="file" id="file7">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file7">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <strong class="text-danger">*</strong><label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <br> <a href="../../public/images/img_spl/ficrece/ADM-FOR-520.doc">Descarga aqui.</a></label> 
-                  <input class="form-control form-control-2" type="file" id="file8">
+                  <strong class="text-danger">*</strong><label>Autorización para solicitar reportes de crédito ADM-FOR-520 Rev00 <br> <a href="../../public/images/img_spl/ficrece/ADM-FOR-520.doc">Descarga aqui.</a></label>
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file8">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
                   <strong class="text-danger">*</strong><label>Opinión de cumplimiento</label>
-                  <input class="form-control form-control-2" type="file" id="file9">
+                  <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file9">
                 </div>
                 <div class="col-sm-12">
-                  <button type="button" id="botonenviar"  class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Solicitud</button>
+                  <button type="button" id="botonenviar" class="btn btn-primary float-right" onclick="EnviarSolicitud()">Enviar Solicitud</button>
                 </div>
               </form>
             </div>

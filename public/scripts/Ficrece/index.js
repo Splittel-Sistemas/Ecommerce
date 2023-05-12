@@ -1,3 +1,47 @@
+
+function validarArchivo(input) {
+  const MAXIMO_TAMANIO_BYTES = 5000000; // 1MB = 1 millón de bytes
+  var fileName = input.files[0].name;
+  var fileNameWithoutExtension = fileName.split(".")[1];
+  var fileExtension = fileName.split(".").pop();
+
+  var allowedExtensions = /(jpg|jpeg|png|gif|pdf)$/i;
+  if (!allowedExtensions.exec(fileNameWithoutExtension)) {
+    templateAlert(
+      "danger",
+      "Error",
+      "El nombre del archivo contiene caracteres no permitidos. Por favor, cambie de nombre al archivo",
+      "topCenter",
+      ""
+    );
+    input.value = "";
+    input.classList.add("is-invalid");
+  } else {
+    const archivo = input.files[0];
+    if (archivo.size > MAXIMO_TAMANIO_BYTES) {
+      const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
+      templateAlert(
+        "danger",
+        "",
+        `El tamaño máximo es ${tamanioEnMb} MB`,
+        "topCenter",
+        ""
+      );
+      input.value = "";
+      input.classList.add("is-invalid");
+    } else {
+      input.classList.add("is-valid");
+    }
+  }
+}
+
+var fileInputs = document.querySelectorAll("input[type='file']");
+fileInputs.forEach(function (input) {
+  input.addEventListener("change", function () {
+    input.classList.remove("is-valid", "is-invalid");
+    validarArchivo(input);
+  });
+});
 var EnviarSolicitud = function () {
   $("#botonenviar").hide();
   var fda = new FormData();
@@ -32,8 +76,6 @@ var EnviarSolicitud = function () {
   fda.append("Ciudad3", $("#Ciudad3").val());
   fda.append("Telefono3", $("#Telefono3").val());
   fda.append("MontoCredito", $("#MontoCredito").val());
- 
-
 
   var checkRadio = document.querySelector('input[name="Plazo"]:checked');
 
@@ -50,24 +92,22 @@ var EnviarSolicitud = function () {
   fda.append("PERSONA", checkPERSONA.value);
 
   if (checkPERSONA.value != "MORAL") {
-    var file_data = '';
+    var file_data = "";
     fda.append("file", file_data);
-  
-    var file_data = '';
+
+    var file_data = "";
     fda.append("file2", file_data);
     fda.append("Nacionalidad", "");
     fda.append("LuNaci", "");
-
   } else {
     var file_data = $("#file").prop("files")[0];
     fda.append("file", file_data);
-  
+
     var file_data = $("#file2").prop("files")[0];
     fda.append("file2", file_data);
     fda.append("Nacionalidad", $("#Nacionalidad").val());
     fda.append("LuNaci", $("#LuNaci").val());
   }
- 
 
   var file_data = $("#file3").prop("files")[0];
   fda.append("file3", file_data);
@@ -95,18 +135,17 @@ var EnviarSolicitud = function () {
     async: false,
     cache: false,
     success: function (response) {
-      
       if (!response.error) {
         $("#botonenviar").show();
 
-          templateAlert(
+        templateAlert(
           "success",
           "Enviado",
           "La solicitud ha sido enviada",
           "center",
           ""
         );
-         GlobalCloseModal("modal-ficrece");
+        GlobalCloseModal("modal-ficrece");
         window.location.href = "Ficrece.php";
       } else {
         $("#botonenviar").show();
@@ -171,13 +210,9 @@ var ListarMensajes = function (PreguntaKey) {
 var addViewCheckout = function (Elem) {
   let number = Elem.getAttribute("number");
 
-
-
-
-
   $(".step-title").removeClass("completado").find("i:first").remove();
   $(".process").removeClass("active");
- /*  document.getElementById("process-" + number).classList.add("active"); */
+  /*  document.getElementById("process-" + number).classList.add("active"); */
 
   $(".process").each(function (index, el) {
     if (el.getAttribute("number") < number) {
@@ -187,20 +222,18 @@ var addViewCheckout = function (Elem) {
 
   $(".completado").prepend('<i class="icon-check-circle"></i>');
   $(".PartialCheckout").css("display", "none");
- 
-
 };
-function Numeros(string){//Solo numeros
-  var out = '';
-  var filtro = '1234567890';//Caracteres validos
+function Numeros(string) {
+  //Solo numeros
+  var out = "";
+  var filtro = "1234567890"; //Caracteres validos
 
-  //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
-  for (var i=0; i<string.length; i++)
-     if (filtro.indexOf(string.charAt(i)) != -1) 
-           //Se añaden a la salida los caracteres validos
-     out += string.charAt(i);
+  //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos
+  for (var i = 0; i < string.length; i++)
+    if (filtro.indexOf(string.charAt(i)) != -1)
+      //Se añaden a la salida los caracteres validos
+      out += string.charAt(i);
 
   //Retornar valor filtrado
   return out;
-
-} 
+}
