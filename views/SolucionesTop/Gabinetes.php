@@ -68,7 +68,7 @@
                 <strong>Gabinetes</strong>
               </h4>
             </div>
-            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
@@ -99,7 +99,7 @@
 
             </div>
 
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono4_img ?>" alt="gabinetes"></a>
@@ -108,7 +108,7 @@
 
             </div>
 
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted  text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono5_img ?>" alt="gabinetes"></a>
@@ -124,7 +124,7 @@
               </h4>
             </div>
 
-            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
@@ -135,7 +135,7 @@
               </div>
             </div>
             <br>
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-7.png" ?>" alt="gabinetes"></a>
@@ -145,7 +145,7 @@
             </div>
 
 
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-8.png" ?>" alt="gabinetes"></a>
@@ -154,7 +154,7 @@
 
             </div>
 
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-9.png" ?>" alt="gabinetes"></a>
@@ -164,7 +164,7 @@
 
             </div>
 
-            <div class="col-lg-6 col-md-6 order-md-2">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted  text-normal ">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-10.png" ?>" alt="gabinetes"></a>
@@ -275,7 +275,7 @@
               </h6>
 
             </div>
-            <div class="col-md-6 offset-md-3 order-md-2">
+            <div class="col-md-6 offset-md-3 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7.png"  ?>"></a>
