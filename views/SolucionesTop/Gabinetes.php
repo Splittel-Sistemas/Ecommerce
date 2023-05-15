@@ -253,7 +253,7 @@
             <div class="col-lg-6 col-md-6 order-md-2">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5"  ?>"></a>
+                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
                 <br>
                 <h5 class="text-center text-muted opacity-75 margin-top-1x">
                   <strong>Redes de telecomunicaciones</strong>
@@ -265,7 +265,7 @@
             <div class="col-lg-6 col-md-6 order-md-2">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-6" ?>"></a>
+                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-6.png" ?>"></a>
                 <br>
 
                 <h5 class="text-center text-muted opacity-75 margin-top-1x">
@@ -278,7 +278,7 @@
             <div class="col-md-6 offset-md-3 order-md-2">
 
               <h6 class="text-muted text-center text-normal margin-top-2x">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7"  ?>"></a>
+                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7.png"  ?>"></a>
                 <br>
 
                 <h5 class="text-center text-muted opacity-75 margin-top-1x">
