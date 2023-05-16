@@ -90,7 +90,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
 
             <div class="gallery-wrapper">
               <div class="gallery-item">
@@ -101,7 +101,7 @@
           </div>
           <br>
 
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x" style="padding-top: 20px;">
 
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono2_img ?>" alt="gabinetes"></a>
@@ -116,7 +116,7 @@
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono3_img ?>" alt="gabinetes"></a>
             </h6>
-            <h5 class="text-center   margin-top-1x">Sistema de protección <br> y embalaje sin cargo extra</h5>
+            <h5 class="text-center   ">Sistema de protección <br> y embalaje sin cargo extra</h5>
 
           </div>
 
@@ -304,7 +304,7 @@
             </h6>
 
           </div>
-          <div class="col-md-6 offset-md-1 order-md-2  margin-top-2x">
+          <div class="col-md-6 offset-md-3 order-md-2  margin-top-2x">
 
             <h6 class=" text-center text-normal margin-top-2x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7.png"  ?>"></a>
