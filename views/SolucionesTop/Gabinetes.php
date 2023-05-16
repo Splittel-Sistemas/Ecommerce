@@ -336,7 +336,7 @@
           <div class="col-lg-12 col-md-8 order-md-2">
 
             <h6 class=" text-center text-normal ">
-              <img alt="" src="../../public/images/img_spl/solucionestop/Logo/Logo-optronics.png">
+              <img alt="" src="../../public/images/img_spl/solucionestop/gabinetes/logo.png">
             </h6>
 
           </div>
@@ -394,7 +394,7 @@
             </h6>
 
             <h6 class=" text-center text-normal margin-top-1x">
-              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" src="../../public/images/img_spl/solucionestop/Boton/Boton.png"></a>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" src="../../public/images/img_spl/solucionestop/gabinetes/boton.png"></a>
             </h6>
 
 
