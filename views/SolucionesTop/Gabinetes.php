@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <!-- <title> Contacto </title> -->
@@ -63,11 +63,17 @@
             </div>
         </div>
 
-
-        <div class="row justify-content-center" style="background-color: #8080802b;">
-          <!-- Content-->
+      </div>
 
 
+    </div>
+
+
+    <div class="row justify-content-center" style="background-color: #8080802b;">
+      <!-- Content-->
+
+      <div class="col-xl-9 col-lg-8 order-lg-2">
+        <div class="row">
           <!-- ICONOS -->
           <div class="col-lg-12 col-md-8 order-md-2">
 
@@ -75,12 +81,20 @@
               <strong>Gabinetes</strong>
             </h4>
           </div>
-          <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
             <div class="gallery-wrapper">
               <div class="gallery-item">
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono1_img ?>" alt="gabinetes">
-                <h5 class="text-center   margin-top-1x">Puertas configurables según tu espacio</h5>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x">
+
+            <div class="gallery-wrapper">
+              <div class="gallery-item">
+                <h5 class="text-center   margin-top-1x"><b>Puertas configurables </b> <br>para cubrir distintas necesidades <br> de ventilacion y protección</h5>
 
               </div>
             </div>
@@ -97,7 +111,7 @@
           </div>
 
 
-          <div class="col-lg-6 col-md-6 order-md-2">
+          <div class="col-lg-6 col-md-6 order-md-2 ">
 
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono3_img ?>" alt="gabinetes"></a>
@@ -196,9 +210,15 @@
 
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row justify-content-center">
 
+
+    <div class="row justify-content-center">
+
+      <div class="col-xl-9 col-lg-8 order-lg-2">
+        <div class="row">
 
           <!-- APLICACIONES -->
           <div class="col-lg-12 col-md-8 order-md-2">
@@ -273,7 +293,7 @@
           </div>
           <div class="col-lg-6 col-md-6 order-md-2">
 
-            <h6 class=" text-center text-normal margin-top-2x">
+            <h6 class=" text-center text-normal margin-top-4x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-6.png" ?>"></a>
               <br>
 
@@ -374,27 +394,31 @@
             </h6>
 
             <h6 class=" text-center text-normal margin-top-1x">
-              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" src="../../public/images/img_spl/solucionestop/boton/Boton.png"></a>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" src="../../public/images/img_spl/solucionestop/Boton/Boton.png"></a>
             </h6>
 
 
 
 
           </div>
-
-
-
-
-
         </div>
-      <?php endforeach ?>
       </div>
+
+
+
+
+
     </div>
+
+
+   
   </div>
-  <!-- Footer -->
-  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
-  <!-- scripts JS -->
-  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
+
+<?php endforeach ?>
+<!-- Footer -->
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
+<!-- scripts JS -->
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
 
 </body>
 
