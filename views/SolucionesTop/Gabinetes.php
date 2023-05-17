@@ -13,7 +13,7 @@
   <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
 
   <!-- Page Content-->
-  <div class="container padding-top-3x padding-bottom-3x ">
+  <div class="container padding-top-3x  ">
     <div class="row justify-content-center">
       <!-- Content-->
       <div class="col-xl-9 col-lg-8 order-lg-2">
@@ -64,7 +64,7 @@
 
   </div>
 
-  <div class="container padding-top-3x padding-bottom-3x ">
+  <div class="container  padding-bottom-3x ">
 
     <div class="row justify-content-center" style="background: linear-gradient(white 70%,  #ECECEC 30%);">
 
@@ -427,6 +427,7 @@
 
 
 
+  </div>
   </div>
 
 <?php endforeach ?>
