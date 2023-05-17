@@ -107,7 +107,7 @@
 
             <div class=" gallery-wrapper">
             <div class="gallery-item">
-              <h5 class="text-center   margin-top-1x"><b>Puertas configurables </b> <br>para cubrir distintas necesidades <br> de ventilacion y protección</h5>
+              <h5 class="text-center text-muted opacity-75   margin-top-1x"><b>Puertas configurables </b> <br>para cubrir distintas necesidades <br> de ventilacion y protección</h5>
 
             </div>
           </div>
@@ -118,7 +118,7 @@
 
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono2_img ?>" alt="gabinetes"></a>
-            <h5 class="text-center  ">Control del flujo de aire</h5>
+            <h5 class="text-center text-muted opacity-75  ">Control del flujo de aire</h5>
           </h6>
 
         </div>
@@ -129,7 +129,7 @@
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono3_img ?>" alt="gabinetes"></a>
           </h6>
-          <h5 class="text-center   ">Sistema de protección <br> y embalaje sin cargo extra</h5>
+          <h5 class="text-center text-muted opacity-75   ">Sistema de protección <br> y embalaje sin cargo extra</h5>
 
         </div>
 
@@ -137,7 +137,7 @@
 
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono4_img ?>" alt="gabinetes"></a>
-            <h5 class="text-center   margin-top-1x">Estandarización para equipos de 19’’</h5>
+            <h5 class="text-center text-muted opacity-75   margin-top-1x">Estandarización para equipos de 19’’</h5>
           </h6>
 
         </div>
@@ -146,7 +146,7 @@
 
           <h6 class="  text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono5_img ?>" alt="gabinetes"></a>
-            <h5 class="text-center   margin-top-1x">Envío gratuito a toda la república</h5>
+            <h5 class="text-center text-muted opacity-75   margin-top-1x">Envío gratuito a toda la república</h5>
           </h6>
 
         </div>
@@ -163,7 +163,7 @@
           <div class="gallery-wrapper">
             <div class="gallery-item">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-6.png" ?>" alt="gabinetes">
-              <h5 class="text-center   margin-top-1x">Desde 2 hasta 45 UR</h5>
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">Desde 2 hasta 45 UR</h5>
 
             </div>
           </div>
@@ -173,7 +173,7 @@
 
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-7.png" ?>" alt="gabinetes"></a>
-            <h5 class="text-center   margin-top-1x">Configuración especial <br> para paredes</h5>
+            <h5 class="text-center text-muted opacity-75   margin-top-1x">Configuración especial <br> para paredes</h5>
           </h6>
 
         </div>
@@ -184,7 +184,7 @@
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-8.png" ?>" alt="gabinetes"></a>
           </h6>
-          <h5 class="text-center   margin-top-1x">Diferentes capacidades de carga</h5>
+          <h5 class="text-center text-muted opacity-75   margin-top-1x">Diferentes capacidades de carga</h5>
 
         </div>
 
@@ -192,7 +192,7 @@
 
           <h6 class=" text-center text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-9.png" ?>" alt="gabinetes"></a>
-            <h5 class="text-center   margin-top-1x">Cumple con especificaciones <br>
+            <h5 class="text-center text-muted opacity-75   margin-top-1x">Cumple con especificaciones <br>
               EIA-310-E</h5>
           </h6>
 
@@ -202,7 +202,7 @@
 
           <h6 class="  text-normal ">
             <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-10.png" ?>" alt="gabinetes"></a>
-            <h5 class="text-center   margin-top-1x">Carga estática adaptable <br>
+            <h5 class="text-center text-muted opacity-75   margin-top-1x">Carga estática adaptable <br>
               a tus necesidades</h5>
           </h6>
 
@@ -248,7 +248,7 @@
             <h6 class=" text-center text-normal margin-top-2x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
               <br>
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> <?= $row->App1 ?></strong>
 
               </h5>
@@ -261,7 +261,7 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App2_img ?>"></a>
               <br>
 
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> <?= $row->App2 ?></strong>
 
               </h5>
@@ -273,7 +273,7 @@
             <h6 class=" text-center text-normal margin-top-2x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App3_img ?>"></a>
               <br>
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> <?= $row->App3 ?></strong>
 
               </h5>
@@ -286,7 +286,7 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App4_img ?>"></a>
               <br>
 
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> <?= $row->App4 ?></strong>
 
               </h5>
@@ -299,7 +299,7 @@
             <h6 class=" text-center text-normal margin-top-2x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong>Redes de telecomunicaciones</strong>
 
               </h5>
@@ -312,7 +312,7 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-6.png" ?>"></a>
               <br>
 
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> Cableado estructurado</strong>
 
               </h5>
@@ -325,7 +325,7 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7.png"  ?>"></a>
               <br>
 
-              <h5 class="text-center   margin-top-1x">
+              <h5 class="text-center text-muted opacity-75   margin-top-1x">
                 <strong> Distribuciones de alta densidad</strong>
 
               </h5>
