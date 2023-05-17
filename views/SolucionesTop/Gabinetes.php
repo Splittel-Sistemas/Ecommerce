@@ -68,10 +68,10 @@
 
     <div class="row justify-content-center" style="background: linear-gradient(white 70%,  #ECECEC 30%);">
 
-      <div class="col-lg-12 col-md-12 order-md-2 margin-top-2x"  >
+      <div class="col-lg-12 col-md-12 order-md-2 margin-top-2x">
 
-        <div class="gallery-wrapper" >
-          <div class="gallery-item" >
+        <div class="gallery-wrapper">
+          <div class="gallery-item">
             <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="gabinetes">
             <span class="caption"><?php //echo $response->titulo;
                                   ?></span>
