@@ -50,17 +50,7 @@
                 <?= $row->Texto1 ?>
               </p>
             </div>
-            <!-- BANNER 2-->
-            <div class="col-lg-12 col-md-12 order-md-2">
 
-              <div class="gallery-wrapper">
-                <div class="gallery-item">
-                  <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="gabinetes">
-                  <span class="caption"><?php //echo $response->titulo;
-                                        ?></span>
-                </div>
-              </div>
-            </div>
         </div>
 
       </div>
@@ -69,30 +59,54 @@
     </div>
 
 
-    <div class="row justify-content-center" style="background-color: #8080802b;">
-      <!-- Content-->
+    <div class="row justify-content-center">
 
-      <div class="col-xl-9 col-lg-8 order-lg-2">
-        <div class="row">
-          <!-- ICONOS -->
-          <div class="col-lg-12 col-md-8 order-md-2">
+      <div class="col-lg-12 col-md-12 order-md-2">
 
-            <h4 class="text-center  margin-top-2x">
-              <strong>Gabinetes</strong>
-            </h4>
+        <div class="gallery-wrapper">
+          <div class="gallery-item">
+            <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="gabinetes">
+            <span class="caption"><?php //echo $response->titulo;
+                                  ?></span>
           </div>
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
+        </div>
+      </div>
+    </div>
 
-            <div class="gallery-wrapper">
-              <div class="gallery-item">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono1_img ?>" alt="gabinetes">
 
+  </div>
+
+  <section class="bg-secondary padding-top-3x padding-bottom-3x">
+    <div class="container">
+
+
+      <!-- BANNER 2-->
+
+      <div class="row justify-content-center">
+        <!-- Content-->
+
+        <div class="col-xl-9 col-lg-8 order-lg-2">
+          <div class="row">
+            <!-- ICONOS -->
+
+            <div class="col-lg-12 col-md-8 order-md-2">
+
+              <h4 class="text-center  margin-top-2x">
+                <strong>Gabinetes</strong>
+              </h4>
+            </div>
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
+
+              <div class="gallery-wrapper">
+                <div class="gallery-item">
+                  <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/" . $row->Nombre . "/" . $row->Icono1_img ?>" alt="gabinetes">
+
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
 
-            <div class="gallery-wrapper">
+            <div class=" gallery-wrapper">
               <div class="gallery-item">
                 <h5 class="text-center   margin-top-1x"><b>Puertas configurables </b> <br>para cubrir distintas necesidades <br> de ventilacion y protección</h5>
 
@@ -211,9 +225,12 @@
           </div>
         </div>
       </div>
+
+
+
     </div>
-
-
+  </section>
+  <div class="container padding-top-3x padding-bottom-3x ">
 
     <div class="row justify-content-center">
 
@@ -318,7 +335,7 @@
 
           </div>
           <!-- PRODUCTOS DESTACADOS
-            -->
+      -->
           <div class="col-lg-12 col-md-8 order-md-2  margin-top-2x">
 
             <h4 class="text-center   margin-top-2x">
@@ -411,7 +428,7 @@
     </div>
 
 
-   
+
   </div>
 
 <?php endforeach ?>
