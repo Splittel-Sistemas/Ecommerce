@@ -66,7 +66,7 @@
 
   <div class="container  padding-bottom-3x ">
 
-    <div class="row justify-content-center" style="background: linear-gradient(white 70%,  #ECECEC 30%);">
+    <div class="row justify-content-center" style="background: linear-gradient(white 74.5%,  #ECECEC 30%);">
 
       <div class="col-lg-12 col-md-12 order-md-2 margin-top-2x">
 
