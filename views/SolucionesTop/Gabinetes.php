@@ -94,6 +94,21 @@
               <strong>Gabinetes</strong>
             </h4>
           </div>
+        <br>
+
+          <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
+
+        
+            <a target="_blank" href="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/512-513">
+       
+
+              <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Gabinetes/icono-9.png" ?>" alt="gabinetes">
+
+              </a>
+
+          
+        </div>
+        <br>
           <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
             <div class="gallery-wrapper">
@@ -160,13 +175,15 @@
 
         <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
 
-          <div class="gallery-wrapper">
-            <div class="gallery-item">
+        
+            <a target="_blank" href="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/486-487">
+       
+
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-6.png" ?>" alt="gabinetes">
+              </a>
               <h5 class="text-center text-muted opacity-85   margin-top-1x">Desde 2 hasta 45 UR</h5>
 
-            </div>
-          </div>
+            
         </div>
         <br>
         <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
