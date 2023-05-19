@@ -94,21 +94,21 @@
               <strong>Gabinetes</strong>
             </h4>
           </div>
-        <br>
+          <br>
 
           <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
 
-        
+
             <a target="_blank" href="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/512-513">
-       
+
 
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Gabinetes/icono-9.png" ?>" alt="gabinetes">
 
-              </a>
+            </a>
 
-          
-        </div>
-        <br>
+
+          </div>
+          <br>
           <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
             <div class="gallery-wrapper">
@@ -175,15 +175,15 @@
 
         <div class="col-lg-12 col-md-12 order-md-2  margin-top-2x">
 
-        
-            <a target="_blank" href="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/486-487">
-       
 
-              <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-6.png" ?>" alt="gabinetes">
-              </a>
-              <h5 class="text-center text-muted opacity-85   margin-top-1x">Desde 2 hasta 45 UR</h5>
+          <a target="_blank" href="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/486-487">
 
-            
+
+            <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/iconos/Racks/icono-6.png" ?>" alt="gabinetes">
+          </a>
+          <h5 class="text-center text-muted opacity-85   margin-top-1x">Desde 2 hasta 45 UR</h5>
+
+
         </div>
         <br>
         <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
@@ -426,7 +426,7 @@
             </h6>
 
             <h6 class=" text-center text-normal margin-top-1x">
-              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" src="../../public/images/img_spl/solucionestop/Gabinetes/boton.png"></a>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20GABINETES%20Y%20RACKS"><img alt="" width="400" src="../../public/images/img_spl/solucionestop/Gabinetes/boton.png"></a>
             </h6>
 
 
