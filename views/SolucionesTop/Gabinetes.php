@@ -368,7 +368,7 @@
           <div class="col-lg-12 col-md-8 order-md-2">
 
             <h6 class=" text-center text-normal ">
-              <img alt="" width="350" src="../../public/images/img_spl/solucionestop/Gabinetes/logo.png">
+              <img alt="" width="250" src="../../public/images/img_spl/solucionestop/Gabinetes/logo.png">
             </h6>
 
           </div>
