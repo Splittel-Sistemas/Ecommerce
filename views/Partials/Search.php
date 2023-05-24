@@ -37,7 +37,8 @@ if (isset($_POST["Descripcion"])) {
   $like = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
-    if ($e[$i] != "") {
+   
+    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
       $like .= " OR desc_producto LIKE '%" . $e[$i] . "%'";
     }
   }
@@ -45,7 +46,7 @@ if (isset($_POST["Descripcion"])) {
   $like2 = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
-    if ($e[$i] != "") {
+    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
 
       $like2 .= " OR codigo LIKE '%" . $e[$i] . "%' ";
     }
@@ -55,7 +56,7 @@ if (isset($_POST["Descripcion"])) {
   $desc = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
-    if ($e[$i] != "") {
+    if ($e[$i] != "" && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
 
       $desc .= " OR descripcion LIKE '%" . $e[$i] . "%'";
     }
@@ -64,7 +65,6 @@ if (isset($_POST["Descripcion"])) {
   $SubmenuController->filter = "WHERE (descripcion LIKE '%" . $_POST["Descripcion"] . "%' $desc  ) AND activo='si'  ";
   $SubmenuController->order = "LIMIT 6";
   $Subcategoria = $SubmenuController->get();
-  // print_r($Subcategoria->records);
   if ($Subcategoria->count > 0) {
     foreach ($Subcategoria->records as $key => $Subcategoria_) {
       if ($Subcategoria_->nivel == 2) {
