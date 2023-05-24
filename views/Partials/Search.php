@@ -38,7 +38,7 @@ if (isset($_POST["Descripcion"])) {
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
    
-    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
+    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" ) {
       $like .= " OR desc_producto LIKE '%" . $e[$i] . "%'";
     }
   }
@@ -46,7 +46,7 @@ if (isset($_POST["Descripcion"])) {
   $like2 = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
-    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
+    if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" ) {
 
       $like2 .= " OR codigo LIKE '%" . $e[$i] . "%' ";
     }
@@ -56,7 +56,7 @@ if (isset($_POST["Descripcion"])) {
   $desc = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
-    if ($e[$i] != "" && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o") {
+    if ($e[$i] != "" && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA") {
 
       $desc .= " OR descripcion LIKE '%" . $e[$i] . "%'";
     }
