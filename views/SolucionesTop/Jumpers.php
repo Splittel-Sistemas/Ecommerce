@@ -267,7 +267,7 @@
               </h6>
 
               <h6 class="text-muted text-center text-normal margin-top-1x">
-                <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20JUMPERS%20DE%20FIBRA%20%C3%93PTICA"><img alt="" src="../../public/images/img_spl/solucionestop/boton/Boton.png"></a>
+                <a target="_blank" href="<?= $row->Whatslink ?>"><img alt="" src="../../public/images/img_spl/solucionestop/boton/Boton.png"></a>
               </h6>
 
 

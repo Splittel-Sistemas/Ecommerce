@@ -23,7 +23,7 @@ class SolucionesTop
   public $App4;
   public $App4_img;
   public $Texto2;
-  public $Logooptronics;
+  public $Whatslink;
   public $J1_img;
   public $J2_img;
   public $J3_img;
@@ -82,7 +82,7 @@ class SolucionesTop
         $this->App4  =$row->app4;
         $this->App4_img  =$row->app4_img;
         $this->Texto2  =$row->texto2;
-        $this->Logooptronics  =$row->logooptronics;
+        $this->Whatslink  =$row->whatslink;
         $this->J1_img  =$row->j1_img;
         $this->J2_img  =$row->j2_img;
         $this->J3_img  =$row->j3_img;
@@ -134,7 +134,7 @@ class SolucionesTop
         $SolucionesTop->App4  =$row->app4;
         $SolucionesTop->App4_img  =$row->app4_img;
         $SolucionesTop->Texto2  =$row->texto2;
-        $SolucionesTop->Logooptronics  =$row->logooptronics;
+        $SolucionesTop->Whatslink  =$row->whatslink;
         $SolucionesTop->J1_img  =$row->j1_img;
         $SolucionesTop->J2_img  =$row->j2_img;
         $SolucionesTop->J3_img  =$row->j3_img;
