@@ -328,7 +328,7 @@
             </h6>
 
             <h6 class=" text-center text-normal margin-top-1x">
-              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20Canaleta%20Y%20RACKS"><img alt="" width="350" src="../../public/images/img_spl/solucionestop/Canaleta/boton.png"></a>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20Canaletas"><img alt="" width="350" src="../../public/images/img_spl/solucionestop/Canaleta/boton.png"></a>
             </h6>
 
 
