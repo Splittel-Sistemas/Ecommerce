@@ -38,26 +38,24 @@
               <div class="gallery-wrapper">
                 <div class="gallery-item">
                   <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner1 ?>" alt="Canaleta">
-                  <span class="caption"><?php //echo $response->titulo;
-                                        ?></span>
+
                 </div>
               </div>
             </div>
             <!--TEXTO 1-->
-            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="col-lg-12 col-md-12 order-md-2 ">
 
               <p style="text-align: justify;" class="padding-top-1x">
                 <?= $row->Texto1 ?>
               </p>
             </div>
             <!-- BANNER 2-->
-            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
                   <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="soluciones">
-                  <span class="caption"><?php //echo $response->titulo;
-                                        ?></span>
+
                 </div>
               </div>
             </div>
@@ -155,9 +153,9 @@
             </h4>
           </div>
 
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x" style="padding-top: 9px;">
 
-            <h6 class=" text-center text-normal">
+            <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
               <br>
               <h5 class="text-center text-muted    margin-top-1x">
@@ -229,12 +227,10 @@
             </h6>
 
           </div>
-          <div class="col-md-6 offset-md-3 order-md-2  margin-top-2x">
+          <div class="col-md-6 offset-md-3 order-md-2 ">
 
             <h6 class=" text-center text-normal margin-top-2x">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-7.png"  ?>"></a>
-              <br>
-
               <h5 class="text-center text-muted    margin-top-1x">
                 <strong> Centros de datos / cuartos de telecomunicaciones</strong>
 
@@ -257,7 +253,7 @@
           </div>
           <!-- PRODUCTOS DESTACADOS
       -->
-          <div class="col-lg-12 col-md-8 order-md-2  margin-top-2x">
+          <div class="col-lg-12 col-md-8 order-md-2  ">
 
             <h4 class="text-center   margin-top-2x">
               <strong>Selección de productos destacados
