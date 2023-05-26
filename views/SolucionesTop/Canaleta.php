@@ -153,7 +153,7 @@
             </h4>
           </div>
 
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x"  style="padding-top: 9px;">
 
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
