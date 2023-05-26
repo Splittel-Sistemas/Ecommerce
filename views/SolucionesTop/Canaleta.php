@@ -50,7 +50,7 @@
               </p>
             </div>
             <!-- BANNER 2-->
-            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x">
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-1x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
@@ -148,7 +148,7 @@
           <!-- APLICACIONES -->
           <div class="col-lg-12 col-md-8 order-md-2">
 
-            <h4 class="text-center  margin-top-2x">
+            <h4 class="text-center  margin-top-1x">
               <strong>Aplicaciones</strong>
             </h4>
           </div>
