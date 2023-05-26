@@ -45,12 +45,12 @@
             <!--TEXTO 1-->
             <div class="col-lg-12 col-md-12 order-md-2 ">
 
-              <p style="text-align: justify;" class="padding-top-1x">
+              <p style="text-align: justify;">
                 <?= $row->Texto1 ?>
               </p>
             </div>
             <!-- BANNER 2-->
-            <div class="col-lg-12 col-md-12 order-md-2 padding-top-1x">
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
@@ -148,12 +148,12 @@
           <!-- APLICACIONES -->
           <div class="col-lg-12 col-md-8 order-md-2">
 
-            <h4 class="text-center  margin-top-1x">
+            <h4 class="text-center ">
               <strong>Aplicaciones</strong>
             </h4>
           </div>
 
-          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x" style="padding-top: 9px;">
+          <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
