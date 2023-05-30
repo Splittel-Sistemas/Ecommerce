@@ -228,13 +228,13 @@ var addViewCheckout = function (Elem) {
  *
  * @return {number} b - Bar
  */
-document.getElementById("CFDIUser").value = "P01";
+document.getElementById("CFDIUser").value = "G03";
 var showCFDIUser = function (Elem) {
   if (Elem.checked) {
     document.getElementById("CFDIUserB2C").style.display = "block";
     // document.getElementById('alert-datos-facturacion-b2c-requiere-factura').style.display = "block"
   } else {
-    document.getElementById("CFDIUser").value = "P01";
+    document.getElementById("CFDIUser").value = "G03";
     document.getElementById("CFDIUserB2C").style.display = "none";
     // document.getElementById('alert-datos-facturacion-b2c-requiere-factura').style.display = "none"
   }
