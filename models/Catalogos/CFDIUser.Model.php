@@ -22,7 +22,7 @@
      */
     public function Get(){
       try {
-        $SQLSTATEMENT = "SELECT * FROM t08_comprobantes_CFDI ";
+        $SQLSTATEMENT = "SELECT * FROM t08_comprobantes_CFDI where t08_f003 = 'si' ";
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         $data = array(); 
         while ($row = $result->fetch_object()) {
