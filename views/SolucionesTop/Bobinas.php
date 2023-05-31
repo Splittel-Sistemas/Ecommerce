@@ -16,7 +16,7 @@
   <div class="container padding-top-3x  ">
     <div class="row justify-content-center">
       <!-- Content-->
-      <div class="col-xl-9 col-lg-8 order-lg-2">
+      <div class="col-xl-8 col-lg-8 order-lg-2">
 
 
         <?php
@@ -169,7 +169,7 @@
 
     <div class="row justify-content-center">
 
-      <div class="col-xl-9 col-lg-8 order-lg-2">
+      <div class="col-xl-8 col-lg-8 order-lg-2">
         <div class="row">
 
           <!-- APLICACIONES -->
