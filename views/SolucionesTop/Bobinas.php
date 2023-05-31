@@ -50,7 +50,7 @@
               </p>
             </div>
             <!-- BANNER 2-->
-            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x">
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-1x">
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
@@ -74,32 +74,32 @@
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
 
               
-                <h5 style=" font-size : 16px;" class=" text-center text-muted opacity-85 margin-top-1x">Disponibilidad en <br>
+                <h5 style=" font-size : 16px;color:#505050" class=" text-center  opacity-85 margin-top-1x">Disponibilidad en <br>
               <b>diferentes estructuras</b>
               </h5>
 
             </div>
 
 
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
                 Bobinas 100% cobre
 
 
               </h5>
             </div>
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
                 Cableado estructurado certificable
 
 
@@ -113,8 +113,8 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono4_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
-                Excelente rendimiento eléctrico y mecánico
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
+                Excelente rendimiento <br> eléctrico y mecánico
 
 
               </h5>
@@ -122,13 +122,13 @@
 
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
-              <h6 class="text-muted text-center text-normal " >
+              <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
 
               </h6>
 
-              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
-                Continuidad garantizada
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
+                Continuidad garantizada <br>
                 en interior y exterior
 
 
@@ -185,7 +185,7 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
               <br>
-              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+              <h5 class="text-center    margin-top-1x" style="font-size : 16px;color:#505050">
                 <?= $row->App1 ?>
 
               </h5>
@@ -198,7 +198,7 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App2_img ?>"></a>
               <br>
 
-              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+              <h5 class="text-center    margin-top-1x" style="font-size : 16px;color:#505050">
                 <?= $row->App2 ?>
 
               </h5>
@@ -211,7 +211,7 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App3_img ?>"></a>
 
             </h6>
-            <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+            <h5 class="text-center    margin-top-1x" style="font-size : 16px;color:#505050">
               <?= $row->App3 ?>
 
             </h5>
@@ -223,7 +223,7 @@
 
             </h6>
 
-            <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+            <h5 class="text-center    margin-top-1x" style="font-size : 16px;color:#505050">
               <?= $row->App4 ?>
 
             </h5>
@@ -234,7 +234,7 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
-              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+              <h5 class="text-center    margin-top-1x" style="font-size : 16px;color:#505050">
                 Data center
 
               </h5>
