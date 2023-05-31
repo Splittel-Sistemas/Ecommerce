@@ -45,7 +45,7 @@
             <!--TEXTO 1-->
             <div class="col-lg-12 col-md-12 order-md-2 ">
 
-              <p style="text-align: justify;">
+              <p style="text-align: justify;font-size : 14px;">
                 <?= $row->Texto1 ?>
               </p>
             </div>
@@ -54,7 +54,7 @@
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
-                  <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="soluciones">
+                  <img  alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="soluciones">
 
                 </div>
               </div>
@@ -74,7 +74,7 @@
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
 
               
-                <h5 class=" text-center text-muted opacity-85 margin-top-1x">Disponibilidad en <br>
+                <h5 style=" font-size : 16px;" class=" text-center text-muted opacity-85 margin-top-1x">Disponibilidad en <br>
               <b>diferentes estructuras</b>
               </h5>
 
@@ -87,9 +87,9 @@
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong>Bobinas 100% cobre
-                </strong>
+              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+                Bobinas 100% cobre
+
 
               </h5>
             </div>
@@ -99,10 +99,10 @@
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong>Cableado estructurado certificable
+              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+                Cableado estructurado certificable
 
-                </strong>
+
 
               </h5>
             </div>
@@ -113,9 +113,9 @@
                 <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono4_img ?>"></a>
 
               </h6>
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong>Excelente rendimiento eléctrico y mecánico
-                </strong>
+              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+                Excelente rendimiento eléctrico y mecánico
+
 
               </h5>
             </div>
@@ -127,10 +127,10 @@
 
               </h6>
 
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong>Continuidad garantizada
-                  en interior y exterior
-                </strong>
+              <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
+                Continuidad garantizada
+                en interior y exterior
+
 
               </h5>
             </div>
@@ -176,7 +176,7 @@
           <div class="col-lg-12 col-md-8 order-md-2" style="padding-top: -16px;">
 
             <h4 class="text-center ">
-              <strong>Aplicaciones</strong>
+              <strong style="font-size : 20px;color:#54575a">Aplicaciones</strong>
             </h4>
           </div>
 
@@ -185,8 +185,8 @@
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
               <br>
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong> <?= $row->App1 ?></strong>
+              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+                <?= $row->App1 ?>
 
               </h5>
             </h6>
@@ -198,8 +198,8 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App2_img ?>"></a>
               <br>
 
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong> <?= $row->App2 ?></strong>
+              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+                <?= $row->App2 ?>
 
               </h5>
             </h6>
@@ -211,8 +211,8 @@
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App3_img ?>"></a>
 
             </h6>
-            <h5 class="text-center text-muted    margin-top-1x">
-              <strong> <?= $row->App3 ?></strong>
+            <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+              <?= $row->App3 ?>
 
             </h5>
           </div>
@@ -223,8 +223,8 @@
 
             </h6>
 
-            <h5 class="text-center text-muted    margin-top-1x">
-              <strong> <?= $row->App4 ?></strong>
+            <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+              <?= $row->App4 ?>
 
             </h5>
           </div>
@@ -234,8 +234,8 @@
             <h6 class=" text-center text-normal ">
               <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
-              <h5 class="text-center text-muted    margin-top-1x">
-                <strong>Data center</strong>
+              <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
+                Data center
 
               </h5>
             </h6>
@@ -248,12 +248,12 @@
       -->
           <div class="col-lg-12 col-md-8 order-md-2  ">
 
-            <h4 class="text-center   margin-top-2x">
+            <h4 class="text-center   margin-top-2x" style="font-size : 20px;color:#54575a">
               <strong>Selección de productos destacados
               </strong>
             </h4>
 
-            <h6 class=" text-center text-normal ">
+            <h6 class=" text-center text-normal " style="font-size : 16px;color:#505050">
               <?= $row->Texto2 ?>
             </h6>
 
@@ -316,7 +316,7 @@
           <!-- BOTON -->
           <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
 
-            <h6 class=" text-center text-normal ">
+            <h6 class=" text-center text-normal " style="font-size : 14px;color:#505050">
               <?= $row->Texto3 ?>
             </h6>
 
