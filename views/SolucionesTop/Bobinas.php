@@ -54,7 +54,7 @@
 
               <div class="gallery-wrapper">
                 <div class="gallery-item">
-                  <img   alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="soluciones">
+                  <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner2 ?>" alt="soluciones">
 
                 </div>
               </div>
@@ -84,7 +84,7 @@
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
               <h6 class="text-muted text-center text-normal ">
-                <img  width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
+                <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
 
               </h6>
               <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
@@ -96,7 +96,7 @@
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
               <h6 class="text-muted text-center text-normal ">
-                <img  width="300"alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
+                <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
               <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
@@ -109,8 +109,8 @@
 
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
-              <h6 class="text-muted  text-normal ">
-                <img  width="300"alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono4_img ?>"></a>
+              <h6 class="text-muted  text-normal " style="text-align: center;">
+                <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono4_img ?>"></a>
 
               </h6>
               <h5 style="font-size : 16px;color:#505050" class="text-center text-muted    margin-top-1x">
@@ -122,8 +122,8 @@
 
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
-              <h6 class="text-muted text-center text-normal ">
-                <img  width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
+              <h6 class="text-muted text-center text-normal " >
+                <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
 
               </h6>
 
@@ -219,7 +219,7 @@
           <div class="col-lg-6 col-md-6 order-md-2" style="padding-top: 80px;">
 
             <h6 class=" text-center text-normal">
-              <img  width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App4_img ?>"></a>
+              <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App4_img ?>"></a>
 
             </h6>
 
@@ -232,7 +232,7 @@
           <div class="col-lg-6 col-md-6  offset-md-3  order-md-2 margin-top-2x">
 
             <h6 class=" text-center text-normal ">
-              <img  width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
+              <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
               <h5 class="text-center text-muted    margin-top-1x" style="font-size : 16px;color:#505050">
                 Data center
