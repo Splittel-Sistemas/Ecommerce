@@ -63,24 +63,19 @@
 
 
             <!-- VENTAJAS -->
+
+
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono1_img ?>"></a>
 
               </h6>
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
+                Disponibilidad en diferentes estructuras
 
-            </div>
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-4x" ">
-
-              
-                <h5 style=" font-size : 16px;color:#505050" class=" text-center  opacity-85 margin-top-1x">Disponibilidad en <br>
-              <b>diferentes estructuras</b>
               </h5>
-
             </div>
-
-
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
               <h6 class="text-muted text-center text-normal ">
@@ -93,19 +88,7 @@
 
               </h5>
             </div>
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
 
-              <h6 class="text-muted text-center text-normal ">
-                <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
-
-              </h6>
-              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
-                Cableado estructurado certificable
-
-
-
-              </h5>
-            </div>
 
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
@@ -241,7 +224,22 @@
             </h6>
 
           </div>
+          <!-- BANNER 4-->
 
+          <div class="col-lg-12 col-md-8 order-md-2   margin-top-2x text-center">
+            <a href=" <?= $row->bannerlink ?>" style="color: black;text-decoration: none;" target="_blank">
+
+
+            <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/Banner-4.png" ?>" alt="soluciones">
+
+              <br>
+              <h5 class="text-left    margin-top-1x" style="font-size : 16px;color:#505050">
+              Las Redes Certificadas Optronics cuentan con altos estándares de calidad y con el cumplimiento de normas nacionales e internacionales de seguridad y eficiencia. Certifica tus redes con el sistema de cobre de alto rendimiento.
+
+              </h5>
+            </a>
+
+          </div>
 
 
           <!-- PRODUCTOS DESTACADOS
