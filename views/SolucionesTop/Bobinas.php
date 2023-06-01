@@ -96,7 +96,7 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono4_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center   margin-top-1x ">
                 Excelente rendimiento <br> eléctrico y mecánico
 
 
@@ -110,7 +110,7 @@
 
               </h6>
 
-              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-2x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
                 Continuidad garantizada <br>
                 en interior y exterior
 
