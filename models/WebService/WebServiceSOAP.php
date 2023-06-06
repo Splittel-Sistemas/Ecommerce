@@ -31,7 +31,8 @@ class WebService{
      * @param [type] $parameters
      * @return void
      */
-    public function ExecuteSoap($method,$parameters,$json_result = true){
+    public function ExecuteSoap($method, $parameters, $json_result = true)
+    {
         try {
             // ini_set('soap.wsdl_cache_enabled', 0);
             // ini_set('soap.wsdl_cache_ttl', 900);
@@ -41,29 +42,37 @@ class WebService{
             // encryptar contrasena
             $this->WS_Password = $encryp->cadenaEncrypt($this->WS_Password);
             // instacia a soapClient
-            $arrContextOptions=array("ssl"=>array( "verify_peer"=>false, "verify_peer_name"=>false,'crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT));
-            $options = array(
-                'soap_version'=>SOAP_1_1,
-                'exceptions'=>true,
-                'trace'=>1,
-                // 'connection_timeout'=>45,
-                // 'encoding'=>'UTF-8',
-                'httpsocket'=>NULL,
+            $arrContextOptions = [
+                "ssl" => [
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                    'crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT
+                ]
+            ];
+            $options = [
+                'soap_version' => SOAP_1_1,
+                'exceptions' => true,
+                'trace' => 1,
+                'httpsocket' => NULL,
                 'connection_timeout' => 5000,
                 'keep_alive' => true,
-                'cache_wsdl'=>WSDL_CACHE_NONE,
+                'cache_wsdl' => WSDL_CACHE_NONE,
                 'compression' => SOAP_COMPRESSION_DEFLATE | SOAP_COMPRESSION_GZIP,
-                'stream_context' => stream_context_create($arrContextOptions));
+                'stream_context' => stream_context_create($arrContextOptions)
+            ];
             $this->soap_client = new \SoapClient($this->WS_Host, $options);
-            $headerbody = array('UserKey'=>$this->WS_Usuario , 'Password'=>$this->WS_Password,'Society' => $this->WS_Sociedad); 
-
-            //Create Soap Header.        
-            $header = new SOAPHeader($this->WS_Uri, 'Usuario', $headerbody);       
-                   
-            //set the Headers of Soap Client. 
-            $this->soap_client->__setSoapHeaders($header); 
-            // $result = $this->soap_client->GetCustomer($parameters);
-            $result = $this->soap_client->__soapCall($method,$parameters);
+            $headerbody = [
+                'UserKey' => $this->WS_Usuario,
+                'Password' => $this->WS_Password,
+                'Society' => $this->WS_Sociedad
+            ];
+    
+            // Create Soap Header.
+            $header = new \SOAPHeader($this->WS_Uri, 'Usuario', $headerbody);
+    
+            // Set the Headers of Soap Client.
+            $this->soap_client->__setSoapHeaders($header);
+            $result = $this->soap_client->__soapCall($method, $parameters);
             unset($this->soap_client);
             unset($encryp);
             print_r(($json_result));
