@@ -116,10 +116,10 @@
               </h5>
             </div>
 
-            <div class="col-lg-12 col-md-8 order-md-2   margin-top-2x text-center">
+            <div class="col-lg-12 col-md-8 order-md-2    margin-top-2x text-center">
 
               <h6 class="text-muted text-center text-normal ">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
+                <img  width="700" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
 
               </h6>
 
