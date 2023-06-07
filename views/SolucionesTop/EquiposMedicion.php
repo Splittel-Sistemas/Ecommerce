@@ -65,7 +65,7 @@
             <!-- VENTAJAS -->
 
 
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+            <div class="col-lg-6 col-md-6 order-md-2  ">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono1_img ?>"></a>
@@ -76,7 +76,7 @@
 
               </h5>
             </div>
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
+            <div class="col-lg-6 col-md-6 order-md-2 ">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>

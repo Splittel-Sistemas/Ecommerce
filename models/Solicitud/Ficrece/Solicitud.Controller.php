@@ -109,12 +109,12 @@ class SolicitudCController
         $SolicitudCModel->SetLugar($_POST['LuNaci']);
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
-          
+
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
-        /*  print_r($_POST['PERSONA']);
-        exit; */
+         print_r($_POST);
+        exit;
         mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true);
         /*  if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
@@ -238,7 +238,7 @@ class SolicitudCController
       $Email->MailerListTo = ["ramon.olea@splittel.com"];
       $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
-      $Email->MailerBody = $TemplateFicreceError->body($e,$data );
+      $Email->MailerBody = $TemplateFicreceError->body($e, $data);
       $Email->EmailSendEmail();
       unset($Email);
       unset($TemplateFicreceError);

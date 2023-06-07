@@ -1,4 +1,3 @@
-
 function validarArchivo(input) {
   const MAXIMO_TAMANIO_BYTES = 5000000; // 1MB = 1 millón de bytes
   var fileName = input.files[0].name;
@@ -152,14 +151,20 @@ var EnviarSolicitud = function () {
 
         templateAlert("danger", "", response.message, "topRight", "");
       }
-    } ,error: function (xhr, status, error) {
+    },
+    error: function (xhr, status, error) {
       // Handle error cases
       console.error(xhr);
       console.error(status);
       console.error(error);
-      templateAlert("danger", "", error + "", "topRight", "");
+      templateAlert(
+        "danger",
+        "",
+        error + "" + "error al subir la solicitud contacte a su ejecutivo",
+        "topRight",
+        ""
+      );
       $("#botonenviar").show();
-
     },
   });
 };
