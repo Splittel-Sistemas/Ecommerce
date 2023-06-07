@@ -152,6 +152,14 @@ var EnviarSolicitud = function () {
 
         templateAlert("danger", "", response.message, "topRight", "");
       }
+    } ,error: function (xhr, status, error) {
+      // Handle error cases
+      console.error(xhr);
+      console.error(status);
+      console.error(error);
+      templateAlert("danger", "", error + "", "topRight", "");
+      $("#botonenviar").show();
+
     },
   });
 };

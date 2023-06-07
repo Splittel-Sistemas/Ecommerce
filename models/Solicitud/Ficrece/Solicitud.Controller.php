@@ -109,8 +109,7 @@ class SolicitudCController
         $SolicitudCModel->SetLugar($_POST['LuNaci']);
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
-          print_r($_POST);
-        exit;
+          
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
@@ -204,7 +203,8 @@ class SolicitudCController
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-          $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
+          #$Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
+          $Email->MailerListTo = ["ramon.olea@splittel.com"];
           $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);
@@ -216,13 +216,29 @@ class SolicitudCController
         return $ResultSolicitud;
       }
     } catch (Exception $e) {
+      $data = [
+        "NombreSolicitud" => $_POST['NombreSolicitud'],
+        "MontoCredito" => $_POST['MontoCredito'],
+        "Correo" => $_POST['Correo'],
+        "Plazo" => $_POST['Plazo'],
+        "Rfc" => $_POST['Rfc'],
+        "RazonSocial" => $_POST['RazonSocial'],
+        "FormaPago" => $_POST['FormaPago'],
+        "Telefono" => $_POST['Telefono'],
+        "Curp" => $_POST['Curp'],
+        "Observaciones" => $_POST['Observaciones'],
+        "PERSONA" => $_POST['PERSONA']
+
+
+
+      ];
       $Email = new Email();
       $TemplateFicreceError = new TemplateFicreceError();
       $Email->MailerSubject = "SOLICITUD FICRECE ERROR";
       $Email->MailerListTo = ["ramon.olea@splittel.com"];
       $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
-      $Email->MailerBody = $TemplateFicreceError->body($e);
+      $Email->MailerBody = $TemplateFicreceError->body($e,$data );
       $Email->EmailSendEmail();
       unset($Email);
       unset($TemplateFicreceError);

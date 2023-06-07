@@ -12,12 +12,12 @@ class TemplateFicreceError
    *
    * @return int $b Bar
    */
-  public function body($data)
+  public function body($e, $data)
   {
     try {
       $comment = "";
       $Principal = new TemplatePrincipal();
-    
+
       $html = $Principal->Head() . '<body class="">
                 <span class="preheader">Ecommerce Grupo Splittel</span>
                 
@@ -37,11 +37,22 @@ class TemplateFicreceError
                           <tr>
                         
 
-                            <td class="wrapper">
-                            <p align="center" style="margin-bottom:10px;"><strong>Error: </strong>' . $data. '</p>
-                        
-                              <p align="center">Este es un correo electrónico generado automáticamente</p>
-                            </td>
+                          <td class="wrapper">
+                          <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>' . $data['NombreSolicitud'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>Rfc: </strong>' . $data['Rfc'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>Curp: </strong>' . $data['Curp'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $data['Telefono'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>' . $data['Correo'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>' . $data['RazonSocial'] . '</p>
+                          <p align="center" style="margin-bottom:10px;"><strong>PERSONA ' . $data['PERSONA'] . ' </strong></p>
+
+                            <p align="center" style="margin-bottom:10px;"><strong>Monto Solicitado: </strong>' . $data['MontoCredito'] . '</p>
+                            <p align="center" style="margin-bottom:10px;"><strong>Dias Solicitados : </strong>' . $data['Plazo'] . '</p>
+
+                            ' . $e . '
+                            <p><br></p>
+                            <p align="center">Este es un correo electrónico generado automáticamente</p>
+                          </td>
                           </tr>
 
                         <!-- END MAIN CONTENT AREA -->
