@@ -65,28 +65,28 @@
             <!-- VENTAJAS -->
 
 
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono1_img ?>"></a>
 
               </h6>
-              <h6 style="color:#999999" class="text-center    margin-top-1x">
-              Certificado de calibración sin costo
+              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+                Certificado de calibración sin costo
 
-              </h6>
+              </h5>
             </div>
-            <div class="col-lg-6 col-md-6 order-md-2  margin-top-2x">
+            <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
 
               <h6 class="text-muted text-center text-normal ">
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <h6 style="color:#999999" class="text-center    margin-top-1x">
-              Alta estabilidad en campo
+              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+                Alta estabilidad en campo
 
 
-              </h6>
+              </h5>
             </div>
 
 
@@ -96,11 +96,11 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <h6 style="color:#999999" class="text-center   margin-top-1x ">
-              Largas horas de operación
+              <h5 style="font-size : 17px;color:#505050" class="text-center   margin-top-1x ">
+                Largas horas de operación
 
 
-              </h6>
+              </h5>
             </div>
 
             <div class="col-lg-6 col-md-6 order-md-2  margin-top-1x">
@@ -110,21 +110,21 @@
 
               </h6>
 
-              <h6 style="color:#999999" class="text-center    margin-top-1x">
-              Fácil operación manual
+              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+                Fácil operación manual
 
-              </h6>
+              </h5>
             </div>
 
             <div class="col-lg-12 col-md-8 order-md-2   margin-top-2x text-center">
 
               <h6 class="text-muted text-center text-normal ">
-                <img  alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
+                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
 
               </h6>
 
             </div>
-          
+
 
 
 
@@ -162,10 +162,10 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App1_img ?>"></a>
               <br>
-              <h6 class="text-center    margin-top-1x" style="color:#999999">
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
                 <?= $row->App1 ?>
 
-              </h6>
+              </h5>
             </h6>
 
           </div>
@@ -175,10 +175,10 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App2_img ?>"></a>
               <br>
 
-              <h6 class="text-center    margin-top-1x" style="color:#999999">
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
                 <?= $row->App2 ?>
 
-              </h6>
+              </h5>
             </h6>
 
           </div>
@@ -188,10 +188,10 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App3_img ?>"></a>
 
             </h6>
-            <h6 class="text-center    margin-top-1x" style="color:#999999">
+            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
               <?= $row->App3 ?>
 
-            </h6>
+            </h5>
           </div>
           <div class="col-lg-6 col-md-6 order-md-2" style="padding-top: 80px;">
 
@@ -200,10 +200,10 @@
 
             </h6>
 
-            <h6 class="text-center    margin-top-1x" style="color:#999999">
+            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
               <?= $row->App4 ?>
 
-            </h6>
+            </h5>
           </div>
 
           <div class="col-lg-6 col-md-6  offset-md-3  order-md-2 margin-top-2x">
@@ -211,25 +211,25 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
-              <h6 class="text-center    margin-top-1x" style="color:#999999">
-              Redes de distribución
-            
-              </h6>
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+                Redes de distribución
+
+              </h5>
             </h6>
 
           </div>
-            <!-- BANNER 3-->
+          <!-- BANNER 3-->
 
-            <div class="col-lg-12 col-md-8 order-md-2   margin-top-2x text-center">
-              <a href=" <?= $row->bannerlink ?>" style="color: black;text-decoration: none;" target="_blank">
-
-
-                <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner3 ?>" alt="soluciones">
+          <div class="col-lg-12 col-md-8 order-md-2   margin-top-2x text-center">
+            <a href=" <?= $row->bannerlink ?>" style="color: black;text-decoration: none;" target="_blank">
 
 
-              </a>
+              <img alt="" class="rounded" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/banners/" . $row->Banner3 ?>" alt="soluciones">
 
-            </div>
+
+            </a>
+
+          </div>
 
 
 
@@ -242,7 +242,7 @@
               </strong>
             </h4>
 
-            <h6 class=" text-center text-normal " style="color:#999999">
+            <h6 class=" text-center text-normal " style="color:#505050">
               <?= $row->Texto2 ?>
             </h6>
 
@@ -305,7 +305,7 @@
           <!-- BOTON -->
           <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
 
-            <h6 class=" text-left text-normal " style="color:#999999">
+            <h6 class=" text-left text-normal " style="color:#505050">
               <?= $row->Texto3 ?>
             </h6>
 
