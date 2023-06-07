@@ -16,8 +16,8 @@ if (!class_exists("Email")) {
 if (!class_exists("TemplateFicrece")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Ficrece.php';
 }
-if (!class_exists("TemplateFicrece")) {
-  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Ficrece.php';
+if (!class_exists("TemplateFicreceError")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/FicreceError.php';
 }
 
 /**
@@ -110,6 +110,7 @@ class SolicitudCController
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
           print_r($_POST);
+        exit;
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
@@ -203,8 +204,7 @@ class SolicitudCController
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-          $Email->MailerListTo = ["ramon.olea@splittel.com"];
-        /*   $Email->MailerListTo = ["christian.morales@fibremex.com.mx"]; */
+          $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
           $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);
