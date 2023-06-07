@@ -16,6 +16,9 @@ if (!class_exists("Email")) {
 if (!class_exists("TemplateFicrece")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Ficrece.php';
 }
+if (!class_exists("TemplateFicreceError")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Ficrece.php';
+}
 
 /**
  * 
@@ -106,15 +109,15 @@ class SolicitudCController
         $SolicitudCModel->SetLugar($_POST['LuNaci']);
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
-      /*   print_r($_POST);
+        /*   print_r($_POST);
         exit; */
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
         /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
 
-       /*  print_r($_POST['PERSONA']);
+        /*  print_r($_POST['PERSONA']);
         exit; */
         mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true);
-       /*  if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
+        /*  if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
            die('Fallo al crear las carpetas...');
         } */
@@ -195,14 +198,14 @@ class SolicitudCController
             "Observaciones" => $_POST['Observaciones'],
             "PERSONA" => $_POST['PERSONA']
 
-            
+
 
           ];
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-           $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
-           $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+          $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
+          $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);
           $Email->EmailSendEmail();
@@ -213,6 +216,16 @@ class SolicitudCController
         return $ResultSolicitud;
       }
     } catch (Exception $e) {
+      $Email = new Email();
+      $TemplateFicreceError = new TemplateFicreceError();
+      $Email->MailerSubject = "SOLICITUD FICRECE ERROR";
+      $Email->MailerListTo = ["ramon.olea@splittel.com"];
+      $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
+
+      $Email->MailerBody = $TemplateFicreceError->body($e);
+      $Email->EmailSendEmail();
+      unset($Email);
+      unset($TemplateFicreceError);
       throw $e;
     }
   }
