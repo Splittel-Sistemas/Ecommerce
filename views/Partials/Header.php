@@ -117,7 +117,7 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
       if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
         $mailAssigment = $_SESSION['Ecommerce-ClienteEjecutivo'];
       } else {
-        $mailAssigment = "sac@fibremex.com.mx";
+        $mailAssigment = "ventas@fibremex.com.mx";
       }
       ?>
 
@@ -134,10 +134,10 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
             <div class="toolbar-dropdown cart-dropdown widget-cart hidden-on-mobile">
               <!-- Entry-->
               <div class="entry">
-                <div class="entry-thumb"> <a href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
+                <div class="entry-thumb"> <a href="tel:<?php echo $Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
                 <div class="entry-content">
                   <h4 class="entry-title"> <a href="javascript:void()">Teléfono</a> </h4>
-                  <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>"><?php echo '01 800 ' . $Contacto->GetTelefono(); ?></a>
+                  <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo $Contacto->GetTelefono(); ?>"><?php echo $Contacto->GetTelefono(); ?></a>
                 </div>
               </div>
               <!-- Entry-->
@@ -218,10 +218,10 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
               <div class="toolbar-dropdown cart-dropdown widget-cart ">
                 <!-- Entry-->
                 <div class="entry">
-                  <div class="entry-thumb"> <a href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
+                  <div class="entry-thumb"> <a href="tel:<?php echo $Contacto->GetTelefono(); ?>" style="text-decoration: none; font-size: 20px;"> <i class="icon-phone"></i> </a> </div>
                   <div class="entry-content">
                     <h4 class="entry-title"> <a href="javascript:void()">Teléfono</a> </h4>
-                    <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo '01 800 ' . $Contacto->GetTelefono(); ?>"><?php echo '01 800 ' . $Contacto->GetTelefono(); ?></a>
+                    <a class="entry-meta" style="text-decoration: none;" href="tel:<?php echo $Contacto->GetTelefono(); ?>"><?php echo $Contacto->GetTelefono(); ?></a>
                   </div>
                 </div>
                 <!-- Entry-->
