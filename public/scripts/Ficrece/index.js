@@ -160,7 +160,7 @@ var EnviarSolicitud = function () {
       templateAlert(
         "danger",
         "",
-        error + "" + "error al subir la solicitud contacte a su ejecutivo",
+        "error al subir la solicitud contacte a su ejecutivo",
         "topRight",
         ""
       );
