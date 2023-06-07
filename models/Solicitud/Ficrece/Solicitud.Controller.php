@@ -110,16 +110,10 @@ class SolicitudCController
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
 
-        /* $ext = end(explode(".", $_FILES['file']['name']));	  */
-        /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
-
-         print_r($_POST);
-        exit;
+        /*  print_r($_POST);
+        exit; */
         mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true);
-        /*  if (!mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true)) {
 
-           die('Fallo al crear las carpetas...');
-        } */
         if (isset($_FILES['file']['tmp_name'])) {
           $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
           $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
@@ -139,43 +133,36 @@ class SolicitudCController
         $ext3 = pathinfo($_FILES['file3']['name'], PATHINFO_EXTENSION);
         $name3 =  ('3-' . $_POST['Rfc'] . '.' . $ext3);
         move_uploaded_file($_FILES['file3']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name3);
-        #$file_nname3 = $_FILES['file3']['name'];
         $SolicitudCModel->SetDoc3($name3);
 
         $ext4 = pathinfo($_FILES['file4']['name'], PATHINFO_EXTENSION);
         $name4 =  ('4-' . $_POST['Rfc'] . '.' . $ext4);
         move_uploaded_file($_FILES['file4']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name4);
-        #$file_nname4 = $_FILES['file4']['name'];
         $SolicitudCModel->SetDoc4($name4);
 
         $ext5 = pathinfo($_FILES['file5']['name'], PATHINFO_EXTENSION);
         $name5 =  ('5-' . $_POST['Rfc'] . '.' . $ext5);
         move_uploaded_file($_FILES['file5']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name5);
-        #$file_nname5 = $_FILES['file5']['name'];
         $SolicitudCModel->SetDoc5($name5);
 
         $ext6 = pathinfo($_FILES['file6']['name'], PATHINFO_EXTENSION);
         $name6 =  ('6-' . $_POST['Rfc'] . '.' . $ext6);
         move_uploaded_file($_FILES['file6']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name6);
-        #$file_nname6 = $_FILES['file6']['name'];
         $SolicitudCModel->SetDoc6($name6);
 
         $ext7 = pathinfo($_FILES['file7']['name'], PATHINFO_EXTENSION);
         $name7 =  ('7-' . $_POST['Rfc'] . '.' . $ext7);
         move_uploaded_file($_FILES['file7']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name7);
-        # $file_nname7 = $_FILES['file7']['name'];
         $SolicitudCModel->SetDoc7($name7);
 
         $ext8 = pathinfo($_FILES['file8']['name'], PATHINFO_EXTENSION);
         $name8 =  ('8-' . $_POST['Rfc'] . '.' . $ext8);
         move_uploaded_file($_FILES['file8']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name8);
-        # $file_nname8 = $_FILES['file8']['name'];
         $SolicitudCModel->SetDoc8($name8);
 
         $ext9 = pathinfo($_FILES['file9']['name'], PATHINFO_EXTENSION);
         $name9 =  ('9-' . $_POST['Rfc'] . '.' . $ext9);
         move_uploaded_file($_FILES['file9']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name9);
-        #$file_nname9 = $_FILES['file9']['name'];
         $SolicitudCModel->SetDoc9($name9);
 
 
@@ -203,8 +190,7 @@ class SolicitudCController
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-          #$Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
-          $Email->MailerListTo = ["ramon.olea@splittel.com"];
+          $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
           $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);

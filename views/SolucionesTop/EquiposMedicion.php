@@ -193,7 +193,7 @@
 
             </h5>
           </div>
-          <div class="col-lg-6 col-md-6 order-md-2" style="padding-top: 80px;">
+          <div class="col-lg-6 col-md-6 order-md-2" style="padding-top: 60px;">
 
             <h6 class=" text-center text-normal">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/" . $row->App4_img ?>"></a>
@@ -206,7 +206,7 @@
             </h5>
           </div>
 
-          <div class="col-lg-6 col-md-6  offset-md-3  order-md-2 margin-top-2x">
+          <div class="col-lg-6 col-md-6  offset-md-3  order-md-2 margin-top-1x">
 
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/aplicaciones/Aplicacion-5.png"  ?>"></a>
