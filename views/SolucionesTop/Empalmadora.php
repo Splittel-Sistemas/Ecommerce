@@ -113,7 +113,7 @@
               </h6>
 
               <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
-                1 año de garantía Grabado personalizado
+                1 año de garantía
 
               </h5>
             </div>
