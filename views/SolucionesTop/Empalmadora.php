@@ -94,7 +94,7 @@
             <div class="col-lg-12 col-md-8 order-md-2  margin-top-1x ">
 
               <h6 class="text-muted  text-normal " style="text-align: center;">
-                <img  width="600"s src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
+                <img  width="700"s src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
               <h5 style="font-size : 17px;color:#505050" class="text-center   margin-top-1x ">
