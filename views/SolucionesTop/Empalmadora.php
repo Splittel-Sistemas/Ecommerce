@@ -71,7 +71,7 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono1_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
                 Capacitación online <br>
                 gratuita personalizada
 
@@ -83,7 +83,7 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono2_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
                 Disponible con GPS gratis todo el año
 
 
@@ -97,7 +97,7 @@
                 <img  width="700"s src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono3_img ?>"></a>
 
               </h6>
-              <h5 style="font-size : 17px;color:#505050" class="text-center   margin-top-1x ">
+              <h5 style="font-size : 16px;color:#505050" class="text-center   margin-top-1x ">
                 300 modos de empalme y 100 modos <br>
                 de construcción de manga de empalme
 
@@ -112,7 +112,7 @@
 
               </h6>
 
-              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
                 1 año de garantía Grabado personalizado
 
               </h5>
@@ -124,7 +124,7 @@
                 <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Ventajas/" . $row->Icono5_img ?>"></a>
         
               </h6>
-              <h5 style="font-size : 17px;color:#505050" class="text-center    margin-top-1x">
+              <h5 style="font-size : 16px;color:#505050" class="text-center    margin-top-1x">
               Grabado personalizado de logotipo
 
               </h5>
@@ -167,7 +167,7 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Aplicaciones/" . $row->App1_img ?>"></a>
               <br>
-              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 16px;">
                 <?= $row->App1 ?>
 
               </h5>
@@ -180,7 +180,7 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Aplicaciones/" . $row->App2_img ?>"></a>
               <br>
 
-              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 16px;">
                 <?= $row->App2 ?>
 
               </h5>
@@ -193,7 +193,7 @@
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Aplicaciones/" . $row->App3_img ?>"></a>
 
             </h6>
-            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 16px;">
               <?= $row->App3 ?>
 
             </h5>
@@ -205,7 +205,7 @@
 
             </h6>
 
-            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+            <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 16px;">
               <?= $row->App4 ?>
 
             </h5>
@@ -216,7 +216,7 @@
             <h6 class=" text-center text-normal ">
               <img width="300" alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/Aplicaciones/Aplicacion-5.png"  ?>"></a>
               <br>
-              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 17px;">
+              <h5 class="text-center    margin-top-1x" style="color:#505050;font-size : 16px;">
                 Data Center
 
               </h5>
@@ -310,7 +310,7 @@
           <!-- BOTON -->
           <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
 
-            <h6 class=" text-left text-normal " style="color:#505050">
+            <h6 class=" text-left text-normal " style="color:#505050;font-size : 14px;">
               <?= $row->Texto3 ?>
             </h6>
 
