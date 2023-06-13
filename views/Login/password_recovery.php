@@ -1,18 +1,20 @@
-<?php 
-    @session_start();
-    if ($_SESSION['Ecommerce_ClienteIngreso'] == 1 || $_SESSION['Ecommerce-ClienteTipo'] == 'B2C'){ 
-      header ("Location: ./solicitud.php"); 
-    }else{ 
+<?php
+@session_start();
+if ($_SESSION['Ecommerce_ClienteIngreso'] == 1 || $_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+  header("Location: ./solicitud.php");
+} else {
 ?>
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
-    <?php 
-      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; 
-      include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Login/seguridad.php'; 
+    <?php
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php';
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Login/seguridad.php';
     ?>
   </head>
   <!-- Body-->
+
   <body>
     <!-- Page Content-->
     <div class="row no-gutters">
@@ -47,6 +49,7 @@
               <div class="form-group">
                 <div class="custom-control custom-checkbox custom-control-inline">
                   <input class="custom-control-input" type="checkbox" id="PersonalTerminos" name="PersonalTerminos">
+                  <input class="custom-control-input" type="hidden" id="ClienteTipo" nvalue="<?= $_SESSION['Ecommerce-ClienteTipo'] ?>">
                   <label class="custom-control-label" for="PersonalTerminos"><a href="../AtencionCliente/politicas_privacidad.php" class="text-sm text-muted" target="_blank">Al actualizar contraseña aceptas lo terminos y condiciones.</a></label>
                 </div>
               </div>
@@ -57,9 +60,10 @@
       </div>
     </div>
     <!-- scripts JS -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
     <!--  -->
-    <script type="text/javascript" src="../../public/scripts/Login/index.js?id="<?php echo rand(); ?>></script>
+    <script type="text/javascript" src="../../public/scripts/Login/index.js?id=" <?php echo rand(); ?>></script>
   </body>
-</html>
+
+  </html>
 <?php } ?>
