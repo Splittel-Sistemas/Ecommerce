@@ -49,7 +49,7 @@ if ($_SESSION['Ecommerce_ClienteIngreso'] == 1 || $_SESSION['Ecommerce-ClienteTi
               <div class="form-group">
                 <div class="custom-control custom-checkbox custom-control-inline">
                   <input class="custom-control-input" type="checkbox" id="PersonalTerminos" name="PersonalTerminos">
-                  <input class="custom-control-input" type="hidden" id="ClienteTipo" nvalue="<?= $_SESSION['Ecommerce-ClienteTipo'] ?>">
+                  <input class="custom-control-input" type="hidden" id="ClienteTipo" value="<?= $_SESSION['Ecommerce-ClienteTipo'] ?>">
                   <label class="custom-control-label" for="PersonalTerminos"><a href="../AtencionCliente/politicas_privacidad.php" class="text-sm text-muted" target="_blank">Al actualizar contraseña aceptas lo terminos y condiciones.</a></label>
                 </div>
               </div>
