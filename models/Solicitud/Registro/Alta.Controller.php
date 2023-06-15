@@ -628,11 +628,7 @@ class SolicitudRegistroController
           $asunto    = 'Solicitud Precalificacion';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
-          //Mails
-          /*  $mail->From = 'marketing.directo@splittel.com';
-
-          $mail->AddCC('marketing.directo@splittel.com');
-          $mail->AddCC($_POST['CorreEjecutivo']); */
+        
 
 
 
@@ -640,10 +636,9 @@ class SolicitudRegistroController
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
            $mail->AddBCC('ramon.olea@splittel.com');
+           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
 
-          /*  $mail->AddAddress('ramon.olea@splittel.com'); */
-          /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
- */
+        
           $mail->MsgHTML($mensaje);
 
           //Avisar si fue enviado o no y dirigir al index

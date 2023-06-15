@@ -629,7 +629,7 @@ class SolicitudCController
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
           //Mails
-          $mail->From = 'marketing.directo@splittel.com';
+          $mail->From = 'notificaciones@fibremex.com';
 
           $mail->AddCC('marketing.directo@splittel.com');
           $eje = $_POST['CorreEjecutivo'] ;

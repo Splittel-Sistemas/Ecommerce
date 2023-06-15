@@ -96,7 +96,7 @@
                   <input class="form-control form-control-2" type="text" id="DomicilioFiscal" name="DomicilioFiscal">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <input type="hidden" id="ejecutivo" value="aaron.cuevas@splittel.com">
+                  <input type="hidden" id="ejecutivo" value="marketing.directo@splittel.com">
 
 
                 </div>
