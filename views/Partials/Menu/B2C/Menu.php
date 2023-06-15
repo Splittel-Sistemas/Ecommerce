@@ -262,7 +262,7 @@
 
        <li class="has-submenu"><a href="#">Contacto</a>
          <ul class="sub-menu">
-           <li><a href="../Login/solicitud.php">Pre-registro para empresas</a></li>
+           <li><a href="../Registro">Pre-registro para empresas</a></li>
            <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
            <?php
             if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {

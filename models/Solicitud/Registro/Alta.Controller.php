@@ -7,8 +7,8 @@ if (!class_exists("Connection")) {
 if (!class_exists("Functions_tools")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
 }
-if (!class_exists("SolicitudC")) {
-  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Ficrece/Alta.Model.php';
+if (!class_exists("SolicitudRegistro")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Registro/Alta.Model.php';
 }
 
 if (!class_exists("TemplateFicrece")) {
@@ -20,7 +20,7 @@ if (!class_exists("TemplateFicrece")) {
 /**
  * 
  */
-class SolicitudCController
+class SolicitudRegistroController
 {
 
   protected $Connection;
@@ -39,10 +39,10 @@ class SolicitudCController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudC();
-        $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
-        $items = $SolicitudCModel->Get($this->filter, $this->order);
-        unset($SolicitudCModel);
+        $SolicitudRegistroModel = new SolicitudRegistro();
+        $SolicitudRegistroModel->SetParameters($this->Connection, $this->Tool);
+        $items = $SolicitudRegistroModel->Get($this->filter, $this->order);
+        unset($SolicitudRegistroModel);
         return $this->Tool->Message_return(false, "", $items, false);
       }
     } catch (Exception $e) {
@@ -54,10 +54,10 @@ class SolicitudCController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudC();
-        $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
-        $SolicitudCModel->GetBy($this->filter, $this->order);
-        return $SolicitudCModel;
+        $SolicitudRegistroModel = new SolicitudRegistro();
+        $SolicitudRegistroModel->SetParameters($this->Connection, $this->Tool);
+        $SolicitudRegistroModel->GetBy($this->filter, $this->order);
+        return $SolicitudRegistroModel;
       }
     } catch (Exception $e) {
       throw $e;
@@ -69,32 +69,32 @@ class SolicitudCController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudC();
+        $SolicitudRegistroModel = new SolicitudRegistro();
 
-        $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
+        $SolicitudRegistroModel->SetParameters($this->Connection, $this->Tool);
 
         /*  print_r($_POST);
         exit; */
 
 
-        $SolicitudCModel->SetRazonSocial($_POST['RazonSocial']);
-        $SolicitudCModel->SetRfc($_POST['Rfc']);
-        $SolicitudCModel->SetDomicilioFiscal($_POST['DomicilioFiscal']);
-        $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
-        $SolicitudCModel->SetDepartamento($_POST['Departamento']);
-        $SolicitudCModel->SetTitulo($_POST['Titulo']);
-        $SolicitudCModel->SetTelefono($_POST['Telefono']);
-        $SolicitudCModel->SetCorreo($_POST['Correo']);
-        $SolicitudCModel->SetCorreEjecutivo($_POST['CorreEjecutivo']);
-        $SolicitudCModel->SetNummeroInt($_POST['NummeroInt']);
-        $SolicitudCModel->SetCalle($_POST['Calle']);
-        $SolicitudCModel->SetColonia($_POST['Colonia']);
-        $SolicitudCModel->SetCuidad($_POST['Cuidad']);
-        $SolicitudCModel->SetCP($_POST['CP']);
-        $SolicitudCModel->SetEstado($_POST['Estado']);
-        $SolicitudCModel->SetNombreComercial($_POST['NombreComercial']);
-        $SolicitudCModel->SetWeb($_POST['Web']);
-        $SolicitudCModel->SetvaloresCheck($_POST['valoresCheck']);
+        $SolicitudRegistroModel->SetRazonSocial($_POST['RazonSocial']);
+        $SolicitudRegistroModel->SetRfc($_POST['Rfc']);
+        $SolicitudRegistroModel->SetDomicilioFiscal($_POST['DomicilioFiscal']);
+        $SolicitudRegistroModel->SetNombreSolicitud($_POST['NombreSolicitud']);
+        $SolicitudRegistroModel->SetDepartamento($_POST['Departamento']);
+        $SolicitudRegistroModel->SetTitulo($_POST['Titulo']);
+        $SolicitudRegistroModel->SetTelefono($_POST['Telefono']);
+        $SolicitudRegistroModel->SetCorreo($_POST['Correo']);
+        $SolicitudRegistroModel->SetCorreEjecutivo($_POST['CorreEjecutivo']);
+        $SolicitudRegistroModel->SetNummeroInt($_POST['NummeroInt']);
+        $SolicitudRegistroModel->SetCalle($_POST['Calle']);
+        $SolicitudRegistroModel->SetColonia($_POST['Colonia']);
+        $SolicitudRegistroModel->SetCuidad($_POST['Cuidad']);
+        $SolicitudRegistroModel->SetCP($_POST['CP']);
+        $SolicitudRegistroModel->SetEstado($_POST['Estado']);
+        $SolicitudRegistroModel->SetNombreComercial($_POST['NombreComercial']);
+        $SolicitudRegistroModel->SetWeb($_POST['Web']);
+        $SolicitudRegistroModel->SetvaloresCheck($_POST['valoresCheck']);
 
 
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
@@ -104,16 +104,16 @@ class SolicitudCController
         exit; */
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
 
-          if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
+          if (mkdir('../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
 
             $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
             $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/' . $name1);
             #$file_nname = $_FILES['file']['name'];
-            $SolicitudCModel->SetDoc1($name1);
+            $SolicitudRegistroModel->SetDoc1($name1);
 
 
-            $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
+            $uploadDir = '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/';
 
             // Check whether submitted data is not empty 
             // File path config 
@@ -123,7 +123,7 @@ class SolicitudCController
         }
 
 
-        $ResultSolicitud = $SolicitudCModel->Add();
+        $ResultSolicitud = $SolicitudRegistroModel->Add();
 
         if (!$ResultSolicitud['error']) {
 
@@ -625,18 +625,23 @@ class SolicitudCController
           if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
             $mail->AddAttachment($targetFilePath);
           }
-          $asunto    = 'Alta Lead';
+          $asunto    = 'Solicitud Precalificacion';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
           //Mails
-          $mail->From = 'marketing.directo@splittel.com';
+          /*  $mail->From = 'marketing.directo@splittel.com';
 
           $mail->AddCC('marketing.directo@splittel.com');
-          $eje = $_POST['CorreEjecutivo'] ;
-          $mail->AddCC("$eje");
+          $mail->AddCC($_POST['CorreEjecutivo']); */
 
-         /*  $mail->AddBCC('ramon.olea@splittel.com'); */
-         /*  $mail->AddAddress('ramon.olea@splittel.com'); */
+
+
+          $mail->From = 'ramon.olea@splittel.com';
+
+          $eje = $_POST['CorreEjecutivo'];
+          $mail->AddCC("$eje");
+          /*  $mail->AddBCC('ramon.olea@splittel.com'); */
+          /*  $mail->AddAddress('ramon.olea@splittel.com'); */
           /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
  */
           $mail->MsgHTML($mensaje);
