@@ -62,35 +62,49 @@ var EnviarAlta = function () {
   var file_data = $("#file").prop("files")[0];
   fda.append("file", file_data);
   if (CorreEjecutivo != "") {
-    $.ajax({
-      url: "../../models/Solicitud/Ficrece/Alta.Route.php",
-      type: "post",
-      data: fda,
-      contentType: false,
-      processData: false,
-      dataType: "json",
-      async: false,
-      cache: false,
-      success: function (response) {
-        if (!response.error) {
-          $("#botonenviar").show();
+    //ejecutivo obligatorio
+    if (file_data != undefined) {
+      //constancia obligatoria
+      $.ajax({
+        url: "../../models/Solicitud/Ficrece/Alta.Route.php",
+        type: "post",
+        data: fda,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        async: false,
+        cache: false,
+        success: function (response) {
+          if (!response.error) {
+            $("#botonenviar").show();
 
-          templateAlert(
-            "success",
-            "Enviado",
-            "La solicitud ha sido enviada",
-            "center",
-            ""
-          );
-          GlobalCloseModal("modal-ficrece");
-          window.location.href = "Mensaje.php";
-        } else {
-          $("#botonenviar").show();
+            templateAlert(
+              "success",
+              "Enviado",
+              "La solicitud ha sido enviada",
+              "center",
+              ""
+            );
+            GlobalCloseModal("modal-ficrece");
+            window.location.href = "Mensaje.php";
+          } else {
+            $("#botonenviar").show();
 
-          templateAlert("danger", "", response.message, "topRight", "");
-        }
-      },
-    });
+            templateAlert("danger", "", response.message, "topRight", "");
+          }
+        },
+      });
+    } else {
+      $("#botonenviar").show();
+
+      templateAlert(
+        "danger",
+        "",
+        "La constancia de situación fiscal en PDF es obligatoria",
+        "topRight",
+        ""
+      );
+    }
   } else {
     $("#botonenviar").show();
 
