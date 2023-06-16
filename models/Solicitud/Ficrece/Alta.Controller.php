@@ -559,6 +559,7 @@ class SolicitudCController
                     <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . $_POST['CorreEjecutivo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT. : </strong>' . $_POST['NummeroInt'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . $_POST['Colonia'] . '</p>
@@ -633,12 +634,9 @@ class SolicitudCController
 
           $mail->AddCC('marketing.directo@splittel.com');
           $eje = $_POST['CorreEjecutivo'] ;
-          $mail->AddCC("$eje");
-
-         /*  $mail->AddBCC('ramon.olea@splittel.com'); */
-         /*  $mail->AddAddress('ramon.olea@splittel.com'); */
-          /*    $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
- */
+          $mail->AddAddress("$eje");
+          $mail->AddBCC('ramon.olea@splittel.com');
+          $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
           $mail->MsgHTML($mensaje);
 
           //Avisar si fue enviado o no y dirigir al index
