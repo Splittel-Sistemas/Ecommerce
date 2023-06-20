@@ -115,6 +115,7 @@
             $this->PedidoB2C->SetDocCurrency($this->Pedido->MonedaPago);
             $this->PedidoB2C->SetDocRate($this->Pedido->TipoCambio); 
             $this->PedidoB2C->SetShipReferences($this->Pedido->Paqueteria);
+            $this->PedidoB2C->SetTransportationCode($this->Pedido->TransportationCode);
             $this->PedidoB2C->SetNumAtCard($this->Pedido->Referencia);
             $this->PedidoB2C->SetEmail_ItemsStockBad($this->Tool->validate_sin_stock($this->Pedido->Intentos));
             

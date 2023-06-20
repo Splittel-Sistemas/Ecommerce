@@ -2,6 +2,7 @@ var PagarPedidoCredito = function(){
   let monedaPago = getChecked('.monedaPago')
   let paqueteria = document.getElementById('paqueteria')
   let check = document.getElementById('check')
+  let transportationCodeAux = transportationCode
   let referencia = document.getElementById('referencia-pedido-resumen')
   let checkDatosEnvio       = getChecked('.datosEnvio')
   let checkDatosFacturacion = getChecked('.datosFacturacion')
@@ -16,6 +17,7 @@ var PagarPedidoCredito = function(){
     datosEnvio : checkDatosEnvio,
     datosFacturacion : checkDatosFacturacion,
     paqueteria : check.value + paqueteria.value,
+    transportationCode: transportationCodeAux,
     monedaPago : monedaPago,
     CFDIUser : cfdiUser.value,
     referencia : referencia.value,

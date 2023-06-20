@@ -3,6 +3,7 @@ var PagarPedidoBanco = function(Elem){
 		let pagoBanco = document.getElementById('pagoBanco')
 		let paqueteria = document.getElementById('paqueteria')
 		let check = document.getElementById('check')
+		let transportationCodeAux = transportationCode
 		let referencia = document.getElementById('referencia-pedido-resumen')
 		let cfdiUser   = document.getElementById('CFDIUser')
 		let requiereFactura   = document.getElementById('RequiereFactura')
@@ -16,6 +17,7 @@ var PagarPedidoBanco = function(Elem){
 			datosEnvio : checkDatosEnvio,
 			datosFacturacion : checkDatosFacturacion,
 			paqueteria : check.value + paqueteria.value,
+			transportationCode: transportationCodeAux,
 			monedaPago : monedaPago,
 			metodoPago : OpenPayMetodoPago,
 			CFDIUser : cfdiUser.value,

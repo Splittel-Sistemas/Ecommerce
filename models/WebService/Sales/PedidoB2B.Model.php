@@ -9,7 +9,7 @@
     protected $FechaActual;
     public $CFDIUser;
     public $TransferReference;
-    protected $TransportationCode;
+    public $TransportationCode;
     protected $SalesPersonCode;
     protected $GroupNumber;
     public $PaymentMethod;
@@ -39,6 +39,11 @@
         throw new Exception('$CFDIUser no es valido');
       }
       $this->CFDIUser = $CFDIUser;
+    }public function SetTransportationCode($TransportationCode){
+      if (is_null($TransportationCode)) {
+        throw new Exception('$TransportationCode no es valido');
+      }
+      $this->TransportationCode = $TransportationCode;
     }public function SetTransferReference($TransferReference){
       if (is_null($TransferReference)) {
         throw new Exception('$TransferReference no es valido');
@@ -101,6 +106,8 @@
       return $this->CardCode;
     }public function GetCFDIUser(){
       return $this->CFDIUser;
+    }public function GetTransportationCode(){
+      return $this->GetTransportationCode;
     }public function GetTransferReference(){
       return $this->TransferReference;
     }public function GetPaymentMethod(){
@@ -136,7 +143,7 @@
     public function createPedidoB2B($WebServiceSOAP, $ArticulosPedido){
       try {
         $this->FechaActual        = date('Y-m-d');
-        $this->TransportationCode = 1;
+       // $this->TransportationCode = 1;
         $this->SalesPersonCode    = 176; // id persona de ventas prueba: 176 productivo: 
         $this->GroupNumber        = 2;
 

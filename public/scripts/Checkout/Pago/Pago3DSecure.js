@@ -9,6 +9,7 @@ var Success = function (response) {
   let metodoPago = "tarjeta";
   let paqueteria = document.getElementById("paqueteria");
   let check = document.getElementById('check')
+  let transportationCodeAux = transportationCode
   let referencia = document.getElementById("referencia-pedido-resumen");
   let cfdiUser = document.getElementById("CFDIUser");
   let requiereFactura = document.getElementById("RequiereFactura");
@@ -21,6 +22,7 @@ var Success = function (response) {
     datosEnvio: checkDatosEnvio,
     datosFacturacion: checkDatosFacturacion,
     paqueteria: check.value + paqueteria.value,
+    transportationCode: transportationCodeAux,
     monedaPago: monedaPago,
     metodoPago: metodoPago,
     tokenId: tokenId,

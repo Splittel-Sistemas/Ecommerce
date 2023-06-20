@@ -91,6 +91,7 @@
             $PedidoB2BModel->SetPedidoKey($this->Pedido->Key); 
             $PedidoB2BModel->SetCardCode($ClienteModel->GetCardCode()); 
             $PedidoB2BModel->SetCFDIUser($this->Pedido->CFDIUser); 
+            $PedidoB2BModel->SetTransportationCode($this->Pedido->TransportationCode);
             $PedidoB2BModel->SetTransferReference($this->Pedido->OpenPayTransaccionKey); 
             $PedidoB2BModel->SetPaymentMethod($this->Pedido->MetodoPago); 
             $PedidoB2BModel->SetDocCurrency($this->Pedido->MonedaPago); 

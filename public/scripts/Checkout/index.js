@@ -5,6 +5,7 @@
  *
  * @return {number} b - Bar
  */
+let transportationCode=1;
 $(document).ready(function () {
   const checkbox = $("#mostrador");
 
@@ -13,9 +14,11 @@ $(document).ready(function () {
     if (checkbox.checked) {
       //Checkbox has been checked
       $("#check").val("Recoger en mostrador: ");
+      transportationCode=2;
     } else {
       //Checkbox has been unchecked
       $("#check").val("");
+      transportationCode=1;
     }
   });
 });

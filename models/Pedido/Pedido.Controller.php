@@ -487,6 +487,7 @@ class PedidoController
                             $PedidoModel->SetDatosFacturacionKey($_POST['datosFacturacion']);
                             // $PedidoModel->SetNumeroguia();
                             $PedidoModel->SetPaqueteria($_POST['paqueteria']);
+                            $PedidoModel->SetTransportationCode($_POST['transportationCode']);
                             $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
                             $PedidoModel->SetDiasExtraCredito($_SESSION['Ecommerce-WS-GetExtraDays']);
                             $PedidoModel->SetCFDIUser($_POST['CFDIUser']);

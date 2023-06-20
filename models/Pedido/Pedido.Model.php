@@ -28,6 +28,7 @@
     public $DatosFacturacionKey;
     public $Numeroguia;
     public $Paqueteria;
+    public $TransportationCode;
     public $TipoCambio;
     public $DiasExtraCredito;
     public $CFDIUser;
@@ -82,6 +83,8 @@
       $this->Numeroguia = $Numeroguia;
     }public function SetPaqueteria($Paqueteria){
       $this->Paqueteria = $Paqueteria;
+    }public function SetTransportationCode($TransportationCode){
+      $this->TransportationCode = $TransportationCode;
     }public function SetTipoCambio($TipoCambio){
       if(!is_numeric($TipoCambio)){
         throw new Exception('No hay tipo de cambio, por favor recarga la pagina');
@@ -150,6 +153,8 @@
       return $this->DatosFacturacionKey;
     }public function GetPaqueteria(){
       return $this->Paqueteria;
+    }public function GetTransportationCode(){
+      return $this->TransportationCode;
     }public function GetEnvioCorreo(){
       return $this->EnvioCorreo;
     }
@@ -191,6 +196,7 @@
           '".$this->TipoCambio."',
           '".$this->DiasExtraCredito."',
           '".$this->CFDIUser."',
+          '".$this->TransportationCode."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -216,6 +222,7 @@
           '".$this->TipoCambio."',
           '".$this->DiasExtraCredito."',
           '".$this->CFDIUser."',
+          '".$this->TransportationCode."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -393,6 +400,7 @@
           $this->TipoCambio             =   $row->tipoCambio;
           $this->DiasExtraCredito       =   $row->DiasExtraCredito;
           $this->CFDIUser               =   $row->CFDIUser;
+          $this->TransportationCode     =   $row->transportationcode;
           $this->Estatus                =   $row->estatus;
           $this->Activo                 =   $row->activo; 
           $this->NumeroGuiaEstatus      =   $row->numero_guia_estatus; 
@@ -443,6 +451,7 @@
           $newPedido->TipoCambio             =   $row->tipoCambio;
           $newPedido->DiasExtraCredito       =   $row->DiasExtraCredito;
           $newPedido->CFDIUser               =   $row->CFDIUser;
+          $newPedido->TransportationCode     =   $row->transportationcode;
           $newPedido->Estatus                =   $row->estatus;
           $newPedido->Activo                 =   $row->activo; 
           $newPedido->Fecha                  =   $row->fecha; 
@@ -501,6 +510,7 @@
           $newPedido->ContactoNombre        = $row->t06_f011; 
           $newPedido->ContactoTelefono      = $row->t06_f012; 
           $newPedido->ContactoCorreo        = $row->t06_f013; 
+          $newPedido->TransportationCode    = $row->transportationcode;
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -551,7 +561,9 @@
           $newPedido->ContactoNombre        = $row->t06_f011; 
           $newPedido->ContactoTelefono      = $row->t06_f012; 
           $newPedido->ContactoCorreo        = $row->t06_f013; 
+
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
+          $newPedido->TransportationCode    = $row->transportationcode;
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -603,6 +615,7 @@
           $newPedido->OpenPayTransaccionKey = $row->t05_f009; 
           $newPedido->Referencia            = $row->t05_f010; 
           $newPedido->Intentos              = $row->t05_f011; 
+          $newPedido->TransportationCode    = $row->transportationcode; 
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $data[] = $newPedido;
           unset($newPedido);

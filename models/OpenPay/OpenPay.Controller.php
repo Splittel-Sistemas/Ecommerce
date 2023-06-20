@@ -337,6 +337,8 @@ class OpenPayController
                             $PedidoModel->SetEstatus('C');
                             // $PedidoModel->SetNumeroguia();
                             $PedidoModel->SetPaqueteria($_POST['paqueteria']);
+                            $PedidoModel->SetTransportationCode($_POST['transportationCode']);
+
                             $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
                             if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
                                 $PedidoModel->SetDiasExtraCredito($_SESSION['Ecommerce-WS-GetExtraDays']);
@@ -485,6 +487,7 @@ class OpenPayController
                             $PedidoModel->SetDatosEnvioKey($_POST["datosEnvio"]);
                             $PedidoModel->SetDatosFacturacionKey($_POST["datosFacturacion"]);
                             // $PedidoModel->SetNumeroguia();
+                            $PedidoModel->SetTransportationCode($_POST['transportationCode']);
                             $PedidoModel->SetPaqueteria($_POST["paqueteria"]);
                             $PedidoModel->SetTipoCambio($_SESSION['Ecommerce-WS-CurrencyRate']);
                             if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
