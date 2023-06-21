@@ -87,7 +87,7 @@
             <a href="#">Contacto</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
               <li><a href="../Registro/Alta.php">Pre-registro para empresas</a></li>
-              <li><a href="../Login/registro.php">Darme de alta como cliente</a></li>
+            <!--   <li><a href="../Login/registro.php">Darme de alta como cliente</a></li> -->
               <?php 
                 if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
                   // header('Location: ../Home');
