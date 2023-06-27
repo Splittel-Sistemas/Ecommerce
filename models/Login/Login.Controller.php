@@ -75,7 +75,7 @@ class LoginController{
     try{
       $ClienteModel = new Cliente();
       $ClienteModel->SetParameters($this->conn, $this->Tool);
-      $Existe = $ClienteModel->GetBy("where email = '".$this->Correo."'");
+      $Existe = $ClienteModel->GetBy("where email = '".$this->Correo."' and activo = 'si'");
       if ($Existe) {
         $EncrypData = new EncrypData_('password');  
         $PasswordDesincriptada = $EncrypData->cadenaDecrypt($ClienteModel->GetPassword());
