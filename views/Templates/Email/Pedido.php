@@ -182,18 +182,22 @@ class TemplatePedido
 				$PedidoController = new PedidoController;
 				$PedidoController->filter = "WHERE id = " . $_SESSION["Ecommerce-PedidoKey"] . " ";
 				$PedidoController->order = "";
-				$DatosFacturacionController = new DatosFacturacionController();
-				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
-				$DatosFacturacionController->order = "";
-				$ResultDatosFacturacionController = $DatosFacturacionController->get();
-				# obtención de subtotal iva y total del pedido actual
+
 				$Pedido = $PedidoController->getBy();
 
 				$pedidoCostoEnvio = $Pedido->GetEnvio();
 				$pedidoDatosEnvio = $Pedido->GetDatosEnvioKey();
+				$pedidoDatosFacturacion = $Pedido->GetDatosFacturacionKey();
 
+				
+				$DatosFacturacionController = new DatosFacturacionController();
+				$DatosFacturacionController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . "  ";
+				$DatosFacturacionController->order = "";
+				$ResultDatosFacturacionController = $DatosFacturacionController->get();
+				# obtención de subtotal iva y total del pedido actual
+				
 				$DatosEnvioController = new DatosEnvioController();
-				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " LIMIT 1 ";
+				$DatosEnvioController->filter = "WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . "  ";
 				$DatosEnvioController->order = "";
 				$ResultDatosEnvioController = $DatosEnvioController->get();
 				/* DATOS DE ENVIO DE SAP */
@@ -269,7 +273,7 @@ class TemplatePedido
 					/* DATOS DE ENVIO  */
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
-						if ($DatosEnvio->DatosEnvioKey == $Pedido->GetDatosEnvioKey()) {
+						if ($DatosEnvio->DatosEnvioKey == $pedidoDatosEnvio) {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
 				}
@@ -281,8 +285,11 @@ class TemplatePedido
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
+							if ($DatosFacturacion->DatosFacturacionKey == $pedidoDatosFacturacion) {
 							$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosFacturacion->Calle . " No Ext. " . $DatosFacturacion->NumeroExterior . " Col. " . $DatosFacturacion->Colonia . '</span></td>';
 						}
+					}
+
 					} else {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;"></td></span></td>';
 					};
@@ -297,7 +304,7 @@ class TemplatePedido
 
 
 
-					if ($Pedido->DatosFacturacionKey != '') {
+					/* if ($Pedido->DatosFacturacionKey != '') {
 
 
 						foreach ($ResultDatosFacturacionController->records as $key => $DatosFacturacion) {
@@ -305,7 +312,7 @@ class TemplatePedido
 						}
 					} else {
 						$html .= '';
-					};
+					}; */
 
 					$html .= '	</tr></tbody></table>
 
