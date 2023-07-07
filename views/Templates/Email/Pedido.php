@@ -269,8 +269,10 @@ class TemplatePedido
 					/* DATOS DE ENVIO  */
 
 					foreach ($ResultDatosEnvioController->records as $key => $DatosEnvio) {
+						if ($DatosEnvio->DatosEnvioKey == $Pedido->GetDatosEnvioKey()) {
 						$html .= '<td style="margin-bottom: 2px; text-align: left max-width:20%;">Dirección: ' . $DatosEnvio->Calle . " No Ext. " . $DatosEnvio->NumeroExterior . " Col. " . $DatosEnvio->Colonia . '</span></td>';
 					}
+				}
 
 					/* FACTURACION DATOS */
 
