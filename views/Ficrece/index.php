@@ -44,7 +44,7 @@
         <div class="col-10 padding-bottom-1x text-center">
           <img class="rounded" src="../../public/images/img_spl/ficrece/banner.png" alt="soluciones">
         </div>
-      
+
       </div>
 
 
@@ -52,8 +52,8 @@
         <div class="col-1 padding-bottom-1x text-center">
         </div>
         <div class="col-10 padding-bottom-1x text-center">
-        <br>
-            <br>
+          <br>
+          <br>
           <h3><b>Invertimos en favor de tu rendimiento</b> </h3>
           <p style="text-align: center;" class="padding-top-1x"><b>Apoyamos el crecimiento de los proyectos de telecomunicaciones</b> con el impulso financiero requerido.
             Ponemos a trabajar en su favor al fabricante Optronics y su línea de ensamble con el objetivo de ofrecer la calidad que
@@ -73,7 +73,13 @@
       </div>
       <div class="row text-center">
         <div class="col-12 padding-bottom-1x d-flex justify-content-center">
-          <a class="btn btn " href="./Create.php"><img class="rounded" src="../../public/images/img_spl/ficrece/b.png" alt="soluciones"></a>
+          <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+            <a class="btn btn " href="./Create.php"><img class="rounded" src="../../public/images/img_spl/ficrece/b.png" alt="soluciones"></a>
+          <?php } else { ?>
+            <a class="btn btn " href="../Login/index.php?url=../Ficrece/Create.php"><img class="rounded" src="../../public/images/img_spl/ficrece/b.png" alt="soluciones"></a>
+          <?php } ?>
+
+
         </div>
       </div>
 
@@ -85,7 +91,7 @@
               estrechemos nuestra relación y juntos alcancemos un rendimiento más alto.
             </b> </p>
         </div>
-       
+
       </div>
       <div class="row text-center ">
         <div class="col-1 padding-bottom-1x text-center">
@@ -93,7 +99,7 @@
         <div class="col-10 padding-bottom-1x text-center">
           <img class="rounded" src="../../public/images/img_spl/ficrece/3.png" alt="soluciones">
         </div>
-       
+
       </div>
     </div>
     <!-- Sidebar          -->

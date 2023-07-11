@@ -75,6 +75,7 @@ var EnviarSolicitud = function () {
   fda.append("Ciudad3", $("#Ciudad3").val());
   fda.append("Telefono3", $("#Telefono3").val());
   fda.append("MontoCredito", $("#MontoCredito").val());
+  fda.append("ejecutivo", $("#ejecutivo").val());
 
   var checkRadio = document.querySelector('input[name="Plazo"]:checked');
 

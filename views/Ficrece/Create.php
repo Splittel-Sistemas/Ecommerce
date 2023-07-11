@@ -4,7 +4,10 @@
 <head>
 
   <!-- <title> Contacto </title> -->
-  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
+  <?php 
+  @session_start();
+  
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
   <!-- Hotjar Tracking Code for my site -->
 <!-- Hotjar Tracking Code for https://fibremex.com/fibra-optica/views/Ficrece/Create.php -->
   <script>
@@ -132,7 +135,7 @@
         <div class="row no-gutters">
           <div class="col-md-12" id="notify" data-offset-top="-1">
             <div class=" px-3 justify-content-center align-items-center">
-              <h2 class="text-center">DATOS GENERALES</h2>
+              <h2 class="text-center">DATOS GENERALES </h2>
               <br><br>
               <form class="row">
 
@@ -310,7 +313,7 @@
                 <label>Teléfono : <strong class="text-danger"></strong></label>
                 <input class="form-control form-control-2" type="text" id="Telefono3" name="Telefono3" onkeyup="this.value=Numeros(this.value)">
               </div>
-
+              <input type="hidden" id="ejecutivo" name="ejecutivo" value="<?php echo isset($_SESSION['Ecommerce-ClienteEjecutivo']) ? $_SESSION['Ecommerce-ClienteEjecutivo'] : ""?>">
             </form>
           </div>
         </div>

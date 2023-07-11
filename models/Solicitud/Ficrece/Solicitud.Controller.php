@@ -110,7 +110,7 @@ class SolicitudCController
         $SolicitudCModel->SetNacionalidad($_POST['Nacionalidad']);
 
 
-        /*  print_r($_POST);
+    /*      print_r($_POST);
         exit; */
         mkdir('../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/', 0777, true);
 
@@ -190,7 +190,7 @@ class SolicitudCController
           $Email = new Email();
           $TemplateFicrece = new TemplateFicrece();
           $Email->MailerSubject = "SOLICITUD FICRECE";
-          $Email->MailerListTo = ["christian.morales@fibremex.com.mx"];
+          $Email->MailerListTo = ["christian.morales@fibremex.com.mx", $_POST['ejecutivo']];
           $Email->MailerListBCC = ["ramon.olea@splittel.com", "aaron.cuevas@splittel.com"];
 
           $Email->MailerBody = $TemplateFicrece->body($data);
