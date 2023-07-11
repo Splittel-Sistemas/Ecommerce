@@ -351,7 +351,8 @@ var existCodeSapPatchCord = function(Codigo){
       let Descripcion_CEO = document.getElementById('descripcionCEO')
       let DescPrdConf = document.getElementById('DscProductoConfigurable')
         // agregar stock
-        Stock.innerHTML = resultResponse.ProductoExistencia
+        if(document.getElementById('add-stock'))
+          Stock.innerHTML = resultResponse.ProductoExistencia
         // agregar descricpión larga
         //console.log(resultResponse)
         DescripcionLarga.innerHTML = resultResponse.DescripcionLarga
