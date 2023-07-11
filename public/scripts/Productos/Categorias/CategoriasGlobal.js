@@ -380,6 +380,7 @@ var existCodeSapPatchCord = function(Codigo){
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML =''
+        console.log('FT'+resultResponse.FichaRuta)
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
         
         FichaTecnicaTecnica.innerHTML = agregarFichaTecnica(resultResponse.FichaRuta, 'Ficha Técnica')
