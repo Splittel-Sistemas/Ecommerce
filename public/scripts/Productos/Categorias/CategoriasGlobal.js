@@ -341,9 +341,10 @@ var existCodeSapPatchCord = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
-    
+    if(document.getElementById('add-stock')){
     let Stock = document.getElementById('add-stock')
         Stock.innerHTML = ""
+    }
     if (!response.error && response.count > 0) {
       let resultResponse = response.records[0]
       let DescripcionLarga = document.getElementById('descripcionLarga')
