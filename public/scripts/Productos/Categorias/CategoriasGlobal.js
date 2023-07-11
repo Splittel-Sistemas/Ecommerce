@@ -370,14 +370,20 @@ var existCodeSapPatchCord = function(Codigo){
         let Precio = resultResponse.Descuento > 0 
           ? resultResponse.ProductoPrecio - (resultResponse.ProductoPrecio * (resultResponse.Descuento /100)) 
           : resultResponse.ProductoPrecio 
-        StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'block')
-        StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
-        StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-        StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'none')
+        if(document.getElementById('btn-fijo'))
+          StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'block')
+        if(document.getElementById('btn-configurable'))
+          StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
+        if(document.getElementById('div-quantity'))
+          StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
+        if(document.getElementById('div-longitud'))
+          StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'none')
         document.getElementById('precio-longitud').value = Precio
-
-        document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
-        document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
+        
+        if(document.getElementById('btn-fijo')){
+          document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
+          document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
+        }
         document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
