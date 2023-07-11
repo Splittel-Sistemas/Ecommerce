@@ -378,12 +378,14 @@ var existCodeSapPatchCord = function(Codigo){
           StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
         if(document.getElementById('div-longitud'))
           StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'none')
+        if(document.getElementById('precio-longitud'))
         document.getElementById('precio-longitud').value = Precio
         
         if(document.getElementById('btn-fijo')){
           document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
           document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
         }
+        if(document.getElementById('Costo'))
         document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
