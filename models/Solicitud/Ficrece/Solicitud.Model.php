@@ -52,6 +52,7 @@ class SolicitudC
   public $Doc9;
   public $Nacionalidad;
   public $LuNaci;
+  public $Ejecutivo;
 
 
 
@@ -118,9 +119,7 @@ class SolicitudC
   }
   public function SetFechaConstitucion($FechaConstitucion)
   {
-    if (empty($FechaConstitucion)) {
-      throw new Exception('FECHA CONSTITUCION es requerido');
-    }
+   
     $this->FechaConstitucion = $FechaConstitucion;
   }
   public function SetCurp($Curp)
@@ -153,9 +152,7 @@ class SolicitudC
   }
   public function SetJefeDepto($JefeDepto)
   {
-    if (empty($JefeDepto)) {
-      throw new Exception('JEFE DEL DEPTO. DE CUENTAS POR PAGAR, CORREO Y NÚMERO DE EXTENSIÓN  es requerido');
-    }
+   
     $this->JefeDepto = $JefeDepto;
   }
   public function SetBeneficiario($Beneficiario)
@@ -332,16 +329,25 @@ class SolicitudC
 
   public function SetLugar($LuNaci)
   {
-   
+
     $this->LuNaci = $LuNaci;
   }
 
   public function SetNacionalidad($Nacionalidad)
   {
-   
+
     $this->Nacionalidad = $Nacionalidad;
   }
 
+
+  public function SetEjecutivo($Ejecutivo)
+  {
+
+    $this->Ejecutivo = $Ejecutivo;
+    
+   
+
+  }
 
 
 
@@ -445,7 +451,7 @@ class SolicitudC
   public function Add()
   {
     try {
-      $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece2(
+      $result = $this->Connection->Exec_store_procedure_json("CALL SolicitudFicrece(
           '0',
           '" . $this->NombreSolicitud . "',
           '" . $this->Correo . "',
@@ -501,11 +507,13 @@ class SolicitudC
             '',
             '',
             '" . $this->PERSONA . "',
-'',
             '',
+            '',
+            '" . $this->Ejecutivo . "',
 
         @Result);", "@Result");
-
+      /*   print_r($result);
+        exit; */
       return $result;
     } catch (Exception $e) {
       throw $e;
