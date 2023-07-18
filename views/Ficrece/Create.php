@@ -6,7 +6,10 @@
   <!-- <title> Contacto </title> -->
   <?php 
   @session_start();
-  
+  if (!isset($_SESSION['Ecommerce-ClienteKey'])) {
+    header('Location: ../Login/index.php?url=../Ficrece/Create.php');
+    exit;
+  }
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
   <!-- Hotjar Tracking Code for my site -->
 <!-- Hotjar Tracking Code for https://fibremex.com/fibra-optica/views/Ficrece/Create.php -->
