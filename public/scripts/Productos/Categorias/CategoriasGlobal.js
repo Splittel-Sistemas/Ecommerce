@@ -341,8 +341,9 @@ var existCodeSapPatchCord = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
+    let Stock='';
     if(document.getElementById('add-stock')){
-    let Stock = document.getElementById('add-stock')
+     Stock = document.getElementById('add-stock')
         Stock.innerHTML = ""
     }
     if (!response.error && response.count > 0) {
@@ -390,7 +391,7 @@ var existCodeSapPatchCord = function(Codigo){
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML =''
-        console.log('FT'+resultResponse.FichaRuta)
+        
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
         
         FichaTecnicaTecnica.innerHTML = agregarFichaTecnica(resultResponse.FichaRuta, 'Ficha Técnica')
