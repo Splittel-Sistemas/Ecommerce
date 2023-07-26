@@ -13,6 +13,7 @@
     public $BillToInformaction;
     protected $FechaActual;
     public $CFDIUser;
+    public $RegimenFiscal;
     public $TransferReference;
     public $TransportationCode;
     protected $SalesPersonCode;
@@ -66,6 +67,11 @@
         throw new Exception('$CFDIUser no es valido');
       }
       $this->CFDIUser = $CFDIUser;
+    }public function SetRegimenFiscal($RegimenFiscal){
+      if (is_null($RegimenFiscal)) {
+        throw new Exception('$RegimenFiscal no es valido');
+      }
+      $this->RegimenFiscal = $RegimenFiscal;
     }public function SetTransportationCode($TransportationCode){
       if (is_null($TransportationCode)) {
         throw new Exception('$TransportationCode no es valido');
@@ -128,6 +134,8 @@
       return $this->BillToInformaction;
     }public function GetCFDIUser(){
       return $this->CFDIUser;
+    }public function GetRegimenFiscal(){
+      return $this->RegimenFiscal;
     }public function GetTransportationCode(){
       return $this->GetTransportationCode;
     }public function GetTransferReference(){
@@ -186,6 +194,7 @@
               "DocDate"             => $this->FechaActual,
               "DocRate"             => $this->DocRate,
               "CFDIUser"            => $this->CFDIUser,
+              "RegimenFiscal"       => $this->RegimenFiscal,
               "TransportationCode"  => $this->TransportationCode,
               "SalesPersonCode"     => $this->SalesPersonCode,
               "GroupNumber"         => $this->GroupNumber,

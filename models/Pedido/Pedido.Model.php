@@ -32,6 +32,7 @@
     public $TipoCambio;
     public $DiasExtraCredito;
     public $CFDIUser;
+    public $RegimenFiscal;
     public $NumeroGuiaEstatus;
     public $NombrePaqueteria;
     public $EnvioCorreo;
@@ -97,6 +98,8 @@
       $this->DiasExtraCredito = $DiasExtraCredito;
     }public function SetCFDIUser($CFDIUser){
       $this->CFDIUser = $CFDIUser;
+    }public function SetRegimenFiscal($RegimenFiscal){
+      $this->RegimenFiscal = $RegimenFiscal;
     }public function SetEstatus($Estatus){
       $this->Estatus = $Estatus;
     }public function SetNumeroGuiaEstatus($NumeroGuiaEstatus){
@@ -157,6 +160,8 @@
       return $this->TransportationCode;
     }public function GetEnvioCorreo(){
       return $this->EnvioCorreo;
+    }public function GetRegimenFiscal(){
+      return $this->RegimenFiscal;
     }
 
     public function Add(){
@@ -197,6 +202,7 @@
           '".$this->DiasExtraCredito."',
           '".$this->CFDIUser."',
           '".$this->TransportationCode."',
+          '".$this->RegimenFiscal."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -223,6 +229,7 @@
           '".$this->DiasExtraCredito."',
           '".$this->CFDIUser."',
           '".$this->TransportationCode."',
+          '".$this->RegimenFiscal."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -401,6 +408,7 @@
           $this->DiasExtraCredito       =   $row->DiasExtraCredito;
           $this->CFDIUser               =   $row->CFDIUser;
           $this->TransportationCode     =   $row->transportationcode;
+          $this->RegimenFiscal          =   $row->regimenfiscal;
           $this->Estatus                =   $row->estatus;
           $this->Activo                 =   $row->activo; 
           $this->NumeroGuiaEstatus      =   $row->numero_guia_estatus; 
@@ -452,6 +460,7 @@
           $newPedido->DiasExtraCredito       =   $row->DiasExtraCredito;
           $newPedido->CFDIUser               =   $row->CFDIUser;
           $newPedido->TransportationCode     =   $row->transportationcode;
+          $newPedido->RegimenFiscal          =   $row->regimenfiscal;
           $newPedido->Estatus                =   $row->estatus;
           $newPedido->Activo                 =   $row->activo; 
           $newPedido->Fecha                  =   $row->fecha; 
@@ -511,6 +520,7 @@
           $newPedido->ContactoTelefono      = $row->t06_f012; 
           $newPedido->ContactoCorreo        = $row->t06_f013; 
           $newPedido->TransportationCode    = $row->transportationcode;
+          $newPedido->RegimenFiscal          =   $row->regimenfiscal;
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -564,6 +574,8 @@
 
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $newPedido->TransportationCode    = $row->transportationcode;
+          $newPedido->RegimenFiscal          =   $row->regimenfiscal;
+          
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -616,6 +628,7 @@
           $newPedido->Referencia            = $row->t05_f010; 
           $newPedido->Intentos              = $row->t05_f011; 
           $newPedido->TransportationCode    = $row->transportationcode; 
+          $newPedido->RegimenFiscal         =   $row->regimenfiscal;
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $data[] = $newPedido;
           unset($newPedido);

@@ -6,11 +6,13 @@ var PagarPedidoBanco = function(Elem){
 		let transportationCodeAux = transportationCode
 		let referencia = document.getElementById('referencia-pedido-resumen')
 		let cfdiUser   = document.getElementById('CFDIUser')
+		let regimenfiscalAux = document.getElementById("RegimenFiscal");
 		let requiereFactura   = document.getElementById('RequiereFactura')
 		let checkDatosEnvio       = getChecked('.datosEnvio')
 		let checkDatosFacturacion = getChecked('.datosFacturacion')
 				checkDatosFacturacion = requiereFactura.checked ? checkDatosFacturacion : '' 
 				OpenPayMetodoPago = pagoBanco.checked ? 'banco' : 'tarjeta'
+				let regimenfiscal =requiereFactura.checked ? regimenfiscalAux.value : ""
 		let data = {
 			Action : "PagoBanco", 
 			ActionOpenPay : true, 
@@ -21,6 +23,7 @@ var PagarPedidoBanco = function(Elem){
 			monedaPago : monedaPago,
 			metodoPago : OpenPayMetodoPago,
 			CFDIUser : cfdiUser.value,
+			RegimenFiscal : regimenfiscal,
 			referencia : referencia.value
 		}
 	

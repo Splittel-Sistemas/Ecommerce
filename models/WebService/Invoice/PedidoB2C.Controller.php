@@ -110,6 +110,7 @@
             $this->PedidoB2C->SetShipToInformaction($this->ShipToInformaction());
             $this->PedidoB2C->SetBillToInformaction($BillToInformaction);
             $this->PedidoB2C->SetCFDIUser($this->Pedido->CFDIUser);
+            $this->PedidoB2C->SetRegimenFiscal($this->Pedido->RegimenFiscal);
             $this->PedidoB2C->SetTransferReference($this->Pedido->OpenPayTransaccionKey);
             $this->PedidoB2C->SetPaymentMethod($this->Pedido->MetodoPago);
             $this->PedidoB2C->SetDocCurrency($this->Pedido->MonedaPago);

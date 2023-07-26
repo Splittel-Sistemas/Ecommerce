@@ -133,6 +133,9 @@
       <option value="<?php echo $CFDIUser->Clave ?>"><?php echo $CFDIUser->Descripcion ?></option>
       <?php endforeach ?>
     </select>
+    <select class="form-control form-control-sm" id="RegimenFiscal" name="RegimenFiscal" style="display:none;" >
+          <option value="" selected></option>
+        </select>
   </div>
 </div>
 <?php 

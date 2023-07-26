@@ -93,8 +93,14 @@
   if (!class_exists("CFDIUserController")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/CFDIUser.Controller.php';
   }
+  if (!class_exists("RegimenFiscalController")) {
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/RegimenFiscal.Controller.php';
+  }
   $CFDIUserController = new CFDIUserController();
   $ResultCFDIUserController = $CFDIUserController->get();
+
+  $RegimenFiscalController = new RegimenFiscalController();
+  $ResultRegimenFiscalController = $RegimenFiscalController->get();
   if($_SESSION['Ecommerce-ClienteTipo'] == 'B2C'){
  ?>
     <div class="row mt-2 mb-3">
@@ -111,7 +117,14 @@
           <option value="<?php echo $CFDIUser->Clave ?>"><?php echo $CFDIUser->Descripcion ?></option>
           <?php endforeach ?>
         </select>
+        <label class="text-center text-md-left">Regimen Fiscal</label>
+        <select class="form-control form-control-sm" id="RegimenFiscal" name="RegimenFiscal">
+          <?php foreach ($ResultRegimenFiscalController->records as $key => $RegimenUser): ?>
+          <option value="<?php echo $RegimenUser->Clave ?>"><?php echo $RegimenUser->Descripcion ?></option>
+          <?php endforeach ?>
+        </select>
       </div>
+    
     </div>
     <?php }else{ ?>
     <div class="row mt-2 mb-3">

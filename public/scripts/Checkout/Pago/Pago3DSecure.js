@@ -12,10 +12,12 @@ var Success = function (response) {
   let transportationCodeAux = transportationCode
   let referencia = document.getElementById("referencia-pedido-resumen");
   let cfdiUser = document.getElementById("CFDIUser");
+  let regimenfiscalAux = document.getElementById("RegimenFiscal");
   let requiereFactura = document.getElementById("RequiereFactura");
   let checkDatosEnvio = getChecked(".datosEnvio");
   let checkDatosFacturacion = getChecked(".datosFacturacion");
   checkDatosFacturacion = requiereFactura.checked ? checkDatosFacturacion : "";
+  let regimenfiscal =requiereFactura.checked ? regimenfiscalAux.value : ""
   let data = {
     Action: "Pago3DSecure",
     ActionOpenPay: true,
@@ -29,6 +31,7 @@ var Success = function (response) {
     deviceSessionId: deviceSessionId,
     CFDIUser: cfdiUser.value,
     referencia: referencia.value,
+    RegimenFiscal: regimenfiscal,
   };
 
   // información pedido B2B

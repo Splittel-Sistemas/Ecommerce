@@ -344,6 +344,8 @@ class OpenPayController
                                 $PedidoModel->SetDiasExtraCredito($_SESSION['Ecommerce-WS-GetExtraDays']);
                             }
                             $PedidoModel->SetCFDIUser($_POST['CFDIUser']);
+                            $RF = ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ) ? $_POST["RegimenFiscal"] : "";
+                            $PedidoModel->SetRegimenFiscal($RF);
                             $ResultPedido = $PedidoModel->Update();
                             if (!$ResultPedido['error']) {
                                 unset($ExistePedido);
@@ -496,6 +498,9 @@ class OpenPayController
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
                             $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount);
+
+                            $RF = ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ) ? $_POST["RegimenFiscal"] : "";
+                            $PedidoModel->SetRegimenFiscal($RF);
 
                             $ResultPedido = $PedidoModel->Update3DSecure();
                             if (!$ResultPedido['error']) {
