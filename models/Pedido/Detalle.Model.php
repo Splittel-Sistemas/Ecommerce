@@ -269,12 +269,13 @@
 
     public function Update(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleActualizar(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleActualizar2(
           '".$this->Key."',
           '".$this->PedidoKey."',
           '".$this->Codigo."',
           '".$this->Cantidad."',
           '".$this->Descuento."',
+          '". $_SESSION['Ecommerce-ClienteRedondeo']."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -284,13 +285,14 @@
 
     public function Create(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProducto(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProducto2(
           '".$this->Key."',
           '".$this->PedidoKey."',
           '".$this->Codigo."',
           '".$this->Cantidad."',
           '".$this->Descuento."',
           '".$this->CantidadValidacion."',
+          '". $_SESSION['Ecommerce-ClienteRedondeo']."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -300,9 +302,10 @@
 
     public function CreatePuntos(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoPuntosDetalleAgregarProducto(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoPuntosDetalleAgregarProducto2(
           '".$this->PedidoKey."',
           '".$this->Codigo."',
+          '". $_SESSION['Ecommerce-ClienteRedondeo']."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -312,7 +315,7 @@
 
     public function CreateConfigurable(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProductoConfigurable(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProductoConfigurable2(
           '".$this->Key."',
           '".$this->PedidoKey."',
           '".$this->Codigo."',
@@ -320,6 +323,7 @@
           '".$this->Cantidad."',
           '".$this->Descuento."',
           '".$this->Subtotal."',
+          '". $_SESSION['Ecommerce-ClienteRedondeo']."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {

@@ -18,6 +18,7 @@ class Cliente{
     public $Descuento;
     public $EmailEjecutivo;
     public $DiasCredito;
+    public $Redondeo;
 
     protected $Connection;
     protected $Tool;
@@ -101,6 +102,8 @@ class Cliente{
         return $this->EmailEjecutivo;
     }public function GetDiasCredito(){
         return $this->DiasCredito;
+    }public function GetRedondeo(){
+        return $this->Redondeo;
     }
 
     public function GetBy($filter){
@@ -123,6 +126,7 @@ class Cliente{
           $this->EmailEjecutivo =   $row->email_ejecutivo;
           $this->Descuento      =   $row->descuento;
           $this->DiasCredito      =   $row->dias_credito;
+          $this->Redondeo      =   $row->redondear;
 
           # si el cliente es un usuario B2B
           if ($this->Tipo == 'B2B') {
