@@ -46,8 +46,20 @@ var CableSimplexDuplex = function(){
   }
   DirectorioImgProducto = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value; 
   // Codigo Generado de acuerdo a las opciones selecionadas
+  //********************CONDICIONES PARA NUEVO PROVEEDOR*********************//
+  if(TipoFibra.value=='09' && DiametroCable.value==2 
+  && TipoCubierta.value=='RB' && (NumeroHilos.value=='S' || NumeroHilos.value=='D')){
+    CodigoGenerado = Marca+Familia+FamiliaCable+'29'+NumeroHilos.value+DiametroCable.value+TipoCubierta.value+cvefijo
+  }else if(TipoFibra.value=='09' && DiametroCable.value==2 
+  && TipoCubierta.value=='HB' && (NumeroHilos.value=='D')){
+    CodigoGenerado = Marca+Familia+FamiliaCable+'29'+NumeroHilos.value+DiametroCable.value+TipoCubierta.value+cvefijo
+  }else if(TipoFibra.value=='62' && DiametroCable.value==2 
+  && TipoCubierta.value=='R' && (NumeroHilos.value=='D')){
+    CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value+DiametroCable.value+TipoCubierta.value+'B'+cvefijo
+  //***********************CONDICIONES PARA NUEVO PROVEEDOR***********************//
+  }else{
   CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+NumeroHilos.value+DiametroCable.value+TipoCubierta.value+cvefijo
-  // Agreación de codigo para la vista en el identificador
+  }// Agreación de codigo para la vista en el identificador
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
