@@ -102,7 +102,7 @@
         <label for="quantity">Diámetro de cable</label>
         <select class="form-control" id="Diametro" name="Diametro" onchange="JumpersFibraOptica()">
           <option value="1">1.6 mm</option>
-          <option value="2">2 mm</option>
+          <option value="2" selected>2 mm</option>
         </select>
       </div>
     </div> 
