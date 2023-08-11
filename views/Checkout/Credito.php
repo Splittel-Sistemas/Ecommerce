@@ -60,28 +60,32 @@ if (!class_exists("Functions_tools")) {
           if ($ErrorCode == 0) {
             $clienteCredito = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->CreditLine;
             $Currency = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->Currency;
-
+  
+            if(isset($_POST["monedaPago"]) && $_POST["monedaPago"] == "USD"){
 ?>
 <div class="card" id="credito-cliente-b2b">
-        <div class="card-header" role="tab">
-            <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a></h6>
-        </div>
-        <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
-          <div class="card-body">
+    <div class="card-header" role="tab">
+        <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a>
+        </h6>
+    </div>
+    <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
+        <div class="card-body">
             <p>Crédito disponible<span class="text-medium">
-                <?php
+                    <?php
                 $clienteCreditoDisponible = $clienteCredito;
                 ?>
-                $<?php echo $clienteCreditoDisponible; ?></span> <?=  $Currency ?>.</p>
-                <div class="custom-control custom-checkbox d-block">
-                    <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito" onchange="LineaCreditoTipoCambio(this)">
-                    <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta orden.</label>
-                </div>
-          </div>
+                    $<?php echo $clienteCreditoDisponible; ?></span> <?=  $Currency ?>.</p>
+            <div class="custom-control custom-checkbox d-block">
+                <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito"
+                    onchange="LineaCreditoTipoCambio(this)">
+                <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta
+                    orden.</label>
+            </div>
         </div>
+    </div>
 </div>
-      <?php 
-          }
+<?php 
+          }}
       }
     }
       ?>
