@@ -635,7 +635,6 @@ class SolicitudRegistroController
           $mail->From = 'notificaciones@fibremex.com';
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
-           $mail->AddBCC('ramon.olea@splittel.com');
            $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
 
         

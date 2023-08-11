@@ -13,8 +13,9 @@ var EnviarAlta = function () {
   fda.append("CorreoEmpresarial", $("#CorreoEmpresarial").val());
   fda.append("CorrePersonal", $("#CorrePersonal").val());
   fda.append("Whatsapp", $("#Whatsapp").val());
- 
-
+  fda.append("CorreEjecutivo", $("#ejecutivo").val());
+  var CorreEjecutivo = $("#ejecutivo").val();
+  if (CorreEjecutivo != "") {
     $.ajax({
       url: "../../models/Solicitud/Cursos/Alta.Route.php",
       type: "post",
@@ -43,7 +44,11 @@ var EnviarAlta = function () {
         }
       },
     });
+  } else {
+    $("#botonenviar").show();
 
+    templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
+  }
 };
 
 
