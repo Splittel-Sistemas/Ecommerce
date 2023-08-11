@@ -87,7 +87,36 @@
                   <label class="text-uppercase">Fecha: <strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="date" id="date" name="date">
                 </div>
+                <div class="col-sm-12 col-md-6 form-group">
+                  <label for="validationCustom06">EJECUTIVO <strong class="text-danger">*</strong></label>
+                  <select class="form-control form-control-2" id="ejecutivo" required>
+                    <option value=<?= isset($_GET['ejecutivo']) ? $Ejecutivo->email  : ''; ?>>
+                      <?php
+                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == $Ejecutivo->email) {
+                        echo $Ejecutivo->nombre . " " . $Ejecutivo->apellidos;
+                      } else {
+                        echo 'Seleccione un Ejecutivo';
+                      };
 
+                      ?>
+
+                    </option>
+                    <?php foreach ($Contacto->records as $key => $data) { ?>
+                      <?php
+                      if (isset($_GET['ejecutivo']) && $_GET['ejecutivo'] == $data->email) {
+                        
+                      } else {
+                      ?>
+                        <option value=<?= $data->email ?>><?= $data->nombre . " " . $data->apellidos ?></option>
+                      <?php
+
+
+                      };
+
+                      ?>
+                    <?php } ?>
+                  </select>
+                </div>
                 <div class="col-sm-12 col-md-12 form-group text-center">
                   <ul>
                     <p>Favor de indicar datos personales del participante ya que se les realizará el envió de la confirmación a través del

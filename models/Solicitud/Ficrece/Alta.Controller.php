@@ -635,7 +635,7 @@ class SolicitudCController
           $mail->AddCC('marketing.directo@splittel.com');
           $eje = $_POST['CorreEjecutivo'] ;
           $mail->AddAddress("$eje");
-          $mail->AddBCC('ramon.olea@splittel.com');
+   
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
           $mail->MsgHTML($mensaje);
 
