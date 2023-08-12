@@ -117,7 +117,7 @@ var cuentaCotizacion = function(Elem) {
   { 
     Action: 'cuentaCotizacion', 
     ActionPedido: true, 
-    PedidoKey: Elem.getAttribute('PedidoKey') 
+    PedidoKey: atob(Elem.getAttribute('PedidoKey') )
   }, 
   function(response){
     window.location.href = "../Carrito";
