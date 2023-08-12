@@ -34,7 +34,7 @@
           </span>
         </td>
         <td class="text-center">
-          <span class="text-danger cursor-point" PedidoKey="<?php echo $PedidoDetalle->Key; ?>" onclick="cuentaCotizacion(this)">
+          <span class="text-danger cursor-point" PedidoKey="<?php echo   base64_encode($PedidoDetalle->Key); ?>" onclick="cuentaCotizacion(this)">
             <i class="icon-shopping-cart"></i>
           </span>
         </td>
