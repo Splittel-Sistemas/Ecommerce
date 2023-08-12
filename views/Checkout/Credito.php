@@ -85,7 +85,16 @@ if (!class_exists("Functions_tools")) {
     </div>
 </div>
 <?php 
-          }}
+          }else{
+            echo '<div class="alert alert-warning text-center" role="alert">
+            Los pedidos a credito solo son en moneda USD
+          </div>';
+          }
+        
+        
+        
+        
+        }
       }
     }
       ?>
