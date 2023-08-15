@@ -9,6 +9,8 @@ class SolicitudCursos
   public $name;
   public $date;
   public $NombreSolicitud;
+  public $Titulo;
+
   public $Empresa;
   public $Puesto;
   public $Telefono;
@@ -36,9 +38,16 @@ class SolicitudCursos
   public function SetNombreSolicitud($NombreSolicitud)
   {
     if (empty($NombreSolicitud)) {
-      throw new Exception('Nombre y Título es requerido');
+      throw new Exception('Nombre es requerido');
     }
     $this->NombreSolicitud = $NombreSolicitud;
+  }
+  public function SetTitulo($Titulo)
+  {
+    if (empty($Titulo)) {
+      throw new Exception('Título es requerido');
+    }
+    $this->Titulo = $Titulo;
   }
   public function SetEmpresa($Empresa)
   {
@@ -202,6 +211,7 @@ class SolicitudCursos
           '" . $this->Whatsapp . "',
             '',
             '',
+            '" . $this->Titulo . "',
 
         @Result);", "@Result");
 
