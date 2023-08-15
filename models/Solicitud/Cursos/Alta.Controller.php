@@ -522,7 +522,7 @@ class SolicitudCursosController
                     <p align="center" style="margin-bottom:10px;"><strong>Nombre del curso: </strong>' . $_POST['name'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Fecha: </strong>' . $_POST['date'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . $_POST['CorreEjecutivo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Nombre y Título: </strong>' . $_POST['NombreSolicitud'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>Nombre y Título: </strong>' .$_POST['Titulo']." ". $_POST['NombreSolicitud'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Empresa: </strong>' . $_POST['Empresa'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Puesto: </strong>' . $_POST['Puesto'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $_POST['Telefono'] . '</p>
