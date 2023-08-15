@@ -7,6 +7,7 @@ var EnviarAlta = function () {
   fda.append("name", $("#name").val());
   fda.append("date", $("#date").val());
   fda.append("NombreSolicitud", $("#NombreSolicitud").val());
+  fda.append("Titulo", $("#Titulo").val());
   fda.append("Empresa", $("#Empresa").val());
   fda.append("Puesto", $("#Puesto").val());
   fda.append("Telefono", $("#Telefono").val());
@@ -14,43 +15,56 @@ var EnviarAlta = function () {
   fda.append("CorrePersonal", $("#CorrePersonal").val());
   fda.append("Whatsapp", $("#Whatsapp").val());
   fda.append("CorreEjecutivo", $("#ejecutivo").val());
+  var Politica = $("#apple").val();
+  console.log(Politica );
   var CorreEjecutivo = $("#ejecutivo").val();
   if (CorreEjecutivo != "") {
-    $.ajax({
-      url: "../../models/Solicitud/Cursos/Alta.Route.php",
-      type: "post",
-      data: fda,
-      contentType: false,
-      processData: false,
-      dataType: "json",
-      async: false,
-      cache: false,
-      success: function (response) {
-        if (!response.error) {
-          $("#botonenviar").show();
+    if (Politica == 1) {
+      $.ajax({
+        url: "../../models/Solicitud/Cursos/Alta.Route.php",
+        type: "post",
+        data: fda,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        async: false,
+        cache: false,
+        success: function (response) {
+          if (!response.error) {
+            $("#botonenviar").show();
 
-          templateAlert(
-            "success",
-            "Enviado",
-            "La solicitud ha sido enviada",
-            "center",
-            ""
-          );
-          GlobalCloseModal("modal-ficrece");
-          window.location.href = "Mensaje.php";
-        } else {
-          $("#botonenviar").show();
-          templateAlert("danger", "", response.message, "topRight", "");
-        }
-      },
-    });
+            templateAlert(
+              "success",
+              "Enviado",
+              "La solicitud ha sido enviada",
+              "center",
+              ""
+            );
+            GlobalCloseModal("modal-ficrece");
+            window.location.href = "Mensaje.php";
+          } else {
+            $("#botonenviar").show();
+            templateAlert("danger", "", response.message, "topRight", "");
+          }
+        },
+      });
+    } else {
+      $("#botonenviar").show();
+
+      templateAlert(
+        "warning",
+        "",
+        "ACEPTE LA POLÍTICA DE CURSOS SPLITTEL ",
+        "topRight",
+        ""
+      );
+    }
   } else {
     $("#botonenviar").show();
 
     templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
   }
 };
-
 
 function Numeros(string) {
   //Solo numeros
@@ -65,4 +79,15 @@ function Numeros(string) {
 
   //Retornar valor filtrado
   return out;
+}
+function Politica(checkbox) {
+  if (checkbox.checked) {
+    console.log("Checkbox seleccionado");
+    // Realiza acciones cuando el checkbox se selecciona
+    $("#apple").val(1);
+  } else {
+    console.log("Checkbox deseleccionado");
+    $("#apple").val(0);
+    // Realiza acciones cuando el checkbox se deselecciona
+  }
 }

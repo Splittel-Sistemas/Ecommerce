@@ -80,6 +80,7 @@ class SolicitudCursosController
         $SolicitudCModel->Setname($_POST['name']);
         $SolicitudCModel->Setdate($_POST['date']);
         $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
+        $SolicitudCModel->SetTitulo($_POST['Titulo']);
         $SolicitudCModel->SetEmpresa($_POST['Empresa']);
         $SolicitudCModel->SetPuesto($_POST['Puesto']);
         $SolicitudCModel->SetTelefono($_POST['Telefono']);
