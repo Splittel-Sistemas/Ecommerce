@@ -167,8 +167,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label class="text-uppercase">Puesto: <strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="text" id="Puesto" name="Puesto"
-                                        maxlength="4">
+                                    <input class="form-control form-control-2" type="text" id="Puesto" name="Puesto">
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label class="text-uppercase">Teléfono: <strong
