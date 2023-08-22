@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-sm-12 form-group">
       <label>Nombre Dirección <strong class="text-danger">*</strong></label>
-      <input class="form-control form-control-sm" type="text" id="NombreDireccion" name="NombreDireccion">
+      <input class="form-control form-control-sm" type="text" id="NombreDireccion" name="NombreDireccion" maxlength="50">
     </div>
   </div>
   <?php endif ?>
