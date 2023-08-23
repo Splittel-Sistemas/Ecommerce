@@ -150,6 +150,9 @@
           <div class="mt-2 mb-2">
             <div id="add-ficha-tecnica-mini-catalogo"></div>
             <div id="add-certificado"></div>
+            <div id="add-minicatalogo">
+            
+            </div>
           </div>
           <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
             <div class="d-inline-block">
