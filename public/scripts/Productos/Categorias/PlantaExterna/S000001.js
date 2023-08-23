@@ -18,6 +18,7 @@ var CableExteriorArmadoMultiTubo = function(){
   ListImgProducto("OPCFOCExxARxxPPSS")
   ListProductoDescription("OPCFOCExxARxxPPSS")
   ListProductoAdicional("OPCFOCExxARxxPPSS")
+  ListProductoMiniCatalogo("OPCFOCExxARxxPPSS")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -31,6 +32,7 @@ var CableExteriorFigura8SinArmadura = function(){
   ListImgProducto("OPCFOCExxF8SAxx")
   ListProductoDescription("OPCFOCExxF8SAxx")
   ListProductoAdicional("OPCFOCExxF8SAxx")
+  ListProductoMiniCatalogo("OPCFOCExxF8SAxx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -44,6 +46,7 @@ var CableExteriorFigura8MensajeroPlastico = function(){
   ListImgProducto("OPCFOCExxF8SAMPxx")
   ListProductoDescription("OPCFOCExxF8SAMPxx")
   ListProductoAdicional("OPCFOCExxF8SAMPxx")
+  ListProductoMiniCatalogo("OPCFOCExxF8SAMPxx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -59,6 +62,7 @@ var CableExteriorArmadoDielectrico = function(){
   ListImgProducto("OPCFOCExxADxxPPSS")
   ListProductoDescription("OPCFOCExxADxxPPSS")
   ListProductoAdicional("OPCFOCExxADxxPPSS")
+  ListProductoMiniCatalogo("OPCFOCExxADxxPPSS")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -74,6 +78,7 @@ var CableExteriorDielectrico = function(){
   ListImgProducto("OPCFOCExxDIxxxPPSS")
   ListProductoDescription("OPCFOCExxDIxxxPPSS")
   ListProductoAdicional("OPCFOCExxDIxxxPPSS")
+  ListProductoMiniCatalogo("OPCFOCExxDIxxxPPSS")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -94,6 +99,7 @@ var CableExteriorMiniFigura8 = function(){
   ListImgProducto("OPCFOCExxM8xx")
   ListProductoDescription("OPCFOCExxM8xx")
   ListProductoAdicional("OPCFOCExxM8xx")
+  ListProductoMiniCatalogo("OPCFOCExxM8xx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -108,6 +114,7 @@ var CableDropPlano = function(){
   ListImgProducto("OPCFOx9DRFTTHPxx")
   ListProductoDescription("OPCFOx9DRFTTHPxx")
   ListProductoAdicional("OPCFOx9DRFTTHPxx")
+  ListProductoMiniCatalogo("OPCFOx9DRFTTHPxx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -121,6 +128,7 @@ var MicroCable = function(){
   ListImgProducto("OPCFOMC09PExxx")
   ListProductoDescription("OPCFOMC09PExxx")
   ListProductoAdicional("OPCFOMC09PExxx")
+  ListProductoMiniCatalogo("OPCFOMC09PExxx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -138,6 +146,7 @@ var CableADDS = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
+  ListProductoMiniCatalogo(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -153,6 +162,7 @@ var ADDSAntitracking = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
+  ListProductoMiniCatalogo(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -171,6 +181,7 @@ var ADDSAntirroedor = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
+  ListProductoMiniCatalogo(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -196,6 +207,7 @@ var ADDSMini = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
+  ListProductoMiniCatalogo(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -213,6 +225,8 @@ var ADDSAccess = function(){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
+  ListProductoMiniCatalogo(DirectorioImgProducto)
+  
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)

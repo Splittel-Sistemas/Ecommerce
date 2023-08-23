@@ -283,6 +283,18 @@ var ListProductoAdicional = function(DirectorioImgProducto){
    document.getElementById('adicional').innerHTML = response;
   })
 }
+
+var ListProductoMiniCatalogo = function(DirectorioImgProducto){
+  ajax_(
+  '../../views/Productos/Informacion/MiniCatalogo/index.php', 
+  'post', 
+  'html', 
+  { DirectorioImgProducto: DirectorioImgProducto }, 
+  function(response){
+   document.getElementById('add-minicatalogo').innerHTML = "";
+   document.getElementById('add-minicatalogo').innerHTML = response;
+  })
+}
 /**
  * Description
  *
