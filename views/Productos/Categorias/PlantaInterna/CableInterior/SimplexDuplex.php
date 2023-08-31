@@ -3,7 +3,7 @@
     <div class="form-group mb-0">
       <label for="quantity">Tipo de Fibra</label>
       <select class="form-control" id="TipoFibra" name="TipoFibra" onchange="CableInterior()">
-        <option value="09">Monomodo</option>
+        <option value="29">Monomodo</option>
         <option value="62">Multimodo OM1</option>
         <option value="50">Multimodo OM2</option>
         <option value="55">Multimodo OM3</option>
