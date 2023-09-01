@@ -1,4 +1,3 @@
-
 var EnviarAlta = function () {
   $("#botonenviar").hide();
   var fda = new FormData();
@@ -7,7 +6,6 @@ var EnviarAlta = function () {
   fda.append("name", $("#name").val());
   fda.append("date", $("#date").val());
   fda.append("NombreSolicitud", $("#NombreSolicitud").val());
-  fda.append("Titulo", $("#Titulo").val());
   fda.append("Empresa", $("#Empresa").val());
   fda.append("Puesto", $("#Puesto").val());
   fda.append("Telefono", $("#Telefono").val());
@@ -15,8 +13,15 @@ var EnviarAlta = function () {
   fda.append("CorrePersonal", $("#CorrePersonal").val());
   fda.append("Whatsapp", $("#Whatsapp").val());
   fda.append("CorreEjecutivo", $("#ejecutivo").val());
+  var Titulo = $("#Titulo").val();
+  var Otro = $("#Otro").val();
+  if (Titulo == "Otro") {
+    fda.append("Titulo", Otro);
+  } else {
+    fda.append("Titulo", $("#Titulo").val());
+  }
+  console.log(Titulo);
   var Politica = $("#apple").val();
-  console.log(Politica );
   var CorreEjecutivo = $("#ejecutivo").val();
   if (CorreEjecutivo != "") {
     if (Politica == 1) {
@@ -66,6 +71,16 @@ var EnviarAlta = function () {
   }
 };
 
+function titulo(valor) {
+  console.log(valor);
+  if (valor == "Otro") {
+    $("#divOtro").show();
+    $("#divespacio").show();
+  } else {
+    $("#divOtro").hide();
+    $("#divespacio").hide();
+  }
+}
 function Numeros(string) {
   //Solo numeros
   var out = "";
