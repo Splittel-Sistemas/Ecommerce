@@ -77,18 +77,7 @@ var JumpersMultimodo = function(){
     StyleDisplayNoneOrBlock(MonomodoTipoFibraSelect, 'none')
     StyleDisplayNoneOrBlock(NumeroHilosSelect, "block")
 
-  if (Conector1.value == 'MT' || Conector2.value == 'MT') {
-    NumeroHilos.value = 'D'
-    contJumperMultimodo == 0 ? Diametro.selectedIndex = 0 : '';
-    contJumperMultimodo++
-    StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
-    StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [0])
-    StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [1])
-  }else{
-    contJumperMultimodo = 0
-    StyleDisplayNoneOrBlock_2(Diametro, 'block', [2])
-    StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [0])
-  }
+  
 
   if (PosicionConector1 == PosicionConector2) {
     if (PosicionPulidoConector1 < PosicionPulidoConector2) {
@@ -116,7 +105,22 @@ var JumpersMultimodo = function(){
     }
   }
 
-  if(TipoCubierta.value=="RI" && (MultimodoTipoFibra.value=="62" || MultimodoTipoFibra.value=="50")){
+  if (Conector1.value == 'MT' || Conector2.value == 'MT') {
+    NumeroHilos.value = 'D'
+    contJumperMultimodo == 0 ? Diametro.selectedIndex = 0 : '';
+    contJumperMultimodo++
+    StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+    StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+    StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [0])
+    StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [1])
+  }else{
+    contJumperMultimodo = 0
+    StyleDisplayNoneOrBlock_2(Diametro, 'block', [2])
+    StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [0])
+  }
+
+  if(TipoCubierta.value=="RI" && (MultimodoTipoFibra.value=="62" || MultimodoTipoFibra.value=="50")
+   && (Conector1.value != 'MT' && Conector2.value != 'MT')){
     StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1,2])
   }else{
     StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
