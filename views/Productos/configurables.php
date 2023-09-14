@@ -147,13 +147,7 @@
         </div>
         <hr class="mb-2">
         <div class="d-flex flex-wrap justify-content-between">
-          <div class="mt-2 mb-2">
-            <div id="add-ficha-tecnica-mini-catalogo"></div>
-            <div id="add-certificado"></div>
-            <div id="add-minicatalogo">
-            
-            </div>
-          </div>
+         
           <div class="mt-2 mb-2"><span class="text-muted">Compartir:&nbsp;&nbsp;</span>
             <div class="d-inline-block">
               <a onclick="window.open(this.href, this.target, ' width=600, height=600, menubar=no');return false;" class="social-button shape-rounded sb-facebook" href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a>
@@ -163,8 +157,18 @@
           </div>
         </div>
       </div>
+      <div class="d-flex flex-wrap justify-content-between">
+          <div class="mt-2 mb-2">
+            <div id="add-ficha-tecnica-mini-catalogo" style="display:inline;"></div>
+            <div id="add-certificado" style="display:inline;"></div>
+            <div id="add-minicatalogo" style="display:inline;"></div>
+            <div id="add-manual" style="display:inline;"></div>
+          </div>
+        </div>
     </div>
+    
   </div>
+  
   <div class="container padding-bottom-3x mb-2">
     <div class="row">
       <div class="col-lg-1 col-md-8 order-md-2">
