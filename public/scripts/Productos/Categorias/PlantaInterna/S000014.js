@@ -110,7 +110,7 @@ var JumpersMultimodo = function(){
     contJumperMultimodo == 0 ? Diametro.selectedIndex = 0 : '';
     contJumperMultimodo++
     StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
-    StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+    StyleDisplayNoneOrBlock_2(Diametro, 'none', [1])
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'none', [0])
     StyleDisplayNoneOrBlock_2(NumeroHilos, 'block', [1])
   }else{
