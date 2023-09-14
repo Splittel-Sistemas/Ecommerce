@@ -147,6 +147,7 @@ var CableADDS = function(){
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
   ListProductoMiniCatalogo(DirectorioImgProducto)
+  ListProductoManual(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -163,6 +164,7 @@ var ADDSAntitracking = function(){
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
   ListProductoMiniCatalogo(DirectorioImgProducto)
+  ListProductoManual(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -182,6 +184,7 @@ var ADDSAntirroedor = function(){
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
   ListProductoMiniCatalogo(DirectorioImgProducto)
+  ListProductoManual(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -208,6 +211,7 @@ var ADDSMini = function(){
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
   ListProductoMiniCatalogo(DirectorioImgProducto)
+  ListProductoManual(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
@@ -226,7 +230,7 @@ var ADDSAccess = function(){
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)
   ListProductoMiniCatalogo(DirectorioImgProducto)
-  
+  ListProductoManual(DirectorioImgProducto)
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)

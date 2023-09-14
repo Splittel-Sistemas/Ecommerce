@@ -295,6 +295,17 @@ var ListProductoMiniCatalogo = function(DirectorioImgProducto){
    document.getElementById('add-minicatalogo').innerHTML = response;
   })
 }
+var ListProductoManual = function(DirectorioImgProducto){
+  ajax_(
+  '../../views/Productos/Informacion/Manual/index.php', 
+  'post', 
+  'html', 
+  { DirectorioImgProducto: DirectorioImgProducto }, 
+  function(response){
+   document.getElementById('add-manual').innerHTML = "";
+   document.getElementById('add-manual').innerHTML = response;
+  })
+}
 /**
  * Description
  *
