@@ -16,9 +16,13 @@ class TemplateFicrece
   {
     try {
       $comment = "";
+      $curp = "";
       $Principal = new TemplatePrincipal();
       if (isset($data['Observaciones']) && $data['Observaciones'] != "") {
         $comment = '<p align="center" style="margin-bottom:10px;"><strong>Observaciones: </strong>' . $data['Observaciones'] . '</p>';
+      }
+      if (isset($data['Curp']) && $data['Curp'] != "") {
+        $curp = '<p align="center" style="margin-bottom:10px;"><strong>Curp: </strong>' . $data['Curp'] . '</p>';
       }
       $html = $Principal->Head() . '<body class="">
                 <span class="preheader">Ecommerce Grupo Splittel</span>
@@ -42,7 +46,7 @@ class TemplateFicrece
                             <td class="wrapper">
                             <p align="center" style="margin-bottom:10px;"><strong>Nombre: </strong>' . $data['NombreSolicitud'] . '</p>
                             <p align="center" style="margin-bottom:10px;"><strong>Rfc: </strong>' . $data['Rfc'] . '</p>
-                            <p align="center" style="margin-bottom:10px;"><strong>Curp: </strong>' . $data['Curp'] . '</p>
+                            ' . $curp . '
                             <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $data['Telefono'] . '</p>
                             <p align="center" style="margin-bottom:10px;"><strong>Correo: </strong>' . $data['Correo'] . '</p>
                             <p align="center" style="margin-bottom:10px;"><strong>Razon Social: </strong>' . $data['RazonSocial'] . '</p>
