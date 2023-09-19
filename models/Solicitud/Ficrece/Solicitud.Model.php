@@ -124,9 +124,6 @@ class SolicitudC
   }
   public function SetCurp($Curp)
   {
-    if (empty($Curp)) {
-      throw new Exception('Curp es requerido');
-    }
     $this->Curp = $Curp;
   }
   public function SetTelefono($Telefono)

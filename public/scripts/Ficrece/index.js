@@ -55,7 +55,6 @@ var EnviarSolicitud = function () {
   fda.append("Fax", $("#Fax").val());
   fda.append("Rfc", $("#Rfc").val());
   fda.append("FechaConstitucion", $("#FechaConstitucion").val());
-  fda.append("Curp", $("#Curp").val());
   fda.append("Telefono", $("#Telefono").val());
   fda.append("Giro", $("#Giro").val());
   fda.append("FechaAlta", $("#FechaAlta").val());
@@ -94,7 +93,7 @@ var EnviarSolicitud = function () {
   if (checkPERSONA.value != "MORAL") {
     var file_data = "";
     fda.append("file", file_data);
-
+    fda.append("Curp", $("#Curp").val());
     var file_data = "";
     fda.append("file2", file_data);
     fda.append("Nacionalidad", "");
@@ -102,6 +101,8 @@ var EnviarSolicitud = function () {
   } else {
     var file_data = $("#file").prop("files")[0];
     fda.append("file", file_data);
+
+    fda.append("Curp", "");
 
     var file_data = $("#file2").prop("files")[0];
     fda.append("file2", file_data);

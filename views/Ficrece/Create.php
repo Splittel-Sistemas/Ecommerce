@@ -73,7 +73,7 @@
       document.getElementById("documento2").removeAttribute('style');
       document.getElementById("jefeD").removeAttribute('style');
       document.getElementById("FCons").removeAttribute('style');
-
+      document.getElementById("divCURP").setAttribute('style', 'display:none');
       document.getElementById("LuNaci1").setAttribute('style', 'display:none');
       document.getElementById("Nacionalidad1").setAttribute('style', 'display:none');
       document.getElementById("nombreR").innerHTML = " <strong class='text-danger'>*</strong> Jefe del depto. de cuentas por pagar y número de extensión : "
@@ -88,6 +88,7 @@
       document.getElementById("jefeD").setAttribute('style', 'display:none');
       document.getElementById("FCons").setAttribute('style', 'display:none');
       document.getElementById("LuNaci1").removeAttribute('style');
+      document.getElementById("divCURP").removeAttribute('style');
       document.getElementById("Nacionalidad1").removeAttribute('style');
       document.getElementById("nombreR").innerHTML = " <strong class='text-danger'>*</strong> Nombre :"
       document.getElementById("nameBene").innerHTML = " <strong class='text-danger'>*</strong> Datos del Dueño Beneficiario (en caso de ser persona distinta a quien solicita el crédito) :"
@@ -218,7 +219,7 @@
                 </div>
 
 
-                <div class="col-sm-12 col-md-6 form-group">
+                <div class="col-sm-12 col-md-6 form-group" style="display:none" id="divCURP">
                   <strong class="text-danger">*</strong><label>CURP :</label>
                   <input class="form-control form-control-2" type="text" id="Curp" name="Curp">
                 </div>
