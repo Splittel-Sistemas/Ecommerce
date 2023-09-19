@@ -51,3 +51,10 @@
 			}
 		})
 	}
+
+	function countChars(obj){
+    const longitudMax = 50;
+    const longitudAct = obj.value.length;
+	const contador = document.getElementById("contador");
+    contador.innerHTML = `${longitudAct}/${longitudMax}`;
+	}

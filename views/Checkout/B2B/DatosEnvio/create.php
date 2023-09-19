@@ -33,7 +33,8 @@ if (isset($_POST['AddressName'])) {
           <div class="row">
             <div class="col-sm-12 form-group">
               <!-- <label>Nombre Dirección <strong class="text-danger">*</strong></label> -->
-              <input class="form-control form-control-pill" type="text" id="NombreDireccion" name="NombreDireccion" placeholder="Nombre Dirección *" maxlength="50">
+              <div id="contador" style="text-align:right;">0/50</div>
+              <input oninput="countChars(this);" class="form-control form-control-pill" type="text" id="NombreDireccion" name="NombreDireccion" placeholder="Nombre Dirección *" maxlength="50">
             </div>
           </div>
           <?php endif ?>
