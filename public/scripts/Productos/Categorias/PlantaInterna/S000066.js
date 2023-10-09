@@ -275,7 +275,7 @@ var JumpersMTPPRO = function(){
     validateEntero(Longitud.value)
     JumperValidacionLongitud(Longitud, 3)
   
-    let Conectarizacion = "A1"
+    let Conectarizacion="A1"
     let Polaridad = document.getElementById('Polaridad')
     let Polaridadselected = Polaridad.options[Polaridad.selectedIndex].text
     let CantidadFibras = document.getElementById('CantidadFibras')
@@ -285,9 +285,15 @@ var JumpersMTPPRO = function(){
     let Fibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCable = 'R'
     let TipoCubierta = document.getElementById('TipoCubierta')
-    
+
     let CodigoGenerado = ""
     
+    if(TipoFibra.value=='09'){
+       Conectarizacion = "A2"
+    }else{
+       Conectarizacion = "A1"
+    }
+
     CantidadFibras[0].style.display = "none"
     CantidadFibras[1].selected = true
     TipoCubierta[0].style.display = "none"
@@ -307,10 +313,10 @@ var JumpersMTPPRO = function(){
       let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
-  
-      ChangeListImgProducto('OPJA1A1','OPJA1A1'+Polaridad.value+Diseno.value)
-      ListProductoDescription('OPJA1A1')
-      ListProductoAdicional('OPJA1A1')
+      console.log()
+      ChangeListImgProducto('OPJ'+Conectarizacion+Conectarizacion,'OPJ'+Conectarizacion+Conectarizacion+Polaridad.value+Diseno.value)
+      ListProductoDescription('OPJ'+Conectarizacion+Conectarizacion)
+      ListProductoAdicional('OPJ'+Conectarizacion+Conectarizacion)
       let data = {
         Action: 'calcular',
         ActionCalcularPrecioMPO: true,
@@ -322,7 +328,7 @@ var JumpersMTPPRO = function(){
       CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
       showClave(CodigoGenerado)
     }
-    agregarFichaTecnicaConfigurable('OPJA1A1')
+    agregarFichaTecnicaConfigurable('OPJ'+Conectarizacion+Conectarizacion)
     agregarCertificadoConfigurable(CodigoGenerado)
   }
   

@@ -31,6 +31,7 @@
       <div class="form-group mb-0">
         <label for="quantity">Tipo de fibra</label>
         <select class="form-control" id="TipoFibra" name="TipoFibra" onchange="JumpersMTPUS()">
+          <option value="09">Monomodo</option>
           <option value="55">OM3</option>
           <option value="57">OM4</option>
         </select>
