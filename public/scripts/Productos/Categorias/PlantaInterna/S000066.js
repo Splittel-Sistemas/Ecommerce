@@ -302,11 +302,11 @@ var JumpersMTPPRO = function(){
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
     Familia = "J"
   
-    if(Longitud.value > 100){
+    if(Longitud.value > 500){
       JumperValidacionLongitud(Longitud, 2)
     }
         
-    if (Longitud.value > 0 && Longitud.value <= 100) {
+    if (Longitud.value > 0 && Longitud.value <= 500) {
       NewLongitud = NumeroConCeros2(Longitud.value, 3)
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
