@@ -315,7 +315,7 @@
 
     public function CreateConfigurable(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProductoConfigurable2(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProductoConfigurable(
           '".$this->Key."',
           '".$this->PedidoKey."',
           '".$this->Codigo."',
@@ -323,7 +323,6 @@
           '".$this->Cantidad."',
           '".$this->Descuento."',
           '".$this->Subtotal."',
-          '". $_SESSION['Ecommerce-ClienteRedondeo']."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
