@@ -17,7 +17,9 @@
     
     public function controller(){
       try {
-       /*  print_r($_POST['CorreEjecutivo']);
+        $dataItems = json_decode($_POST['accesorios'], true);
+
+       /*  print_r( $dataItems[0]['cantidad']);
         exit; */
         $Action = isset($_POST["Action"]);
           switch ($Action) {

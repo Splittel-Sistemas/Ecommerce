@@ -234,7 +234,7 @@
                                 <button type="button" class=" btn btn-info bg-gradient-success btn-sm add_form_field">AGREGAR ACCESORIOS</button>
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group text-center">
-                                    <table id="tableId" class="display" style="width:100%">
+                                    <table id="tableId" class="display table text-center" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Cantidad</th>
@@ -254,7 +254,7 @@
                                             <!-- Puedes agregar más filas aquí -->
                                         </tbody>
                                     </table>
-                                    <input name="valoresAccesorios" type="text" class="form-control" id="valoresAccesorios" />
+                                    <input name="valoresAccesorios" type="hidden" class="form-control" id="valoresAccesorios" />
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group text-center">
                                     <button type="button" id="botonenviar" class="btn btn-primary " onclick="Enviar()">Enviar Solicitud</button>

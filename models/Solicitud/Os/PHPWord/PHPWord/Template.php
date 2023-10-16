@@ -113,7 +113,7 @@ class PHPWord_Template {
 		
 		
     }
- 
+
     
     /**
      * Save Template
