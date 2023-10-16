@@ -25,59 +25,6 @@
     }
     ?>
 
-
-
-
-    <script src="https://cdn.tiny.cloud/1/sx0rs1ldfmfbx7tgul9rb4etb0k3uwt0yfhm6u8hh64bkjnm/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#accesorios',
-            plugins: 'anchor table autolink charmap codesample emoticons  link lists media searchreplace table visualblocks wordcount',
-            menubar: false,
-            branding: false,
-            powerpaste_word_import: 'clean',
-            powerpaste_keep_unsupported_src: true,
-            powerpaste_html_import: 'clean',
-            smart_paste: false,
-            elementpath: false,
-            contextmenu: false,
-            toolbar: 'undo redo | bold italic | preview |removeformat charmap emoticons | fontselect styleselect fontsizeselect|  autolink  table  link  |formatpainter permanentpen forecolor backcolor  | alignleft aligncenter alignright alignjustify | addcomment showcomments| casechange |bullist numlist outdent indent | advcode spellchecker a11ycheck | code | checklist | ',
-            toolbar_drawer: 'sliding',
-            permanentpen_properties: {
-                fontname: 'helvetica,sans-serif,arial',
-                forecolor: '#FF0000',
-                fontsize: '6pt',
-                hilitecolor: '',
-                bold: true,
-                italic: false,
-                strikethrough: false,
-                underline: false
-            },
-            image_dimensions: false,
-            font_formats: "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
-            table_toolbar: "tableprops cellprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol",
-            powerpaste_allow_local_images: true,
-            powerpaste_word_import: 'clean',
-            powerpaste_html_import: 'clean',
-            spellchecker_language: 'es',
-            spellchecker_dialog: true,
-            browser_spellcheck: true,
-            relative_urls: false,
-            remove_script_host: false,
-            image_description: false,
-            image_dimensions: false,
-            table_toolbar: '',
-            a11y_advanced_options: true,
-            image_class_list: [{
-                title: 'Responsive',
-                value: 'img-responsive'
-            }],
-            content_css: [
-                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-            ],
-            link_context_toolbar: true
-        });
-    </script>
     <style>
         .form-control-2 {
 
