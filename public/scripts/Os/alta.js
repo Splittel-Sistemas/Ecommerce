@@ -11,7 +11,7 @@ var Enviar = function () {
     var cells = row.querySelectorAll("td");
     var cantidad = cells[0].querySelector("input").value;
     var nserie = cells[1].querySelector("input").value;
-    var desc = cells[2].querySelector("input").value;
+    var desc = cells[2].querySelector("textarea").value;
 
     if (cantidad != "") {
       json_lines_gar.push({

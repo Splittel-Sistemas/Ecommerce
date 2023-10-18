@@ -194,7 +194,7 @@
                                             <tr>
                                                 <td><input id="cantidad" type="text" class="form-control" /></td>
                                                 <td><input id="nserie" type="text" class="form-control" /></td>
-                                                <td><input id="desc" type="text" class="form-control" /></td>
+                                                <td><textarea name="" id="desc"  rows="3" class="form-control" ></textarea></td>
                                                 <td></td>
 
                                             </tr>
@@ -270,7 +270,7 @@
           // Contenido de las celdas en la nueva fila
           ' <td><input id="cantidad' + i + '" class="form-control " type="text"    /></td>',
           '<td ><input id="nserie' + i + '" class="form-control " type="text" /></td>',
-          ' <td><input id="desc' + i + '" class="form-control "  type="text"  /></td>',
+          ' <td><textarea name="" id="desc' + i + '"  rows="3" class="form-control" ></textarea></td>',
 
           // ...
           '<button type="button" class="btn btn-danger btn-sm eliminar">Eliminar</button>'
