@@ -657,12 +657,16 @@ class SolicitudCController
           $originalErrorReporting = error_reporting();
           error_reporting($originalErrorReporting & ~E_DEPRECATED);
           $mail->AddAttachment($targetFilePath);
-          /*   $mail->AddCC('marketing.directo@splittel.com'); */
-          $mail->AddCC('ramon.olea@splittel.com');
+            $mail->AddCC('marketing.directo@splittel.com');
+            $mail->AddCC('ricardo.hernandez@splittel.com');
+
+          $mail->AddBCC('ramon.olea@splittel.com');
 
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
 
+          $corr = $_POST['Correo'];
+          $mail->AddCC("$corr");
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
           $mail->MsgHTML($mensaje);
 
