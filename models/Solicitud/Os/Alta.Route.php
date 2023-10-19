@@ -17,7 +17,7 @@
     
     public function controller(){
       try {
-        $dataItems = json_decode($_POST['accesorios'], true);
+      /*   $dataItems = json_decode($_POST['accesorios'], true); */
 
        /*  print_r( $dataItems[0]['cantidad']);
         exit; */
