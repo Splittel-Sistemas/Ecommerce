@@ -19,7 +19,7 @@ if (!class_exists("TemplateFicrece")) {
   require_once $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Librerias/PHPMailer/class.smtp.php';
 }
 
-require_once 'PHPWORD/PHPWord.php';
+require_once 'PHPWord/PHPWord.php';
 // Crea una nueva instancia de PHPWord
 
 /**
