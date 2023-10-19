@@ -657,7 +657,7 @@ class SolicitudCController
           $originalErrorReporting = error_reporting();
           error_reporting($originalErrorReporting & ~E_DEPRECATED);
           $mail->AddAttachment($targetFilePath);
-            $mail->AddCC('marketing.directo@splittel.com');
+          /*   $mail->AddCC('marketing.directo@splittel.com'); */
             $mail->AddCC('ricardo.hernandez@splittel.com');
 
           $mail->AddBCC('ramon.olea@splittel.com');

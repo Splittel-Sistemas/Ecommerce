@@ -40,7 +40,7 @@
         </div>
         <div class="col-10 padding-bottom-1x text-center">
           <br>
-          <p style="text-align: center;" class="padding-top-1x">Agradecemos tu interés en Fibremex S. A. de C. V. 
+          <p style="text-align: center;" class="padding-top-1x">Tu información ha sido enviada con éxito!
             <br>
             <br>
 
