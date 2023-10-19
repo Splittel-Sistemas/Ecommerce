@@ -50,7 +50,7 @@ var Enviar = function () {
 
   if (CorreEjecutivo != "") {
     $.ajax({
-      url: "../../models/Solicitud/OS/Alta.Route.php",
+      url: "../../models/Solicitud/Os/Alta.Route.php",
       type: "post",
       data: fda,
       contentType: false,
