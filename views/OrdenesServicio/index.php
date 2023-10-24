@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Número de serie <strong class="text-danger"></strong></label>
-                                    <input class="form-control form-control-2" type="text" id="serie" name="serie" maxlength="4">
+                                    <input class="form-control form-control-2" type="text" id="serie" name="serie" >
                                 </div>
 
                                 <div class="col-sm-12 col-md-12 form-group  pt-3">
