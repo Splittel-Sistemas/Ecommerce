@@ -601,7 +601,7 @@ class SolicitudCController
           $document->setValue('ejecutivo', $_POST['CorreEjecutivo']);
           $document->setValue('servicio', $_POST['valoresCheck']);
           $document->setValue('marca', $_POST['Marca']);
-          $document->setValue('serie', $_POST['Marca']);
+          $document->setValue('serie', $_POST['serie']);
           $document->setValue('modelo', $_POST['Modelo']);
           $document->setValue('observaciones', $_POST['observaciones']);
           $dataItems = json_decode($_POST['accesorios'], true);
