@@ -114,7 +114,7 @@ class SolicitudCController
         if ($_POST['PERSONA'] == 'MORAL') {
           if (isset($_FILES['file']['name'])) {
             $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-            $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+            $name1 =  ('1-' . $_POST['Rfc'] . '.pdf');
             #$file_nname = $_FILES['file']['name'];
             $SolicitudCModel->SetDoc1($name1);
           } else {
@@ -123,7 +123,7 @@ class SolicitudCController
 
           if (isset($_FILES['file2']['name'])) {
             $ext2 = pathinfo($_FILES['file2']['name'], PATHINFO_EXTENSION);
-            $name2 =  ('2-' . $_POST['Rfc'] . '.' . $ext2);
+            $name2 =  ('2-' . $_POST['Rfc'] . '.pdf');
             # $file_nname2 = $_FILES['file2']['name'];
             $SolicitudCModel->SetDoc2($name2);
           } else {
@@ -134,7 +134,7 @@ class SolicitudCController
 
         if (isset($_FILES['file3']['name'])) {
           $ext3 = pathinfo($_FILES['file3']['name'], PATHINFO_EXTENSION);
-          $name3 =  ('3-' . $_POST['Rfc'] . '.' . $ext3);
+          $name3 =  ('3-' . $_POST['Rfc'] . '.pdf');
 
           $SolicitudCModel->SetDoc3($name3);
         } else {
@@ -145,7 +145,7 @@ class SolicitudCController
 
         if (isset($_FILES['file4']['name'])) {
           $ext4 = pathinfo($_FILES['file4']['name'], PATHINFO_EXTENSION);
-          $name4 =  ('4-' . $_POST['Rfc'] . '.' . $ext4);
+          $name4 =  ('4-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc4($name4);
         } else {
           $SolicitudCModel->SetDoc4("");
@@ -155,7 +155,7 @@ class SolicitudCController
 
         if (isset($_FILES['file5']['name'])) {
           $ext5 = pathinfo($_FILES['file5']['name'], PATHINFO_EXTENSION);
-          $name5 =  ('5-' . $_POST['Rfc'] . '.' . $ext5);
+          $name5 =  ('5-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc5($name5);
         } else {
           $SolicitudCModel->SetDoc5("");
@@ -164,7 +164,7 @@ class SolicitudCController
 
         if (isset($_FILES['file6']['name'])) {
           $ext6 = pathinfo($_FILES['file6']['name'], PATHINFO_EXTENSION);
-          $name6 =  ('6-' . $_POST['Rfc'] . '.' . $ext6);
+          $name6 =  ('6-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc6($name6);
         } else {
           $SolicitudCModel->SetDoc6("");
@@ -175,7 +175,7 @@ class SolicitudCController
 
         if (isset($_FILES['file7']['name'])) {
           $ext7 = pathinfo($_FILES['file7']['name'], PATHINFO_EXTENSION);
-          $name7 =  ('7-' . $_POST['Rfc'] . '.' . $ext7);
+          $name7 =  ('7-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc7($name7);
         } else {
           $SolicitudCModel->SetDoc7("");
@@ -185,7 +185,7 @@ class SolicitudCController
 
         if (isset($_FILES['file8']['name'])) {
           $ext8 = pathinfo($_FILES['file8']['name'], PATHINFO_EXTENSION);
-          $name8 =  ('8-' . $_POST['Rfc'] . '.' . $ext8);
+          $name8 =  ('8-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc8($name8);
         } else {
           $SolicitudCModel->SetDoc8("");
@@ -196,7 +196,7 @@ class SolicitudCController
 
         if (isset($_FILES['file9']['name'])) {
           $ext9 = pathinfo($_FILES['file9']['name'], PATHINFO_EXTENSION);
-          $name9 =  ('9-' . $_POST['Rfc'] . '.' . $ext9);
+          $name9 =  ('9-' . $_POST['Rfc'] . '.pdf');
           $SolicitudCModel->SetDoc9($name9);
         } else {
           $SolicitudCModel->SetDoc9("");
@@ -216,7 +216,7 @@ class SolicitudCController
           if (isset($_FILES['file']['tmp_name'])) {
             move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' . $name1);
 
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' . $name2);
+            move_uploaded_file($_FILES['file2']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' . $name2);
           }
           move_uploaded_file($_FILES['file3']['tmp_name'], '../../../public/images/img_spl/ficrece/Archivos/' . $_POST['Rfc'] . '/' .  $name3);
 
