@@ -607,6 +607,9 @@ class SolicitudCController
           $document->setValue('serie', $_POST['serie']);
           $document->setValue('modelo', $_POST['Modelo']);
           $document->setValue('observaciones', $_POST['observaciones']);
+          $document->setValue('paqueteria', $_POST['paqueteria']);
+          $document->setValue('guia', $_POST['guia']);
+
           $dataItems = json_decode($_POST['accesorios'], true);
           $i = 1;
           $document->setValue('cantidad1', isset($dataItems[0]['cantidad']) ? $dataItems[0]['cantidad'] : "");
