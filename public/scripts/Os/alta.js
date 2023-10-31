@@ -46,6 +46,9 @@ var Enviar = function () {
   fda.append("serie", $("#serie").val());
   fda.append("observaciones", $("#observaciones").val());
   fda.append("accesorios", $("#valoresAccesorios").val());
+  fda.append("paqueteria", $("#paqueteria").val());
+  fda.append("guia", $("#guia").val());
+
   // Obtén la tabla por su ID
 
   if (CorreEjecutivo != "") {

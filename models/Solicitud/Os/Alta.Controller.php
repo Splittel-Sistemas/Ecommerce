@@ -94,6 +94,9 @@ class SolicitudCController
         $SolicitudCModel->Setserie($_POST['serie']);
         $SolicitudCModel->Setobservaciones($_POST['observaciones']);
         $SolicitudCModel->Setaccesorios($_POST['accesorios']);
+        $SolicitudCModel->Setpaqueteria($_POST['paqueteria']);
+        $SolicitudCModel->Setguia($_POST['guia']);
+
 
 
 

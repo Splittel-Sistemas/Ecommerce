@@ -203,6 +203,22 @@
                                     </table>
                                     <input name="valoresAccesorios" type="hidden" class="form-control" id="valoresAccesorios" />
                                 </div>
+
+                                
+                                <div class="col-sm-12 col-md-12 form-group pt-3">
+                                    <h3>REGISTRO DE RECEPCION DE EQUIPO (ASEGURAMIENTO DE LA CALIDAD):</h3>
+                                </div><br>
+                               
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label>Paquetería <strong class="text-danger"></strong></label>
+                                    <input class="form-control form-control-2" type="text" id="paqueteria" name="paqueteria">
+                                </div>
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label>Numero de guía<strong class="text-danger"></strong></label>
+                                    <input class="form-control form-control-2" type="text" id="guia" name="guia" >
+                                </div>
+
+
                                 <div class="col-sm-12 col-md-12 form-group text-center">
                                     <button type="button" id="botonenviar" class="btn btn-primary " onclick="Enviar()">Enviar Solicitud</button>
                                 </div>

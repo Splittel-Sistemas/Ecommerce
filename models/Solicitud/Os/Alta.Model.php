@@ -23,6 +23,9 @@ class SolicitudC
   public $observaciones;
 
   public $valoresCheck;
+  public $guia;
+  public $paqueteria;
+
 
 
   public function SetEmpresa($Empresa)
@@ -101,13 +104,22 @@ class SolicitudC
   }
   public function Setobservaciones($observaciones)
   {
- /*    if (empty($observaciones)) {
-      throw new Exception('observaciones es requerido');
-    } */
+
     $this->observaciones = $observaciones;
   }
+  public function Setpaqueteria($paqueteria)
+  {
+    if (empty($paqueteria)) {
+      throw new Exception('Paqueteria es requerido');
+    }
+    $this->paqueteria = $paqueteria;
+  }
 
-
+  public function Setguia($guia)
+  {
+   
+    $this->guia = $guia;
+  }
 
   public function SetvaloresCheck($valoresCheck)
   {
@@ -150,6 +162,9 @@ class SolicitudC
           '" . $this->accesorios . "',
             '',
             '',
+          '" . $this->paqueteria . "',
+          '" . $this->guia . "',
+
         @Result);", "@Result");
 
       return $result;
