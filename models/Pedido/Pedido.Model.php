@@ -263,9 +263,9 @@
         throw $e;
       }
     }
-    public function Updateid_openpay($id,$datos,$total){
+    public function Updateid_openpay($id,$datos,$total,$tipo){
       try {
-        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = '$datos' ,total_openpay ='$total'  where id = ".$id."";
+        $SQLSTATEMENT = "UPDATE cotizacion_encabezado SET id_openpay = '$datos' ,total_openpay ='$total',tipo_pago ='$tipo'  where id = ".$id."";
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         return $result;
       } catch (Exception $e) {

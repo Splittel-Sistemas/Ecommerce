@@ -497,7 +497,7 @@ class OpenPayController
                             }
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
-                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount);
+                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount,$ResultCharge->transaction->card->type);
 
                             $RF = ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ) ? $_POST["RegimenFiscal"] : "";
                             $PedidoModel->SetRegimenFiscal($RF);
