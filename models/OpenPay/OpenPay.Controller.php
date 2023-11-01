@@ -476,6 +476,8 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
 
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
+                        print_r($ResultCharge);
+                        exit;
                         # comprobar si el cargo se completo exitosamente!
                             
                         if ($ResultCharge->status == 'completed' || $ResultCharge->status == 'charge_pending') {
