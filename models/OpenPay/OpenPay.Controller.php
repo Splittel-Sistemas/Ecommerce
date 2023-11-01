@@ -476,8 +476,8 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
 
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
-                        print_r($ResultCharge);
-                        exit;
+                       /*  print_r($ResultCharge);
+                        exit; */
                         # comprobar si el cargo se completo exitosamente!
                             
                         if ($ResultCharge->status == 'completed' || $ResultCharge->status == 'charge_pending') {
@@ -499,7 +499,7 @@ class OpenPayController
                             }
                             $PedidoModel->SetCFDIUser($_POST["CFDIUser"]);
                             $PedidoModel->SetEstatus('C');
-                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount,$ResultCharge->transaction->card->type);
+                            $PedidoModel->Updateid_openpay($_SESSION['Ecommerce-PedidoKey'], $ResultCharge->id, $ResultCharge->amount,$ResultCharge->card->type);
 
                             $RF = ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ) ? $_POST["RegimenFiscal"] : "";
                             $PedidoModel->SetRegimenFiscal($RF);
