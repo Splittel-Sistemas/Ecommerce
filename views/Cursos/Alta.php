@@ -165,7 +165,14 @@
                                     <label class="text-uppercase">Nombre: <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="NombreSolicitud" name="NombreSolicitud">
                                 </div>
-
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label class="text-uppercase"> APELLIDO PATERNO: <strong class="text-danger">*</strong></label>
+                                    <input class="form-control form-control-2" type="text" id="Ap" name="Ap">
+                                </div>
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label class="text-uppercase">APELLIDO MATERNO: <strong class="text-danger">*</strong></label>
+                                    <input class="form-control form-control-2" type="text" id="Am" name="Am">
+                                </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label class="text-uppercase">Empresa: <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="Empresa" name="Empresa">

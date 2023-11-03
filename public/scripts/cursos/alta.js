@@ -13,6 +13,9 @@ var EnviarAlta = function () {
   fda.append("CorrePersonal", $("#CorrePersonal").val());
   fda.append("Whatsapp", $("#Whatsapp").val());
   fda.append("CorreEjecutivo", $("#ejecutivo").val());
+  fda.append("Ap", $("#Ap").val());
+  fda.append("Am", $("#Am").val());
+
   var Titulo = $("#Titulo").val();
   var Otro = $("#Otro").val();
   if (Titulo == "Otro") {

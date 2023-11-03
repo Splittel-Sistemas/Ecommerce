@@ -18,6 +18,8 @@ class SolicitudCursos
   public $CorreoEmpresarial;
   public $CorrePersonal;
   public $Whatsapp;
+  public $Ap;
+  public $Am;
 
 
 
@@ -92,7 +94,19 @@ class SolicitudCursos
     $this->Whatsapp = $Whatsapp;
   }
 
-
+  public function SetAp($Ap)
+  {
+    if (empty($Ap)) {
+      throw new Exception(' APELLIDO PATERNO es requerido');
+    }
+    $this->Ap = $Ap;
+  }  public function SetAm($Am)
+  {
+    if (empty($Am)) {
+      throw new Exception('APELLIDO MATERNO es requerido');
+    }
+    $this->Am = $Am;
+  }
 
 
 
@@ -212,6 +226,8 @@ class SolicitudCursos
             '',
             '',
             '" . $this->Titulo . "',
+            '" . $this->Ap . "',
+            '" . $this->Am . "',
 
         @Result);", "@Result");
 
