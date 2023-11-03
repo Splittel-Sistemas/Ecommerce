@@ -95,6 +95,7 @@ class SolicitudCController
         $SolicitudCModel->SetNombreComercial($_POST['NombreComercial']);
         $SolicitudCModel->SetWeb($_POST['Web']);
         $SolicitudCModel->SetvaloresCheck($_POST['valoresCheck']);
+        $SolicitudCModel->SetWhats($_POST['Whats']);
 
 
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
@@ -558,6 +559,7 @@ class SolicitudCController
                     <p align="center" style="margin-bottom:10px;"><strong>DEPARTAMENTO: </strong>' . $_POST['Departamento'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>WHATSAPP: </strong>' . $_POST['Whats'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . $_POST['CorreEjecutivo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>

@@ -52,6 +52,7 @@ var EnviarAlta = function () {
   fda.append("Cuidad", $("#Cuidad").val());
   fda.append("CP", $("#CP").val());
   fda.append("Estado", $("#Estado").val());
+  fda.append("Whats", $("#Whats").val());
   $("input[type=checkbox]:checked").each(function () {
     valoresCheck.push(this.value);
   });

@@ -27,6 +27,7 @@ class SolicitudC
   public $Web;
   public $valoresCheck;
   public $Doc1;
+  public $Whats;
 
 
   public function SetRazonSocial($RazonSocial)
@@ -102,6 +103,13 @@ class SolicitudC
       throw new Exception('Calle es requerido');
     }
     $this->Calle = $Calle;
+  }
+  public function SetWhats($Whats)
+  {
+    if (empty($Whats)) {
+      throw new Exception('WhatsApp es requerido');
+    }
+    $this->Whats = $Whats;
   }
 
   public function SetColonia($Colonia)
@@ -285,6 +293,7 @@ class SolicitudC
        
             '',
             '',
+            '" . $this->Whats . "',
 
 
 
