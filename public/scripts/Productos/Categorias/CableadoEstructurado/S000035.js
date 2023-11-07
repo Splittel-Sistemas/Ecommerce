@@ -84,7 +84,7 @@ var Categoria628AWG = function(){
       CalcularPrecioPatchCords("../../models/Productos/PatchCord/CalcularPrecioPatchCord.Route.php", data)
     }
     // Agregación de codigo para la vista en el identificador
-    let DirectorioImgProducto = Marca+Familia+EstructuradosAlias
+    let DirectorioImgProducto = Marca+Familia+Estructurados.value
     let ImgProducto = DirectorioImgProducto+Color.value
     ListProductoDescription('OPCAPCC60')
     ListProductoAdicional('OPCAPCC60')
@@ -100,7 +100,7 @@ var Categoria628AWG = function(){
     let descripcion = "PatchCord Diametro Reducido 28 AWG Cat6 "+Longitud.value+" pie(s) color "+ColorText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
-    agregarFichaTecnicaConfigurable(Marca+Familia+EstructuradosAlias)
+    agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
     agregarCertificadoConfigurable(CodigoGenerado)
 }
 var Categoria6 = function() {
