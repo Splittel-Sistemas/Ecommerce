@@ -269,7 +269,7 @@ $Comentarios = $ComentariosController->Comentarios_();
       ?>
         <button class="btn btn-outline-secondary btn-sm ">
           <a href="<?php echo $minic; ?>" target="_blank">
-            <i class="icon-download"></i>&nbsp;Mini Catálogo
+            <i class="icon-download"></i>&nbsp;Folleto
           </a>
         </button>
       <?php
