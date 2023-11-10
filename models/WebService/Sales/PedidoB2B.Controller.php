@@ -103,6 +103,7 @@
             $PedidoB2BModel->SetContacto($this->Pedido->ContactoNombre); 
             $PedidoB2BModel->SetTelefono($this->Pedido->ContactoTelefono); 
             $PedidoB2BModel->SetEmail($this->Pedido->ContactoCorreo); 
+            $PedidoB2BModel->Settipo_pago($this->Pedido->tipo_pago); 
             $PedidoB2BModel->SetEmail_ItemsStockBad($this->Tool->validate_sin_stock($this->Pedido->Intentos)); 
 
             $ResultPedidoB2BModel = $PedidoB2BModel->createPedidoB2B($WebServiceSOAP, $this->ArticulosPedido());
