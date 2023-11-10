@@ -37,8 +37,6 @@
     public $NombrePaqueteria;
     public $EnvioCorreo;
     public $EmailEjecutivo;
-    public $Tipopago;
-
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;
@@ -119,9 +117,7 @@
     }public function SetEnvioCorreo($EnvioCorreo){
       $this->EnvioCorreo = $EnvioCorreo;
     }
-    public function SetTipopago($Tipopago){
-      $this->Tipopago = $Tipopago;
-    }
+
     public function GetKey(){
       return $this->Key;
     }public function GetCliente(){
@@ -166,8 +162,6 @@
       return $this->EnvioCorreo;
     }public function GetRegimenFiscal(){
       return $this->RegimenFiscal;
-    }public function GetTipopago(){
-      return $this->Tipopago;
     }
 
     public function Add(){
@@ -527,8 +521,6 @@
           $newPedido->ContactoCorreo        = $row->t06_f013; 
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
-          $newPedido->Tipopago          =   $row->tipo_pago;
-
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -583,7 +575,7 @@
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
-          $newPedido->Tipopago          =   $row->tipo_pago;
+          
           $data[] = $newPedido;
           unset($newPedido);
         }
