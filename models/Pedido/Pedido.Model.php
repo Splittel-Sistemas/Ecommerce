@@ -37,7 +37,7 @@
     public $NombrePaqueteria;
     public $EnvioCorreo;
     public $EmailEjecutivo;
-    public $tipo_pago;
+    public $tipopago;
 
     
     public function SetParameters($conn, $Tool){
@@ -119,8 +119,8 @@
     }public function SetEnvioCorreo($EnvioCorreo){
       $this->EnvioCorreo = $EnvioCorreo;
     }
-    public function Settipo_pago($tipo_pago){
-      $this->tipo_pago = $tipo_pago;
+    public function Settipopago($tipopago){
+      $this->tipopago = $tipopago;
     }
     public function GetKey(){
       return $this->Key;
@@ -166,8 +166,8 @@
       return $this->EnvioCorreo;
     }public function GetRegimenFiscal(){
       return $this->RegimenFiscal;
-    }public function Gettipo_pago(){
-      return $this->tipo_pago;
+    }public function Gettipopago(){
+      return $this->tipopago;
     }
 
     public function Add(){
@@ -527,7 +527,7 @@
           $newPedido->ContactoCorreo        = $row->t06_f013; 
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
-          $newPedido->tipo_pago          =   $row->tipo_pago;
+          $newPedido->tipopago          =   $row->tipo_pago;
 
           $data[] = $newPedido;
           unset($newPedido);
