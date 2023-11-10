@@ -23,7 +23,7 @@
     public $Telefono;
     public $Email;
     public $Email_ItemsStockBad;
-    public $tipopago;
+    public $Tipopago;
     public $EstructuraPedidoB2B;
     public $GetTransportationCode;
 
@@ -101,9 +101,9 @@
         throw new Exception('$Email_ItemsStockBad no es valido');
       }
       $this->Email_ItemsStockBad = $Email_ItemsStockBad;
-    }public function Settipopago($tipopago){
+    }public function SetTipopago($Tipopago){
      
-      $this->tipopago = $tipopago;
+      $this->Tipopago = $Tipopago;
     }
 
     public function GetPedidoKey(){
@@ -138,8 +138,8 @@
       return $this->Email;
     }public function GetEstructuraPedidoB2B(){
       return $this->EstructuraPedidoB2B;
-    }public function Gettipopago(){
-      return $this->tipopago;
+    }public function GetTipopago(){
+      return $this->Tipopago;
     }
     /**
      * Description
@@ -158,7 +158,6 @@
         $this->EstructuraPedidoB2B['CreatePedidoB2B']['Document'] = [
           "SalesQuotation" => [
             "DocNumEcommerce"     => $this->PedidoKey,
-            "tipopago"           => $this->tipopago,
             "CardCode"            => $this->CardCode,
             "TaxDate"             => $this->FechaActual,
             "DocDueDate"          => $this->FechaActual,
@@ -175,6 +174,7 @@
             "DocRate"             => $this->DocRate,
             "ShipReferences"      => $this->ShipReferences,
             "NumAtCard"           => $this->NumAtCard,
+            "Tipopago"           => $this->Tipopago,
             "ContactPerson" => [
               "Name"               => $this->Contacto,
               "Telphone"          => $this->Telefono,
