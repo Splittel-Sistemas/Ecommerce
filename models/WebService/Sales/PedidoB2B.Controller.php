@@ -103,7 +103,6 @@
             $PedidoB2BModel->SetContacto($this->Pedido->ContactoNombre); 
             $PedidoB2BModel->SetTelefono($this->Pedido->ContactoTelefono); 
             $PedidoB2BModel->SetEmail($this->Pedido->ContactoCorreo); 
-            $PedidoB2BModel->SetTipopago($this->Pedido->Tipopago); 
          
             $PedidoB2BModel->SetEmail_ItemsStockBad($this->Tool->validate_sin_stock($this->Pedido->Intentos)); 
 
