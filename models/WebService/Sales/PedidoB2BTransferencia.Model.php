@@ -159,7 +159,7 @@
          }elseif($this->TipoPago==='debit'){
           $TypePay='28';
          }else{
-          $TypePay='03';
+          $TypePay=$this->PaymentMethod;
          }
         $this->EstructuraPedidoB2B['CreatePedidoB2B_withoutCredit']['Document'] = [
           "SalesQuotation" => [
