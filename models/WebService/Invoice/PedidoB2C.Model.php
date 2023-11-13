@@ -187,7 +187,7 @@
        }elseif($this->TipoPago==='debit'){
         $TypePay='28';
        }else{
-        $TypePay='03';
+        $TypePay=$this->PaymentMethod;
        }
 
 
