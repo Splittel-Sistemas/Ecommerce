@@ -37,6 +37,8 @@
     public $NombrePaqueteria;
     public $EnvioCorreo;
     public $EmailEjecutivo;
+
+    public $TipoPago;
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;
@@ -86,7 +88,11 @@
       $this->Paqueteria = $Paqueteria;
     }public function SetTransportationCode($TransportationCode){
       $this->TransportationCode = $TransportationCode;
-    }public function SetTipoCambio($TipoCambio){
+    }
+    public function SetTipoPago($TipoPago){
+      $this->TipoPago = $TipoPago;
+    }
+    public function SetTipoCambio($TipoCambio){
       if(!is_numeric($TipoCambio)){
         throw new Exception('No hay tipo de cambio, por favor recarga la pagina');
       }
@@ -158,6 +164,8 @@
       return $this->Paqueteria;
     }public function GetTransportationCode(){
       return $this->TransportationCode;
+    }public function GetTipoPago(){
+      return $this->TipoPago;
     }public function GetEnvioCorreo(){
       return $this->EnvioCorreo;
     }public function GetRegimenFiscal(){
@@ -417,7 +425,7 @@
           $this->Recibio                =   $row->recibio; 
           $this->id_openpay                =   $row->id_openpay; 
           $this->total_openpay                =   $row->total_openpay; 
-        
+          $this->TipoPago                =   $row->tipo_pago; 
 
 
           $data = true;
@@ -469,6 +477,7 @@
           $newPedido->FechaRecibido          =   $row->fecha_recibio_paquete; 
           $newPedido->Recibio                =   $row->recibio;
           $newPedido->EnvioCorreo            =   $row->envio_correo;
+          $newPedido->TipoPago                =   $row->tipo_pago; 
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -521,6 +530,7 @@
           $newPedido->ContactoCorreo        = $row->t06_f013; 
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
+          $newPedido->TipoPago                =   $row->tipo_pago; 
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -575,7 +585,7 @@
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
-          
+          $newPedido->TipoPago                =   $row->tipo_pago; 
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -629,6 +639,7 @@
           $newPedido->Intentos              = $row->t05_f011; 
           $newPedido->TransportationCode    = $row->transportationcode; 
           $newPedido->RegimenFiscal         =   $row->regimenfiscal;
+          $newPedido->TipoPago         =   $row->tipo_pago;
           $newPedido->OpenPayResponse       = json_decode($row->t12_f005, JSON_UNESCAPED_UNICODE); 
           $data[] = $newPedido;
           unset($newPedido);

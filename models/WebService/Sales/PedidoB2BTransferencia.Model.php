@@ -24,6 +24,8 @@
     public $Email;
     public $Email_ItemsStockBad;
 
+    public $TipoPago;
+
     public function SetPedidoKey($PedidoKey){
       if (is_null($PedidoKey)) {
         throw new Exception('$PedidoKey no es valido');
@@ -99,6 +101,9 @@
       }
       $this->Email_ItemsStockBad = $Email_ItemsStockBad;
     }
+    public function SetTipoPago($TipoPago){
+      $this->TipoPago = $TipoPago;
+    }
 
     public function GetPedidoKey(){
       return $this->PedidoKey;
@@ -133,6 +138,9 @@
     }public function GetEstructuraPedidoB2B(){
       return $this->EstructuraPedidoB2B;
     }
+    public function GetTipoPago(){
+      return $this->TipoPago;
+    }
     /**
      * Description
      *
@@ -146,7 +154,13 @@
        // $this->TransportationCode = 1;
         $this->SalesPersonCode    = 176; // id persona de ventas prueba: 176 productivo: 
         $this->GroupNumber        = 2;
-
+        if($this->TipoPago==='credit'){
+          $TypePay='04';
+         }elseif($this->TipoPago==='debit'){
+          $TypePay='28';
+         }else{
+          $TypePay='03';
+         }
         $this->EstructuraPedidoB2B['CreatePedidoB2B_withoutCredit']['Document'] = [
           "SalesQuotation" => [
             "DocNumEcommerce"     => $this->PedidoKey,
@@ -166,6 +180,7 @@
             "DocRate"             => $this->DocRate,
             "ShipReferences"      => $this->ShipReferences,
             "NumAtCard"           => $this->NumAtCard,
+            "TipoPago"            => $TypePay,
             "ContactPerson" => [
               "Name"               => $this->Contacto,
               "Telphone"          => $this->Telefono,

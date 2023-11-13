@@ -103,7 +103,7 @@
             }else{
               $BillToInformaction = $this->BillToInformaction();
             }
-
+            
             $this->PedidoB2C->SetPedidoKey($this->Pedido->Key);
             $this->PedidoB2C->SetCardCode($ClienteModel->GetCardCode());
             $this->PedidoB2C->SetRequiereInvoice($this->Pedido->RequiereFactura);
@@ -119,6 +119,7 @@
             $this->PedidoB2C->SetTransportationCode($this->Pedido->TransportationCode);
             $this->PedidoB2C->SetNumAtCard($this->Pedido->Referencia);
             $this->PedidoB2C->SetEmail_ItemsStockBad($this->Tool->validate_sin_stock($this->Pedido->Intentos));
+            $this->PedidoB2C->SetTipoPago($this->Pedido->TipoPago);
             
             $ResultPedidoB2CModel = $this->PedidoB2C->createPedidoB2C($WebServiceSOAP, $this->ArticulosPedido());
             $ResultPedidoB2C = $ResultPedidoB2CModel->CreatePedidoB2CResult;

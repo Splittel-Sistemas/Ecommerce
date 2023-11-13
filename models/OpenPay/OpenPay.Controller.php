@@ -486,6 +486,7 @@ class OpenPayController
                             $PedidoModel->SetParameters($this->Connection,  $this->Tool);
                             $PedidoExiste = $PedidoModel->GetBy("where id = '" . $_SESSION['Ecommerce-PedidoKey'] . "' ");
                             # guardar información relevante al pedido
+                            
                             $PedidoModel->SetMetodoPago('03');
                             $PedidoModel->SetMonedaPago($_POST["monedaPago"]);
                             $PedidoModel->SetDatosEnvioKey($_POST["datosEnvio"]);
@@ -538,7 +539,9 @@ class OpenPayController
                                     $InvoiceModel->SetEstatus(50);
                                     $InvoiceModel->SetReferencia($_POST["referencia"]);
                                     $InvoiceModel->SetIntentos(0);
+                                    
                                     $ResultInovice = $InvoiceModel->create();
+                                    
                                     if (!$ResultInovice['error']) {
                                         unset($InvoiceModel);
                                         unset($ResultInovice);
