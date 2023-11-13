@@ -160,6 +160,7 @@ class Invoice{
         '".$this->Intentos."',
         @Result
       );", "@Result");
+      
       return $result;
     } catch (Exception $e) {
       throw $e;
