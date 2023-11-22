@@ -67,7 +67,7 @@ var Categoria628AWG = function(){
   let Cubierta = "SEZH" // Pies
   let CodigoGenerado = ""
   let LongitudMin = 1
-  let LongitudMax = 25
+  let LongitudMax = 49
   StyleDisplayNoneOrBlock_2(Color, "none", [1, 2, 3, 4, 5])
  // StyleDisplayNoneOrBlock_2(Color, 'none', [1,2])
     LongitudIdText.innerHTML = 'Longitud (pies) '+LongitudMin+'~'+LongitudMax+':'
