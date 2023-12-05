@@ -10,7 +10,7 @@ if (isset($_POST['DirectorioImgProducto'])) {
       ?>
         <button class="btn btn-outline-secondary btn-sm ">
           <a href="../../../../fibra-optica/public/images/img_spl/productos/<?php echo $_POST['DirectorioImgProducto'] ?>/Mini Catalogo/<?php echo basename($minic); ?>" target="_blank">
-            <i class="icon-download"></i>&nbsp;Mini Catálogo
+            <i class="icon-download"></i>&nbsp;Folleto
           </a>
         </button>
       <?php
