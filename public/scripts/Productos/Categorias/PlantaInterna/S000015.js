@@ -22,7 +22,7 @@ var Pigtails = function(){
   let Otro = "B"
   let CodigoGenerado = ""
   let LongitudMin = 0.1
-  let LongitudMax = 5
+  let LongitudMax = 10
   let LongitudIdText = document.getElementById('LongitudIdText')
 
     if(Pigtail.value=='ST'){
@@ -55,7 +55,7 @@ var Pigtails = function(){
 
     if (NumeroHilos.value == 'S12' || NumeroHilos.value == 'S06') {
       LongitudMin = 1
-      LongitudMax = 5
+      LongitudMax = 10
       StyleDisplayNoneOrBlock_2(Diametro, "block", [0])
       StyleDisplayNoneOrBlock_2(Diametro, "none", [1])
       Diametro[0].selected = true
