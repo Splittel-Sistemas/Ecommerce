@@ -19,7 +19,7 @@
 
         ?>
           <span id="I<?php echo $row->id ?>" class="padding-bottom-1x"> </span>
-          <div class="row align-items-center padding-bottom-2x padding-top-1x">
+          <div class="row col-12 align-items-center padding-bottom-2x padding-top-1x">
             <div class="col-md-5 ">
 
               <img class="d-block m-auto img-thumbnail " src="../../public/images/img_spl/capacitaciones/<?php echo $row->imagen; ?>" alt="<?php echo $row->title1; ?>">
