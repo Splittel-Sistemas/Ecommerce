@@ -11,7 +11,7 @@
        * @var object $CatalogoCursos
        */
       $CatalogoCursos = new CatalogoCapacitaciones();
-      $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 7", false)->records;
+      $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND title = 'Insider' AND title1 != '' ORDER BY start ASC", "LIMIT 8", false)->records;
       //echo $Json= json_encode($response);
       ?>
       <div class="row">
