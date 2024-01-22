@@ -23,6 +23,8 @@ var EnviarAlta = function () {
   } else {
     fda.append("Titulo", $("#Titulo").val());
   }
+  var file_data = $("#file").prop("files")[0];
+  fda.append("file", file_data);
   console.log(Titulo);
   var Politica = $("#apple").val();
   var CorreEjecutivo = $("#ejecutivo").val();

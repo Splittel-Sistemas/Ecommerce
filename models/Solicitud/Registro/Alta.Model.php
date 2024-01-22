@@ -149,7 +149,9 @@ class SolicitudRegistro
   }
   public function SetDoc1($Doc1)
   {
-
+    if (empty($Doc1)) {
+      throw new Exception('ANEXO es requerido');
+    }
     $this->Doc1 = $Doc1;
   }
 

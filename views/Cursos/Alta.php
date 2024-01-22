@@ -198,7 +198,10 @@
                                     <label class="text-uppercase">WhatsApp personal: <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp" onkeyup="this.value=Numeros(this.value)">
                                 </div>
-
+                                <div class="col-sm-12 col-md-12 form-group">
+                                <label>Anexar OC (en caso de crédito), comprobante de pago o factura del curso<strong class="text-danger">*</strong></label>
+                                <input class="form-control form-control-2" type="file" id="file" accept="application/pdf">
+                                </div>
 
                                 <div class="col-sm-12 col-md-6 form-group" style="display: none;" id="divespacio"> </div>
                                 <div class="col-md-6 margin-top-2x text-left">

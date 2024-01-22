@@ -89,7 +89,27 @@ class SolicitudCursosController
         $SolicitudCModel->SetWhatsapp($_POST['Whatsapp']);
         $SolicitudCModel->SetAp($_POST['Ap']);
         $SolicitudCModel->SetAm($_POST['Am']);
+        $name1='';
+        if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
 
+          if (mkdir('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/', 0777, true)) {
+
+            $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            $name1 =  ('1-' . $_POST['Whatsapp'] . '.' . $ext1);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/' . $name1);
+            #$file_nname = $_FILES['file']['name'];
+            
+
+
+            $uploadDir = '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/';
+
+            // Check whether submitted data is not empty 
+            // File path config 
+            $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
+            $targetFilePath = $uploadDir . $fileName;
+          }
+        }
+        $SolicitudCModel->SetDoc1($name1);
 
 
 
@@ -587,7 +607,9 @@ class SolicitudCursosController
           //Nuestra cuenta
           $mail->Username = $email;
           $mail->Password = $password; //Su password 
-
+          if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+            $mail->AddAttachment($targetFilePath);
+          }
           $asunto    = 'CURSOS PAGADOS';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;

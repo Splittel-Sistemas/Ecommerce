@@ -102,6 +102,7 @@ class SolicitudRegistroController
 
         /*  print_r($_POST['PERSONA']);
         exit; */
+        $name1='';
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
 
           if (mkdir('../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
@@ -110,7 +111,7 @@ class SolicitudRegistroController
             $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
             move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/' . $name1);
             #$file_nname = $_FILES['file']['name'];
-            $SolicitudRegistroModel->SetDoc1($name1);
+            
 
 
             $uploadDir = '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/';
@@ -121,7 +122,7 @@ class SolicitudRegistroController
             $targetFilePath = $uploadDir . $fileName;
           }
         }
-
+        $SolicitudRegistroModel->SetDoc1($name1);
 
         $ResultSolicitud = $SolicitudRegistroModel->Add();
 

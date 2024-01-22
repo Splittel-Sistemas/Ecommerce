@@ -62,7 +62,7 @@
     <div class="steps flex-sm-nowrap mb-5">
       <a class="step process active" id="process-1" number="1" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onclick="addViewCheckout(this)">
         <h4 class="step-title completado">
-         FORMATO DE ALTA
+         PRE-REGISTRO
         </h4>
       </a>
      
@@ -253,7 +253,7 @@
                   <h1>5.- ANEXOS</h1>
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Constancia de situación fiscal en PDF.<strong class="text-danger"></strong></label>
+                  <label>Constancia de situación fiscal en PDF.<strong class="text-danger">*</strong></label>
                   <input class="form-control form-control-2" type="file" id="file" accept="application/pdf">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">

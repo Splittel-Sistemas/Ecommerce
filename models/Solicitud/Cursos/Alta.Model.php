@@ -20,7 +20,7 @@ class SolicitudCursos
   public $Whatsapp;
   public $Ap;
   public $Am;
-
+  public $Doc1;
 
 
   public function Setname($name)
@@ -106,6 +106,13 @@ class SolicitudCursos
       throw new Exception('APELLIDO MATERNO es requerido');
     }
     $this->Am = $Am;
+  }
+  public function SetDoc1($Doc1)
+  {
+    if (empty($Doc1)) {
+      throw new Exception('ANEXO es requerido');
+    }
+    $this->Doc1 = $Doc1;
   }
 
 
