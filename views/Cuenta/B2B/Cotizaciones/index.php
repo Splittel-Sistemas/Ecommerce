@@ -6,7 +6,7 @@
       include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
     }
     $PedidoController = new PedidoController();
-    $PedidoController->filter = "WHERE estatus = 'C' AND total > 0 AND fecha >= CURDATE() AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
+    $PedidoController->filter = "WHERE estatus = 'C' AND total > 0 AND fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." ";
     $PedidoController->order = "";
     $ResultPedido = $PedidoController->get();
 ?>
