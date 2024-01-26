@@ -290,6 +290,20 @@ $Comentarios = $ComentariosController->Comentarios_();
     <?php
       }
     }
+    $dirname_man = "../../public/images/img_spl/productos/" . $Obj->ProductoCodigo . "/InfoAdicional/";
+    $images_man = glob($dirname_man . "*.pdf");
+    $total_man = count($images_man);
+    if ($total_man > 0) {
+      foreach ($images_man as $man) {
+      ?>
+        <button class="btn btn-outline-secondary btn-sm ">
+          <a href="<?php echo $man; ?>" target="_blank">
+            <i class="icon-download"></i>&nbsp;Info. Adicional
+          </a>
+        </button>
+    <?php
+      }
+    }
     ?>
     <?php
     $fichero = "../../public/images/img_spl/productos/" . $Obj->ProductoCodigoWhitOutSlash . "/video/video.txt";
