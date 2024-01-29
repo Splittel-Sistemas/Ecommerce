@@ -90,7 +90,7 @@ class SolicitudCursosController
         $SolicitudCModel->SetAp($_POST['Ap']);
         $SolicitudCModel->SetAm($_POST['Am']);
         $name1='';
-        if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+       
 
           if (!file_exists('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/')) {
           if (mkdir('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/', 0777, true)) {
