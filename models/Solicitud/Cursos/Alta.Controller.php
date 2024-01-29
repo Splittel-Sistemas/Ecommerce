@@ -92,6 +92,7 @@ class SolicitudCursosController
         $name1='';
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
 
+          if (!file_exists('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/')) {
           if (mkdir('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/', 0777, true)) {
 
             $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
@@ -107,8 +108,9 @@ class SolicitudCursosController
             // File path config 
             $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
             $targetFilePath = $uploadDir . $fileName;
-          }else{
-            $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+          }
+        }else{
+          $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
             $name1 =  ('1-' . $_POST['Whatsapp'] . '.' . $ext1);
             move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/' . $name1);
             #$file_nname = $_FILES['file']['name'];
@@ -121,7 +123,6 @@ class SolicitudCursosController
             // File path config 
             $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
             $targetFilePath = $uploadDir . $fileName;
-          }
         }
         $SolicitudCModel->SetDoc1($name1);
 
