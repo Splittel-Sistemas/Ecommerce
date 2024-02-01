@@ -29,7 +29,7 @@
               <div class="mt-30 hidden-md-up"></div>
               <h2><b><?php echo $row->title1; ?></b></h2>
               <p class="text-muted" style="text-align: justify;font-size:14px;">
-                Fecha: <?php echo nl2br($row->start); ?><br />
+                Fecha: <?php echo date("d-m-Y", strtotime(($row->start))); ?><br />
                 Hora: <?php echo nl2br($row->Hora); ?> am</p>
               <p class="text-muted" style="text-align: justify;font-size:14px;"><?php echo nl2br($row->descripcion1); ?></p>
               <a style="color: #BF202F;" class="text-decoration-none" target="_blank" href="<?php echo $row->link; ?>"><u>Aparta tu lugar aquí</u>&nbsp;</a>
