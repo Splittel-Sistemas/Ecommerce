@@ -97,7 +97,7 @@ var Categoria628AWG = function(){
     let y = Color.options;
     let ColorText = y[x].text    
 
-    let descripcion = "PatchCord Diametro Reducido 28 AWG Cat6 "+Longitud.value+" pie(s) color "+ColorText
+    let descripcion = "PatchCord Diámetro Reducido 28 AWG UTP Cat6 "+Longitud.value+" pie(s) color "+ColorText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
     agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
