@@ -596,61 +596,61 @@ class SolicitudCController
 
           $document = $PHPWord->loadTemplate('EQUIPOS.docx');
 
-          $document->setValue('empresa', htmlspecialchars($_POST['Empresa']));
-          $document->setValue('estado', htmlspecialchars($_POST['Estado']));
-          $document->setValue('contacto', htmlspecialchars($_POST['Contacto']));
-          $document->setValue('correo', htmlspecialchars($_POST['Correo']));
-          $document->setValue('telefono', htmlspecialchars($_POST['Telefono']));
-          $document->setValue('ejecutivo', htmlspecialchars($_POST['CorreEjecutivo']));
-          $document->setValue('servicio', htmlspecialchars($_POST['valoresCheck']));
-          $document->setValue('marca', htmlspecialchars($_POST['Marca']));
-          $document->setValue('serie', htmlspecialchars($_POST['serie']));
-          $document->setValue('modelo', htmlspecialchars($_POST['Modelo']));
-          $document->setValue('observaciones', htmlspecialchars($_POST['observaciones']));
-          $document->setValue('paqueteria', htmlspecialchars($_POST['paqueteria']));
-          $document->setValue('guia', htmlspecialchars($_POST['guia']));
+          $document->setValue('empresa', $_POST['Empresa']);
+          $document->setValue('estado', $_POST['Estado']);
+          $document->setValue('contacto', $_POST['Contacto']);
+          $document->setValue('correo', $_POST['Correo']);
+          $document->setValue('telefono', $_POST['Telefono']);
+          $document->setValue('ejecutivo', $_POST['CorreEjecutivo']);
+          $document->setValue('servicio', $_POST['valoresCheck']);
+          $document->setValue('marca', $_POST['Marca']);
+          $document->setValue('serie', $_POST['serie']);
+          $document->setValue('modelo', $_POST['Modelo']);
+          $document->setValue('observaciones', $_POST['observaciones']);
+          $document->setValue('paqueteria', $_POST['paqueteria']);
+          $document->setValue('guia', $_POST['guia']);
 
           $dataItems = json_decode($_POST['accesorios'], true);
           $i = 1;
-          $document->setValue('cantidad1', isset($dataItems[0]['cantidad']) ? htmlspecialchars($dataItems[0]['cantidad']) : "");
-          $document->setValue('nserie1', isset($dataItems[0]['nserie']) ? htmlspecialchars($dataItems[0]['nserie']) : "");
-          $document->setValue('desc1',  isset($dataItems[0]['desc']) ? htmlspecialchars($dataItems[0]['desc']) : "");
+          $document->setValue('cantidad1', isset($dataItems[0]['cantidad']) ? $dataItems[0]['cantidad'] : "");
+          $document->setValue('nserie1', isset($dataItems[0]['nserie']) ? $dataItems[0]['nserie'] : "");
+          $document->setValue('desc1',  isset($dataItems[0]['desc']) ? $dataItems[0]['desc'] : "");
 
-          $document->setValue('cantidad2', isset($dataItems[1]['cantidad']) ? htmlspecialchars($dataItems[1]['cantidad']) : "");
-          $document->setValue('nserie2', isset($dataItems[1]['nserie']) ? htmlspecialchars($dataItems[1]['nserie']) : "");
-          $document->setValue('desc2',  isset($dataItems[1]['desc']) ? htmlspecialchars($dataItems[1]['desc']) : "");
+          $document->setValue('cantidad2', isset($dataItems[1]['cantidad']) ? $dataItems[1]['cantidad'] : "");
+          $document->setValue('nserie2', isset($dataItems[1]['nserie']) ? $dataItems[1]['nserie'] : "");
+          $document->setValue('desc2',  isset($dataItems[1]['desc']) ? $dataItems[1]['desc'] : "");
 
-          $document->setValue('cantidad3', isset($dataItems[2]['cantidad']) ? htmlspecialchars($dataItems[2]['cantidad']) : "");
-          $document->setValue('nserie3', isset($dataItems[2]['nserie']) ? htmlspecialchars($dataItems[2]['nserie']) : "");
-          $document->setValue('desc3',  isset($dataItems[2]['desc']) ? htmlspecialchars($dataItems[2]['desc']) : "");
+          $document->setValue('cantidad3', isset($dataItems[2]['cantidad']) ? $dataItems[2]['cantidad'] : "");
+          $document->setValue('nserie3', isset($dataItems[2]['nserie']) ? $dataItems[2]['nserie'] : "");
+          $document->setValue('desc3',  isset($dataItems[2]['desc']) ? $dataItems[2]['desc'] : "");
 
-          $document->setValue('cantidad4', isset($dataItems[3]['cantidad']) ? htmlspecialchars($dataItems[3]['cantidad']) : "");
-          $document->setValue('nserie4', isset($dataItems[3]['nserie']) ? htmlspecialchars($dataItems[3]['nserie']) : "");
-          $document->setValue('desc4',  isset($dataItems[3]['desc']) ? htmlspecialchars($dataItems[3]['desc']) : "");
+          $document->setValue('cantidad4', isset($dataItems[3]['cantidad']) ? $dataItems[3]['cantidad'] : "");
+          $document->setValue('nserie4', isset($dataItems[3]['nserie']) ? $dataItems[3]['nserie'] : "");
+          $document->setValue('desc4',  isset($dataItems[3]['desc']) ? $dataItems[3]['desc'] : "");
 
-          $document->setValue('cantidad5', isset($dataItems[4]['cantidad']) ? htmlspecialchars($dataItems[4]['cantidad']) : "");
-          $document->setValue('nserie5', isset($dataItems[4]['nserie']) ? htmlspecialchars($dataItems[4]['nserie']) : "");
-          $document->setValue('desc5',  isset($dataItems[4]['desc']) ? htmlspecialchars($dataItems[4]['desc']) : "");
+          $document->setValue('cantidad5', isset($dataItems[4]['cantidad']) ? $dataItems[4]['cantidad'] : "");
+          $document->setValue('nserie5', isset($dataItems[4]['nserie']) ? $dataItems[4]['nserie'] : "");
+          $document->setValue('desc5',  isset($dataItems[4]['desc']) ? $dataItems[4]['desc'] : "");
 
-          $document->setValue('cantidad6', isset($dataItems[5]['cantidad']) ? htmlspecialchars($dataItems[5]['cantidad']) : "");
-          $document->setValue('nserie6', isset($dataItems[5]['nserie']) ? htmlspecialchars($dataItems[5]['nserie']) : "");
-          $document->setValue('desc6',  isset($dataItems[5]['desc']) ? htmlspecialchars($dataItems[5]['desc']) : "");
+          $document->setValue('cantidad6', isset($dataItems[5]['cantidad']) ? $dataItems[5]['cantidad'] : "");
+          $document->setValue('nserie6', isset($dataItems[5]['nserie']) ? $dataItems[5]['nserie'] : "");
+          $document->setValue('desc6',  isset($dataItems[5]['desc']) ? $dataItems[5]['desc'] : "");
 
-          $document->setValue('cantidad7', isset($dataItems[6]['cantidad']) ? htmlspecialchars($dataItems[6]['cantidad']) : "");
-          $document->setValue('nserie7', isset($dataItems[6]['nserie']) ? htmlspecialchars($dataItems[6]['nserie']) : "");
-          $document->setValue('desc7',  isset($dataItems[6]['desc']) ? htmlspecialchars($dataItems[6]['desc']) : "");
+          $document->setValue('cantidad7', isset($dataItems[6]['cantidad']) ? $dataItems[6]['cantidad'] : "");
+          $document->setValue('nserie7', isset($dataItems[6]['nserie']) ? $dataItems[6]['nserie'] : "");
+          $document->setValue('desc7',  isset($dataItems[6]['desc']) ? $dataItems[6]['desc'] : "");
 
-          $document->setValue('cantidad8', isset($dataItems[7]['cantidad']) ? htmlspecialchars($dataItems[7]['cantidad']) : "");
-          $document->setValue('nserie8', isset($dataItems[7]['nserie']) ? htmlspecialchars($dataItems[7]['nserie']) : "");
-          $document->setValue('desc8',  isset($dataItems[7]['desc']) ? htmlspecialchars($dataItems[7]['desc']) : "");
+          $document->setValue('cantidad8', isset($dataItems[7]['cantidad']) ? $dataItems[7]['cantidad'] : "");
+          $document->setValue('nserie8', isset($dataItems[7]['nserie']) ? $dataItems[7]['nserie'] : "");
+          $document->setValue('desc8',  isset($dataItems[7]['desc']) ? $dataItems[7]['desc'] : "");
 
-          $document->setValue('cantidad9', isset($dataItems[8]['cantidad']) ? htmlspecialchars($dataItems[8]['cantidad']) : "");
-          $document->setValue('nserie9', isset($dataItems[8]['nserie']) ? htmlspecialchars($dataItems[8]['nserie']) : "");
-          $document->setValue('desc9',  isset($dataItems[8]['desc']) ? htmlspecialchars($dataItems[8]['desc']) : "");
+          $document->setValue('cantidad9', isset($dataItems[8]['cantidad']) ? $dataItems[8]['cantidad'] : "");
+          $document->setValue('nserie9', isset($dataItems[8]['nserie']) ? $dataItems[8]['nserie'] : "");
+          $document->setValue('desc9',  isset($dataItems[8]['desc']) ? $dataItems[8]['desc'] : "");
 
-          $document->setValue('cantidad10', isset($dataItems[9]['cantidad']) ? htmlspecialchars($dataItems[9]['cantidad']) : "");
-          $document->setValue('nserie10', isset($dataItems[9]['nserie']) ? htmlspecialchars($dataItems[9]['nserie']) : "");
-          $document->setValue('desc10',  isset($dataItems[9]['desc']) ? htmlspecialchars($dataItems[9]['desc']) : "");
+          $document->setValue('cantidad10', isset($dataItems[9]['cantidad']) ? $dataItems[9]['cantidad'] : "");
+          $document->setValue('nserie10', isset($dataItems[9]['nserie']) ? $dataItems[9]['nserie'] : "");
+          $document->setValue('desc10',  isset($dataItems[9]['desc']) ? $dataItems[9]['desc'] : "");
          
           // Imprime el texto limpio
           $document->setValue('fecha',  date('d-m-Y'));
