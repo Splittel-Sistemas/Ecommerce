@@ -140,7 +140,7 @@ var Categoria632AWG = function(){
     let y = Color.options;
     let ColorText = y[x].text    
 
-    let descripcion = "Patch Cord Armado Cat6 U/FTP 32AWG de "+Longitud.value+" metros(s) color "+ColorText
+    let descripcion = "Patch Cord Armado Cat6 U/FTP 32AWG de "+Longitud.value+" metros(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
     agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
