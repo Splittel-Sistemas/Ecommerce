@@ -366,6 +366,9 @@ var getChecked = function (Elem) {
 
 var Buscador = function (Elem) {
   if (!(Elem.value == "")) {
+    document.getElementById(
+      "SearchResult"
+    ).style.display='block';
     ajaxViews(
       "../../views/Partials/Search.php",
       "POST",
@@ -377,9 +380,27 @@ var Buscador = function (Elem) {
         ).innerHTML = response;
       }
     );
+    ajaxViews(
+      "../../views/Partials/SearchProducts.php",
+      "POST",
+      "HTML",
+      { Descripcion: Elem.value },
+      function (response) {
+        document.getElementById(
+          "lista-productos-fijos-" + Elem.getAttribute("movil")
+        ).innerHTML = response;
+        
+      }
+    );
   } else {
     document.getElementById(
+      "SearchResult"
+    ).style.display='none';
+    document.getElementById(
       "lista-productos-" + Elem.getAttribute("movil")
+    ).innerHTML = "";
+    document.getElementById(
+      "lista-productos-fijos-" + Elem.getAttribute("movil")
     ).innerHTML = "";
   }
 };

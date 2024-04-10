@@ -16,13 +16,17 @@
         </select>
       </div>
     </div> 
-    <?php if ($_GET['codigo'] == "C101"): ?>
+    <?php if ($_GET['codigo'] == "C101" || $_GET['codigo'] == "C102"): ?>
       <div class="col-sm-4" id="LongitudInput_1">
       <div class="form-group mb-0">
         <label id="Longitud_1IdText">Longitud (metros)</label>
         <select class="form-control" id="Longitud_1" name="Longitud_1" onchange="Categoria6()">
             <option value="1">1</option>
             <option value="2">2</option>
+            <?php if ( $_GET['codigo'] == "C102" ): ?>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <?php endif ?>
         </select>
       </div>
     </div> 

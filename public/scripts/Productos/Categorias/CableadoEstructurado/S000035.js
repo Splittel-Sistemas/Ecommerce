@@ -147,6 +147,50 @@ var Categoria632AWG = function(){
     agregarCertificadoConfigurable(CodigoGenerado)
 }
 
+var Categoria634AWG = function(){
+  EstructuradosAlias='PCC6'
+  Categoria='CAT632AWG'
+  let Longitud = document.getElementById('Longitud_1')
+  validateEntero(Longitud.value)
+  let Color = document.getElementById('Color')
+  let UnidadMedida = "P" // Pies
+  let Cubierta = "SSC" // Pies
+  let CodigoGenerado = ""
+  
+  StyleDisplayNoneOrBlock_2(Color, "none", [1, 2, 3, 5])
+    
+      CodigoGenerado = Marca+Familia+EstructuradosAlias+"0"+Longitud.value+"00"+Color.value+"FA"
+      let data =  { 
+        Action: 'calcular',
+        ActionCalcularPrecioPatchCord: true,
+        Longitud: Longitud.value,
+        Categoria: Categoria,
+        SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+      } 
+      CalcularPrecioPatchCords("../../models/Productos/PatchCord/CalcularPrecioPatchCord.Route.php", data)
+    
+    // Agregación de codigo para la vista en el identificador
+    let DirectorioImgProducto = Marca+Familia+Estructurados.value
+    let ImgProducto = DirectorioImgProducto+Color.value
+    ListProductoDescription('OPCAPCC6-2')
+    ListProductoAdicional('OPCAPCC6-2')
+    ChangeListImgProducto(DirectorioImgProducto, ImgProducto)
+    
+    showClave(CodigoGenerado)
+    existCodeSapPatchCord(CodigoGenerado)
+    
+    let x = Color.selectedIndex;
+    let y = Color.options;
+    let ColorText = y[x].text    
+
+    let descripcion = "Patch Cord Plano Cat6 U/UTP 34AWG de "+Longitud.value+" metros(s) color "+ColorText
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
+    agregarFichaTecnicaConfigurable(Marca+Familia+Estructurados.value)
+    agregarCertificadoConfigurable(CodigoGenerado)
+}
+
+
 var Categoria6 = function() {
   switch(Cable.value){
     case 'PCC6' : 
@@ -157,6 +201,9 @@ var Categoria6 = function() {
     break; 
     case 'PCC6-2' : 
       Categoria632AWG()
+    break; 
+    case 'PCC6-3' : 
+    Categoria634AWG()
     break; 
    
     default:

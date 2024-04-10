@@ -52,7 +52,7 @@ if (isset($_POST["Descripcion"])) {
     }
   }
 
-
+//BUSCADOR DE CATEGORIAS
   $desc = "";
   $e = explode(" ", $_POST["Descripcion"]);
   for ($i = 0; $i < count($e); $i++) {
@@ -62,21 +62,28 @@ if (isset($_POST["Descripcion"])) {
     }
   }
   $SubmenuController = new SubmenuController();
-  $SubmenuController->filter = "WHERE (descripcion LIKE '%" . $_POST["Descripcion"] . "%' $desc  ) AND activo='si'  ";
-  $SubmenuController->order = "LIMIT 6";
+  $SubmenuController->filter = "WHERE (descripcion LIKE '%" . $_POST["Descripcion"] . "%' $desc  ) AND activo='si'   ";
+  $SubmenuController->order = "";
   $Subcategoria = $SubmenuController->get();
+
+  function highlightWords($query, $word){
+    $texto_resaltado = preg_replace('/(' . preg_quote($query, '/') . ')/i', '<span style="background-color: yellow;">$1</span>', $word);
+      return $texto_resaltado;
+  }
+
   if ($Subcategoria->count > 0) {
     foreach ($Subcategoria->records as $key => $Subcategoria_) {
+      $contenido_resaltado = highlightWords($_POST["Descripcion"], $Subcategoria_->Descripcion);
       if ($Subcategoria_->nivel == 2) {
 ?>
-        <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key; ?>">
-          <?php echo $Subcategoria_->Descripcion; ?>
+        <a class="list-group-item item-product item-font" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key; ?>">
+          <?php echo $contenido_resaltado; ?>
         </a>
       <?php }
       if ($Subcategoria_->nivel == 3) {
       ?>
-        <a class="list-group-item item-product" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->CategoriasKey; ?>&id_gpo=<?php echo $Subcategoria_->Key; ?>">
-          <?php echo $Subcategoria_->Descripcion; ?>
+        <a class="list-group-item item-product item-font" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->CategoriasKey; ?>&id_gpo=<?php echo $Subcategoria_->Key; ?>">
+          <?php echo $contenido_resaltado; ?>
         </a>
       <?php
       }
@@ -88,36 +95,7 @@ if (isset($_POST["Descripcion"])) {
 
 
 
-  //BUSCADOR DE PRODUCTOS FIJOS
-  $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $_POST["Descripcion"] . "%'   $like   OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2) AND producto_activo = 'si' )  ";
-  $ProductoController->order = " LIMIT 6";
-  $ResultProducto_ = $ProductoController->GetProductosFijos_();
-
-
-
-  foreach ($ResultProducto_->records as $key => $Obj) {
-
-    if ($Obj->ProductoCodigoConfigurable != '' && $Obj->ConfigurableFijo == 'no') { ?>
-      <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($Obj->ProductoCodigoConfigurable); ?>">
-        <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
-      </a>
-    <?php } else { ?>
-      <a class="list-group-item item-product" href="../Productos/fijos.php?id_prd=<?php echo urlencode($Obj->ProductoCodigo); ?>&nom=<?php echo url_amigable($Obj->ProductoDescripcion); ?>">
-        <?php echo $Obj->ProductoCodigo; ?> - <?php echo $Obj->ProductoDescripcion; ?>
-      </a>
-
-    <?php
-    }
-  }
-  unset($ProductoController);
-  unset($ResultProducto_);
-  unset($Obj);
-
-
-
-
-  //BUSCADOR DE SUBCATEGORIAS
+  //BUSCADOR DE SUBCATEGORIAS 
 
   $cat = "";
   $e = explode(" ", $_POST["Descripcion"]);
@@ -136,16 +114,20 @@ if (isset($_POST["Descripcion"])) {
   }
   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
   $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat  OR clave LIKE '%" . $_POST["Descripcion"] . "%' $clave ) AND activo='si'  ";
-  $SubcategoriasN1Controller->order = "LIMIT 6";
+  $SubcategoriasN1Controller->order = "";
+  
   $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
+
+  
+
   if ($ResultSubcategoriasN1->count > 0) {
     $SubcategoriaN1Key = $ResultSubcategoriasN1->records[0]->CategoriasKey;
     foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1) {
 
-
+      $contenido_resaltado = highlightWords($_POST["Descripcion"], $SubcategoriaN1->Descripcion);
     ?>
-      <a class="list-group-item item-product" href="../Productos/configurables.php?codigo=<?php echo urlencode($SubcategoriaN1->Codigo); ?>">
-        <?php echo "<span style='color:#BF202F;'>Configúralo -></span> " . $SubcategoriaN1->Descripcion; ?>
+      <a class="list-group-item item-product item-font" href="../Productos/configurables.php?codigo=<?php echo urlencode($SubcategoriaN1->Codigo); ?>">
+        <?php echo "<span style='color:#BF202F;'>Configúralo -></span> " . $contenido_resaltado ; ?>
       </a>
   <?php
     }
@@ -156,7 +138,7 @@ if (isset($_POST["Descripcion"])) {
   unset($ResultSubcategoriasN1);
   unset($SubcategoriaN1);
 } else { ?>
-  <a class="list-group-item item-product" href="#">
+  <a class="list-group-item item-product item-font" href="#">
     No se envian datos, si el problema persiste por favor pide ayuda a tu ejecutivo
   </a>
 <?php } ?>

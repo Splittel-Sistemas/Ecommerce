@@ -41,6 +41,46 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 
 ?>
 <!-- Header-->
+<style>
+.item-font{
+  font-size: 11px !important;
+}
+.containersearch{
+    font-size: 11px !important;
+    font-weight: 400;
+    line-height: 1.5;
+}
+  /* Tamaño del scroll */
+.containersearch::-webkit-scrollbar {
+  width: 4px;
+}
+
+ /* Estilos barra (thumb) de scroll */
+.containersearch::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.containersearch::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+.containersearch::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+ /* Estilos track de scroll */
+.containersearch::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+
+.containersearch::-webkit-scrollbar-track:hover, 
+.containersearch::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}
+</style>
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="site-header navbar-sticky">
 
@@ -84,12 +124,35 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
           <form class="input-group"><span class="input-group-btn">
               <button type="submit"><i class="icon-search"></i></button></span>
             <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off" onpaste="Buscador(this)" onkeyup="Buscador(this)">
-            <div class="row" style="position: absolute; z-index: 100">
-              <div class="col-md-12 margin-bottom-2x">
-                <nav class="list-group lista-productos" id="lista-productos-0">
-
-                </nav>
+            
+           
+            <div class="row col-12 " id="SearchResult" style="position: absolute; z-index: 100; display:none;">
+            <div class="card mb-4 w-100" >
+            <div class="card-header">
+              <div class="row col-12 ">
+                  <div class="col-6">
+                    Productos
+                  </div>
+                  <div class="col-6">
+                    Categorias
+                  </div>
               </div>
+            </div>
+            <div class="card-body col-12">
+            <div class="row col-12">
+                <div class="col-6  containersearch" style="max-height:450px; overflow-y:auto; padding-right: 0px; padding-left: 5px;">
+                    <nav class="list-group-flush lista-productos" id="lista-productos-fijos-0">
+
+                    </nav>
+                  </div>
+                  <div class="col-6  containersearch" style="max-height:450px; overflow-y:auto; padding-right: 0px; padding-left: 5px;">
+                    <nav class="list-group-flush lista-productos" id="lista-productos-0">
+
+                    </nav>
+                  </div>
+                  </div>
+            </div>
+            </div>
             </div>
           </form>
         </div>
