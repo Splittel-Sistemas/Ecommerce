@@ -172,8 +172,8 @@ var Categoria634AWG = function(){
     // Agregación de codigo para la vista en el identificador
     let DirectorioImgProducto = Marca+Familia+Estructurados.value
     let ImgProducto = DirectorioImgProducto+Color.value
-    ListProductoDescription('OPCAPCC6-2')
-    ListProductoAdicional('OPCAPCC6-2')
+    ListProductoDescription('OPCAPCC6-3')
+    ListProductoAdicional('OPCAPCC6-3')
     ChangeListImgProducto(DirectorioImgProducto, ImgProducto)
     
     showClave(CodigoGenerado)
