@@ -112,11 +112,25 @@ var CableExteriorMiniFigura8 = function(){
 }
 
 var CableDropPlano = function(){
-  let NumeroHilos = document.getElementById("NumeroHilosTotal")
+  //let NumeroHilos = document.getElementById("NumeroHilosTotal")
   // let NumeroHilosTotalText = document.getElementById("NumeroHilosTotalText")
-  NumeroHilos.value = TipoFibra.value == "09" ? "12" : "01"  
+  //NumeroHilos.value = TipoFibra.value == "09" ? "12" : "01"  
   // Codigo Generado de acuerdo a las opciones selecionadas
-  CodigoGenerado = Marca+Familia+TipoFibra.value+Cable.value+NumeroHilos.value
+  if(TipoFibra.value == '09'){
+    StyleDisplayNoneOrBlock_2(NumeroFibras, "none", [2, 3])
+    StyleDisplayNoneOrBlock_2(NumeroFibras, "block", [0, 1])
+    if(NumeroFibras.selectedIndex == 2 || NumeroFibras.selectedIndex == 3 )
+    {
+      NumeroFibras[0].selected = true;
+    }
+  }else{
+    StyleDisplayNoneOrBlock_2(NumeroFibras, "none", [0, 1])
+    StyleDisplayNoneOrBlock_2(NumeroFibras, "block", [2, 3])
+    if(NumeroFibras.selectedIndex == 0 || NumeroFibras.selectedIndex == 1 ){
+       NumeroFibras[2].selected = true;
+    }
+  }
+  CodigoGenerado = Marca+Familia+TipoFibra.value+Cable.value+NumeroFibras.value
   ListImgProducto("OPCFOx9DRFTTHPxx")
   ListProductoDescription("OPCFOx9DRFTTHPxx")
   ListProductoAdicional("OPCFOx9DRFTTHPxx")
