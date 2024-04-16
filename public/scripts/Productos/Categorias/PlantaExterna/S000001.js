@@ -116,7 +116,7 @@ var CableDropPlano = function(){
   // let NumeroHilosTotalText = document.getElementById("NumeroHilosTotalText")
   //NumeroHilos.value = TipoFibra.value == "09" ? "12" : "01"  
   // Codigo Generado de acuerdo a las opciones selecionadas
-  if(TipoFibra.value == '09'){
+  if(TipoFibra.value == '29'){
     StyleDisplayNoneOrBlock_2(NumeroFibras, "none", [2, 3])
     StyleDisplayNoneOrBlock_2(NumeroFibras, "block", [0, 1])
     if(NumeroFibras.selectedIndex == 2 || NumeroFibras.selectedIndex == 3 )
