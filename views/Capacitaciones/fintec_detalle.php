@@ -54,7 +54,7 @@
               <table style="width:100%;">
                 <?php
                 $CatalogoEventos = new CatalogoCapacitaciones();
-                $responseCalEvents = $CatalogoEventos->getEventsCal("where month(start)= $row->mes_num AND YEAR(start) = $row->anio", "ORDER BY start ASC", false);
+                $responseCalEvents = $CatalogoEventos->getEventsCal("WHERE activo='si' AND month(start)= $row->mes_num AND YEAR(start) = $row->anio", "ORDER BY start ASC", false);
                 $cont = 1;
                 $cont1 = 1;
                 foreach ($responseCalEvents as $row1) :

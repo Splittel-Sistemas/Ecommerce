@@ -97,7 +97,7 @@
                   <table style="width:100%;">
                     <?php
                     $CatalogoEventos = new CatalogoCapacitaciones();
-                    $responseCalEvents = $CatalogoEventos->getEventsCal("where month(start)= $row->mes_num AND YEAR(start) = $row->anio 	AND title = 'Insider'
+                    $responseCalEvents = $CatalogoEventos->getEventsCal("WHERE activo='si' AND month(start)= $row->mes_num AND YEAR(start) = $row->anio 	AND title = 'Insider'
                 AND title1 != '' ", "ORDER BY start ASC", false);
                     $cont = 1;
                     $cont1 = 1;
