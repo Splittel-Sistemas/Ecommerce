@@ -21,7 +21,7 @@ class SolicitudCursos
   public $Ap;
   public $Am;
   public $Doc1;
-
+  public $Restriccion;
 
   public function Setname($name)
   {
@@ -113,6 +113,11 @@ class SolicitudCursos
       throw new Exception('ANEXO es requerido');
     }
     $this->Doc1 = $Doc1;
+  }
+  public function SetRestriccion($Restriccion)
+  {
+    
+    $this->Restriccion = $Restriccion;
   }
 
 
@@ -235,7 +240,7 @@ class SolicitudCursos
             '" . $this->Titulo . "',
             '" . $this->Ap . "',
             '" . $this->Am . "',
-
+            '" . $this->Restriccion . "',
         @Result);", "@Result");
 
       return $result;

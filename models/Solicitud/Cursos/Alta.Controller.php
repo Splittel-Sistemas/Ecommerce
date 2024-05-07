@@ -87,6 +87,7 @@ class SolicitudCursosController
         $SolicitudCModel->SetCorreoEmpresarial($_POST['CorreoEmpresarial']);
         $SolicitudCModel->SetCorrePersonal($_POST['CorrePersonal']);
         $SolicitudCModel->SetWhatsapp($_POST['Whatsapp']);
+        $SolicitudCModel->SetRestriccion($_POST['Restriccion']);
         $SolicitudCModel->SetAp($_POST['Ap']);
         $SolicitudCModel->SetAm($_POST['Am']);
         $name1='';
@@ -567,7 +568,7 @@ class SolicitudCursosController
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Empresarial: </strong>' . $_POST['CorreoEmpresarial'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Personal: </strong>' . $_POST['CorrePersonal'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>WhatsApp personal : </strong>' . $_POST['Whatsapp'] . '</p>
-
+                    <p align="center" style="margin-bottom:10px;"><strong>Restriccion alimentaria : </strong>' . $_POST['Restriccion'] . '</p>
                    
 
                       <p><br></p>

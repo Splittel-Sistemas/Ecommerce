@@ -74,7 +74,7 @@
 
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label class="text-uppercase">Nombre del curso: <strong class="text-danger">*</strong></label>
-                                    <select class="form-control form-control-2" id="name" name="name" required>
+                                    <select class="form-control form-control-2" id="name" name="name" required onchange="ShowMessage()">
                                         <option value="">Selecciona una opcion</option>
                                         <option value="Planta Interna de Fibra Óptica">Planta Interna de Fibra Óptica
                                         </option>
@@ -91,6 +91,35 @@
                                     <label class="text-uppercase">Fecha: <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="date" id="date" name="date">
                                 </div>
+
+                                <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="PI">
+                                    <div class="alert alert-danger alert-dismissible fade show text-center ">
+                                    <span class="alert-close" data-dismiss="alert"></span>
+                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
+                                    Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso, es deseable haber cursado 
+                                    previamente <span class="text-medium">fibra óptica planta interna</span> o tener conocimientos básicos de redes y fibra óptica 
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="PE">
+                                    <div class="alert alert-danger alert-dismissible fade show text-center ">
+                                    <span class="alert-close" data-dismiss="alert"></span>
+                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
+                                    Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso, 
+                                    es deseable haber cursado <span class="text-medium">fibra óptica planta interna y fibra óptica planta externa</span> previamente 
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="CER">
+                                    <div class="alert alert-danger alert-dismissible fade show text-center ">
+                                    <span class="alert-close" data-dismiss="alert"></span>
+                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
+                                    Para poder tomar esta certificación, es deseable tener conocimiento en <span class="text-medium">redes y/o cableado estructurado </span>
+                                    </div>
+                                </div>
+
+
+
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label for="validationCustom06">EJECUTIVO <strong class="text-danger">*</strong></label>
                                     <select class="form-control form-control-2" id="ejecutivo" required>
@@ -197,6 +226,12 @@
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label class="text-uppercase">WhatsApp personal: <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp" onkeyup="this.value=Numeros(this.value)">
+                                </div>
+                                <div class="col-sm-12 col-md-12 form-group">
+                                    <label class="text-uppercase">En caso de contar con alguna restricción alimentaria, podría especificar cual: </label>
+                                    
+                                    <textarea class="form-control form-control-2" id="Restriccion" name="Restriccion" rows="2" cols="50">
+                                        </textarea>
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group">
                                 <label>Anexar OC (en caso de crédito), comprobante de pago o factura del curso<strong class="text-danger">*</strong></label>
@@ -332,7 +367,24 @@
     <!--  -->
     <script type="text/javascript" src="../../public/scripts/cursos/alta.js?id=<?php echo rand() ?>"></script>
 </body>
+<script>
+    function ShowMessage(){
+        $('#PI').hide()
+        $('#PE').hide()
+        $('#CER').hide()
+       if($('#name').val()=='Planta Externa de Fibra Óptica'){ 
+            $('#PI').show()
+       }
+       if($('#name').val()=='Fibra hasta el Usuario Redes Ópticas Pasivas') {
+        $('#PE').show()
+       }
 
+       if($('#name').val()=='Certificación Partners') {
+        $('#CER').show()
+       }
+       
+    }
+</script>
 </html>
 <?php
 unset($Contacto);
