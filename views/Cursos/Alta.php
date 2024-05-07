@@ -228,7 +228,7 @@
                                     <input class="form-control form-control-2" type="text" id="Whatsapp" name="Whatsapp" onkeyup="this.value=Numeros(this.value)">
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group">
-                                    <label class="text-uppercase">En caso de contar con alguna restricción alimentaria, podría especificar cual: </label>
+                                    <label class="text-uppercase">En caso de contar con alguna restricción alimentaria, podría especificar cual: <strong class="text-danger">*</strong></label>
                                     
                                     <textarea class="form-control form-control-2" id="Restriccion" name="Restriccion" rows="2" cols="50">
                                         </textarea>

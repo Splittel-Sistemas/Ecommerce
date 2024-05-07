@@ -116,7 +116,9 @@ class SolicitudCursos
   }
   public function SetRestriccion($Restriccion)
   {
-    
+    if (empty($Restriccion)) {
+      throw new Exception('El campo RESTRICCION ALIMENTARIA es requerido');
+    }
     $this->Restriccion = $Restriccion;
   }
 
