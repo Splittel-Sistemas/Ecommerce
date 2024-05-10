@@ -572,6 +572,7 @@ var EmailCursos = function (Elem) {
     function (response) {
       if (!response.error) {
         $(".cursos").val("");
+        $('#NombreCurso').val(null).trigger('change');
         templateAlert(
           response.typeError,
           "",

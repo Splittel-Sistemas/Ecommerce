@@ -132,18 +132,24 @@ class CatalogoCursos{
           echo $CatalogoCursos->sendEmail(true);
           break;
         case 'RegistroCursos':
-          $NombreCurso  = $CatalogoCursos->Tool->validDataString('NombreCurso', 'Nombre del Curso', true);
+          if(!isset($_POST["NombreCurso"]) || $_POST["NombreCurso"]==''){
+            throw new Exception("El campo: <strong>Nombre del curso</strong> es requerido");
+          }
+          $NombreCurso  = implode(', ',$_POST["NombreCurso"]);
           $Nombre       = $CatalogoCursos->Tool->validDataString('Nombre', 'Nombre', true);
           $Empresa      = $CatalogoCursos->Tool->validDataString('Empresa', 'Empresa', true);
           $Email        = $CatalogoCursos->Tool->validEmail('Email', 'Correo', true);
           $Telefono     = $CatalogoCursos->Tool->validPhoneNumber('Telefono', 'Telefono', true);
-
+          $Giro         = $CatalogoCursos->Tool->validDataString('Giro', 'Giro de la empresa', true);
+          $Web          = $CatalogoCursos->Tool->validDataString('Web', 'Pagina web de la empresa', false);
           $CatalogoCursos->Curso['Cursos'] = [
-            'NombreCurso' => $NombreCurso,
+            'NombreCurso' => ($NombreCurso),
             'Nombre'      => $Nombre,
             'Empresa'     => $Empresa,
             'Email'       => $Email,
-            'Telefono'    => $Telefono   
+            'Telefono'    => $Telefono,
+            'Giro'        => $Giro ,
+            'Web'        => $Web    
           ];
 
           $CatalogoCursos->Informacion =  json_encode($CatalogoCursos->Curso);

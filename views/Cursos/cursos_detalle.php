@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+ 
     <!-- <title> Contacto </title> -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+
   </head>
   <!-- Body-->
   <body>
@@ -16,6 +23,7 @@
       $response = $CatalogoCursos->get("WHERE activo = 'si' AND id = '".$_GET['id']."' ", "", false)->records[0];
     
     ?>
+    
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
@@ -108,7 +116,33 @@
             <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
             <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
             <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="cursos">
-            <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->titulo;?>">
+
+            <div class="row">
+              <div class="col-sm-12 form-group">
+              <label for="validationCustom04">Curso(s)</label>
+              <style>
+                  /* Estilo CSS para el borde del contenedor de Select2 */
+                  .select2-container--default .select2-selection--multiple {
+                      border: 1px solid #e0e0e0; /* Cambia 'red' al color deseado */
+                  }
+              </style>
+                <select  class="js-example-basic-multiple col-sm-12 form-group"  name="NombreCurso[]" id="NombreCurso" multiple="multiple" required>
+                <?php
+                 $CatalogoCursos1 = new CatalogoCursos();
+                 $response1 = $CatalogoCursos1->get("", "", false);
+                  if ($response1->count > 0): 
+                   foreach ($response1->records as $key => $row):
+                ?>
+                    <option value="<?php echo $row->nombre;?>"><?php echo $row->nombre;?></option>
+                <?php endforeach ?>
+                    <?php endif ?>  
+                    <!--
+                <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->titulo;?>">
+                   -->
+                   </select>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-sm-6 form-group">
                 <label for="validationCustom04">Nombre</label>
@@ -117,6 +151,17 @@
               <div class="col-sm-6 form-group">
                 <label for="validationCustom05">Empresa</label>
                 <input class="form-control cursos" type="text"  name="Empresa" id="Empresa" required>
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <label for="validationCustom04">Giro de la empresa</label>
+                <input class="form-control cursos" type="text"  name="Giro" id="Giro" required>
+              </div>
+              <div class="col-sm-6 form-group">
+                <label for="validationCustom05">Página Web</label>
+                <input class="form-control cursos" type="text"  name="Web" id="Web" >
                 
               </div>
             </div>
@@ -181,9 +226,15 @@
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Scripts.php'; ?>
+    
+    
   </body>
 </html>
-
+<script>
+      $(document).ready(function() {
+          $('.js-example-basic-multiple').select2();
+      });
+    </script>
 <?php 
   
   unset($CatalogoCursos);
