@@ -117,29 +117,34 @@
             <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
             <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="cursos">
 
-            <div class="row">
-              <div class="col-sm-12 form-group">
-              <label for="validationCustom04">Curso(s)</label>
+            <div class="row text-center">
+              <div class="col-sm-12 form-group text-center">
+              <label for="validationCustom04"><b>Curso(s)<b></label>
               <style>
                   /* Estilo CSS para el borde del contenedor de Select2 */
                   .select2-container--default .select2-selection--multiple {
                       border: 1px solid #e0e0e0; /* Cambia 'red' al color deseado */
                   }
               </style>
-                <select  class="js-example-basic-multiple col-sm-12 form-group"  name="NombreCurso[]" id="NombreCurso" multiple="multiple" required>
+                <div class="row text-left col-10"> 
                 <?php
                  $CatalogoCursos1 = new CatalogoCursos();
                  $response1 = $CatalogoCursos1->get("", "", false);
                   if ($response1->count > 0): 
                    foreach ($response1->records as $key => $row):
                 ?>
-                    <option value="<?php echo $row->nombre;?>"><?php echo $row->nombre;?></option>
+                    <div class="col-4 custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" value="<?php echo $row->nombre;?>" name="NombreCurso[]" id="<?php echo $row->nombre;?>">
+                    <label class="custom-control-label" for="<?php echo $row->nombre;?>">
+                    <?php echo $row->nombre;?>
+                    </label>
+                   </div>
                 <?php endforeach ?>
                     <?php endif ?>  
                     <!--
                 <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->titulo;?>">
                    -->
-                   </select>
+                   </div>
               </div>
             </div>
 
@@ -156,7 +161,7 @@
             </div>
             <div class="row">
               <div class="col-sm-6 form-group">
-                <label for="validationCustom04">Giro de la empresa</label>
+                <label for="validationCustom04">Giro de la empresa (*Campo obligatorio)</label>
                 <input class="form-control cursos" type="text"  name="Giro" id="Giro" required>
               </div>
               <div class="col-sm-6 form-group">

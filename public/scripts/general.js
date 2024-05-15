@@ -572,7 +572,10 @@ var EmailCursos = function (Elem) {
     function (response) {
       if (!response.error) {
         $(".cursos").val("");
-        $('#NombreCurso').val(null).trigger('change');
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+        });
         templateAlert(
           response.typeError,
           "",
