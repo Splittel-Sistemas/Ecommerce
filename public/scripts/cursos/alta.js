@@ -29,6 +29,7 @@ var EnviarAlta = function () {
   console.log(Titulo);
   var Politica = $("#apple").val();
   var CorreEjecutivo = $("#ejecutivo").val();
+  if(file_data){
   if (CorreEjecutivo != "") {
     if (Politica == 1) {
       $.ajax({
@@ -75,6 +76,10 @@ var EnviarAlta = function () {
 
     templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
   }
+}else{
+  $("#botonenviar").show();
+  templateAlert("danger", "", "SELECCIONE COMPROBANTE DE PAGO ", "topRight", "");
+}
 };
 
 function titulo(valor) {

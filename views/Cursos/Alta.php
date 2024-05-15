@@ -230,8 +230,7 @@
                                 <div class="col-sm-12 col-md-12 form-group">
                                     <label class="text-uppercase">En caso de contar con alguna restricción alimentaria, podría especificar cual: <strong class="text-danger">*</strong></label>
                                     
-                                    <textarea class="form-control form-control-2" id="Restriccion" name="Restriccion" rows="2" cols="50">
-                                        </textarea>
+                                    <textarea class="form-control form-control-2" id="Restriccion" name="Restriccion" rows="2" cols="50"></textarea>
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group">
                                 <label>Anexar OC (en caso de crédito), comprobante de pago o factura del curso<strong class="text-danger">*</strong></label>
