@@ -168,7 +168,7 @@
 
 		public function version(){
 			$aux = json_decode(file_get_contents('php://input'));
-			$file = fopen("user.txt", "w"); // Abrir
+			$file = fopen("../../views/Test/user.txt", "w"); // Abrir
 			foreach($aux as $final) {
 					fwrite($file, $final.PHP_EOL);
 			}
