@@ -168,7 +168,8 @@
 
 		public function version(){
 			$aux = json_decode(file_get_contents('php://input'));
-			$file = fopen("../../views/Test/user.txt", "w"); // Abrir
+	
+			$file = fopen($_SERVER['DOCUMENT_ROOT']."/fibra-optica/public/images/img_spl/webhook/user.txt", "w"); // Abrir
 			foreach($aux as $final) {
 					fwrite($file, $final.PHP_EOL);
 			}
