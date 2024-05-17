@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- <title> Contacto </title> -->
+  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
+
+</head>
+<!-- Body-->
+
+<body>
+  <!-- Header -->
+  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Header.php'; ?>
+
+  <!-- Page Content-->
+  <div class="container padding-top-3x padding-bottom-3x ">
+    <div class="row justify-content-center">
+      <!-- Content-->
+      <div class="col-xl-11 col-lg-11 order-lg-2">
+
+        <div class="row">
+         
+         
+            <!-- BANNER 1-->
+            <div class="col-lg-12 col-md-12 order-md-2">
+              <div class="gallery-wrapper">
+                <div class="gallery-item">
+                  <img alt="" style="width:100%" class="rounded " src="../../public/images/img_spl/wisp/1-banner landing wisp.png" alt="soluciones">
+                  <span class="caption"><?php //echo $response->titulo;
+                                        ?></span>
+                </div>
+              </div>
+            </div>
+            <!--TEXTO 1-->
+            <div class="col-lg-12 col-md-12 order-md-2">
+
+              <p style="text-align: justify;" class="padding-top-1x text-muted">
+              En el mundo digitalizado y siempre conectado de hoy, los proveedores de servicios de internet desempeñan un papel
+                fundamental en la vida cotidiana de las personas y en el desarrollo de comunidades enteras. En este contexto, en
+                Fibremex®, nos enorgullece ofrecer soluciones de fibra óptica de vanguardia diseñadas específicamente para
+                fortalecer la infraestructura de red de los ISP y WISP.
+              </p>
+            </div>
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <h4 class="text-muted opacity-75 margin-top-1x">
+                  <strong>Conoce los productos de fibra óptica</strong>
+                </h4>
+            </div>
+            <div class="col-lg-12 col-md-12 order-md-2 padding-bottom-1x">
+            <h6 class="text-muted opacity-75 ">
+                  <strong>Cables de fibra óptica</strong>
+                </h6>
+            </div>
+            <!-- CABLES DE FIBRA OPTICA-->
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="row">
+            <?php
+                    $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+                    $SubcategoriasN1Controller->filter = "WHERE id IN (102,101,10,11) AND activo='si' ";
+                    $SubcategoriasN1Controller->order = "ORDER BY id DESC";
+              
+                    $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
+                    
+                    if($ResultSubcategoriasN1->count > 0 ){
+                      $SubcategoriaN1Key = $ResultSubcategoriasN1->records[0]->CategoriasKey;
+                      
+                      foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
+                        $ConfiguracionPath = $SubcategoriaN1->Configuracion == 1 
+                        ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo."" : "#";
+      
+                        $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg")) 
+                        ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg" 
+                        : "../../public/images/img_spl/notfound1.png"; 
+                    ?>
+                      <div class="col-md-3 col-sm-3 col-3">
+                        <div class="product-card mb-30">
+                          <?php if ($SubcategoriaN1->Configuracion == 0){ ?>
+                          <div class="product-badge bg-primary">Próximamente</div>
+                          <?php } ?>
+                          <a class="product-thumb" href="<?php echo $ConfiguracionPath ?>&nom=<?php echo url_amigable($SubcategoriaN1->Descripcion);?>">
+                          <img src="<?php echo $imgUrl ?>" alt="<?php echo $SubcategoriaN1->Descripcion;?>"></a>
+                          <div class="product-card-body">
+                            <h1 class="product-title"><a href="<?php echo $ConfiguracionPath ?>&nom=<?php echo url_amigable($SubcategoriaN1->Descripcion);?>"><?php echo $SubcategoriaN1->Descripcion;?></a></h1>
+                          </div>
+                        </div>
+                      </div>
+                    <?php 
+                        } 
+                      } 
+            ?>
+            </div>
+            </div>
+            <!-- CIERRES DE EMPLAME-->
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x padding-bottom-1x">
+            <h6 class="text-muted opacity-75 ">
+                  <strong>Cierres de emplame tipo NAP</strong>
+                </h6>
+            </div>
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="row">
+        <?php
+        if (!class_exists("ProductoController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+        }
+        $ProductoController = new ProductoController();
+        $ProductoController->filter = "WHERE codigo IN ('OPCEF08SC36E65HT8SCA','OPCEF08SC36E65HT8SCU','OPCEF16SC144E65HT','OPCEF16SC144E65HTSCU','OPCEF08SC68HT','OPCEF16SC65HT') AND producto_activo='si' ";
+        $ProductoController->order = "";
+        $getProduct = $ProductoController->GetProductosFijos_();
+
+
+        if ($getProduct->count > 0) {
+          if (!class_exists('ComentariosController')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
+          }
+          foreach ($getProduct->records as $key => $obj) {
+            $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+            $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
+            $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
+            $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
+            $priceUSD = bcdiv($calculatePrice, 1, 3);
+            $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+        ?>
+            <div class="col-sm-3">
+              <div class="product-card mb-30">
+                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+
+
+                <div class="rating-stars">
+                  <?php
+                  $ComentariosController = new ComentariosController();
+                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                  $Comentarios = $ComentariosController->Comentarios();
+
+                  if ($Comentarios->count > 0) {
+                    $RecordsComentarios = $Comentarios->records[0];
+                    $Promedio = (int)$RecordsComentarios->Promedio;
+                    for ($i = 0; $i < 5; $i++) {
+                      if ($i < $Promedio) {
+                  ?>
+                        <i class="icon-star filled"></i>
+                      <?php } else { ?>
+                        <i class="icon-star"></i>
+                    <?php }
+                    }
+                  } else { ?>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                  <?php }
+                  unset($ComentariosController);
+                  unset($Comentarios);
+                  ?>
+                </div>
+                <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
+                  <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
+                </a>
+                <div class="product-card-body">
+
+                  <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                      $<?php echo $priceUSD ?> USD
+                    </h4>
+                  <?php } ?>
+                </div>
+                <div class="product-button-group">
+                  <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
+                    <?php } else { ?>
+                      <a class="product-button" href="../Login/">
+                      <?php } ?>
+                      <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
+                      </a>
+                </div>
+              </div>
+            </div>
+        <?php
+            unset($urlDetailProduct);
+            unset($urlImg);
+            unset($newUrlImg);
+            unset($calculatePrice);
+            unset($priceUSD);
+            unset($priceMXN);
+          }
+        }
+        ?>
+            </div>
+            </div>
+            
+          <!-- CONECTORES MECANICOS & EPLAMADORA-->
+          <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x padding-bottom-1x">
+            <div class="row">
+                <div class="col-lg-8">
+                <h6 class="text-muted opacity-75 ">
+                    <strong>Conectores mecánicos</strong>
+                    </h6>
+                </div>
+                <div class="col-lg-4">
+                <h6 class="text-muted opacity-75 ">
+                    <strong>Empalmadora</strong>
+                    </h6>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 order-md-2 padding-bottom-1x">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                    <?php
+        if (!class_exists("ProductoController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+        }
+        $ProductoController = new ProductoController();
+        $ProductoController->filter = "WHERE codigo IN ('OPCOMESCUMULUNAZ','OPCOMESCAMULUNVE') AND producto_activo='si' ";
+        $ProductoController->order = "";
+        $getProduct = $ProductoController->GetProductosFijos_();
+
+
+        if ($getProduct->count > 0) {
+          if (!class_exists('ComentariosController')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
+          }
+          foreach ($getProduct->records as $key => $obj) {
+            $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+            $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
+            $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
+            $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
+            $priceUSD = bcdiv($calculatePrice, 1, 3);
+            $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+        ?>
+            <div class="col-sm-6">
+              <div class="product-card mb-30">
+                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+
+
+                <div class="rating-stars">
+                  <?php
+                  $ComentariosController = new ComentariosController();
+                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                  $Comentarios = $ComentariosController->Comentarios();
+
+                  if ($Comentarios->count > 0) {
+                    $RecordsComentarios = $Comentarios->records[0];
+                    $Promedio = (int)$RecordsComentarios->Promedio;
+                    for ($i = 0; $i < 5; $i++) {
+                      if ($i < $Promedio) {
+                  ?>
+                        <i class="icon-star filled"></i>
+                      <?php } else { ?>
+                        <i class="icon-star"></i>
+                    <?php }
+                    }
+                  } else { ?>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                  <?php }
+                  unset($ComentariosController);
+                  unset($Comentarios);
+                  ?>
+                </div>
+                <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
+                  <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
+                </a>
+                <div class="product-card-body">
+
+                  <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                      $<?php echo $priceUSD ?> USD
+                    </h4>
+                  <?php } ?>
+                </div>
+                <div class="product-button-group">
+                  <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
+                    <?php } else { ?>
+                      <a class="product-button" href="../Login/">
+                      <?php } ?>
+                      <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
+                      </a>
+                </div>
+              </div>
+            </div>
+        <?php
+            unset($urlDetailProduct);
+            unset($urlImg);
+            unset($newUrlImg);
+            unset($calculatePrice);
+            unset($priceUSD);
+            unset($priceMXN);
+          }
+        }
+        ?>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                    <?php
+        if (!class_exists("ProductoController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+        }
+        $ProductoController = new ProductoController();
+        $ProductoController->filter = "WHERE codigo IN ('OPEFEMPANU04001') AND producto_activo='si' ";
+        $ProductoController->order = "";
+        $getProduct = $ProductoController->GetProductosFijos_();
+
+
+        if ($getProduct->count > 0) {
+          if (!class_exists('ComentariosController')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
+          }
+          foreach ($getProduct->records as $key => $obj) {
+            $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+            $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
+            $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
+            $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
+            $priceUSD = bcdiv($calculatePrice, 1, 3);
+            $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+        ?>
+            <div class="col-sm-12">
+              <div class="product-card mb-30">
+                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+
+
+                <div class="rating-stars">
+                  <?php
+                  $ComentariosController = new ComentariosController();
+                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                  $Comentarios = $ComentariosController->Comentarios();
+
+                  if ($Comentarios->count > 0) {
+                    $RecordsComentarios = $Comentarios->records[0];
+                    $Promedio = (int)$RecordsComentarios->Promedio;
+                    for ($i = 0; $i < 5; $i++) {
+                      if ($i < $Promedio) {
+                  ?>
+                        <i class="icon-star filled"></i>
+                      <?php } else { ?>
+                        <i class="icon-star"></i>
+                    <?php }
+                    }
+                  } else { ?>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                  <?php }
+                  unset($ComentariosController);
+                  unset($Comentarios);
+                  ?>
+                </div>
+                <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
+                  <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
+                </a>
+                <div class="product-card-body">
+
+                  <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                  <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                      $<?php echo $priceUSD ?> USD
+                    </h4>
+                  <?php } ?>
+                </div>
+                <div class="product-button-group">
+                  <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
+                    <?php } else { ?>
+                      <a class="product-button" href="../Login/">
+                      <?php } ?>
+                      <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
+                      </a>
+                </div>
+              </div>
+            </div>
+        <?php
+            unset($urlDetailProduct);
+            unset($urlImg);
+            unset($newUrlImg);
+            unset($calculatePrice);
+            unset($priceUSD);
+            unset($priceMXN);
+          }
+        }
+        ?>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+         <!--TEXTO 1-->
+         <div class="col-lg-12 col-md-12 order-md-2">
+
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            La fibra óptica es la columna vertebral de la conectividad moderna, y entendemos su importancia crítica para el éxito
+            operativo y la satisfacción del cliente de los proveedores de servicios de internet. Es por eso que Fibremex®,
+            entendemos las dificultades que enfrentan nuestros clientes al lidiar con la escasez de productos en el mercado y nos
+            esforzamos para que nuestros productos estén disponibles en gran cantidad y listos para ser enviados en el momento
+            que lo necesites.
+            </p>
+        </div>
+
+        <!-- IMAGENES -->
+        <div class="col-lg-12 col-md-8 order-md-2">
+
+           
+            </div>
+
+            <div class="col-lg-6 col-md-6 order-md-2">
+
+            <h6 class="text-muted text-center text-normal margin-top-2x">
+            <img alt="" src="../../public/images/img_spl/wisp/img-almacen1.png"></a>
+          
+            </h6>
+
+            </div>
+            <div class="col-lg-6 col-md-6 order-md-2">
+
+            <h6 class="text-muted text-center text-normal margin-top-2x">
+            <img alt="" src="../../public/images/img_spl/wisp/img-almacen2.png"></a>
+            </h6>
+
+            </div>
+            <div class="col-lg-6 col-md-6 order-md-2">
+
+            <h6 class="text-muted text-center text-normal margin-top-2x">
+            <img alt="" src="../../public/images/img_spl/wisp/img-almacen3.png"></a>
+            </h6>
+
+            </div>
+            <div class="col-lg-6 col-md-6 order-md-2">
+
+            <h6 class="text-muted text-center text-normal margin-top-2x">
+            <img alt="" src="../../public/images/img_spl/wisp/img-almacen4.png"></a>
+            </h6>
+
+        </div>
+
+
+        <!-- BANNER 2-->
+        <div class="col-lg-12 col-md-12 order-md-2 padding-top-4x">
+              <div class="gallery-wrapper">
+                <div class="gallery-item">
+                  <img alt="" style="width:100%" class="rounded " src="../../public/images/img_spl/wisp/2-banner fintec.png" alt="soluciones">
+                  <span class="caption"><?php //echo $response->titulo;
+                                        ?></span>
+                </div>
+              </div>
+            </div>
+
+
+         <!--TEXTO 1-->
+         <div class="col-lg-12 col-md-12 order-md-2">
+
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            Reconocemos el papel fundamental que desempeñan los proveedores de servicios de internet en la reducción de la
+            brecha digital y en la facilitación del acceso a internet en áreas marginadas y rurales. En apoyo a esta misión, nos
+            complace ofrecer un amplio programa de formación técnica diseñado específicamente para equipar a los proveedores
+            de servicios de internet con las habilidades y conocimientos necesarios para desplegar y mantener infraestructuras de
+            fibra óptica de manera eficiente y efectiva
+            </p>
+        </div>
+
+        <!-- PRODUCTOS -->
+        <div class="col-lg-4 col-md-4 order-md-2">
+            <a href="../Cursos/2-curso-de-planta-interna" style="color: black;text-decoration: none;" target="_blank">
+              <h6 class="text-muted text-center text-normal margin-top-2x">
+                <img alt="" src="../../public/images/img_spl/wisp/cursos-1.png">
+              </h6>
+              </a>
+        </div>
+        <div class="col-lg-4 col-md-4 order-md-2">
+            <a href="../Cursos/1-curso-de-planta-externa" style="color: black;text-decoration: none;" target="_blank">
+              <h6 class="text-muted text-center text-normal margin-top-2x">
+                <img alt="" src="../../public/images/img_spl/wisp/cursos-2.png">
+              </h6>
+              </a>
+        </div>
+        <div class="col-lg-4 col-md-4 order-md-2">
+            <a href="../Cursos/3-gpon" style="color: black;text-decoration: none;" target="_blank">
+              <h6 class="text-muted text-center text-normal margin-top-2x">
+                <img alt="" src="../../public/images/img_spl/wisp/cursos-3.png">
+              </h6>
+              </a>
+        </div>
+
+        <div class="col-lg-12 col-md-12 order-md-2 padding-top-3x ">
+
+            <p style="text-align: justify;" class="text-muted">
+            <b>OFERTA DE CAPACITACIÓN OPTRONICS</b><br/>
+            Abrimos nuestras puertas para darte la bienvenida con talleres y actividades didáctica, porque tenemos la iniciativa de
+            desarrollar tus capacidades de instalador e integrador de equipos y redes de telecomunicaciones con enfoque en fibra
+            óptica para que alcances tus metas.
+            </p>
+        </div>
+           
+        <div class="col-lg-12 col-md-12 order-md-2">
+
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            <b>DEVELOP</b>
+            es más que un curso, es un espacio exclusivo diseñado para generar simulaciones de campo en el que podrás
+            realizar prácticas con herramientas especializadas, conocer de cerca los procesos y tener la instrucción de
+            especialistas con vasta experiencia.
+            </p>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 order-md-2">
+
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            Capacitarte puede ser la clave para mantenerte actualizado y crecer en el mundo de las telecomunicaciones. Nuestra
+            propuesta está dividida en <b>30% teoría y 70% práctica</b>, en cuatro apartados especializados que puedes disfrutar de uno
+            sin haber cursado otro.
+            </p>
+        </div>
+
+         <!-- BANNER 2-->
+         <div class="col-lg-12 col-md-12 order-md-2 padding-top-3x">
+              <div class="gallery-wrapper">
+                <div class="gallery-item">
+                  <img alt="" style="width:100%" class="rounded " src="../../public/images/img_spl/wisp/Insider_Banner1.png" alt="soluciones">
+                  <span class="caption"><?php //echo $response->titulo;
+                                        ?></span>
+                </div>
+              </div>
+            </div>
+        
+
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            <b>INSIDER</b><br/>
+            Te presentamos nuestro programa de seminarios online totalmente gratuitos, en los que podrás apreciar de cerca
+            equipos, herramientas y soluciones integrales que conforman las redes de telecomunicaciones del presente.
+            </p>
+            </div>
+
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <p style="text-align: justify;" class="padding-top-1x text-muted">
+            Nuestros seminarios surgen a partir de conocer las necesidades operativas de nuestros clientes, con el objetivo de
+            mostrarles la utilidad de cada producto y su proceso de instalación y uso, porque queremos que tus metas se cumplan y
+            tus proyectos se logren.
+            </p>
+            </div>
+
+
+            <div class="col-lg-12 col-md-12 order-md-2">
+            <div class="text-muted opacity-75 padding-top-3x ">CALENDARIO DE EVENTOS</div>
+  <hr class="padding-top-1x">
+  <h6 class=" text-normal padding-bottom-2x">Consulta nuestra oferta academica de todo el año.</h6>
+  <div class="col-lg-12 col-md-8 order-md-2">
+    <div class="accordion" id="accordion1" role="tablist">
+      <?php
+      $CatalogoCursos = new CatalogoCapacitaciones();
+      $responseCal = $CatalogoCursos->getMonths("", "", false)->records;
+
+      ?>
+      <?php foreach ($responseCal as $row) : ?>
+        <div class="card">
+          <div class="card-header" role="tab" style="background-color:#f5f5f5;">
+            <h3><a <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> expanded="true" <?php } ?> class="collapsed" href="#collapse<?php echo $row->mes_num . $row->anio; ?>" data-toggle="collapse">
+                <b><?php echo "Calendario actividades <span class='text-uppercase'>" . $row->mes_nombre . '</span>'; ?></b></a>
+            </h3>
+          </div>
+          <div class="collapse <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> show <?php } ?>" id="collapse<?php echo $row->mes_num . $row->anio; ?>" data-parent="#accordion1" role="tabpanel">
+            <div class="card-body">
+              <table style="width:100%;">
+                <?php
+                $CatalogoEventos = new CatalogoCapacitaciones();
+                $responseCalEvents = $CatalogoEventos->getEventsCal("WHERE activo='si' AND month(start)= $row->mes_num AND YEAR(start) = $row->anio", "ORDER BY start ASC", false);
+                $cont = 1;
+                $cont1 = 1;
+                foreach ($responseCalEvents as $row1) :
+                  if ($cont == 1 || $varAnt != $row1->title) {
+                    $CatalogoEventosEsp = new CatalogoCapacitaciones();
+                    $responseCalEventsEsp = $CatalogoEventosEsp->getEventsCal("where month(start)= $row->mes_num AND YEAR(start) = $row->anio AND title='" . $row1->title . "'", "", false);
+                    $rwSpan = count($responseCalEventsEsp);
+                  }
+                ?>
+                  <tr style="border-spacing: 0 8px;">
+                    <?php
+                    if ($cont % 2) {
+                      $colorBack = '#f5f5f5';
+                    } else {
+                      $colorBack = '#ffffff';
+                    }
+                   ?>
+                    <td style="background-color:<?php echo $colorBack; ?>"><small><b>  <?php echo $row1->title; ?></b></small></td>
+                    <td style="background-color:<?php echo $colorBack; ?>"><small>&nbsp;&nbsp;<?php echo $row1->title1; ?></small></td>
+                    <td style="background-color:<?php echo $colorBack; ?>"><small><?php echo $row1->fecha; ?></small></td>
+                    <td style="text-align:center; background-color:<?php echo $colorBack; ?>;"><small><?php echo $row1->costo; ?></small></td>
+                    <td style="text-align:center; width:10%; background-color:<?php echo $colorBack; ?>">
+                      <small>
+                        <?php if ($row1->title == 'Insider') { ?>
+                          <a style="color: #BF202F;" href="<?php echo $row1->link; ?>" target="_blank">Registro</a>
+                        <?php } else { ?>
+                          <a style="color: #BF202F;" href="<?php echo $row1->link; ?>" target="_blank">Ver más</a>
+                        <?php } ?>
+                      </small>
+                    </td>
+                  </tr>
+                <?php
+                  $varAnt = $row1->title;
+                  $cont++;
+                endforeach
+                ?>
+              </table>
+            </div>
+          </div>
+        </div>
+      <?php endforeach ?>
+    </div>
+  </div>
+            </div>
+
+            
+
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x ">
+            <p style="text-align: justify;" class="text-muted">
+            Estamos comprometidos con la construcción de un país y un mundo mejor conectado. Nuestro objetivo es ser su socio
+            de confianza en el camino hacia una conectividad más rápida, confiable y accesible para todos.
+            </p>
+            </div>
+            
+
+            <!-- LOGO OPTRONICS -->
+            <div class="col-lg-12 col-md-8 order-md-2 padding-top-2x">
+
+              <h6 class="text-muted text-center text-normal ">
+                <img alt="" src="../../public/images/img_spl/wisp/logo-fibremex.png" style="width:40%">
+              </h6>
+
+            </div>
+
+            
+            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x ">
+            <p style="text-align: justify;" class="text-muted">
+            Nuestros asesores están listos para atender tus dudas. Si deseas más información sobre nuestros productos
+            escribenos a <b>ventas@fibremex.com.mx</b> o haz clic en el siguiente botón.
+            </p>
+            </div>
+
+            <!-- BOTON -->
+            <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
+
+              <h6 class="text-muted text-center text-normal margin-top-1x">
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20WISP">
+                    <img style="width:40%" src="../../public/images/img_spl/wisp/boton whatsapp.png"></a>
+              </h6>
+
+
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
+  <!-- scripts JS -->
+  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
+
+</body>
+
+</html>
+
+<?php
+
+unset($CatalogoCursos);
+unset($response);
+unset($first_cur);
+unset($final_cur);
+
+?>

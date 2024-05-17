@@ -126,25 +126,31 @@
                       border: 1px solid #e0e0e0; /* Cambia 'red' al color deseado */
                   }
               </style>
-                <div class="row text-left col-10"> 
-                <?php
-                 $CatalogoCursos1 = new CatalogoCursos();
-                 $response1 = $CatalogoCursos1->get("", "", false);
-                  if ($response1->count > 0): 
-                   foreach ($response1->records as $key => $row):
-                ?>
-                    <div class="col-4 custom-control custom-checkbox">
+              <div class="row">
+              <div class="col-2">
+                    </div>
+                <div class="row text-left col-8"> 
+                  <?php
+                  $CatalogoCursos1 = new CatalogoCursos();
+                  $response1 = $CatalogoCursos1->get("", "", false);
+                    if ($response1->count > 0): 
+                    foreach ($response1->records as $key => $row):
+                  ?>
+                    <div class="col-6  custom-checkbox" style="padding-left:2rem !important">
+                    <div class="custom-control">
                     <input class="custom-control-input" type="checkbox" value="<?php echo $row->nombre;?>" name="NombreCurso[]" id="<?php echo $row->nombre;?>">
                     <label class="custom-control-label" for="<?php echo $row->nombre;?>">
                     <?php echo $row->nombre;?>
                     </label>
                    </div>
+                   </div>
                 <?php endforeach ?>
                     <?php endif ?>  
-                    <!--
-                <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->titulo;?>">
-                   -->
+                   
                    </div>
+                   <div class="col-2">
+                    </div>
+                    </div>
               </div>
             </div>
 
