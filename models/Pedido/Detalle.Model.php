@@ -285,7 +285,7 @@
 
     public function Create(){
       try {
-        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProducto2(
+        $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProducto3(
           '".$this->Key."',
           '".$this->PedidoKey."',
           '".$this->Codigo."',

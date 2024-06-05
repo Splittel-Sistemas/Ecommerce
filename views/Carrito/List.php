@@ -5,6 +5,7 @@
         <th>Producto</th>
         <th class="text-center">Cantidad</th>
         <th class="text-center">Stock</th>
+        <th class="text-center">Descuento</th>
         <th class="text-center">Subtotal</th>
         <th class="text-center">
           <a class=" btn-outline-danger" href="javascript:void(0);">
@@ -119,6 +120,10 @@
               <?php echo $data->ProductoExistencia;?>
             </span>
           </td>
+           <!-- Descuento -->
+           <td class="text-center text-lg">
+             <?php echo $data->DetalleDescuento ?>
+          </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
             $ <?php echo $data->DetalleSubtotal ?>
@@ -165,6 +170,10 @@
           <!-- Producto especial en fabricación -->
           <td class="text-center text-lg">
             <ul class="list-unstyled"><li class="text-md text-success">Tiempo de fabricación. <?php echo $data->TiempoEntrega;?></li></ul>
+          </td>
+           <!-- Descuento -->
+           <td class="text-center text-lg">
+             <?php echo $data->DetalleDescuento ?>
           </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
@@ -232,6 +241,10 @@
               <?php echo $data->ProductoExistencia;?>
             </span>
           </td>
+          <!-- Descuento -->
+          <td class="text-center text-lg">
+             <?php echo $data->DetalleDescuento ?>
+          </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
             $ <?php echo $data->DetalleSubtotal ?>
@@ -277,6 +290,10 @@
           <!-- Producto especial en fabricación -->
           <td class="text-center text-lg">
             <ul class="list-unstyled"><li class="text-md text-success">Tiempo de fabricación. <?php echo $data->TiempoEntrega;?></li></ul>
+          </td>
+          <!-- Descuento -->
+          <td class="text-center text-lg">
+             <?php echo $data->DetalleDescuento ?>
           </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">

@@ -13,6 +13,8 @@
     include 'c95_cable_mtpro_mtprous.php';    
   }else if ($_GET['codigo'] == 'C96') {
     include 'c96_cable_mtpro_lc.php';    
+  }else if ($_GET['codigo'] == 'C103') {
+    include 'c104_cable_uniboot.php';    
   }else{
 ?>
   <div class="row align-items-end pb-4">

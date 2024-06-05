@@ -608,6 +608,136 @@ var JumpersArmados = function(){
 }
 
 
+var JumpersUniboot = function(){
+  let Longitud = document.getElementById('Longitud')
+  // conectores 
+  let Conector1 = document.getElementById('Conector1')
+  let Conector2 = document.getElementById('Conector2')
+  // botas 
+  let Bota1 = document.getElementById('Bota1')
+  let Bota2 = document.getElementById('Bota2')
+  // pulidos
+  let PulidoConector1 = document.getElementById('Pulido1')
+  let PulidoConector2 = document.getElementById('Pulido2')
+  // Tipo de fibra
+  let MultimodoTipoFibra = document.getElementById('MultimodoTipoFibra')
+
+  // Elementos no necesarios 
+  let TipoCubierta = document.getElementById('TipoCubierta')
+  let NumeroHilos = document.getElementById('NumeroHilos')
+  let Diametro = document.getElementById('Diametro')
+
+
+  if(MultimodoTipoFibra.value=='9'){
+
+    PulidoConector1.selectedIndex = 0
+    PulidoConector2.selectedIndex = 0
+     StyleDisplayNoneOrBlock_2(PulidoConector1, 'block', [0])
+     StyleDisplayNoneOrBlock_2(PulidoConector1, 'none', [1]) 
+     StyleDisplayNoneOrBlock_2(PulidoConector2, 'block', [0])
+     StyleDisplayNoneOrBlock_2(PulidoConector2, 'none', [1]) 
+
+     StyleDisplayNoneOrBlock_2(TipoCubierta, 'block', [0,1])
+}else{
+ 
+      PulidoConector1.selectedIndex = 1
+      PulidoConector2.selectedIndex = 1
+     StyleDisplayNoneOrBlock_2(PulidoConector1, 'block', [1])
+     StyleDisplayNoneOrBlock_2(PulidoConector1, 'none', [0]) 
+     StyleDisplayNoneOrBlock_2(PulidoConector2, 'block', [1])
+     StyleDisplayNoneOrBlock_2(PulidoConector2, 'none', [0]) 
+     TipoCubierta.selectedIndex = 0
+     StyleDisplayNoneOrBlock_2(TipoCubierta, 'none', [1])
+}
+
+  if(TipoCubierta.value=='R'){
+
+       Diametro.selectedIndex = 0
+        StyleDisplayNoneOrBlock_2(Diametro, 'block', [0])
+        StyleDisplayNoneOrBlock_2(Diametro, 'none', [1]) 
+
+        Bota1.selectedIndex = 0
+        Bota2.selectedIndex = 0
+        StyleDisplayNoneOrBlock_2(Bota1, 'block', [0])
+        StyleDisplayNoneOrBlock_2(Bota1, 'none', [1]) 
+        StyleDisplayNoneOrBlock_2(Bota2, 'block', [0])
+        StyleDisplayNoneOrBlock_2(Bota2, 'none', [1]) 
+
+  }else{
+    
+        Diametro.selectedIndex = 1
+        StyleDisplayNoneOrBlock_2(Diametro, 'block', [1])
+        StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]) 
+
+        Bota1.selectedIndex = 1
+        Bota2.selectedIndex = 1
+        StyleDisplayNoneOrBlock_2(Bota1, 'block', [1])
+        StyleDisplayNoneOrBlock_2(Bota1, 'none', [0]) 
+        StyleDisplayNoneOrBlock_2(Bota2, 'block', [1])
+        StyleDisplayNoneOrBlock_2(Bota2, 'none', [0]) 
+
+
+  }
+ 
+ 
+  
+
+  if (Longitud.value > 0 && Longitud.value <= 999.9 && validateDecimalEntero(Longitud.value)) {
+    NewLongitud = NumeroConCeros(Longitud.value, 4)
+    CodigoGenerado = Marca+Familia+Conector1.value+PulidoConector1.value+Bota1.value+Conector2.value+PulidoConector2.value+Bota2.value+MultimodoTipoFibra.value+NumeroHilos.value+NewLongitud+TipoCubierta.value+Diametro.value
+    // Agreación de codigo para la vista en el identificador
+    showClave(CodigoGenerado)
+    let data = {
+      Action: 'calcular',
+      ActionCalcularPrecioEspeciales : true, 
+      Longitud: Longitud.value,
+      TipoJumper: MultimodoTipoFibra.value == 9 ? 'SM' : 'MM', // Tipo de jumper de acuerdo al catalogo de bd Monomodo
+      Conector_1: Conector1.value,
+      Conector_2: Conector2.value,
+      Fibra : MultimodoTipoFibra.value,
+      Pulido_1 : PulidoConector1.value,
+      Pulido_2 : PulidoConector2.value,
+      Cubierta : TipoCubierta.value,
+      NumeroHilos : NumeroHilos.value,
+      Bota_1 : Bota1.value,
+      Bota_2 : Bota2.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+    }
+    CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
+    let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
+    let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
+    let Diametroselected=Diametro.options[Diametro.selectedIndex].text
+    let Bota1selected=Bota1.options[Bota1.selectedIndex].text
+    let Bota2selected=Bota2.options[Bota2.selectedIndex].text
+    
+    let descripcion = "Jumper "+Conector1.value+PulidoConector1.value+' Uniboot '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' Uniboot '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
+  }else{
+    CodigoGenerado='';
+    showClave(CodigoGenerado)
+    DescPrdConf.innerHTML=''
+  }
+  ListImgProducto('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
+  console.log('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
+  ListProductoDescription('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
+  agregarFichaTecnicaConfigurable('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
+  //ChangeListImgProducto('OPJULU',)
+  /*
+  if(MultimodoTipoFibra.value == 9 ){ 
+    ListProductoDescription('OPJUESP/SM')
+    ListProductoAdicional('OPJUESP/SM')
+  } else{
+    ListProductoDescription('OPJUESP/MM')
+    ListProductoAdicional('OPJUESP/MM')
+  }
+  */
+  //agregarFichaTecnicaConfigurable('OPJUESP')
+  agregarCertificadoConfigurable(CodigoGenerado)
+  existJumper_(CodigoGenerado)
+}
+
 
 
 var JumpersFibraOptica = function() {
@@ -629,6 +759,9 @@ var JumpersFibraOptica = function() {
     break;
     case 'JEsp' : 
       JumpersEspeciales()
+    break;
+    case 'JUni' : 
+      JumpersUniboot()
     break;
     default:
       templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")
