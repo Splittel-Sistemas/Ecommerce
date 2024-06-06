@@ -231,6 +231,7 @@
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                   </div>
                 </div>
@@ -345,6 +346,7 @@
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                 </div>
                 <div class="product-button-group">
@@ -439,6 +441,7 @@
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                 </div>
                 <div class="product-button-group">
