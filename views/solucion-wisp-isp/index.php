@@ -552,13 +552,13 @@
               <button type="button" class="btn btn-primary" onclick="window.open('../Cursos/2-curso-de-planta-interna', '_blank')">Conocer más</button>
      
         </div>
-        <div class="col-lg-4 col-md-4 order-md-2">
+        <div class="col-lg-4 col-md-4 order-md-2 text-center">
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/wisp/cursos-2.png">
               </h6>
               <button type="button" class="btn btn-primary" onclick="window.open('../Cursos/1-curso-de-planta-externa', '_blank')">Conocer más</button>
         </div>
-        <div class="col-lg-4 col-md-4 order-md-2">
+        <div class="col-lg-4 col-md-4 order-md-2 text-center">
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/wisp/cursos-3.png">
               </h6>
