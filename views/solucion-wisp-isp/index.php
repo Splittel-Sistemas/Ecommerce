@@ -512,13 +512,15 @@
 
             <h6 class="text-muted text-center text-normal margin-top-2x">
             <img alt="" src="../../public/images/img_spl/wisp/img-almacen4.png"></a>
+            
             </h6>
 
         </div>
-
-
+        <div class="col-lg-12 col-md-12 order-md-2 padding-top-3x">
+        <hr class="padding-top-1x padding-bottom-1x">
+        </div>
         <!-- BANNER 2-->
-        <div class="col-lg-12 col-md-12 order-md-2 padding-top-4x">
+        <div class="col-lg-12 col-md-12 order-md-2 padding-top-1x">
               <div class="gallery-wrapper">
                 <div class="gallery-item">
                   <img alt="" style="width:100%" class="rounded " src="../../public/images/img_spl/wisp/2-banner fintec.png" alt="soluciones">
@@ -542,26 +544,25 @@
         </div>
 
         <!-- PRODUCTOS -->
-        <div class="col-lg-4 col-md-4 order-md-2">
-            <a href="../Cursos/2-curso-de-planta-interna" style="color: black;text-decoration: none;" target="_blank">
+        <div class="col-lg-4 col-md-4 order-md-2 text-center">
+    
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/wisp/cursos-1.png">
               </h6>
-              </a>
+              <button type="button" class="btn btn-primary" onclick="window.open('../Cursos/2-curso-de-planta-interna', '_blank')">Conocer más</button>
+     
         </div>
         <div class="col-lg-4 col-md-4 order-md-2">
-            <a href="../Cursos/1-curso-de-planta-externa" style="color: black;text-decoration: none;" target="_blank">
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/wisp/cursos-2.png">
               </h6>
-              </a>
+              <button type="button" class="btn btn-primary" onclick="window.open('../Cursos/1-curso-de-planta-externa', '_blank')">Conocer más</button>
         </div>
         <div class="col-lg-4 col-md-4 order-md-2">
-            <a href="../Cursos/3-gpon" style="color: black;text-decoration: none;" target="_blank">
               <h6 class="text-muted text-center text-normal margin-top-2x">
                 <img alt="" src="../../public/images/img_spl/wisp/cursos-3.png">
               </h6>
-              </a>
+              <button type="button" class="btn btn-primary" onclick="window.open('../Cursos/3-gpon', '_blank')">Conocer más</button>
         </div>
 
         <div class="col-lg-12 col-md-12 order-md-2 padding-top-3x ">
