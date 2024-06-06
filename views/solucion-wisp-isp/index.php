@@ -695,6 +695,18 @@
 
             
 
+            
+            
+
+            <!-- LOGO OPTRONICS -->
+            <div class="col-lg-12 col-md-8 order-md-2 padding-top-2x">
+
+              <h6 class="text-muted text-center text-normal ">
+                <img alt="" src="../../public/images/img_spl/wisp/logo-fibremex.png" style="width:30%">
+              </h6>
+
+            </div>
+            
             <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x ">
             <p style="text-align: justify;" class="text-muted">
             Estamos comprometidos con la construcción de un país y un mundo mejor conectado. Nuestro objetivo es ser su socio
@@ -702,18 +714,7 @@
             </p>
             </div>
             
-
-            <!-- LOGO OPTRONICS -->
-            <div class="col-lg-12 col-md-8 order-md-2 padding-top-2x">
-
-              <h6 class="text-muted text-center text-normal ">
-                <img alt="" src="../../public/images/img_spl/wisp/logo-fibremex.png" style="width:40%">
-              </h6>
-
-            </div>
-
-            
-            <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x ">
+            <div class="col-lg-12 col-md-12 order-md-2 ">
             <p style="text-align: justify;" class="text-muted">
             Nuestros asesores están listos para atender tus dudas. Si deseas más información sobre nuestros productos
             escribenos a <b>ventas@fibremex.com.mx</b> o haz clic en el siguiente botón.
@@ -725,7 +726,7 @@
 
               <h6 class="text-muted text-center text-normal margin-top-1x">
                 <a target="_blank" href="https://api.whatsapp.com/send?phone=+524423094756&text=%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20WISP">
-                    <img style="width:40%" src="../../public/images/img_spl/wisp/boton whatsapp.png"></a>
+                    <img style="width:30%" src="../../public/images/img_spl/wisp/boton whatsapp.png"></a>
               </h6>
 
 
