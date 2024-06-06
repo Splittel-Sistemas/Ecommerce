@@ -59,7 +59,8 @@
           include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
         }
         $ProductoController = new ProductoController();
-        $ProductoController->filter = "WHERE codigo IN ('OPCFOCE09MSA06B3B-4K','OPCFOIE29DR801ZH-2k') AND producto_activo='si' ";
+        $ProductoController->filter = "WHERE codigo IN ('OPCFOCE09MSA06B3B-4K','OPCFOCE09MSA12B3B-4k','OPCFOCE09MSA24B3B-4k','OPCFOCE09SAG12B2B-4k','OPCFOCE09SAG24B2B-4K',
+        'OPCFOCE09SAG36B2B-4K','OPCFOCE09SAG48B2B-4K','OPCFOCE09SAG72B2B-4K','OPCFOCE09SAG96B2B-4K','OPCFOIE29DR801ZH-2k','OPCFOIE29DR802ZH-2K','OPCFOIE39DR001TP-2K','OPCFOIE39DR002ZH-2k') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
         //print_r($getProduct);
