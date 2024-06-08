@@ -328,7 +328,7 @@ class TemplatePedido
 					';
 					foreach ($ResultDatosCorreo->records as $key => $DatosEnvio) {
 
-						$html .= '<p align="center">Ejecutivo: andrea.alejo@splittel.com</p>';
+						$html .= '<p align="center">Ejecutivo: jossue.oyarvide@splittel.com</p>';
 					}
 
 
