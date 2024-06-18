@@ -7,7 +7,7 @@ $cn2 = 1;
 $totalElements = count($getProduct->records);
 foreach ($getProduct->records as $key => $obj) {
 
-  $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+  $urlDetailProduct = "../Productos/fijos.php?id_prd=" . urlencode($obj->ProductoCodigo) . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
   $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
   $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
   $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
