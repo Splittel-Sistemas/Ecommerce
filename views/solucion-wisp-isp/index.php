@@ -115,10 +115,10 @@
                 <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
                   <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
                 </a>
-                <div class="product-card-body">
-
+                <div class="product-card-body classAbsolute">
+                <div style="height:100%;">
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
-                  <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <h3 class="product-title" ><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
                     <h4 class="product-price" id="id-product-price-<?php echo $obj->ProductoCodigo?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
@@ -128,6 +128,7 @@
                     -->
                     <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                     <?php } ?>
+                    </div>
                 </div>
                 <div class="product-button-group">
                  
