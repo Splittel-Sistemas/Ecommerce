@@ -2,6 +2,7 @@
 
 var Marca = "OP"
 var Familia = "HES"
+var DescPrdConf = document.getElementById('DscProductoConfigurable')
 
 var Bobina = function(){
   let LongitudFibra = document.getElementById('LongitudFibra')
@@ -9,7 +10,8 @@ var Bobina = function(){
   let Conectarizacion_2 = document.getElementById('Conectarizacion_2')
   let Diametro = document.getElementById('Diametro')
   let TipoFibra = document.getElementById('TipoFibra')
-
+  document.getElementById('changename').innerHTML="";
+  document.getElementById('changename').innerHTML="Cantidad";
   if(TipoFibra.value=='29'){
 
     StyleDisplayNoneOrBlock_2(LongitudFibra, "none", [0])
@@ -97,16 +99,33 @@ var Bobina = function(){
     }
   }
 
-  
+  let data = {
+    Action: 'calcular',
+    ActionCalcularPrecio: true, 
+    Longitud: "'"+LongitudFibra.value+"'",
+    Conector_1: Conectarizacion_1.value,
+    Conector_2: Conectarizacion_2.value,
+    Fibra : TipoFibra.value,
+    SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+  }
+  CalcularPrecio("../../models/Productos/BobinaLanzamiento/CalcularPrecio.Route.php", data)
 
- 
+  var Con1Text1 = Conectarizacion_1.options[Conectarizacion_1.selectedIndex].text;
+  var Con1Text2 = Conectarizacion_2.options[Conectarizacion_2.selectedIndex].text;
+  var LongText = LongitudFibra.options[LongitudFibra.selectedIndex].text;
+  var TipoText = TipoFibra.options[TipoFibra.selectedIndex].text;
+  var DiamText = Diametro.options[Diametro.selectedIndex].text;
   
     CodigoGenerado = Marca+Familia+TipoFibra.value+LongitudFibra.value+Conectarizacion_1.value+Conectarizacion_2.value+Diametro.value
-	ListImgProductoOnly('OPHES',TipoFibra.value+Conectarizacion_1.value+Conectarizacion_2.value)
+
+    let descripcion = "Bobina de lanzamiento "+Con1Text1+"-"+Con1Text2+" "+TipoText+" de "+LongText+" en "+DiamText
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
+	  ListImgProductoOnly('OPHES',TipoFibra.value+Conectarizacion_1.value+Conectarizacion_2.value)
     ListProductoDescription('OPHES'+TipoFibra.value)
     ListProductoAdicional('OPHES'+TipoFibra.value)
     showClave(CodigoGenerado)
-    existEcommerce_(CodigoGenerado)
+    //existEcommerce_(CodigoGenerado)
 
 }
 
