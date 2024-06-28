@@ -689,9 +689,8 @@ var JumpersUniboot = function(){
     showClave(CodigoGenerado)
     let data = {
       Action: 'calcular',
-      ActionCalcularPrecioEspeciales : true, 
+      ActionCalcularPrecioUniboot : true, 
       Longitud: Longitud.value,
-      TipoJumper: MultimodoTipoFibra.value == 9 ? 'SM' : 'MM', // Tipo de jumper de acuerdo al catalogo de bd Monomodo
       Conector_1: Conector1.value,
       Conector_2: Conector2.value,
       Fibra : MultimodoTipoFibra.value,
@@ -701,9 +700,10 @@ var JumpersUniboot = function(){
       NumeroHilos : NumeroHilos.value,
       Bota_1 : Bota1.value,
       Bota_2 : Bota2.value,
-      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value,
+      Diametros : Diametro.value
     }
-    CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
+    CalcularPrecio("../../models/Productos/Jumpers/Uniboot/CalcularPrecioUniboot.Route.php", data)
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
     let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
