@@ -14,8 +14,8 @@ var Bobina = function(){
   document.getElementById('changename').innerHTML="Cantidad";
   if(TipoFibra.value=='29'){
 
-    StyleDisplayNoneOrBlock_2(LongitudFibra, "none", [0])
-	  StyleDisplayNoneOrBlock_2(LongitudFibra, "block", [1,2])
+    //StyleDisplayNoneOrBlock_2(LongitudFibra, "none", [0])
+	  StyleDisplayNoneOrBlock_2(LongitudFibra, "block", [0,1,2])
 
     StyleDisplayNoneOrBlock_2(Conectarizacion_1, "block", [0,1,2,3,4])
     StyleDisplayNoneOrBlock_2(Conectarizacion_2, "block", [0,1,2,3,4])
@@ -30,10 +30,12 @@ var Bobina = function(){
         {
           Conectarizacion_2[0].selected = true;
         }
-    if(LongitudFibra.selectedIndex == 0 )
+     /* 
+      if(LongitudFibra.selectedIndex == 0 )
       {
         LongitudFibra[1].selected = true;
       }
+    */
       if (Conectarizacion_1.value == 'SCU') {
         StyleDisplayNoneOrBlock_2(Conectarizacion_2, "none", [0,1])
         StyleDisplayNoneOrBlock_2(Conectarizacion_2, "block", [2,3,4])
