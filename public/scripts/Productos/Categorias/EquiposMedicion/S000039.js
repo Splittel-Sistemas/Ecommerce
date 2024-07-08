@@ -123,7 +123,7 @@ var Bobina = function(){
     let descripcion = "Bobina de lanzamiento "+Con1Text1+"-"+Con1Text2+" "+TipoText+" de "+LongText+" en "+DiamText
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
-	  ListImgProductoOnly('OPHES',TipoFibra.value+Conectarizacion_1.value+Conectarizacion_2.value)
+	  ListImgProductoOnly('OPHES'+TipoFibra.value,Conectarizacion_1.value+Conectarizacion_2.value)
     ListProductoDescription('OPHES'+TipoFibra.value)
     ListProductoAdicional('OPHES'+TipoFibra.value)
     showClave(CodigoGenerado)
