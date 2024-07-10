@@ -41,7 +41,7 @@
 <div class="accordion" id="accordion" role="tablist">
   <div class="card">
     <div class="card-header" role="tab">
-      <h6><a href="#card" data-toggle="collapse"><i class="icon-credit-card"></i> Pago con tarjeta mediante Open Pay </a></h6>
+      <h6><a href="#card" data-toggle="collapse"><i class="icon-credit-card"></i> Pago con tarjeta mediante Openpay </a></h6>
     </div>
     <div class="collapse show" id="card" data-parent="#accordion" role="tabpanel">
       <div class="card-body">

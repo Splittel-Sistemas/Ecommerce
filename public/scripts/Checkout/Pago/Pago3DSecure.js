@@ -68,11 +68,36 @@ var Success = function (response) {
         document.getElementById("modal-body-3d-secure").innerHTML = '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="'+response.openpay.url+'" allowfullscreen></iframe></div>'
         GlobalOpenModal("modal-3d-secure");
       } else {
+          let msgs="";
+        if(parseInt(response.message)>=1000 && parseInt(response.message)<=1005 ){
+          msgs="Servicio no disponible";
+        }else if(parseInt(response.message)==3001 || parseInt(response.message)==3004 || parseInt(response.message)==3005 || parseInt(response.message)==3007){
+           msgs="La tarjeta fue rechazada";
+        }else if(parseInt(response.message)>=3002){
+           msgs="La tarjeta ha expirado";
+        }else if(parseInt(response.message)>=3003){
+           msgs="La tarjeta no tiene fondos suficientes";
+        }else if(parseInt(response.message)>=3006){
+           msgs="La operación no esta permitida para este cliente o esta transacción";
+        }else if(parseInt(response.message)>=3008){
+           msgs="La tarjeta no es soportada en transacciones en línea";
+        }else if(parseInt(response.message)>=3009){
+           msgs="La tarjeta fue reportada como perdida";
+        }else if(parseInt(response.message)>=3010){
+           msgs="El banco ha restringido la tarjeta";
+        }else if(parseInt(response.message)>=3011){
+           msgs="El banco ha solicitado que la tarjeta sea retenida. Contacte al banco.";
+        }else if(parseInt(response.message)>=3012){
+           msgs="Se requiere solicitar al banco autorización para realizar este pago";
+        }else{
+           msgs="La petición no pudo ser procesada";
+        }
+
         Alerts(
           "AlertCart",
           "danger",
           //" Migramos a 3DS 2.0 para autenticar las ventas con tarjeta. Para evitar contracargos se rechazarán las tarjetas que no cumplan la migración. por verifique con su banco por favor"
-           " ERROR:  " +response.message + " Verifique con su banco por favor."
+           " ERROR:  " +msgs + ""
           );
       }
     }

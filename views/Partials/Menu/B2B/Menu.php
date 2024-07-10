@@ -30,6 +30,27 @@
         <li class="has-submenu <?php if(trim($path) == "Home"){?>active<?php }?>">
           <a href="../Home/">Home </a> 
         </li>
+        <li class="has-submenu">
+         <a href="#">Productos</a>
+         <ul class="sub-menu">
+           <?php
+            $CategoriaController = new CategoriaController();
+            $CategoriaController->filter = "WHERE activo = 'si' ";
+            $CategoriaController->order = "ORDER BY orden DESC";
+            $response = $CategoriaController->get();
+
+              foreach ($response->records as $CategoriaCont => $Categoria):
+            ?>
+
+             <li>
+             <a href="../Productos/categorias.php?id_ct=<?php echo $Categoria->CodigoKey; ?>&nom=<?php echo url_amigable($Categoria->Descripcion);?>">
+             <?php echo $Categoria->Descripcion;?>
+              </a>
+             </li>
+           <?php endforeach ?>
+         </ul>
+       </li>
+        <!--
         <li class="has-megamenu">
           <a href="#">Productos</a>
             <ul class="mega-menu">
@@ -105,7 +126,7 @@
             </li>
           </ul>
         </li>
-      
+            -->
        
         <li class="has-submenu <?php if (trim($path) == "SolucionesTop") { ?>active<?php } ?>">
          <a href="#">Soluciones Top</a>
@@ -134,6 +155,21 @@
           </ul>
         </li>
               -->
+        <li class="has-submenu <?php if (trim($path) == "Capacitaciones") { ?>active<?php } ?>">
+         <a href="../Capacitaciones/1-fintec">Capacitaciones</a>
+         <ul class="sub-menu">
+             <li>
+               <a href="../Capacitaciones/2-seminarios-online">Seminarios Online</a>
+             </li>
+             <li>
+               <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica">Cursos Presenciales</a>
+             </li>
+             <li>
+               <a href="../Capacitaciones/4-partners">Certificación Optronics</a>
+             </li>
+         </ul>
+       </li>
+              <!--
         <li class="has-megamenu">
           <a href="#">Capacitaciones</a>
             <ul class="mega-menu">
@@ -141,19 +177,19 @@
               <ul class="sub-menu text-center">
                 <li>
                   <a class="d-inline-block" href="../Capacitaciones/1-fintec">
-                  <!-- <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/> -->
+                   <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/1.jpg"/> 
                   ¿Qué es Fintec?
 
                   </a>
                 </li>
-                <!--
+                
                 <li>
                   <a class="d-inline-block" href="../Capacitaciones/1-fintec#calendar">
                   <img style="width: 15%; height: 15%;" class="d-inline-block" src="../../public/images/img_spl/capacitaciones/2.jpg"/>
                   Calendario
                   </a>
                 </li>
-              -->
+              
                 <li>
                   <a class="d-inline-block m-1" href="../Capacitaciones/1-fintec">
                   <img class="d-inline-block" src="../../public/images/img_spl/capacitaciones/logo-fintec.jpg"  style="width:200px;height:200px;" />
@@ -229,6 +265,7 @@
             </li>
           </ul>
         </li>
+                      -->
         <li class="has-submenu">
           <a href="../Cuenta/index.php?menu=5">Pedidos en proceso</a> 
         </li>

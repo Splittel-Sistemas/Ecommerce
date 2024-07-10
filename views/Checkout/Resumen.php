@@ -18,7 +18,7 @@
     ?>
       <label>Nombre del pedido</label>
     <?php else : ?>
-      <label>Número de referencia del cliente</label>
+      <label>Orden de compra</label>
     <?php endif ?>
     <input class="form-control" type="text" name="referencia-pedido-resumen" id="referencia-pedido-resumen">
   </div>

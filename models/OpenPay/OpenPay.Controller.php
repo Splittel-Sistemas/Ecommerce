@@ -464,6 +464,7 @@ class OpenPayController
                         if (isset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"])) {
                             return $this->ComprobarPago3DSecure($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                         }
+                        
                         # crear cargo pago pedido mediante Open Pay
                         $OpenPay_ =  new OpenPay_();
 
@@ -476,6 +477,7 @@ class OpenPayController
                         $OpenPay_->SetProductionMode(filter_var($_SESSION['Ecommerce-OpenPayProductionMode'], FILTER_VALIDATE_BOOLEAN));
 
                         $ResultCharge = $OpenPay_->CreateCharge3DSecure($ClienteModel, $PedidoModel);
+                       
                        /*  print_r($ResultCharge);
                         exit; */
                         # comprobar si el cargo se completo exitosamente!
@@ -586,8 +588,9 @@ class OpenPayController
             }
         } catch (OpenpayApiTransactionError $e) {
             if ($this->openPayExeption($e, "ERROR en la transacción1:")) {
+                //echo $e->getErrorCode();
                /*  throw new Exception($e->getErrorCode()); */
-                throw new Exception($e->getMessage());
+                throw new Exception($e->getErrorCode());
 
 
             }

@@ -6,6 +6,7 @@
 		public $Description;
 		public $DataResponse;
 		public $PedidoKey;
+		public $DescriptionGenerica;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
@@ -24,6 +25,8 @@
 			$this->DataResponse = $DataResponse;
 		}public function SetPedidoKey($PedidoKey){
 			$this->PedidoKey = $PedidoKey;
+		}public function SetDescriptionGenerica($DescriptionGenerica){
+			return $this->DescriptionGenerica;
 		}
 
 		public function GetKey(){
@@ -38,6 +41,8 @@
 			return $this->DataResponse;
 		}public function GetPedidoKey(){
 			return $this->PedidoKey;
+		}public function GetDescriptionGenerica(){
+			return $this->DescriptionGenerica;
 		}
 		/**
 		 * Description
@@ -84,6 +89,7 @@
 					$this->ErrorCode	 	= $row->t15_f001;
 					$this->ErrorCodeHttp	= $row->t15_f002;
 					$this->Description		= $row->t15_f004;
+					$this->DescriptionGenerica		= $row->t15_f003;
 					$data = true;
 				}
 				return $data;
