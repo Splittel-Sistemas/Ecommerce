@@ -34,7 +34,7 @@
       <div class="form-group mb-0">
         <label for="quantity">Conector #1</label>
         <select class="form-control" id="Conector1" name="Conector1" onchange="JumpersFibraOptica()">
-         <option value="LU" position="0">LC Uniboot</option>
+         <option value="LU" DescConector="LC" position="0">LC Uniboot</option>
         </select>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <div class="form-group mb-0">
         <label for="quantity">Conector #2</label>
         <select class="form-control" id="Conector2" name="Conector2" onchange="JumpersFibraOptica()">
-         <option value="LU" position="0">LC Uniboot</option>
+         <option value="LU" DescConector="LC" position="0">LC Uniboot</option>
         </select>
       </div>
     </div>

@@ -710,8 +710,11 @@ var JumpersUniboot = function(){
     let Diametroselected=Diametro.options[Diametro.selectedIndex].text
     let Bota1selected=Bota1.options[Bota1.selectedIndex].text
     let Bota2selected=Bota2.options[Bota2.selectedIndex].text
+
+    let DescConector1 = Conector1.options[Conector1.selectedIndex].getAttribute('DescConector')
+    let DescConector2 = Conector2.options[Conector2.selectedIndex].getAttribute('DescConector')
     
-    let descripcion = "Jumper "+Conector1.value+PulidoConector1.value+' Uniboot '+Bota1selected+'-'+Conector2.value+PulidoConector2.value+' Uniboot '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+    let descripcion = "Jumper "+DescConector1+PulidoConector1.value+' Uniboot '+Bota1selected+'-'+DescConector2+PulidoConector2.value+' Uniboot '+Bota2selected+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
   }else{
@@ -723,6 +726,7 @@ var JumpersUniboot = function(){
   console.log('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
   ListProductoDescription('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
   agregarFichaTecnicaConfigurable('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
+  ListProductoAdicional('OPJULCxLCx'+MultimodoTipoFibra.value+'Dxxx'+TipoCubierta.value+'x')
   //ChangeListImgProducto('OPJULU',)
   /*
   if(MultimodoTipoFibra.value == 9 ){ 
