@@ -19,7 +19,7 @@
     <?php if ($_GET['codigo'] == "C100"): ?>
       <div class="col-sm-4" id="LongitudInput_1">
       <div class="form-group mb-0">
-        <label id="Longitud_1IdText">Longitud (metros)</label>
+        <label id="Longitud_1IdText">Longitud (pies)</label>
         <select class="form-control" id="Longitud_1" name="Longitud_1" onchange="Categoria6()">
             <option value="3">3</option>
             <option value="7">7</option>
