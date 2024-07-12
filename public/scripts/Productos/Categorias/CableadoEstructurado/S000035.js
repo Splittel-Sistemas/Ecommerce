@@ -59,7 +59,7 @@ var Categoria6UTP = function(){
 var Categoria628AWG = function(){
   EstructuradosAlias='PCC6'
   Categoria='CAT628AWG'
-  let Longitud = document.getElementById('Longitud')
+  let Longitud = document.getElementById('Longitud_1')
   validateEntero(Longitud.value)
   let Color = document.getElementById('Color')
   let LongitudIdText = document.getElementById('LongitudIdText')
@@ -70,7 +70,7 @@ var Categoria628AWG = function(){
   let LongitudMax = 49
   StyleDisplayNoneOrBlock_2(Color, "none", [1, 2, 3, 4, 5])
  // StyleDisplayNoneOrBlock_2(Color, 'none', [1,2])
-    LongitudIdText.innerHTML = 'Longitud (pies) '+LongitudMin+'~'+LongitudMax+':'
+    //LongitudIdText.innerHTML = 'Longitud (pies) '+LongitudMin+'~'+LongitudMax+':'
 
     if (Longitud.value >= LongitudMin && Longitud.value <= LongitudMax) {
       CodigoGenerado = Marca+Familia+EstructuradosAlias+NumeroConCeros2(Longitud.value, 2)+UnidadMedida+Color.value+Cubierta
