@@ -14,7 +14,7 @@
   <?php
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Contacto/Ejecutivos.Controller.php';
   $ContactoController = new EjecutivosController();
-  $Contacto = $ContactoController->get_Ejecutivos();
+  $Contacto = $ContactoController->get_Ejecutivos1();
   if (isset($_GET['ejecutivo'])) {
     $EjecutivoController = new EjecutivosController();
     $EjecutivoController->filter = "AND email ='" . $_GET['ejecutivo'] . " '";
