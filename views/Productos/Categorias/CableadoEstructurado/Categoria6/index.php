@@ -16,7 +16,19 @@
         </select>
       </div>
     </div> 
-    <?php if ($_GET['codigo'] == "C101" || $_GET['codigo'] == "C102"): ?>
+    <?php if ($_GET['codigo'] == "C100"): ?>
+      <div class="col-sm-4" id="LongitudInput_1">
+      <div class="form-group mb-0">
+        <label id="Longitud_1IdText">Longitud (metros)</label>
+        <select class="form-control" id="Longitud_1" name="Longitud_1" onchange="Categoria6()">
+            <option value="3">3</option>
+            <option value="7">7</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+        </select>
+      </div>
+    </div> 
+    <?php elseif ($_GET['codigo'] == "C101" || $_GET['codigo'] == "C102"): ?>
       <div class="col-sm-4" id="LongitudInput_1">
       <div class="form-group mb-0">
         <label id="Longitud_1IdText">Longitud (metros)</label>
