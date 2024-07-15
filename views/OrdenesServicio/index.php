@@ -177,9 +177,7 @@
                                 <div class="col-sm-12 col-md-12 form-group  pt-3">
                                     <h3>5.- ACCESORIOS (favor de especificar accesorios que acompañan al equipo) </h3>
                                 </div>
-                                <div class="col-sm-12 col-md-12 form-group text-center">
-                                <button type="button" class=" btn btn-info bg-gradient-success btn-sm add_form_field">AGREGAR ACCESORIOS</button>
-                                </div>
+                                
                                 <div class="col-sm-12 col-md-12 form-group text-center">
                                     <table id="tableId" class="display table text-center" style="width:100%">
                                         <thead>
@@ -203,7 +201,9 @@
                                     </table>
                                     <input name="valoresAccesorios" type="hidden" class="form-control" id="valoresAccesorios" />
                                 </div>
-
+                                <div class="col-sm-12 col-md-12 form-group text-center">
+                                <button type="button" class=" btn btn-info bg-gradient-success btn-sm add_form_field">AGREGAR ACCESORIOS</button>
+                                </div>
                                 
                                 <div class="col-sm-12 col-md-12 form-group pt-3">
                                     <h3>REGISTRO DE RECEPCION DE EQUIPO (ASEGURAMIENTO DE LA CALIDAD):</h3>
