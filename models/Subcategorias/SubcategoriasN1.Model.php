@@ -73,7 +73,7 @@ class SubcategoriasN1{
         $SQLSTATEMENT = "SELECT * FROM menu_subcategorias_n1 ".$filter." ".$order;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
-
+        if($result){
         while ($row = $result->fetch_object()) {
           $SubcategoriasN1 = new SubcategoriasN1();
           $SubcategoriasN1->Key               =   $row->id;
@@ -90,6 +90,7 @@ class SubcategoriasN1{
           $SubcategoriasN1->Descuento         =   $this->Tool->CalcularDescuento($row->descuento, $remates);
           $data[] = $SubcategoriasN1;
         }
+      }
         return $data;
       } catch (Exception $e) {
         throw $e;

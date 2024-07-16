@@ -63,7 +63,7 @@
         $SQLSTATEMENT = "SELECT * FROM menu_principal ".$filter." ".$order;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
-
+        if($result){
         while ($row = $result->fetch_object()) {
             $Submenu = new Submenu_();
             $Submenu->Key               =   $row->id;
@@ -77,6 +77,7 @@
             $Submenu->Imagen  =   $row->imagen;
             $data[] = $Submenu;
         }
+      }
         return $data;
       } catch (Exception $e) {
         throw $e;

@@ -161,7 +161,7 @@
         // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
-
+        if ($result) { 
         while ($row = $result->fetch_object()) {
           $Obj = new stdClass();
           $Obj->ProductoKey                       =   $row->id;
@@ -206,6 +206,7 @@
           $Obj->Leyenda                  =   $row->leyenda;
           $data[] = $Obj;
         }
+      }
         return $data;
       } catch (Exception $e) {
         throw $e;
