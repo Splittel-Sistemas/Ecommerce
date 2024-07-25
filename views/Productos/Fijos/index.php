@@ -42,12 +42,21 @@ if (isset($_POST['IdCategoria'])) {
 if (!class_exists('ComentariosController')) {
   include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
 }
+if (!class_exists('EnTransitoController')) {
+  include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/EnTransito/EnTransito.Controller.php';
+}
 
 $Where = empty($IdProducto) ? "WHERE IdCategoria = '" . $IdCategoria . "' " : "WHERE IdProducto = '" . $IdProducto . "' ";
 
 $ComentariosController = new ComentariosController();
 $ComentariosController->filter = $Where;
 $Comentarios = $ComentariosController->Comentarios_();
+
+$Wheres = "WHERE codigo='" . $IdProducto . "' AND tipo IN ('PO') ";
+$EnTransitoController = new EnTransitoController();
+$EnTransitoController->filter = $Wheres;
+$Entransito = $EnTransitoController->get();
+
 ?>
 <div class="row">
   <div class="col-md-3 mt-3 pt-1">
@@ -182,7 +191,22 @@ $Comentarios = $ComentariosController->Comentarios_();
       if (isset($_SESSION['Ecommerce-ClienteTipo'])) {
       ?>
         <div class="col-md-3">
-          <div class="pt-1"><span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia; ?></span></div>
+          <div class="pt-1">
+              <span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia; ?></span>
+              <?php 
+                 if ($Entransito->count > 0) {
+                  foreach ($Entransito->records as $key => $datas) {
+                    if($datas->Cantidad > 0){
+              ?>
+                <br/>
+                <span style="background-color:#FFC13B;" class="mt-1 product-badge  border-default text-body">En Tránsito: <?php echo $datas->Cantidad; ?> -> <?php echo date('d-m-Y',strtotime($datas->Fecha))?></span>
+              <?php
+                    }
+                 }
+                }
+              ?>
+          </div>
+
         </div>
       <?php } ?>
       <div class="col-md-5">

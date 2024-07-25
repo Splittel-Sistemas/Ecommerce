@@ -13,7 +13,7 @@
   <div class="col-sm-4">
     <div class="form-group mb-0">
       <label for="quantity">Longitud (m) 3~99</label>
-      <input type="text" class="form-control" name="Longitud" id="Longitud" value="3" onkeyup="CableServicio()">
+      <input type="text" class="form-control" name="Longitud" id="Longitud" value="3" oninput="CableServicio()">
     </div>
   </div>
   <div class="col-sm-4">

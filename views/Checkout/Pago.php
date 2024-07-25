@@ -87,6 +87,65 @@
           <div class="form-group col-12 col-sm-6">
             <input class="form-control" type="text" id="cvc" name="cvc" placeholder="CVC" required>
           </div>
+          <?php
+              if (!class_exists('DetalleController')) {
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
+              }
+              if (!class_exists("ProductoController")) {
+                include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+              }
+              if (!class_exists("CategoriaController")) {
+                include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
+              }
+              if (!class_exists("FamiliasMSIController")) {
+                include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/FamiliasMSI/FamiliaMSI.Controller.php';
+              }
+      
+              $DetalleControllerMSI = new DetalleController();
+              $ObjDetalleMSI = $DetalleControllerMSI->GetDetallePedido();
+              $ProductoControllerMSI = new ProductoController();
+              $CategoriaControllerMSI = new CategoriaController();
+              $FamiliasControllerMSI = new FamiliasMSIController();
+
+              $AutMSI='';
+              $CountAuxMSI=0;
+              if($ObjDetalleMSI->count > 0){
+                foreach ($ObjDetalleMSI->records as $key => $data) {			
+                  if((!($data->ProductoCodigo == '') && $data->ProductoCodigoConfigurable == '') || (!($data->ProductoCodigo == '') && !($data->ProductoCodigoConfigurable == ''))){
+                    $ProductoControllerMSI->filter = "WHERE codigo = '" . $data->ProductoCodigo. "'  ";
+                    $ProductoControllerMSI->order = "";
+                    $ObjProductoMSI = $ProductoControllerMSI->GetByProductosFijos();
+                    $AutMSI = $ObjProductoMSI->ProductoSubcategoriaKey;
+
+                  }else if(!($data->DetalleCodigoConfigurable == '')){
+                    $CategoriaControllerMSI->filter = "WHERE codigo = '" . $data->DetalleCodigoConfigurable . "' ";
+                    $CategoriaControllerMSI->order = "";
+                    $ObjCategoriaMSI = $CategoriaControllerMSI->estructura();
+                    $AutMSI = $ObjCategoriaMSI->SubcategoriaN1Key;
+                  }
+                  
+                  $FamiliasControllerMSI->filter = "WHERE familia = '" . $AutMSI . "' ";
+                  $FamiliasControllerMSI->order = "";
+                  
+                  $ObjFamiliasMSI = $FamiliasControllerMSI->get();
+                  
+                  if($ObjFamiliasMSI->count == 0){
+                    $CountAuxMSI++;
+                  }
+                  
+              }
+            }
+            //echo $CountAuxMSI;
+          if($CountAuxMSI == 0){
+          ?>
+          <div class="form-group col-12 col-sm-6 text-center">
+            <select class="form-control" id="msi" name="msi">
+              <option value="" selected>Una sola exhibición</option>
+              <option value="3">3 meses sin intereses</option>
+              <option value="6">6 meses sin intereses</option>
+            </select>
+          </div>
+          <?php } ?>
         </form>
         <!-- Información OpenPay Necesaria -->
         <div class="row mt-4">

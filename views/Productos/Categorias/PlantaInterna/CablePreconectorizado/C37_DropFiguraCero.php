@@ -47,13 +47,13 @@
   <div class="col-sm-4">
     <div class="form-group mb-0">
         <label for="quantity">Número de hilos<span id="NoHilos_label">1-12</span></label>
-        <input readonly="readonly" value ="1" maxlength="2" class="form-control" type="text" value="" id="NoHilos" name="" onkeyup="interior_exterior_cable()">
+        <input readonly="readonly" value ="1" maxlength="2" class="form-control" type="text" value="" id="NoHilos" name="" oninput="interior_exterior_cable()">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group mb-0">
         <label for="quantity">Longitud <span id="Longitud_label">1-999 (m)</span></label>
-        <input class="form-control" maxlength="3" type="text" value="1" id="Longitud" name="" onkeyup="interior_exterior_cable()">
+        <input class="form-control" maxlength="3" type="text" value="1" id="Longitud" name="" oninput="interior_exterior_cable()">
     </div>
   </div>
   <div class="col-sm-4">

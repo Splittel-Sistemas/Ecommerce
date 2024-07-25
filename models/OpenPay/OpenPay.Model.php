@@ -205,19 +205,41 @@
 
 					$http = $this->Tool->vaidateHttps();
 
-					$chargeData = array(
-						"method" => "card",
-						"amount" => $Amount,
-						"currency" => $_POST["monedaPago"] == 'USD' ? 'USD' : 'MXN',
-						"description" => "Pedido Número ".$Pedido->GetKey(),
-						"order_id" => $Pedido->GetKey(),
-						'source_id' => $this->TokenId,//token tarjeta
-						"redirect_url" => $http."://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
-						"use_3d_secure" => "true",
-						'device_session_id' => $this->DeviceSessionId,// sessionDev []
-						'customer' => $Customer
+					$PayMentPlan[]=null;
+					$MSI[]=null;
+					if(isset($_POST["Msi"]) && $_POST["Msi"]!=''){
+						$MSI=array(
+							'payments' => $_POST["Msi"],
+							'payments_type' => 'WITHOUT_INTEREST'
+						);
+						$chargeData = array(
+							"method" => "card",
+							"amount" => $Amount,
+							"currency" => $_POST["monedaPago"] == 'USD' ? 'USD' : 'MXN',
+							"description" => "Pedido Número ".$Pedido->GetKey(),
+							"order_id" => $Pedido->GetKey(),
+							'source_id' => $this->TokenId,//token tarjeta
+							"redirect_url" => $http."://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
+							"use_3d_secure" => "true",
+							'device_session_id' => $this->DeviceSessionId,// sessionDev []
+							'customer' => $Customer,
+							"payment_plan" => $MSI
+						);
+					}else{
+
+						$chargeData = array(
+							"method" => "card",
+							"amount" => $Amount,
+							"currency" => $_POST["monedaPago"] == 'USD' ? 'USD' : 'MXN',
+							"description" => "Pedido Número ".$Pedido->GetKey(),
+							"order_id" => $Pedido->GetKey(),
+							'source_id' => $this->TokenId,//token tarjeta
+							"redirect_url" => $http."://".$_SERVER['SERVER_NAME']."/fibra-optica/views/Pedido/index.php?session_id=".@session_id(),
+							"use_3d_secure" => "true",
+							'device_session_id' => $this->DeviceSessionId,// sessionDev []
+							'customer' => $Customer,
 					);
-				
+				}
 					return $this->Charge = $this->OpenPayy->charges->create($chargeData);
 				} catch (OpenpayApiTransactionError $e) {
 					throw $e;

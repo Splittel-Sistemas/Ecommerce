@@ -24,7 +24,7 @@
                 </h1>
                 <p><?php echo $row->texto_general;?> 
                 <br/><br/>
-                  <a class="btn btn-sm btn-primary" href='../Capacitaciones/<?php echo $row->id;?>-<?php echo $row->nombre;?>'>Conocer más</a>
+                  <a class="btn btn-sm btn-primary" href='../Capacitaciones/<?php echo $row->id;?>-<?php echo urlencode($row->nombre);?>'>Conocer más</a>
                 </p>
               </div>
             </div>
