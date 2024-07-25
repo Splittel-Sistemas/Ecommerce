@@ -18,7 +18,10 @@ var Success = function (response) {
   let checkDatosFacturacion = getChecked(".datosFacturacion");
   checkDatosFacturacion = requiereFactura.checked ? checkDatosFacturacion : "";
   let regimenfiscal =requiereFactura.checked ? regimenfiscalAux.value : ""
-  let msi = document.getElementById("msi");
+  let msi="";
+  if(document.getElementById("msi")){
+     msi = document.getElementById("msi").value;
+  }
 
   let data = {
     Action: "Pago3DSecure",
@@ -34,7 +37,7 @@ var Success = function (response) {
     CFDIUser: cfdiUser.value,
     referencia: referencia.value,
     RegimenFiscal: regimenfiscal,
-    Msi:msi.value
+    Msi:msi
   };
 
   // información pedido B2B
