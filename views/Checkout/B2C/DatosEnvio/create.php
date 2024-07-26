@@ -4,7 +4,7 @@
       <div style="max-width: 500px;">
         <div id="alert-datos-envio"></div>
         <!-- <div class="h1 text-normal mb-3 text-center">Registro</div> -->
-        <h3 class="margin-bottom-1x text-center">Datos de envio</h3>
+        <h3 class="margin-bottom-1x text-center">Datos de envío</h3>
         <!-- <p>El registro solo te llevara algunos minutos para obtener el control de tus ordenes.</p> -->
         <?php 
           if (!class_exists('DatosEnvioController')) {

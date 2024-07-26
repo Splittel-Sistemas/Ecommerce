@@ -56,7 +56,7 @@ $Wheres = "WHERE codigo='" . $IdProducto . "' AND tipo IN ('PO') ";
 $EnTransitoController = new EnTransitoController();
 $EnTransitoController->filter = $Wheres;
 $Entransito = $EnTransitoController->get();
-
+//print_r($Entransito);
 ?>
 <div class="row">
   <div class="col-md-3 mt-3 pt-1">
@@ -195,18 +195,55 @@ $Entransito = $EnTransitoController->get();
               <span class=" product-badge bg-secondary border-default text-body">Stock: <?php echo $Obj->ProductoExistencia; ?></span>
               <?php 
                  if ($Entransito->count > 0) {
+                  $TotalTra=0;
+                  $TextTra="";
                   foreach ($Entransito->records as $key => $datas) {
                     if($datas->Cantidad > 0){
-              ?>
-                <br/>
-                <span style="background-color:#FFC13B;" class="mt-1 product-badge  border-default text-body">En Tránsito: <?php echo $datas->Cantidad; ?> -> <?php echo date('d-m-Y',strtotime($datas->Fecha))?></span>
-              <?php
+                      $TotalTra=$TotalTra+$datas->Cantidad;
+                      if(date('d-m-Y',strtotime($datas->Fecha))){
+                      $dateTime = DateTime::createFromFormat('d-m-Y', date('d-m-Y',strtotime($datas->Fecha)));
+                      if ($dateTime !== false) {
+                        setlocale(LC_TIME, 'es_ES.UTF-8'); // Establecer la localización en español
+                        $fechaFormateada = strftime('%d de %B de %Y', $dateTime->getTimestamp());
+                      $TextTra=$TextTra.'<tr><th class=\'px-3 text-center\' scope=\'row\'>'.$datas->Cantidad.'</th><th class=\'px-3 text-center\' scope=\'row\'>'.$fechaFormateada.'</th></tr>';
+                      }
+                      }
                     }
                  }
+                 if($TotalTra>0){?>
+                  <style>
+                    /* Estilos personalizados para el título del popover */
+                    .popover-header {
+                        background-color: #2196f3; /* Cambia el color de fondo del título */
+                        color: #ffffff; /* Cambia el color del texto del título */
+                    }
+                </style>
+                  <br/>
+                <span style="color:white;"  class="mt-1 product-badge  bg-info text-white text-body"  data-container="body" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" 
+                title="En tr&aacute;nsito" data-content="<?php echo '<table class=\'table table-striped table-sm\'>
+                                                                    <thead>
+                                                                      <tr>
+                                                                        <th class=\'text-center\' scope=\'col\'>Cantidad</th>
+                                                                        <th class=\'text-center\' scope=\'col\'>Fecha estimada</th>
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                     '.$TextTra.'
+                                                                    </tbody>
+                                                                  </table>';?>">En Tránsito: <?php echo $TotalTra; ?> </span>
+                
+
+                
+
+                
+
+              <?php  } 
                 }
               ?>
           </div>
-
+          <!--
+          <span style="color:white;"  class="mt-1 product-badge  bg-info text-white text-body">En Tránsito: <?php echo $TotalTra; ?> -> <?php echo date('d-m-Y',strtotime($datas->Fecha))?></span>
+              -->
         </div>
       <?php } ?>
       <div class="col-md-5">

@@ -1,6 +1,6 @@
 <!-- --------------------------------------------- Datos de envió ----------------------------------------- -->
 
-<h4 class="text-center text-md-left">Datos de envió</h4>
+<h4 class="text-center text-md-left">Datos de envío</h4>
 <hr class="padding-bottom-1x">
 <?php 
   if (!class_exists("GetShipToAdressController")) {
