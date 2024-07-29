@@ -542,7 +542,7 @@ var StockEnTransito = function(Codigo){
         response.records.forEach(function(Responses) {
          
           let fecha = new Date(Responses.Fecha);
-          let fechaTexto = fecha.toLocaleDateString('es-ES', {
+          let fechaTexto = fecha.toLocaleDateString('es-MX', {
             year: 'numeric', // año completo
             month: 'long', // nombre del mes
             day: 'numeric' // día del mes
