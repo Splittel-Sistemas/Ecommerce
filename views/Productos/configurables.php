@@ -94,10 +94,19 @@
           <?php
           if (isset($_SESSION['Ecommerce-ClienteTipo'])) {
           ?>
+          <div class="row">
+            <div class="col-md-4">
             <span class="product-badge bg-secondary border-default text-body">
               Stock: <span id="add-stock"></span>
             </span>
+          </div>
+            <div  class="col-md-4" id="add-transito">
+           
+            </div>
+           
+          </div>
           <?php } ?>
+         
         </div>
         <input type="hidden" id="CostoProducto">
         <p class="mt-3 text-muted text-justify" id="descripcionLarga"></p>

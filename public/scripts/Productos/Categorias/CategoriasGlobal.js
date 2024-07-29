@@ -429,6 +429,7 @@ var existCodeSapPatchCord = function(Codigo){
     StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
    }
   })
+  StockEnTransito(Codigo)
 }
 
 // -----
@@ -511,6 +512,55 @@ var existEcommerce_ = function(Codigo){
       ProductoEspecial()
       getDescuentoByFamiliaProductosConfigurables()
     }
+
+    StockEnTransito(Codigo)
+
+  })
+}
+
+function initializePopovers() {
+  $('[data-toggle="popover"]').popover();
+}
+var StockEnTransito = function(Codigo){
+  hhh = 1
+  ajax_("../../models/EnTransito/EnTransito.Route.php", "POST", "JSON", 
+  { 
+    Action: 'get', 
+    ActionProducto: true, 
+    Codigo: Codigo
+  }, 
+  function(response){
+    console.log(response);
+    
+    if (!response.error && response.count > 0) {
+      //let resultResponse =  response.records
+      let Stock = document.getElementById('add-transito')
+      let TextTra=''
+      let StockTotal=0; 
+      if(Stock){
+        TextTra = TextTra +'<span style="color:white;"  class="mt-1 product-badge  bg-info text-white text-body" data-container="body" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="En tr&aacute;nsito" data-content="<table class=\'table table-striped table-sm\'> <thead>  <tr> <th class=\'text-center\' scope=\'col\'>Cantidad</th>  <th class=\'text-center\' scope=\'col\'>Fecha estimada</th>   </tr> </thead> <tbody> '
+        response.records.forEach(function(Responses) {
+         
+          let fecha = new Date(Responses.Fecha);
+          let fechaTexto = fecha.toLocaleDateString('es-ES', {
+            year: 'numeric', // año completo
+            month: 'long', // nombre del mes
+            day: 'numeric' // día del mes
+          });
+            TextTra = TextTra + '<tr><th class=\'px-3 text-center\' scope=\'row\'>'+Responses.Cantidad+'</th><th class=\'px-3 text-center\' scope=\'row\'>'+fechaTexto+'</th></tr>' 
+            StockTotal=StockTotal+Responses.Cantidad
+
+        });
+        TextTra = TextTra + '</tbody> </table>" data-original-title=\'En transito\' >En Tránsito: '+StockTotal+' </span>'
+          Stock.innerHTML += TextTra;
+      }
+      initializePopovers();
+     
+    }else{
+      let Stock = document.getElementById('add-transito')
+      Stock.innerHTML = ''
+    }
+      
   })
 }
 
@@ -540,6 +590,7 @@ var existJumper_ = function(Codigo){
       Stock.innerHTML = '0.00'
     }
   })
+  StockEnTransito(Codigo)
 }
 
 
@@ -710,4 +761,5 @@ var CalcularPrecioPatchCords = function(url, data){
       ProductoEspecial()
     }
   })
+
 }
