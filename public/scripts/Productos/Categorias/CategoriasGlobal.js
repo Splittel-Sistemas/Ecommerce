@@ -554,6 +554,8 @@ var StockEnTransito = function(Codigo){
         TextTra = TextTra + '</tbody> </table>" data-original-title=\'En transito\' >En Tránsito: '+StockTotal+' </span>'
         if(StockTotal>0)
           Stock.innerHTML += TextTra;
+        else
+          Stock.innerHTML = ''
       }
       initializePopovers();
      
