@@ -543,6 +543,7 @@ var StockEnTransito = function(Codigo){
          
           let fecha = new Date(Responses.Fecha);
           let fechaTexto = fecha.toLocaleDateString('es-MX', {
+            timeZone: 'America/Mexico_City',
             year: 'numeric', // año completo
             month: 'long', // nombre del mes
             day: 'numeric' // día del mes
