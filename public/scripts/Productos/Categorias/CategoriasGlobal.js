@@ -541,7 +541,7 @@ var StockEnTransito = function(Codigo){
         TextTra = TextTra +'<span style="color:white;"  class="mt-1 product-badge  bg-info text-white text-body" data-container="body" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="En tr&aacute;nsito" data-content="<table class=\'table table-striped table-sm\'> <thead>  <tr> <th class=\'text-center\' scope=\'col\'>Cantidad</th>  <th class=\'text-center\' scope=\'col\'>Fecha estimada</th>   </tr> </thead> <tbody> '
         response.records.forEach(function(Responses) {
          
-          let fecha = new Date(Responses.Fecha);
+          let fecha = new Date(Date.UTC(Responses.Fecha));
           let fechaTexto = fecha.toLocaleDateString('es-MX', {
             timeZone: 'America/Mexico_City',
             year: 'numeric', // año completo
