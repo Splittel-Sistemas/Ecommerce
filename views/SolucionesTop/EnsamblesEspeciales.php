@@ -145,7 +145,7 @@
             <a href="../Productos/categorias.php?id_sbct=47&nom=divisores-opticos" style="color: black;text-decoration: none;">
 
               <img class="rounded" src="../../public/images/img_spl/transformacion/11-Splitter.jpg" alt="soluciones">
-              <h3> <b> Splitter</b> </h3>
+              <h3> <b> Divisores ópticos</b> </h3>
             </a>
           </div>
 
@@ -157,8 +157,7 @@
             <a href="../Productos/categorias.php?id_sbct=52&id_gpo=80&nom=interior-exterior" style="color: black;text-decoration: none;">
 
               <img class="rounded" src="../../public/images/img_spl/transformacion/12-cables-drop-para-antena.jpg" alt="soluciones">
-              <h3> <b> Cables drop
-                  para antena</b> </h3>
+              <h3> <b> Cables drop preconectorizados</b> </h3>
             </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
@@ -184,7 +183,7 @@
             <a href="../Productos/configurables.php?codigo=C88" style="color: black;text-decoration: none;">
 
               <img class="rounded" src="../../public/images/img_spl/transformacion/15-Bobinas-de-lanzamiento.jpg" alt="soluciones">
-              <h3> <b> Bobinas de
+              <h3> <b> Bobina de
                   lanzamiento </b> </h3>
             </a>
           </div>
@@ -200,8 +199,7 @@
             <a href="../Productos/categorias.php?id_sbct=48&nom=cajas-de-distribucion-tipo-roseta-accesorios-fttx" style="color: black;text-decoration: none;">
 
               <img class="rounded" src="../../public/images/img_spl/transformacion/17-Rosetas-conectorizadas.jpg" alt="soluciones">
-              <h3> <b> Rosetas
-                  conectorizadas </b> </h3>
+              <h3> <b> Rosetas preconectorizadas </b> </h3>
             </a>
           </div>
 
@@ -221,8 +219,7 @@
             <a href="../Productos/categorias.php?id_sbct=56" style="color: black;text-decoration: none;">
 
               <img class="rounded" src="../../public/images/img_spl/transformacion/19-Cierres-de-empalme.jpg" alt="soluciones">
-              <h3> <b> Cierres de
-                  empalme</b> </h3>
+              <h3> <b> Cierres tipo NAP preconectorizados</b> </h3>
             </a>
           </div>
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
