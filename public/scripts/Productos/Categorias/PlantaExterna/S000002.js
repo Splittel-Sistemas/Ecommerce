@@ -44,6 +44,7 @@ var CableDropFiguraFTTH = function(){
   ListImgProducto("OPCFOIE39DR0xxxx")
   ListProductoDescription("OPCFOIE39DR0xxxx")
   ListProductoAdicional("OPCFOIE39DR0xxxx")
+  ListProductoManual("OPCFOIE39DR0xxxx")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
