@@ -52,7 +52,7 @@ if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
         <div class="col-md-12">
           <div class="steps flex-sm-nowrap mb-5">
             <a class="step process active" id="process-1" number="1" onclick="addViewCheckout(this)">
-              <h4 class="step-title">1. Datos de envió</h4>
+              <h4 class="step-title">1. Datos de envío</h4>
             </a>
             <a class="step process" id="process-2" number="2" onclick="addViewCheckout(this)">
               <h4 class="step-title">2. Paquetería</h4>

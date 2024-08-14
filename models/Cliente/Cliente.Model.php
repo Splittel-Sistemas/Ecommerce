@@ -19,6 +19,7 @@ class Cliente{
     public $EmailEjecutivo;
     public $DiasCredito;
     public $Redondeo;
+    public $Segmento;
 
     protected $Connection;
     protected $Tool;
@@ -67,6 +68,10 @@ class Cliente{
     }public function SetIngreso($Ingreso){
         $this->Ingreso = $Ingreso;
     }
+    public function SetSegmento($Segmento){
+        $this->Segmento = $Segmento;
+    }
+
 
     public function GetClienteKey(){
         return $this->ClienteKey;
@@ -105,6 +110,9 @@ class Cliente{
     }public function GetRedondeo(){
         return $this->Redondeo;
     }
+    public function GetSegmento(){
+        return $this->Segmento;
+    }
 
     public function GetBy($filter){
       try {
@@ -127,6 +135,7 @@ class Cliente{
           $this->Descuento      =   $row->descuento;
           $this->DiasCredito      =   $row->dias_credito;
           $this->Redondeo      =   $row->redondear;
+          $this->Segmento      =   $row->segmento;
 
           # si el cliente es un usuario B2B
           if ($this->Tipo == 'B2B') {

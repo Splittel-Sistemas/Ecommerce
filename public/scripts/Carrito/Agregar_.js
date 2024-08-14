@@ -131,8 +131,14 @@ var DeleteProducto = function(Key, Codigo) {
         ListProductosCarrito_()
       }
       LisResumenProductosCarrito_()
-      document.getElementById('AlertFinishPedido').innerHTML = ""
-      document.getElementById('AlertFinishPedidoWarning').innerHTML = ""
+	  if (document.getElementById('AlertFinishPedido')) 
+      	document.getElementById('AlertFinishPedido').innerHTML = ""
+	  if (document.getElementById('AlertFinishPedidoWarning')) 
+      	document.getElementById('AlertFinishPedidoWarning').innerHTML = ""
+	  var urlActual = window.location.href;
+	  if(urlActual.includes("Checkout")){
+		window.location.href = "../../views/Carrito/";
+	  }
     }
   })
 }

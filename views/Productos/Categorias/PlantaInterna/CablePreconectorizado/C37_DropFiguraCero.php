@@ -11,7 +11,7 @@
     <div class="form-group mb-0">
       <label for="quantity">Tipo de cubierta</label>
         <select class="form-control" id="TipoCubierta" name="TipoCubierta" onmouseup="interior_exterior_cable()" onchange="interior_exterior_cable()">
-            <option selected value="T">LSZH (TPU)</option>
+            <option selected value="T">LSZH</option>
         </select>
     </div>
   </div>

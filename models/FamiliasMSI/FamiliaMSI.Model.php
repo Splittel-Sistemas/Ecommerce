@@ -4,7 +4,8 @@ class FamiliasMSI
   public $CategoriaKey;
   public $CodigoKey;
   public $Activo;
-
+  public $Monto;
+  public $MontoKey;
 
   protected $Connection;
   protected $Tool;
@@ -20,10 +21,17 @@ class FamiliasMSI
     $this->Connection = $conn;
     $this->Tool = $Tool;
   }
-
+  public function GetMontoKey()
+  {
+    return $this->MontoKey;
+  }
   public function GetCategoriaKey()
   {
     return $this->CategoriaKey;
+  }
+  public function GetSegmentoKey()
+  {
+    return $this->SegmentoKey;
   }
   public function GetCodigoKey()
   {
@@ -33,6 +41,10 @@ class FamiliasMSI
   {
     return $this->Activo;
   }
+  public function GetMonto()
+  {
+    return $this->Monto;
+  }
   
   public function Get($filter, $order)
   {
@@ -41,7 +53,7 @@ class FamiliasMSI
       // echo $SQLSTATEMENT;
       $result = $this->Connection->QueryReturn($SQLSTATEMENT);
       $data = [];
-      if($row = $result->fetch_object()){
+   
       while ($row = $result->fetch_object()) {
         $Categoria = new FamiliasMSI();
         $Categoria->CategoriaKey     =   $row->id;
@@ -49,7 +61,52 @@ class FamiliasMSI
         $Categoria->Activo           =   $row->activo;
         $data[] = $Categoria;
       }
+    
+      unset($Categoria);
+      return $data;
+    } catch (Exception $e) {
+      throw $e;
     }
+  }
+
+  public function GetMontoMinimo($filter, $order)
+  {
+    try {
+      $SQLSTATEMENT = "SELECT * FROM t58_minimo_msi " . $filter . " " . $order;
+       //echo $SQLSTATEMENT;
+      $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+      $data = [];
+ 
+      while ($row = $result->fetch_object()) {
+        $Categoria = new FamiliasMSI();
+        $Categoria->MontoKey     =   $row->id;
+        $Categoria->Monto        =   $row->monto;
+        $data[] = $Categoria;
+      }
+    
+      unset($Categoria);
+      return $data;
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
+
+  public function GetSegmentos($filter, $order)
+  {
+    try {
+      $SQLSTATEMENT = "SELECT * FROM t59_segmentos_msi " . $filter . " " . $order;
+      // echo $SQLSTATEMENT;
+      $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+      $data = [];
+    
+      while ($row = $result->fetch_object()) {
+        $Categoria = new FamiliasMSI();
+        $Categoria->SegmentoKey     =   $row->id;
+        $Categoria->Segmento        =   $row->segmento;
+        $Categoria->Activo           =   $row->activo;
+        $data[] = $Categoria;
+      }
+  
       unset($Categoria);
       return $data;
     } catch (Exception $e) {

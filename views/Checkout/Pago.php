@@ -100,43 +100,73 @@
               if (!class_exists("FamiliasMSIController")) {
                 include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/FamiliasMSI/FamiliaMSI.Controller.php';
               }
+              if (!class_exists('PedidoController')) {
+                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
+              }
       
               $DetalleControllerMSI = new DetalleController();
               $ObjDetalleMSI = $DetalleControllerMSI->GetDetallePedido();
               $ProductoControllerMSI = new ProductoController();
               $CategoriaControllerMSI = new CategoriaController();
               $FamiliasControllerMSI = new FamiliasMSIController();
-
+              $MontoControllerMSI = new FamiliasMSIController();
+              $SegmentoControllerMSI = new FamiliasMSIController();
+              //print_r($ObjDetalleMSI);
+              // Monto minimo para MSI
+              $MontoControllerMSI->filter = "";
+              $MontoControllerMSI->order = "";
+              $MontoMinimoMSI = $MontoControllerMSI->getMontoMinimo();
+              $dataMontoMinimo=0;
+              if($MontoMinimoMSI->count > 0){
+                $dataMontoMinimo = $MontoMinimoMSI->records[0]->Monto;
+              }
+              $PedidoControllerMSI = new PedidoController;
+              $PedidoControllerMSI->filter = "WHERE id = ".$_SESSION["Ecommerce-PedidoKey"]." ";
+              $PedidoControllerMSI->order = "";
+              $PedidoMSI = $PedidoControllerMSI->getBy();
+              $pedidoSubtotalMSI = $PedidoMSI->GetSubTotal();
+              // Revision de de categorias seleccionadas para MSI
               $AutMSI='';
               $CountAuxMSI=0;
+              
               if($ObjDetalleMSI->count > 0){
                 foreach ($ObjDetalleMSI->records as $key => $data) {			
                   if((!($data->ProductoCodigo == '') && $data->ProductoCodigoConfigurable == '') || (!($data->ProductoCodigo == '') && !($data->ProductoCodigoConfigurable == ''))){
-                    $ProductoControllerMSI->filter = "WHERE codigo = '" . $data->ProductoCodigo. "'  ";
+                    $ProductoControllerMSI->filter = "WHERE codigo = '" . trim($data->ProductoCodigo). "'  ";
                     $ProductoControllerMSI->order = "";
                     $ObjProductoMSI = $ProductoControllerMSI->GetByProductosFijos();
                     $AutMSI = $ObjProductoMSI->ProductoSubcategoriaKey;
-
+                 
                   }else if(!($data->DetalleCodigoConfigurable == '')){
-                    $CategoriaControllerMSI->filter = "WHERE codigo = '" . $data->DetalleCodigoConfigurable . "' ";
+                    $CategoriaControllerMSI->filter = "WHERE codigo = '" . trim($data->DetalleCodigoConfigurable) . "' ";
                     $CategoriaControllerMSI->order = "";
                     $ObjCategoriaMSI = $CategoriaControllerMSI->estructura();
                     $AutMSI = $ObjCategoriaMSI->SubcategoriaN1Key;
+                  
                   }
                   
-                  $FamiliasControllerMSI->filter = "WHERE familia = '" . $AutMSI . "' ";
+                  $FamiliasControllerMSI->filter = "WHERE familia = '" . trim($AutMSI) . "' AND (NOW() >= inicio AND NOW() <= fin) ";
                   $FamiliasControllerMSI->order = "";
                   
                   $ObjFamiliasMSI = $FamiliasControllerMSI->get();
-                  
+                 
                   if($ObjFamiliasMSI->count == 0){
                     $CountAuxMSI++;
                   }
                   
               }
             }
-            //echo $CountAuxMSI;
-          if($CountAuxMSI == 0){
+            // Revision de de categorias seleccionadas para MSI
+            $CountSegMSI=0;
+            $SegmentoControllerMSI->filter = "WHERE segmento = '".$_SESSION['Ecommerce-ClienteSegmento']."' ";
+            $SegmentoControllerMSI->order = "";
+            $SegmentoMSI = $SegmentoControllerMSI->getSegmentos();
+           
+            if($SegmentoMSI->count > 0){
+              $CountSegMSI++;
+            }
+         
+          if($CountAuxMSI == 0 && ($MontoMinimoMSI->count > 0 && $dataMontoMinimo > 0 && $pedidoSubtotalMSI>=$dataMontoMinimo ) &&  $CountSegMSI>0){
           ?>
           <div class="form-group col-12 col-sm-6 text-center">
             <select class="form-control" id="msi" name="msi">

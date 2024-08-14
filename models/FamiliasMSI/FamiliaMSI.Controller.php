@@ -39,6 +39,35 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function getMontoMinimo(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $FamiliasMSIModel = new FamiliasMSI(); 
+          $FamiliasMSIModel->SetParameters($this->conn, $this->Tool);
+          $items = $FamiliasMSIModel->GetMontoMinimo($this->filter, "");
+          unset($FamiliasMSIModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function getSegmentos(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $FamiliasMSIModel = new FamiliasMSI(); 
+          $FamiliasMSIModel->SetParameters($this->conn, $this->Tool);
+          $items = $FamiliasMSIModel->GetSegmentos($this->filter, "");
+          unset($FamiliasMSIModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+
 
 
   }
