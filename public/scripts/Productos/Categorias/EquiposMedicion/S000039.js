@@ -10,8 +10,10 @@ var Bobina = function(){
   let Conectarizacion_2 = document.getElementById('Conectarizacion_2')
   let Diametro = document.getElementById('Diametro')
   let TipoFibra = document.getElementById('TipoFibra')
-  document.getElementById('changename').innerHTML="";
-  document.getElementById('changename').innerHTML="Cantidad";
+  if(document.getElementById('changename')){
+    document.getElementById('changename').innerHTML="";
+    document.getElementById('changename').innerHTML="Cantidad";
+  }
   if(TipoFibra.value=='29'){
 
     //StyleDisplayNoneOrBlock_2(LongitudFibra, "none", [0])
