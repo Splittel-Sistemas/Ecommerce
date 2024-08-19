@@ -26,6 +26,7 @@
     public $ImgPrincipal;
     public $Destacado;
     public $Leyenda;
+    public $MinimoCompra;
 
     protected $Connection;
     protected $Tool;
@@ -367,6 +368,7 @@
           $this->MetaDescription                   =   $row->meta_description;
           $this->Certificado                       =   $this->ExistCert($row->codigo);
           $this->Leyenda                           =   $row->leyenda;
+          $this->MinimoCompra                      =   $row->cantidad_minima;
 
           $data = true;
         }

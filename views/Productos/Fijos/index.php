@@ -268,8 +268,13 @@ $Entransito = $EnTransitoController->get();
     <div class="row align-items-end ">
       <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
         <div class="col-sm-4 align-self-end">
-          <div class="form-group mb-0">
+          <div class="form-group mb-0">   
+          <?php if ($Obj->MinimoCompra > 0) { ?>
+            <input type="number" class="form-control myclass" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" 
+              onkeyup="validacionCantidad(this)" placeholder="Cantidad" min="<?php echo $Obj->MinimoCompra;?>" step="<?php echo $Obj->MinimoCompra;?>" value="<?php echo $Obj->MinimoCompra;?>">
+          <?php }else{ ?>
             <input type="text" class="form-control myclass" name="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $Obj->ProductoCodigo; ?>" onkeyup="validacionCantidad(this)" placeholder="Cantidad" value="1">
+         <?php } ?>
           </div>
         </div>
         <?php if ($Obj->ProductoPrecio > 0) { ?>
