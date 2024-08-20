@@ -50,7 +50,7 @@ function JumperValidacionLongitud(Elem, Tamano){//Solo numeros
 }
 
 var contJumperMultimodo = 0;
-var JumpersMultimodo = function(){
+var JumpersMultimodo = async function(){
   let Longitud = document.getElementById('Longitud')
   JumperValidacionLongitud(Longitud, 3)
 
@@ -157,7 +157,7 @@ var JumpersMultimodo = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
+    await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
     
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -177,7 +177,7 @@ var JumpersMultimodo = function(){
   existJumper_(CodigoGenerado)
 }
 
-var JumpersMonomodo = function(){
+var JumpersMonomodo = async function(){
   let Longitud = document.getElementById('Longitud')
   JumperValidacionLongitud(Longitud, 3)
 
@@ -298,7 +298,7 @@ var JumpersMonomodo = function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
+      await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MonomodoTipoFibra.options[MonomodoTipoFibra.selectedIndex].text
       let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -318,7 +318,7 @@ var JumpersMonomodo = function(){
     existJumper_(CodigoGenerado)
 }
 
-var JumpersEspeciales = function(){
+var JumpersEspeciales = async function(){
   let Longitud = document.getElementById('Longitud')
   // conectores 
   let Conector1 = document.getElementById('Conector1')
@@ -439,7 +439,7 @@ var JumpersEspeciales = function(){
       Bota_2 : Bota2.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
+     await CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
     let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
@@ -468,7 +468,7 @@ var JumpersEspeciales = function(){
   existJumper_(CodigoGenerado)
 }
 
-var JumpersArmados = function(){
+var JumpersArmados = async function(){
   let Longitud = document.getElementById('Longitud')
   JumperValidacionLongitud(Longitud, 3)
   // conectores 
@@ -586,7 +586,7 @@ var JumpersArmados = function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
-      CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
+     await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
       let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -608,7 +608,7 @@ var JumpersArmados = function(){
 }
 
 
-var JumpersUniboot = function(){
+var JumpersUniboot = async function(){
   let Longitud = document.getElementById('Longitud')
   // conectores 
   let Conector1 = document.getElementById('Conector1')
@@ -703,7 +703,7 @@ var JumpersUniboot = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value,
       Diametros : Diametro.value
     }
-    CalcularPrecio("../../models/Productos/Jumpers/Uniboot/CalcularPrecioUniboot.Route.php", data)
+    await CalcularPrecio("../../models/Productos/Jumpers/Uniboot/CalcularPrecioUniboot.Route.php", data)
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
     let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text

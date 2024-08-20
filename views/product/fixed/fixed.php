@@ -70,7 +70,11 @@ foreach ($getProduct->records as $key => $obj) {
           </div>
         </div>
         <div class="product-button-group ">
+        <?php if ($obj->MinimoCompra > 0) { ?>
+            <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="<?php echo $obj->MinimoCompra;?>">
+          <?php }else{ ?>
           <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+          <?php } ?>
           <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
             <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
             <?php } else { ?>

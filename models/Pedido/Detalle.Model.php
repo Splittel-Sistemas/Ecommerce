@@ -14,6 +14,7 @@
     public $Total;
     public $CodigoConfigurable;
     public $Activo;
+    public $MinimoCompra;
 
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -184,6 +185,8 @@
             $newItem->ProductoCategoriaKey          = $row->categoria ;
 
             $newItem->ProductoConfigurableNombre    = $row->t17_f003;
+            $newItem->MinimoCompra                  = $row->cantidad_minima;
+
             
             $remates = $newItem->ProductoCategoriaKey == 'A8' ? true : false;
             $newItem->Descuento    = !empty($newItem->ProductoDescuento) ? $this->Tool->CalcularDescuento($newItem->ProductoDescuento, $remates) : '';

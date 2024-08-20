@@ -205,6 +205,7 @@
           $Obj->Certificado                       =   $this->ExistCert($row->codigo);
           $Obj->ConfigurableFijo                  =   $row->configurablefijo;
           $Obj->Leyenda                  =   $row->leyenda;
+          $Obj->MinimoCompra                      =   $row->cantidad_minima;
           $data[] = $Obj;
         }
       }
