@@ -126,7 +126,7 @@
                                 <br>
                                 <br>
                                 <div class="col-sm-12 col-md-12 form-group">
-                                    <h3>2.- SERVICIO A SOLICITAR: </h3>
+                                    <h3>2.- SERVICIO A SOLICITAR:<strong class="text-danger">*</strong></h3>
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group text-center">
 

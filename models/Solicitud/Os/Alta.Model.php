@@ -124,7 +124,7 @@ class SolicitudC
   public function SetvaloresCheck($valoresCheck)
   {
     if (empty($valoresCheck)) {
-      throw new Exception('GIRO DE LA EMPRESA es requerido');
+      throw new Exception('El servicio a solicitar es requerido');
     }
     $this->valoresCheck = $valoresCheck;
   }
