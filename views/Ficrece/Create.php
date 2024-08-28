@@ -391,7 +391,7 @@
                   <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file4">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
-                  <strong class="text-danger">*</strong><label>Comprobante de domicilio (No mayor a 3 meses) </label>
+                  <strong class="text-danger">*</strong><label>Comprobante de domicilio (No mayor a 3 meses, deberá ser del representante legal) </label>
                   <input class="form-control form-control-2" type="file"  accept=".pdf"  id="file5">
                 </div>
                 <div class="col-sm-12 col-md-6 form-group">
