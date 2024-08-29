@@ -224,7 +224,7 @@ class PedidoController
                     $Email->MailerBody = $TemplatePedido->EcommercePedidoPagoBanco($row->Key);
                     $Email->MailerListTo = [$row->Correo];
                     $Email->MailerListBCC = [$row->CorreoEjecutivo];
-                    $Email->EmailSendEmail();
+                  //  $Email->EmailSendEmail();
 
                     $Webhook = new Webhook();
                     $Webhook->SetParameters($this->Connection, $this->Tool);
