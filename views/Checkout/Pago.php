@@ -172,7 +172,7 @@
             <select class="form-control" id="msi" name="msi">
               <option value="" selected>Una sola exhibición</option>
               <option value="3">3 meses sin intereses</option>
-              <option value="6">6 meses sin intereses</option>
+              <!--<option value="6">6 meses sin intereses</option>-->
             </select>
           </div>
           <?php } ?>
