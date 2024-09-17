@@ -58,13 +58,13 @@
         </div>
         <div class="row mb-4">
           <div class="col-12 col-md-8">
-            <h4 class="text-center">Tarjetas de crédito</h4>
+            <h4 class="text-center">Tarjetas de débito</h4>
             <div class="credit d-flex justify-content-center">
               <img class="img-responsive" src="../../public/images/OpenPay/cards2.png">
             </div>
           </div>
           <div class="col-12 col-md-4">
-            <h4>Tarjetas de débito</h4>
+            <h4>Tarjetas de crédito</h4>
             <div class="debit">
               <img class="img-responsive" src="../../public/images/OpenPay/cards1.png">
             </div>
