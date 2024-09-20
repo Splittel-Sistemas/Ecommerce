@@ -238,7 +238,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         $ProductoController = new ProductoController();
         $ProductoController->filter = "WHERE codigo IN ('OPEMVFL01MW','OPEMFVL10MW','OPEM3306B','OPHE2212',
-                                                        'OPHE2211','OPHE2210','OPEMADLC125',
+                                                        'OPHE2211','OPHE2210','OPEMADLC125','OPEFCOP001',
                                                         'OPHECOPACC20T','OPHECOPACC20T','OPHECOPACC20D') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
@@ -490,12 +490,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x">
             <p style="text-align: justify;" class="text-muted" >
             <b>Términos y condiciones:</b><br/>
-            * Compra mínima de 500 USD + IVA en tienda en línea.<br/>
-            * Solo con tarjetas de crédito participantes (Visa, Mastercard, AMEX, Carnet) <br/>
-            * Hasta agotar existencias.<br/>
-            * La promoción no se verá reflejada al momento de pago si el pedido incluye productos fuera de la promoción.<br/>
+            * Compra mínima de 500 USD + IVA.<br/>
+            * Solo con tarjetas de crédito participantes, hasta agotar existencias.<br/>
+            * Promoción válida únicamente para compras realizadas a través de nuestro e-commerce.<br/>
+            * La promoción no se verá reflejada al momento del pago si el pedido incluye productos fuera de la promoción.<br/>
             * Accesorios participantes: Localizadores de fallas, adaptadores y equipos de corte.<br/>
-            * Sujeto a restricciones.<br/>
+            * Sujeto a restricciones.
 
             </p>
             </div>
