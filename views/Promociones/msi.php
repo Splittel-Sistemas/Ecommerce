@@ -197,7 +197,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                        
                        foreach ($ResultSubcategoriasN1->records as $key => $SubcategoriaN1){ 
                          $ConfiguracionPath = $SubcategoriaN1->Configuracion == 1 
-                         ? "../../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo."" : "#";
+                         ? "../Productos/configurables.php?codigo=".$SubcategoriaN1->Codigo."" : "#";
        
                          $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg")) 
                          ? "../../public/images/img_spl/subsubcategorias/".$SubcategoriaN1->FolderName.".jpg" 
@@ -239,7 +239,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         $ProductoController = new ProductoController();
         $ProductoController->filter = "WHERE codigo IN ('OPEMVFL01MW','OPEMFVL10MW','OPEM3306B','OPHE2212',
                                                         'OPHE2211','OPHE2210','OPEMADLC125','OPEFCOP001',
-                                                        'OPHECOPACC20T','OPHECOPACC20T','OPHECOPACC20D') AND producto_activo='si' ";
+                                                        'OPHECOPACC20T','OPHECOPACC20T','OPHECOPACC20D','OPHEKPRFEMP') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
         //print_r($getProduct);
