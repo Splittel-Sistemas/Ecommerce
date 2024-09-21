@@ -105,6 +105,7 @@
             $PedidoB2BModel->SetEmail($this->Pedido->ContactoCorreo); 
             $PedidoB2BModel->SetEmail_ItemsStockBad($this->Tool->validate_sin_stock($this->Pedido->Intentos)); 
             $PedidoB2BModel->SetTipoPago($this->Pedido->TipoPago);
+            $PedidoB2BModel->SetMsi($this->Pedido->Msi);
 
             $ResultPedidoB2BModel = $PedidoB2BModel->createPedidoB2BWithOutCredit($WebServiceSOAP, $this->ArticulosPedido());
             $ResultPedidoB2B = $ResultPedidoB2BModel->CreatePedidoB2B_withoutCreditResult;

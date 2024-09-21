@@ -25,6 +25,7 @@
     public $Email_ItemsStockBad;
 
     public $TipoPago;
+    public $Msi;
 
     public function SetPedidoKey($PedidoKey){
       if (is_null($PedidoKey)) {
@@ -104,6 +105,10 @@
     public function SetTipoPago($TipoPago){
       $this->TipoPago = $TipoPago;
     }
+    public function SetMsi($Msi){
+      $this->Msi = $Msi;
+    }
+
 
     public function GetPedidoKey(){
       return $this->PedidoKey;
@@ -141,6 +146,9 @@
     public function GetTipoPago(){
       return $this->TipoPago;
     }
+    public function GetMsi(){
+      return $this->Msi;
+    }
     /**
      * Description
      *
@@ -161,6 +169,11 @@
          }else{
           $TypePay=$this->PaymentMethod;
          }
+         if(is_null($this->Msi)){
+          $MSI='0';
+        }else{
+          $MSI=$this->Msi;
+        }
         $this->EstructuraPedidoB2B['CreatePedidoB2B_withoutCredit']['Document'] = [
           "SalesQuotation" => [
             "DocNumEcommerce"     => $this->PedidoKey,
@@ -181,6 +194,7 @@
             "ShipReferences"      => $this->ShipReferences,
             "NumAtCard"           => $this->NumAtCard,
             "TipoPago"            => $TypePay,
+            "Msi"                 => $MSI,
             "ContactPerson" => [
               "Name"               => $this->Contacto,
               "Telphone"          => $this->Telefono,

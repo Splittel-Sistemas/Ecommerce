@@ -507,6 +507,8 @@ class OpenPayController
                             $RF = ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ) ? $_POST["RegimenFiscal"] : "";
                             $PedidoModel->SetRegimenFiscal($RF);
 
+                            $PedidoModel->SetMsi($_POST["Msi"]);
+
                             $ResultPedido = $PedidoModel->Update3DSecure();
                             if (!$ResultPedido['error']) {
                                 unset($ExistePedido);

@@ -39,6 +39,7 @@
     public $EmailEjecutivo;
 
     public $TipoPago;
+    public $Msi;
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;
@@ -91,6 +92,9 @@
     }
     public function SetTipoPago($TipoPago){
       $this->TipoPago = $TipoPago;
+    }
+    public function SetMsi($Msi){
+      $this->Msi = $Msi;
     }
     public function SetTipoCambio($TipoCambio){
       if(!is_numeric($TipoCambio)){
@@ -166,6 +170,8 @@
       return $this->TransportationCode;
     }public function GetTipoPago(){
       return $this->TipoPago;
+    }public function GetMsi(){
+      return $this->Msi;
     }public function GetEnvioCorreo(){
       return $this->EnvioCorreo;
     }public function GetRegimenFiscal(){
@@ -211,6 +217,7 @@
           '".$this->CFDIUser."',
           '".$this->TransportationCode."',
           '".$this->RegimenFiscal."',
+          '".$this->Msi."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -238,6 +245,7 @@
           '".$this->CFDIUser."',
           '".$this->TransportationCode."',
           '".$this->RegimenFiscal."',
+          '".$this->Msi."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {
@@ -426,7 +434,7 @@
           $this->id_openpay                =   $row->id_openpay; 
           $this->total_openpay                =   $row->total_openpay; 
           $this->TipoPago                =   $row->tipo_pago; 
-
+          $this->Msi                =   $row->msi; 
 
           $data = true;
         }
@@ -478,6 +486,7 @@
           $newPedido->Recibio                =   $row->recibio;
           $newPedido->EnvioCorreo            =   $row->envio_correo;
           $newPedido->TipoPago                =   $row->tipo_pago; 
+          $newPedido->Msi                =   $row->msi; 
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -531,6 +540,7 @@
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
           $newPedido->TipoPago                =   $row->tipo_pago; 
+          $newPedido->Msi                =   $row->msi; 
           $data[] = $newPedido;
           unset($newPedido);
         }
@@ -586,6 +596,7 @@
           $newPedido->TransportationCode    = $row->transportationcode;
           $newPedido->RegimenFiscal          =   $row->regimenfiscal;
           $newPedido->TipoPago                =   $row->tipo_pago; 
+          $newPedido->Msi                =   $row->msi; 
           $data[] = $newPedido;
           unset($newPedido);
         }
