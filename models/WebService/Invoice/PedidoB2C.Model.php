@@ -219,6 +219,7 @@
               "NumAtCard"           => $this->NumAtCard,
               "TransferReference"   => $this->TransferReference,
               "TipoPago"            => $TypePay,
+              "Msi"                 => "0",
               "ContactPerson" => [
                 "Name"              => $this->Contacto,
                 "Telphone"          => $this->Telefono,
