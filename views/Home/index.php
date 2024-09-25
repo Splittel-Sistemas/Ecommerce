@@ -125,7 +125,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
           include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
         }
         $CategoriaController = new CategoriaController();
-        $CategoriaController->filter = "WHERE activo='si'";
+        $CategoriaController->filter = "WHERE activo='si' AND menu3='si'";
         $CategoriaController->order = "";
         $ResultCategoria = $CategoriaController->get();
         $CategoriaCont3 = 1;
