@@ -173,12 +173,127 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <!-- CIERRES DE EMPLAME-->
             <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x padding-bottom-1x">
-            <h6 class="text-muted opacity-75 ">
-                  <strong>Bobinas de lanzamiento</strong>
-                </h6>
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h6 class="text-muted opacity-75 ">
+                      <strong>Equipo y accesorios de fusión</strong>
+                    </h6>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <h6 class="text-muted opacity-75 ">
+                      <strong>Bobinas de lanzamiento</strong>
+                    </h6>
+                </div>
+              </div>
             </div>
             <div class="col-lg-12 col-md-12 order-md-2">
             <div class="row SameHeight">
+            <?php
+        if (!class_exists("ProductoController")) {
+          include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+        }
+        $ProductoController = new ProductoController();
+        $ProductoController->filter = "WHERE codigo IN ('OPEFEMPANU04001','OPHEKPRFEMP') AND producto_activo='si' ";
+        $ProductoController->order = "";
+        $getProduct = $ProductoController->GetProductosFijos_();
+        //print_r($getProduct);
+
+        if ($getProduct->count > 0) {
+          if (!class_exists('ComentariosController')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Productos/Comentarios.Controller.php';
+          }
+          foreach ($getProduct->records as $key => $obj) {
+            $urlDetailProduct = "../Productos/fijos.php?id_prd=" . $obj->ProductoCodigo . "&nom=" . url_amigable($obj->ProductoDescripcion); #url detalle del producto
+            $urlImg = "../../public/images/img_spl/productos/" . $obj->ProductoCodigo . "/thumbnail/" . $obj->ProductoImgPrincipal; #url imagen del producto
+            $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
+            $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
+            $priceUSD = bcdiv($calculatePrice, 1, 3);
+            $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+
+            
+        ?>
+            <div class="col-sm-3">
+              <div class="product-card mb-30">
+                <?= $variable = $obj->Leyenda != "" ? '<div class="product-badge bg-danger">' . $obj->Leyenda . '</div>' : ""; ?>
+
+
+                <div class="rating-stars">
+                  <?php
+                  $ComentariosController = new ComentariosController();
+                  $ComentariosController->filter = "WHERE IdProducto = '" . $obj->ProductoCodigo . "'";
+                  $Comentarios = $ComentariosController->Comentarios();
+
+                  if ($Comentarios->count > 0) {
+                    $RecordsComentarios = $Comentarios->records[0];
+                    $Promedio = (int)$RecordsComentarios->Promedio;
+                    for ($i = 0; $i < 5; $i++) {
+                      if ($i < $Promedio) {
+                  ?>
+                        <i class="icon-star filled"></i>
+                      <?php } else { ?>
+                        <i class="icon-star"></i>
+                    <?php }
+                    }
+                  } else { ?>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                    <i class="icon-star"></i>
+                  <?php }
+                  unset($ComentariosController);
+                  unset($Comentarios);
+                  ?>
+                </div>
+                <a class="product-thumb" href="<?php echo $urlDetailProduct ?>">
+                  <img src="<?php echo $newUrlImg ?>" alt="<?php echo $obj->ProductoDescripcion ?>">
+                </a>
+                <div class="product-card-body classAbsolute">
+                <div style="height:100%;">
+                  <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
+                  <h3 class="product-title" ><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
+                  <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <h4 class="product-price" id="id-product-price-<?php echo $obj->ProductoCodigo?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
+                      $<?php echo $priceUSD ?> USD
+                    </h4>
+                    <!--
+                    <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value,<?php echo $obj->ProductoPrecio?>)"  value="1">
+                    -->
+                   
+                    <?php } ?>
+                    </div>
+                </div>
+                <div class="product-button-group">
+                 
+                <?php if ($obj->MinimoCompra > 0) { ?>
+            <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="<?php echo $obj->MinimoCompra;?>">
+          <?php }else{ ?>
+          <input type="hidden" name="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" id="ProductoCantidad-<?php echo $obj->ProductoCodigo; ?>" value="1">
+          <?php } ?>
+          <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+            <a class="product-button" href="javascript:(0)" descuento="<?php echo $obj->Descuento ?>" codigo="<?php echo $obj->ProductoCodigo; ?>" onclick="AgregarArticulo(this)">
+            <?php } else { ?>
+              <a class="product-button" href="../Login/">
+              <?php } ?>
+              <i class="icon-shopping-cart"></i><span>Agregar a carrito</span>
+              </a>
+
+                </div>
+              </div>
+            </div>
+        <?php
+            unset($urlDetailProduct);
+            unset($urlImg);
+            unset($newUrlImg);
+            unset($calculatePrice);
+            unset($priceUSD);
+            unset($priceMXN);
+          }
+        }
+        ?>
+
+            <div class="col-md-3 col-sm-6 col-12">
+            </div>
         <?php
        
        
@@ -238,8 +353,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         $ProductoController = new ProductoController();
         $ProductoController->filter = "WHERE codigo IN ('OPEMVFL01MW','OPEMFVL10MW','OPEM3306B','OPHE2212',
-                                                        'OPHE2211','OPHE2210','OPEMADLC125','OPEFCOP001',
-                                                        'OPHECOPACC20T','OPHECOPACC20T','OPHECOPACC20D','OPHEKPRFEMP') AND producto_activo='si' ";
+                                                        'OPHE2211','OPHE2210','OPEMADLC125','OPHECOPACC20T',
+                                                        'OPEFCOP001','OPHECOPACC20D') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
         //print_r($getProduct);
