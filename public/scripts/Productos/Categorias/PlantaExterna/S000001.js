@@ -215,6 +215,12 @@ var ADDSAntirroedor = function(){
 var ADDSMini = function(){
   let MaterialCubierta = document.getElementById('MaterialCubierta')
 
+  NumeroFibras[0].style.display = "none"
+  NumeroFibras[2].style.display = "none"
+  if(NumeroFibras.selectedIndex == 0 || NumeroFibras.selectedIndex == 2 ){
+    NumeroFibras[1].selected = true;
+ }
+
   TipoFibra[1].style.display = "none"
   TipoFibra[2].style.display = "none"
   TipoFibra[3].style.display = "none"
