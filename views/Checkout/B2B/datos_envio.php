@@ -1,5 +1,42 @@
 <!-- --------------------------------------------- Datos de envió ----------------------------------------- -->
-
+ <?php
+ if (!class_exists("ProductoController")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
+}
+if (!class_exists('DetalleController')) {
+  include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
+}
+$ProductoControllerMSI = new ProductoController();
+$DetalleControllerMSI = new DetalleController();
+$ObjDetalleMSI = $DetalleControllerMSI->GetDetallePedido();
+$bdra_familia_cursos=0;
+if($ObjDetalleMSI->count > 0){
+  foreach ($ObjDetalleMSI->records as $key => $data) {			
+    if((!($data->ProductoCodigo == '') && $data->ProductoCodigoConfigurable == '') || (!($data->ProductoCodigo == '') && !($data->ProductoCodigoConfigurable == ''))){
+      $ProductoControllerMSI->filter = "WHERE codigo = '" . trim($data->ProductoCodigo). "'  ";
+      $ProductoControllerMSI->order = "";
+      $ObjProductoMSI = $ProductoControllerMSI->GetByProductosFijos();
+      $AutCategoria = $ObjProductoMSI->ProductoSubcategoriaKey;
+   
+    }else if(!($data->DetalleCodigoConfigurable == '')){
+      $CategoriaControllerMSI->filter = "WHERE codigo = '" . trim($data->DetalleCodigoConfigurable) . "' ";
+      $CategoriaControllerMSI->order = "";
+      $ObjCategoriaMSI = $CategoriaControllerMSI->estructura();
+      $AutCategoria = $ObjCategoriaMSI->SubcategoriaN1Key;
+    
+    }
+    
+   if($AutCategoria != 'S000082')
+   {
+      $bdra_familia_cursos++;
+   }
+    
+}
+} //echo $bdra_familia_cursos;
+ ?>
+<div id="CO_DatosEnvio"
+<?php if($bdra_familia_cursos == 0) echo "style='display:none;'"?>
+>
 <h4 class="text-center text-md-left">Datos de envío</h4>
 <hr class="padding-bottom-1x">
 <?php 
@@ -106,7 +143,7 @@
 <?php }else{ ?>
   <h4>error!</h4>
 <?php } ?>
-
+</div>
 
 <!-- --------------------------------------------- Datos de Facturación ----------------------------------------- -->
 
