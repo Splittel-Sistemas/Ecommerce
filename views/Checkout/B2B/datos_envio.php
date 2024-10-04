@@ -6,8 +6,12 @@
 if (!class_exists('DetalleController')) {
   include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
 }
+if (!class_exists("CategoriaController")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Categorias/Categoria.Controller.php';
+}
 $ProductoControllerMSI = new ProductoController();
 $DetalleControllerMSI = new DetalleController();
+$CategoriaControllerMSI = new CategoriaController();
 $ObjDetalleMSI = $DetalleControllerMSI->GetDetallePedido();
 $bdra_familia_cursos=0;
 if($ObjDetalleMSI->count > 0){
