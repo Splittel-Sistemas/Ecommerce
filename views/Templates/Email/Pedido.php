@@ -33,6 +33,12 @@ class TemplatePedido
 	public function body()
 	{
 		try {
+			if(isset($_SESSION['Ecommerce-Segmento']) && $_SESSION['Ecommerce-Segmento'] =='ISP/WISP'){
+				$ImagenEncabezado="http://www.fibremex.com/ecomfmx/public-wisp.png";
+			}else{
+				$ImagenEncabezado="http://www.fibremex.com/ecomfmx/public.jpg";
+			}
+
 			$Principal = new TemplatePrincipal();
 			$html = $Principal->Head() . '<body class="">
 								<span class="preheader">Ecommerce Grupo Splittel</span>
@@ -48,7 +54,7 @@ class TemplatePedido
 
 													<!-- START MAIN CONTENT AREA -->
 													<tr>
-														<td><img class="banner-img" width="800" src="http://www.fibremex.com/ecomfmx/public.jpg" alt=""></td>
+														<td><img class="banner-img" width="800" src="'.$ImagenEncabezado.'" alt=""></td>
 													</tr>
 													<tr>
 														<td class="wrapper">

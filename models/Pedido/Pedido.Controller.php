@@ -77,6 +77,7 @@ class PedidoController
                          $_SESSION['Ecommerce-ClienteTipo'] = $DCliente->Tipo;
                          $_SESSION['Ecommerce-ClienteNombre'] = $DCliente->Nombre . " " . $DCliente->Apellidos;
                         }
+                        $_SESSION['Ecommerce-Segmento'] = $ClienteModel->GetSegmento();
                         $Email = new Email(true);
                         $TemplatePedido = new TemplatePedido();
                         $Email->MailerSubject = " Ecommerce - Pedido #" . $_SESSION['Ecommerce-PedidoKey'];
