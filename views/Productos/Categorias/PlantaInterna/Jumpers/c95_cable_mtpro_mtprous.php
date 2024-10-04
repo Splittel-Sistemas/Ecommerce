@@ -35,7 +35,7 @@
     <div class="col-sm-4" id="LongitudInput">
       <div class="form-group mb-0">
         <label for="quantity">Longitud (m) 1~999:</label>
-        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" onkeyup="JumpersMTPUS()">
+        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" oninput="JumpersMTPUS()">
       </div>
     </div> 
     <div class="col-sm-4" id="TipoCubiertaSelect">

@@ -143,7 +143,7 @@
     <div class="col-sm-4" id="LongitudInput">
       <div class="form-group mb-0">
         <label for="quantity">Longitud (m) 0.1~999:</label>
-        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" onkeyup="JumpersFibraOptica()">
+        <input type="text" class="form-control" id="Longitud" name="Longitud" value="1" oninput="JumpersFibraOptica()">
       </div>
     </div> 
   </div>
