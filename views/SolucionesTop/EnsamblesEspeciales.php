@@ -122,7 +122,68 @@
                                   ?></span>
           </div>
         </div>
+        
+        <div class="row">
+        
+          <div class="col-4" style="opacity: 1;">
+            <div class="card mb-30 " >
+              <img class="card-img-top" src="../../public/images/img_spl/transformacion/1.png" alt="REDY-OP">
+              <div class="card-body text-center">
+                <h6 class="card-title title">Solución preconectorizada Enterprise</h6>
+                <p class="text-muted description">REDY-OP</p>
+                <a class="btn btn-outline-danger btn-sm" target="_blank" href="../../public/images/img_spl/transformacion/pdfs/1- Solución preconectorizada Enterprise.pdf">Descargar PDF</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4" style="opacity: 1;">
+            <div class="card mb-30 " >
+              <img class="card-img-top" src="../../public/images/img_spl/transformacion/2.png" alt="REDY-OP">
+              <div class="card-body text-center">
+                <h6 class="card-title title">Solución preconectorizada Parques Industriales</h6>
+                <p class="text-muted description">REDY-OP</p>
+                <a class="btn btn-outline-danger btn-sm" target="_blank" href="../../public/images/img_spl/transformacion/pdfs/2- Solución preconectorizada Parques Industriales.pdf">Descargar PDF</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4" style="opacity: 1;">
+            <div class="card mb-30 " >
+              <img class="card-img-top" src="../../public/images/img_spl/transformacion/3.png" alt="REDY-OP">
+              <div class="card-body text-center">
+                <h6 class="card-title title">Solución preconectorizada WISP a ISP</h6>
+                <p class="text-muted description">REDY-OP</p>
+                <a class="btn btn-outline-danger btn-sm" target="_blank" href="../../public/images/img_spl/transformacion/pdfs/3- Solución preconectorizada WISP a ISP.pdf">Descargar PDF</a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row text-center">
+      <div class="col-2" style="opacity: 1;"></div>
+          <div class="col-4" style="opacity: 1;">
+            <div class="card mb-30 " >
+              <img class="card-img-top" src="../../public/images/img_spl/transformacion/4.png" alt="REDY-OP">
+              <div class="card-body text-center">
+                <h6 class="card-title title">Solución Cableado Estructurado</h6>
+                <p class="text-muted description">REDY-OP</p>
+                <a class="btn btn-outline-danger btn-sm" target="_blank" href="../../public/images/img_spl/transformacion/pdfs/4- Solución Cableado Estructurado.pdf">Descargar PDF</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4" style="opacity: 1;">
+            <div class="card mb-30 " >
+              <img class="card-img-top" src="../../public/images/img_spl/transformacion/5.png" alt="REDY-OP">
+              <div class="card-body text-center">
+                <h6 class="card-title title">Soluciones Hibridas</h6>
+                <p class="text-muted description">REDY-OP</p>
+                <a class="btn btn-outline-danger btn-sm" target="_blank" href="../../public/images/img_spl/transformacion/pdfs/5- Soluciones Hibridas.pdf">Descargar PDF</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-2" style="opacity: 1;"></div>
+          
+        </div>
+
         <br><br>
+
         <div class="row">
           <div class="col-lg-4 col-md-6 order-md-2 text-center">
 
