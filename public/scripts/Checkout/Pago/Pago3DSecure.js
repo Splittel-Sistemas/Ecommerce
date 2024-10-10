@@ -130,7 +130,7 @@ var PagarPedido3DSecure = function (Elem) {
   if (OpenPay.card.validateCardNumber(CardNumber)) {
     if (OpenPay.card.validateCVC(Cvv2)) {
       if (OpenPay.card.validateExpiry(ExpirationMonth, ExpirationYear)) {
-        if (document.getElementById("TotalValidacion").value <= 100000) {
+        if (document.getElementById("TotalValidacion").value <= 200000) {
           $(Elem).prop("disabled", true);
           OpenPay.token.create(
             {
@@ -148,7 +148,7 @@ var PagarPedido3DSecure = function (Elem) {
           Alerts(
             "AlertCart",
             "warning",
-            "Recuerda que no puedes superar los 100000 pesos"
+            "Recuerda que no puedes superar los 200000 pesos"
           );
       $('#Pago').show();
 

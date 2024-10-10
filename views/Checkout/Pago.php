@@ -48,7 +48,7 @@
         <div id="AlertPago"></div>
         <div class="row mb-4">
           <div class="col-md-12">
-            <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>&nbsp;&nbsp;Monto máximo para pago con tarjeta: <strong>$100,000 MXN</strong>
+            <div class="alert alert-info alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-layers"></i>&nbsp;&nbsp;Monto máximo para pago con tarjeta: <strong>$200,000 MXN</strong>
               <br>
               <strong>
                 Si tienes alguna duda, contáctanos: 800 134 26 90
