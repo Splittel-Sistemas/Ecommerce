@@ -49,6 +49,11 @@
 <link  rel="stylesheet" media="screen" href="../../public/plantilla/customizer/customizer.min.css">
 <link rel="stylesheet" type="text/css" href="../../public/plugins/tingle/tingle.css">
 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
+/>
+
 <!--  Google Tag Manager Documentacion  -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -104,9 +109,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
  } 
 ?>
 <?php 
+ 
 	@session_start();
 	$_SESSION['Ecommerce-ClienteDescuento'] = isset($_SESSION['Ecommerce-ClienteDescuento']) && $_SESSION['Ecommerce-ClienteDescuento'] > 0 ? $_SESSION['Ecommerce-ClienteDescuento'] : 0;
+
+  if(isset($_POST['CurrencySite']) && $_POST['CurrencySite']!=''){
+    $_SESSION['CurrencySite']=$_POST['CurrencySite'];
+   }else{
+      if(!isset( $_SESSION['CurrencySite'])){
+        $_SESSION['CurrencySite']='USD';
+      }
+   }
 ?>
+
 <style>
 	.featured_products_card_1{
 		height: 400.55px !important;

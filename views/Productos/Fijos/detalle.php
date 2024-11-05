@@ -88,10 +88,22 @@
               </td>
               <td class="text-center align-middle"><span class="styleClave"><?php echo $Obj_->Codigo; ?></span></td>
               <td class="text-center align-middle"><?php echo $Obj_->Descripcion; ?></td>
-              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){?>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){
+                 if($_SESSION['CurrencySite']=='USD'){
+                ?>
               <td class="text-center align-middle">$<?php echo bcdiv($Obj_->Precio-($Obj_->Precio*($Obj_->Descuento/100)),1,3); ?> USD</td>
-              <td class="text-center align-middle"><?php echo $Obj_->Existencia; ?></td>
-              <?php }?>
+              <?php 
+                 }else{
+                    $PL1=bcdiv($Obj_->Precio-($Obj_->Precio*($Obj_->Descuento/100)),1,3);
+                  ?>
+                   <td class="text-center align-middle">$<?php echo number_format(bcdiv(($PL1*$_SESSION['Ecommerce-WS-CurrencyRate']),1,3),3); ?> MXN</td>
+                <?php
+                }
+                 ?>
+                 <td class="text-center align-middle"><?php echo $Obj_->Existencia; ?></td>
+              <?php
+              }
+              ?>
               <td class="text-center align-middle">
                 <input type="hidden" name="ProductoCantidad-<?php echo $Obj_->Codigo;?>" id="ProductoCantidad-<?php echo $Obj_->Codigo;?>" value="1">
              

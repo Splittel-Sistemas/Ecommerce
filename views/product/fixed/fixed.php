@@ -12,7 +12,9 @@ foreach ($getProduct->records as $key => $obj) {
   $newUrlImg = file_exists($urlImg) ? $urlImg : "../../public/images/img_spl/notfound.png"; # validación si existe $urlImg
   $calculatePrice = $obj->ProductoPrecio - ($obj->ProductoPrecio * ($obj->Descuento / 100));
   $priceUSD = bcdiv($calculatePrice, 1, 3);
-  $priceMXN = number_format($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 3);
+  $priceMXN = bcdiv($calculatePrice * $_SESSION['Ecommerce-WS-CurrencyRate'], 1, 3);
+
+ 
 ?>
   <?php
   if ($cn % $cn2 == 0) {
@@ -62,10 +64,15 @@ foreach ($getProduct->records as $key => $obj) {
 
             <!-- validar si existe variable de sesión -->
             <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
-
+                <?php if($_SESSION['CurrencySite']=='USD'){?>
               <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                 $<?php echo $priceUSD ?> USD
               </h4>
+              <?php }else{ ?>
+                <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                $<?php echo $priceMXN ?> MXN
+              </h4>
+              <?php }?>
             <?php } ?>
           </div>
         </div>

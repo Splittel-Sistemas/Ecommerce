@@ -409,8 +409,14 @@ var existCodeSapPatchCord = function(Codigo){
           document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
           document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
         }
-        if(document.getElementById('Costo'))
-        document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
+        if(document.getElementById('Costo')){
+          if(CurrencySite=='USD'){
+          document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
+          }else{
+             precio1 = (Precio*CurrencyRate).toFixed(3)
+          document.getElementById('Costo').innerHTML = 'Precio: $ '+precio1+' MXN'
+          }
+        }
 
         let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML =''
@@ -501,7 +507,12 @@ var existEcommerce_ = function(Codigo){
   
         document.getElementById('btn-fijo').setAttribute('descuento', resultResponse.Descuento)
         document.getElementById('btn-fijo').setAttribute('codigo', resultResponse.ProductoCodigo)
+        if(CurrencySite=='USD'){
         document.getElementById('Costo').innerHTML = 'Precio: $ '+Precio+' USD '
+        } else{
+          precio1 = (Precio*CurrencyRate).toFixed(3)
+        document.getElementById('Costo').innerHTML = 'Precio: $ '+precio1+' MXN'
+        }
         nuevoPrecioPorLongitud(document.getElementById('longitud'))
       }else{
         document.getElementById('precio-longitud').value = 0
@@ -604,8 +615,13 @@ var nuevoPrecioPorLongitud = function(Elem){
   document.getElementById('quantity').value = Elem.value
   if (Elem.value > 0 && Elem.value != "") {
     let precio = Elem.value * document.getElementById('precio-longitud').value
+    if(CurrencySite=='USD'){
     precio = precio.toFixed(3)
-    document.getElementById('Costo').innerHTML = 'Precio: $ '+precio
+    document.getElementById('Costo').innerHTML = 'Precio: $ '+precio+' USD'
+    }else{
+      precio = (precio*CurrencyRate).toFixed(3)
+    document.getElementById('Costo').innerHTML = 'Precio: $ '+precio+' MXN'
+    }
   }
 }
 
@@ -723,19 +739,36 @@ var agregarCertificadoConfigurable = function(codigo){
 var CalcularPrecio = function(url, data){
   ajax_(url, 'POST', 'JSON', data, 
   function(response){
+    //console.log(CurrencyRate)
+    //console.log(CurrencySite)
     if (!response.error) {
       $('#span-leyenda').remove()
       StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'block')
       StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
-      let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
-      '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+response.precioNormal+' USD</span>&nbsp;'+
-      '<br>Tu precio con descuento:<br><b class="text-primary">'+
-        '$'+response.precio+' USD '+
-      '</b></small></p>'+
-    '</span>' : 
-    '<span class="h4 d-block">Precio: '+
-      '$'+response.precio+' USD '+
-    '</span>';
+      let mostrarPrecio=0
+      if(CurrencySite=='USD'){
+          mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+          '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+response.precioNormal+' USD</span>&nbsp;'+
+          '<br>Tu precio con descuento:<br><b class="text-primary">'+
+            '$'+response.precio+' USD '+
+          '</b></small></p>'+
+        '</span>' : 
+        '<span class="h4 d-block">Precio: '+
+          '$'+response.precio+' USD '+
+        '</span>';
+      }else{
+        PriceMXNNormal=response.precioNormal*CurrencyRate
+        PriceMXNDesc=response.precio*CurrencyRate
+        mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+          '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+parseFloat(PriceMXNNormal.toFixed(3))+' MXN</span>&nbsp;'+
+          '<br>Tu precio con descuento:<br><b class="text-primary">'+
+            '$'+parseFloat(PriceMXNDesc.toFixed(3))+' MXN '+
+          '</b></small></p>'+
+        '</span>' : 
+        '<span class="h4 d-block">Precio: '+
+          '$'+parseFloat(PriceMXNDesc.toFixed(3))+' MXN '+
+        '</span>';
+      }
       document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = mostrarPrecio
     }else{
@@ -747,10 +780,12 @@ var CalcularPrecio = function(url, data){
 var CalcularPrecioPatchCords = function(url, data){
   ajax_(url, 'POST', 'JSON', data, 
   function(response){
-    console.log(response)
+    //console.log(response)
     if (!response.error) {
       $('#span-leyenda').remove()
-      let mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+      let mostrarPrecio=0;
+      if(CurrencySite=='USD'){
+       mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
       '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+response.precioNormal+' USD</span>&nbsp;'+
       '<br>Tu precio con descuento:<br><b class="text-primary">'+
         '$'+response.precio+' USD '+
@@ -759,6 +794,19 @@ var CalcularPrecioPatchCords = function(url, data){
     '<span class="h4 d-block">Precio: '+
      '$'+response.precio+' USD '+
     '</span>';
+  }else{
+    PriceMXNNormal=response.precioNormal*CurrencyRate
+    PriceMXNDesc=response.precio*CurrencyRate
+    mostrarPrecio = parseInt(response.descuento) > 0 ? '<span class="h4 d-block">'+
+      '<p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>$'+parseFloat(PriceMXNNormal.toFixed(3))+' MXN</span>&nbsp;'+
+      '<br>Tu precio con descuento:<br><b class="text-primary">'+
+        '$'+parseFloat(PriceMXNDesc.toFixed(3))+' MXN '+
+      '</b></small></p>'+
+    '</span>' : 
+    '<span class="h4 d-block">Precio: '+
+      '$'+parseFloat(PriceMXNDesc.toFixed(3))+' MXN '+
+    '</span>';
+  }
       document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = mostrarPrecio
     }else{

@@ -40,6 +40,11 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
 }
 
 ?>
+<script>
+  let CurrencyRate='<?php echo $_SESSION['Ecommerce-WS-CurrencyRate']?>'
+  let CurrencySite='<?php echo $_SESSION['CurrencySite']?>'
+  
+</script>
 <!-- Header-->
 <style>
 .item-font{
@@ -168,6 +173,12 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
             <span class="text-label">
               <strong class="hidden-on-mobile">TIPO DE CAMBIO</strong><br />1 USD = <?php echo $_SESSION['Ecommerce-WS-CurrencyRate']; ?> MXP
             </span>
+            <span class="text-label">
+              <form id="radioForm" action="" method="POST">
+                <input type="radio" <?php if($_SESSION['CurrencySite']=='USD'){ echo "checked"; }?> name="CurrencySite" value="USD" onchange="submitForm()"> <i class="rounded-circle fi fi-us fis"></i> 
+                <input type="radio" <?php if($_SESSION['CurrencySite']=='MXP'){ echo "checked"; }?> name="CurrencySite" value="MXP" onchange="submitForm()"> <i class="rounded-circle fi fi-mx fis"></i>
+              </form>
+            </span>  
           </div>
         </a>
       </div> <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
@@ -385,7 +396,11 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
   }
   ?>
 
-
+<script>
+        function submitForm() {
+            document.getElementById('radioForm').submit();
+        }
+    </script>
 </header>
 <div id="customizer-backdrop" class="customizer-backdrop"></div>
 

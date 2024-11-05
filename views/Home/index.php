@@ -310,9 +310,15 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                     <!-- validar si existe variable de sesión -->
                     <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) {
                     ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                       <h4 class="product-price" data-toggle="tooltip" style="padding: 0px 0px;" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                         $<?php echo $priceUSD ?> USD
                       </h4>
+                      <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                     <?php } ?>
                   </div>
 
@@ -420,9 +426,15 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                   <?php } ?>
                 </div>
                 <div class="product-button-group">

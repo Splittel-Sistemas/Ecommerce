@@ -156,6 +156,7 @@ $Entransito = $EnTransitoController->get();
     if (isset($_SESSION['Ecommerce-ClienteKey'])) {
       if ($Obj->ProductoPrecio > 0) {
         if ($Obj->Descuento > 0) {
+           if($_SESSION['CurrencySite']=='USD'){
     ?>
           <span class="h4 d-block">
             <p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>
@@ -166,10 +167,27 @@ $Entransito = $EnTransitoController->get();
                 </b>
               </small></p>
           </span>
+          <?php }else{ ?>
+            <span class="h4 d-block">
+            <p class="text-muted"><small><span style="font-size: 18px;">Precio de lista:<br>
+                  $<?php echo  number_format(bcdiv(($Obj->ProductoPrecio*$_SESSION['Ecommerce-WS-CurrencyRate']),1,3),3) ?> MXN&nbsp;</span>
+                <br>Tu precio con descuento:<br>
+                <b class="text-primary">
+                <?php  $PL=bcdiv($Obj->ProductoPrecio - ($Obj->ProductoPrecio * ($Obj->Descuento / 100)), 1, 3);?>
+                
+                  $<?php echo number_format(bcdiv(($PL*$_SESSION['Ecommerce-WS-CurrencyRate']), 1, 3),3); ?> MXN
+                </b>
+              </small></p>
+          </span>
+            <?php } ?>
         <?php } else { ?>
           <span class="h4 d-block">
             Precio:
+            <?php  if($_SESSION['CurrencySite']=='USD'){ ?>
             $<?php echo $Obj->ProductoPrecio; ?> USD
+            <?php }else{ ?>
+              $<?php echo bcdiv($Obj->ProductoPrecio*$_SESSION['Ecommerce-WS-CurrencyRate'], 1, 3); ?> MXN
+            <?php }?>
           </span>
         <?php
         }

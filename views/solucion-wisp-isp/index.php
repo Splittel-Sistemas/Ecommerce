@@ -3,7 +3,9 @@
 
 <head>
   <!-- <title> Contacto </title> -->
-  <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
+  <?php 
+  @session_start();
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
 
 </head>
 <!-- Body-->
@@ -120,9 +122,15 @@
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" ><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                     <h4 class="product-price" id="id-product-price-<?php echo $obj->ProductoCodigo?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                     <!--
                     <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value,<?php echo $obj->ProductoPrecio?>)"  value="1">
                     -->
@@ -229,9 +237,15 @@
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" ><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                     <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                   </div>
@@ -344,9 +358,15 @@
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                     <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                 </div>
@@ -439,9 +459,15 @@
                   <div class="product-category"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoCodigo ?></a></div>
                   <h3 class="product-title" style="height:60px;"><a href="<?php echo $urlDetailProduct ?>"><?php echo $obj->ProductoDescripcion ?></a></h3>
                   <?php if (isset($_SESSION['Ecommerce-ClienteKey'])) { ?>
+                    <?php if($_SESSION['CurrencySite']=='USD'){?>
                     <h4 class="product-price" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceMXN; ?> MXP">
                       $<?php echo $priceUSD ?> USD
                     </h4>
+                    <?php }else{ ?>
+                        <h4 class="product-price " data-toggle="tooltip" data-placement="bottom" title="" data-original-title="$<?php echo $priceUSD; ?> USD">
+                        $<?php echo $priceMXN ?> MXN
+                      </h4>
+                      <?php }?>
                     <input class="form-control form-control-sm text-center" type="number" oninput="ActualizaCantidadCarrete('<?php echo $obj->ProductoCodigo?>',this.value)" value="1">
                   <?php } ?>
                 </div>

@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
+    <?php 
+    @session_start();
+    include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
   <body>
@@ -29,7 +31,11 @@
       
       <!-- Shopping Cart-->
       <div id="ListProductosCarrito">
+        <?php if( $_SESSION['CurrencySite']=='USD'){?>
         <?php include 'List.php'; ?>
+        <?php }else{?>
+          <?php include 'ListPesos.php'; ?>
+        <?php }?>
       </div>
 
       <!-- Related Products Carousel-->

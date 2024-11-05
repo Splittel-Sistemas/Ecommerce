@@ -74,7 +74,11 @@ if($Obj->count > 0){
 					<h4 class="entry-title">
 						<a href="../Productos/fijos.php?id_prd=<?php echo $data->ProductoCodigo;?>&nom=<?php echo url_amigable($data->ProductoDescripcion);?>"><?php echo $data->ProductoDescripcion;?></a>
 					</h4>
-					<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?></span>
+					<?php if(( $_SESSION['CurrencySite']=='USD')){?>
+					<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?> USD</span>
+					<?php }else{ ?>
+						<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo number_format(($data->DetalleSubtotal*$_SESSION['Ecommerce-WS-CurrencyRate']),3);?> MXN</span>
+					<?php } ?>
 				</div>
 				<div class="entry-delete"><i class="icon-x"  onclick="DeleteProducto(<?php echo $data->DetalleKey?>, '<?php echo $data->DetalleCodigo ?>')"></i></div>
 			</div>
@@ -101,7 +105,11 @@ if($Obj->count > 0){
 					<h4 class="entry-title">
 						<a href="../Productos/configurables.php?codigo=<?php echo $data->ProductoCodigoConfigurable;?>"><?php echo $data->ProductoDescripcion;?></a>
 					</h4>
-					<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?></span>
+					<?php if(( $_SESSION['CurrencySite']=='USD')){?>
+						<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?> USD</span>
+					<?php }else{ ?>
+						<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo number_format(($data->DetalleSubtotal*$_SESSION['Ecommerce-WS-CurrencyRate']),3);?> MXN</span>
+					<?php } ?>
 				</div>
 				<div class="entry-delete"><i class="icon-x"  onclick="DeleteProducto(<?php echo $data->DetalleKey?>, '<?php echo $data->DetalleCodigo ?>')"></i></div>
 			</div>
@@ -128,7 +136,11 @@ if($Obj->count > 0){
 				<h4 class="entry-title">
 					<a href="../Productos/configurables.php?codigo=<?php echo $data->DetalleCodigoConfigurable;?>"><?php echo $data->ProductoConfigurableNombre;?></a>
 				</h4>
-				<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?></span>
+				<?php if(( $_SESSION['CurrencySite']=='USD')){?>
+				<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo $data->DetalleSubtotal;?> USD</span>
+				<?php }else{ ?>
+						<span class="entry-meta"><?php echo $data->DetalleCantidad;?> x $<?php echo number_format(($data->DetalleSubtotal*$_SESSION['Ecommerce-WS-CurrencyRate']),3);?> MXN</span>
+					<?php } ?>
 			</div>
 			<div class="entry-delete"><i class="icon-x"  onclick="DeleteProducto(<?php echo $data->DetalleKey?>, '<?php echo $data->DetalleCodigo ?>')"></i></div>
 		</div>
@@ -150,7 +162,11 @@ if($Obj->count > 0){
 	}
 ?>
 	<div class="text-right">
-		<p class="text-gray-dark py-2 mb-0"><span class="text-muted">Subtotal:</span> &nbsp;<?php echo $pedidoSubtotal; ?></p>
+	<?php if(( $_SESSION['CurrencySite']=='USD')){?>
+		<p class="text-gray-dark py-2 mb-0"><span class="text-muted">Subtotal:</span> &nbsp;<?php echo $pedidoSubtotal; ?> USD</p>
+		<?php }else{ ?>
+			<p class="text-gray-dark py-2 mb-0"><span class="text-muted">Subtotal:</span> &nbsp;<?php echo number_format(($pedidoSubtotal*$_SESSION['Ecommerce-WS-CurrencyRate']),3);?> MXN</p>
+		<?php } ?>
 	</div>
 	<div class="d-flex">
 		<div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="../Carrito/">Ir al carrito</a></div>

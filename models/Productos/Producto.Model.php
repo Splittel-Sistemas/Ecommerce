@@ -27,6 +27,7 @@
     public $Destacado;
     public $Leyenda;
     public $MinimoCompra;
+    public $PrecioMXN;
 
     protected $Connection;
     protected $Tool;
@@ -206,6 +207,7 @@
           $Obj->ConfigurableFijo                  =   $row->configurablefijo;
           $Obj->Leyenda                  =   $row->leyenda;
           $Obj->MinimoCompra                      =   $row->cantidad_minima;
+          $Obj->PrecioMXN                         =   $row->precio_mxn;
           $data[] = $Obj;
         }
       }

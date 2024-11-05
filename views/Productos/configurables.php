@@ -3,7 +3,9 @@
 
 <head>
   <!-- <title> Contacto </title> -->
-  <?php include  $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
+  <?php 
+  @session_start();
+  include  $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
   <!--  -->
   <link href="../../public/fonts/Roboto/Roboto.css?family=Roboto+Mono&display=swap" rel="stylesheet">
   <style type="text/css">

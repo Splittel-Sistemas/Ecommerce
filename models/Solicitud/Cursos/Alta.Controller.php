@@ -77,17 +77,17 @@ class SolicitudCursosController
         exit; */
 
 
-        $SolicitudCModel->Setname($_POST['name']);
+        $SolicitudCModel->Setname(str_replace("'", "",$_POST['name']));
         $SolicitudCModel->Setdate($_POST['date']);
-        $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
-        $SolicitudCModel->SetTitulo($_POST['Titulo']);
-        $SolicitudCModel->SetEmpresa($_POST['Empresa']);
-        $SolicitudCModel->SetPuesto($_POST['Puesto']);
+        $SolicitudCModel->SetNombreSolicitud(str_replace("'", "",$_POST['NombreSolicitud']));
+        $SolicitudCModel->SetTitulo(str_replace("'", "",$_POST['Titulo']));
+        $SolicitudCModel->SetEmpresa(str_replace("'", "",$_POST['Empresa']));
+        $SolicitudCModel->SetPuesto(str_replace("'", "",$_POST['Puesto']));
         $SolicitudCModel->SetTelefono($_POST['Telefono']);
         $SolicitudCModel->SetCorreoEmpresarial($_POST['CorreoEmpresarial']);
         $SolicitudCModel->SetCorrePersonal($_POST['CorrePersonal']);
         $SolicitudCModel->SetWhatsapp($_POST['Whatsapp']);
-        $SolicitudCModel->SetRestriccion($_POST['Restriccion']);
+        $SolicitudCModel->SetRestriccion(str_replace("'", "",$_POST['Restriccion']));
         $SolicitudCModel->SetAp($_POST['Ap']);
         $SolicitudCModel->SetAm($_POST['Am']);
         $name1='';
