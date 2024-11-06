@@ -401,7 +401,7 @@
       </a>
     </button> 
   <?php } ?>
-    <button class="btn btn-primary" costo="<?php echo $_SESSION['Ecommerce-CostoEnvio'] ?>" requiere="<?php echo $costo ?>" subtotal="<?php echo $pedidoSubtotal ?>" existencia="<?php echo $cont; ?>" existencia1="<?php echo $cont1; ?>" onclick="FinishPedido(this)">
+    <button class="btn btn-primary" costo="<?php echo $_SESSION['Ecommerce-CostoEnvio'] ?>" requiere="<?php echo $costo ?>" subtotal="<?php echo $pedidoSubtotalMXN ?>" existencia="<?php echo $cont; ?>" existencia1="<?php echo $cont1; ?>" onclick="FinishPedido(this)">
       Terminar Pedido
     </button>
   </div>
