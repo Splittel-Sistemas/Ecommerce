@@ -7,8 +7,8 @@ if (!class_exists("Connection")) {
 if (!class_exists("Functions_tools")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
 }
-if (!class_exists("SolicitudCursos")) {
-  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Cursos/Alta.Model.php';
+if (!class_exists("SolicitudC")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Solicitud/Ficrece/Alta.Model.php';
 }
 
 if (!class_exists("TemplateFicrece")) {
@@ -20,7 +20,7 @@ if (!class_exists("TemplateFicrece")) {
 /**
  * 
  */
-class SolicitudCursosController
+class SolicitudCController
 {
 
   protected $Connection;
@@ -39,7 +39,7 @@ class SolicitudCursosController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudCursos();
+        $SolicitudCModel = new SolicitudC();
         $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
         $items = $SolicitudCModel->Get($this->filter, $this->order);
         unset($SolicitudCModel);
@@ -54,7 +54,7 @@ class SolicitudCursosController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudCursos();
+        $SolicitudCModel = new SolicitudC();
         $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
         $SolicitudCModel->GetBy($this->filter, $this->order);
         return $SolicitudCModel;
@@ -69,7 +69,7 @@ class SolicitudCursosController
   {
     try {
       if (!$this->Connection->conexion()->connect_error) {
-        $SolicitudCModel = new SolicitudCursos();
+        $SolicitudCModel = new SolicitudC();
 
         $SolicitudCModel->SetParameters($this->Connection, $this->Tool);
 
@@ -77,57 +77,67 @@ class SolicitudCursosController
         exit; */
 
 
-        $SolicitudCModel->Setname(str_replace("'", "",$_POST['name']));
-        $SolicitudCModel->Setdate($_POST['date']);
-        $SolicitudCModel->SetNombreSolicitud(str_replace("'", "",$_POST['NombreSolicitud']));
-        $SolicitudCModel->SetTitulo(str_replace("'", "",$_POST['Titulo']));
-        $SolicitudCModel->SetEmpresa(str_replace("'", "",$_POST['Empresa']));
-        $SolicitudCModel->SetPuesto(str_replace("'", "",$_POST['Puesto']));
+        $SolicitudCModel->SetRazonSocial($_POST['RazonSocial']);
+        $SolicitudCModel->SetRfc($_POST['Rfc']);
+        $SolicitudCModel->SetDomicilioFiscal($_POST['DomicilioFiscal']);
+        $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
+        $SolicitudCModel->SetDepartamento($_POST['Departamento']);
+        $SolicitudCModel->SetTitulo($_POST['Titulo']);
         $SolicitudCModel->SetTelefono($_POST['Telefono']);
-        $SolicitudCModel->SetCorreoEmpresarial($_POST['CorreoEmpresarial']);
-        $SolicitudCModel->SetCorrePersonal($_POST['CorrePersonal']);
-        $SolicitudCModel->SetWhatsapp($_POST['Whatsapp']);
-        $SolicitudCModel->SetRestriccion(str_replace("'", "",$_POST['Restriccion']));
-        $SolicitudCModel->SetAp($_POST['Ap']);
-        $SolicitudCModel->SetAm($_POST['Am']);
-        $name1='';
-       
+        $SolicitudCModel->SetCorreo($_POST['Correo']);
+        $SolicitudCModel->SetCorreEjecutivo($_POST['CorreEjecutivo']);
+        $SolicitudCModel->SetNummeroInt($_POST['NummeroInt']);
+        $SolicitudCModel->SetCalle($_POST['Calle']);
+        $SolicitudCModel->SetColonia($_POST['Colonia']);
+        $SolicitudCModel->SetCuidad($_POST['Cuidad']);
+        $SolicitudCModel->SetCP($_POST['CP']);
+        $SolicitudCModel->SetEstado($_POST['Estado']);
+        $SolicitudCModel->SetNombreComercial($_POST['NombreComercial']);
+        $SolicitudCModel->SetWeb($_POST['Web']);
+        $SolicitudCModel->SetvaloresCheck($_POST['valoresCheck']);
+        $SolicitudCModel->SetWhats($_POST['Whats']);
 
-          if (!file_exists('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/')) {
-          if (mkdir('../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/', 0777, true)) {
 
+        /* $ext = end(explode(".", $_FILES['file']['name']));	  */
+        /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
+
+        /*  print_r($_POST['PERSONA']);
+        exit; */
+        if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+            $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
+          if (!is_dir($uploadDir)) {
+            if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
+
+              $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+              $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+              move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
+              #$file_nname = $_FILES['file']['name'];
+              $SolicitudCModel->SetDoc1($name1);
+
+
+              $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
+
+              // Check whether submitted data is not empty 
+              // File path config 
+              $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
+              $targetFilePath = $uploadDir . $fileName;
+            }
+          }else{
             $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-            $name1 =  ('1-' . $_POST['Whatsapp'] . '.' . $ext1);
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/' . $name1);
-            #$file_nname = $_FILES['file']['name'];
-            
+              $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+              move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
+              #$file_nname = $_FILES['file']['name'];
+              $SolicitudCModel->SetDoc1($name1);
 
 
-            $uploadDir = '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/';
+              $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
 
-            // Check whether submitted data is not empty 
-            // File path config 
-            $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
-            $targetFilePath = $uploadDir . $fileName;
+              // Check whether submitted data is not empty 
+              // File path config 
+              $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
+              $targetFilePath = $uploadDir . $fileName;
           }
-        }else{
-          $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-            $name1 =  ('1-' . $_POST['Whatsapp'] . '.' . $ext1);
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/' . $name1);
-            #$file_nname = $_FILES['file']['name'];
-            
-
-
-            $uploadDir = '../../../public/images/img_spl/registro/Cursos/' . $_POST['Whatsapp'] . '/';
-
-            // Check whether submitted data is not empty 
-            // File path config 
-            $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
-            $targetFilePath = $uploadDir . $fileName;
         }
-        $SolicitudCModel->SetDoc1($name1);
-
-
 
 
         $ResultSolicitud = $SolicitudCModel->Add();
@@ -558,18 +568,26 @@ class SolicitudCursosController
                   
                  
                     <td class="wrapper">
-                    <p align="center" style="margin-bottom:10px;"><strong>Nombre del curso: </strong>' . $_POST['name'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Fecha: </strong>' . $_POST['date'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong> RAZON SOCIAL: </strong>' . $_POST['RazonSocial'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>RFC: </strong>' . $_POST['Rfc'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DIRECCIÓN FISCAL: </strong>' . $_POST['DomicilioFiscal'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMPLETO: </strong>' . $_POST['NombreSolicitud'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DEPARTAMENTO: </strong>' . $_POST['Departamento'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>WHATSAPP: </strong>' . $_POST['Whats'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . $_POST['CorreEjecutivo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Nombre y Título: </strong>' .$_POST['Titulo']." ". $_POST['NombreSolicitud'] ." ". $_POST['Ap']." ". $_POST['Am']. '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Empresa: </strong>' . $_POST['Empresa'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Puesto: </strong>' . $_POST['Puesto'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Telefono: </strong>' . $_POST['Telefono'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Correo Empresarial: </strong>' . $_POST['CorreoEmpresarial'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Correo Personal: </strong>' . $_POST['CorrePersonal'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>WhatsApp personal : </strong>' . $_POST['Whatsapp'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Restriccion alimentaria : </strong>' . $_POST['Restriccion'] . '</p>
-                   
+                    <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT. : </strong>' . $_POST['NummeroInt'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . $_POST['Colonia'] . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CIUDAD / MUNICIPIO: </strong>' . $_POST['Cuidad'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CÓDIGO POSTAL: </strong>' . $_POST['CP'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>ESTADO: </strong>' . $_POST['Estado'] . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>GIRO DE LA EMPRESA: </strong> ' . $_POST['valoresCheck'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMERCIAL: </strong> ' . $_POST['NombreComercial'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>PÁGINA WEB: </strong> ' . $_POST['Web'] . ' </p>
+
 
                       <p><br></p>
                       <p align="center">Este es un correo electrónico generado automáticamente</p>
@@ -626,19 +644,18 @@ class SolicitudCursosController
           if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
             $mail->AddAttachment($targetFilePath);
           }
-          $asunto    = 'CURSOS PAGADOS';
+          $asunto    = 'Alta Lead';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
           //Mails
           $mail->From = 'notificaciones@fibremex.com';
 
-          $mail->AddCC('marketing.directo@splittel.com'); // FROM 
-          $eje = $_POST['CorreEjecutivo'];
+          $mail->AddCC('marketing.directo@splittel.com');
+          $eje = $_POST['CorreEjecutivo'] ;
           $mail->AddAddress("$eje");
+   
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
-    /*        $mail->AddBCC('ramon.olea@splittel.com'); //BCC COPIA OCULTA */
-         
-      
+          $mail->AddBCC('leobardo.perez@splittel.com');
           $mail->MsgHTML($mensaje);
 
           //Avisar si fue enviado o no y dirigir al index
