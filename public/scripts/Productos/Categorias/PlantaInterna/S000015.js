@@ -72,6 +72,9 @@ var Pigtails = function(){
       if (NumeroHilos.value == 'D') {
         CodigoGenerado = Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+NumeroHilos.value+Otro+Longitud+Cubierta+Diametro.value
       }else{
+        if(TipoFibra.value==57 && NumeroHilos.value=='' && Diametro.value==2)
+            Cubierta="ZH"
+        
         CodigoGenerado = Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+Otro+Longitud+Cubierta+Diametro.value+NumeroHilos.value
       }
     }
