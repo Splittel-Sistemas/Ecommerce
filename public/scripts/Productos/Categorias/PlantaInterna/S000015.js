@@ -64,7 +64,7 @@ var Pigtails = function(){
       StyleDisplayNoneOrBlock_2(Diametro, "block", [0,1])
       
     }
-
+    Diametroselected = Diametro.options[Diametro.selectedIndex].text;
     LongitudIdText.innerHTML = 'Longitud (m) '+LongitudMin+'~'+LongitudMax+':'
     Longitud1=Longitud.value 
     if (Longitud.value >= LongitudMin && Longitud.value <= LongitudMax) {
@@ -78,7 +78,7 @@ var Pigtails = function(){
         CodigoGenerado = Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+Otro+Longitud+Cubierta+Diametro.value+NumeroHilos.value
       }
     }
-  
+    
     ChangeListImgProducto(Marca+Familia+Pigtail.value,Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+NumeroHilos.value)
     ListProductoDescription(Marca+Familia+Pigtail.value)
     ListProductoAdicional(Marca+Familia+Pigtail.value)
