@@ -19,6 +19,44 @@ var ajaxViews = function (url, method, type, data, success) {
   });
 };
 
+let xhr = null;
+var _ajax_ = function (url, method, type, data, success) {
+ 
+  if(xhr && xhr.readyState != 4) { 
+    xhr.abort();
+}
+xhr =  $.ajax({
+    url: url,
+    method: method,
+    data: data,
+    dataType: type,
+    beforeSend: function (xhr) {
+      Elem = document.getElementById("dataInterna");
+      xhr.setRequestHeader(
+        "Authorization",
+        "Basic " +
+          btoa(
+            Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
+          )
+      );
+      $("#customizer-backdrop").addClass("active");
+    },
+    success: function (response) {
+      if (response != null && success != null) {
+        success(response);
+        $("#customizer-backdrop").removeClass("active");
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(
+        "Error: " + errorThrown,
+        "Hubo un error en la llamada:  " + url + " | " + textStatus
+      );
+      $("#customizer-backdrop").removeClass("active");
+    },
+  });
+};
+
 var ajax_ = function (url, method, type, data, success) {
   $.ajax({
     url: url,

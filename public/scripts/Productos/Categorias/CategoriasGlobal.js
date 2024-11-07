@@ -737,7 +737,7 @@ var agregarCertificadoConfigurable = function(codigo){
 
 
 var CalcularPrecio = function(url, data){
-  ajax_(url, 'POST', 'JSON', data, 
+  _ajax_(url, 'POST', 'JSON', data, 
   function(response){
     //console.log(CurrencyRate)
     //console.log(CurrencySite)
