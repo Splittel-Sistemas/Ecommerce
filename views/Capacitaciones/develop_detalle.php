@@ -34,9 +34,29 @@
 
 <div class="text-muted opacity-75 padding-top-3x ">CALENDARIO DE EVENTOS</div>
   <hr class="padding-top-1x">
+  <?php
+      $CatalogoEventos = new CatalogoCapacitaciones();
+      $responseCalEvents = $CatalogoEventos->getEventsCal("WHERE activo='si' AND YEAR(start) = YEAR(NOW()) AND MONTH(START) >= MONTH(NOW()) AND title = 'Develop'", "ORDER BY start ASC", false);
+      
+      if(count($responseCalEvents) == 0){
+        ?>
+        
+        <div class="col-md-12">
+        <div class="gallery-wrapper" data-pswp-uid="1">
+          <div class="gallery-item">
+
+          <img  src="../../public/images/img_spl/capacitaciones/NuevasFechasProximamente.png">
+        </div>
+        </div>
+        </div>
+       
+      <?php
+      }else{
+      ?>
   <h6 class=" text-normal padding-bottom-2x">Consulta nuestra oferta academica de todo el año.</h6>
   <div class="col-lg-12 col-md-8 order-md-2">
     <div class="accordion" id="accordion1" role="tablist">
+   
       <?php
       $CatalogoCursos = new CatalogoCapacitaciones();
       $responseCal = $CatalogoCursos->getMonths("AND title = 'Develop'
@@ -113,5 +133,6 @@
           </div>
         </div>
       <?php endforeach ?>
+      <?php } ?>
     </div>
   </div>
