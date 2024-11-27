@@ -120,7 +120,12 @@
                             if(!empty($lines->EmailEjecutivo)){
                                 $this->Email->MailerListTo[] = $lines->EmailEjecutivo;
                             }
-                            if($this->Email->EmailSendEmail()){
+                            // Configurar la zona horaria de México
+                            date_default_timezone_set('America/Mexico_City');
+
+                            // Obtener la hora actual
+                            $horaActual = date('G');
+                            if($this->Email->EmailSendEmail() && $horaActual <= 10){
                                 echo "Correo reporte del cliente: ".$Customer->Nombre." - Enviado <br>";
                             }else{
                                 echo "Correo reporte del cliente: ".$Customer->Nombre." - No enviado <br>";
