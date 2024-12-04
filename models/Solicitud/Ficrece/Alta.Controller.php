@@ -64,6 +64,32 @@ class SolicitudCController
     }
   }
 
+  private function eliminarDirectorioCompleto($directorio) {
+    if (!is_dir($directorio)) {
+        echo "El directorio no existe o no es válido.";
+        return false;
+    }
+
+    // Iterar por cada archivo o subdirectorio
+    foreach (scandir($directorio) as $elemento) {
+        if ($elemento === '.' || $elemento === '..') {
+            continue; // Ignorar los directorios especiales "." y ".."
+        }
+
+        $ruta = $directorio . DIRECTORY_SEPARATOR . $elemento;
+
+        if (is_dir($ruta)) {
+            // Llamada recursiva si es un subdirectorio
+            eliminarDirectorioCompleto($ruta);
+        } else {
+            // Eliminar archivo
+            unlink($ruta);
+        }
+    }
+
+    // Una vez vacío, eliminar el directorio
+    return rmdir($directorio);
+}
 
   public function Alta()
   {
@@ -105,7 +131,7 @@ class SolicitudCController
         exit; */
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
             $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
-            unlink($uploadDir);
+            
           if (!is_dir($uploadDir)) {
             if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
 
@@ -124,10 +150,11 @@ class SolicitudCController
               $targetFilePath = $uploadDir . $fileName;
             }
           }else{
+           if($this->eliminarDirectorioCompleto($uploadDir)){
             $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
               $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
               move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
-              file_put_contents($rutaArchivo, $contenido);
+              
               #$file_nname = $_FILES['file']['name'];
               $SolicitudCModel->SetDoc1($name1);
 
@@ -138,6 +165,7 @@ class SolicitudCController
               // File path config 
               $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
               $targetFilePath = $uploadDir . $fileName;
+           }
           }
         }
 
