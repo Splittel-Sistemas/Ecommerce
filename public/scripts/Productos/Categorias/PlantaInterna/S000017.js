@@ -1325,6 +1325,82 @@ var cable_F8 = function(){
       agregarCertificadoConfigurable(CodigoGenerado)
 }
 
+var cable_FT = function(){
+  // alert(TipoTermiacion.value);
+  let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
+  let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
+ 
+  /*
+  Adicionales[0].selected=true
+  StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0]);
+  StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
+if((ConectorLadoA.value=='BH'|| ConectorLadoA.value=='BG') && ConectorLadoB.value=='BL'){
+  ConAuxLadoA=ConectorLadoB.value;
+  ConAuxLadoB=ConectorLadoA.value;
+}
+else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
+  ConAuxLadoA=ConectorLadoB.value;
+  ConAuxLadoB=ConectorLadoA.value;
+}else{
+  ConAuxLadoA=ConectorLadoA.value;
+  ConAuxLadoB=ConectorLadoB.value;
+}
+*/
+  ConAuxLadoA=ConectorLadoA.value;
+  ConAuxLadoB=ConectorLadoB.value;
+
+  if(TipoTermiacion.value == '2MM'){
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 2 - 2";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 2 - 999";
+    if(ValidInputRange(NoHilos,2,2) && ValidInputRange(Longitud,3,999)){
+      CodigoGenerado=Marca + Familia + "HW" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      showClave(CodigoGenerado);
+      //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
+      let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+      let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+      let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+      let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+      let Adicionalesselected = Adicionales.options[Adicionales.selectedIndex].text
+      let descripcion_cable = "Cable preconectorizado FTTA "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+"-"+ConectorLadoBselected+" de "+NoHilos.value+" hilos de "+Longitud.value+" metro(s) "+Adicionalesselected
+      
+      if(CodigoGenerado!=''){
+       NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
+       DescPrdConf.innerHTML=descripcion_cable 
+      }
+      
+    }
+  }
+
+  let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
+    let data = {
+    Action: 'calculo',
+    BreakOut : BreakOut,
+    ActionPrecioPreconectorizados: true,
+    CablesPreconId: 10,
+    CablesPreconNumeroHilos: NoHilos.value,
+    CablesPreconLongitud: Longitud.value,
+    CablesPreconTipoFibra: TipoFibra.value,
+    Conector_1: Aux_ConectorLadoA,
+    Conector_2: Aux_ConectorLadoB,
+    Cubierta:TipoCubierta.value,
+    Uso:'Interior',
+    Codigo: CodigoGenerado,
+    SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+  }
+  CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
+
+
+  let DirectorioImgProducto = Marca + Familia + "D0/fotos"
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "D0")
+  ListProductoAdicional(Marca + Familia + "D0")
+  agregarFichaTecnicaConfigurable(Marca + Familia + "D0")
+  agregarCertificadoConfigurable(CodigoGenerado)
+}
+
 var interior_exterior_cable = function() {
     let Cable = document.getElementById('Cable')
     switch(Cable.value){
@@ -1357,6 +1433,9 @@ var interior_exterior_cable = function() {
         break;
       case 'F8' : // Cable Exterior Figura 8 con armadura
         cable_F8()
+        break;
+       case 'FT' : // Cable FTTA
+        cable_FT()
         break;
       default:
         templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")

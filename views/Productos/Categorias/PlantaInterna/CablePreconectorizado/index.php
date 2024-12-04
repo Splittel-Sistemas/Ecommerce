@@ -19,5 +19,7 @@
     include 'C36_ADSS.php';
   }elseif ($_GET['codigo'] == 'C37') {
     include 'C37_DropFiguraCero.php';
+  }elseif ($_GET['codigo'] == 'C104') {
+    include 'C104_FTTA.php';
   }
 ?>
