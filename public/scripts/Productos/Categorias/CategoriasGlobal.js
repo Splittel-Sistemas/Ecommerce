@@ -682,6 +682,7 @@ if(document.getElementById('CodeConfigurable') && hhh == 0){
  * @return {number} b - Bar
  */
 var agregarFichaTecnicaConfigurable = function(idFicha){
+  console.log(idFicha)
   let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
   FichaTecnicaTecnica.innerHTML ='';
   if(idFicha != ''){
@@ -691,6 +692,7 @@ var agregarFichaTecnicaConfigurable = function(idFicha){
       CodigoFicha: idFicha
     }, 
     function(response){
+      console.log(response)
       if(response.ruta!=''){
       textFicha='<button class="btn btn-outline-secondary btn-sm "> '+
             '<a href="../../public/images/img_spl/'+response.ruta+'.pdf" target="_blank">'+

@@ -1330,22 +1330,7 @@ var cable_FT = function(){
   let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
   let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
  
-  /*
-  Adicionales[0].selected=true
-  StyleDisplayNoneOrBlock_2(Adicionales, 'none', [0]);
-  StyleDisplayNoneOrBlock_2(Adicionales, 'block', [1]);
-if((ConectorLadoA.value=='BH'|| ConectorLadoA.value=='BG') && ConectorLadoB.value=='BL'){
-  ConAuxLadoA=ConectorLadoB.value;
-  ConAuxLadoB=ConectorLadoA.value;
-}
-else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
-  ConAuxLadoA=ConectorLadoB.value;
-  ConAuxLadoB=ConectorLadoA.value;
-}else{
-  ConAuxLadoA=ConectorLadoA.value;
-  ConAuxLadoB=ConectorLadoB.value;
-}
-*/
+ 
   ConAuxLadoA=ConectorLadoA.value;
   ConAuxLadoB=ConectorLadoB.value;
 
@@ -1393,11 +1378,83 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
 
 
 
-  let DirectorioImgProducto = Marca + Familia + "D0/fotos"
+  let DirectorioImgProducto = Marca + Familia + "FT/fotos/" + Aux_ConectorLadoB 
   ListImgProducto(DirectorioImgProducto)
-  ListProductoDescription(Marca + Familia + "D0")
-  ListProductoAdicional(Marca + Familia + "D0")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "D0")
+  ListProductoDescription(Marca + Familia + "FT")
+  ListProductoAdicional(Marca + Familia + "FT")
+  agregarFichaTecnicaConfigurable(Marca + Familia + "FT")
+  agregarCertificadoConfigurable(CodigoGenerado)
+}
+
+var cable_DB0 = function(){
+  // alert(TipoTermiacion.value);
+  let Aux_ConectorLadoA = ConectorLadoA.options[ConectorLadoA.selectedIndex].getAttribute('data-conector')
+  let Aux_ConectorLadoB = ConectorLadoB.options[ConectorLadoB.selectedIndex].getAttribute('data-conector')
+ 
+
+
+  ConAuxLadoA=ConectorLadoA.value;
+  ConAuxLadoB=ConectorLadoB.value;
+  console.log(ConectorLadoA.value)
+  if(ConectorLadoA.value=='BQ'){
+    StyleDisplayNoneOrBlock_2(ConectorLadoB, 'none', [0]);
+    if(ConectorLadoB.selectedIndex == 0)
+        ConectorLadoB.selectedIndex = 1
+  }else{
+    StyleDisplayNoneOrBlock_2(ConectorLadoB, 'block', [0]);
+  }
+
+
+let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
+      let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
+      let ConectorLadoAselected = ConectorLadoA.options[ConectorLadoA.selectedIndex].text
+      let ConectorLadoBselected = ConectorLadoB.options[ConectorLadoB.selectedIndex].text
+  if(TipoTermiacion.value == '3MM'){
+    // mostrar rango de hilos valido
+    NoHilos_label.innerHTML = " 1 - 1";
+    // mostrar longitud valida
+    Longitud_label.innerHTML = " 1 - 999";
+    if(ValidInputRange(NoHilos,1,1) && ValidInputRange(Longitud,1,999)){
+      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3);
+      showClave(CodigoGenerado);
+      //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
+      
+      let descripcion_cable = "Cable preconectorizado Drop Figura 0 "+TipoFibraselected+" "+TipoCubiertaselected+" "+ConectorLadoAselected+" a "+ConectorLadoBselected+" de "+NoHilos.value+" hilo(s) de "+Longitud.value+" metro(s) "
+      
+      if(CodigoGenerado!=''){
+       NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
+       DescPrdConf.innerHTML=descripcion_cable 
+      }
+      
+    }
+  }
+
+  let BreakOut =  0
+    let data = {
+    Action: 'calculo',
+    BreakOut : BreakOut,
+    ActionPrecioPreconectorizados: true,
+    CablesPreconId: 10,
+    CablesPreconNumeroHilos: NoHilos.value,
+    CablesPreconLongitud: Longitud.value,
+    CablesPreconTipoFibra: TipoFibra.value,
+    Conector_1: Aux_ConectorLadoA,
+    Conector_2: Aux_ConectorLadoB,
+    Cubierta:TipoCubierta.value,
+    Uso:'Interior',
+    Codigo: CodigoGenerado,
+    SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
+  }
+  CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
+
+
+
+  let DirectorioImgProducto = Marca + Familia + "DB0/fotos/"+ConectorLadoAselected+ConectorLadoBselected
+  
+  ListImgProducto(DirectorioImgProducto)
+  ListProductoDescription(Marca + Familia + "DB0")
+  ListProductoAdicional(Marca + Familia + "DB0")
+  agregarFichaTecnicaConfigurable(Marca + Familia + "DB0")
   agregarCertificadoConfigurable(CodigoGenerado)
 }
 
@@ -1436,6 +1493,9 @@ var interior_exterior_cable = function() {
         break;
        case 'FT' : // Cable FTTA
         cable_FT()
+        break;
+        case 'DB0' : // Cable Drop Figura 0 bala
+        cable_DB0()
         break;
       default:
         templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")

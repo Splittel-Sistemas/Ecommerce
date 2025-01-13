@@ -21,5 +21,7 @@
     include 'C37_DropFiguraCero.php';
   }elseif ($_GET['codigo'] == 'C104') {
     include 'C104_FTTA.php';
+  }elseif ($_GET['codigo'] == 'C105') {
+    include 'C105_DropFiguraCeroBala.php';
   }
 ?>
