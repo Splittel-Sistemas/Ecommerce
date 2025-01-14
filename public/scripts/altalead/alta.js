@@ -61,10 +61,13 @@ var EnviarAlta = function () {
   fda.append("valoresCheck", valoresCheck);
 
   var file_data = $("#file").prop("files")[0];
+  const fileExtension = file_data.name.split('.').pop().toLowerCase();
   fda.append("file", file_data);
   if (CorreEjecutivo != "") {
     //ejecutivo obligatorio
-    if (file_data != undefined) {
+    if (file_data != undefined )  {
+
+     if( fileExtension == 'pdf' ){
       //constancia obligatoria
       $.ajax({
         url: "../../models/Solicitud/Ficrece/Alta.Route.php",
@@ -95,6 +98,17 @@ var EnviarAlta = function () {
           }
         },
       });
+    }else{
+      $("#botonenviar").show();
+
+      templateAlert(
+        "danger",
+        "",
+        "La constancia de situación fiscal en PDF es obligatoria",
+        "topRight",
+        ""
+      );
+    }
     } else {
       $("#botonenviar").show();
 
