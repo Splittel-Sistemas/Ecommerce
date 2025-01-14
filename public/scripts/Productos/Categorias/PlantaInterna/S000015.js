@@ -100,7 +100,7 @@ var Pigtails = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/Pigtails/CalcularPrecioPigtail.Route.php", data)
-    agregarFichaTecnicaConfigurable(Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+Otro)
+    agregarFichaTecnicaConfigurable(Marca+Familia+Pigtail.value+TipoPulido+TipoFibra.value+Otro+Diametro.value)
     agregarCertificadoConfigurable(CodigoGenerado)
 }
 
