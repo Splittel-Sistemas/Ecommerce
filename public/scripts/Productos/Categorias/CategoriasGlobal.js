@@ -541,7 +541,7 @@ var StockEnTransito = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
-    console.log(response);
+    //console.log(response);
     
     if (!response.error && response.count > 0) {
       //let resultResponse =  response.records
@@ -580,7 +580,7 @@ var StockEnTransito = function(Codigo){
 }
 
 var existJumper_ = function(Codigo){
-  console.log(Codigo)
+  //console.log(Codigo)
   hhh = 1
   ajax_("../../models/Productos/Producto.Route.php", "POST", "JSON", 
   { 
@@ -649,7 +649,7 @@ var NombreProductoConfigurable = function(Codigo, Descripcion){
       Descripcion: Descripcion
     }, 
     function(response){
-      console.log(response)
+      //console.log(response)
     })
   }
 }
@@ -682,7 +682,7 @@ if(document.getElementById('CodeConfigurable') && hhh == 0){
  * @return {number} b - Bar
  */
 var agregarFichaTecnicaConfigurable = function(idFicha){
-  console.log(idFicha)
+  //console.log(idFicha)
   let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
   FichaTecnicaTecnica.innerHTML ='';
   if(idFicha != ''){
@@ -692,7 +692,7 @@ var agregarFichaTecnicaConfigurable = function(idFicha){
       CodigoFicha: idFicha
     }, 
     function(response){
-      console.log(response)
+      //console.log(response)
       if(response.ruta!=''){
       textFicha='<button class="btn btn-outline-secondary btn-sm "> '+
             '<a href="../../public/images/img_spl/'+response.ruta+'.pdf" target="_blank">'+
@@ -737,11 +737,45 @@ var agregarCertificadoConfigurable = function(codigo){
   } 
 }
 
+function decryptAjax(responses) {
+  const base64Ciphertext = atob(responses.text);  // Texto cifrado (Base64)
+  const base64IV = responses.cviv;  // IV (Base64)
+  const key = atob(responses.GGG);
+  console.log(responses.text);
+  
+  const ciphertext = CryptoJS.enc.Base64.parse(base64Ciphertext);
+  const iv = CryptoJS.enc.Base64.parse(base64IV);
+
+// Desencriptar usando AES con el mismo método (AES-256-CBC)
+const decrypted = CryptoJS.AES.decrypt(
+    { ciphertext: ciphertext },
+    CryptoJS.enc.Utf8.parse(key),
+    {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    }
+);
+
+// Convertimos el texto desencriptado a UTF-8
+const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
+
+if (!decryptedText) {
+  console.error("Error: Los datos desencriptados no son válidos o están mal formateados.");
+} else {
+  console.log("OK");
+}
+
+  return decryptedText
+}
 
 var CalcularPrecio = function(url, data){
   _ajax_(url, 'POST', 'JSON', data, 
-  function(response){
-    //console.log(CurrencyRate)
+  function(responses){
+    
+    response=JSON.parse(decryptAjax(responses))
+    
+    //console.log(response)
     //console.log(CurrencySite)
     if (!response.error) {
       $('#span-leyenda').remove()
@@ -781,8 +815,9 @@ var CalcularPrecio = function(url, data){
 
 var CalcularPrecioPatchCords = function(url, data){
   ajax_(url, 'POST', 'JSON', data, 
-  function(response){
+  function(responses){
     //console.log(response)
+    response=JSON.parse(decryptAjax(responses))
     if (!response.error) {
       $('#span-leyenda').remove()
       let mostrarPrecio=0;

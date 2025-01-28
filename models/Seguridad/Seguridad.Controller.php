@@ -23,6 +23,21 @@
 			$this->Tool = new Functions_tools();
 		}
 
+		public function encryptAjax($data){
+			// Clave y vector de inicialización (IV)
+			$cipher = "AES-256-CBC";
+			$key = "*_#Spl123Fib321#OPt456Devs654#_*"; // Clave de 32 caracteres (256 bits)   
+			$iv = substr(('Dev#Splitt3l#Eco'), 0, 16);
+			$plaintext = $data;
+			$encrypted = openssl_encrypt($plaintext, $cipher, $key, 0, $iv);
+			return json_encode([
+				"text" => base64_encode($encrypted),
+				"cviv" => base64_encode($iv), // También codificamos el IV en Base64
+				"GGG" => base64_encode($key)
+			]);
+
+		}
+
 		/**
 		 * Description
 		 *

@@ -17,12 +17,13 @@
 
 		public function Controller(){
 			try {
+				$SeguridadController = new SeguridadController();
 				$Action = $this->Tool->validate_isset_post('Action');
 				switch ($Action) {
 					case 'calcular':
                         $CalcularPrecioController = new CalcularPrecioController();
                         $Result = $CalcularPrecioController->Calcular();
-                        echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+                        echo $SeguridadController->encryptAjax(json_encode($Result, JSON_UNESCAPED_UNICODE));
 					break;
 					default:
 						throw new Exception("No se encontro la opción solicitada, por favor contactanos");

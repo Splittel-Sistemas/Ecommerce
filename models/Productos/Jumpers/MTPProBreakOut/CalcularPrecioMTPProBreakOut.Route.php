@@ -22,7 +22,8 @@
           case 'calcular':
             $CalcularPrecioMTPProBreakOutController = new CalcularPrecioMTPProBreakOutController();
             $Result = $CalcularPrecioMTPProBreakOutController->Calcular();
-            echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+            $SeguridadController = new SeguridadController();
+            echo $SeguridadController->encryptAjax(json_encode($Result, JSON_UNESCAPED_UNICODE));
           break;
           default:
             throw new Exception("No se encontro la opción solicitada, por favor contactanos");
