@@ -61,13 +61,14 @@ var EnviarAlta = function () {
   fda.append("valoresCheck", valoresCheck);
 
   var file_data = $("#file").prop("files")[0];
-  const fileExtension = file_data.name.split('.').pop().toLowerCase();
-  fda.append("file", file_data);
+  
   if (CorreEjecutivo != "") {
     //ejecutivo obligatorio
     if (file_data != undefined )  {
-
+      const fileExtension = file_data.name.split('.').pop().toLowerCase();
+      fda.append("file", file_data);
      if( fileExtension == 'pdf' ){
+      
       //constancia obligatoria
       $.ajax({
         url: "../../models/Solicitud/Ficrece/Alta.Route.php",
