@@ -13,7 +13,7 @@
         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Cursos.php';
       }
       $CatalogoCursos = new CatalogoCursos();
-      $response = $CatalogoCursos->get("", "", false);
+      $response = $CatalogoCursos->get(" WHERE activo = 'si'", "", false);
     ?>
     <!-- Page Title-->
     <div class="page-title">
