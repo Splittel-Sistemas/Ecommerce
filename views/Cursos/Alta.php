@@ -76,15 +76,12 @@
                                     <label class="text-uppercase">Nombre del curso: <strong class="text-danger">*</strong></label>
                                     <select class="form-control form-control-2" id="name" name="name" required onchange="ShowMessage()">
                                         <option value="">Selecciona una opcion</option>
-                                        <option value="Planta Interna de Fibra Óptica">Planta Interna de Fibra Óptica
-                                        </option>
-                                        <option value="Planta Externa de Fibra Óptica">Planta Externa de Fibra Óptica
-                                        </option>
-                                        <option value="Método de Soplado">Método de Soplado</option>
-                                        <option value="Fibra hasta el Usuario Redes Ópticas Pasivas">Fibra hasta el
-                                            Usuario Redes Ópticas Pasivas</option>
-                                        <option value="Cableado Estructurado">Cableado Estructurado </option>
-                                        <option value="Certificación Partners">Certificación Partners</option>
+                                        <option value="Cableado Estructurado para Redes de Fibra y Cobre">Cableado Estructurado para Redes de Fibra y Cobre</option>
+                                        <option value="Curso de Redes de Fibra Óptica Planta Externa">Curso de Redes de Fibra Óptica Planta Externa</option>
+                                        <option value="Redes de Fibra Óptica FTTH para WISP e ISP">Redes de Fibra Óptica FTTH para WISP e ISP</option>
+                                        <option value="PONLAN Redes Ópticas Pasivas para Entornos Enterprise">PONLAN Redes Ópticas Pasivas para Entornos Enterprise</option>
+                                        <option value="Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica">Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica</option>
+                                        <option value="Certificación Partners Optronics">Certificación Partners Optronics</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
