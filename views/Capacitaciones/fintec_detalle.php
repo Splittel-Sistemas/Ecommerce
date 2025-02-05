@@ -31,7 +31,8 @@
           </div>
  <?php endforeach ?>
 </div>
-
+</div>
+<div class="col-xl-12 col-lg-8 order-lg-2">
 <div class="text-muted opacity-75 padding-top-3x ">CALENDARIO DE EVENTOS</div>
   <hr class="padding-top-1x">
   <h6 class=" text-normal padding-bottom-2x">Consulta nuestra oferta academica de todo el año.</h6>
@@ -44,9 +45,9 @@
       ?>
       <?php foreach ($responseCal as $row) : ?>
         <div class="card">
-          <div class="card-header" role="tab" style="background-color:#f5f5f5;">
+          <div class="card-header" role="tab" style="background-color:#7A7A7A;">
             <h3><a <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> expanded="true" <?php } ?> class="collapsed" href="#collapse<?php echo $row->mes_num . $row->anio; ?>" data-toggle="collapse">
-                <b><?php echo "Calendario actividades <span class='text-uppercase'>" . $row->mes_nombre . '</span>'; ?></b></a>
+                <b style="color:white;"><?php echo "Calendario actividades <span class='text-uppercase'>" . $row->mes_nombre . '</span>'; ?></b></a>
             </h3>
           </div>
           <div class="collapse <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> show <?php } ?>" id="collapse<?php echo $row->mes_num . $row->anio; ?>" data-parent="#accordion1" role="tabpanel">

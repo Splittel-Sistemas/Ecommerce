@@ -34,7 +34,8 @@
             </div>
           </div>
 </div>
-
+</div>
+<div class="col-xl-12 col-lg-8 order-lg-2">
 <p class="text-muted text-center text-normal  margin-top-3x">
         Consulta nuestro calendario de eventos. Si te interesa alguno de los temas que tocamos,<br/>
         <b>llámanos al 800 134 26 90,</b> queremos atenderte.
@@ -53,9 +54,9 @@
       ?>
       <?php foreach ($responseCal as $row) : ?>
         <div class="card">
-          <div class="card-header" role="tab" style="background-color:#f5f5f5;">
+          <div class="card-header" role="tab" style="background-color:#7A7A7A;">
             <h3><a <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> expanded="true" <?php } ?> class="collapsed" href="#collapse<?php echo $row->mes_num . $row->anio; ?>" data-toggle="collapse">
-                <b><?php echo "Calendario actividades <span class='text-uppercase'>" . $row->mes_nombre . '</span>'; ?></b></a>
+                <b style="color:white;"><?php echo "Calendario actividades <span class='text-uppercase'>" . $row->mes_nombre . '</span>'; ?></b></a>
             </h3>
           </div>
           <div class="collapse <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> show <?php } ?>" id="collapse<?php echo $row->mes_num . $row->anio; ?>" data-parent="#accordion1" role="tabpanel">
