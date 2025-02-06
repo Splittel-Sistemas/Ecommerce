@@ -61,15 +61,21 @@
           </div>
           <div class="gallery-wrapper">
             <div class="row">
+              <?php if($response->img_min1!=''){ ?>
               <div class="col-md-4 col-sm-6 col-4">
                 <div class="gallery-item"><a href="../../public/images/img_spl/cursos/<?php echo $response->img_min1?>" data-size="900x600"><img src="../../public/images/img_spl/cursos/<?php echo $response->img_min1?>" alt="<?php echo $response->nombre;?>"></a><span class="caption"><?php echo $response->titulo;?></span></div>
               </div>
+              <?php } ?>
+              <?php if($response->img_min2!=''){ ?>
               <div class="col-md-4 col-sm-6 col-4">
                 <div class="gallery-item"><a href="../../public/images/img_spl/cursos/<?php echo $response->img_min2?>" data-size="900x600"><img src="../../public/images/img_spl/cursos/<?php echo $response->img_min2;?>" alt="<?php echo $response->nombre;?>"></a><span class="caption"><?php echo $response->titulo;?></span></div>
               </div>
+              <?php } ?>
+              <?php if($response->img_min3!=''){ ?>
               <div class="col-md-4 col-sm-6 col-4">
                 <div class="gallery-item"><a href="../../public/images/img_spl/cursos/<?php echo $response->img_min3?>" data-size="900x600"><img src="../../public/images/img_spl/cursos/<?php echo $response->img_min3;?>" alt="<?php echo $response->nombre;?>"></a><span class="caption"><?php echo $response->titulo;?></span></div>
               </div>
+              <?php } ?>
             </div>
           </div>
           <h2 class="pt-4"><?php echo $response->titulo?></h2>
@@ -132,7 +138,7 @@
                 <div class="row text-left col-8"> 
                   <?php
                   $CatalogoCursos1 = new CatalogoCursos();
-                  $response1 = $CatalogoCursos1->get("", "", false);
+                  $response1 = $CatalogoCursos1->get(" WHERE activo='si' ", "", false);
                     if ($response1->count > 0): 
                     foreach ($response1->records as $key => $row):
                   ?>
