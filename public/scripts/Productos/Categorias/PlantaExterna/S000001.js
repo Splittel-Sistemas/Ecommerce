@@ -250,10 +250,24 @@ var ADDSAccess = function(){
   let MaterialCubierta = "B"
   let MaterialTuboHolgado = "2"
   let TipoConstruccion = "B"
-  let CVE = "SAG"
-  let DirectorioImgProducto = "OPCFOCE09SAGXXB2B" 
+  var Span = document.getElementById('TotalMetros')
+  
+  
+
+  if(NumeroFibras.value == '12' || NumeroFibras.value == '24' || NumeroFibras.value == '48' || NumeroFibras.value == '96'){
+    StyleDisplayNoneOrBlock_2(Span, "block", [0,1])
+    
+  }else{
+    StyleDisplayNoneOrBlock_2(Span, "none", [1])
+    StyleDisplayNoneOrBlock_2(Span, "block", [0])
+    if(NumeroFibras.selectedIndex == 2 || NumeroFibras.selectedIndex == 4 || NumeroFibras.selectedIndex == 6){
+      Span[0].selected = true;
+    }
+  }
+  let CVE = Span.value
+  let DirectorioImgProducto = "OPCFOCE09"+Span.vale+"XXB2B" 
   // Codigo Generado de acuerdo a las opciones selecionadas
-  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+CVE+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
+  CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+Span.value+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(DirectorioImgProducto)
   ListProductoAdicional(DirectorioImgProducto)

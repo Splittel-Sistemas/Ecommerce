@@ -13,7 +13,15 @@
       </select>
     </div>
   </div>
-
+  <div class="col-sm-6">
+    <div class="form-group mb-0">
+      <label for="quantity">Span</label>
+      <select class="form-control" id="TotalMetros" name="TotalMetros" onchange="CableExterior()">
+        <option value="SAG">100m</option>
+        <option value="SAS2G">200m</option>
+      </select>
+    </div>
+  </div>
 </div>
 <input type="hidden" name="TipoFibra" id="TipoFibra" value="09">
 <input type="hidden" name="MaterialCubierta" id="MaterialCubierta" value="B">
