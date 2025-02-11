@@ -265,7 +265,7 @@ var ADDSAccess = function(){
     }
   }
   let CVE = Span.value
-  let DirectorioImgProducto = "OPCFOCE09"+Span.vale+"XXB2B" 
+  let DirectorioImgProducto = "OPCFOCE09"+Span.value+"XXB2B" 
   // Codigo Generado de acuerdo a las opciones selecionadas
   CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+Span.value+NumeroFibras.value+MaterialCubierta+MaterialTuboHolgado+TipoConstruccion
   ListImgProducto(DirectorioImgProducto)
