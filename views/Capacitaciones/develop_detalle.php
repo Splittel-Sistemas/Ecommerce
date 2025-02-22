@@ -64,7 +64,16 @@
       AND title1 != ''", "", false)->records;
 
       ?>
-      <?php foreach ($responseCal as $row) : ?>
+      <?php foreach ($responseCal as $row) { ?>
+
+        <?php
+           $CatalogoEventosC = new CatalogoCapacitaciones();
+           $responseCalEventsC = $CatalogoEventosC->getEventsCal("WHERE activo='si' AND month(start)= $row->mes_num AND YEAR(start) = $row->anio 	AND title = 'Develop'
+           AND title1 != ''", "ORDER BY start ASC", false);
+          
+           if(count($responseCalEventsC)>0){
+          ?>
+
         <div class="card">
           <div class="card-header" role="tab" style="background-color:#7A7A7A;">
             <h3><a <?php if ($row->mes_num == date("n") && $row->anio == date("Y")) { ?> expanded="true" <?php } ?> class="collapsed" href="#collapse<?php echo $row->mes_num . $row->anio; ?>" data-toggle="collapse">
@@ -129,11 +138,13 @@
                   $cont++;
                 endforeach
                 ?>
+                
               </table>
             </div>
           </div>
         </div>
-      <?php endforeach ?>
+        <?php } ?>
+      <?php } ?>
       <?php } ?>
     </div>
   </div>
