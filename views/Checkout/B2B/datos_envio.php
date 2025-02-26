@@ -217,16 +217,19 @@ if($ObjDetalleMSI->count > 0){
       <?php 
         foreach ($listGetBillToAdress as $key => $GetBillToAdress): 
           $check = $key == 0 ? 'checked': '';
+          if($key==0)
+            $SAP_CardName = $GetBillToAdress->CardName;
+         
       ?>
       <tr>
         <td>
           <div class="custom-control custom-radio">
-            <input class="custom-control-input datosFacturacion" type="radio" id="radio-<?php echo $GetBillToAdress->Adress;?>" name="radioDatosFacturacion" value="<?php echo $GetBillToAdress->Adress;?>" <?php echo $check ?>>
+            <input onclick="UpdateCardName('<?php echo $GetBillToAdress->CardName;?>')" class="custom-control-input datosFacturacion" type="radio" id="radio-<?php echo $GetBillToAdress->Adress;?>" name="radioDatosFacturacion" value="<?php echo $GetBillToAdress->Adress;?>" <?php echo $check ?>>
             <label class="custom-control-label" for="radio-<?php echo $GetBillToAdress->Adress;?>"></label>
           </div>
         </td>
         <td>
-          <span class="text-gray-dark" id="datosFacturacion-razonSocial-<?php echo $GetBillToAdress->Adress;?>"> <?php echo $GetBillToAdress->CardName;?></span><br>
+          <span class="text-gray-dark" id="datosFacturacion-razonSocial-<?php echo $GetBillToAdress->Adress;?>"> <?php echo $GetBillToAdress->CardName; ?></span><br>
           <span class="text-muted text-sm" id="datosFacturacion-direccion-<?php echo $GetBillToAdress->Adress;?>"> 
             <?php echo $GetBillToAdress->Street." No Ext. ".$GetBillToAdress->StreetNo. ", Col. ".$GetBillToAdress->Block.",";?>
           </span>
@@ -239,6 +242,7 @@ if($ObjDetalleMSI->count > 0){
         <td class="align-middle" id="datosFacturacion-tipoFacturacion-<?php echo $GetBillToAdress->Adress;?>"> </td>
       </tr>
       <?php endforeach ?>
+      <input type="hidden" id="SAP_CardName" value="<?php echo $SAP_CardName?>" >
     </tbody>
   </table>
 </div>
@@ -264,3 +268,8 @@ if($ObjDetalleMSI->count > 0){
     <span class="hidden-xs-down">Referencias paquetería&nbsp;</span><i class="icon-arrow-right"></i>
   </a>
 </div>
+<script>
+  function UpdateCardName(CardName){
+    document.getElementById('SAP_CardName').value=CardName
+  }
+  </script>

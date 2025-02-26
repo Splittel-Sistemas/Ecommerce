@@ -85,6 +85,9 @@ var datosViewResumenCheckoutPedido = function () {
 
         document.getElementById("resumen-datosEnvio-correo").innerHTML =
           document.getElementById("datosEnvio-correo-" + checkDatosEnvio).value;
+
+           document.getElementById("SAP_CardName_Resumen").innerHTML =
+          document.getElementById("SAP_CardName").value;
       }
       document.getElementById("resumen-paqueteria").innerHTML =
         check.value + Paqueteria.value;
@@ -107,6 +110,7 @@ var datosViewResumenCheckoutPedido = function () {
       // popover()
     }
   );
+  
 };
 
 // var popover = function(){
@@ -218,6 +222,7 @@ var addViewCheckout = function (Elem) {
   if (number == 3) {
     datosViewResumenCheckoutPedido();
     validateCreditAvailable();
+    
   }
 
   if (number == 4) {

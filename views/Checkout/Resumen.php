@@ -51,7 +51,13 @@
     <div class="col-12 col-sm-3">
       <h5>Datos de Facturación:</h5>
       <ul class="list-unstyled">
+      <?php 	
+      if ($_SESSION['Ecommerce-ClienteTipo'] == "B2B") { ?>
+        <li><span class="text-muted" style="white-space: nowrap">Cliente: </span><div id="SAP_CardName_Resumen"></div></li>
+        <?php }else{ ?>
         <li><span class="text-muted">Cliente: </span><?php echo $_SESSION['Ecommerce-ClienteNombre'] ?></li>
+        <?php } ?>
+
         <li><span class="text-muted">Dirección: </span> <span id="resumen-datosFacturacion-direccion"></span></li>
         <li><span class="text-muted">RFC: </span> <span id="resumen-datosFacturacion-RFC"></span></li>
       </ul>
@@ -98,3 +104,8 @@
 
   ?>
 </div>
+<script>
+    window.onload = function() {
+      alert("La página está completamente cargada.");
+    };
+  </script>
