@@ -608,7 +608,7 @@ class SolicitudRegistroController
           $host =           'mail.fibremex.com';
           $puerto =    '587';
           $email =  'notificaciones@fibremex.com';
-          $password =   'D6.aWs!F@xwD';
+          $password =   'e!lW.vdLf^_E';
 
           //Este bloque es importante
           $mail = new PHPMailer();
