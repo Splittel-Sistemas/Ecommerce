@@ -109,7 +109,6 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
                         </div>
                         
                     </div>
-               </div>
             <?php }?>
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
                 <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
