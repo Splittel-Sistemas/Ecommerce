@@ -67,7 +67,19 @@ if (!class_exists("Connection")) {
       }
     }
 
-
+    public function getMeses(){
+      try {
+        if (!$this->conn->conexion()->connect_error) {
+          $FamiliasMSIModel = new FamiliasMSI(); 
+          $FamiliasMSIModel->SetParameters($this->conn, $this->Tool);
+          $items = $FamiliasMSIModel->GetMeses($this->filter, "");
+          unset($FamiliasMSIModel);
+          return $this->Tool->Message_return(false, "", $items, false);
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
 
 
   }

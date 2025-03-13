@@ -33,6 +33,10 @@ class FamiliasMSI
   {
     return $this->SegmentoKey;
   }
+  public function GetEsquemaKey()
+  {
+    return $this->EsquemaKey;
+  }
   public function GetCodigoKey()
   {
     return $this->CodigoKey;
@@ -103,6 +107,29 @@ class FamiliasMSI
         $Categoria = new FamiliasMSI();
         $Categoria->SegmentoKey     =   $row->id;
         $Categoria->Segmento        =   $row->segmento;
+        $Categoria->Activo           =   $row->activo;
+        $data[] = $Categoria;
+      }
+  
+      unset($Categoria);
+      return $data;
+    } catch (Exception $e) {
+      throw $e;
+    }
+  }
+
+  public function GetMeses($filter, $order)
+  {
+    try {
+      $SQLSTATEMENT = "SELECT * FROM msi_esquema_pago " . $filter . " " . $order;
+      // echo $SQLSTATEMENT;
+      $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+      $data = [];
+    
+      while ($row = $result->fetch_object()) {
+        $Categoria = new FamiliasMSI();
+        $Categoria->EsquemaKey     =   $row->id;
+        $Categoria->Esquema        =   $row->esquema;
         $Categoria->Activo           =   $row->activo;
         $data[] = $Categoria;
       }

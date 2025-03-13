@@ -23,6 +23,7 @@ var CableExteriorArmadoMultiTubo = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableExteriorFigura8SinArmadura = function(){

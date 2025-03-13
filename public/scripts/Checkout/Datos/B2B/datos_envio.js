@@ -57,4 +57,8 @@
     const longitudAct = obj.value.length;
 	const contador = document.getElementById("contador");
     contador.innerHTML = `${longitudAct}/${longitudMax}`;
+
+	let texto=document.getElementById("NombreDireccion").value;
+	texto = texto.replace(/['"]/g, '');
+	document.getElementById("NombreDireccion").value=texto;
 	}

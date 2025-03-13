@@ -102,6 +102,9 @@
               Stock: <span id="add-stock"></span>
             </span>
           </div>
+          <div  class="col-md-4" id="add-lote">
+           
+            </div>
             <div  class="col-md-4" id="add-transito">
            
             </div>

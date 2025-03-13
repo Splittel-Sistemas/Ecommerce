@@ -532,6 +532,9 @@ var existEcommerce_ = function(Codigo){
 function initializePopovers() {
   $('[data-toggle="popover"]').popover();
 }
+function initializePopoverss() {
+  $('[data-toggle="popovers"]').popover();
+}
 var StockEnTransito = function(Codigo){
   hhh = 1
   ajax_("../../models/EnTransito/EnTransito.Route.php", "POST", "JSON", 
@@ -574,6 +577,48 @@ var StockEnTransito = function(Codigo){
     }else{
       let Stock = document.getElementById('add-transito')
       Stock.innerHTML = ''
+    }
+      
+  })
+}
+
+var StockPorLote = function(Codigo){
+  hhh = 1
+  ajax_("../../models/WebService/Ecommerce/GetStockByLote.php", "POST", "JSON", 
+  { 
+    Action: 'get', 
+    ActionProducto: true, 
+    Codigo: Codigo
+  }, 
+  function(response){
+    console.log(response.StockPorLotesResult);
+    if (response.StockPorLotesResult && response.StockPorLotesResult.ErrorCode==100) {
+      
+      let Lote = document.getElementById('add-lote')
+      let TextTra=''
+      let StockTotal=0; 
+      if(Lote){
+        TextTra = TextTra +'<span style="color:white;"  class="mt-1 product-badge  bg-warning text-white text-body" data-container="body" data-html="true" data-toggle="popovers" data-placement="right" data-trigger="hover" title="Informaci&oacute;n de lotes" data-content="<table class=\'table table-striped table-sm\'> <thead>  <tr> <th class=\'text-center\' scope=\'col\'>Cantidad(m)</th>  <th class=\'text-center\' scope=\'col\'>Lote(s)</th>   </tr> </thead> <tbody> '
+        response.StockPorLotesResult.Diccionarios.Diccionario.forEach(function(Responses) {
+         
+          let Cant= parseInt(Responses.Cantidad);
+          let Lotes= parseInt(Responses.Lotes);
+          console.log(Responses.Lotes);
+            TextTra = TextTra + '<tr class=\'px-3\'><th class=\'text-center\' scope=\'row\'>'+Cant+'</th><th class=\'text-center\' scope=\'row\'>'+Lotes+'</th></tr>' 
+            StockTotal=StockTotal+(Cant*Lotes)
+
+        });
+        TextTra = TextTra + '</tbody> </table>" data-original-title=\'Informaci&oacute;n de lotes\' >Informaci&oacute;n de lotes</span>'
+        if(StockTotal>0)
+          Lote.innerHTML += TextTra;
+        else
+        Lote.innerHTML = ''
+      }
+      initializePopoverss();
+     
+    }else{
+      let Lote = document.getElementById('add-lote')
+      Lote.innerHTML = ''
     }
       
   })

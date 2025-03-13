@@ -111,6 +111,7 @@
               $FamiliasControllerMSI = new FamiliasMSIController();
               $MontoControllerMSI = new FamiliasMSIController();
               $SegmentoControllerMSI = new FamiliasMSIController();
+              $EsquemaControllerMSI = new FamiliasMSIController();
               //print_r($ObjDetalleMSI);
               // Monto minimo para MSI
               $MontoControllerMSI->filter = "";
@@ -167,11 +168,22 @@
             }
          
           if($CountAuxMSI == 0 && ($MontoMinimoMSI->count > 0 && $dataMontoMinimo > 0 && $pedidoSubtotalMSI>=$dataMontoMinimo ) &&  $CountSegMSI>0){
+            $EsquemaControllerMSI->filter = "WHERE activo = 'si' ";
+            $EsquemaControllerMSI->order = "";
+            $EsquemaMSI = $EsquemaControllerMSI->getMeses();
+           
           ?>
           <div class="form-group col-12 col-sm-6 text-center">
             <select class="form-control" id="msi" name="msi">
               <option value="" selected>Una sola exhibición</option>
-              <option value="3">3 meses sin intereses</option>
+              <?php 
+              if($EsquemaMSI->count > 0){
+                
+                foreach ($EsquemaMSI->records as $rows){
+              ?>
+                <option value="<?php echo $rows->Esquema?>"><?php echo $rows->Esquema?> meses sin intereses</option>
+              <?php }
+              } ?>
               <!--<option value="6">6 meses sin intereses</option>-->
             </select>
           </div>

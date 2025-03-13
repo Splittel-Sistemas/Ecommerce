@@ -15,7 +15,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
 
   <head>
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
-
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
   <!-- Body-->
 
@@ -69,6 +69,52 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         ?>
           <div class="item">
             <div class="container" style="width:100%; max-width:100%;padding-right: 0px; padding-left: 0px;margin-right: 0px; margin-left: 0px;">
+           
+            <?php if($Slide->PathImg1=='anuncio_401.png'){
+              ?>
+               <div class="contenedor" style="position:absolute;  display: flex; justify-content: flex-start;  box-sizing: border-box;
+                                            margin: 0;  padding: 0;color: #FFFFFF;  text-align: center; top: 35%; left:25%">
+              
+                
+            
+            <div class="contenido" >
+            <span style="font-size:24px; font-family: 'Lato', sans-serif; font-weight: 400;">Una nueva alianza que potenciará tu red</span><br/><br/>
+                      <div class="contador">
+                        <div class="responsivo1" style="display: inline-block;">
+                          <div class="cartel" style="width: 90px; height: 90px; background-color:#000000;
+                                                padding: 10px 0px 5px 0px;  text-align: center;  display: inline-block;  margin: 5px;  border: 3px solid #FFFFFF;border-radius: 10px;">
+                          <div id="dias" style=" font-size: 50px;  font-family: 'Lato', sans-serif; font-weight: 400;  animation: fade 3s;  line-height: 30px;  margin-top: 8px; color: #FFFFFF;"></div>
+                          <div class="h3"style="margin-top:7px;"><h3 style="color: #FFFFFF; font-size:14px">Días</h3></div>
+                        </div>
+                          <div class="cartel" style="width: 90px; height: 90px; background-color:#000000;
+                                                padding: 10px 0px 5px 0px;  text-align: center;  display: inline-block;  margin: 5px;  border: 3px solid #FFFFFF;border-radius: 10px;">
+                          <div id="horas" style=" font-size: 50px;  font-family: 'Lato', sans-serif; font-weight: 400; animation: fade 3s;  line-height: 30px;  margin-top: 8px; color: #FFFFFF;"></div>
+                          <div class="h3" style="margin-top:7px;"><h3 style="color: #FFFFFF; font-size:14px">Horas</h3></div>
+                        </div>
+                        <div class="cartel" style="width: 90px; height: 90px; background-color:#000000;
+                                                padding: 10px 0px 5px 0px;  text-align: center;  display: inline-block;  margin: 5px;  border: 3px solid #FFFFFF;border-radius: 10px;">
+                          <div id="minutos" style=" font-size: 50px;  font-family: 'Lato', sans-serif; font-weight: 400;  animation: fade 3s;  line-height: 30px;  margin-top: 8px; color: #FFFFFF;"></div>
+                          <div class="h3" style="margin-top:7px;"><h3 style="color: #FFFFFF; font-size:14px">Minutos</h3></div>
+                        </div>
+                        <div class="cartel" style="width: 90px; height: 90px; background-color:#000000;
+                                                padding: 10px 0px 5px 0px;  text-align: center;  display: inline-block;  margin: 5px;  border: 3px solid #FFFFFF;border-radius: 10px;">
+                          <div id="segundos" style=" font-size: 50px;  font-family: 'Lato', sans-serif; font-weight: 400;  animation: fade 3s;  line-height: 30px;  margin-top: 8px; color: #FFFFFF;">
+                
+                          </div>
+                          <div class="h3" style="margin-top:7px;"><h3 style="color: #FFFFFF; font-size:14px">Segundos</h3></div>
+                        </div>
+                        
+                        </div>
+                        
+                      </div>
+                      <br/><br/>
+                      <span style="font-size:24px; font-family: 'Lato', sans-serif; font-weight: 400;">31 • 03 • 25</span>
+                    </div>
+                    
+                  </div>
+                 
+            </div>
+            <?php }?>
               <a style="width:100%; display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
                 <img style="min-height: 250px; width:100%; display: flex; justify-content: flex-end" class="d-block my-auto mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda; ?>" alt="<?php echo $Slide->Descripcion; ?>">
               </a>
@@ -117,7 +163,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     </section>
 
     <!-- Top Categorias-->
-    <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. </h1>
+    <h1 class="h3 padding-top-2x text-center"> Distribución de soluciones integrales de fibra óptica y cableado estructurado. <span id="teste"></span></h1>
     <section class="container padding-top-2x padding-bottom-2x  d-flex justify-content-around ">
       <div class="row  ">
         <?php
@@ -689,3 +735,47 @@ function imprimirTiempo($fecha, $hora)
 
 
 ?>
+<script>
+  const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+let countDown = new Date('Mar 31, 2025 10:00:00').getTime(),
+    x = setInterval(function() {
+
+      let now = new Date().getTime(),
+          distance = countDown - now;
+         
+          console.log( Math.floor(distance / (day)))
+          //$('#dias').empty(); 
+          //$('#dias').html(Math.floor(distance / (day)));
+
+          //$('#segundos').empty(); 
+          //$('#segundos').html('<p>Nuevo contenido</p>');
+
+          //$('.owl-stage-outer .owl-stage .owl-item .active .item .container .contenedor .contenido .contador .responsivo1 .cartel #segundos').empty(); 
+
+          //console.log($('.owl-item.active #segundos').text());
+          $('.owl-item.active #dias').empty()
+          $('.owl-item.active #dias').text(Math.floor(distance / (day)))
+
+          $('.owl-item.active #horas').empty()
+          $('.owl-item.active #horas').text(Math.floor((distance % (day)) / (hour)))
+
+          $('.owl-item.active #minutos').empty()
+          $('.owl-item.active #minutos').text(Math.floor((distance % (hour)) / (minute)))
+
+          $('.owl-item.active #segundos').empty()
+          $('.owl-item.active #segundos').text(Math.floor((distance % (minute)) / second))
+
+          //$('.owl-stage-outer owl-stage owl-item active item container contenedor contenido contador responsivo1 cartel #segundos').empty(); 
+          //$('.owl-item active item container contenedor contenido contador responsivo1 cartel #segundos').html(Math.floor((distance % (minute)) / second));
+          //document.getElementById('segundos').innerText = Math.floor((distance % (minute)) / second)
+      //document.getElementById('dias').innerText = Math.floor(distance / (day)),
+       // document.getElementById('horas').innerText = Math.floor((distance % (day)) / (hour)),
+       // document.getElementById('minutos').innerText = Math.floor((distance % (hour)) / (minute)),
+        //document.getElementById('segundos').innerText = Math.floor((distance % (minute)) / second);
+
+    }, second)
+</script>
