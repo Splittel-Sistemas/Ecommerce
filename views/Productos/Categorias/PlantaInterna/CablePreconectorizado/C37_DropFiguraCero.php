@@ -11,7 +11,7 @@
     <div class="form-group mb-0">
       <label for="quantity">Tipo de cubierta</label>
         <select class="form-control" id="TipoCubierta" name="TipoCubierta" onmouseup="interior_exterior_cable()" onchange="interior_exterior_cable()">
-            <option selected value="T">LSZH</option>
+            <option selected value="T">TPU</option>
         </select>
     </div>
   </div>
@@ -20,6 +20,7 @@
       <label for="quantity">Tipo de fibra</label>
         <select class="form-control" id="TipoFibra" name="TipoFibra" onmouseup="interior_exterior_cable()" onchange="interior_exterior_cable()">
             <option selected value="39">Monomodo G.657.B3</option>
+            <option selected value="29">Monomodo G.657.A2</option>
         </select>
     </div>
   </div>

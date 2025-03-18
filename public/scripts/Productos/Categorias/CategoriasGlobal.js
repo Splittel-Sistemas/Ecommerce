@@ -608,7 +608,7 @@ var StockPorLote = function(Codigo){
           diccionarios = [diccionarios]; // Convertimos el objeto en un array con un solo elemento
         }
         for (let Responses of diccionarios) { 
-          console.log(Responses);
+          //console.log(Responses);
           let Cant= parseInt(Responses.Cantidad);
           let Lotes= parseInt(Responses.Lotes);
           //console.log(Responses.Lotes);
