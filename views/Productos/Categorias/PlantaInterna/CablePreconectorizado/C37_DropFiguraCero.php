@@ -19,8 +19,8 @@
     <div class="form-group mb-0">
       <label for="quantity">Tipo de fibra</label>
         <select class="form-control" id="TipoFibra" name="TipoFibra" onmouseup="interior_exterior_cable()" onchange="interior_exterior_cable()">
-            <option selected value="39">Monomodo G.657.B3</option>
-            <option selected value="29">Monomodo G.657.A2</option>
+            <option  value="39">Monomodo G.657.B3</option>
+            <option  value="29">Monomodo G.657.A2</option>
         </select>
     </div>
   </div>
