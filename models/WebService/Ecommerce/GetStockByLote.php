@@ -48,6 +48,8 @@
     }
 
   }
-if(isset($_POST['Codigo']) && $_POST['Codigo']!='')
-    GetStockByLote::get($_POST['Codigo'],true);
+if(isset($_POST['Codigo']) && $_POST['Codigo']!=''){
+    $getStock = new GetStockByLote(); 
+    echo $getStock->get($_POST['Codigo'],true);
+}
 ?>
