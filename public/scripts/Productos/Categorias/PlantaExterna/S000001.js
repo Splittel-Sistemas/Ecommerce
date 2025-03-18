@@ -39,6 +39,7 @@ var CableExteriorFigura8SinArmadura = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableExteriorFigura8MensajeroPlastico = function(){
@@ -54,6 +55,7 @@ var CableExteriorFigura8MensajeroPlastico = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableExteriorArmadoDielectrico = function(){
@@ -71,6 +73,7 @@ var CableExteriorArmadoDielectrico = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableExteriorDielectrico = function(){
@@ -88,6 +91,7 @@ var CableExteriorDielectrico = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableExteriorMiniFigura8 = function(){
@@ -110,6 +114,7 @@ var CableExteriorMiniFigura8 = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableDropPlano = function(){
@@ -140,6 +145,7 @@ var CableDropPlano = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var MicroCable = function(){
@@ -155,6 +161,7 @@ var MicroCable = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableADDS = function(){
@@ -174,6 +181,7 @@ var CableADDS = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 var ADDSAntitracking = function(){
   let MaterialCubierta = "D"
@@ -191,7 +199,7 @@ var ADDSAntitracking = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
-
+  StockPorLote(CodigoGenerado)
 }
 
 var ADDSAntirroedor = function(){
@@ -211,7 +219,7 @@ var ADDSAntirroedor = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
-  
+  StockPorLote(CodigoGenerado)
 }
 var ADDSMini = function(){
   let MaterialCubierta = document.getElementById('MaterialCubierta')
@@ -244,7 +252,7 @@ var ADDSMini = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
-  
+  StockPorLote(CodigoGenerado)
 }
 
 var ADDSAccess = function(){
@@ -277,7 +285,7 @@ var ADDSAccess = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
- 
+  StockPorLote(CodigoGenerado)
 }
 
 var contremove = 0

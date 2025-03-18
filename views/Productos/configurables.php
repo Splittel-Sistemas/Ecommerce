@@ -102,9 +102,7 @@
               Stock: <span id="add-stock"></span>
             </span>
           </div>
-          <div  class="col-md-4" id="add-lote">
-           
-            </div>
+          
             <div  class="col-md-4" id="add-transito">
            
             </div>
@@ -113,6 +111,7 @@
           <?php } ?>
          
         </div>
+        <p class="mt-3 text-muted text-justify col-md-8" id="add-lote"></p>
         <input type="hidden" id="CostoProducto">
         <p class="mt-3 text-muted text-justify" id="descripcionLarga"></p>
         <input type="hidden" id="Cable" name="Cable" value="<?php echo $Obj->SubcategoriaN1Codigo; ?>">

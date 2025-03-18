@@ -591,30 +591,41 @@ var StockPorLote = function(Codigo){
     Codigo: Codigo
   }, 
   function(response){
-    console.log(response.StockPorLotesResult);
+    //console.log(response.StockPorLotesResult);
     if (response.StockPorLotesResult && response.StockPorLotesResult.ErrorCode==100) {
       
       let Lote = document.getElementById('add-lote')
       let TextTra=''
       let StockTotal=0; 
+      let StockPorLote=0;
+      let MetrosXLote=parseInt(response.StockPorLotesResult.InfoCarrete)
       if(Lote){
-        TextTra = TextTra +'<span style="color:white;"  class="mt-1 product-badge  bg-warning text-white text-body" data-container="body" data-html="true" data-toggle="popovers" data-placement="right" data-trigger="hover" title="Informaci&oacute;n de lotes" data-content="<table class=\'table table-striped table-sm\'> <thead>  <tr> <th class=\'text-center\' scope=\'col\'>Cantidad(m)</th>  <th class=\'text-center\' scope=\'col\'>Lote(s)</th>   </tr> </thead> <tbody> '
-        response.StockPorLotesResult.Diccionarios.Diccionario.forEach(function(Responses) {
-         
+        Lote.innerHTML = ''
+        TextTra = TextTra +'<table class=\'table table-striped table-sm\' style=\'padding:0rem;\'> <tr><th class=\'text-center\'  colspan=\'2\'>Informaci&oacute;n de lotes disponibles</th></tr> <tr> <td class=\'text-center\' scope=\'col\'>Cantidad(m)</td>  <td class=\'text-center\' scope=\'col\'>Lote(s)</td>   </tr><tbody> '
+        let diccionarios = response.StockPorLotesResult.Diccionarios.Diccionario;
+        // Si no es un array, lo convertimos en uno.
+        if (!Array.isArray(diccionarios)) {
+          diccionarios = [diccionarios]; // Convertimos el objeto en un array con un solo elemento
+        }
+        for (let Responses of diccionarios) { 
+          console.log(Responses);
           let Cant= parseInt(Responses.Cantidad);
           let Lotes= parseInt(Responses.Lotes);
-          console.log(Responses.Lotes);
-            TextTra = TextTra + '<tr class=\'px-3\'><th class=\'text-center\' scope=\'row\'>'+Cant+'</th><th class=\'text-center\' scope=\'row\'>'+Lotes+'</th></tr>' 
-            StockTotal=StockTotal+(Cant*Lotes)
+          //console.log(Responses.Lotes);
+         if(Cant>=100){
+            TextTra = TextTra + '<tr class=\'px-3\' style=\'padding:0rem;\'><td style=\'padding:0rem;\' class=\'text-center\' scope=\'row\'>'+Cant+'</td><td style=\'padding:0rem;\' class=\'text-center\' scope=\'row\'>'+Lotes+'</td></tr>' 
+         }   
+         StockTotal=StockTotal+(Cant*Lotes)
+            if(Cant>=MetrosXLote)
+               StockPorLote++;
 
-        });
-        TextTra = TextTra + '</tbody> </table>" data-original-title=\'Informaci&oacute;n de lotes\' >Informaci&oacute;n de lotes</span>'
-        if(StockTotal>0)
+        }
+        TextTra = TextTra + '</tbody> </table>'
+        if(StockPorLote<=0)
           Lote.innerHTML += TextTra;
         else
         Lote.innerHTML = ''
       }
-      initializePopoverss();
      
     }else{
       let Lote = document.getElementById('add-lote')

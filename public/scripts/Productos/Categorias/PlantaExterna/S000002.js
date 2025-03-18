@@ -18,6 +18,7 @@ var CableInteriorExterior = function(){
   ListProductoAdicional(DirectorioImgProducto)
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableDropFigura8FTTH = function(){
@@ -33,6 +34,7 @@ var CableDropFigura8FTTH = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var CableDropFiguraFTTH = function(){
@@ -48,6 +50,7 @@ var CableDropFiguraFTTH = function(){
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
+  StockPorLote(CodigoGenerado)
 }
 
 var InteriorExterior = function() {
