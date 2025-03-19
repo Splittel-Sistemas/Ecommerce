@@ -61,7 +61,11 @@ var EnviarAlta = function () {
   fda.append("valoresCheck", valoresCheck);
 
   var file_data = $("#file").prop("files")[0];
-  
+
+  const regexRFC = /^([A-ZÑ&]{3,4})\d{6}([A-Z\d]{3})$/i;
+
+  if (regexRFC.test($("#Rfc").val())) {
+      
   if (CorreEjecutivo != "") {
     //ejecutivo obligatorio
     if (file_data != undefined )  {
@@ -126,6 +130,11 @@ var EnviarAlta = function () {
 
     templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
   }
+} else {
+  $("#botonenviar").show();
+
+  templateAlert("danger", "", "RFC no es valido", "topRight", "");
+}
 };
 
 var EnviarMensaje = function (Elem) {
