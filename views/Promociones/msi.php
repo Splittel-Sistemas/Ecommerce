@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="col-lg-12 col-md-12 order-md-2">
 
               <p style="text-align: justify;" class="padding-top-1x text-muted">
-              Del <b>09 de septiembre al 31 de octubre</b> equípate con los mejores equipos en medición y accesorios de la marca <b>Optronics</b>® y 
+              Del <b>05 de marzo al 30 de abril</b> equípate con los mejores equipos en medición y accesorios de la marca <b>Optronics</b>® y 
               disfruta de <b>3 meses sin intereses</b> en compras superiores a 500 USD + IVA.
               </p>
             </div>
@@ -193,7 +193,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
         }
         $ProductoController = new ProductoController();
-        $ProductoController->filter = "WHERE codigo IN ('OPEFEMPANU04001','OPHEKPRFEMP') AND producto_activo='si' ";
+        $ProductoController->filter = "WHERE codigo IN ('OPEFEMPANU06001','OPHEKPRFEMP') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
         //print_r($getProduct);
@@ -354,7 +354,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         $ProductoController = new ProductoController();
         $ProductoController->filter = "WHERE codigo IN ('OPEMVFL01MW','OPEMFVL10MW','OPEM3306B','OPHE2212',
                                                         'OPHE2211','OPHE2210','OPEMADLC125','OPHECOPACC20T',
-                                                        'OPEFCOP001','OPHECOPACC20D') AND producto_activo='si' ";
+                                                        'OPEFCOP001','OPHECOPAUP20P','OPHECOPACC20D') AND producto_activo='si' ";
         $ProductoController->order = "";
         $getProduct = $ProductoController->GetProductosFijos_();
         //print_r($getProduct);
