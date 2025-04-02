@@ -29,11 +29,11 @@ var Enviar = function () {
   var fda = new FormData();
   fda.append("Action", "create");
   fda.append("ActionSolicitud", true);
-  fda.append("Empresa", $("#Empresa").val());
-  fda.append("Estado", $("#Estado").val());
-  fda.append("Contacto", $("#Contacto").val());
-  fda.append("Correo", $("#Correo").val());
-  fda.append("Telefono", $("#Telefono").val());
+  fda.append("Empresa", $("#company").val());
+  fda.append("Estado", $("#state").val());
+  fda.append("Contacto", $("#fullname").val());
+  fda.append("Correo", $("#email").val());
+  fda.append("Telefono", $("#phone").val());
   var CorreEjecutivo = $("#ejecutivo").val();
   fda.append("CorreEjecutivo", CorreEjecutivo);
   $("input[type=checkbox]:checked").each(function () {

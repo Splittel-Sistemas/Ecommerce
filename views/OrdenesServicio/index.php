@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/24007482.js"></script>
-    <!-- End of HubSpot Embed Code —>
+    <!-- End of HubSpot Embed Code -->
 
 </head>
 <!-- Body-->
@@ -72,26 +72,26 @@
 
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Nombre de la empresa: <strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="text" id="Empresa" name="Empresa">
+                                    <input class="form-control form-control-2" type="text" id="company" name="company">
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Estado:<strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="text" id="Estado" name="Estado">
+                                    <input class="form-control form-control-2" type="text" id="state" name="state">
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Contacto:<strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="text" id="Contacto" name="Contacto">
+                                    <input class="form-control form-control-2" type="text" id="fullname" name="fullname">
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Correo:<strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="email" id="Correo" name="Correo">
+                                    <input class="form-control form-control-2" type="email" id="email" name="email">
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label>Teléfono:<strong class="text-danger">*</strong></label>
-                                    <input class="form-control form-control-2" type="text" id="Telefono" name="Telefono" onkeyup="this.value=Numeros(this.value)">
+                                    <input class="form-control form-control-2" type="text" id="phone" name="phone" onkeyup="this.value=Numeros(this.value)">
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
                                     <label for="validationCustom06">Ejecutivo <strong class="text-danger">*</strong></label>
