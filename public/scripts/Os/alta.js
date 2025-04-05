@@ -49,6 +49,25 @@ var Enviar = function () {
   fda.append("paqueteria", $("#paqueteria").val());
   fda.append("guia", $("#guia").val());
 
+  var fda1 = new FormData();
+  fda1.append("company", $("#company").val());
+  fda1.append("state", $("#state").val());
+  fda1.append("firstname", $("#fullname").val());
+  fda1.append("email", $("#email").val());
+  fda1.append("phone", $("#phone").val());
+  var CorreEjecutivo = $("#ejecutivo").val();
+  fda1.append("CorreoEjecutivo", CorreEjecutivo);
+  
+  fda1.append("checks", valoresCheck);
+  /*  var observaciones = tinymce.get("observaciones").getContent(); */
+  fda1.append("Marca", $("#Marca").val());
+  fda1.append("Modelo", $("#Modelo").val());
+  fda1.append("serie", $("#serie").val());
+  fda1.append("observaciones", $("#observaciones").val());
+  fda1.append("accesorios", $("#valoresAccesorios").val());
+  fda1.append("paqueteria", $("#paqueteria").val());
+  fda1.append("guia", $("#guia").val());
+
   // Obtén la tabla por su ID
 
   if (CorreEjecutivo != "") {
@@ -73,7 +92,41 @@ var Enviar = function () {
             ""
           );
           GlobalCloseModal("modal-ficrece");
-          window.location.href = "Mensaje.php";
+          const jsonData = { fields: {}, skipValidation: false };
+
+          fda1.forEach((value, key) => {
+              jsonData.fields[key] = value; // Agregar cada dato dentro de "fields"
+          });
+          // Convertir a cadena JSON (si es necesario)
+          const jsonString = JSON.stringify(jsonData);
+          console.log(jsonString);
+          let formattedJson = {
+            fields: Object.entries(jsonData.fields).map(([key, value]) => ({
+                name: key,
+                value: value
+            })),
+            skipValidation: jsonData.skipValidation
+        };
+        
+        console.log(JSON.stringify(formattedJson, null, 2)); 
+        let jsonFormated = JSON.stringify(formattedJson, null, 2);
+
+          $.ajax({
+            url: 'https://api.hsforms.com/submissions/v3/integration/submit/24007482/780e893e-afce-4de1-ad5d-fee12e262c05',
+            type: 'POST',
+            data: jsonFormated,
+            contentType: 'application/json',
+            async:false,
+            success: function(response1) {
+                console.log('Success:', response1);
+                window.location.href = "Mensaje.php";
+            },
+            error: function(xhr, status, error) {
+                console.log('Error HubSpot:', error+' - status: '+status+' -xhr: '+JSON.stringify(xhr));
+                window.location.href = "Mensaje.php";
+            }
+        });
+          
         } else {
           $("#botonenviar").show();
 
@@ -81,6 +134,14 @@ var Enviar = function () {
         }
       },
     });
+
+    
+    
+
+  
+
+
+
   } else {
     $("#botonenviar").show();
 
