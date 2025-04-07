@@ -41,6 +41,7 @@ if (!class_exists("Functions_tools")) {
         $resultValidCreditController = $ValidCreditController->GetValidCredit($pedidoTotal_,$_POST["monedaPago"],$Pedido->TipoCambio);
         $ErrorCode = $resultValidCreditController->ValidCreditResult->ErrorCode;
         $ErrorDescription = $resultValidCreditController->ValidCreditResult->ErrorDescription;
+        
       } catch (Exception $e) {
         $ErrorCode = -100;
       }
@@ -62,29 +63,29 @@ if (!class_exists("Functions_tools")) {
             $Currency = $resultGetBussinesPartnerController->GetBussinesPartnerResult->Record->Currency;
   
             if(isset($_POST["monedaPago"]) && $_POST["monedaPago"] == "USD"){
-?>
-<div class="card" id="credito-cliente-b2b">
-    <div class="card-header" role="tab">
-        <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a>
-        </h6>
-    </div>
-    <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
-        <div class="card-body">
-            <p>Crédito disponible<span class="text-medium">
-                    <?php
-                $clienteCreditoDisponible = $clienteCredito;
-                ?>
-                    $<?php echo $clienteCreditoDisponible; ?></span> <?=  $Currency ?>.</p>
-            <div class="custom-control custom-checkbox d-block">
-                <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito"
-                    onchange="LineaCreditoTipoCambio(this)">
-                <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta
-                    orden.</label>
-            </div>
-        </div>
-    </div>
-</div>
-<?php 
+          ?>
+          <div class="card" id="credito-cliente-b2b">
+              <div class="card-header" role="tab">
+                  <h6><a class="collapsed" href="#linea" data-toggle="collapse"><i class="icon-award"></i>Línea de crédito</a>
+                  </h6>
+              </div>
+              <div class="collapse" id="linea" data-parent="#accordion" role="tabpanel">
+                  <div class="card-body">
+                      <p>Crédito disponible<span class="text-medium">
+                              <?php
+                          $clienteCreditoDisponible = $clienteCredito;
+                          ?>
+                              $<?php echo $clienteCreditoDisponible; ?></span> <?=  $Currency ?>.</p>
+                      <div class="custom-control custom-checkbox d-block">
+                          <input class="custom-control-input" type="checkbox" id="lineaCredito" name="lineaCredito"
+                              onchange="LineaCreditoTipoCambio(this)">
+                          <label class="custom-control-label" for="lineaCredito">Usar mi línea de crédito para pagar esta
+                              orden.</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <?php 
           }else{
             echo '<div class="alert alert-warning text-center" role="alert">
             Los pedidos a credito solo son en moneda USD
@@ -95,6 +96,14 @@ if (!class_exists("Functions_tools")) {
         
         
         }
-      }
+      }else if ($ErrorCode == 1300){
+        echo '<div class="alert alert-warning text-center" role="alert">
+          Tu línea de crédito ha sido excedida. Por favor, contacta a tu ejecutivo para más información.
+        </div>';
+      }else if ($ErrorCode == 1200){
+      echo '<div class="alert alert-warning text-center" role="alert">
+        Tu línea de crédito cuenta con documentos vencidos. Por favor, contacta a tu ejecutivo para más información.
+      </div>';
+    }
     }
       ?>
