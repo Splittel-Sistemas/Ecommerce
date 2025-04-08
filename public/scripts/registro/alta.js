@@ -60,8 +60,13 @@ var EnviarAlta = function () {
   fda.append("valoresCheck", valoresCheck);
 
   var file_data = $("#file").prop("files")[0];
-  fda.append("file", file_data);
-
+  //fda.append("file", file_data);
+  const regexRFC = /^([A-ZÑ&]{3,4})\d{6}([A-Z\d]{3})$/i;
+  if (regexRFC.test($("#Rfc").val())) {
+    if (file_data != undefined )  {
+      const fileExtension = file_data.name.split('.').pop().toLowerCase();
+      fda.append("file", file_data);
+     if( fileExtension == 'pdf' ){
   $.ajax({
     url: "../../models/Solicitud/Registro/Alta.Route.php",
     type: "post",
@@ -91,6 +96,33 @@ var EnviarAlta = function () {
       }
     },
   });
+} else {
+  $("#botonenviar").show();
+
+  templateAlert(
+    "danger",
+    "",
+    "La constancia de situación fiscal debe ser en formato PDF",
+    "topRight",
+    ""
+  );
+}
+}else{
+  $("#botonenviar").show();
+
+  templateAlert(
+    "danger",
+    "",
+    "La constancia de situación fiscal es obligatoria",
+    "topRight",
+    ""
+  );
+}
+} else {
+  $("#botonenviar").show();
+
+  templateAlert("danger", "", "RFC no es valido", "topRight", "");
+}
 };
 
 var EnviarMensaje = function (Elem) {

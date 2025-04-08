@@ -39,6 +39,11 @@ class SolicitudRegistro
     if (empty($Rfc)) {
       throw new Exception('RFC es requerido');
     }
+    $Rfc = strtoupper(trim($Rfc));
+    $pattern = '/^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$/';
+    if (!preg_match($pattern, $Rfc)) {
+      throw new Exception('RFC no tiene un formato correcto');
+    }
     $this->Rfc = $Rfc;
   }
   public function SetDomicilioFiscal($DomicilioFiscal)
@@ -151,6 +156,10 @@ class SolicitudRegistro
   {
     if (empty($Doc1)) {
       throw new Exception('ANEXO es requerido');
+    }
+    $extension = pathinfo($Doc1, PATHINFO_EXTENSION);
+    if (($extension)!='pdf' && ($extension)!='PDF') {
+      throw new Exception('La extension del archivo debe ser en formato PDF');
     }
     $this->Doc1 = $Doc1;
   }

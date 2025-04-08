@@ -158,7 +158,11 @@ if (!class_exists("Connection")) {
           $this->Ubicacion  = '../../public/archivos/situacionfiscal/'.$this->File_['name'];
           $this->NombreTemporal = $this->File_['tmp_name'];
           $img = explode('/', $this->File_['type'])[0];
+          $ext1 = pathinfo($_FILES['situacion-fiscal']['name'], PATHINFO_EXTENSION);
 
+          if (($extension)!='pdf' && ($extension)!='PDF') {
+            throw new Exception('La extension del archivo debe ser en formato PDF');
+          }
           if($img == 'image'){
             $this->Tipo = 'image';
           }else if($img == 'pdf'){

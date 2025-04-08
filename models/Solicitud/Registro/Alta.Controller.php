@@ -95,15 +95,14 @@ class SolicitudRegistroController
         $SolicitudRegistroModel->SetNombreComercial($_POST['NombreComercial']);
         $SolicitudRegistroModel->SetWeb($_POST['Web']);
         $SolicitudRegistroModel->SetvaloresCheck($_POST['valoresCheck']);
-
-
-        /* $ext = end(explode(".", $_FILES['file']['name']));	  */
-        /*       $name1 = (hash('sha256', $_FILES['file']['name']) . '.' . $ext); */
-
-        /*  print_r($_POST['PERSONA']);
-        exit; */
         $name1='';
+
+           
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+          $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+          $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+
+          $SolicitudRegistroModel->SetDoc1($name1);
 
           if (mkdir('../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
 
@@ -122,7 +121,7 @@ class SolicitudRegistroController
             $targetFilePath = $uploadDir . $fileName;
           }
         }
-        $SolicitudRegistroModel->SetDoc1($name1);
+        
 
         $ResultSolicitud = $SolicitudRegistroModel->Add();
 
