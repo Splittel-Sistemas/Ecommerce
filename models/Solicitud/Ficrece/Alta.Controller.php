@@ -130,16 +130,20 @@ class SolicitudCController
         /*  print_r($_POST['PERSONA']);
         exit; */
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
+
+
             $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
+            $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+              $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+              $SolicitudCModel->SetDoc1($name1);
             
           if (!is_dir($uploadDir)) {
             if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
 
-              $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-              $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
+             
               move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
               #$file_nname = $_FILES['file']['name'];
-              $SolicitudCModel->SetDoc1($name1);
+              //$SolicitudCModel->SetDoc1($name1);
 
 
               $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';
@@ -151,12 +155,11 @@ class SolicitudCController
             }
           }else{
            if($this->eliminarDirectorioCompleto($uploadDir)){
-            $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-              $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
-              move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
+            
+              @move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
               
               #$file_nname = $_FILES['file']['name'];
-              $SolicitudCModel->SetDoc1($name1);
+              //$SolicitudCModel->SetDoc1($name1);
 
 
               $uploadDir = '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/';

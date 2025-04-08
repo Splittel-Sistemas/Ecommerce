@@ -37,6 +37,11 @@
       if(empty($RFC)){
         throw new Exception("RFC es requerido");
       }
+      $Rfc = strtoupper(trim($Rfc));
+      $pattern = '/^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$/';
+      if (!preg_match($pattern, $Rfc)) {
+        throw new Exception('RFC no tiene un formato correcto');
+      }
       $this->RFC = $RFC;
     }public function SetNombreComercial($NombreComercial){
       $this->NombreComercial = $NombreComercial;
