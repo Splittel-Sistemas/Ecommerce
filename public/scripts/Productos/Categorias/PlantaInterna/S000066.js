@@ -272,7 +272,7 @@ var JumpersMTPPRO = function(){
 
   var JumpersMPO = function(){
     let Longitud = document.getElementById('Longitud')
-    validateEntero(Longitud.value)
+    //validateEntero(Longitud.value)
     JumperValidacionLongitud(Longitud, 3)
   
     let Conectarizacion="A1"
@@ -306,14 +306,13 @@ var JumpersMTPPRO = function(){
       JumperValidacionLongitud(Longitud, 2)
     }
         
-    if (Longitud.value > 0 && Longitud.value <= 500) {
-      NewLongitud = NumeroConCeros2(Longitud.value, 3)
+    if (Longitud.value >= 1 && Longitud.value <= 500) {
+      NewLongitud = NumeroConCeros(Longitud.value, 4)
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
-      console.log()
       ChangeListImgProducto('OPJ'+Conectarizacion+Conectarizacion,'OPJ'+Conectarizacion+Conectarizacion+Polaridad.value+Diseno.value)
       ListProductoDescription('OPJ'+Conectarizacion+Conectarizacion)
       ListProductoAdicional('OPJ'+Conectarizacion+Conectarizacion)
@@ -327,6 +326,8 @@ var JumpersMTPPRO = function(){
       }
       CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
       showClave(CodigoGenerado)
+    }else{
+      showClave('')
     }
     agregarFichaTecnicaConfigurable('OPJ'+Conectarizacion+Conectarizacion)
     agregarCertificadoConfigurable(CodigoGenerado)
