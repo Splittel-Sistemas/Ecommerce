@@ -20,7 +20,7 @@ if (!class_exists("SolucionesTopController")) {
   include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/SolucionesTop/SolucionesTop.Controller.php';
 }
 # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
-if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
+//if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
   if (!class_exists("GetCurrencyRateController")) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Currency/GetCurrencyRate.Controller.php';
   }
@@ -37,7 +37,7 @@ if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-Cu
     $Message = "No se pudo obtener tipo de cambio";
     $ErrorCode = -703;
   }
-}
+//}
 
 ?>
 <script>
