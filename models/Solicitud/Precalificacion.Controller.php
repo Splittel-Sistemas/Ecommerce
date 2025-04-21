@@ -160,7 +160,7 @@ if (!class_exists("Connection")) {
           $img = explode('/', $this->File_['type'])[0];
           $ext1 = pathinfo($_FILES['situacion-fiscal']['name'], PATHINFO_EXTENSION);
 
-          if (($extension)!='pdf' && ($extension)!='PDF') {
+          if (($ext1)!='pdf' && ($ext1)!='PDF') {
             throw new Exception('La extension del archivo debe ser en formato PDF');
           }
           if($img == 'image'){

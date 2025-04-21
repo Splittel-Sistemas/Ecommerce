@@ -156,9 +156,14 @@
                         <td style="text-align:center; background-color:<?php echo $colorBack; ?>;"><small><?php echo $row1->costo; ?></small></td>
                         <td style="text-align:center; width:10%; background-color:<?php echo $colorBack; ?>">
                           <small>
-                            <?php if ($row1->title == 'Insider') { ?>
+                            <?php if ($row1->title == 'Insider') { 
+                                  if(trim($row1->link)==''){ ?>
+                                    <a style="color: #BF202F;" href="#" >Próximamente</a>
+                            <?php      }else{
+                              ?>
                               <a style="color: #BF202F;" href="<?php echo $row1->link; ?>" target="_blank">Registro</a>
-                            <?php } else { ?>
+                            <?php }
+                          } else { ?>
                               <a style="color: #BF202F;" href="<?php echo $row1->link; ?>" target="_blank">Ver más</a>
                             <?php } ?>
                           </small>

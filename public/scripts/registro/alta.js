@@ -66,7 +66,7 @@ var EnviarAlta = function () {
     if (file_data != undefined )  {
       const fileExtension = file_data.name.split('.').pop().toLowerCase();
       fda.append("file", file_data);
-     if( fileExtension == 'pdf' ){
+     if( fileExtension == 'pdf' || fileExtension == 'PDF' ){
   $.ajax({
     url: "../../models/Solicitud/Registro/Alta.Route.php",
     type: "post",
