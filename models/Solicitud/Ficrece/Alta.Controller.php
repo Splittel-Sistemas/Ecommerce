@@ -87,8 +87,6 @@ class SolicitudCController
         }
     }
 
-    // Una vez vacío, eliminar el directorio
-    return rmdir($directorio);
 }
 
   public function Alta()
@@ -138,7 +136,7 @@ class SolicitudCController
               $SolicitudCModel->SetDoc1($name1);
             
           if (!is_dir($uploadDir)) {
-            if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0777, true)) {
+            if (mkdir('../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/', 0755, true)) {
 
              
               move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/ficrece/Altas/' . $_POST['Rfc'] . '/' . $name1);
