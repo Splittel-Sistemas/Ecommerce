@@ -101,25 +101,25 @@ class SolicitudCController
         exit; */
 
 
-        $SolicitudCModel->SetRazonSocial($_POST['RazonSocial']);
-        $SolicitudCModel->SetRfc($_POST['Rfc']);
-        $SolicitudCModel->SetDomicilioFiscal($_POST['DomicilioFiscal']);
-        $SolicitudCModel->SetNombreSolicitud($_POST['NombreSolicitud']);
-        $SolicitudCModel->SetDepartamento($_POST['Departamento']);
-        $SolicitudCModel->SetTitulo($_POST['Titulo']);
-        $SolicitudCModel->SetTelefono($_POST['Telefono']);
-        $SolicitudCModel->SetCorreo($_POST['Correo']);
-        $SolicitudCModel->SetCorreEjecutivo($_POST['CorreEjecutivo']);
-        $SolicitudCModel->SetNummeroInt($_POST['NummeroInt']);
-        $SolicitudCModel->SetCalle($_POST['Calle']);
-        $SolicitudCModel->SetColonia($_POST['Colonia']);
-        $SolicitudCModel->SetCuidad($_POST['Cuidad']);
-        $SolicitudCModel->SetCP($_POST['CP']);
-        $SolicitudCModel->SetEstado($_POST['Estado']);
-        $SolicitudCModel->SetNombreComercial($_POST['NombreComercial']);
-        $SolicitudCModel->SetWeb($_POST['Web']);
-        $SolicitudCModel->SetvaloresCheck($_POST['valoresCheck']);
-        $SolicitudCModel->SetWhats($_POST['Whats']);
+        $SolicitudCModel->SetRazonSocial(trim($_POST['RazonSocial']));
+        $SolicitudCModel->SetRfc(trim($_POST['Rfc']));
+        $SolicitudCModel->SetDomicilioFiscal(trim($_POST['DomicilioFiscal']));
+        $SolicitudCModel->SetNombreSolicitud(trim($_POST['NombreSolicitud']));
+        $SolicitudCModel->SetDepartamento(trim($_POST['Departamento']));
+        $SolicitudCModel->SetTitulo(trim($_POST['Titulo']));
+        $SolicitudCModel->SetTelefono(trim($_POST['Telefono']));
+        $SolicitudCModel->SetCorreo(trim($_POST['Correo']));
+        $SolicitudCModel->SetCorreEjecutivo(trim($_POST['CorreEjecutivo']));
+        $SolicitudCModel->SetNummeroInt(trim($_POST['NummeroInt']));
+        $SolicitudCModel->SetCalle(trim($_POST['Calle']));
+        $SolicitudCModel->SetColonia(trim($_POST['Colonia']));
+        $SolicitudCModel->SetCuidad(trim($_POST['Cuidad']));
+        $SolicitudCModel->SetCP(trim($_POST['CP']));
+        $SolicitudCModel->SetEstado(trim($_POST['Estado']));
+        $SolicitudCModel->SetNombreComercial(trim($_POST['NombreComercial']));
+        $SolicitudCModel->SetWeb(trim($_POST['Web']));
+        $SolicitudCModel->SetvaloresCheck(trim($_POST['valoresCheck']));
+        $SolicitudCModel->SetWhats(trim($_POST['Whats']));
 
 
         /* $ext = end(explode(".", $_FILES['file']['name']));	  */
@@ -599,25 +599,25 @@ class SolicitudCController
                   
                  
                     <td class="wrapper">
-                    <p align="center" style="margin-bottom:10px;"><strong> RAZON SOCIAL: </strong>' . $_POST['RazonSocial'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>RFC: </strong>' . $_POST['Rfc'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>DIRECCIÓN FISCAL: </strong>' . $_POST['DomicilioFiscal'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMPLETO: </strong>' . $_POST['NombreSolicitud'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>DEPARTAMENTO: </strong>' . $_POST['Departamento'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . $_POST['Titulo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . $_POST['Telefono'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>WHATSAPP: </strong>' . $_POST['Whats'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . $_POST['Correo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . $_POST['CorreEjecutivo'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . $_POST['Calle'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT. : </strong>' . $_POST['NummeroInt'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . $_POST['Colonia'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>CIUDAD / MUNICIPIO: </strong>' . $_POST['Cuidad'] . '  </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>CÓDIGO POSTAL: </strong>' . $_POST['CP'] . '  </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>ESTADO: </strong>' . $_POST['Estado'] . '  </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>GIRO DE LA EMPRESA: </strong> ' . $_POST['valoresCheck'] . ' </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMERCIAL: </strong> ' . $_POST['NombreComercial'] . ' </p>
-                    <p align="center" style="margin-bottom:10px;"><strong>PÁGINA WEB: </strong> ' . $_POST['Web'] . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong> RAZON SOCIAL: </strong>' . trim($_POST['RazonSocial']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>RFC: </strong>' . trim($_POST['Rfc']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DIRECCIÓN FISCAL: </strong>' . trim($_POST['DomicilioFiscal']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMPLETO: </strong>' . trim($_POST['NombreSolicitud']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>DEPARTAMENTO: </strong>' . trim($_POST['Departamento']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TITULO: </strong>' . trim($_POST['Titulo']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>TELÉFONO: </strong>' . trim($_POST['Telefono']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>WHATSAPP: </strong>' . trim($_POST['Whats']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CORREO ELECTRONICO: </strong>' . trim($_POST['Correo']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>EJECUTIVO: </strong>' . trim($_POST['CorreEjecutivo']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CALLE: </strong>' . trim($_POST['Calle']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NÚMERO INT. / EXT. : </strong>' . trim($_POST['NummeroInt']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>COLONIA: </strong>' . trim($_POST['Colonia']) . '</p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CIUDAD / MUNICIPIO: </strong>' . trim($_POST['Cuidad']) . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>CÓDIGO POSTAL: </strong>' . trim($_POST['CP']) . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>ESTADO: </strong>' . trim($_POST['Estado']) . '  </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>GIRO DE LA EMPRESA: </strong> ' . trim($_POST['valoresCheck']) . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>NOMBRE COMERCIAL: </strong> ' . trim($_POST['NombreComercial']) . ' </p>
+                    <p align="center" style="margin-bottom:10px;"><strong>PÁGINA WEB: </strong> ' . trim($_POST['Web']) . ' </p>
 
 
                       <p><br></p>
