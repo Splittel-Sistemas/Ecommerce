@@ -307,7 +307,11 @@ var JumpersMTPPRO = function(){
     }
         
     if (Longitud.value >= 1 && Longitud.value <= 500) {
-      NewLongitud = NumeroConCeros(Longitud.value, 4)
+      if (Longitud.value.includes(".")) {
+        NewLongitud = NumeroConCeros(Longitud.value, 4)
+      }else{
+        NewLongitud = NumeroConCeros(Longitud.value, 3)
+      }
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "

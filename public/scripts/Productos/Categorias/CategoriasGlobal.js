@@ -522,6 +522,8 @@ var existEcommerce_ = function(Codigo){
     }else{
       ProductoEspecial()
       getDescuentoByFamiliaProductosConfigurables()
+      let Stock = document.getElementById('add-stock')
+      Stock.innerHTML = '0.00'
     }
 
     StockEnTransito(Codigo)
@@ -601,14 +603,17 @@ var StockPorLote = function(Codigo){
       let MetrosXLote=parseInt(response.StockPorLotesResult.InfoCarrete)
       if(Lote){
         Lote.innerHTML = ''
+        if(response.StockPorLotesResult.Diccionarios.Diccionario){
         TextTra = TextTra +'<table class=\'table table-striped table-sm\' style=\'padding:0rem;\'> <tr><th class=\'text-center\'  colspan=\'2\'>Informaci&oacute;n de lotes disponibles</th></tr> <tr> <td class=\'text-center\' scope=\'col\'>Cantidad(m)</td>  <td class=\'text-center\' scope=\'col\'>Lote(s)</td>   </tr><tbody> '
         let diccionarios = response.StockPorLotesResult.Diccionarios.Diccionario;
         // Si no es un array, lo convertimos en uno.
         if (!Array.isArray(diccionarios)) {
           diccionarios = [diccionarios]; // Convertimos el objeto en un array con un solo elemento
         }
+        
+        
         for (let Responses of diccionarios) { 
-          //console.log(Responses);
+          
           let Cant= parseInt(Responses.Cantidad);
           let Lotes= parseInt(Responses.Lotes);
           //console.log(Responses.Lotes);
@@ -619,12 +624,14 @@ var StockPorLote = function(Codigo){
             if(Cant>=MetrosXLote)
                StockPorLote++;
 
-        }
+          }
+        
         TextTra = TextTra + '</tbody> </table>'
         if(StockPorLote<=0)
           Lote.innerHTML += TextTra;
         else
         Lote.innerHTML = ''
+        }
       }
      
     }else{
