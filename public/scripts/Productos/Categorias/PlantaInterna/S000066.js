@@ -50,8 +50,6 @@ function JumperValidacionLongitud(Elem, Tamano){//Solo numeros
 
 
 
-
-
 var JumpersMTP = function(){
   let Longitud = document.getElementById('Longitud')
   validateEntero(Longitud.value)
@@ -273,8 +271,7 @@ var JumpersMTPPRO = function(){
   var JumpersMPO = function(){
     let Longitud = document.getElementById('Longitud')
     //validateEntero(Longitud.value)
-    JumperValidacionLongitud(Longitud, 3)
-  
+    //JumperValidacionLongitud(Longitud, 3)
     let Conectarizacion="A1"
     let Polaridad = document.getElementById('Polaridad')
     let Polaridadselected = Polaridad.options[Polaridad.selectedIndex].text
@@ -302,16 +299,19 @@ var JumpersMTPPRO = function(){
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
     Familia = "J"
   
-    if(Longitud.value > 500){
-      JumperValidacionLongitud(Longitud, 2)
-    }
-        
+    JumperValidacionLongitud(Longitud, 3)
     if (Longitud.value >= 1 && Longitud.value <= 500) {
       if (Number(Longitud.value) % 1 !== 0) {
-        NewLongitud = NumeroConCeros(Longitud.value, 4)
+        let s=Number(Longitud.value)
+        NewLongitud = NumeroConCeros(s, 4)
+        
       }else{
-        NewLongitud = NumeroConCeros2(Longitud.value, 3)
+      
+        let s=Number(Longitud.value)
+        NewLongitud = NumeroConCeros2(s, 3)
+       
       }
+      
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
       let descripcion = "Jumper MPO "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
