@@ -307,10 +307,10 @@ var JumpersMTPPRO = function(){
     }
         
     if (Longitud.value >= 1 && Longitud.value <= 500) {
-      if (Longitud.value.includes(".")) {
+      if (Number(Longitud.value) % 1 !== 0) {
         NewLongitud = NumeroConCeros(Longitud.value, 4)
       }else{
-        NewLongitud = NumeroConCeros(Longitud.value, 3)
+        NewLongitud = NumeroConCeros2(Longitud.value, 3)
       }
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
