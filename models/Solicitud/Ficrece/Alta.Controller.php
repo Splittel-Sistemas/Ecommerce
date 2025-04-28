@@ -86,7 +86,7 @@ class SolicitudCController
             unlink($ruta);
         }
     }
-
+    return true;
 }
 
   public function Alta()
