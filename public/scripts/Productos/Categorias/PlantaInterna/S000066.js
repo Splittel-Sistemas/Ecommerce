@@ -193,7 +193,7 @@ var JumpersMTPPRO = function(){
       NewLongitud = NumeroConCeros2(Longitud.value, 3)
       CodigoGenerado = Marca+Familia+Conectarizacion+Conectarizacion+Polaridad.value+CantidadFibras.value+Diseno.value+TipoFibra.value+TipoCable+NewLongitud+TipoCubierta.value
       // Agreación de codigo para la vista en el identificador
-      let descripcion = "Jumper MTP PRO a MTP PRO US CONEC Swap on site Polaridad "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
+      let descripcion = "Jumper MTP PRO a MTP PRO US CONEC polaridad y género intercambiable "+Polaridadselected+" de "+CantidadFibras.value+" hilos "+Disenoselected+" "+Fibraselected+" "+TipoCubiertaselected+" de "+Longitud.value+" metro(s) "
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
      // console.log(descripcion)
