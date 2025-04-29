@@ -19,7 +19,7 @@
   }
   $CatalogoCursos = new CatalogoCapacitaciones();
   $response = $CatalogoCursos->get("WHERE activo = 'si' AND id = '" . $_GET['id'] . "' ", "", false)->records[0];
-
+ 
   ?>
 
   <!-- Page Content-->
@@ -112,6 +112,10 @@
     <a target="_blank" href="<?php echo $response->link_whatsapp ?>"><img src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png"></a>
   </h6>
 
+  <?php
+      if($response->id != 3){
+  ?>
+
   <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x"><?php echo $response->text_form; ?> </h6>
   <h6 class="text-muted text-center text-normal ">Deja tus datos y a la brevedad nos comunicaremos contigo para porporcionarte m&aacute;s informaci&oacute;n</h6>
   <hr class="margin-bottom-1x margin-top-2x">
@@ -145,6 +149,9 @@
     <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
   </form>
 
+    <?php
+      }
+    ?>
   <!-- Post Tags + Share-->
   <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-4">
     <div class="pb-2"></div>
