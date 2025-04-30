@@ -124,7 +124,7 @@ if($ObjDetalleMSI->count > 0){
           </div>
         </td>
         <td>
-          <span class="text-gray-dark"> <?php echo $GetShipToAdress->Adress.' '.$GetShipToAdress->City;?></span><br>
+          <span class="text-gray-dark" id="datosEnvio-id-<?php echo $GetShipToAdress->Adress;?>"> <?php echo $GetShipToAdress->Adress.' '.$GetShipToAdress->City;?></span><br>
           <span class="text-muted text-sm" id="datosEnvio-direccion-<?php echo $GetShipToAdress->Adress;?>"> 
             <?php echo $GetShipToAdress->Street." No Ext. ".$GetShipToAdress->StreetNo. " Col. ".$GetShipToAdress->Block;?>
           </span>

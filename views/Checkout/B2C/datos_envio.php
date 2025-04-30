@@ -68,7 +68,7 @@
           </div>
         </td>
         <td>
-          <span class="text-gray-dark"> <?php echo $DatosEnvio->Municipio.', '.$EstadoDescripcion;?></span><br>
+          <span class="text-gray-dark" id="datosEnvio-id-<?php echo $DatosEnvio->DatosEnvioKey;?>"> <?php echo $DatosEnvio->Municipio.', '.$EstadoDescripcion;?></span><br>
           <span class="text-muted text-sm" id="datosEnvio-direccion-<?php echo $DatosEnvio->DatosEnvioKey;?>"> 
             <?php echo $DatosEnvio->Calle." No Ext. ".$DatosEnvio->NumeroExterior. " Col. ".$DatosEnvio->Colonia;?>
           </span>

@@ -35,6 +35,7 @@
     <h5>Datos de envió:</h5>
     <ul class="list-unstyled">
       <li><span class="text-muted">Cliente: </span><?php echo $_SESSION['Ecommerce-ClienteNombre'] ?></li>
+      <li><span class="text-muted">ID Destino: </span> <span id="resumen-datosEnvio-idestino"></span></li>
       <li><span class="text-muted">Dirección: </span> <span id="resumen-datosEnvio-direccion"></span></li>
       <li><span class="text-muted">Teléfono: </span> <span id="resumen-datosEnvio-telefono"></span></li>
         <br>

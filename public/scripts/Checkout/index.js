@@ -50,6 +50,7 @@ var datosViewResumenCheckoutPedido = function () {
       Banco: pagoBanco.checked,
     },
     function (response) {
+      
       document.getElementById("PartialCheckout-4").innerHTML = response;
       if (lineaCredito) {
         metodoPago = '<span class="text-muted">Pago a crédito </span>';
@@ -65,6 +66,10 @@ var datosViewResumenCheckoutPedido = function () {
           ultimosDigitosTarjeta +
           "<span></span>";
       }
+      document.getElementById("resumen-datosEnvio-idestino").innerHTML =
+        document.getElementById(
+          "datosEnvio-id-" + checkDatosEnvio
+        ).innerHTML;
 
       document.getElementById("resumen-datosEnvio-direccion").innerHTML =
         document.getElementById(
