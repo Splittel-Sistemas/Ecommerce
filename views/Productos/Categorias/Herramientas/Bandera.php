@@ -5,7 +5,7 @@
     <label id="AnchoIdText">Ancho</label>
     <select class="form-control" id="Ancho" name="Ancho" onchange="EquipoIdentificacion()">
         <option value="102">102mm</option>
-        <option value="152">152mm</option>
+        <option value="153">153mm</option>
         <option value="203">203mm</option>
     </select>
   </div>
