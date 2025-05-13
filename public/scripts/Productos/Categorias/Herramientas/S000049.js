@@ -89,6 +89,13 @@ var IdentificadorSimple = function(){
     let Ancho = document.getElementById("Ancho")
     let Color = document.getElementById("Color")
     let Diametro = document.getElementById("Diametro")
+    if(Ancho.value == '203'){
+      StyleDisplayNoneOrBlock_2(Diametro, "none", [0])
+      if(Diametro.value=='A')
+        Diametro.selectedIndex = 1
+    }else{
+      StyleDisplayNoneOrBlock_2(Diametro, "block", [0,1])
+    }
 
     CodigoGenerado = Marca+Familia+Tipo+Ancho.value+Color.value+Diametro.value
     ListImgProductoOnly(Marca+Familia+Tipo+'/fotos',Marca+Familia+Tipo+Color.value)
