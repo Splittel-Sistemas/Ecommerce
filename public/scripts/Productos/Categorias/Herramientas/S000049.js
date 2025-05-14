@@ -46,6 +46,10 @@ var IdentificadorSimple = function(){
         StyleDisplayNoneOrBlock_2(Diametro, 'block', [1]);
         StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]);
         Diametro[1].selected=true;
+    }else if(Ancho[3].selected==true){
+        StyleDisplayNoneOrBlock_2(Diametro, 'block', [1]);
+        StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]);
+        Diametro[1].selected=true;
     }
 
     CodigoGenerado = Marca+Familia+Tipo+Ancho.value+Color.value+Diametro.value

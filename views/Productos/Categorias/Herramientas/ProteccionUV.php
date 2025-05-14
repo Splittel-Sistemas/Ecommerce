@@ -7,6 +7,7 @@
         <option value="51">51mm</option>
         <option value="102">102mm</option>
         <option value="153">153mm</option>
+        <option value="203">203mm</option>
     </select>
   </div>
 </div> 
