@@ -37,15 +37,15 @@ var IdentificadorSimple = function(){
     let Diametro = document.getElementById("Diametro")
 
     if(Ancho[0].selected==true){
-        StyleDisplayNoneOrBlock_2(Diametro, 'block', [0]);
-        StyleDisplayNoneOrBlock_2(Diametro, 'none', [1]);
-        Diametro[0].selected=true;
+        StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1]);
+       // StyleDisplayNoneOrBlock_2(Diametro, 'none', [1]);
+        //Diametro[0].selected=true;
     }else if(Ancho[1].selected==true){
         StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1]);
     }else if(Ancho[2].selected==true){
-        StyleDisplayNoneOrBlock_2(Diametro, 'block', [1]);
-        StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]);
-        Diametro[1].selected=true;
+        StyleDisplayNoneOrBlock_2(Diametro, 'block', [0,1]);
+        //StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]);
+        //Diametro[1].selected=true;
     }else if(Ancho[3].selected==true){
         StyleDisplayNoneOrBlock_2(Diametro, 'block', [1]);
         StyleDisplayNoneOrBlock_2(Diametro, 'none', [0]);
