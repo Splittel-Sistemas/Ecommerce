@@ -137,7 +137,10 @@ var cable_IE = function(){
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
       CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
     
   }else if(TipoTermiacion.value == '2MM'){
       ContConectorLAMul = 0
@@ -239,7 +242,10 @@ var cable_IE = function(){
        CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
       
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -250,6 +256,9 @@ var cable_IE = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)
       DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -342,9 +351,14 @@ var cable_CI = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
+    
       CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+      
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }else if(TipoTermiacion.value == '2MM'){
       ContConectorLAMul = 0
       ContConectorLBMul = 0
@@ -443,9 +457,14 @@ var cable_CI = function(){
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
+      
      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+     
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
 
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
@@ -457,7 +476,10 @@ var cable_CI = function(){
     if(CodigoGenerado!=''){
     NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     DescPrdConf.innerHTML=descripcion_cable
-  }
+    }else{
+        
+      DescPrdConf.innerHTML=''
+    }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
     let data = {
@@ -553,7 +575,10 @@ var cable_SA = function(){
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
        CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -564,6 +589,9 @@ var cable_SA = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
       DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -630,9 +658,15 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
       if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
        DescPrdConf.innerHTML=descripcion_cable 
-      }
-      
+      }else{
+        
+      DescPrdConf.innerHTML=''
     }
+      
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
 
   let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -729,6 +763,9 @@ var cable_S8 = function(){
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
         showClave(CodigoGenerado);
+      }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
       }
     }
     if (TipoFibra.value == "62") {
@@ -739,6 +776,9 @@ var cable_S8 = function(){
       if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
         showClave(CodigoGenerado);
+      }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
       }
     }
     if (TipoFibra.value == "50") {
@@ -748,6 +788,9 @@ var cable_S8 = function(){
       Longitud_label.innerHTML = " 1 - 999";
       if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
         CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        showClave(CodigoGenerado);
+      }else{
+        CodigoGenerado='';
         showClave(CodigoGenerado);
       }
     }
@@ -761,6 +804,9 @@ var cable_S8 = function(){
     if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
        DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -855,7 +901,10 @@ var cable_M8 = function(){
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
        CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -866,6 +915,9 @@ var cable_M8 = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
       DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -959,7 +1011,10 @@ var cable_DI = function(){
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
       CodigoGenerado=Marca + Familia + "DI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -970,6 +1025,9 @@ var cable_DI = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
       DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1064,7 +1122,10 @@ var cable_AR = function(){
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
       CodigoGenerado=Marca + Familia + "AR" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -1075,6 +1136,9 @@ var cable_AR = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
       DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1170,7 +1234,10 @@ var cable_AD = function(){
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
       CodigoGenerado=Marca + Familia + "AD" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
     let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -1181,6 +1248,9 @@ var cable_AD = function(){
     if(CodigoGenerado!=''){
         NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
         DescPrdConf.innerHTML=descripcion_cable
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1276,6 +1346,9 @@ var cable_F8 = function(){
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
          CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
         showClave(CodigoGenerado);
+      }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
       }
   }else{
     // mostrar rango de hilos valido
@@ -1285,7 +1358,10 @@ var cable_F8 = function(){
     if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
        CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
       showClave(CodigoGenerado);
-    }
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
 
   }
@@ -1298,6 +1374,9 @@ var cable_F8 = function(){
     if(CodigoGenerado!=''){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
+    }else{
+        
+      DescPrdConf.innerHTML=''
     }
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
       let data = {
@@ -1353,9 +1432,15 @@ var cable_FT = function(){
       if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
        DescPrdConf.innerHTML=descripcion_cable 
-      }
-      
+      }else{
+        
+      DescPrdConf.innerHTML=''
     }
+      
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
 
   let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -1424,9 +1509,15 @@ let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
       if(CodigoGenerado!=''){
        NombreProductoConfigurable(CodigoGenerado, descripcion_cable) 
        DescPrdConf.innerHTML=descripcion_cable 
-      }
-      
+      }else{
+        
+      DescPrdConf.innerHTML=''
     }
+      
+    }else{
+        CodigoGenerado='';
+        showClave(CodigoGenerado);
+      }
   }
 
   let BreakOut =  0
