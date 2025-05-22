@@ -77,7 +77,7 @@ if (!class_exists("Connection")) {
             $Email = new Email();
             $TemplateConsultecnico = new TemplateConsultecnico();
             $Email->MailerSubject = "Consultecnico";
-            $Email->MailerListTo = ["rodrigo.ramirez@splittel.com", "irving.ramirez@splittel.com"];
+            $Email->MailerListTo = ["capacitaciones@optronics.com.mx","irving.ramirez@splittel.com"];
             $Email->MailerBody = $TemplateConsultecnico->body($data);
             $Email->EmailSendEmail();
             unset($Email);
