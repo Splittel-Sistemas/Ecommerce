@@ -55,7 +55,7 @@ if (isset($_POST["Descripcion"])) {
 
   //BUSCADOR DE PRODUCTOS FIJOS
   $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $_POST["Descripcion"] . "%'   $like   OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2) AND producto_activo = 'si' ) AND existencia > 0 ";
+  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $_POST["Descripcion"] . "%'   $like   OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2) AND producto_activo = 'si' AND subcategoria_activo='si') AND existencia > 0 ";
   $ProductoController->order = " ";
   $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
