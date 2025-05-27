@@ -946,7 +946,9 @@ var cable_M8 = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+    BorrarPrecio();
+  }
 
   let DirectorioImgProducto = Marca + Familia + "M8/fotos"
   ListImgProducto(DirectorioImgProducto)
