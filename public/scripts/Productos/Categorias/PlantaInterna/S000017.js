@@ -278,7 +278,9 @@ var cable_IE = function(){
     }
     
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+    BorrarPrecio();
+  }
   let DirectorioImgProducto = Marca + Familia + "IE/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "IE")
@@ -499,7 +501,9 @@ var cable_CI = function(){
     }
     
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+    if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
 
   let DirectorioImgProducto = Marca + Familia + "CI/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -610,7 +614,9 @@ var cable_SA = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
 
   let DirectorioImgProducto = Marca + Familia + "SA/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -686,7 +692,9 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
     SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
   }
   CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
 
 
   let DirectorioImgProducto = Marca + Familia + "D0/fotos"
@@ -825,7 +833,9 @@ var cable_S8 = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
 
   let DirectorioImgProducto = Marca + Familia + "S8/fotos"
   ListImgProducto(DirectorioImgProducto)
@@ -1047,7 +1057,9 @@ var cable_DI = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
   let DirectorioImgProducto = Marca + Familia + "DI/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "DI")
@@ -1158,7 +1170,9 @@ var cable_AR = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
   let DirectorioImgProducto = Marca + Familia + "AR/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AR")
@@ -1270,7 +1284,9 @@ var cable_AD = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
   let DirectorioImgProducto = Marca + Familia + "AD/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "AD")
@@ -1395,7 +1411,9 @@ var cable_F8 = function(){
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
   let DirectorioImgProducto = Marca + Familia + "F8/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "F8")
@@ -1461,7 +1479,9 @@ var cable_FT = function(){
   }
   CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
 
-
+if(CodigoGenerado==''){
+        BorrarPrecio();
+      }
 
   let DirectorioImgProducto = Marca + Familia + "FT/fotos/" + Aux_ConectorLadoB 
   ListImgProducto(DirectorioImgProducto)
@@ -1538,7 +1558,9 @@ let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
   }
   CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
 
-
+  if(CodigoGenerado==''){
+    BorrarPrecio();
+  }
 
   let DirectorioImgProducto = Marca + Familia + "DB0/fotos/"+ConectorLadoAselected+ConectorLadoBselected
   

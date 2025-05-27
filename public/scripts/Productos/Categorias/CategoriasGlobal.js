@@ -915,3 +915,7 @@ var CalcularPrecioPatchCords = function(url, data){
   })
 
 }
+
+var BorrarPrecio = function(){
+  document.getElementById('Costo').innerHTML=''
+}
