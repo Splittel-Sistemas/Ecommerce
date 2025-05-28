@@ -358,6 +358,7 @@ var cable_CI = function(){
       showClave(CodigoGenerado);
       
     }else{
+     
         CodigoGenerado='';
         showClave(CodigoGenerado);
       }
@@ -479,8 +480,9 @@ var cable_CI = function(){
     NombreProductoConfigurable(CodigoGenerado, descripcion_cable)  
     DescPrdConf.innerHTML=descripcion_cable
     }else{
-        
+       
       DescPrdConf.innerHTML=''
+      BorrarPrecio();
     }
 
     let BreakOut = Adicionales.value == "BO" || Adicionales.value == "BM" ? 1 : 0
@@ -499,12 +501,9 @@ var cable_CI = function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    
+  
     CalcularPrecio("../../models/Productos/CablePreconectorizado/CalcularPrecio.Route.php", data)
-    if(CodigoGenerado==''){
-        BorrarPrecio();
-      }
-
+   
   let DirectorioImgProducto = Marca + Familia + "CI/fotos"
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "CI")

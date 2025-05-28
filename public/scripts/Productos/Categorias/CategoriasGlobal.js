@@ -833,6 +833,7 @@ if (!decryptedText) {
 }
 
 var CalcularPrecio = function(url, data){
+  
   _ajax_(url, 'POST', 'JSON', data, 
   function(responses){
     
@@ -873,6 +874,11 @@ var CalcularPrecio = function(url, data){
     }else{
       ProductoEspecial()
     }
+      if(DatasSend=JSON.stringify(data)){
+        if(DatasSend.codigo=='')
+          BorrarPrecio();
+      }
+      
   })
 }
 
@@ -917,5 +923,5 @@ var CalcularPrecioPatchCords = function(url, data){
 }
 
 var BorrarPrecio = function(){
-  document.getElementById('Costo').innerHTML=''
+   document.getElementById('Costo').innerHTML=''
 }
