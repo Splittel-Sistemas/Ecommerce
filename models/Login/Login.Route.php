@@ -32,6 +32,12 @@
             $Result = $LoginController->validateLogin();
             echo json_encode($Result, JSON_UNESCAPED_UNICODE);
             break;
+          case 'recovery':
+            $LoginController = new LoginController();
+            $LoginController->Correo = $this->Tool->validEmail("Email", "Correo", true);
+            $Result = $LoginController->sendPasswordTemp();
+            echo json_encode($Result, JSON_UNESCAPED_UNICODE);
+            break;
           default:
             throw new Exception("No se encontro la opción solicitada, por favor contactanos.....");
             break;

@@ -77,3 +77,23 @@ var Login = function() {
     }
   })
 }
+
+/**
+ * Recovery
+ *
+ * @param {Object} Elem
+ *
+ * @return {number} b - Bar
+ */
+var Recovery = function() {
+  let url = document.getElementById('url')
+  ajax_('../../models/Login/Login.Route.php', 'POST', 'JSON', $('#RecoveryForm').serialize(), 
+  function(response){
+    if (!response.error) {
+      toastAlert(response.typeError, '', response.message, 'topLeft', "icon-check-circle")
+      $('#RecoveryForm')[0].reset();
+    }else{
+      toastAlert('danger', '', response.message, 'topLeft', 'icon-ban')
+    }
+  })
+}

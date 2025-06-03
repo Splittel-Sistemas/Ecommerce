@@ -150,6 +150,65 @@ class LoginController{
     }
   }
 
-
+public function generarPasswordTem($longitud = 12) {
   
+
+    $mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $minusculas = 'abcdefghijklmnopqrstuvwxyz';
+    $numeros    = '0123456789';
+    $simbolos   = '!*(]}>?/'; // excluye @
+
+    // Aseguramos al menos un carácter de cada tipo
+    $password = '';
+    $password .= $mayusculas[random_int(0, strlen($mayusculas) - 1)];
+    $password .= $minusculas[random_int(0, strlen($minusculas) - 1)];
+    $password .= $numeros[random_int(0, strlen($numeros) - 1)];
+    $password .= $simbolos[random_int(0, strlen($simbolos) - 1)];
+
+    // Rellenamos el resto
+    $todos = $mayusculas . $minusculas . $numeros . $simbolos;
+    for ($i = 4; $i < $longitud; $i++) {
+        $password .= $todos[random_int(0, strlen($todos) - 1)];
+    }
+
+    // Mezclar para evitar patrón predecible
+    return str_shuffle($password);
+}
+
+/**
+   * validación de login
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function sendPasswordTemp(){
+    try{
+      $passTemp=$this->generarPasswordTem(12);
+      $hash = password_hash($passTemp, PASSWORD_DEFAULT);
+
+      if(!$this->conn->conexion()->connect_error){
+        $result = array();
+        $result = $this->conn->Exec_store_procedure_json("CALL GeneratePassTemp(
+            '".$this->Correo."',
+            '".$passTemp."',
+            ".$hash.",
+            @Result);","@Result");
+
+        unset($EncrypData);
+        if (!$result['error']) {
+          $ResultLoad = $this->SendPassTemp();
+        }
+        return $result;
+      }else{
+        return $this->Tool->Message_return(true,"Error!!, No existe conexión",null, false);
+      }
+    }catch (Exception $e) {
+      throw $e;
+    }
+  }
+  
+  function SendPassTemp(){
+
+  }
 }
