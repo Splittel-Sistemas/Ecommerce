@@ -155,30 +155,42 @@ class LoginController{
   }
 
 public function generarPasswordTem($longitud = 12) {
-  
-
     $mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $minusculas = 'abcdefghijklmnopqrstuvwxyz';
     $numeros    = '0123456789';
     $simbolos   = '!*(]}>?/'; // excluye @
 
-    // Aseguramos al menos un carácter de cada tipo
-    $password = '';
-    $password .= $mayusculas[random_int(0, strlen($mayusculas) - 1)];
-    $password .= $minusculas[random_int(0, strlen($minusculas) - 1)];
-    $password .= $numeros[random_int(0, strlen($numeros) - 1)];
-    $password .= $simbolos[random_int(0, strlen($simbolos) - 1)];
+    // Función compatible con PHP 5.x usando openssl
+    function safe_random_int($min, $max) {
+        $range = $max - $min;
+        if ($range < 1) return $min;
 
-    // Rellenamos el resto
-    $todos = $mayusculas . $minusculas . $numeros . $simbolos;
-    for ($i = 4; $i < $longitud; $i++) {
-        $password .= $todos[random_int(0, strlen($todos) - 1)];
+        $log = log($range, 2);
+        $bytes = (int) ($log / 8) + 1;
+        $bits = (int) $log + 1;
+        $filter = (1 << $bits) - 1;
+
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter;
+        } while ($rnd > $range);
+
+        return $min + $rnd;
     }
 
-    // Mezclar para evitar patrón predecible
+    $password = '';
+    $password .= $mayusculas[safe_random_int(0, strlen($mayusculas) - 1)];
+    $password .= $minusculas[safe_random_int(0, strlen($minusculas) - 1)];
+    $password .= $numeros[safe_random_int(0, strlen($numeros) - 1)];
+    $password .= $simbolos[safe_random_int(0, strlen($simbolos) - 1)];
+
+    $todos = $mayusculas . $minusculas . $numeros . $simbolos;
+    for ($i = 4; $i < $longitud; $i++) {
+        $password .= $todos[safe_random_int(0, strlen($todos) - 1)];
+    }
+
     return str_shuffle($password);
 }
-
 /**
    * send password temp
    *
