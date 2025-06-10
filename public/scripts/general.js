@@ -385,6 +385,23 @@ var toastAlert = function (classs, title, message, position, icon) {
   iziToast.show(configiziToast);
 };
 
+var toastAlert1 = function (classs, title, message, position, icon) {
+  let configiziToast = {
+    class: "iziToast-" + classs || "",
+    title: title,
+    message: message,
+    animateInside: !1,
+    position: position,
+    progressBar: !1,
+    icon: icon,
+    timeout: 5200,
+    transitionIn: "fadeInLeft",
+    transitionOut: "fadeOut",
+    transitionInMobile: "fadeIn",
+    transitionOutMobile: "fadeOut",
+  };
+  iziToast.show(configiziToast);
+};
 var CleanSpaces = function (str) {
   while (str.indexOf(" ") > -1) {
     str = str.replace(" ", "");

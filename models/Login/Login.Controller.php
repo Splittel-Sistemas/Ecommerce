@@ -20,6 +20,10 @@ if (!class_exists("Connection")) {
   include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
 }if (!class_exists('EncrypData_')) {
   include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/EncrypData.php';
+}if (!class_exists("Email")) {
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
+}if (!class_exists("EmailTest")) {
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailTest.php';
 }
 
 class LoginController{
@@ -176,7 +180,7 @@ public function generarPasswordTem($longitud = 12) {
 }
 
 /**
-   * validación de login
+   * send password temp
    *
    * @param string $a Foo
    *
@@ -192,12 +196,20 @@ public function generarPasswordTem($longitud = 12) {
         $result = $this->conn->Exec_store_procedure_json("CALL GeneratePassTemp(
             '".$this->Correo."',
             '".$passTemp."',
-            ".$hash.",
+            '".$hash."',
             @Result);","@Result");
 
-        unset($EncrypData);
+        
         if (!$result['error']) {
-          $ResultLoad = $this->SendPassTemp();
+          $Email = new Email();
+          $EmailTest = new EmailTest();
+          
+         
+            $Email->MailerSubject = "Recuperar acceso";
+            $Email->MailerBody = $EmailTest->RecoveryPassword($passTemp);
+         
+          $Email->MailerListTo[] = $this->Correo;
+          $Email->EmailSendEmail();
         }
         return $result;
       }else{
@@ -208,7 +220,50 @@ public function generarPasswordTem($longitud = 12) {
     }
   }
   
-  function SendPassTemp(){
+  /**
+   * send password temp
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function activatePasswordTemp(){
+    try{
+     
+      if(!$this->conn->conexion()->connect_error){
 
+          $ClienteModel = new Cliente();
+      $ClienteModel->SetParameters($this->conn, $this->Tool);
+      $Existe = $ClienteModel->GetByRecoveryPass($this->Correo);
+      if ($Existe) {
+      
+        if(password_verify($this->Password,$Existe[0]->Hash) ){
+        
+        $EncrypData = new EncrypData_('password');  
+        $PasswordDesincriptada = $EncrypData->cadenaEncrypt($this->Password);
+         
+        $result = array();
+        $result = $this->conn->Exec_store_procedure_json("CALL ChangePassRecoveryTemp(
+            '".$Existe[0]->ClienteKey."',
+            '".$PasswordDesincriptada."',
+            '".$this->Correo."',
+            @Result);","@Result");
+        }else{
+          throw new Exception("El token no valido, ha expirado o no se encuentra");
+        }
+       
+      }else{
+        throw new Exception("No se encuentra información del usuario");
+      }
+      unset($ClienteModel);
+
+        return $result;
+      }else{
+        return $this->Tool->Message_return(true,"Error!!, No existe conexión",null, false);
+      }
+    }catch (Exception $e) {
+      throw $e;
+    }
   }
+ 
 }

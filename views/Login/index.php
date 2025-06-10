@@ -74,7 +74,13 @@
                 <div class="col-12">
                   <button type="button" class="btn btn-outline-primary btn-block float-right" onclick="Login(this)"><i class="icon-log-in"></i>&nbsp; Ingresar</button>
                 </div>
-                
+                <div class="col-12">
+                    <div class="form-group text-center">
+                <span class="text-center button-content-3wD gap-1.5 grid-flow-col inline-grid items-center justify-center justify-items-center">
+                <a href="RecoveryPassword.php">¿Olvide mi contraseña?</a>
+                </span>
+              </div>
+                </div>
               </div>
               <!--
               <hr style="height:2px;" class="padding-bottom-1x"/>

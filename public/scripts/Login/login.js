@@ -97,3 +97,23 @@ var Recovery = function() {
     }
   })
 }
+
+/**
+ * Validate
+ *
+ * @param {Object} Elem
+ *
+ * @return {number} b - Bar
+ */
+var Validate = function() {
+  let url = document.getElementById('url')
+  ajax_('../../models/Login/Login.Route.php', 'POST', 'JSON', $('#ValidateForm').serialize(), 
+  function(response){
+    if (!response.error) {
+      toastAlert1(response.typeError, '', response.message, 'topLeft', "icon-check-circle")
+      $('#ValidateForm')[0].reset();
+    }else{
+      toastAlert('danger', '', response.message, 'topLeft', 'icon-ban')
+    }
+  })
+}

@@ -34,25 +34,27 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
           <h2>¿Olvidaste tu contraseña?</h2>
-          <p>Cambia tu contraseña en tres sencillos pasos. Esto ayuda a mantener segura su nueva contraseña.</p>
+          
           <ol class="list-unstyled">
             <li><span class="text-primary text-medium">1. </span>Complete su dirección de correo electrónico a continuación.</li>
-            <li><span class="text-primary text-medium">2. </span>Le enviaremos un código temporal por correo electrónico, el cual debera activar abriendo el enlace.</li>
-            <li><span class="text-primary text-medium">3. </span>Use el código para iniciar sesion, en el primer inicio de sesion se solicitara cambiar su contraseña en nuestro sitio web.</li>
+            <li><span class="text-primary text-medium">2. </span>Ingrese el código temporal por correo electrónico.</li>
+            <li><span class="text-primary text-medium">3. </span>Una vez que se notifique con exito la activación. Use el código para iniciar sesion, en el primer inicio de sesion por seguridad se le solicitara cambiar su contraseña en nuestro sitio web.</li>
           </ol>
-          <form class="card mt-4" id="RecoveryForm">
+          <form class="card mt-4" id="ValidateForm">
             <div class="card-body">
               <div class="form-group">
-                <input type="hidden" id="Action" name="Action" value="recovery">
+                <input type="hidden" id="Action" name="Action" value="activate">
                 <input type="hidden" id="ActionLogin" name="ActionLogin" value="true">
                 <label for="email">Ingresa tu email</label>
                 <input class="form-control" type="text" id="Email" name="Email" required>
                 <br>
-                Escriba la dirección de correo electrónico que utilizó para registrase, luego enviaremos un código de acceso temporal.</small>
+                <label for="email">Codigo Temporal</label>
+                <input class="form-control" type="text" id="Temp" name="Temp" required>
+                </small>
               </div>
             </div>
             <div class="card-footer">
-              <button type="button" class="btn btn-primary float-right" onclick="Recovery(this)">Enviar</button>
+              <button type="button" class="btn btn-primary float-right" onclick="Validate(this)">Activar</button>
             </div>
           </form>
         </div>

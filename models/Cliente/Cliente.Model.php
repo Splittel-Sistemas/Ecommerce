@@ -20,6 +20,7 @@ class Cliente{
     public $DiasCredito;
     public $Redondeo;
     public $Segmento;
+    public $Hash;
 
     protected $Connection;
     protected $Tool;
@@ -71,6 +72,9 @@ class Cliente{
     public function SetSegmento($Segmento){
         $this->Segmento = $Segmento;
     }
+    public function SetHash($Hash){
+        $this->Hash = $Hash;
+    }
 
 
     public function GetClienteKey(){
@@ -113,6 +117,37 @@ class Cliente{
     public function GetSegmento(){
         return $this->Segmento;
     }
+    public function GetHash(){
+        return $this->Hash;
+    }
+
+    public function GetByRecoveryPass($email){
+        try {
+        $SQLSTATEMENT = "SELECT t1.id_cliente, t1.email, t1.cardcode, t0.pass,t0.fecha FROM t88 AS t0
+                            INNER JOIN login_cliente t1 ON t0.email = t1.email
+                            WHERE t0.email = '".$email."' 
+                                    AND t0.fecha >= DATE_SUB(NOW(), INTERVAL 23 HOUR)
+                                    AND t1.activo='si'
+                            ORDER BY fecha DESC
+                            LIMIT 1";
+        //echo $SQLSTATEMENT;
+        $result = $this->Connection->QueryReturn($SQLSTATEMENT);
+        $data = [];
+
+        if ($row = $result->fetch_object()) {
+            $Cliente = new Cliente();
+            $Cliente->ClienteKey    =   $row->id_cliente;
+            $Cliente->Email         =   $row->email;
+            $Cliente->Hash          =   $row->pass;
+            $data[] = $Cliente;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+
+    }
+
 
     public function GetBy($filter){
       try {
