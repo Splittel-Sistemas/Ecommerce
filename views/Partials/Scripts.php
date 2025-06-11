@@ -70,19 +70,7 @@ src="https://www.facebook.com/tr?id=201268776126598&ev=PageView
 
 <!-- End Facebook Pixel Code -->
 
-<!-- Start of fibremex Zendesk Widget script -->
 
-<script> 
-function Chat () { 
-var script = document.createElement ("script"); // Hacer un script DOM nodo 
-script.id = "ze-snippet" 
-script.src = " https://static.zdassets.com/ekr/snippet.js?key=21afee31-184d-40a1-9a17-bde206927de4";
-document.head.appendChild (script); 
-} 
-setTimeout (Chat, 3500); 
-</script> 
-
-<!-- End of fibremex Zendesk Widget script -->
 
 <!--  RdStation Pixel Code -->
 
