@@ -44,8 +44,14 @@
       <div class="col-xl-12 col-lg-12 order-lg-12">
         <!-- Post Meta-->
         <iframe src="https://publicaciones.fibremex.com/catalogo-telecomunicaciones-fibremex/page/1" width="820" height="620" style="border:none;" allowfullscreen></iframe>
-
+          
       </div>
+      <div class="col-xl-12 col-lg-12 order-lg-12 padding-top-1x d-flex justify-content-center align-items-center">
+          <div class="col-xl-3 col-lg-3 order-lg-3 text-center">
+            <a download="Catalogo FMX.pdf" href="../../public/images/img_spl/catalogo/Catalogo FMX.pdf"  style="background-color: #bc2130" class="btn btn-primary btn-block m-0">
+              Descarga el catálogo</a>
+          </div>
+        </div>
     </div>
   </div>
 
