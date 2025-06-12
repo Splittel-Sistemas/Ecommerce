@@ -160,11 +160,11 @@
                                     <input class="form-control form-control-2" type="text" id="Marca" name="Marca">
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
-                                    <label>Modelo <strong class="text-danger"></strong></label>
+                                    <label>Modelo <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="Modelo" name="Modelo">
                                 </div>
                                 <div class="col-sm-12 col-md-6 form-group">
-                                    <label>Número de serie <strong class="text-danger"></strong></label>
+                                    <label>Número de serie <strong class="text-danger">*</strong></label>
                                     <input class="form-control form-control-2" type="text" id="serie" name="serie" maxlength="150">
                                 </div>
 
