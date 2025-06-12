@@ -156,9 +156,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   
 </style>
-<a href="https://wa.me/524427843528?text=<?php echo urlencode('¡Hola! Tengo algunas dudas y me gustaría saber cómo obtener información, cotizar o comprar con Fibremex. ¿Me apoyan, por favor?')?>" target="_blank">
+<a href="https://wa.me/524427843528?text=<?php echo urlencode('¡Hola! Me gustaría saber cómo obtener información, cotizar o comprar con Fibremex')?>" target="_blank">
 <img src="../../public/images/img_spl/adicionales/whatsapp.png"  alt="Whatsapp-fibremex" 
-style="color-scheme: light; width: 375x; height: 112px; padding: 0px; margin: 15px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;">
+style="color-scheme: light; width: 229x; height: 69px; padding: 0px; margin: 15px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;">
 </a>
 <?php 
   @session_start();
