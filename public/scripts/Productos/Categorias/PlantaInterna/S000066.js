@@ -385,7 +385,7 @@ var JumpersMTPPRO = function(){
       CalcularPrecio("../../models/Productos/Jumpers/MPOBreakOut/CalcularPrecioMPOBreakOut.Route.php", data)
     }
       showClave(CodigoGenerado)
-      agregarFichaTecnicaConfigurable('OPJA1xAE')
+      agregarFichaTecnicaConfigurable('OPJA1xAE'+NumeroHilos)
       agregarCertificadoConfigurable(CodigoGenerado)
   }
 
