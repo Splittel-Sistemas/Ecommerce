@@ -157,7 +157,7 @@ var JumpersMPTLC = function(){
     CalcularPrecio("../../models/Productos/Jumpers/MTPBreakOut/CalcularPrecioMTPBreakOut.Route.php", data)
   }
     showClave(CodigoGenerado)
-    agregarFichaTecnicaConfigurable('OPJA3HAE')
+    agregarFichaTecnicaConfigurable('OPJA3HAE'+NumeroHilos)
     agregarCertificadoConfigurable(CodigoGenerado)
 }
 
@@ -264,7 +264,7 @@ var JumpersMTPPRO = function(){
       CalcularPrecio("../../models/Productos/Jumpers/MTPProBreakOut/CalcularPrecioMTPProBreakOut.Route.php", data)
     }
       showClave(CodigoGenerado)
-      agregarFichaTecnicaConfigurable('OPJA5MAE')
+      agregarFichaTecnicaConfigurable('OPJA5MAE'+NumeroHilos)
       agregarCertificadoConfigurable(CodigoGenerado)
   }
 
