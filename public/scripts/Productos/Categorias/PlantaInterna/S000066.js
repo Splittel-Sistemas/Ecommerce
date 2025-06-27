@@ -143,7 +143,7 @@ var JumpersMPTLC = function(){
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
     //console.log(descripcion)
-    ListImgProducto("OPJA3HAE"+NumeroHilos)
+    ListImgProducto("OPJA3HAE/"+NumeroHilos)
     ListProductoDescription('OPJA3HAE')
     ListProductoAdicional('OPJA3HAE')
     let data = {
