@@ -143,7 +143,7 @@ var JumpersMPTLC = function(){
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
     //console.log(descripcion)
-    ListImgProducto("OPJA3HAE")
+    ListImgProducto("OPJA3HAE"+NumeroHilos)
     ListProductoDescription('OPJA3HAE')
     ListProductoAdicional('OPJA3HAE')
     let data = {
@@ -250,7 +250,7 @@ var JumpersMTPPRO = function(){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
       //console.log(descripcion)
-      ListImgProducto("OPJA5MAE")
+      ListImgProducto("OPJA5MAE/"+NumeroHilos)
       ListProductoDescription('OPJA5MAE')
       ListProductoAdicional('OPJA5MAE')
       let data = {
@@ -371,7 +371,7 @@ var JumpersMTPPRO = function(){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
    
-      ListImgProducto("OPJA1xAE")
+      ListImgProducto("OPJA1xAE/"+NumeroHilos)
       ListProductoDescription('OPJA1xAE')
       ListProductoAdicional('OPJA1xAE')
       let data = {
