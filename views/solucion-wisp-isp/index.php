@@ -169,7 +169,7 @@
             <!-- CIERRES DE EMPLAME-->
             <div class="col-lg-12 col-md-12 order-md-2 padding-top-2x padding-bottom-1x">
             <h6 class="text-muted opacity-75 ">
-                  <strong>Cierres de emplame tipo NAP</strong>
+                  <strong>Cierres de empalme tipo NAP</strong>
                 </h6>
             </div>
             <div class="col-lg-12 col-md-12 order-md-2">
