@@ -237,6 +237,12 @@ var JumpersMonomodo = async function(){
       StyleDisplayNoneOrBlock_2(Diametro, 'none', [0,2])
     }
 
+    if((Conector1.value=='E2' || Conector1.value=='MU') || ((Conector2.value=='E2' || Conector2.value=='MU'))){
+      if(Diametro.selectedIndex==2)
+        Diametro.selectedIndex = 1
+      StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+    }
+
     if (PosicionConector1 == PosicionConector2) {
       if (PosicionPulidoConector1 < PosicionPulidoConector2) {
         NewConector1 = PosicionConectorJumpers[PosicionConector1]
@@ -309,8 +315,11 @@ var JumpersMonomodo = async function(){
       NombreProductoConfigurable(CodigoGenerado, descripcion)
       DescPrdConf.innerHTML=descripcion
     }
-
-    ChangeListImgProducto('OPJULCU','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MonomodoTipoFibra.value+NumeroHilos.value)
+    if(Diametro.value==3){
+        ChangeListImgProducto('OPJULCU','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MonomodoTipoFibra.value+NumeroHilos.value+Diametro.value)
+    }else{
+         ChangeListImgProducto('OPJULCU','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MonomodoTipoFibra.value+NumeroHilos.value)
+    }
     ListProductoDescription('OPJULCU')
     ListProductoAdicional('OPJULCU')
     agregarFichaTecnicaConfigurable('OPJULCU')
