@@ -161,11 +161,13 @@ var ValidInputRange = function(element,initial, end){
  * @return {number} b - Bar
  */
 var agregarFichaTecnica = function(name, descripcion){
+ 
   return '<button class="btn btn-outline-secondary btn-sm "> '+
     '<a href="../../public/images/img_spl/'+name+'.pdf" target="_blank">'+
       '<i class="icon-download"></i>&nbsp;'+descripcion+''+
     '</a>'+
   '</button>';
+  
 }
 var agregarCertificado = function(name, descripcion){
   return '<button class="btn btn-outline-secondary btn-sm "> '+
@@ -486,8 +488,9 @@ var existEcommerce_ = function(Codigo){
       // agregar ficha técnica
       let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
       if((resultResponse.FichaRuta != '' && resultResponse.FichaRuta!=null)){
-        
         FichaTecnicaTecnica.innerHTML = agregarFichaTecnica(resultResponse.FichaRuta, 'Ficha Técnica')
+      }else{
+        FichaTecnicaTecnica.innerHTML = '';
       }
       if((resultResponse.Certificado != '' && resultResponse.Certificado!=null)){
        // let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
@@ -524,6 +527,8 @@ var existEcommerce_ = function(Codigo){
       getDescuentoByFamiliaProductosConfigurables()
       let Stock = document.getElementById('add-stock')
       Stock.innerHTML = '0.00'
+      let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
+       FichaTecnicaTecnica.innerHTML = '';
     }
 
     StockEnTransito(Codigo)
