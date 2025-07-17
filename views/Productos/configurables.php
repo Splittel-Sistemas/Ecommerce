@@ -72,6 +72,7 @@
       <div class="col-md-6">
         <div class="product-gallery">
           <div class="gallery-wrapper">
+            <div style="display:none;" class="product-badge bg-danger" id="LeyendaConf"></div>
             <div class="gallery-item video-btn text-center" id="video-producto">
 
             </div>

@@ -655,17 +655,31 @@ var existJumper_ = function(Codigo){
     if (!response.error && response.count > 0) {
       let resultResponse =  response.records[0]
       let Stock = document.getElementById('add-stock')
- //console.log(resultResponse);
+      let LeyendaConfig = document.getElementById('LeyendaConf')
+      //console.log(resultResponse);
       // agregar stock
       if(Stock)
         if(resultResponse.ProductoExistencia!='' && resultResponse.ProductoExistencia>0)
           Stock.innerHTML = resultResponse.ProductoExistencia
           else
           Stock.innerHTML = '0.00'
+
+      if(LeyendaConfig)
+        if(resultResponse.Leyenda!='' && resultResponse.Leyenda !== null ){
+          LeyendaConfig.innerHTML = resultResponse.Leyenda
+          LeyendaConfig.style.display = 'block';
+        }else{
+          LeyendaConfig.innerHTML = ''
+          LeyendaConfig.style.display = 'none';
+        }
+      
      
     }else{
       let Stock = document.getElementById('add-stock')
       Stock.innerHTML = '0.00'
+      let LeyendaConfig = document.getElementById('LeyendaConf')
+      LeyendaConfig.innerHTML = ''
+          LeyendaConfig.style.display = 'none';
     }
   })
   StockEnTransito(Codigo)
