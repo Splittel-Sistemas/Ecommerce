@@ -240,9 +240,9 @@
                 $ProductoController->filter = "WHERE subcategoria='".$Subcategorias_->SubcategoriaKey."' AND producto_activo='si' AND (codigo_configurable='' OR configurablefijo='si' )";
               }
               
-              $ProductoController->order = "ORDER BY desc_producto DESC ";
+              $ProductoController->order = " ORDER BY leyenda DESC, desc_producto DESC ";
               $getProduct = $ProductoController->GetProductosFijos_();
-
+              
 
               if ($getProduct->count > 0){ 
                 $CategoriaKey = $getProduct->records[0]->ProductoCategoriaKey;
