@@ -639,23 +639,25 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         $ResultPopup = $PopUpController->get();
          if (!empty($ResultPopup)): 
     ?>
-    
+    <!--
     <div class="modal fade" id="popupImagen" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-body text-center">
-        <?php if (!empty($ResultPopup)): ?>
+      <div class="modal-dialog modal-lg modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
           
-            <img data-img-id="<?php echo $ResultPopup->records[0]->Key ?>" src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultPopup->records[0]->UrlImg1 ); ?>" class="img-fluid mb-3" style="max-height: 300px;">
-         
-          <?php endif; ?>
+          <div class="modal-body text-center">
+            <?php if (!empty($ResultPopup)): ?>
+              
+                <img data-img-id="<?php echo $ResultPopup->records[0]->Key ?>" src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultPopup->records[0]->UrlImg1 ); ?>" class="img-fluid mb-3" style="max-height: 300px;">
+            
+              <?php endif; ?>
+          </div>
+        
+        </div>
       </div>
-     
-    </div>
-  </div>
-   <?php endif; ?>
-</div>
+    
+   </div>
+            -->
+<?php endif; ?>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
