@@ -637,9 +637,9 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
         }
         $PopUpController = new PopUpController();
         $ResultPopup = $PopUpController->get();
-         if (!empty($ResultPopup)): 
+        if ($ResultPopup->count > 0):
     ?>
-    <!--
+    
     <div class="modal fade" id="popupImagen" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -656,7 +656,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       </div>
     
    </div>
-            -->
+            
 <?php endif; ?>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
