@@ -633,7 +633,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     <?php
     date_default_timezone_set('Etc/GMT+6');
     if (!class_exists('PopUpController')) {
-          include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/PopUp.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/Popup.Controller.php';
         }
         $PopUpController = new PopUpController();
         $ResultPopup = $PopUpController->get();
