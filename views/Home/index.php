@@ -630,10 +630,52 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       </div>
     </section>
 
+    <?php
+    date_default_timezone_set('Etc/GMT+6');
+    if (!class_exists('PopUpController')) {
+          include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Home/PopUp.Controller.php';
+        }
+        $PopUpController = new PopUpController();
+        $ResultPopup = $PopUpController->get();
+        
+    ?>
+    
+    <div class="modal fade" id="popupImagen" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+        <?php if (!empty($ResultPopup)): ?>
+          
+            <img data-img-id="<?php echo $ResultPopup->records[0]->Key ?>" src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultPopup->records[0]->UrlImg1 ); ?>" class="img-fluid mb-3" style="max-height: 300px;">
+         
+          <?php endif; ?>
+      </div>
+     
+    </div>
+  </div>
+</div>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
     <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Scripts.php'; ?>
+   <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const hoy = new Date().toISOString().split('T')[0];
+  const imagen = document.querySelector('#popupImagen img');
+
+  if (imagen) {
+    const id = imagen.dataset.imgId;
+    const clave = `img_${id}_vista_${hoy}`;
+
+    if (!localStorage.getItem(clave)) {
+      localStorage.setItem(clave, id);
+      const modal = new bootstrap.Modal(document.getElementById('popupImagen'));
+      modal.show();
+    }
+  }
+});
+</script>
     <script type="text/javascript">
       // altura('.featured_products_card')
       altura('.featured_products_card_1')
