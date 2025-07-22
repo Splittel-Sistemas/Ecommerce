@@ -168,8 +168,11 @@ var JumpersMultimodo = async function(){
     NombreProductoConfigurable(CodigoGenerado, descripcion_mpo)
     DescPrdConf.innerHTML=descripcion_mpo
   }
-
-  ChangeListImgProducto('OPJULCP','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value)
+  if(Diametro.value==3 && (MultimodoTipoFibra.value=='62' || MultimodoTipoFibra.value=='50')){
+        ChangeListImgProducto('OPJULCP','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value+Diametro.value)
+  }else{
+        ChangeListImgProducto('OPJULCP','OPJU'+NewConector1+NewPulidoConector1+NewConector2+NewPulidoConector2+MultimodoTipoFibra.value+NumeroHilos.value)
+  }
   ListProductoDescription('OPJULCP')
   ListProductoAdicional('OPJULCP')
   agregarFichaTecnicaConfigurable('OPJULCP')
