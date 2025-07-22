@@ -70,12 +70,32 @@
     <div class="row">
       <!-- Poduct Gallery-->
       <div class="col-md-6">
-        <div class="product-gallery">
-          <div class="gallery-wrapper">
-            <div style="display:none;" class="product-badge bg-danger" id="LeyendaConf"></div>
-            <div class="gallery-item video-btn text-center" id="video-producto">
-
-            </div>
+        <div class="product-gallery" style="padding-top: 15px;">
+         
+          <div class="gallery-wrapper d-flex gap-3">
+                   <div style="display:none;
+            height: 24px;
+            padding: 0 14px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: .025em;
+            line-height: 24px;
+            margin-right:5px;
+            white-space: nowrap;" class=" bg-danger" id="LeyendaConf">15% de descuento</div>
+            <div style="display:none;
+            height: 24px;
+            padding: 0 14px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: .025em;
+            line-height: 24px;
+            white-space: nowrap;" class=" bg-success me-3" id="LeyendaFab">Fabricados en 24 a 48 hrs</div>
+             
+            <div class="gallery-item video-btn text-center" id="video-producto"></div>
           </div>
           <!--<span class="product-badge bg-danger">Sale</span> -->
           <div id="showcarousel">

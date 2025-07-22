@@ -680,6 +680,7 @@ var existJumper_ = function(Codigo){
       
      
     }else{
+      
       let Stock = document.getElementById('add-stock')
       Stock.innerHTML = '0.00'
       let LeyendaConfig = document.getElementById('LeyendaConf')
@@ -688,6 +689,10 @@ var existJumper_ = function(Codigo){
     }
   })
   StockEnTransito(Codigo)
+  let LeyendaFab = document.getElementById('LeyendaFab')
+  LeyendaFab.innerHTML = 'Fabricados en 24 a 48 hrs'
+   LeyendaFab.style.display = 'block';
+  
 }
 
 
