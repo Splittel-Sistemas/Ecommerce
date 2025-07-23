@@ -231,6 +231,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       cont_1 = 0
   }
   NumeroAcopladores.value=NumeroAcopladoresTotal
+  TipoFibraDescripcion = TipoFibra.options[TipoFibra.selectedIndex].text
     //NumeroAcopladoresIdText.innerHTML = 'Número de acopladores '+NumeroAcopladoresMin+'~'+NumeroAcopladoresMax+':'
    CodigoGenerado = Marca+Ensamble+Familia+Unidad.value+NumeroConCeros2(NumeroAcopladoresTotal, 2)+TipoAcoplador.value+Puertos.value+TipoFibra.value+Pig
       // Obtener Precio
