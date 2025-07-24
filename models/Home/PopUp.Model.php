@@ -15,6 +15,7 @@
     public $FechaFin;
     public $HoraInicio;
     public $HoraFin;
+    public $NuevaPestana;
 
     protected $Connection;
     protected $Tool;
@@ -53,7 +54,7 @@
           $Slide->FechaFin      = $row->FechaFin;
           $Slide->HoraInicio    = $row->LapsoDiainicio;
           $Slide->HoraFin       = $row->LapsoDiaFin;
-          //$Slide->TargetLink1   = $row->TargetBlank1 == 'si' ? '_blank' : '_self';
+          $Slide->NuevaPestana   = $row->NuevaPestana == '1' ? '_blank' : '_self';
           $data[] = $Slide;        
         }
         return $data;

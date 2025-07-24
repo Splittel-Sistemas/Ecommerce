@@ -641,14 +641,14 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     ?>
     
     <div class="modal fade" id="popupImagen" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+        <div class="modal-content text-center" style="width: auto;">
           
           <div class="modal-body text-center">
             <?php if (!empty($ResultPopup)): ?>
-              
-                <img data-img-id="<?php echo $ResultPopup->records[0]->Key ?>" src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultPopup->records[0]->UrlImg1 ); ?>" class="img-fluid mb-3" style="max-height: 300px;">
-            
+              <a target="<?php echo $ResultPopup->records[0]->NuevaPestana ?>" href="<?php echo $ResultPopup->records[0]->Link1 ?>">
+                <img target="<?php echo $ResultPopup->records[0]->NuevaPestana ?>" data-img-id="<?php echo $ResultPopup->records[0]->Key ?>" src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultPopup->records[0]->UrlImg1 ); ?>" class="img-fluid mb-3" style="max-height: 300px;">
+             </a>
               <?php endif; ?>
           </div>
         
