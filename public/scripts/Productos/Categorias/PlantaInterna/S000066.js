@@ -88,6 +88,7 @@ var JumpersMTP = function(){
     ListImgProducto("OPJA3")
 	  ListProductoDescription('OPJA3')
     ListProductoAdicional('OPJA3')
+    agregarFolletoConfigurable('OPJA3','Folleto Guía MPO')
    
     let data = {
       Action: 'calcular',
@@ -146,6 +147,7 @@ var JumpersMPTLC = function(){
     ListImgProducto("OPJA3HAE/"+NumeroHilos)
     ListProductoDescription('OPJA3HAE')
     ListProductoAdicional('OPJA3HAE')
+    agregarFolletoConfigurable('OPJA3HAE','Folleto Guía MPO')
     let data = {
       Action: 'calcular',
       ActionCalcularPrecioMTPBreakOut: true,
@@ -200,6 +202,7 @@ var JumpersMTPPRO = function(){
      ListImgProducto("OPJA5")
         ListProductoDescription('OPJA5')
       ListProductoAdicional('OPJA5')
+      agregarFolletoConfigurable('OPJA5','Folleto Guía MPO')
       let data = {
         Action: 'calcular',
         ActionCalcularPrecioMTPPro: true,
@@ -253,6 +256,7 @@ var JumpersMTPPRO = function(){
       ListImgProducto("OPJA5MAE/"+NumeroHilos)
       ListProductoDescription('OPJA5MAE')
       ListProductoAdicional('OPJA5MAE')
+      agregarFolletoConfigurable('OPJA5MAE','Folleto Guía MPO')
       let data = {
         Action: 'calcular',
         ActionCalcularPrecioMTPProBreakOut: true,
@@ -320,6 +324,7 @@ var JumpersMTPPRO = function(){
       ChangeListImgProducto('OPJ'+Conectarizacion+Conectarizacion,'OPJ'+Conectarizacion+Conectarizacion+Polaridad.value+Diseno.value)
       ListProductoDescription('OPJ'+Conectarizacion+Conectarizacion)
       ListProductoAdicional('OPJ'+Conectarizacion+Conectarizacion)
+      agregarFolletoConfigurable('OPJA2A2','Folleto Guía MPO')
       let data = {
         Action: 'calcular',
         ActionCalcularPrecioMPO: true,
@@ -374,6 +379,7 @@ var JumpersMTPPRO = function(){
       ListImgProducto("OPJA1xAE/"+NumeroHilos)
       ListProductoDescription('OPJA1xAE')
       ListProductoAdicional('OPJA1xAE')
+      agregarFolletoConfigurable('OPJA1xAE','Folleto Guía MPO')
       let data = {
         Action: 'calcular',
         ActionCalcularPrecioMPOBreakOut: true,
@@ -387,6 +393,7 @@ var JumpersMTPPRO = function(){
       showClave(CodigoGenerado)
       agregarFichaTecnicaConfigurable('OPJA1xAE'+NumeroHilos)
       agregarCertificadoConfigurable(CodigoGenerado)
+     
   }
 
 

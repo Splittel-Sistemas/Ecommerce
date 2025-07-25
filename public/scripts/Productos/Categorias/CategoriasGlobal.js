@@ -160,6 +160,14 @@ var ValidInputRange = function(element,initial, end){
  *
  * @return {number} b - Bar
  */
+var agregarFolletoConfigurable = function(Codigo, name){
+document.getElementById('add-minicatalogo').innerHTML = '<button class="btn btn-outline-secondary btn-sm "> '+
+    '<a href="../../public/images/img_spl/productos/'+Codigo+'/folleto/'+name+'.pdf" target="_blank">'+
+      '<i class="icon-download"></i>&nbsp;'+name+''+
+    '</a>'+
+  '</button>';
+  
+}
 var agregarFichaTecnica = function(name, descripcion){
  
   return '<button class="btn btn-outline-secondary btn-sm "> '+
