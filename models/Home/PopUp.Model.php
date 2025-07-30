@@ -39,6 +39,7 @@
                             (LapsoDiainicio IS NOT NULL AND LapsoDiaFin IS NOT NULL AND '".$horaActual."' BETWEEN LapsoDiainicio AND LapsoDiaFin)
                             OR (LapsoDiainicio IS NULL OR LapsoDiaFin IS NULL)
                         )
+                        AND Id_popup_posicion = 1
                         ORDER BY 
                         (LapsoDiainicio IS NOT NULL AND LapsoDiaFin IS NOT NULL AND '".$horaActual."' BETWEEN LapsoDiainicio AND LapsoDiaFin) DESC;";
         //echo $SQLSTATEMENT;
