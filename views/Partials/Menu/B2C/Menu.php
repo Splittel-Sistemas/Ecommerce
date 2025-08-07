@@ -284,7 +284,7 @@
                    -->
        <li class="has-submenu <?php if (trim($path) == "Biblioteca") { ?>active<?php } ?>"><a href="#">Biblioteca Técnica</a>
          <ul class="sub-menu">
-           <li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
+           <!--<li><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>-->
            <li><a href="../Biblioteca/videos-tutoriales-fibra-optica.php">Videos</a></li>
            <li><a href="../Biblioteca/infografias-fibra-optica.php">Infografías</a></li>
            <li><a href="../Biblioteca/glosario-fibra-optica.php?r=A-E">Glosarío</a></li>
@@ -308,7 +308,7 @@
            <li><a href="../Contacto">Dirección y teléfono</a></li>
          </ul>
        </li>
-
+      <li class="has-submenu <?php if (basename($_SERVER['REQUEST_URI']) == "catalogo-telecomunicaciones-fibra-optica.php") { ?>active<?php } ?>"><a href="../Biblioteca/catalogo-telecomunicaciones-fibra-optica.php">Catálogo</a></li>
        <!--
         <li class="has-submenu <?php if (trim($path) == "Catalogo") { ?>active<?php } ?>"><a href="../Catalogo/">Cat&aacute;logo</a></li>
         -->

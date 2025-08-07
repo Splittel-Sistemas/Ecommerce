@@ -34,7 +34,7 @@
                   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Promociones/Promociones.php';
                   }
                   $CatalogoCursos = new CatalogoPromociones();
-                  $responseI = $CatalogoCursos->get("WHERE activo = 'si' ", "", false)->records;
+                  $responseI = $CatalogoCursos->get("WHERE activo = 'si' ", " ORDER BY position DESC", false)->records;
                   //echo $Json= json_encode($response);
             ?>
             <div class="row">
