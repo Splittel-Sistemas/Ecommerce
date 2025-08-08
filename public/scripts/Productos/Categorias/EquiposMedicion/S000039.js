@@ -129,6 +129,7 @@ var Bobina = function(){
     ListProductoDescription('OPHES'+TipoFibra.value)
     ListProductoAdicional('OPHES'+TipoFibra.value)
     showClave(CodigoGenerado)
+    agregarFichaTecnicaConfigurable('OPHES'+TipoFibra.value)
     //existEcommerce_(CodigoGenerado)
 
 }
