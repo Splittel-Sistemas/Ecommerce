@@ -93,7 +93,7 @@
             font-weight: 400;
             letter-spacing: .025em;
             line-height: 24px;
-            white-space: nowrap;" class=" bg-success me-3" id="LeyendaFab">Fabricados en 24 a 48 hrs</div>
+            white-space: nowrap;" class=" bg-success me-3" id="LeyendaFab">Fabricados en 48 a 72 hrs</div>
              
             <div class="gallery-item video-btn text-center" id="video-producto"></div>
           </div>
