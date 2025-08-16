@@ -41,5 +41,26 @@ class PopUpController{
      throw $e; 
     }
   }
+    /**
+   * Description
+   *
+   * @param string $a Foo
+   *
+   * @return int $b Bar
+   */
+  public function getsolapa(){
+    try {
+      if (!$this->Connection->conexion()->connect_error) {
+        $PopUpModel = new PopUp();
+        $PopUpModel->SetParameters($this->Connection, $this->Tool);
+        $data = $PopUpModel->GetSolapa();
+        return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
+      }else{
+        throw new Exception("");
+      }
+    } catch (Exception $e) {
+     throw $e; 
+    }
+  }
 
 }

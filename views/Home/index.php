@@ -656,6 +656,10 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
       </div>
     
    </div>
+
+
+
+
             
 <?php endif; ?>
     <!-- Footer -->
@@ -698,6 +702,32 @@ document.addEventListener('DOMContentLoaded', function () {
         lazyLoad: true
       })
     </script>
+    <script>
+    function toggleSolapa() {
+        const panel = document.getElementById("panel");
+        const flecha = document.getElementById("flecha");
+        panel.classList.toggle("activo");
+        flecha.classList.toggle("abierta");
+    }
+    </script>
+    <?php
+       $SolapaController = new PopUpController();
+        $ResultSolapa = $SolapaController->getsolapa();
+        if ($ResultSolapa->count > 0):
+    ?>
+        <div class="contenedor-solapa text-center">
+          <div class="solapa text-center" onclick="toggleSolapa()">
+              <b><?php echo $ResultSolapa->records[0]->Titulo ?></b>
+              <span class="flecha" id="flecha">▶</span>
+          </div>
+
+          <div class="contenido" id="panel">
+            <a target="<?php echo $ResultSolapa->records[0]->NuevaPestana ?>" href="<?php echo $ResultSolapa->records[0]->Link1 ?>">
+              <img src="../../public/images/img_spl/popup/<?php echo htmlspecialchars($ResultSolapa->records[0]->UrlImg1 ); ?>" alt="Imagen">
+             </a>
+          </div>
+      </div>
+      <?php endif; ?>
   </body>
 
   </html>

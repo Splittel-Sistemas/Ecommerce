@@ -154,7 +154,65 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     left: 16px !important; 
   }
 
-  
+  /*********************************************************   SOLAPA INFERIOR   ****************************************************************/
+ /* Solapa fija */
+ /* Contenedor de la imagen y solapa */
+    .contenedor-solapa {
+        position: fixed;
+        bottom: 10px;
+        left: 70px;
+        width: 20%;
+        min-width: 100px; /* Para que no sea demasiado pequeño en pantallas chicas */
+        z-index: 999;
+    }
+   /* Solapa encima de la imagen */
+    .solapa {
+        background-color: #BF202F;
+        color: white;
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        box-shadow: 0px -2px 6px rgba(0,0,0,0.2);
+        user-select: none;
+        transition: background 0.3s;
+    }
+    .solapa:hover {
+        background-color: #BF202F;
+    }
+
+    /* Flecha animada */
+    .flecha {
+        transition: transform 0.3s;
+    }
+    .flecha.abierta {
+        transform: rotate(90deg);
+    }
+
+    /* Contenido expandible */
+    .contenido {
+        max-height: 0;
+        overflow: hidden;
+        background: white;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+    .contenido img {
+        width: 100%;
+        display: block;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .contenido.activo {
+        max-height: 400px; /* Ajusta según el tamaño de la imagen */
+        opacity: 1;
+    }
+   /********************************************************************************************************************************************/
 </style>
 <a href="https://wa.me/524427843528?text=<?php echo urlencode('¡Hola! Me gustaría saber cómo obtener información, cotizar o comprar con Fibremex')?>" target="_blank">
 <img src="../../public/images/img_spl/adicionales/whatsapp.png"  alt="Whatsapp-fibremex" 
