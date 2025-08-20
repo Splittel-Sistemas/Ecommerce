@@ -682,6 +682,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
 </script>
     <script type="text/javascript">
       // altura('.featured_products_card')
@@ -702,21 +703,14 @@ document.addEventListener('DOMContentLoaded', function () {
         lazyLoad: true
       })
     </script>
-    <script>
-    function toggleSolapa() {
-        const panel = document.getElementById("panel");
-        const flecha = document.getElementById("flecha");
-        panel.classList.toggle("activo");
-        flecha.classList.toggle("abierta");
-    }
-    </script>
+    
     <?php
        $SolapaController = new PopUpController();
         $ResultSolapa = $SolapaController->getsolapa();
         if ($ResultSolapa->count > 0):
     ?>
-        <div class="contenedor-solapa text-center">
-          <div class="solapa text-center" onclick="toggleSolapa()">
+        <div class="contenedor-solapa">
+          <div class="solapa" onclick="toggleSolapa()">
               <b><?php echo $ResultSolapa->records[0]->Titulo ?></b>
               <span class="flecha" id="flecha">▶</span>
           </div>
@@ -729,7 +723,31 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <?php endif; ?>
   </body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const solapa = document.querySelector('.solapa');
+  const contenido = document.querySelector('.contenido');
+  const flecha = document.querySelector('.flecha');
 
+  function toggleSolapa() {
+    console.log('entro')
+    contenido.classList.toggle('activo');
+    flecha.classList.toggle('abierta');
+  }
+
+  solapa.addEventListener('click', toggleSolapa);
+
+// --- Apertura automática una vez al día ---
+const hoy = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+const ultimaFecha = localStorage.getItem('solapaUltimaFecha');
+
+// Si hoy no se ha abierto todavía → abrir automáticamente
+if (ultimaFecha !== hoy) {
+  toggleSolapa();
+  localStorage.setItem('solapaUltimaFecha', hoy);
+}
+});
+  </script>
   </html>
 <?php
   unset($SlideController);
