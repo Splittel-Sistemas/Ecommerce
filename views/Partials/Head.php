@@ -158,18 +158,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
  /* Solapa fija */
  /* Contenedor de la imagen y solapa */
     .contenedor-solapa {
-        position: fixed;
+       position: fixed;
         bottom: 10px;
         left: 70px;
-        width: 20%;
-        min-width: 100px; /* Para que no sea demasiado pequeño en pantallas chicas */
+        width: clamp(120px, 35%, 20%);
+        max-width: 330px; 
         z-index: 999;
+        display: flex;
+        flex-direction: column; /* por defecto solapa arriba, imagen abajo */
     }
    /* Solapa encima de la imagen */
     .solapa {
         background-color: #BF202F;
         color: white;
-        padding: 15px;
+        padding: clamp(15px, 3%, 15px);
         cursor: pointer;
         border-radius: 8px 8px 0 0;
         display: flex;
@@ -209,14 +211,33 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
 
     .contenido.activo {
-        max-height: 400px; /* Ajusta según el tamaño de la imagen */
+        max-height: 700px; /* Ajusta según el tamaño de la imagen */
         opacity: 1;
+    }
+    /* 📱 En pantallas pequeñas: imagen arriba, solapa abajo */
+    @media (max-width: 1000px) {
+      .contenedor-solapa {
+        flex-direction: column-reverse; /* invierte el orden */
+        left: 10px;  /* opcional: acercar a la orilla */
+        right: 10px; /* opcional: que se centre */
+        width: auto; /* que use todo el ancho disponible */
+        max-width: 50%;
+      }
+
+      .solapa {
+        border-radius: 0 0 8px 8px; /* ahora va abajo */
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+      }
+
+      .contenido img {
+        border-radius: 8px 8px 0 0; /* esquinas redondeadas arriba */
+      }
     }
    /********************************************************************************************************************************************/
 </style>
 <a href="https://wa.me/524427843528?text=<?php echo urlencode('¡Hola! Me gustaría saber cómo obtener información, cotizar o comprar con Fibremex')?>" target="_blank">
 <img src="../../public/images/img_spl/adicionales/whatsapp.png"  alt="Whatsapp-fibremex" 
-style="color-scheme: light; width: 229x; height: 69px; padding: 0px; margin: 15px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;">
+style="color-scheme: light; width: clamp(150px, 30%, 229px); height: 69px; padding: 0px; margin: 15px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;">
 </a>
 <?php 
   @session_start();

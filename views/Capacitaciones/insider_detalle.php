@@ -42,7 +42,7 @@
         <div class="padding-top-2x">
           <h2 class="text-center"><b>Obtén tu constancia INSIDER y recibe grandes beneficios</b></h2>
           <p class="text-muted" style="text-align: justify;">
-            Al concluir todos los seminarios del ciclo INSIDER, te otorgaremos una constancia en recomendacion a tu esfuerzo. Lo único que
+            Al concluir todos los seminarios del ciclo INSIDER, te otorgaremos una constancia en recomendación a tu esfuerzo. Lo único que
             debes hacer es registrarte y estar presente en cada uno de ellos. Tu constancia te traerá grandes beneficios para el crecimiento
             de tus proyectos.
           </p>
