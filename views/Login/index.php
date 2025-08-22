@@ -102,7 +102,8 @@
               <div class="row">
                 
                 <div class="col-12">
-                  <a class="btn btn-outline-info btn-block float-right" href="../Registro/Alta.php"><i class="icon-user-plus"></i>&nbsp; Pre-registro empresas</a>
+                  <a class="btn btn-outline-info btn-block float-right" href="https://eakai.share.hsforms.com/2e7F_6GvKQtWv49-QJpvdig" target="_blank"><i class="icon-user-plus"></i>&nbsp; Pre-registro empresas</a>
+              <!--    <a class="btn btn-outline-info btn-block float-right" href="../Registro/Alta.php"><i class="icon-user-plus"></i>&nbsp; Pre-registro empresas</a>   -->
                 </div>
                 <div class="col-12 ">
                 <a class="btn btn-outline-secondary btn-block float-right" href="../Home"><i class="icon-home"></i>&nbsp; Home</a>
