@@ -700,7 +700,7 @@ if(CodigoGenerado==''){
   ListImgProducto(DirectorioImgProducto)
   ListProductoDescription(Marca + Familia + "D0")
   ListProductoAdicional(Marca + Familia + "D0")
-  agregarFichaTecnicaConfigurable(Marca + Familia + "D0")
+  agregarFichaTecnicaConfigurable(Marca + Familia + "D0"+ TipoFibra.value)
   agregarCertificadoConfigurable(CodigoGenerado)
 }
 var cable_S8 = function(){
