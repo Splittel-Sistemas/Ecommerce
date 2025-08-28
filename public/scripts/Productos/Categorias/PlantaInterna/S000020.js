@@ -90,7 +90,7 @@ var DistribuidoresPrecargadosRack = function(AcopladoresMax, Montaje){
     ListProductoAdicional(Marca+Familia+TipoMontaje+Unidad.value)
     agregarFichaTecnicaConfigurable(Marca+Familia+TipoMontaje+Unidad.value)
       agregarCertificadoConfigurable(CodigoGenerado)
-      existJumper_(CodigoGenerado)
+      _existDistribuidor_(CodigoGenerado)
 }
 
 var DistribuidoresPrecargados = function() {
