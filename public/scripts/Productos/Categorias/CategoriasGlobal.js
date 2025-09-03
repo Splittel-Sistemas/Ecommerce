@@ -774,6 +774,17 @@ var ProductoEspecial = function(){
       '<p>Producto especial, solicitar cotización a su ejecutivo de ventas</p></span></div>')
 }
 
+var ProductoEspecialPersonalizado = function(Error){
+  StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'none')
+  StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
+  StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'none')
+  document.getElementById('Costo').innerHTML = '$0'
+  $('#span-leyenda').remove()
+  $('#leyenda').append('<div class="col-12 pb-4 mt-4" id="span-leyenda">'+
+    '<span class="product-badge bg-danger border-default text-body text-white">'+
+      '<p>'+Error.message+'</p></span></div>')
+}
+
 var NombreProductoConfigurable = function(Codigo, Descripcion){
   if(document.getElementById('CodeConfigurable')){
     ajax_(
@@ -914,7 +925,7 @@ var CalcularPrecio = function(url, data){
     
     response=JSON.parse(decryptAjax(responses))
     
-    //console.log(response)
+    console.log(response)
     //console.log(CurrencySite)
     if (!response.error) {
       $('#span-leyenda').remove()
@@ -947,7 +958,11 @@ var CalcularPrecio = function(url, data){
       document.getElementById('CostoProducto').value = response.precioNormal 
       document.getElementById('Costo').innerHTML = mostrarPrecio
     }else{
-      ProductoEspecial()
+      if(response.ErrorCode==1001){ //Forzar Error Personalizado Desde el Stored
+          ProductoEspecialPersonalizado(response)
+      }else{
+            ProductoEspecial()
+      }
     }
       if(DatasSend=JSON.stringify(data)){
         if(DatasSend.codigo=='')
