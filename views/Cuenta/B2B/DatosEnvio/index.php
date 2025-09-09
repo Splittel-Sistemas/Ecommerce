@@ -14,9 +14,7 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
     $ErrorCode = -100;
   }
   
-  if ($ErrorCode == 0){
-    if($responseGetShipToAdress->GetShipToAdressResult->Count){
-      $responseGetShipToAdress = $responseGetShipToAdress->GetShipToAdressResult->Records; 
+ 
 ?>
 
 <div class="col-lg-12">
@@ -25,6 +23,11 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
       <button class="btn btn-square btn-outline-primary float-md-right " onclick="showFormNewDatosEnvioB2B(this)"><i class="icon-plus-circle"></i> Nuevo</button>
     </div>
   </div>
+  <?php
+   if ($ErrorCode == 0){
+    if($responseGetShipToAdress->GetShipToAdressResult->Count){
+      $responseGetShipToAdress = $responseGetShipToAdress->GetShipToAdressResult->Records; 
+  ?>
   <div class="row">
     <hr class="padding-bottom-1x">
     <div class="table-responsive table-hover mb-0">
@@ -69,8 +72,7 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
       </table>
     </div>
   </div>
-</div>
-<?php }else{ ?>
+  <?php }else{ ?>
       <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x">
           <span class="alert-close" data-dismiss="alert"></span>
           <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Alerta:</span> No existen registros
@@ -79,7 +81,9 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
     }
   }else{
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/ErrorProcessWS.php';
-  }
+  }?>
+</div>
+<?php
   unset($GetShipToAdress);
   unset($responseGetShipToAdress);
 }
