@@ -86,7 +86,8 @@
           <li class="has-children"><span>
             <a href="#">Contacto</a><span class="sub-menu-toggle"></span></span>
             <ul class="slideable-submenu">
-              <li><a href="../Registro/Alta.php">Pre-registro para empresas</a></li>
+              <li><a href="https://eakai.share.hsforms.com/2e7F_6GvKQtWv49-QJpvdig" target="_blank">Pre-registro para empresas</a></li>
+            <!--  <li><a href="../Registro/Alta.php">Pre-registro para empresas</a></li>  -->
             <!--   <li><a href="../Login/registro.php">Darme de alta como cliente</a></li> -->
               <?php 
                 if (isset($_SESSION['Ecommerce-ClienteKey']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
