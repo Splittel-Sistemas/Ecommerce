@@ -64,7 +64,7 @@
     <?php endif ?>
      <script type="text/javascript">
       var listDataEnvioB2B = function(){
-         ajax_("../../views/Cuenta/B2B/DatosEnvio/index.php", "POST", "HTML",
+         ajax_no_async("../../views/Cuenta/B2B/DatosEnvio/index.php", "POST", "HTML",
         {
         }, 
         function(response) {

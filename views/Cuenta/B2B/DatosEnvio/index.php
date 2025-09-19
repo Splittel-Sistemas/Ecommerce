@@ -17,7 +17,7 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
  
 ?>
 
-<div class="col-lg-12">
+<div class="col-lg-12" id="ContenidoCuenta">
   <div class="row">
     <div class="col-lg-12">
       <button class="btn btn-square btn-outline-primary float-md-right " onclick="showFormNewDatosEnvioB2B(this)"><i class="icon-plus-circle"></i> Nuevo</button>

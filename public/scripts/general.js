@@ -90,6 +90,40 @@ var ajax_ = function (url, method, type, data, success) {
   });
 };
 
+var ajax_no_async = function (url, method, type, data, success) {
+  $.ajax({
+    url: url,
+    method: method,
+    data: data,
+    dataType: type,
+    async:false,
+    beforeSend: function (xhr) {
+      Elem = document.getElementById("dataInterna");
+      xhr.setRequestHeader(
+        "Authorization",
+        "Basic " +
+          btoa(
+            Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
+          )
+      );
+      $("#customizer-backdrop").addClass("active");
+    },
+    success: function (response) {
+      if (response != null && success != null) {
+        success(response);
+        $("#customizer-backdrop").removeClass("active");
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(
+        "Error: " + errorThrown,
+        "Hubo un error en la llamada:  " + url + " | " + textStatus
+      );
+      $("#customizer-backdrop").removeClass("active");
+    },
+  });
+};
+
 var ajax_button_modal = function (
   url,
   method,

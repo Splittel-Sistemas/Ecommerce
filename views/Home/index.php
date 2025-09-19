@@ -641,7 +641,7 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
     ?>
     
     <div class="modal fade" id="popupImagen" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+      <div class="modal-dialog modal-lg modal-dialog-centered d-flex justify-content-center">
         <div class="modal-content text-center" style="width: auto;">
           
           <div class="modal-body text-center">
@@ -723,6 +723,9 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <?php endif; ?>
   </body>
+<?php 
+ if ($ResultSolapa->count > 0):
+?>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const solapa = document.querySelector('.solapa');
@@ -748,6 +751,7 @@ if (ultimaFecha !== hoy) {
 }
 });
   </script>
+   <?php endif; ?>
   </html>
 <?php
   unset($SlideController);
