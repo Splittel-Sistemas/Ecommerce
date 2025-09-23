@@ -157,7 +157,13 @@ var JumpersMultimodo = async function(){
       Codigo: CodigoGenerado,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
-    await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
+    let respuesta = {
+      message: "Por el momento esta configuración no se encuentra disponible"
+    };
+     if((NewConector1=='FC' || NewConector2=='FC') && Diametro.value==1)
+      ProductoEspecialPersonalizado(respuesta)
+    else
+      await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
     
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -307,6 +313,12 @@ var JumpersMonomodo = async function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
+    let respuesta = {
+      message: "Por el momento esta configuración no se encuentra disponible"
+    };
+     if((NewConector1=='FC' || NewConector2=='FC') && Diametro.value==1)
+      ProductoEspecialPersonalizado(respuesta)
+    else
       await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MonomodoTipoFibra.options[MonomodoTipoFibra.selectedIndex].text
@@ -451,6 +463,12 @@ var JumpersEspeciales = async function(){
       Bota_2 : Bota2.value,
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
     }
+    let respuesta = {
+      message: "Por el momento esta configuración no se encuentra disponible"
+    };
+     if((Conector1.value=='FC' || Conector2.value=='FC') && Diametro.value==1)
+      ProductoEspecialPersonalizado(respuesta)
+    else
      await CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
     let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
     let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
@@ -598,6 +616,12 @@ var JumpersArmados = async function(){
         Codigo: CodigoGenerado,
         SubcategoriaN1Code: document.getElementById("CodeConfigurable").value
       }
+    let respuesta = {
+      message: "Por el momento esta configuración no se encuentra disponible"
+    };
+     if((NewConector1=='FC' || NewConector2=='FC') && Diametro.value==1)
+      ProductoEspecialPersonalizado(respuesta)
+    else
      await CalcularPrecio("../../models/Productos/Jumpers/CalcularPrecio.Route.php", data)
 
       let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
