@@ -76,27 +76,27 @@ var Success = function (response) {
       } else {
           let msgs="";
         if(parseInt(response.message)>=1000 && parseInt(response.message)<=1005 ){
-          msgs="Servicio no disponible";
+          msgs=response.message+" - Servicio no disponible";
         }else if(parseInt(response.message)==3001 || parseInt(response.message)==3004 || parseInt(response.message)==3005 || parseInt(response.message)==3007){
-           msgs="La tarjeta fue rechazada";
+           msgs=response.message+" - La tarjeta fue rechazada";
         }else if(parseInt(response.message)>=3002){
-           msgs="La tarjeta ha expirado";
+           msgs=response.message+" - La tarjeta ha expirado";
         }else if(parseInt(response.message)>=3003){
-           msgs="La tarjeta no tiene fondos suficientes";
+           msgs=response.message+" - La tarjeta no tiene fondos suficientes";
         }else if(parseInt(response.message)>=3006){
-           msgs="La operación no esta permitida para este cliente o esta transacción";
+           msgs=response.message+" - La operación no esta permitida para este cliente o esta transacción";
         }else if(parseInt(response.message)>=3008){
-           msgs="La tarjeta no es soportada en transacciones en línea";
+           msgs=response.message+" - La tarjeta no es soportada en transacciones en línea";
         }else if(parseInt(response.message)>=3009){
-           msgs="La tarjeta fue reportada como perdida";
+           msgs=response.message+" - La tarjeta fue reportada como perdida";
         }else if(parseInt(response.message)>=3010){
-           msgs="El banco ha restringido la tarjeta";
+           msgs=response.message+" - El banco ha restringido la tarjeta";
         }else if(parseInt(response.message)>=3011){
-           msgs="El banco ha solicitado que la tarjeta sea retenida. Contacte al banco.";
+           msgs=response.message+" -  banco ha solicitado que la tarjeta sea retenida. Contacte al banco.";
         }else if(parseInt(response.message)>=3012){
-           msgs="Se requiere solicitar al banco autorización para realizar este pago";
+           msgs=response.message+" - Se requiere solicitar al banco autorización para realizar este pago";
         }else{
-           msgs="La petición no pudo ser procesada";
+           msgs=response.message+" - La petición no pudo ser procesada";
         }
 
         Alerts(
