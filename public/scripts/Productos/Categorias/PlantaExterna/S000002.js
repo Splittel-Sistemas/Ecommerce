@@ -40,13 +40,13 @@ var CableDropFigura8FTTH = function(){
 var CableDropFiguraFTTH = function(){
   let TipoFibra = document.getElementById('TipoFibra')
   let NumeroHilos = document.getElementById('NumeroHilos')
-  let TipoCubierta = NumeroHilos.value == 1 ? "TP" : "ZH"
+  let TipoCubierta = NumeroHilos.value == 1 ? "TPH" : "ZH"
   // Codigo Generado de acuerdo a las opciones selecionadas
   CodigoGenerado = Marca+Familia+FamiliaCable+TipoFibra.value+Cable.value+NumeroConCeros2(NumeroHilos.value,3)+TipoCubierta
-  ListImgProducto("OPCFOIE39DR0xxxx")
-  ListProductoDescription("OPCFOIE39DR0xxxx")
-  ListProductoAdicional("OPCFOIE39DR0xxxx")
-  ListProductoManual("OPCFOIE39DR0xxxx")
+  ListImgProducto("OPCFOIE39DR0xxxxTPH")
+  ListProductoDescription("OPCFOIE39DR0xxxxTPH")
+  ListProductoAdicional("OPCFOIE39DR0xxxxTPH")
+  ListProductoManual("OPCFOIE39DR0xxxxTPH")
   // Agreación de codigo para la vista en el identificador
   showClave(CodigoGenerado)
   existEcommerce_(CodigoGenerado)
