@@ -22,7 +22,7 @@
     <label class="custom-control-label" for="mostrador" style="padding-left: 10;">
       <span class="product-badge bg-warning border-default text-body text-white">
 
-        <p> Recoger en mostrador - Querétaro </p>
+        <p> Recoger en mostrador FIBREMEX - Querétaro </p>
       </span></label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
        <label class="text-center text-md-left ">
       <a href="https://goo.gl/maps/C5Xk1fQ28GP6x3Qz7" target="_blank">
@@ -32,7 +32,7 @@
   </div>
   <br>
   <div class="col-md-12">
-    <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required></textarea>
+    <textarea id="paqueteria" name="paqueteria" class="form-control" rows="5" required placeholder="En caso de requerir servicio de ocurre, indique la paquetería solicitada (DHL, Paquete Express, Almex, Estafeta o Tresguerras). También puede detallar el domicilio o agregar instrucciones especiales..."></textarea>
     <input id="check" name="check" class="form-control" value="" type="hidden" />
   </div>
   <hr class="mt-3">
@@ -43,7 +43,7 @@
       <li>Los traslados por servicio de entrega local son sin cargo alguno y sin mínimo de compra.</li>
       <li>La programación de materiales de volumen serán bajo disponibilidad de unidades, se puede extender de 24 a 48 hrs.</li>
       <li>La descarga especial (carretes completos, tarimas, etc) corresponden al cliente receptor, aquellas que comprendan utilizar maquinaria o personal extra.</li>
-      <li>Horario entrega: las salidas serán en 2 ciclos durante el transcurso del día, el primero a las 09:00 am y el segundo a las 15:00 hrs.</li>
+      <li>Horario entrega: las salidas serán en 2 ciclos durante el transcurso del día, el primero a las 10:00 am y el segundo a las 15:00 hrs.</li>
       <li></li>Las entregas se realizan en el transcurso del día bajo la programación de ruta indicada por el repartidor.</li>
 
 
