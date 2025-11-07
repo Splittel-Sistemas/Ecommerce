@@ -319,8 +319,8 @@
                       $ConfiguracionPath = $subcategoria->Configuracion == 1 
                       ? "../Productos/configurables.php?codigo=".$subcategoria->Configuracion." " : "#";
 
-                      $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg")) 
-                      ? "../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg" 
+                      $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$subcategoria->FolderName.".jpg")) 
+                      ? "../../public/images/img_spl/subsubcategorias/".$subcategoria->FolderName.".jpg" 
                       : "../../public/images/img_spl/notfound1.png"; 
 
             ?>
