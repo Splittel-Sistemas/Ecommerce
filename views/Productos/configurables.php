@@ -299,6 +299,65 @@
                 }
               } 
             ?>
+              <?php 
+              if (!class_exists("RelacionadosController")) {
+                include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Relacionados.Controller.php';
+              }
+              $RelacionadosController = new RelacionadosController();
+              $RelacionadosController->filter = "WHERE tipo='conf' AND id_codigo = '".$Obj->ProductoRelacionados."' ";
+              $RelacionadosController->order = "";
+              $ResultProductosRelacionados = $RelacionadosController->GetFijos();
+              
+              if($ResultProductosRelacionados->count > 0){
+                foreach ($ResultProductosRelacionados->records as $key => $ProductoRelacionado) {
+                   $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+                    $SubcategoriasN1Controller->filter = "WHERE codigo = '".$ProductoRelacionado->Codigo."' AND activo='si' ";
+                    $ResultSubcategoriasN1Controller = $SubcategoriasN1Controller->get();
+
+                    if($ResultSubcategoriasN1Controller->count > 0){
+                    foreach ($ResultSubcategoriasN1Controller->records as $key => $subcategoria) {
+                      $ConfiguracionPath = $subcategoria->Configuracion == 1 
+                      ? "../Productos/configurables.php?codigo=".$subcategoria->Configuracion." " : "#";
+
+                      $imgUrl = file_exists(("../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg")) 
+                      ? "../../public/images/img_spl/subsubcategorias/".$subcategoria->Descripcion.".jpg" 
+                      : "../../public/images/img_spl/notfound1.png"; 
+
+            ?>
+            <tr>
+              <td scope="row" class="text-center align-middle">
+                <a href="configurables.php?codigo=<?php echo $subcategoria->Codigo?>"><img  src="<?php echo $imgUrl; ?>" /></a>
+              </td>
+              <td class="text-center align-middle"><span class="styleClave"><?php ?></span></td>
+              <td class="text-center align-middle"><?php echo $subcategoria->Descripcion; ?></td>
+              <?php if(isset($_SESSION['Ecommerce-ClienteNombre'])){
+                ?>
+                 <td class="text-center align-middle"></td>
+                 <td class="text-center align-middle"></td>
+              <?php
+              }
+              ?>
+              <td class="text-center align-middle">
+        
+             
+                <?php if(isset($_SESSION['Ecommerce-ClienteKey'])){ ?>
+                     <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" onclick="window.location.href='configurables.php?codigo=<?php echo $subcategoria->Codigo?>'">
+                  Configúralo
+                </button>                <?php }else{ ?>
+                <a class="product-button" href="../Login/" >      <button style="background-color: #bc2130;" class="btn btn-primary btn-block m-0" descuento="<?php echo $Obj_->Descuento ?>" codigo="<?php echo $Obj_->Codigo;?>" >
+                  <i class="icon-shopping-cart"></i> 
+                </button> </a>
+                <?php } ?>
+             
+             
+              </td>
+            </tr>
+            <?php 
+                    }
+                  }
+                }
+              } 
+            ?>
             </tbody>
           </table>
         </div>  
