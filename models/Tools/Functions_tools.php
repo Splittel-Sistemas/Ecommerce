@@ -113,7 +113,7 @@ class Functions_tools
         if($isRequided && $data == ""){
             throw new Exception("El campo: <strong>".$nameUser."</strong> es requerido");
         }else{
-            if (preg_match ("/^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,15}$/", $data)) { 
+            if (preg_match ("/^[a-zA-Z0-9_\-\.~]{1,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,15}$/", $data)) { 
                 return $this->Clear_data_for_sql($data);
             } else {
                 throw new Exception("El campo: <strong>".$nameUser."</strong> no es valido");
@@ -124,7 +124,7 @@ class Functions_tools
         if($isRequided && $data == ""){
             throw new Exception("El campo: <strong>".$nameUser."</strong> es requerido");
         }else{
-            if (preg_match ("/^[a-zA-Z0-9_\-\.~]{2,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,15}$/", $data)) { 
+            if (preg_match ("/^[a-zA-Z0-9_\-\.~]{1,}@[a-zA-Z0-9_\-\.~]{2,}\.[a-zA-Z]{2,15}$/", $data)) { 
                 return $this->Clear_data_for_sql($data);
             } else {
                 throw new Exception("El campo: <strong>".$nameUser."</strong> no es valido");
