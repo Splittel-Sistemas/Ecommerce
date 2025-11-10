@@ -8,11 +8,18 @@
       }
       $CatalogoCursos = new CatalogoCursos();
       $responseD = $CatalogoCursos->get(" WHERE activo='si' ", "ORDER BY fecha DESC", false);
+      $AlgunCursoActivo=0;
     ?>
 
 
     <?php if ($responseD->count > 0): ?>
       <?php foreach ($responseD->records as $key => $row): ?>
+         <?php
+      $CatalogoEventos = new CatalogoCapacitaciones();
+      $responseCalEvents = $CatalogoEventos->getEventsCal("WHERE activo='si' AND id_curso='$row->id' AND start >=NOW()", "ORDER BY start ASC", false);
+
+      if(count($responseCalEvents) > 0){
+        ?>
       <div class="row align-items-center padding-bottom-2x padding-top-2x">
         <div class="col-md-5">
           <img class="d-block m-auto img-thumbnail" src="../../public/images/img_spl/cursos/<?php echo $row->img_general;?>" alt="<?php echo $row->nombre;?>">
@@ -25,8 +32,31 @@
         </div>
       </div>
       <hr>
+      <?php 
+          $AlgunCursoActivo++;
+            } ?>
       <?php endforeach ?>
     <?php endif ?>      
+     <?php if ( $AlgunCursoActivo == 0){ ?>
+      <div class="row align-items-center padding-bottom-2x ">
+        <div class="col-md-12">
+      <hr class="padding-top-1x">
+    
+         <p class="text-muted text-center text-normal  margin-top-2x padding-bottom-2x">
+           <b> Ciclo de Cursos <?php echo date('Y')?> Finalizado</b><br><br>
+            Agradecemos a todos los profesionales que participaron en nuestras capacitaciones durante este año. <br><br>
+            Por el momento, <b>ya no contamos con fechas disponibles para <?php echo date('Y')?></b>, 
+              pero <b>estamos preparando el nuevo calendario de cursos y temas <?php echo date('Y')+1?></b>, 
+                con contenidos renovados y enfocados en las últimas tendencias de las telecomunicaciones.
+            <br><br>
+            ¡Mantente atento, pronto seguiremos impulsando tu conocimiento!
+                        </p>
+     
+        
+     <hr class="padding-top-1x">
+     </div>
+     </div>
+       <?php } ?>  
     <p class="text-muted text-center text-normal  margin-top-3x padding-bottom-2x">
         Consulta nuestro calendario de eventos. Si te interesa alguno de los temas que tocamos,<br/>
         <b>llámanos al 800 134 26 90,</b> queremos atenderte.
