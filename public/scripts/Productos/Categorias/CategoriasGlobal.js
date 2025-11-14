@@ -698,7 +698,7 @@ var existJumper_ = function(Codigo){
   })
   StockEnTransito(Codigo)
   let LeyendaFab = document.getElementById('LeyendaFab')
-  LeyendaFab.innerHTML = 'Fabricados en 24 a 48 hrs'
+  LeyendaFab.innerHTML = 'Fabricados en 48 a 72 hrs'
    LeyendaFab.style.display = 'block';
   
 }
