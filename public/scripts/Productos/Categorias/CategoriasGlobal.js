@@ -474,6 +474,7 @@ var existEcommerce_ = function(Codigo){
       let Descripcion_CEO = document.getElementById('descripcionCEO')
       let Stock = document.getElementById('add-stock')
       let DescPrdConf = document.getElementById('DscProductoConfigurable')
+      let LeyendaGral = document.getElementById('LeyendaGeneral')
  //console.log(resultResponse);
       // agregar stock
       if(Stock)
@@ -504,6 +505,12 @@ var existEcommerce_ = function(Codigo){
        // let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
         FichaTecnicaTecnica.innerHTML += agregarCertificado(resultResponse.Certificado, 'Certificado de pruebas')
       }
+       if((resultResponse.Leyenda != '' && resultResponse.Leyenda!=null)){
+        StyleDisplayNoneOrBlock(document.getElementById('LeyendaGeneral'), 'block')
+        LeyendaGral.innerHTML = resultResponse.Leyenda;
+       }else{
+         StyleDisplayNoneOrBlock(document.getElementById('LeyendaGeneral'), 'none')
+       }
 
       if(resultResponse.ProductoPrecio > 0){
         let Precio = resultResponse.Descuento > 0 
@@ -537,6 +544,7 @@ var existEcommerce_ = function(Codigo){
       Stock.innerHTML = '0.00'
       let FichaTecnicaTecnica = document.getElementById('add-ficha-tecnica-mini-catalogo')
        FichaTecnicaTecnica.innerHTML = '';
+       StyleDisplayNoneOrBlock(document.getElementById('LeyendaGeneral'), 'none')
     }
 
     StockEnTransito(Codigo)
