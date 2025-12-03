@@ -31,6 +31,8 @@
             <option value="BG" data-conector="SCU">SCU 3mm Simplex</option>
             <option value="BH" data-conector="SCA">SCA 3mm Simplex</option>
             <option value="BL" data-conector="LCU">LCU 3mm Simplex</option>
+            <option value="BC" data-conector="FCU">FCU 3mm Simplex</option>
+            <option value="BK" data-conector="FCA">FCA 3mm Simplex</option>
         </select>
     </div>
   </div>
@@ -42,6 +44,8 @@
             <option value="BG" data-conector="SCU">SCU 3mm Simplex</option>
             <option value="BH" data-conector="SCA">SCA 3mm Simplex</option>
             <option value="BL" data-conector="LCU">LCU 3mm Simplex</option>
+            <option value="BC" data-conector="FCU">FCU 3mm Simplex</option>
+            <option value="BK" data-conector="FCA">FCA 3mm Simplex</option>
         </select>
     </div>
   </div>
