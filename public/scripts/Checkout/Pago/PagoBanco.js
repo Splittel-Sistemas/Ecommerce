@@ -11,7 +11,7 @@ var PagarPedidoBanco = function(Elem){
 		let checkDatosEnvio       = getChecked('.datosEnvio')
 		let checkDatosFacturacion = getChecked('.datosFacturacion')
 				checkDatosFacturacion = requiereFactura.checked ? checkDatosFacturacion : '' 
-				OpenPayMetodoPago = pagoBanco.checked ? 'banco' : 'tarjeta'
+				OpenPayMetodoPago = 'banco'
 				let regimenfiscal =requiereFactura.checked ? regimenfiscalAux.value : ""
 		let data = {
 			Action : "PagoBanco", 
