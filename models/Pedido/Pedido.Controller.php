@@ -268,7 +268,19 @@ class PedidoController
             if (!$this->Connection->conexion()->connect_error) {
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
-                $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " AND t12_f004 = 'in_progress' ", " ORDER BY id DESC LIMIT 1");
+                if (isset($_SESSION['Ecommerce-PedidoKey'])) {
+                    for ($i=0; $i < 5; $i++) { 
+                        $data = $PedidoModel->GetInfoPagoBanco("WHERE t12_f002 = '" . $_SESSION['Ecommerce-PedidoKey'] . "'", " ORDER BY id DESC LIMIT 1");
+                        if (count($data) != 0) {
+                            $i = 5;
+                            unset($_SESSION['Ecommerce-PedidoKey']);
+                        } else {
+                            sleep(1);
+                        }
+                    }
+                } else {
+                    $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'], " ORDER BY id DESC LIMIT 1");
+                }
                 unset($PedidoModel);
                 return $this->Tool->Message_return(false,  "Datos obtenidos exitosamente!", $data, false);
             } else {

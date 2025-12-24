@@ -365,7 +365,7 @@ class OpenPayController
                                     $SalesQuatationModel->SetContactoCorreo($_POST['ContactoCorreo']);
                                     $ResultSalesQuatation = $SalesQuatationModel->create();
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
-                                    unset($_SESSION['Ecommerce-PedidoKey']);
+                                    //unset($_SESSION['Ecommerce-PedidoKey']);
                                     unset($SalesQuatationModel);
                                     unset($ResultSalesQuatation);
                                 } else {
@@ -380,7 +380,7 @@ class OpenPayController
                                     $InvoiceModel->SetIntentos(0);
                                     $ResultInovice = $InvoiceModel->create();
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
-                                    unset($_SESSION['Ecommerce-PedidoKey']);
+                                    //unset($_SESSION['Ecommerce-PedidoKey']);
                                     unset($InvoiceModel);
                                     unset($ResultInovice);
                                 }
