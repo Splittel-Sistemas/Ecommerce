@@ -71,13 +71,6 @@ src="https://www.facebook.com/tr?id=201268776126598&ev=PageView
 <!-- End Facebook Pixel Code -->
 
 
-
-<!--  RdStation Pixel Code -->
-
-<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/714b0c18-9396-441a-8919-4fbf37288b33-loader.js" ></script> 
-
-<!--  RdStation Adwords Pixel Code -->
-
 <!--  Captcha Code V3 -->
 
 <script src="https://www.google.com/recaptcha/api.js?render=6LduuqgZAAAAAE6w-RdXxapLtuqYAJHWn_Slguy0"></script>
