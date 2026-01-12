@@ -35,8 +35,9 @@
             <span class="caption"><?php echo $response->titulo; ?></span>
           </div>
         </div>
-
+        <?php if (!empty($response->titulo1)) : ?>
         <h2 class="pt-4"><?php echo $response->titulo1 ?></h2>
+        <?php endif ?>
         <p style="text-align: justify;"><?php
                                         echo nl2br($response->texto1);
                                         ?></p>
