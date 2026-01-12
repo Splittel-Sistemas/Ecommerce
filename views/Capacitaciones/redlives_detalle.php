@@ -1,3 +1,17 @@
+<div class="container padding-top-3x  mb-2">
+    <div class="row justify-content-center">
+      <!-- Content-->
+      <div class="col-xl-9 col-lg-8 order-lg-2">
+
+       
+      
+       
+        <p style="text-align: justify;"><?php
+                                        echo nl2br($response->texto2);
+                                        ?></p>
+      </div>
+    </div>
+  </div>
 <div class="container padding-top-1x padding-bottom-3x mb-2">
   <div class="row justify-content-center">
     <!-- Content-->
