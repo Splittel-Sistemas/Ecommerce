@@ -160,7 +160,7 @@
          <a href="../Capacitaciones/1-fintec">Capacitaciones</a>
          <ul class="sub-menu">
              <li>
-               <a href="../Capacitaciones/2-seminarios-online">Seminarios Online</a>
+               <a href="../Capacitaciones/5-redlives-webinars">RedLives Webinars</a>
              </li>
              <li>
                <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica">Cursos Presenciales</a>
