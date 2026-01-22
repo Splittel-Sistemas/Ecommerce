@@ -665,9 +665,9 @@ class SolicitudCController
           $mail->AddAttachment($targetFilePath);
           
           $mail->AddCC('victor.salazar@fibremex.com.mx');
-          $mail->AddCC('julio.leon@splittel.com');
+          $mail->AddCC('giovanny.castro@splittel.com');
           $mail->AddCC('almacen.recibo@fibremex.com.mx');
-          $mail->AddCC('jossue.oyarvide@splittel.com');
+          //$mail->AddCC('jossue.oyarvide@splittel.com');
 
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
