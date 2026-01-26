@@ -132,10 +132,6 @@ class SolicitudCursos
     $this->Vehiculo = $vehiculo;
   }
 
-
-
-
-
   public function SetParameters($conn, $Tool)
   {
     $this->Connection = $conn;
