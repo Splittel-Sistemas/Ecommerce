@@ -17,6 +17,12 @@ var EnviarAlta = function () {
   fda.append("Ap", $("#Ap").val());
   fda.append("Am", $("#Am").val());
 
+  if ($('#check-automovil').is(':checked')) {
+    fda.append('Vehiculo', $('#select-automovil').val());
+  } else {
+    fda.append('Vehiculo', '');
+  }
+
   var Titulo = $("#Titulo").val();
   var Otro = $("#Otro").val();
   if (Titulo == "Otro") {

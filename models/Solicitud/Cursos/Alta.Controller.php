@@ -90,6 +90,7 @@ class SolicitudCursosController
         $SolicitudCModel->SetRestriccion(str_replace("'", "",$_POST['Restriccion']));
         $SolicitudCModel->SetAp($_POST['Ap']);
         $SolicitudCModel->SetAm($_POST['Am']);
+        $SolicitudCModel->SetVehiculo($_POST['Vehiculo']);
         $name1='';
        
 
@@ -134,7 +135,7 @@ class SolicitudCursosController
 
         if (!$ResultSolicitud['error']) {
 
-          $mensaje = ('<html>
+          $mensaje = '<html>
           <head>
             <meta name="viewport" content="width=device-width" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -568,10 +569,11 @@ class SolicitudCursosController
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Empresarial: </strong>' . $_POST['CorreoEmpresarial'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>Correo Personal: </strong>' . $_POST['CorrePersonal'] . '</p>
                     <p align="center" style="margin-bottom:10px;"><strong>WhatsApp personal : </strong>' . $_POST['Whatsapp'] . '</p>
-                    <p align="center" style="margin-bottom:10px;"><strong>Restriccion alimentaria : </strong>' . $_POST['Restriccion'] . '</p>
-                   
+                    <p align="center" style="margin-bottom:10px;"><strong>Restriccion alimentaria : </strong>' . $_POST['Restriccion'] . '</p>';
 
-                      <p><br></p>
+                    $mensaje .= $_POST['Vehiculo'] != '' ? '<p align="center" style="margin-bottom:10px;"><strong>Vehiculo : </strong>' . $_POST['Vehiculo'] . '</p>' : '';
+
+                    $mensaje .= '<p><br></p>
                       <p align="center">Este es un correo electrónico generado automáticamente</p>
                     </td>
                     </tr>
@@ -604,7 +606,7 @@ class SolicitudCursosController
             </tr>
           </table>
         </body>
-      </html>');
+      </html>';
           $host =           'mail.fibremex.com';
           $puerto =    '587';
           $email =  'notificaciones@fibremex.com';
@@ -632,10 +634,14 @@ class SolicitudCursosController
           //Mails
           $mail->From = 'notificaciones@fibremex.com';
 
+          /* comentario temporal
           $mail->AddCC('marketing.directo@splittel.com'); // FROM 
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
+          */
+          $mail->AddBCC('yosimar.aquino@splittel.com');
+
     /*        $mail->AddBCC('ramon.olea@splittel.com'); //BCC COPIA OCULTA */
          
       

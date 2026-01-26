@@ -23,6 +23,8 @@ class SolicitudCursos
   public $Doc1;
   public $Restriccion;
 
+  public $Vehiculo;
+
   public function Setname($name)
   {
     if (empty($name)) {
@@ -120,6 +122,14 @@ class SolicitudCursos
       throw new Exception('El campo RESTRICCION ALIMENTARIA es requerido');
     }
     $this->Restriccion = $Restriccion;
+  }
+
+  public function SetVehiculo($vehiculo)
+  {
+    if (empty($vehiculo) || $vehiculo == '') {
+      $vehiculo = null;
+    }
+    $this->Vehiculo = $vehiculo;
   }
 
 
@@ -243,6 +253,7 @@ class SolicitudCursos
             '" . $this->Ap . "',
             '" . $this->Am . "',
             '" . $this->Restriccion . "',
+            '" . $this->Vehiculo . "',
         @Result);", "@Result");
 
       return $result;
