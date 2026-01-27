@@ -634,12 +634,10 @@ class SolicitudCursosController
           //Mails
           $mail->From = 'notificaciones@fibremex.com';
 
-          /* comentario temporal
           $mail->AddCC('marketing.directo@splittel.com'); // FROM 
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
-          */
           $mail->AddBCC('yosimar.aquino@splittel.com');
 
     /*        $mail->AddBCC('ramon.olea@splittel.com'); //BCC COPIA OCULTA */
