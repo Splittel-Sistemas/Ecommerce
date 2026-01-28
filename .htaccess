@@ -23,3 +23,4 @@ RewriteRule Cursos/([0-9]+)-(.*)$  Cursos/cursos_detalle.php?id=$1&nom=$2 [L,NC]
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule Capacitaciones/([0-9]+)-(.*)$  Capacitaciones/capacitaciones_detalle.php?id=$1&nom=$2 [L,NC]
+

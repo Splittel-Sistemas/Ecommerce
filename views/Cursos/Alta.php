@@ -77,9 +77,9 @@
                                     <select class="form-control form-control-2" id="name" name="name" required onchange="ShowMessage()">
                                         <option value="">Selecciona una opcion</option>
                                         <option value="Cableado Estructurado para Redes de Fibra y Cobre">Cableado Estructurado para Redes de Fibra y Cobre</option>
-                                        <option value="Curso de Redes de Fibra Óptica Planta Externa">Curso de Redes de Fibra Óptica Planta Externa</option>
-                                        <option value="Redes de Fibra Óptica FTTH para WISP e ISP">Redes de Fibra Óptica FTTH para WISP e ISP</option>
-                                        <option value="PONLAN Redes Ópticas Pasivas para Entornos Enterprise">PONLAN Redes Ópticas Pasivas para Entornos Enterprise</option>
+                                        <option value="Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes">Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes</option>
+                                        <option value="Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla">Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla</option>
+                                        <option value="Diseño de redes LAN de fibra óptica para entornos Enterprise GPON">Diseño de redes LAN de fibra óptica para entornos Enterprise GPON</option>
                                         <option value="Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica">Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica</option>
                                         <option value="Certificación Partners Optronics">Certificación Partners Optronics</option>
                                     </select>
@@ -91,30 +91,29 @@
 
                                 <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="PI">
                                     <div class="alert alert-danger alert-dismissible fade show text-center ">
-                                    <span class="alert-close" data-dismiss="alert"></span>
-                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
-                                    Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso, es deseable haber cursado 
-                                    previamente <span class="text-medium">fibra óptica planta interna</span> o tener conocimientos básicos de redes y fibra óptica 
+                                        <span class="alert-close" data-dismiss="alert"></span>
+                                        <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br />
+                                        Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso, es deseable haber cursado
+                                        previamente <span class="text-medium">fibra óptica planta interna</span> o tener conocimientos básicos de redes y fibra óptica
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="PE">
                                     <div class="alert alert-danger alert-dismissible fade show text-center ">
-                                    <span class="alert-close" data-dismiss="alert"></span>
-                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
-                                    Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso, 
-                                    es deseable haber cursado <span class="text-medium">fibra óptica planta interna y fibra óptica planta externa</span> previamente 
+                                        <span class="alert-close" data-dismiss="alert"></span>
+                                        <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br />
+                                        Nuestros programas de capacitación están diseñados de manera modular, por lo que, para tomar este curso,
+                                        es deseable haber cursado <span class="text-medium">fibra óptica planta interna y fibra óptica planta externa</span> previamente
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="CER">
                                     <div class="alert alert-danger alert-dismissible fade show text-center ">
-                                    <span class="alert-close" data-dismiss="alert"></span>
-                                    <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br/>
-                                    Para poder tomar esta certificación, es deseable tener conocimiento en <span class="text-medium">redes y/o cableado estructurado </span>
+                                        <span class="alert-close" data-dismiss="alert"></span>
+                                        <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span> <br />
+                                        Para poder tomar esta certificación, es deseable tener conocimiento en <span class="text-medium">redes y/o cableado estructurado </span>
                                     </div>
                                 </div>
-
 
 
                                 <div class="col-sm-12 col-md-6 form-group">
@@ -147,6 +146,14 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+
+                                <div class="col-sm-12 col-md-12 form-group" style="display:none;" id="material-indispensable">
+                                    <div class="alert alert-warning alert-dismissible fade show text-center">
+                                        <i class="icon-alert-triangle"></i>&nbsp;&nbsp;<span class="text-medium">Atención</span><br />
+                                        <div id="texto-material-indispensable"></div>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-12 col-md-12 form-group text-center">
                                     <ul>
                                         <p>Favor de indicar datos personales del participante ya que se les realizará el
@@ -226,12 +233,30 @@
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group">
                                     <label class="text-uppercase">En caso de contar con alguna restricción alimentaria, podría especificar cual: <strong class="text-danger">*</strong></label>
-                                    
+
                                     <textarea class="form-control form-control-2" id="Restriccion" name="Restriccion" rows="2" cols="50"></textarea>
                                 </div>
                                 <div class="col-sm-12 col-md-12 form-group">
-                                <label>Anexar OC (en caso de crédito), comprobante de pago o factura del curso<strong class="text-danger">*</strong></label>
-                                <input class="form-control form-control-2" type="file" id="file" accept="application/pdf">
+                                    <label>Anexar OC (en caso de crédito), comprobante de pago o factura del curso<strong class="text-danger">*</strong></label>
+                                    <input class="form-control form-control-2" type="file" id="file" accept="application/pdf">
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" id="check-automovil" onchange="check_automovil()">
+                                        <label class="custom-control-label" for="check-automovil"> ¿Ingresarás a las instalaciones en automóvil? </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-6 form-group" id="div-automovil" style="display: none;">
+                                    <label class="text-uppercase">Tipo de vehiculo: <strong class="text-danger">*</strong></label>
+                                    <select class="form-control form-control-2" id="select-automovil">
+                                        <option value="Automóvil">Automóvil</option>
+                                        <option value="Camioneta">Camioneta</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 form-group">
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 form-group" style="display: none;" id="divespacio"> </div>
@@ -364,23 +389,47 @@
     <script type="text/javascript" src="../../public/scripts/cursos/alta.js?id=<?php echo rand() ?>"></script>
 </body>
 <script>
-    function ShowMessage(){
+    function ShowMessage() {
         $('#PI').hide()
         $('#PE').hide()
         $('#CER').hide()
-       if($('#name').val()=='Planta Externa de Fibra Óptica'){ 
+        if ($('#name').val() == 'Planta Externa de Fibra Óptica') {
             $('#PI').show()
-       }
-       if($('#name').val()=='Fibra hasta el Usuario Redes Ópticas Pasivas') {
-        $('#PE').show()
-       }
+        }
+        if ($('#name').val() == 'Fibra hasta el Usuario Redes Ópticas Pasivas') {
+            $('#PE').show()
+        }
 
-       if($('#name').val()=='Certificación Partners') {
-        $('#CER').show()
-       }
-       
+        if ($('#name').val() == 'Certificación Partners') {
+            $('#CER').show()
+        }
+
+        if ($('#name').val() == 'Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes') {
+            $('#material-indispensable').css('display', 'block');
+            $('#texto-material-indispensable').empty();
+            $('#texto-material-indispensable').append('Para tomar este curso es indispensable traer al curso <span class="text-medium">zapatos de seguridad</span>');
+        } else if (
+            $('#name').val() == 'Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla' ||
+            $('#name').val() == 'Diseño de redes LAN de fibra óptica para entornos Enterprise GPON' ||
+            $('#name').val() == 'Certificación Partners Optronics') {
+            $('#material-indispensable').css('display', 'block');
+            $('#texto-material-indispensable').empty();
+            $('#texto-material-indispensable').append('Para tomar este curso es indispensable traer al curso <span class="text-medium">computadora y software visor de planos (DWG, AutoCAD, etc.)</span>');
+        } else {
+            $('#material-indispensable').css('display', 'none');
+        }
+
+    }
+
+    function check_automovil() {
+        if ($('#check-automovil').is(':checked')) {
+            $('#div-automovil').css('display', 'block');
+        } else {
+            $('#div-automovil').css('display', 'none');
+        }
     }
 </script>
+
 </html>
 <?php
 unset($Contacto);

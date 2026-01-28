@@ -675,6 +675,7 @@ class SolicitudCController
           $corr = $_POST['Correo'];
           $mail->AddCC("$corr");
           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
+          $mail->AddBCC('yosimar.aquino@splittel.com');
           $mail->MsgHTML($mensaje);
 
             $mail->send();

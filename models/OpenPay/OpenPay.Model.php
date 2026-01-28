@@ -239,8 +239,8 @@
 							'device_session_id' => $this->DeviceSessionId,// sessionDev []
 							'customer' => $Customer,
 					);
-				}
 					return $this->Charge = $this->OpenPayy->charges->create($chargeData);
+				}
 				} catch (OpenpayApiTransactionError $e) {
 					throw $e;
 				} catch (OpenpayApiRequestError $e) {
