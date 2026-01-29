@@ -105,7 +105,7 @@
   <div class="col-sm-4">
     <div class="form-group mb-0">
         <label for="quantity">Longitud <span id="Longitud_label">1-999 (m)</span></label>
-        <input class="form-control" maxlength="3" type="text" value="1" id="Longitud" name="" onmouseup="interior_exterior_cable()" oninput="interior_exterior_cable()">
+        <input class="form-control" maxlength="5" type="text" value="1" id="Longitud" name="" onmouseup="interior_exterior_cable()" oninput="interior_exterior_cable()">
     </div>
   </div>
   <div class="col-sm-4">

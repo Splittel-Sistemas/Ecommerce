@@ -63,7 +63,43 @@ var ConectoresPosicion = [
  *
  * @return {number} b - Bar
  */
+function validateEntero(valor) {
+  var patronEntero = /^\d*$/; 
+  if (patronEntero.test(valor)) {
+      return true;
+  } else {
+    //console.log('test'+valor.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1'))
+    document.getElementById('Longitud').value=valor.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
+  }
+}
 
+
+function validateNumero(Longitud){
+  if (Longitud.value >= 1 && Longitud.value <= 999) {
+      let s = Number(Longitud.value);
+     if (s % 1 !== 0) { // tiene decimal
+        // Limitar a un solo decimal
+        let partes = Longitud.value.split('.');
+        let entero = partes[0];
+        let decimal = partes[1] ? partes[1].substring(0, 1) : "";
+
+        // Reconstruir el número con un solo decimal
+        s = Number(entero + '.' + decimal);
+
+        // Formatear con 4 dígitos según tu función
+        NewLongitud = NumeroConCeros(s, 4);
+
+        // Opcional: actualizar el input para que solo tenga un decimal
+        Longitud.value = entero + (decimal ? '.' + decimal : '');
+
+    }else{
+        let s=Number(Longitud.value)
+        NewLongitud = NumeroConCeros2(s, 3)
+       
+      }
+    }
+    return NewLongitud;
+}
 
 var cable_IE = function(){
   
@@ -132,10 +168,15 @@ var cable_IE = function(){
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+
+  
+   
+    NewLongitud=validateNumero(Longitud)
     
 
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -234,12 +275,14 @@ var cable_IE = function(){
       NewConector2 = ConectorLadoA.value
       x = 2
     }
+    NewLongitud=validateNumero(Longitud)
     // mostrar rango de hilos valido
     NoHilos_label.innerHTML = " 2 - 12";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-       CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+       CodigoGenerado=Marca + Familia + "IE" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+       + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
       
     }else{
@@ -347,14 +390,15 @@ var cable_CI = function(){
       NewConector1 = ConectorLadoB.value
       NewConector2 = ConectorLadoA.value
     }
-
+    NewLongitud=validateNumero(Longitud)
     // mostrar rango de hilos valido
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
     
-      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 
+      + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
       
     }else{
@@ -455,13 +499,15 @@ var cable_CI = function(){
       NewConector2 = ConectorLadoA.value
       x = 2
     }
+    NewLongitud=validateNumero(Longitud)
     // mostrar rango de hilos valido
     NoHilos_label.innerHTML = " 2 - 12";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
       
-     CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+     CodigoGenerado=Marca + Familia + "CI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+     + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
      
     }else{
@@ -570,13 +616,14 @@ var cable_SA = function(){
       NewConector1 = ConectorLadoB.value
       NewConector2 = ConectorLadoA.value
     }
-
+ NewLongitud=validateNumero(Longitud)
     // mostrar rango de hilos valido
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-       CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+       CodigoGenerado=Marca + Familia + "SA" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+       + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -649,8 +696,10 @@ else if(ConectorLadoA.value=='BG' && ConectorLadoB.value=='BH'){
     NoHilos_label.innerHTML = " 1 - 1";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+     NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,1,1) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + ConAuxLadoA + ConAuxLadoB + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
       //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
       let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
@@ -767,8 +816,10 @@ var cable_S8 = function(){
       NoHilos_label.innerHTML = " 2 - 48";
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
+       NewLongitud=validateNumero(Longitud)
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+        + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
         showClave(CodigoGenerado);
       }else{
         CodigoGenerado='';
@@ -780,8 +831,10 @@ var cable_S8 = function(){
       NoHilos_label.innerHTML = " 2 - 12";
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
+      NewLongitud=validateNumero(Longitud)
       if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+        + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
         showClave(CodigoGenerado);
       }else{
         CodigoGenerado='';
@@ -793,8 +846,10 @@ var cable_S8 = function(){
       NoHilos_label.innerHTML = " 2 - 24";
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
+      NewLongitud=validateNumero(Longitud)
       if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
-        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+        CodigoGenerado=Marca + Familia + "S8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+        + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
         showClave(CodigoGenerado);
       }else{
         CodigoGenerado='';
@@ -907,8 +962,10 @@ var cable_M8 = function(){
     NoHilos_label.innerHTML = " 2 - 12";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+    NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,12) && ValidInputRange(Longitud,1,999)){
-       CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+       CodigoGenerado=Marca + Familia + "M8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+       + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -1019,8 +1076,10 @@ var cable_DI = function(){
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+     NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "DI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "DI" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -1132,8 +1191,10 @@ var cable_AR = function(){
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+     NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "AR" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "AR" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -1246,8 +1307,10 @@ var cable_AD = function(){
     NoHilos_label.innerHTML = " 2 - 48";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+    NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "AD" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "AD" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -1360,8 +1423,10 @@ var cable_F8 = function(){
       NoHilos_label.innerHTML = " 2 - 48";
       // mostrar longitud valida
       Longitud_label.innerHTML = " 1 - 999";
+      NewLongitud=validateNumero(Longitud)
       if(ValidInputRange(NoHilos,2,48) && ValidInputRange(Longitud,1,999)){
-         CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+         CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+         + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
         showClave(CodigoGenerado);
       }else{
         CodigoGenerado='';
@@ -1372,8 +1437,10 @@ var cable_F8 = function(){
     NoHilos_label.innerHTML = " 2 - 24";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+     NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,24) && ValidInputRange(Longitud,1,999)){
-       CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + NewConector1 + NewConector2 + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+       CodigoGenerado=Marca + Familia + "F8" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+       + NewConector1 + NewConector2 + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
     }else{
         CodigoGenerado='';
@@ -1437,8 +1504,10 @@ var cable_FT = function(){
     NoHilos_label.innerHTML = " 2 - 2";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 2 - 999";
+    NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,2,2) && ValidInputRange(Longitud,3,999)){
-      CodigoGenerado=Marca + Familia + "HW" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3) + Adicionales.value;
+      CodigoGenerado=Marca + Familia + "HW" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + ConAuxLadoA + ConAuxLadoB + NewLongitud + Adicionales.value;
       showClave(CodigoGenerado);
       //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
       let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
@@ -1520,8 +1589,10 @@ let TipoFibraselected = TipoFibra.options[TipoFibra.selectedIndex].text
     NoHilos_label.innerHTML = " 1 - 1";
     // mostrar longitud valida
     Longitud_label.innerHTML = " 1 - 999";
+    NewLongitud=validateNumero(Longitud)
     if(ValidInputRange(NoHilos,1,1) && ValidInputRange(Longitud,1,999)){
-      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) + ConAuxLadoA + ConAuxLadoB + NumeroConCeros2(Longitud.value,3);
+      CodigoGenerado=Marca + Familia + "D0" + TipoFibra.value + TipoCubierta.value + NumeroConCeros2(NoHilos.value,2) 
+      + ConAuxLadoA + ConAuxLadoB + NewLongitud;
       showClave(CodigoGenerado);
       //verificarCostoFigura0(Longitud.value,ConAuxLadoA,ConAuxLadoB)
       

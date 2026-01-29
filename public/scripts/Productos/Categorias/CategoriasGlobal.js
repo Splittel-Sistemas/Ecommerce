@@ -73,6 +73,22 @@ var showClave = function(Codigo){
  *
  * @return {String}   
  */
+NumeroConCeros_ = function(Numero, TotalDigitos) {
+    // Limitar a un decimal
+    Numero = Math.floor(Numero * 10) / 10;
+
+    let partes = Numero.toString().split(".");
+    let entero = partes[0];
+    let decimal = partes[1] || "0"; // si no hay decimal, poner 0
+
+    // Agregar ceros a la izquierda para el entero
+    while (entero.length < TotalDigitos - 2) { // dejamos 2 lugares para "X.Y"
+        entero = "0" + entero;
+    }
+
+    return entero + "." + decimal;
+}
+
 var NumeroConCeros = function(Numero, TotalDigitos){
   let Ceros = ""
   Numero = Numero * 10
@@ -933,7 +949,7 @@ var CalcularPrecio = function(url, data){
     
     response=JSON.parse(decryptAjax(responses))
     
-    console.log(response)
+    //console.log(response)
     //console.log(CurrencySite)
     if (!response.error) {
       $('#span-leyenda').remove()
