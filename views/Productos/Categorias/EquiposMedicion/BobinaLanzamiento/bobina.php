@@ -6,6 +6,7 @@
 				<option value="29">Monomodo G657A2</option>
         <option value="62">OM1 - 62.5/125</option>
         <option value="55">OM3 - 50/125 10G</option>
+        <option value="57">OM4 - 50/125 40G</option>
       </select>
     </div>
   </div>
