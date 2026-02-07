@@ -657,7 +657,7 @@ class SolicitudCController
           $host =           'mail.fibremex.com';
           $puerto =    '587';
           $email =  'notificaciones@fibremex.com';
-          $password =   '8ijx@ZbH6vA4';
+          $password =   'LXmG*xe0c_ah';
 
           //Este bloque es importante
           $mail = new PHPMailer();
