@@ -78,6 +78,7 @@
                                         <option value="">Selecciona una opcion</option>
                                         <option value="Cableado Estructurado para Redes de Fibra y Cobre">Cableado Estructurado para Redes de Fibra y Cobre</option>
                                         <option value="Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes">Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes</option>
+                                        <option value="Fibra Optica Planta Interna y MPO para Data Centers">Fibra Optica Planta Interna y MPO para Data Centers</option>
                                         <option value="Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla">Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla</option>
                                         <option value="Diseño de redes LAN de fibra óptica para entornos Enterprise GPON">Diseño de redes LAN de fibra óptica para entornos Enterprise GPON</option>
                                         <option value="Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica">Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica</option>
