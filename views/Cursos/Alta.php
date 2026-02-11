@@ -76,12 +76,12 @@
                                     <label class="text-uppercase">Nombre del curso: <strong class="text-danger">*</strong></label>
                                     <select class="form-control form-control-2" id="name" name="name" required onchange="ShowMessage()">
                                         <option value="">Selecciona una opcion</option>
-                                        <option value="Cableado Estructurado para Redes de Fibra y Cobre">Cableado Estructurado para Redes de Fibra y Cobre</option>
-                                        <option value="Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes">Curso Fibra Óptica Planta Externa y Seguridad en Altura para Postes</option>
-                                        <option value="Fibra Optica Planta Interna y MPO para Data Centers">Fibra Optica Planta Interna y MPO para Data Centers</option>
-                                        <option value="Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla">Redes de fibra óptica para WISP e ISP: diseño, despliegue y activación de la última milla</option>
+                                        <option value="Curso cableado estructurado de cobre: diseño, instalación y medición">Curso cableado estructurado de cobre: diseño, instalación y medición</option>
+                                        <option value="Curso fibra Óptica Planta Externa y Seguridad en Altura para Postes">Curso fibra Óptica Planta Externa y Seguridad en Altura para Postes</option>
+                                        <option value="Curso fibra Óptica planta Interna y MPO para Data Centers">Curso fibra Óptica planta Interna y MPO para Data Centers</option>
+                                        <option value="Redes de fibra óptica para WISP e ISP: Diseño, despliegue y activación">Redes de fibra óptica para WISP e ISP: Diseño, despliegue y activación</option>
                                         <option value="Diseño de redes LAN de fibra óptica para entornos Enterprise GPON">Diseño de redes LAN de fibra óptica para entornos Enterprise GPON</option>
-                                        <option value="Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica">Curso Empalmes y Mediciones con OTDR de un Enlace de Fibra Óptica</option>
+                                        <option value="Empalmes y mediciones con OTDR en un enlace de fibra óptica">Empalmes y mediciones con OTDR en un enlace de fibra óptica</option>
                                         <option value="Certificación Partners Optronics">Certificación Partners Optronics</option>
                                     </select>
                                 </div>
