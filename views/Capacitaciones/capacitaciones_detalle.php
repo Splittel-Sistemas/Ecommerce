@@ -109,8 +109,10 @@
 
   </p>
 
-  <h6 class="text-muted text-center text-normal margin-top-3x">
-    <a target="_blank" href="<?php echo $response->link_whatsapp ?>"><img src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png"></a>
+  <h6 class="text-muted text-center text-normal margin-top-1x">
+    <a target="_blank" href="<?php echo $response->link_whatsapp ?>">
+      <img style="width:35%" src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png">
+    </a>
   </h6>
 
   <?php
