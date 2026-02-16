@@ -568,10 +568,17 @@ class SolicitudCController
           </table>
         </body>
       </html>');
-          $host =           'mail.fibremex.com';
-          $puerto =    '587';
-          $email =  'notificaciones@fibremex.com';
-          $password =   'LXmG*xe0c_ah';
+
+
+          if (!class_exists("Email")) {
+            include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Email.php';
+          }
+          $emailModel = new Email();
+
+          $host = $emailModel->Mailer->Host;
+          $puerto = $emailModel->Mailer->Port;
+          $email = $emailModel->Mailer->Username;
+          $password = $emailModel->Mailer->Password;
 
           //Este bloque es importante
           $mail = new PHPMailer();
@@ -591,7 +598,7 @@ class SolicitudCController
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
           //Mails
-          $mail->From = 'notificaciones@fibremex.com';
+          $mail->From = $emailModel->Mailer->Username;
           $PHPWord = new PHPWord();
 
           $document = $PHPWord->loadTemplate('EQUIPOS.docx');
@@ -651,7 +658,7 @@ class SolicitudCController
           $document->setValue('cantidad10', isset($dataItems[9]['cantidad']) ? htmlspecialchars($dataItems[9]['cantidad']) : "");
           $document->setValue('nserie10', isset($dataItems[9]['nserie']) ? htmlspecialchars($dataItems[9]['nserie']) : "");
           $document->setValue('desc10',  isset($dataItems[9]['desc']) ? htmlspecialchars($dataItems[9]['desc']) : "");
-         
+
           // Imprime el texto limpio
           $document->setValue('fecha',  date('d-m-Y'));
 
@@ -663,7 +670,7 @@ class SolicitudCController
           $originalErrorReporting = error_reporting();
           error_reporting($originalErrorReporting & ~E_DEPRECATED);
           $mail->AddAttachment($targetFilePath);
-          
+
           $mail->AddCC('victor.salazar@fibremex.com.mx');
           $mail->AddCC('giovanny.castro@splittel.com');
           $mail->AddCC('almacen.recibo@fibremex.com.mx');
@@ -678,7 +685,7 @@ class SolicitudCController
           $mail->AddBCC('yosimar.aquino@splittel.com');
           $mail->MsgHTML($mensaje);
 
-            $mail->send();
+          $mail->send();
         }
 
         return $ResultSolicitud;
