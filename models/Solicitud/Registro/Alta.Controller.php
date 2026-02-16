@@ -64,30 +64,31 @@ class SolicitudRegistroController
     }
   }
 
-  private function eliminarDirectorioCompleto($directorio) {
+  private function eliminarDirectorioCompleto($directorio)
+  {
     if (!is_dir($directorio)) {
-        echo "El directorio no existe o no es válido.";
-        return false;
+      echo "El directorio no existe o no es válido.";
+      return false;
     }
 
     // Iterar por cada archivo o subdirectorio
     foreach (scandir($directorio) as $elemento) {
-        if ($elemento === '.' || $elemento === '..') {
-            continue; // Ignorar los directorios especiales "." y ".."
-        }
+      if ($elemento === '.' || $elemento === '..') {
+        continue; // Ignorar los directorios especiales "." y ".."
+      }
 
-        $ruta = $directorio . DIRECTORY_SEPARATOR . $elemento;
+      $ruta = $directorio . DIRECTORY_SEPARATOR . $elemento;
 
-        if (is_dir($ruta)) {
-            // Llamada recursiva si es un subdirectorio
-            eliminarDirectorioCompleto($ruta);
-        } else {
-            // Eliminar archivo
-            unlink($ruta);
-        }
+      if (is_dir($ruta)) {
+        // Llamada recursiva si es un subdirectorio
+        eliminarDirectorioCompleto($ruta);
+      } else {
+        // Eliminar archivo
+        unlink($ruta);
+      }
     }
     return true;
-}
+  }
 
   public function Alta()
   {
@@ -119,34 +120,34 @@ class SolicitudRegistroController
         $SolicitudRegistroModel->SetNombreComercial($_POST['NombreComercial']);
         $SolicitudRegistroModel->SetWeb($_POST['Web']);
         $SolicitudRegistroModel->SetvaloresCheck($_POST['valoresCheck']);
-        $name1='';
+        $name1 = '';
 
-           
+
         if (isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])) {
           $uploadDir = '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/';
           $ext1 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
           $name1 =  ('1-' . $_POST['Rfc'] . '.' . $ext1);
           $SolicitudRegistroModel->SetDoc1($name1);
           if (!is_dir($uploadDir)) {
-          if (mkdir('../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/', 0755, true)) {
+            if (mkdir('../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/', 0755, true)) {
 
-            move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/' . $name1);
-            #$file_nname = $_FILES['file']['name'];
-            
+              move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/' . $name1);
+              #$file_nname = $_FILES['file']['name'];
 
 
-            $uploadDir = '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/';
 
-            // Check whether submitted data is not empty 
-            // File path config 
-            $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
-            $targetFilePath = $uploadDir . $fileName;
-          }
-          }else{
-            if($this->eliminarDirectorioCompleto($uploadDir)){
-            
+              $uploadDir = '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/';
+
+              // Check whether submitted data is not empty 
+              // File path config 
+              $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
+              $targetFilePath = $uploadDir . $fileName;
+            }
+          } else {
+            if ($this->eliminarDirectorioCompleto($uploadDir)) {
+
               @move_uploaded_file($_FILES['file']['tmp_name'], '../../../public/images/img_spl/registro/Altas/' . $_POST['Rfc'] . '/' . $name1);
-              
+
               #$file_nname = $_FILES['file']['name'];
               //$SolicitudCModel->SetDoc1($name1);
 
@@ -157,10 +158,10 @@ class SolicitudRegistroController
               // File path config 
               $fileName =  iconv("UTF-8", "ISO-8859-1", basename($name1));
               $targetFilePath = $uploadDir . $fileName;
-           }
+            }
           }
         }
-        
+
 
         $ResultSolicitud = $SolicitudRegistroModel->Add();
 
@@ -643,10 +644,17 @@ class SolicitudRegistroController
           </table>
         </body>
       </html>');
-          $host =           'mail.fibremex.com';
-          $puerto =    '587';
-          $email =  'notificaciones@fibremex.com';
-          $password =   'LXmG*xe0c_ah';
+
+
+          if (!class_exists("Email")) {
+            include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Email.php';
+          }
+          $emailModel = new Email();
+
+          $host = $emailModel->Mailer->Host;
+          $puerto = $emailModel->Mailer->Port;
+          $email = $emailModel->Mailer->Username;
+          $password = $emailModel->Mailer->Password;
 
           //Este bloque es importante
           $mail = new PHPMailer();
@@ -667,16 +675,13 @@ class SolicitudRegistroController
           $asunto    = 'Solicitud Precalificacion';
           $mail->Subject = $asunto;
           $mail->Body = $mensaje;
-        
 
-
-
-          $mail->From = 'notificaciones@fibremex.com';
+          $mail->From = $emailModel->Mailer->Username;
           $eje = $_POST['CorreEjecutivo'];
           $mail->AddAddress("$eje");
-           $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
+          $mail->AddBCC('aaron.cuevas@fibremex.com.mx');
 
-        
+
           $mail->MsgHTML($mensaje);
 
           //Avisar si fue enviado o no y dirigir al index
