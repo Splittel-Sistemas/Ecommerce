@@ -24,6 +24,7 @@ class SolicitudCursos
   public $Restriccion;
 
   public $Vehiculo;
+  public $Placa;
 
   public function Setname($name)
   {
@@ -130,6 +131,14 @@ class SolicitudCursos
       $vehiculo = null;
     }
     $this->Vehiculo = $vehiculo;
+  }
+
+  public function SetPlaca($placa)
+  {
+    if (empty($placa) || $placa == '') {
+      $placa = null;
+    }
+    $this->Placa = $placa;
   }
 
   public function SetParameters($conn, $Tool)
@@ -250,6 +259,7 @@ class SolicitudCursos
             '" . $this->Am . "',
             '" . $this->Restriccion . "',
             '" . $this->Vehiculo . "',
+            '" . $this->Placa . "',
         @Result);", "@Result");
 
       return $result;
