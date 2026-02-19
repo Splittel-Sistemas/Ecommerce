@@ -18,9 +18,16 @@ var EnviarAlta = function () {
   fda.append("Am", $("#Am").val());
 
   if ($('#check-automovil').is(':checked')) {
+    if ($('#input-placa').val().trim() == '') {
+      templateAlert("danger", "", "DEBE ESCRIBIR LA PLACA DEL VEHICULO", "topRight", "");
+      $("#botonenviar").show();
+      return;
+    }
     fda.append('Vehiculo', $('#select-automovil').val());
+    fda.append('Placa', $('#input-placa').val());
   } else {
     fda.append('Vehiculo', '');
+    fda.append('Placa', '');
   }
 
   var Titulo = $("#Titulo").val();
@@ -35,57 +42,57 @@ var EnviarAlta = function () {
   console.log(Titulo);
   var Politica = $("#apple").val();
   var CorreEjecutivo = $("#ejecutivo").val();
-  if(file_data){
-  if (CorreEjecutivo != "") {
-    if (Politica == 1) {
-      $.ajax({
-        url: "../../models/Solicitud/Cursos/Alta.Route.php",
-        type: "post",
-        data: fda,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        async: false,
-        cache: false,
-        success: function (response) {
-          if (!response.error) {
-            $("#botonenviar").show();
+  if (file_data) {
+    if (CorreEjecutivo != "") {
+      if (Politica == 1) {
+        $.ajax({
+          url: "../../models/Solicitud/Cursos/Alta.Route.php",
+          type: "post",
+          data: fda,
+          contentType: false,
+          processData: false,
+          dataType: "json",
+          async: false,
+          cache: false,
+          success: function (response) {
+            if (!response.error) {
+              $("#botonenviar").show();
 
-            templateAlert(
-              "success",
-              "Enviado",
-              "La solicitud ha sido enviada",
-              "center",
-              ""
-            );
-            GlobalCloseModal("modal-ficrece");
-            window.location.href = "Mensaje.php";
-          } else {
-            $("#botonenviar").show();
-            templateAlert("danger", "", response.message, "topRight", "");
-          }
-        },
-      });
+              templateAlert(
+                "success",
+                "Enviado",
+                "La solicitud ha sido enviada",
+                "center",
+                ""
+              );
+              GlobalCloseModal("modal-ficrece");
+              window.location.href = "Mensaje.php";
+            } else {
+              $("#botonenviar").show();
+              templateAlert("danger", "", response.message, "topRight", "");
+            }
+          },
+        });
+      } else {
+        $("#botonenviar").show();
+
+        templateAlert(
+          "warning",
+          "",
+          "ACEPTE LA POLÍTICA DE CURSOS SPLITTEL ",
+          "topRight",
+          ""
+        );
+      }
     } else {
       $("#botonenviar").show();
 
-      templateAlert(
-        "warning",
-        "",
-        "ACEPTE LA POLÍTICA DE CURSOS SPLITTEL ",
-        "topRight",
-        ""
-      );
+      templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
     }
   } else {
     $("#botonenviar").show();
-
-    templateAlert("danger", "", "SELECCIONE UN EJECUTIVO", "topRight", "");
+    templateAlert("danger", "", "SELECCIONE COMPROBANTE DE PAGO ", "topRight", "");
   }
-}else{
-  $("#botonenviar").show();
-  templateAlert("danger", "", "SELECCIONE COMPROBANTE DE PAGO ", "topRight", "");
-}
 };
 
 function titulo(valor) {
