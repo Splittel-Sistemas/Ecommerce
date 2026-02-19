@@ -257,6 +257,11 @@
                                     </select>
                                 </div>
 
+                                <div class="col-sm-12 col-md-6 form-group" id="div-placa" style="display: none;">
+                                    <label class="text-uppercase">Placas: <strong class="text-danger">*</strong></label>
+                                    <input class="form-control form-control-2" type="text" id="input-placa" name="placa">
+                                </div>
+
                                 <div class="col-sm-12 col-md-12 form-group">
                                 </div>
 
@@ -425,8 +430,10 @@
     function check_automovil() {
         if ($('#check-automovil').is(':checked')) {
             $('#div-automovil').css('display', 'block');
+             $('#div-placa').css('display', 'block');
         } else {
             $('#div-automovil').css('display', 'none');
+            $('#div-placa').css('display', 'none');
         }
     }
 </script>
