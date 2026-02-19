@@ -258,8 +258,8 @@
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 form-group" id="div-placa" style="display: none;">
-                                    <label class="text-uppercase">Placa del vehiculo: <strong class="text-danger">*</strong></label>
-                                    <input class="form-control" type="text" id="input-placa" name="placa">
+                                    <label class="text-uppercase">Placas: <strong class="text-danger">*</strong></label>
+                                    <input class="form-control form-control-2" type="text" id="input-placa" name="placa">
                                 </div>
 
                                 <div class="col-sm-12 col-md-12 form-group">
