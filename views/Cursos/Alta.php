@@ -350,8 +350,18 @@
                                             del Aviso de Privacidad disponible en <a href="https://fibremex.com/fibra-optica/views/AtencionCliente/politicas_privacidad.php">Aviso de Privacidad</a>.</p>
                                         <p>
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="appleImage">
-                                            <label class="custom-control-label" for="appleImage"> Acepto el uso de mi imagen </label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage">
+                                                <label class="form-check-label" for="appleImage">
+                                                    Acepto el uso de mi imagen
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage2" checked>
+                                                <label class="form-check-label" for="appleImage2">
+                                                    No acepto el uso de mi imagen
+                                                </label>
+                                            </div>
                                         </div>
                                         </p>
                                     </ul>
