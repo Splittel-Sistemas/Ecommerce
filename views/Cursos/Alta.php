@@ -300,23 +300,22 @@
                                             no se presente
                                             y no se cuente con notificación de ausencia, se procederá con el cobro total
                                             del curso.</p>
+                                        <p><strong class="text-danger"> 5.</strong> El registro por participante es de
+                                            manera individual por lo que, deberá presentarse de manera presencial
+                                            únicamente la persona inscrita; No se permitirá el acceso a las
+                                            instalaciones a cualquier otra persona ajena a la empresa que contrata el
+                                            servicio.</p>
+                                        <p><strong class="text-danger"> 6.</strong> Cuando surja algún cambio de
+                                            participante, será necesario notificar a su ejecutivo de ventas y al correo
+                                            marketing.directo@splittel.com con un mínimo de 24 hrs de anticipación, de
+                                            lo contrario no se asegura la entrada del nuevo participante a las
+                                            instalaciones.</p>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 margin-top-2x">
                                     <h6 class="text-muted text-lg text-uppercase">&nbsp; </h6>
                                     <hr class="margin-bottom-1x">
                                     <ul class="text-left">
-                                        <p><strong class="text-danger"> 5.</strong> El registro por participante es de
-                                            manera individual por lo que, deberá presentarse de manera presencial
-                                            únicamente la persona inscrita; No se permitirá el acceso a las
-                                            instalaciones a cualquier otra persona ajena a la empresa que contrata el
-                                            servicio.</p>
-
-                                        <p><strong class="text-danger"> 6.</strong> Cuando surja algún cambio de
-                                            participante, será necesario notificar a su ejecutivo de ventas y al correo
-                                            marketing.directo@splittel.com con un mínimo de 24 hrs de anticipación, de
-                                            lo contrario no se asegura la entrada del nuevo participante a las
-                                            instalaciones.</p>
                                         <p><strong class="text-danger"> 7.</strong>En el caso de que el participante no
                                             se presente el día del curso y no haya previa notificación,
                                             se dará por pérdido el curso y no habrá posibilidad de reprogramación.</p>
@@ -336,7 +335,35 @@
                                             examen final, el instructor firmará y entregará el certificado con validez
                                             ante la STPS 24
                                             horas después del curso.</p>
-
+                                        <p><strong class="text-danger"> 11.</strong> Los datos personales proporcionados
+                                            por los participantes durante el proceso de registro y participación en los cursos
+                                            serán tratados conforme a lo establecido en nuestro Aviso de Privacidad.
+                                            Para conocer el uso, manejo y protección de su información, puede consultarlo en el
+                                            siguiente enlace: <a href="https://fibremex.com/fibra-optica/views/AtencionCliente/politicas_privacidad.php">Politicas de Privacidad</a></p>
+                                        <p><strong class="text-danger"> 11.1.</strong> Autorizo a FIBREMEX el uso de mi imagen
+                                            captada durante la capacitación (fotografías y/o video), sin contraprestación, de forma
+                                            no exclusiva, para fines informativos y de difusión/promoción de la experiencia del curso
+                                            y futuras ediciones, en medios impresos y digitales, incluyendo redes sociales y sitio
+                                            web. Podré solicitar la revocación de esta autorización para usos futuros escribiendo a
+                                            ventas@fibremex.com.mx y FIBREMEX dejará de utilizar mi imagen en nuevas publicaciones y,
+                                            cuando sea razonablemente posible, retirará contenidos bajo su control. He sido informado(a)
+                                            del Aviso de Privacidad disponible en <a href="https://fibremex.com/fibra-optica/views/AtencionCliente/politicas_privacidad.php">Aviso de Privacidad</a>.</p>
+                                        <p>
+                                        <div class="custom-control custom-checkbox">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage">
+                                                <label class="form-check-label" for="appleImage">
+                                                    Acepto el uso de mi imagen
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage2" checked>
+                                                <label class="form-check-label" for="appleImage2">
+                                                    No acepto el uso de mi imagen
+                                                </label>
+                                            </div>
+                                        </div>
+                                        </p>
                                     </ul>
                                 </div>
                                 <br> <br>
@@ -430,7 +457,7 @@
     function check_automovil() {
         if ($('#check-automovil').is(':checked')) {
             $('#div-automovil').css('display', 'block');
-             $('#div-placa').css('display', 'block');
+            $('#div-placa').css('display', 'block');
         } else {
             $('#div-automovil').css('display', 'none');
             $('#div-placa').css('display', 'none');
