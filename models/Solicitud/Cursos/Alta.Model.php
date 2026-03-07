@@ -26,6 +26,8 @@ class SolicitudCursos
   public $Vehiculo;
   public $Placa;
 
+  public $Imagen;
+
   public function Setname($name)
   {
     if (empty($name)) {
@@ -103,7 +105,8 @@ class SolicitudCursos
       throw new Exception(' APELLIDO PATERNO es requerido');
     }
     $this->Ap = $Ap;
-  }  public function SetAm($Am)
+  }
+  public function SetAm($Am)
   {
     if (empty($Am)) {
       throw new Exception('APELLIDO MATERNO es requerido');
@@ -139,6 +142,11 @@ class SolicitudCursos
       $placa = null;
     }
     $this->Placa = $placa;
+  }
+
+  public function SetImagen($imagen)
+  {
+    $this->Placa = $imagen;
   }
 
   public function SetParameters($conn, $Tool)
@@ -260,6 +268,7 @@ class SolicitudCursos
             '" . $this->Restriccion . "',
             '" . $this->Vehiculo . "',
             '" . $this->Placa . "',
+            '" . $this->Imagen . "',
         @Result);", "@Result");
 
       return $result;

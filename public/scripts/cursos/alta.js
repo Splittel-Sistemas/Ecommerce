@@ -30,6 +30,12 @@ var EnviarAlta = function () {
     fda.append('Placa', '');
   }
 
+  if ($('#appleImage').is(':checked')) {
+    fda.append('Imagen', 1);
+  } else {
+    fda.append('Imagen', 0);
+  }
+
   var Titulo = $("#Titulo").val();
   var Otro = $("#Otro").val();
   if (Titulo == "Otro") {

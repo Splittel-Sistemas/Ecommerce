@@ -92,6 +92,7 @@ class SolicitudCursosController
         $SolicitudCModel->SetAm($_POST['Am']);
         $SolicitudCModel->SetVehiculo($_POST['Vehiculo']);
         $SolicitudCModel->SetPlaca($_POST['Placa']);
+        $SolicitudCModel->SetImagen($_POST['Imagen']);
         $name1 = '';
 
 
@@ -574,6 +575,7 @@ class SolicitudCursosController
 
           $mensaje .= $_POST['Vehiculo'] != '' ? '<p align="center" style="margin-bottom:10px;"><strong>Vehiculo : </strong>' . $_POST['Vehiculo'] . '</p>' : '';
           $mensaje .= $_POST['Placa'] != '' ? '<p align="center" style="margin-bottom:10px;"><strong>Placa : </strong>' . $_POST['Placa'] . '</p>' : '';
+          $mensaje .= $_POST['Imagen'] == 1 ? '<p align="center" style="margin-bottom:10px;"><strong>Uso de Imagen : </strong>Aceptado</p>' : '<p align="center" style="margin-bottom:10px;"><strong>Uso de Imagen : </strong>Rechazado</p>';
 
           $mensaje .= '<p><br></p>
                       <p align="center">Este es un correo electrónico generado automáticamente</p>
