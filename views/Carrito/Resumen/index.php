@@ -169,9 +169,9 @@ if($Obj->count > 0){
 		<?php } ?>
 	</div>
 	<div class="d-flex">
-		<div class="pr-2 w-50"><a class="btn btn-secondary btn-sm btn-block mb-0" href="../Carrito/">Ir al carrito</a></div>
+		<div class="pr-2 w-100"><a class="btn btn-primary btn-sm btn-block mb-0" href="../Carrito/">Ir al carrito</a></div>
 		<?php if ($Obj->count > 0){ ?>
-		<div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="../Checkout/">Pagar</a></div>
+		<!-- <div class="pl-2 w-50"><a class="btn btn-primary btn-sm btn-block mb-0" href="../Checkout/">Pagar</a></div>  -->
 		<?php } ?> 
 	</div>
 </div>

@@ -250,6 +250,11 @@ var JumpersMonomodo = async function(){
       if(Diametro.selectedIndex==2)
         Diametro.selectedIndex = 1
       StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+      if(Conector1.value=='MU' || Conector2.value=='MU'){
+        StyleDisplayNoneOrBlock_2(Diametro, 'none', [0])
+        if(Diametro.selectedIndex==0)
+          Diametro.selectedIndex = 1
+      }
     }
 
     if (PosicionConector1 == PosicionConector2) {
