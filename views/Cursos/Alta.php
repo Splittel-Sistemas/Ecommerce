@@ -351,13 +351,13 @@
                                         <p>
                                         <div class="custom-control custom-checkbox">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage">
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage" checked>
                                                 <label class="form-check-label" for="appleImage">
                                                     Acepto el uso de mi imagen
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage2" checked>
+                                                <input class="form-check-input" type="radio" name="appleImage" id="appleImage2">
                                                 <label class="form-check-label" for="appleImage2">
                                                     No acepto el uso de mi imagen
                                                 </label>
