@@ -297,9 +297,16 @@ var JumpersMTPPRO = function(){
 
     CantidadFibras[0].style.display = "none"
     CantidadFibras[1].selected = true
-    TipoCubierta[0].style.display = "none"
-    TipoCubierta[1].style.display = "none"
-    TipoCubierta[2].selected = "selected"
+    if(TipoFibra.value=='09'){
+      TipoCubierta[0].style.display = "none"
+      TipoCubierta[1].style.display = "none"
+      TipoCubierta[2].selected = "selected"
+    }else{
+      TipoCubierta[0].style.display = "none"
+      TipoCubierta[1].style.display = "block"
+      if(TipoCubierta[0].selected == true)
+        TipoCubierta[1].selected = "selected"
+    }
     let TipoCubiertaselected = TipoCubierta.options[TipoCubierta.selectedIndex].text
     Familia = "J"
   
