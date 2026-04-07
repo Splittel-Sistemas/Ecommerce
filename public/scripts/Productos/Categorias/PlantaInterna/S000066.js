@@ -102,7 +102,7 @@ var JumpersMTP = function(){
     //CalcularPrecio("../../models/Productos/Jumpers/MPO/CalcularPrecioMPO.Route.php", data)
     showClave(CodigoGenerado)
   }
- // agregarFichaTecnicaConfigurable('OPJA3')
+  agregarFichaTecnicaConfigurable('OPJ'+Conectarizacion+Conectarizacion)
  // agregarCertificadoConfigurable(CodigoGenerado)
 }
 
