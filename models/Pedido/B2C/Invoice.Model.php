@@ -36,7 +36,7 @@ class Invoice{
     $this->Invoice = $Invoice;
   }public function SetPago($Pago){
     if (is_null($Pago)) {
-      throw new ExceptionPago('$Pago no es valido');
+      throw new Exception('$Pago no es valido');
     }
     $this->Pago = $Pago;
   }public function SetPedidoKey($PedidoKey){
