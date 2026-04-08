@@ -243,7 +243,7 @@ if (isset($_GET['nom']) && $_GET['nom']!='') {
     $MWA = "¡Hola! Me gustaría saber cómo obtener información, cotizar o comprar con Fibremex";
 }
 ?>
-<a href="https://wa.me/524427843528?text=<?php echo urlencode($MWA)?>" target="_blank">
+<a href="https://wa.me/524423094791?text=<?php echo urlencode($MWA)?>" target="_blank">
 <img src="../../public/images/img_spl/adicionales/whatsapp.png"  alt="Whatsapp-fibremex" 
 style="color-scheme: light; width: clamp(150px, 30%, 229px); height: 69px; padding: 0px; margin: 15px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;">
 </a>
