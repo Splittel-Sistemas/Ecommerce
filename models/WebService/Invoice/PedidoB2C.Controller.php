@@ -135,7 +135,7 @@
                 $ResultPedidoB2C_ = $ResultPedidoB2C->Diccionary->Diccionary;
                 $InvoiceModel->SetOfertaVenta($ResultPedidoB2C_[0]->Value);
                 $InvoiceModel->SetInvoice($ResultPedidoB2C_[1]->Value);
-                $InvoiceModel->SetPago($ResultPedidoB2C_[2]->Value);
+                //$InvoiceModel->SetPago($ResultPedidoB2C_[2]->Value);
                 break;
               case 700: # Se genero solo la factura
                 $InvoiceModel->SetOfertaVenta($ResultPedidoB2C_[0]->Value);
