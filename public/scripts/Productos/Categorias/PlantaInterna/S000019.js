@@ -64,7 +64,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     }
   }
   
-  if(Distribuidor == '2U'){
+  if(Distribuidor == '2U' || Distribuidor == 'R2U'){
      StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4,5,6,7,8,10]);
      StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [9,11]);
      if(CantidadPigtails.value > 72){
@@ -103,7 +103,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       CapacidadDistribuidor=72
     }
   }
-  if(Distribuidor == '4U'){ 
+  if(Distribuidor == '4U' || Distribuidor == 'R4U'){ 
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4,5,6,7,8,9,10,11]);
     if(CantidadPigtails.value > 144){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2]);
@@ -287,6 +287,12 @@ var DistribuidoresPreconectorizados = function() {
     break;
     case 'E2W' : 
       DistribuidoresPreconectorizados_('E2W')
+    break;
+     case 'R2U' : 
+      DistribuidoresPreconectorizados_('R2U')
+    break;
+     case 'R4U' : 
+      DistribuidoresPreconectorizados_('R4U')
     break;
     default:
       templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")
