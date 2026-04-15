@@ -29,12 +29,12 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [6,7,9,10,11]);
     if(CantidadPigtails.value > 36){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2]);
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9,10]);
       contP1 == 0 ? TipoAcoplador.selectedIndex = 0 : ''
       contP1++
       contP2 = 0
     }else{
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
@@ -69,12 +69,12 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
      StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [9,11]);
      if(CantidadPigtails.value > 72){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2]);
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9,10]);
       contP1 == 0 ? TipoAcoplador.selectedIndex = 0 : ''
       contP1++
       contP2 = 0
     }else{
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
@@ -107,12 +107,12 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4,5,6,7,8,9,10,11]);
     if(CantidadPigtails.value > 144){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2]);
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'none', [3,4,5,6,7,8,9,10]);
       contP1 == 0 ? TipoAcoplador.selectedIndex = 0 : ''
       contP1++
       contP2 = 0
     }else{
-      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+      StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
@@ -144,7 +144,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
   if(Distribuidor == '1W'){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [3,4,5,6,7,8,9,10,11]);
-    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
@@ -169,7 +169,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
   if(Distribuidor == '2W'){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [5,6,7,8,9,10,11]);
-    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
@@ -194,7 +194,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
   if(Distribuidor == 'E2W'){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4,5,6]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [7,8,9,10,11]);
-    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9]);
+    StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
     if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value

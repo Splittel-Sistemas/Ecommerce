@@ -31,6 +31,7 @@
         <option value="SCA" acoplador="SC">SCA</option>
         <option value="SCP" acoplador="SC">SCP</option>
         <option value="FCU" acoplador="FC">FCU</option>
+        <option value="FCA" acoplador="FC">FCA</option>
         <option value="FCP" acoplador="FC">FCP</option>
         <option value="STU" acoplador="ST">STU</option>
         <option value="STP" acoplador="ST">STP</option>
