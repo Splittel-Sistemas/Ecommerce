@@ -37,7 +37,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA'  ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=36
@@ -77,7 +77,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=72
@@ -115,7 +115,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
       StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
       contP1 = 0
     }
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=144
@@ -145,7 +145,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [3,4,5,6,7,8,9,10,11]);
     StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=12
@@ -170,7 +170,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [5,6,7,8,9,10,11]);
     StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=24
@@ -195,7 +195,7 @@ var DistribuidoresPreconectorizados_ = function(TipoDistribuidor){
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'block', [0,1,2,3,4,5,6]);
     StyleDisplayNoneOrBlock_2(CantidadPigtails, 'none', [7,8,9,10,11]);
     StyleDisplayNoneOrBlock_2(TipoAcoplador, 'block', [0,1,2,3,4,5,6,7,8,9,10]);
-    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' ) {
+    if( TipoAcoplador.value=='STU' || TipoAcoplador.value=='STP' || TipoAcoplador.value=='FCU' || TipoAcoplador.value=='FCP' || TipoAcoplador.value=='FCA' ) {
       Puertos.selectedIndex = 1
       NumeroAcopladoresTotal=CantidadPigtails.value
       CapacidadDistribuidor=48
