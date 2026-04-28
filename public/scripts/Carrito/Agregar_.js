@@ -100,10 +100,17 @@ var AgregarArticuloConfigurable = function(Elem){
 } 
 
 var ListProductosCarrito_ = function(){
-	ajax_("../../views/Carrito/List.php", "POST", "HTML", {  },  
-	function(response){
-		document.getElementById('ListProductosCarrito').innerHTML = response
-	})
+	if (document.getElementById('radioForm').querySelector('input[name=CurrencySite]:checked').value == 'USD') {
+		ajax_("../../views/Carrito/List.php", "POST", "HTML", {  },  
+		function(response){
+			document.getElementById('ListProductosCarrito').innerHTML = response
+		})
+	} else {
+		ajax_("../../views/Carrito/ListPesos.php", "POST", "HTML", {  },  
+		function(response){
+			document.getElementById('ListProductosCarrito').innerHTML = response
+		})
+	}
 }
 
 var LisResumenProductosCarrito_ = function(){
