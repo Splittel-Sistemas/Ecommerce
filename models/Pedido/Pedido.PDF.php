@@ -290,7 +290,7 @@ class PedidoPDF
                 }
 
                 $PedidoController = new PedidoController;
-                $PedidoController->ActualizarTipoCambio();
+                //$PedidoController->ActualizarTipoCambio();
                 $PedidoController->filter = "WHERE id = " . $PedidoKey . " ";
                 $PedidoController->order = "";
                 # obtención de subtotal iva y total del pedido actual
