@@ -1,117 +1,124 @@
-<?php 
+<?php
 
-    @session_start();
-    if (!class_exists("Connection")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
-    }if (!class_exists("Functions_tools")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
+@session_start();
+if (!class_exists("Connection")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Connection.php';
+}
+if (!class_exists("Functions_tools")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
+}
+if (!class_exists("MYTCPDF")) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Tools/MYTCPDF.php';
+}
+if (!class_exists('DetalleController')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Detalle.Controller.php';
+}
+if (!class_exists('PedidoController')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Pedido/Pedido.Controller.php';
+}
+if (!class_exists("TemplatePedido")) {
+    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Pedido.php';
+}
+@header('Content-Type: charset=utf-8');
+@setlocale(LC_ALL, ''); // Lenguaje de fecha español
+
+class PedidoPDF
+{
+    private $Obj_MYTCPDF;
+    private $Obj_PDF;
+
+    public function __construct()
+    {
+        $this->Connection = new Connection();
+        $this->Tool = new Functions_tools();
     }
-    if(!class_exists("MYTCPDF")){ 
-        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/MYTCPDF.php'; 
-    }if (!class_exists('DetalleController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Detalle.Controller.php';
-    }if (!class_exists('PedidoController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
-    }if (!class_exists("TemplatePedido")) {
-        include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Templates/Email/Pedido.php';
+
+    public function configurationBuiltPDF()
+    {
+        try {
+            $this->Obj_MYTCPDF = new MYTCPDF();
+
+            $this->Obj_PDF = $this->Obj_MYTCPDF->connection();
+
+            $this->Obj_PDF->SetCreator(PDF_CREATOR);
+            $this->Obj_PDF->SetTitle('Cotización');
+            $this->Obj_PDF->setPrintHeader(false);
+
+            // set header and footer fonts
+            $this->Obj_PDF->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+            $this->Obj_PDF->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+            // set default monospaced font
+            $this->Obj_PDF->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            $this->Obj_PDF->SetFont('helvetica', '', 9);
+
+            // add a page
+            $this->Obj_PDF->AddPage();
+            // output the HTML content
+            $this->Obj_PDF->writeHTML($this->estructuraContratoDeterminado(), true, false, true, false, '');
+
+            $this->Obj_MYTCPDF->Output('cotizacion-pedido-' . $_GET['pedidokey'] . '.pdf', 'I');
+        } catch (Exception $e) {
+            return $this->Tool->Message_return(false, 'Error!! conexión: ' . $e, null, '', true);
+        }
     }
-    @header('Content-Type: charset=utf-8');
-    @setlocale(LC_ALL,''); // Lenguaje de fecha español
 
-    class PedidoPDF{
-        private $Obj_MYTCPDF; 
-        private $Obj_PDF; 
+    public function estructuraContratoDeterminado()
+    {
+        try {
 
-        public function __construct(){
-            $this->Connection = new Connection();
-            $this->Tool = new Functions_tools();
-        }
+            $companyRFC = "FIB000411840";
+            $companyRegimen = "601- General de Ley Personas Morales";
+            $companyLugarExp = 76246;
+            $PedidoKey = $_GET['pedidokey'];
 
-        public function configurationBuiltPDF(){
-            try {
-                $this->Obj_MYTCPDF = new MYTCPDF();
+            $ventaMostradorFacturadoA = "Venta Mostrador";
+            $ventaMostradorRFC = "XAXX010101000";
+            $ventaMostradorCP = 76246;
 
-                $this->Obj_PDF = $this->Obj_MYTCPDF->connection();
+            if (isset($_SESSION['Ecommerce-ClienteTipo'])) {
+                if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                    if (!class_exists("GetBillToAdressController")) {
+                        include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
+                    }
 
-                $this->Obj_PDF->SetCreator(PDF_CREATOR);
-                $this->Obj_PDF->SetTitle('Cotización');
-                $this->Obj_PDF->setPrintHeader(false);
-
-                // set header and footer fonts
-                $this->Obj_PDF->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-                $this->Obj_PDF->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-                // set default monospaced font
-                $this->Obj_PDF->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-                $this->Obj_PDF->SetFont('helvetica', '', 9);
-
-                // add a page
-                $this->Obj_PDF->AddPage();
-                // output the HTML content
-                $this->Obj_PDF->writeHTML($this->estructuraContratoDeterminado(), true, false, true, false, '');
-
-                $this->Obj_MYTCPDF->Output('cotizacion-pedido-'.$_GET['pedidokey'].'.pdf','I');
-                
-            } catch (Exception $e) {
-                return $this->Tool->Message_return(false,'Error!! conexión: '.$e, null,'', true);
-            }
-        }
-
-        public function estructuraContratoDeterminado(){
-            try {     
-                
-                $companyRFC = "FIB000411840";
-                $companyRegimen = "601- General de Ley Personas Morales";
-                $companyLugarExp = 76246;
-                $PedidoKey = $_GET['pedidokey'];
-
-                $ventaMostradorFacturadoA = "Venta Mostrador";
-                $ventaMostradorRFC = "XAXX010101000";
-                $ventaMostradorCP = 76246;
-
-                if(isset($_SESSION['Ecommerce-ClienteTipo'])){
-                    if($_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
-                        if (!class_exists("GetBillToAdressController")) {
-                            include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BusinessPartner/GetBillToAdress.Controller.php';
+                    $GetBillToAdressController = new GetBillToAdressController();
+                    $Result = $GetBillToAdressController->GetDefault();
+                    $ResultGetBillToAdress = $Result->GetDefaultBillToAdressResult;
+                    if ($ResultGetBillToAdress->ErrorCode == 0) {
+                        $Record = $ResultGetBillToAdress->Record;
+                        $ventaMostradorFacturadoA = $Record->CardName;
+                        $ventaMostradorRFC = $Record->FederalTaxID;
+                        $ventaMostradorCP = $Record->ZipCode;
+                        unset($Record);
+                    }
+                    unset($GetBillToAdressController);
+                    unset($Result);
+                    unset($ResultGetBillToAdress);
+                } else if ($_SESSION['Ecommerce-ClienteTipo'] == 'B2C') {
+                    if (!$this->Connection->conexion()->connect_error) {
+                        if (!class_exists('DatosFacturacion')) {
+                            include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
                         }
-                    
-                        $GetBillToAdressController = new GetBillToAdressController();
-                        $Result = $GetBillToAdressController->GetDefault();
-                        $ResultGetBillToAdress = $Result->GetDefaultBillToAdressResult;
-                        if($ResultGetBillToAdress->ErrorCode == 0){
-                            $Record = $ResultGetBillToAdress->Record;
-                            $ventaMostradorFacturadoA = $Record->CardName;
-                            $ventaMostradorRFC = $Record->FederalTaxID;
-                            $ventaMostradorCP = $Record->ZipCode;
-                            unset($Record);
-                        }
-                        unset($GetBillToAdressController);
-                        unset($Result);
-                        unset($ResultGetBillToAdress);
-                    }else if($_SESSION['Ecommerce-ClienteTipo'] == 'B2C' ){
-                        if(!$this->Connection->conexion()->connect_error){
-                            if (!class_exists('DatosFacturacion')) {
-                                include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Cuenta/B2C/DatosFacturacion.Model.php';
-                            }
 
-                            $DatosFacturacionModel = new DatosFacturacion();
-                            $DatosFacturacionModel->SetParameters($this->Connection, $this->Tool);
-                            $Existe = $DatosFacturacionModel->GetBy("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND activo = 1 LIMIT 1");
-                            if($Existe){
-                                $ventaMostradorFacturadoA = $_SESSION['Ecommerce-ClienteNombre'];
-                                $ventaMostradorRFC = $DatosFacturacionModel->GetRFC();
-                                $ventaMostradorCP = $DatosFacturacionModel->GetCodigoPostal();
-                            }
-                            unset($DatosFacturacionModel);
-                        }else{
-                            throw new Exception("Error!!, Datos maestros");                            
+                        $DatosFacturacionModel = new DatosFacturacion();
+                        $DatosFacturacionModel->SetParameters($this->Connection, $this->Tool);
+                        $Existe = $DatosFacturacionModel->GetBy("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'] . " AND activo = 1 LIMIT 1");
+                        if ($Existe) {
+                            $ventaMostradorFacturadoA = $_SESSION['Ecommerce-ClienteNombre'];
+                            $ventaMostradorRFC = $DatosFacturacionModel->GetRFC();
+                            $ventaMostradorCP = $DatosFacturacionModel->GetCodigoPostal();
                         }
+                        unset($DatosFacturacionModel);
+                    } else {
+                        throw new Exception("Error!!, Datos maestros");
                     }
                 }
+            }
 
-                
-                $html = '<!DOCTYPE html>
+
+            $html = '<!DOCTYPE html>
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
@@ -182,15 +189,15 @@
                                             <tbody>
                                                 <tr>
                                                     <th>RFC: </th>
-                                                    <td>'.$companyRFC.'</td>
+                                                    <td>' . $companyRFC . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Regimen Fiscal: </th>
-                                                    <td>'.$companyRegimen.'</td>
+                                                    <td>' . $companyRegimen . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Lugar de epedición: </th>
-                                                    <td>'.$companyLugarExp.'</td>
+                                                    <td>' . $companyLugarExp . '</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -207,15 +214,15 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Facturado a: </th>
-                                                    <td>'.$ventaMostradorFacturadoA.'</td>
+                                                    <td>' . $ventaMostradorFacturadoA . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>RFC: </th>
-                                                    <td>'.$ventaMostradorRFC.'</td>
+                                                    <td>' . $ventaMostradorRFC . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Cp: </th>
-                                                    <td>'.$ventaMostradorCP.'</td>
+                                                    <td>' . $ventaMostradorCP . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Condiciones: </th>
@@ -229,23 +236,23 @@
                                             <tbody>
                                                 <tr>
                                                     <th> No. documento: </th>
-                                                    <td>'.$PedidoKey.'</td>
+                                                    <td>' . $PedidoKey . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Fecha y hora de emisión: </th>
-                                                    <td>'.date('d-m-Y H:i').'</td>
+                                                    <td>' . date('d-m-Y H:i') . '</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Moneda: </th>
-                                                    <td>USD</td>
+                                                    <td>' . ($_SESSION['CurrencySite'] == 'USD' ? 'USD' : 'MXN') . '</td>
                                                 </tr>';
-                                                if(isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B' ){
-                                                $html.='<tr>
+            if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
+                $html .= '<tr>
                                                     <th>Descuento: </th>
-                                                    <td>'.$_SESSION['Ecommerce-ClienteDescuento'].'%</td>
+                                                    <td>' . $_SESSION['Ecommerce-ClienteDescuento'] . '%</td>
                                                 </tr>';
-                                                }
-                                            $html.= '</tbody>
+            }
+            $html .= '</tbody>
                                         </table>
                                     </td>
                                 </tr>
@@ -264,69 +271,74 @@
                                 </tr>
                             </thead>
                             <tbody>';
-                            $DetalleController = new DetalleController();
-                            $Obj = $DetalleController->GetDetallePedido_("WHERE pedidokey = '".$PedidoKey."' AND detalle_activo = 'si' ");
+            $DetalleController = new DetalleController();
+            $Obj = $DetalleController->GetDetallePedido_("WHERE pedidokey = '" . $PedidoKey . "' AND detalle_activo = 'si' ");
 
-                            if($Obj->count > 0){
-                                foreach ($Obj->records as $key => $data) {
-                            $detalleSubtotal = $data->DetalleSubtotal;
-                            $descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
-                            $html .= '
+            if ($Obj->count > 0) {
+                foreach ($Obj->records as $key => $data) {
+                    $detalleSubtotal = $_SESSION['CurrencySite'] == 'USD' ? $data->DetalleSubtotal : $data->DetalleSubtotalMXN;
+                    $descripcion = !empty($data->ProductoDescripcion) ? $data->ProductoDescripcion : $data->ProductoConfigurableNombre;
+                    $html .= '
                                 <tr>
-                                    <td class="align-middle th-border" width="100">'. $data->DetalleCodigo .'</td>
-                                    <td class="align-middle th-border" width="150">'. $descripcion .'</td>
-                                    <td class="align-middle th-border text-center" width="60">'. $data->DetalleCantidad .'</td>
-                                    <td class="align-middle th-border text-center" width="70">'.$data->DetalleDescuento .'</td>
-                                    <td class="align-middle th-border text-center" width="70">$ '. $data->DetallePrecioUnidad .'</td>
-                                    <td class="align-middle th-border text-center" width="70">$ '. $detalleSubtotal .'</td>
+                                    <td class="align-middle th-border" width="100">' . $data->DetalleCodigo . '</td>
+                                    <td class="align-middle th-border" width="150">' . $descripcion . '</td>
+                                    <td class="align-middle th-border text-center" width="60">' . $data->DetalleCantidad . '</td>
+                                    <td class="align-middle th-border text-center" width="70">' . $data->DetalleDescuento . '</td>
+                                    <td class="align-middle th-border text-center" width="70">$ ' . ($_SESSION['CurrencySite'] == 'USD' ? $data->DetallePrecioUnidad : $data->DetallePrecioUnidadMXN) . '</td>
+                                    <td class="align-middle th-border text-center" width="70">$ ' . $detalleSubtotal . '</td>
                                 </tr>';
-                            }
-            
-                            $PedidoController = new PedidoController;
-                            $PedidoController->filter = "WHERE id = ".$PedidoKey." ";
-                            $PedidoController->order = "";
-                            # obtención de subtotal iva y total del pedido actual
-                            $Pedido = $PedidoController->getBy();
-                            
-                                $pedidoSubtotal = $Pedido->GetSubTotal();
-                                $pedidoIva = $Pedido->GetIva();
-                                $pedidoTotal = $Pedido->GetTotal(); 
+                }
 
-                            $html .= '
+                $PedidoController = new PedidoController;
+                $PedidoController->ActualizarTipoCambio();
+                $PedidoController->filter = "WHERE id = " . $PedidoKey . " ";
+                $PedidoController->order = "";
+                # obtención de subtotal iva y total del pedido actual
+                $Pedido = $PedidoController->getBy();
+
+                if ($_SESSION['CurrencySite'] == 'USD') {
+                    $pedidoSubtotal = $Pedido->GetSubTotal();
+                    $pedidoIva = $Pedido->GetIva();
+                    $pedidoTotal = $Pedido->GetTotal();
+                } else {
+                    $pedidoSubtotal = $Pedido->GetSubTotalMXN();
+                    $pedidoIva = $Pedido->GetIvaMXN();
+                    $pedidoTotal = $Pedido->GetTotalMXN();
+                }
+
+
+                $html .= '
                                 <tr>
                                     <td colspan="4"></td>
                                     <th class="text-end">Subtotal: </th>
-                                    <td class="text-center">$'.$pedidoSubtotal .'</td>
+                                    <td class="text-center">$' . $pedidoSubtotal . '</td>
                                 </tr>
                                 <tr>
                                     <td colspan="4"></td>
                                     <th class="text-end">Iva</th>
-                                    <td class="text-center">$'.$pedidoIva .'</td>
+                                    <td class="text-center">$' . $pedidoIva . '</td>
                                 </tr>
                                 <tr>
                                     <td colspan="4"></td>
                                     <th class="text-end">Total: </th>
-                                    <td class="text-center">$'.$pedidoTotal .'</td>
+                                    <td class="text-center">$' . $pedidoTotal . '</td>
                                 </tr>';
-
-                            }
-                            unset($DetalleController);
-                            unset($Obj);
-                            unset($PedidoController);
-                            unset($Pedido);
-                            $html .= '
+            }
+            unset($DetalleController);
+            unset($Obj);
+            unset($PedidoController);
+            unset($Pedido);
+            $html .= '
                             </tbody>
                         </table>
                     </body>
                 </html>';
-                return $html;
-
-            } catch (Exception $e) {
-                throw $e;
-            }
+            return $html;
+        } catch (Exception $e) {
+            throw $e;
         }
-    
-  }
+    }
+}
 
 $PedidoPDF = new PedidoPDF();
 $Response = $PedidoPDF->configurationBuiltPDF();
