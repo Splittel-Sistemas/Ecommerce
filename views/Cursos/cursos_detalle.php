@@ -95,6 +95,7 @@
                 
               ?>
                 <p><b>Nuestro próximo curso es: <?php echo nl2br($responseI->fecha)?></b></p>
+                <p>Para inscripciones en fechas futuras, favor de consultar con tu ejecutivo comercial.</p>
               <?php
               
               ?>
