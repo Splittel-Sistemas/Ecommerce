@@ -275,7 +275,7 @@ class PedidoController
                             $i = 5;
                             unset($_SESSION['Ecommerce-PedidoKey']);
                         } else {
-                            sleep(1);
+                            sleep(2);
                         }
                     }
                 } else {
