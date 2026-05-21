@@ -64,9 +64,9 @@ class PedidoController
                     $ClienteModel = new Cliente();
                     $ClienteModel->SetParameters($this->Connection, $this->Tool);
                     $ClienteExiste = $ClienteModel->GetBy("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ");
-                    $Cliente = $ClienteModel->Get("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 " ,"");
+                    $Cliente = $ClienteModel->Get("where id_cliente = '" . $pedido->ClienteKey . "'  LIMIT 1 ", "");
 
-                  
+
 
                     if ($ClienteExiste) {
                         // Envio de correo de acuerdo a pedido realizado
@@ -74,8 +74,8 @@ class PedidoController
                         $_SESSION['Ecommerce-ClienteKey'] = $pedido->ClienteKey;
 
                         foreach ($Cliente as $key => $DCliente) {
-                         $_SESSION['Ecommerce-ClienteTipo'] = $DCliente->Tipo;
-                         $_SESSION['Ecommerce-ClienteNombre'] = $DCliente->Nombre . " " . $DCliente->Apellidos;
+                            $_SESSION['Ecommerce-ClienteTipo'] = $DCliente->Tipo;
+                            $_SESSION['Ecommerce-ClienteNombre'] = $DCliente->Nombre . " " . $DCliente->Apellidos;
                         }
                         $_SESSION['Ecommerce-Segmento'] = $ClienteModel->GetSegmento();
                         $Email = new Email(true);
@@ -225,7 +225,7 @@ class PedidoController
                     $Email->MailerBody = $TemplatePedido->EcommercePedidoPagoBanco($row->Key);
                     $Email->MailerListTo = [$row->Correo];
                     $Email->MailerListBCC = [$row->CorreoEjecutivo];
-                  //  $Email->EmailSendEmail();
+                    //  $Email->EmailSendEmail();
 
                     $Webhook = new Webhook();
                     $Webhook->SetParameters($this->Connection, $this->Tool);
@@ -269,14 +269,10 @@ class PedidoController
                 $PedidoModel = new Pedido_();
                 $PedidoModel->SetParameters($this->Connection, $this->Tool);
                 if (isset($_SESSION['Ecommerce-PedidoKey'])) {
-                    for ($i=0; $i < 5; $i++) { 
-                        $data = $PedidoModel->GetInfoPagoBanco("WHERE t12_f002 = '" . $_SESSION['Ecommerce-PedidoKey'] . "'", " ORDER BY id DESC LIMIT 1");
-                        if (count($data) != 0) {
-                            $i = 5;
-                            unset($_SESSION['Ecommerce-PedidoKey']);
-                        } else {
-                            sleep(2);
-                        }
+                    sleep(5);
+                    $data = $PedidoModel->GetInfoPagoBanco("WHERE t12_f002 = '" . $_SESSION['Ecommerce-PedidoKey'] . "'", " ORDER BY id DESC LIMIT 1");
+                    if (count($data) != 0) {
+                        unset($_SESSION['Ecommerce-PedidoKey']);
                     }
                 } else {
                     $data = $PedidoModel->GetInfoPagoBanco("WHERE id_cliente = " . $_SESSION['Ecommerce-ClienteKey'], " ORDER BY id DESC LIMIT 1");
