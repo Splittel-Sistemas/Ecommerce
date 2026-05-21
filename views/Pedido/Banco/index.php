@@ -49,22 +49,19 @@ if ($encontrado) {
     </div>
   </div>
 <?php
-  unset($PedidController);
-  unset($Pedido);
-  unset($OpenPay_);
-  unset($OpenPayTransaction);
 } else {
-  unset($PedidController);
-  unset($Pedido);
-  unset($OpenPay_);
-  unset($OpenPayTransaction);
-  unset($_SESSION['Ecommerce-PedidoKey']);
 ?>
-
-  <script>
-    window.location.href = '<?php echo $link; ?>';
-  </script>
-
+  <div class="card text-center">
+    <div class="card-body padding-top-2x">
+      <h3 class="card-title">¡Orden no encontrada!</h3>
+      <p class="card-text">Tuvimos problemas para ubicar su pedido, por favor contacte con su ejecutivo.</p>
+    </div>
+  </div>
 <?php
 }
+
+unset($PedidController);
+unset($Pedido);
+unset($OpenPay_);
+unset($OpenPayTransaction);
 ?>
