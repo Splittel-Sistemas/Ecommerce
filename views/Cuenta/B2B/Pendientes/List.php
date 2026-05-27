@@ -6,7 +6,7 @@
   }
 
   $PedidoController = new PedidoController();
-  $PedidoController->filter = "WHERE t06_f006 <> 0 AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND fecha >= DATE_SUB(CURDATE(), INTERVAL 10 DAY) AND fecha <= CURDATE()";
+  $PedidoController->filter = "WHERE t06_f006 <> 0 AND id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND fecha BETWEEN DATE_SUB(CURDATE(), INTERVAL 10 DAY) AND NOW()";
   $PedidoController->order = "";
   $ResultPedido = $PedidoController->GetPedidoB2B();
 ?>
