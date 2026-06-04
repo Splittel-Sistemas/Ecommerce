@@ -91,7 +91,7 @@
                 include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
                 }
                 $CatalogoCursos = new CatalogoCapacitaciones();
-                $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND  id_curso=".$response->id, " ORDER BY start ASC LIMIT 1 ", false)->records[0];
+                $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND activo='si' AND  id_curso=".$response->id, " ORDER BY start ASC LIMIT 1 ", false)->records[0];
                 
               ?>
                 <p><b>Nuestro próximo curso es: <?php echo nl2br($responseI->fecha)?></b></p>
