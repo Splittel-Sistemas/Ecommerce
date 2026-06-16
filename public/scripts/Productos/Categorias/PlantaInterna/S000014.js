@@ -284,14 +284,23 @@ var JumpersMonomodo = async function(){
     }
     //inhabilita cero halogeno 3mm
     if(TipoCubierta.value=="ZH"){
-      StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+      StyleDisplayNoneOrBlock_2(Diametro, 'none', [0,2])
       if(Diametro.value==3)
         Diametro.selectedIndex = 0
+      if(Diametro.value==1)
+        Diametro.selectedIndex = 1
+
     }
-    if(Diametro.selectedIndex == 0 || Diametro.selectedIndex == 2){
+    if(TipoCubierta.value=="PL" &&  NumeroHilos.value=='S'){
+         StyleDisplayNoneOrBlock_2(Diametro, 'none', [2])
+         if(Diametro.value==3)
+            Diametro.selectedIndex=0
+
+    }else{
+    /*if(Diametro.selectedIndex == 2){
       StyleDisplayNoneOrBlock_2(MonomodoTipoFibra, 'none', [1,2])
       MonomodoTipoFibra.selectedIndex=0
-    }else{
+    }else{*/
       StyleDisplayNoneOrBlock_2(MonomodoTipoFibra, 'none', [0,1])
       MonomodoTipoFibra.selectedIndex=2
     }
