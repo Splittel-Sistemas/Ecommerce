@@ -30,6 +30,9 @@ if (!class_exists("Email")) {
 if (!class_exists("TemplatePedido")) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Templates/Email/Pedido.php';
 }
+if (!class_exists('CuponesModel')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Cupones/Cupones.Model.php';
+}
 class OpenPayController
 {
     private $Connection;
@@ -121,6 +124,8 @@ class OpenPayController
 
           
                 if ($result->status == "completed") {
+                    $cuponModel = new CuponesModel();
+                    $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
                     unset($_SESSION["Ecommerce-OpenPay-3DSecure-Id"]);
                     $array = [
                         "completed" => true,
@@ -220,6 +225,9 @@ class OpenPayController
                                     $ResultSalesQuatation = $SalesQuatationModel->create();
                                     if (!$ResultSalesQuatation['error']) {
                                         $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                                        $cuponModel = new CuponesModel();
+                                        $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
+
                                         unset($_SESSION['Ecommerce-PedidoKey']);
                                         unset($SalesQuatationModel);
                                         unset($ResultSalesQuatation);
@@ -239,6 +247,9 @@ class OpenPayController
                                     $ResultInovice = $InvoiceModel->create();
                                     if (!$ResultInovice['error']) {
                                         $_SESSION['Ecommerce-PedidoTotal'] = 0;
+
+                                        $cuponModel = new CuponesModel();
+                                        $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
                                         unset($_SESSION['Ecommerce-PedidoKey']);
                                         unset($InvoiceModel);
                                         unset($ResultInovice);
@@ -643,6 +654,8 @@ class OpenPayController
                     $ResultPedido = $PedidoModel->Update3DSecure();
                     if (!$ResultPedido['error']) {
                         $_SESSION['Ecommerce-PedidoTotal'] = 0;
+                        $cuponModel = new CuponesModel();
+                        $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
                         unset($_SESSION['Ecommerce-PedidoKey']);
                     } else {
                         throw new Exception("No se pudo guardar la información acerca de tu pedido, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");

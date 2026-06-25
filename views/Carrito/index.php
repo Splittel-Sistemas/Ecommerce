@@ -65,6 +65,8 @@
         </div>
       </div>
     </div>
+    <!-- Modal Cupon -->
+    <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Cupones/index.php'; ?>
     <!-- Footer -->
     <?php include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Footer.php'; ?>
     <!-- scripts JS -->
@@ -72,5 +74,6 @@
      <!--  -->
      <script type="text/javascript" src="../../public/scripts/Carrito/CostoEnvio/CostoEnvioGlobal.js?id=<?php echo rand() ?>"></script>
      <script type="text/javascript" src="../../public/scripts/Carrito/CostoEnvio/datos_envio.js?id=<?php echo rand() ?>"></script>
+     <script type="text/javascript" src="../../public/scripts/Cupones/Funciones.js"></script>
   </body>
 </html>
