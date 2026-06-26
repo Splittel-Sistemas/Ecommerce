@@ -121,17 +121,27 @@ class CuponesModel
                             }
                         }
 
-                        $totalDescuentoCuponUSD = (($PedidoDetalle[$indice]->DetalleCantidad * $PedidoDetalle[$indice]->DetallePrecioUnidad) / 100) * $fila['importe'];
+                        $descuentoAplicado = 0;
+                        if ($PedidoDetalle[$indice]->DetalleDescuento <= $fila['importe']) {
+                            $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $fila['importe_extra'];
+                        } else {
+                            $descuentoAplicado = $fila['importe'];
+                        }
 
-                        $subTotal = $PedidoDetalle[$indice]->DetalleSubtotal - $totalDescuentoCuponUSD;
-                        $total = $PedidoDetalle[$indice]->DetalleTotal - $totalDescuentoCuponUSD;
+                        if ($descuentoAplicado > 100) {
+                            $mysqli->rollback();
+                            return ['respuesta' => false, "mensaje" => "Existe un error con su cupon, por favor contactar con su ejecutivo."];
+                        }
+
+                        $subTotal = $PedidoDetalle[$indice]->DetalleSubtotalSinDescuento * (1 - ($descuentoAplicado / 100));
+                        $total = $subTotal + $PedidoDetalle[$indice]->DetalleIva;
 
                         $sql_result = $mysqli->query("UPDATE cotizacion_detalle SET subtotal = " . $subTotal . ", total = " . $total . " WHERE id_cotizacion = " . $id_pedido . " AND codigo = '" . $item->ProductoCodigo . "' AND activo ='si'");
                         if ($sql_result) {
                             $seRealizoAjuste = true;
                         }
 
-                        $sql_result = $mysqli->query("INSERT INTO relacion_cupones_compra (id_cupon, id_pedido, id_producto, descuento, usado) VALUES(" . $id_cupon . ", " . $id_pedido . ", '" . $PedidoDetalle[$indice]->ProductoCodigo . "', " . $fila['importe'] . ", 0)");
+                        $sql_result = $mysqli->query("INSERT INTO relacion_cupones_compra (id_cupon, id_pedido, id_producto, descuento, usado) VALUES(" . $id_cupon . ", " . $id_pedido . ", '" . $PedidoDetalle[$indice]->ProductoCodigo . "', " . $descuentoAplicado . ", 0)");
 
                         if (!$sql_result) {
                             $mysqli->rollback();
