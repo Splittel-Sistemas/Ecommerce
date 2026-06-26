@@ -122,7 +122,7 @@ class CuponesModel
                         }
 
                         $descuentoAplicado = 0;
-                        if ($PedidoDetalle[$indice]->DetalleDescuento <= $fila['importe']) {
+                        if ($PedidoDetalle[$indice]->DetalleDescuento >= $fila['importe']) {
                             $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $fila['importe_extra'];
                         } else {
                             $descuentoAplicado = $fila['importe'];
