@@ -110,16 +110,73 @@ class CuponesModel
 
             if (count($PedidoDetalle) > 0) {
                 foreach ($PedidoDetalle as $indice => $item) {
-                    $sql_result = $mysqli->query("CALL verificar_uso_cupon(" . $id_cupon . ",'" . $item->ProductoCodigo . "','" . $item->ClienteKey . "')");
-                    if (($sql_result instanceof mysqli_result) && $sql_result->num_rows > 0) {
-                        $fila = $sql_result->fetch_assoc();
+                    //$sql_result = $mysqli->query("CALL verificar_uso_cupon(" . $id_cupon . ",'" . $item->ProductoCodigo . "','" . $item->ClienteKey . "')");
+                    $productovalido = false;
 
-                        //liberacion de mysqli
-                        while ($mysqli->more_results() && $mysqli->next_result()) {
-                            if ($temp = $mysqli->store_result()) {
-                                $temp->free();
+                    $sql_result = $mysqli->query("SELECT * FROM Admin_producto_categoria_subcategoria WHERE codigo = '" . $item->ProductoCodigo . "' AND activo = 'si'");
+                    if ($sql_result->num_rows > 0) {
+                        $fila = $sql_result->fetch_assoc();
+                        $categoriaProducto = $fila['id_subcategoria'];
+
+                        $relacionesCupon = [
+                            'ProductosValidos' => [],
+                            'ProductosNoValidos' => [],
+                            'CategoriasValidas' => [],
+                            'CategoriasNoValidas' => [],
+                            'ClientesValidos' => [],
+                            'ClientesNoValidos' => []
+                        ];
+
+                        $sql_result = $mysqli->query("SELECT * FROM relaciones_cupones WHERE id_cipon = " . $id_cupon);
+                        if ($sql_result->num_rows > 0) {
+                            while ($fila = $sql_result->fetch_assoc()) {
+                                switch ($fila['tipo']) {
+                                    case 1:
+                                        $relacionesCupon['ProductosValidos'][] = $fila['valor'];
+                                        break;
+                                    case 2:
+                                        $relacionesCupon['ProductosNoValidos'][] = $fila['valor'];
+                                        break;
+                                    case 3:
+                                        $relacionesCupon['CategoriasValidas'][] = $fila['valor'];
+                                        break;
+                                    case 4:
+                                        $relacionesCupon['CategoriasNoValidas'][] = $fila['valor'];
+                                        break;
+                                    case 5:
+                                        $relacionesCupon['ClientesValidos'][] = $fila['valor'];
+                                        break;
+                                    case 5:
+                                        $relacionesCupon['ClientesNoValidos'][] = $fila['valor'];
+                                        break;
+                                }
                             }
                         }
+
+                        $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosValidos']) : true;
+                        $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosValidos']) : false;
+
+                        $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasValidas']) : true;
+                        $categoriaPasaComoNoValido = (count($relacionesCupon['CategoriasNoValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasNoValidas']) : false;
+
+                        $clientePasaComoValido = (count($relacionesCupon['ClientesValidos']) > 0) ? in_array($item->ClienteKey, $relacionesCupon['ClientesValidos']) : true;
+                        $clientePasaComoNoValido = (count($relacionesCupon['ClientesNoValidos']) > 0) ? in_array($item->ClienteKey, $relacionesCupon['ClientesNoValidos']) : false;
+
+                        if ($clientePasaComoValido && !$clientePasaComoNoValido) {
+                            if ($categoriaPasaComoValido && !$categoriaPasaComoNoValido) {
+                                $productovalido = true;
+                                if ($productosPasaComoNoValido) {
+                                    $productovalido = false;
+                                }
+                            } else {
+                                if ($productosPasaComoValido && !$productosPasaComoNoValido) {
+                                    $productovalido = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if ($productovalido) {
 
                         $descuentoAplicado = 0;
                         if ($PedidoDetalle[$indice]->DetalleDescuento >= $fila['importe']) {
