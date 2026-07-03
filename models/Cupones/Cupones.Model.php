@@ -127,7 +127,7 @@ class CuponesModel
                             'ClientesNoValidos' => []
                         ];
 
-                        $sql_result = $mysqli->query("SELECT * FROM relaciones_cupones WHERE id_cipon = " . $id_cupon);
+                        $sql_result = $mysqli->query("SELECT * FROM relaciones_cupones WHERE id_cupon = " . $id_cupon);
                         if ($sql_result->num_rows > 0) {
                             while ($fila = $sql_result->fetch_assoc()) {
                                 switch ($fila['tipo']) {
