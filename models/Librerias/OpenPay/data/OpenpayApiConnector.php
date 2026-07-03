@@ -102,7 +102,7 @@ class OpenpayApiConnector
         $opts[CURLOPT_CONNECTTIMEOUT] = 30;
         $opts[CURLOPT_TIMEOUT] = 80;
         $opts[CURLOPT_HTTPHEADER] = $headers;
-        $opts[CURLOPT_SSL_VERIFYPEER] = FALSE;
+        $opts[CURLOPT_SSL_VERIFYPEER] = TRUE;
 
         if ($auth) {
             $opts[CURLOPT_USERPWD] = $auth.':';
