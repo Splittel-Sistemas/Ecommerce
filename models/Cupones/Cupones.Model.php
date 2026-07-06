@@ -110,7 +110,6 @@ class CuponesModel
 
             if (count($PedidoDetalle) > 0) {
                 foreach ($PedidoDetalle as $indice => $item) {
-                    //$sql_result = $mysqli->query("CALL verificar_uso_cupon(" . $id_cupon . ",'" . $item->ProductoCodigo . "','" . $item->ClienteKey . "')");
                     $productovalido = false;
 
                     $sql_result = $mysqli->query("SELECT * FROM Admin_producto_categoria_subcategoria WHERE codigo = '" . $item->ProductoCodigo . "' AND activo = 'si'");
@@ -154,7 +153,7 @@ class CuponesModel
                         }
 
                         $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosValidos']) : true;
-                        $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosValidos']) : false;
+                        $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosNoValidos']) : false;
 
                         $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasValidas']) : true;
                         $categoriaPasaComoNoValido = (count($relacionesCupon['CategoriasNoValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasNoValidas']) : false;
@@ -168,6 +167,10 @@ class CuponesModel
                                 if ($productosPasaComoNoValido) {
                                     $productovalido = false;
                                 }
+
+                                if (!$productosPasaComoValido) {
+                                    $productovalido = false;
+                                }
                             } else {
                                 if ($productosPasaComoValido && !$productosPasaComoNoValido) {
                                     $productovalido = true;
@@ -179,10 +182,10 @@ class CuponesModel
                     if ($productovalido) {
 
                         $descuentoAplicado = 0;
-                        if ($PedidoDetalle[$indice]->DetalleDescuento >= $fila['importe']) {
-                            $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $fila['importe_extra'];
+                        if ($PedidoDetalle[$indice]->DetalleDescuento >= $datosCupon['importe']) {
+                            $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $datosCupon['importe_extra'];
                         } else {
-                            $descuentoAplicado = $fila['importe'];
+                            $descuentoAplicado = $datosCupon['importe'];
                         }
 
                         if ($descuentoAplicado > 100) {
