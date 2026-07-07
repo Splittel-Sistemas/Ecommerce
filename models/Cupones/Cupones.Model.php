@@ -112,7 +112,11 @@ class CuponesModel
                 foreach ($PedidoDetalle as $indice => $item) {
                     $productovalido = false;
 
-                    $sql_result = $mysqli->query("SELECT * FROM Admin_producto_categoria_subcategoria WHERE codigo = '" . $item->ProductoCodigo . "' AND activo = 'si'");
+                    if ($item->DetalleCodigoConfigurable == "") {
+                        $sql_result = $mysqli->query("SELECT * FROM Admin_producto_categoria_subcategoria WHERE codigo = '" . $item->DetalleCodigo . "' AND activo = 'si'");
+                    } else {
+                        $sql_result = $mysqli->query("SELECT * FROM menu_subcategorias_n1 WHERE codigo = '" . $item->DetalleCodigoConfigurable . "' AND activo = 'si'");
+                    }
                     if ($sql_result->num_rows > 0) {
                         $fila = $sql_result->fetch_assoc();
                         $categoriaProducto = $fila['id_subcategoria'];
@@ -152,8 +156,8 @@ class CuponesModel
                             }
                         }
 
-                        $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosValidos']) : true;
-                        $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($item->ProductoCodigo, $relacionesCupon['ProductosNoValidos']) : false;
+                        $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($item->DetalleCodigo, $relacionesCupon['ProductosValidos']) : true;
+                        $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($item->DetalleCodigo, $relacionesCupon['ProductosNoValidos']) : false;
 
                         $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasValidas']) : true;
                         $categoriaPasaComoNoValido = (count($relacionesCupon['CategoriasNoValidas']) > 0) ? in_array($categoriaProducto, $relacionesCupon['CategoriasNoValidas']) : false;
@@ -164,11 +168,7 @@ class CuponesModel
                         if ($clientePasaComoValido && !$clientePasaComoNoValido) {
                             if ($categoriaPasaComoValido && !$categoriaPasaComoNoValido) {
                                 $productovalido = true;
-                                if ($productosPasaComoNoValido) {
-                                    $productovalido = false;
-                                }
-
-                                if (!$productosPasaComoValido) {
+                                if ($productosPasaComoNoValido && !$productosPasaComoValido) {
                                     $productovalido = false;
                                 }
                             } else {
@@ -196,12 +196,12 @@ class CuponesModel
                         $subTotal = $PedidoDetalle[$indice]->DetalleSubtotalSinDescuento * (1 - ($descuentoAplicado / 100));
                         $total = $subTotal + $PedidoDetalle[$indice]->DetalleIva;
 
-                        $sql_result = $mysqli->query("UPDATE cotizacion_detalle SET subtotal = " . $subTotal . ", total = " . $total . " WHERE id_cotizacion = " . $id_pedido . " AND codigo = '" . $item->ProductoCodigo . "' AND activo ='si'");
+                        $sql_result = $mysqli->query("UPDATE cotizacion_detalle SET subtotal = " . $subTotal . ", total = " . $total . " WHERE id_cotizacion = " . $id_pedido . " AND codigo = '" . $item->DetalleCodigo . "' AND activo ='si'");
                         if ($sql_result) {
                             $seRealizoAjuste = true;
                         }
 
-                        $sql_result = $mysqli->query("INSERT INTO relacion_cupones_compra (id_cupon, id_pedido, id_producto, descuento, usado) VALUES(" . $id_cupon . ", " . $id_pedido . ", '" . $PedidoDetalle[$indice]->ProductoCodigo . "', " . $descuentoAplicado . ", 0)");
+                        $sql_result = $mysqli->query("INSERT INTO relacion_cupones_compra (id_cupon, id_pedido, id_producto, descuento, usado) VALUES(" . $id_cupon . ", " . $id_pedido . ", '" . $PedidoDetalle[$indice]->DetalleCodigo . "', " . $descuentoAplicado . ", 0)");
 
                         if (!$sql_result) {
                             $mysqli->rollback();

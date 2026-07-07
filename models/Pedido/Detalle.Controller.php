@@ -162,17 +162,27 @@ class DetalleController{
                                 $producto->SetCodigo($_POST['Codigo']);
                                 $producto->SetCantidad($_POST['Cantidad']);
                                 $producto->SetDescuento($_POST['Descuento']);
-                                //$producto->SetDescuento(20);
                                 $producto->SetCantidadValidacion($_POST['CantidadValidacion']);
                                 $ResultDetalle = $producto->Create();
                             } else {
-                                $producto->SetKey(0);
-                                $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                                $producto->SetCodigo($producto->DetalleCodigo);
-                                $producto->SetCantidad($producto->Cantidad);
-                                $producto->SetDescuento($producto->Descuento);
-                                $producto->SetCantidadValidacion(1);
-                                $producto->Create();
+                                if ($producto->DetalleCodigoConfigurable == "") {
+                                    $producto->SetKey(0);
+                                    $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                    $producto->SetCodigo($producto->DetalleCodigo);
+                                    $producto->SetCantidad($producto->Cantidad);
+                                    $producto->SetDescuento($producto->Descuento);
+                                    $producto->SetCantidadValidacion(1);
+                                    $producto->Create();
+                                } else {
+                                    $producto->SetKey(0);
+                                    $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                    $producto->SetCodigo($producto->DetalleCodigo);
+                                    $producto->SetCodigoConfigurable($producto->DetalleCodigoConfigurable);
+                                    $producto->Cantidad = '0';
+                                    $producto->SetDescuento($producto->Descuento);
+                                    $producto->SetSubtotal($producto->DetallePrecioUnidad);
+                                    $producto->CreateConfigurable();
+                                }
                             }
                         }
 
@@ -375,14 +385,57 @@ class DetalleController{
                     if(isset($_SESSION["Ecommerce-PedidoKey"])){
                         $DetalleModel  = new Detalle_();
                         $DetalleModel->SetParameters($this->Connection, $this->Tool);
-                        $DetalleModel->SetKey(0);
-                        $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                        $DetalleModel->SetCodigo($_POST['Codigo']);
-                        $DetalleModel->SetCodigoConfigurable($_POST['CodigoConfigurable']);
-                        $DetalleModel->SetCantidad($_POST['Cantidad']);
-                        $DetalleModel->SetDescuento($_POST['Descuento']);
-                        $DetalleModel->SetSubtotal($_POST['Precio']);
-                        return $ResultDetalle = $DetalleModel->CreateConfigurable();
+
+                        $listaProductos = $DetalleModel->ListDetallePedido("WHERE pedidokey = '" . $_SESSION["Ecommerce-PedidoKey"] . "' AND detalle_activo = 'si' ","");
+                        $ResultDetalle = null;
+                        foreach ($listaProductos as $producto) {
+                            $producto->SetParameters($this->Connection, $this->Tool);
+                            if ($producto->DetalleCodigo == $_POST['Codigo']) {
+                                $producto->SetKey(0);
+                                $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                $producto->SetCodigo($_POST['Codigo']);
+                                $producto->SetCodigoConfigurable($_POST['CodigoConfigurable']);
+                                $producto->SetCantidad($_POST['Cantidad']);
+                                $producto->SetDescuento($_POST['Descuento']);
+                                $producto->SetSubtotal($_POST['Precio']);
+                                $ResultDetalle = $producto->CreateConfigurable();
+                            } else {
+                                if ($producto->DetalleCodigoConfigurable == "") {
+                                    $producto->SetKey(0);
+                                    $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                    $producto->SetCodigo($producto->DetalleCodigo);
+                                    $producto->SetCantidad($producto->Cantidad);
+                                    $producto->SetDescuento($producto->Descuento);
+                                    $producto->SetCantidadValidacion(1);
+                                    $producto->Create();
+                                } else {
+                                    $producto->SetKey(0);
+                                    $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                    $producto->SetCodigo($producto->DetalleCodigo);
+                                    $producto->SetCodigoConfigurable($producto->DetalleCodigoConfigurable);
+                                    $producto->Cantidad = '0';
+                                    $producto->SetDescuento($producto->Descuento);
+                                    $producto->SetSubtotal($producto->DetallePrecioUnidad);
+                                    $producto->CreateConfigurable();
+                                }
+                            }
+                        }
+
+                        $cuponModel = new CuponesModel();
+                        $cuponModel->EliminarCuponesPedido($_SESSION["Ecommerce-PedidoKey"]);
+
+                        if (is_null($ResultDetalle)) {
+                            $DetalleModel->SetKey(0);
+                            $DetalleModel->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                            $DetalleModel->SetCodigo($_POST['Codigo']);
+                            $DetalleModel->SetCodigoConfigurable($_POST['CodigoConfigurable']);
+                            $DetalleModel->SetCantidad($_POST['Cantidad']);
+                            $DetalleModel->SetDescuento($_POST['Descuento']);
+                            $DetalleModel->SetSubtotal($_POST['Precio']);
+                            return $ResultDetalle = $DetalleModel->CreateConfigurable();
+                        } else {
+                            return $ResultDetalle;
+                        }
                     }
                     return $ResultPedido;
                 }else{
@@ -407,14 +460,25 @@ class DetalleController{
 
                     foreach ($listaProductos as $producto) {
                         $producto->SetParameters($this->Connection, $this->Tool);
-                        if ($producto->Codigo != $_POST['Codigo']) {
-                            $producto->SetKey(0);
-                            $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                            $producto->SetCodigo($producto->DetalleCodigo);
-                            $producto->SetCantidad($producto->Cantidad);
-                            $producto->SetDescuento($producto->Descuento);
-                            $producto->SetCantidadValidacion(1);
-                            $producto->Create();
+                        if ($producto->DetalleCodigo != $_POST['Codigo']) {
+                            if ($producto->DetalleCodigoConfigurable == "") {
+                                $producto->SetKey(0);
+                                $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                $producto->SetCodigo($producto->DetalleCodigo);
+                                $producto->SetCantidad($producto->Cantidad);
+                                $producto->SetDescuento($producto->Descuento);
+                                $producto->SetCantidadValidacion(1);
+                                $producto->Create();
+                            } else {
+                                $producto->SetKey(0);
+                                $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
+                                $producto->SetCodigo($producto->DetalleCodigo);
+                                $producto->SetCodigoConfigurable($producto->DetalleCodigoConfigurable);
+                                $producto->Cantidad = '0';
+                                $producto->SetDescuento($producto->Descuento);
+                                $producto->SetSubtotal($producto->DetallePrecioUnidad);
+                                $producto->CreateConfigurable();
+                            }
                         }
                     }
 
