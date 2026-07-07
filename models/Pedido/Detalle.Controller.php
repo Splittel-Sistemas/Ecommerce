@@ -156,7 +156,7 @@ class DetalleController{
                         $ResultDetalle = null;
                         foreach ($listaProductos as $producto) {
                             $producto->SetParameters($this->Connection, $this->Tool);
-                            if ($producto->Codigo == $_POST['Codigo']) {
+                            if ($producto->DetalleCodigo == $_POST['Codigo']) {
                                 $producto->SetKey(0);
                                 $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
                                 $producto->SetCodigo($_POST['Codigo']);
@@ -168,7 +168,7 @@ class DetalleController{
                             } else {
                                 $producto->SetKey(0);
                                 $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                                $producto->SetCodigo($producto->Codigo);
+                                $producto->SetCodigo($producto->DetalleCodigo);
                                 $producto->SetCantidad($producto->Cantidad);
                                 $producto->SetDescuento($producto->Descuento);
                                 $producto->SetCantidadValidacion(1);
@@ -410,7 +410,7 @@ class DetalleController{
                         if ($producto->Codigo != $_POST['Codigo']) {
                             $producto->SetKey(0);
                             $producto->SetPedidoKey($_SESSION["Ecommerce-PedidoKey"]);
-                            $producto->SetCodigo($producto->Codigo);
+                            $producto->SetCodigo($producto->DetalleCodigo);
                             $producto->SetCantidad($producto->Cantidad);
                             $producto->SetDescuento($producto->Descuento);
                             $producto->SetCantidadValidacion(1);
