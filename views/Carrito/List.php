@@ -127,7 +127,7 @@
             <div class="product-item">
               <div class="product-info">
               <?php
-              $descuentocupon = $CuponModelo->ObtenerDescuentoProductoPedido(isset($_SESSION["Ecommerce-PedidoKey"]) ? $_SESSION["Ecommerce-PedidoKey"] : 0,$data->ProductoCodigo);
+              $descuentocupon = $CuponModelo->ObtenerDescuentoProductoPedido(isset($_SESSION["Ecommerce-PedidoKey"]) ? $_SESSION["Ecommerce-PedidoKey"] : 0,$data->DetalleCodigo);
               if ($descuentocupon != 0) { ?>
                 <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative; text-decoration: line-through!important;"><?php echo $data->DetalleDescuento . '%'; ?></span>
                 <br>
@@ -189,7 +189,21 @@
           </td>
            <!-- Descuento -->
            <td class="text-center text-lg">
-             <?php echo $data->DetalleDescuento ?>
+             <div class="product-item">
+              <div class="product-info">
+              <?php
+              $descuentocupon = $CuponModelo->ObtenerDescuentoProductoPedido(isset($_SESSION["Ecommerce-PedidoKey"]) ? $_SESSION["Ecommerce-PedidoKey"] : 0,$data->DetalleCodigo);
+              if ($descuentocupon != 0) { ?>
+                <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative; text-decoration: line-through!important;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+                <br>
+                <span style="display: unset;" class="badge badge-info" data-toggle="tooltip" data-placement="right" title="Descuento por cupon">
+                  <?php echo number_format($descuentocupon, 2) . '%'; ?>
+                </span>
+              <?php } else { ?>
+              <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+              <?php } ?>
+              </div>
+            </div>
           </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
@@ -259,7 +273,21 @@
           </td>
           <!-- Descuento -->
           <td class="text-center text-lg">
-             <?php echo $data->DetalleDescuento ?>
+             <div class="product-item">
+              <div class="product-info">
+              <?php
+              $descuentocupon = $CuponModelo->ObtenerDescuentoProductoPedido(isset($_SESSION["Ecommerce-PedidoKey"]) ? $_SESSION["Ecommerce-PedidoKey"] : 0,$data->DetalleCodigo);
+              if ($descuentocupon != 0) { ?>
+                <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative; text-decoration: line-through!important;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+                <br>
+                <span style="display: unset;" class="badge badge-info" data-toggle="tooltip" data-placement="right" title="Descuento por cupon">
+                  <?php echo number_format($descuentocupon, 2) . '%'; ?>
+                </span>
+              <?php } else { ?>
+              <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+              <?php } ?>
+              </div>
+            </div>
           </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
@@ -309,7 +337,21 @@
           </td>
           <!-- Descuento -->
           <td class="text-center text-lg">
-             <?php echo $data->DetalleDescuento ?>
+             <div class="product-item">
+              <div class="product-info">
+              <?php
+              $descuentocupon = $CuponModelo->ObtenerDescuentoProductoPedido(isset($_SESSION["Ecommerce-PedidoKey"]) ? $_SESSION["Ecommerce-PedidoKey"] : 0,$data->DetalleCodigo);
+              if ($descuentocupon != 0) { ?>
+                <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative; text-decoration: line-through!important;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+                <br>
+                <span style="display: unset;" class="badge badge-info" data-toggle="tooltip" data-placement="right" title="Descuento por cupon">
+                  <?php echo number_format($descuentocupon, 2) . '%'; ?>
+                </span>
+              <?php } else { ?>
+              <span class="text-center product-badge bg-secondary border-default text-body" style="display: unset; position:relative;"><?php echo $data->DetalleDescuento . '%'; ?></span>
+              <?php } ?>
+              </div>
+            </div>
           </td>
           <!-- Subtotal -->
           <td class="text-center text-lg">
