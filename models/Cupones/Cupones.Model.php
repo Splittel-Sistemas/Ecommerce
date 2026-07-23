@@ -121,6 +121,16 @@ class CuponesModel
                         $fila = $sql_result->fetch_assoc();
                         $categoriaProducto = $fila['id_subcategoria'];
 
+                        if ($item->DetalleCodigoConfigurable == "") {
+                            if ($item->ProductoDescuento != -1) {
+                                continue;
+                            }
+                        } else {
+                            if ($fila['descuento'] != -1) {
+                                continue;
+                            }
+                        }
+
                         $relacionesCupon = [
                             'ProductosValidos' => [],
                             'ProductosNoValidos' => [],
