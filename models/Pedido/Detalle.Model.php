@@ -192,7 +192,7 @@
             $newItem->Descuento                     = $row->descuento;
             
             $remates = $newItem->ProductoCategoriaKey == 'A8' ? true : false;
-            $newItem->Descuento    = !empty($newItem->ProductoDescuento) ? $this->Tool->CalcularDescuento($newItem->ProductoDescuento, $remates) : '';
+            $newItem->Descuento    = !empty($newItem->ProductoDescuento) ? $this->Tool->CalcularDescuento($newItem->ProductoDescuento, $remates) : $row->descuento;
             
             $newItem->TiempoEntrega    = $row->TiempoEntrega;
 
