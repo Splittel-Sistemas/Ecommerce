@@ -178,7 +178,7 @@ class CuponesModel
                         if ($clientePasaComoValido && !$clientePasaComoNoValido) {
                             if ($categoriaPasaComoValido && !$categoriaPasaComoNoValido) {
                                 $productovalido = true;
-                                if ($productosPasaComoNoValido && !$productosPasaComoValido) {
+                                if ($productosPasaComoNoValido) {
                                     $productovalido = false;
                                 }
                             } else {
