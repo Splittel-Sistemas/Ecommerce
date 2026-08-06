@@ -453,7 +453,7 @@
 <div class="shopping-cart-footer">
   <div class="column">
   <button class="btn btn-outline-info btn-sm" onclick="MostarModalAgregarCupon()">
-    Agregar Cupon
+    Agregar Cupón
   </button>
   <?php if(isset($_SESSION["Ecommerce-PedidoKey"]) && isset($_SESSION['Ecommerce-PedidoTotal']) && $_SESSION['Ecommerce-PedidoTotal'] > 0){ ?>
     <button class="btn btn-outline-secondary btn-sm "> 
