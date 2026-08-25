@@ -186,10 +186,13 @@
 
             $newItem->ProductoConfigurableNombre    = $row->t17_f003;
             $newItem->MinimoCompra                  = $row->cantidad_minima;
-
+            $newItem->TipoCambio                    = $row->tipoCambio;
+            $newItem->Codigo                        = $row->producto_codigo;
+            $newItem->Cantidad                      = $row->cantidad;
+            $newItem->Descuento                     = $row->descuento;
             
             $remates = $newItem->ProductoCategoriaKey == 'A8' ? true : false;
-            $newItem->Descuento    = !empty($newItem->ProductoDescuento) ? $this->Tool->CalcularDescuento($newItem->ProductoDescuento, $remates) : '';
+            $newItem->Descuento    = !empty($newItem->ProductoDescuento) ? $this->Tool->CalcularDescuento($newItem->ProductoDescuento, $remates) : $row->descuento;
             
             $newItem->TiempoEntrega    = $row->TiempoEntrega;
 

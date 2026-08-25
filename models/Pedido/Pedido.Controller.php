@@ -34,6 +34,9 @@ if (!class_exists("Webhook")) {
 if (!class_exists("GeDocumentsPointsController")) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Document/GeDocumentsPoints.Controller.php';
 }
+if (!class_exists('CuponesModel')) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/models/Cupones/Cupones.Model.php';
+}
 class PedidoController
 {
     protected $Connection;
@@ -91,6 +94,9 @@ class PedidoController
                         $PedidoModel->SetKey($pedido->Key);
                         $PedidoModel->SetEnvioCorreo(1);
                         $result = $PedidoModel->ActualizarEstatusEnvioCorreo();
+
+                        $cuponModel = new CuponesModel();
+                        $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
 
                         unset($_SESSION['Ecommerce-PedidoKey']);
                     }
@@ -272,6 +278,8 @@ class PedidoController
                     for ($i = 0; $i < 5; $i++) {
                         $data = $PedidoModel->GetInfoPagoBanco("WHERE t12_f002 = '" . $_SESSION['Ecommerce-PedidoKey'] . "'", " ORDER BY id DESC LIMIT 1");
                         if (count($data) != 0) {
+                            $cuponModel = new CuponesModel();
+                            $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
                             unset($_SESSION['Ecommerce-PedidoKey']);
                             $i = 5;
                         } else {
@@ -532,6 +540,10 @@ class PedidoController
                                     unset($TemplatePedido);
 
                                     $_SESSION['Ecommerce-PedidoTotal'] = 0;
+
+                                    $cuponModel = new CuponesModel();
+                                    $cuponModel->MarcarUsarCupon(isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0);
+
                                     unset($_SESSION['Ecommerce-PedidoKey']);
                                     unset($SalesQuatationController);
                                     unset($ResultSalesQuatation);
