@@ -107,7 +107,7 @@ class CuponesModel
 
             $maximo = $datosCupon['gasto_maximo'];
 
-            if ($PedidoModel->Total > $maximo) {
+            if ($PedidoModel->Total > $maximo && $maximo > 0) {
                 $mysqli->rollback();
                 return ['respuesta' => false, "mensaje" => "Este cupon solo se puede aplicar a una compra maxima de $" . number_format($maximo, 2) . " (USD)."];
             }
