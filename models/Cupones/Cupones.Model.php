@@ -103,6 +103,15 @@ class CuponesModel
                 return ['respuesta' => false, "mensaje" => "Este cupon requiere una compra minima mayor."];
             }
 
+            //validacion de monto maximo
+
+            $maximo = $datosCupon['gasto_maximo'];
+
+            if ($PedidoModel->Total > $maximo) {
+                $mysqli->rollback();
+                return ['respuesta' => false, "mensaje" => "Este cupon solo se puede aplicar a una compra maxima de $" . number_format($maximo, 2) . " (USD)."];
+            }
+
             $PedidoDetalle = new Detalle_();
             $PedidoDetalle->SetParameters($this->Connection, $this->Tool);
             $PedidoDetalle = $PedidoDetalle->ListDetallePedido("WHERE pedidokey = '" . $id_pedido . "' AND detalle_activo = 'si'", "");
