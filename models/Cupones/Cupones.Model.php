@@ -245,8 +245,13 @@ class CuponesModel
                     if ($productovalido) {
 
                         $descuentoAplicado = 0;
-                        if ($PedidoDetalle[$indice]->DetalleDescuento >= $datosCupon['importe']) {
-                            $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $datosCupon['importe_extra'];
+
+                        if (isset($_SESSION['Ecommerce-ClienteDescuento'])) {
+                            if ($datosCupon['importe_extra'] > 0) {
+                                $descuentoAplicado = $PedidoDetalle[$indice]->DetalleDescuento + $datosCupon['importe_extra'];
+                            } else {
+                                continue;
+                            }
                         } else {
                             $descuentoAplicado = $datosCupon['importe'];
                         }
