@@ -209,8 +209,8 @@ class CuponesModel
                     $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($codigoCategoria, $relacionesCupon['CategoriasValidas']) : true;
                     $categoriaPasaComoNoValido = (count($relacionesCupon['CategoriasNoValidas']) > 0) ? in_array($codigoCategoria, $relacionesCupon['CategoriasNoValidas']) : false;
 
-                    $grupoPasaComoValido = (count($relacionesCupon['GruposValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['CategoriasValidas']) : true;
-                    $grupoPasaComoNoValido = (count($relacionesCupon['GruposNoValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['CategoriasNoValidas']) : false;
+                    $grupoPasaComoValido = (count($relacionesCupon['GruposValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['GruposValidos']) : true;
+                    $grupoPasaComoNoValido = (count($relacionesCupon['GruposNoValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['GruposNoValidos']) : false;
 
                     $clientePasaComoValido = (count($relacionesCupon['ClientesValidos']) > 0) ? in_array($codigoCliente, $relacionesCupon['ClientesValidos']) : true;
                     $clientePasaComoNoValido = (count($relacionesCupon['ClientesNoValidos']) > 0) ? in_array($codigoCliente, $relacionesCupon['ClientesNoValidos']) : false;
