@@ -217,28 +217,12 @@ class CuponesModel
 
 
                     if ($clientePasaComoValido && !$clientePasaComoNoValido) {
-                        $productovalido = true;
-                        if ($categoriaPasaComoValido && !$categoriaPasaComoNoValido) {
-                            if ($grupoPasaComoNoValido) {
-                                $productovalido = false;
-                                if ($productosPasaComoValido && !$productosPasaComoNoValido) {
-                                    $productovalido = true;
-                                }
-                            } elseif ($productosPasaComoNoValido) {
-                                $productovalido = false;
-                            }
-                        } else {
+                        if ($categoriaPasaComoValido || $productosPasaComoValido || $grupoPasaComoValido) {
+                            $productovalido = true;
+                        }
+
+                        if ($categoriaPasaComoNoValido || $grupoPasaComoNoValido || $productosPasaComoNoValido) {
                             $productovalido = false;
-                            if ($grupoPasaComoValido && !$grupoPasaComoNoValido) {
-                                $productovalido = true;
-                                if ($productosPasaComoNoValido) {
-                                    $productovalido = false;
-                                }
-                            } else {
-                                if ($productosPasaComoValido && !$productosPasaComoNoValido) {
-                                    $productovalido = true;
-                                }
-                            }
                         }
                     }
 
