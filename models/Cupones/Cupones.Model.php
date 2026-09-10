@@ -203,13 +203,13 @@ class CuponesModel
                         }
                     }
 
-                    $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($codigoProducto, $relacionesCupon['ProductosValidos']) : true;
+                    $productosPasaComoValido = (count($relacionesCupon['ProductosValidos']) > 0) ? in_array($codigoProducto, $relacionesCupon['ProductosValidos']) : false;
                     $productosPasaComoNoValido = (count($relacionesCupon['ProductosNoValidos']) > 0) ? in_array($codigoProducto, $relacionesCupon['ProductosNoValidos']) : false;
 
-                    $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($codigoCategoria, $relacionesCupon['CategoriasValidas']) : true;
+                    $categoriaPasaComoValido = (count($relacionesCupon['CategoriasValidas']) > 0) ? in_array($codigoCategoria, $relacionesCupon['CategoriasValidas']) : false;
                     $categoriaPasaComoNoValido = (count($relacionesCupon['CategoriasNoValidas']) > 0) ? in_array($codigoCategoria, $relacionesCupon['CategoriasNoValidas']) : false;
 
-                    $grupoPasaComoValido = (count($relacionesCupon['GruposValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['GruposValidos']) : true;
+                    $grupoPasaComoValido = (count($relacionesCupon['GruposValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['GruposValidos']) : false;
                     $grupoPasaComoNoValido = (count($relacionesCupon['GruposNoValidos']) > 0) ? in_array($codigoGrupo, $relacionesCupon['GruposNoValidos']) : false;
 
                     $clientePasaComoValido = (count($relacionesCupon['ClientesValidos']) > 0) ? in_array($codigoCliente, $relacionesCupon['ClientesValidos']) : true;
@@ -217,12 +217,22 @@ class CuponesModel
 
 
                     if ($clientePasaComoValido && !$clientePasaComoNoValido) {
-                        if ($categoriaPasaComoValido || $productosPasaComoValido || $grupoPasaComoValido) {
+                        if ($categoriaPasaComoValido) {
                             $productovalido = true;
+                            if ($grupoPasaComoNoValido || $productosPasaComoNoValido) {
+                                $productovalido = false;
+                            }
                         }
 
-                        if ($categoriaPasaComoNoValido || $grupoPasaComoNoValido || $productosPasaComoNoValido) {
-                            $productovalido = false;
+                        if ($grupoPasaComoValido) {
+                            $productovalido = true;
+                            if ($productosPasaComoNoValido) {
+                                $productovalido = false;
+                            }
+                        }
+
+                        if ($productosPasaComoValido) {
+                            $productovalido = true;
                         }
                     }
 
