@@ -48,6 +48,7 @@ var Enviar = function () {
   fda.append("accesorios", $("#valoresAccesorios").val());
   fda.append("paqueteria", $("#paqueteria").val());
   fda.append("guia", $("#guia").val());
+  fda.append("fechaRecibo", $("#fecha_recibo").val());
 
   var fda1 = new FormData();
   fda1.append("company", $("#company").val());
@@ -67,6 +68,7 @@ var Enviar = function () {
   fda1.append("accesorios", $("#valoresAccesorios").val());
   fda1.append("paqueteria", $("#paqueteria").val());
   fda1.append("guia", $("#guia").val());
+  fda1.append("fechaRecibo", $("#fecha_recibo").val());
 
   // Obtén la tabla por su ID
 

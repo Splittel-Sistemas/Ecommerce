@@ -220,7 +220,10 @@
                                     <label>Numero de guía<strong class="text-danger"></strong></label>
                                     <input class="form-control form-control-2" type="text" id="guia" name="guia" >
                                 </div>
-
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label>Fecha Recepción<strong class="text-danger"></strong></label>
+                                    <input class="form-control form-control-2" type="date" id="fecha_recibo" name="fecha_recibo" >
+                                </div>
 
                                 <div class="col-sm-12 col-md-12 form-group text-center">
                                     <button type="button" id="botonenviar" class="btn btn-primary " onclick="Enviar()">Enviar Solicitud</button>
