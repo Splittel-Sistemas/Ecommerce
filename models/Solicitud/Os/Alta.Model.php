@@ -24,6 +24,7 @@ class SolicitudC
 
   public $valoresCheck;
   public $guia;
+  public $fechaRecepcion;
   public $paqueteria;
 
 
@@ -121,6 +122,12 @@ class SolicitudC
     $this->guia = $guia;
   }
 
+  public function SetFechaRecepcion($fechaRecepcion)
+  {
+   
+    $this->fechaRecepcion = $fechaRecepcion;
+  }
+
   public function SetvaloresCheck($valoresCheck)
   {
     if (empty($valoresCheck)) {
@@ -164,7 +171,7 @@ class SolicitudC
             '',
           '" . $this->paqueteria . "',
           '" . $this->guia . "',
-
+          '" . $this->fechaRecepcion . "',
         @Result);", "@Result");
 
       return $result;
