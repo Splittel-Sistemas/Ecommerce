@@ -96,12 +96,7 @@ class SolicitudCController
         $SolicitudCModel->Setaccesorios($_POST['accesorios']);
         $SolicitudCModel->Setpaqueteria($_POST['paqueteria']);
         $SolicitudCModel->Setguia($_POST['guia']);
-
-
-
-
-
-
+        $SolicitudCModel->SetFechaRecepcion($_POST['fechaRecibo']);
 
         $ResultSolicitud = $SolicitudCModel->Add();
 
