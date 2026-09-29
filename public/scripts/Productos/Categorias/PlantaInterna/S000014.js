@@ -12,7 +12,9 @@ var PosicionConectorJumpers = [
   'FC',
   'MU',
   'E2',
-  'MT'
+  'MT',
+  'SN',
+  'CS'
 ];
 
 var PosicionPulidoJumpers = [
@@ -792,7 +794,205 @@ var JumpersUniboot = async function(){
   existJumper_(CodigoGenerado)
 }
 
+var JumpersSNUPC = async function(){
+  let Longitud = document.getElementById('Longitud')
+  // conectores 
+  let Conector1 = document.getElementById('Conector1')
+  let Conector2 = document.getElementById('Conector2')
+  // botas 
+  let Bota1 = document.getElementById('Bota1')
+  let Bota2 = document.getElementById('Bota2')
+  // pulidos
+  let PulidoConector1 = document.getElementById('Pulido1')
+  let PulidoConector2 = document.getElementById('Pulido2')
+  // Tipo de fibra
+  let MultimodoTipoFibra = document.getElementById('MultimodoTipoFibra')
 
+  // Elementos no necesarios 
+  let TipoCubierta = document.getElementById('TipoCubierta')
+  let NumeroHilos = document.getElementById('NumeroHilos')
+  let Diametro = document.getElementById('Diametro')
+  
+
+  if (Longitud.value > 0 && Longitud.value <= 999.9 && validateDecimalEntero(Longitud.value)) {
+    NewLongitud = NumeroConCeros(Longitud.value, 4)
+    CodigoGenerado = Marca+Familia+Conector1.value+PulidoConector1.value+(Conector2.value == 'LU' ? Conector2.value+PulidoConector2.value+'M': Conector2.value+PulidoConector2.value)+MultimodoTipoFibra.value+NumeroHilos.value+NewLongitud+TipoCubierta.value+Diametro.value
+    // Agreación de codigo para la vista en el identificador
+    showClave(CodigoGenerado)
+
+    let data = {
+      Action: 'calcular_',
+      ActionCalcularPrecioEspeciales : true, 
+      Longitud: Longitud.value,
+      TipoJumper: 'SM', // Tipo de jumper de acuerdo al catalogo de bd Monomodo
+      Conector_1: Conector1.value,
+      Conector_2: Conector2.value,
+      Fibra : MultimodoTipoFibra.value,
+      Pulido_1 : PulidoConector1.value,
+      Pulido_2 : PulidoConector2.value,
+      Cubierta : TipoCubierta.value,
+      NumeroHilos : NumeroHilos.value,
+      Bota_1 : Bota1.value,
+      Bota_2 : Bota2.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value,
+      Diametros : Diametro.value
+    }
+
+    await CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
+    let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
+    let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
+    let Diametroselected=Diametro.options[Diametro.selectedIndex].text
+    let Bota1selected=Bota1.options[Bota1.selectedIndex].text
+    let Bota2selected=Bota2.options[Bota2.selectedIndex].text
+
+    let DescConector1 = Conector1.options[Conector1.selectedIndex].text
+    let DescConector2 = Conector2.options[Conector2.selectedIndex].text
+    
+    let descripcion = "Jumper "+DescConector1+"/"+PulidoConector1.options[PulidoConector1.selectedIndex].text+'-'+(Conector2.value == 'LU' ? DescConector2 : DescConector2+"/"+PulidoConector2.options[PulidoConector2.selectedIndex].text)+' Monomodo G657A2 Riser Duplex de 2mm de '+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
+  }else{
+    CodigoGenerado='';
+    showClave(CodigoGenerado)
+    DescPrdConf.innerHTML=''
+  }
+
+  ChangeListImgProducto('OPJUSNU',CodigoGenerado.slice(0,10))
+  ListProductoDescription('OPJUSNU')
+  ListProductoAdicional('OPJUSNU')
+  agregarFichaTecnicaConfigurable('OPJUSNU')
+  agregarCertificadoConfigurable(CodigoGenerado)
+  existJumper_(CodigoGenerado)
+}
+
+var JumpersCSUPC = async function(){
+  let Longitud = document.getElementById('Longitud')
+  // conectores 
+  let Conector1 = document.getElementById('Conector1')
+  let Conector2 = document.getElementById('Conector2')
+  // botas 
+  let Bota1 = document.getElementById('Bota1')
+  let Bota2 = document.getElementById('Bota2')
+  // pulidos
+  let PulidoConector1 = document.getElementById('Pulido1')
+  let PulidoConector2 = document.getElementById('Pulido2')
+  // Tipo de fibra
+  let MultimodoTipoFibra = document.getElementById('MultimodoTipoFibra')
+
+  // Elementos no necesarios 
+  let TipoCubierta = document.getElementById('TipoCubierta')
+  let NumeroHilos = document.getElementById('NumeroHilos')
+  let Diametro = document.getElementById('Diametro')
+  
+
+  if (Longitud.value > 0 && Longitud.value <= 999.9 && validateDecimalEntero(Longitud.value)) {
+    NewLongitud = NumeroConCeros(Longitud.value, 4)
+    CodigoGenerado = Marca+Familia+Conector1.value+PulidoConector1.value+(Conector2.value == 'LU' ? Conector2.value+PulidoConector2.value+'M': Conector2.value+PulidoConector2.value)+MultimodoTipoFibra.value+NumeroHilos.value+NewLongitud+TipoCubierta.value+Diametro.value
+    // Agreación de codigo para la vista en el identificador
+    showClave(CodigoGenerado)
+
+    let data = {
+      Action: 'calcular_',
+      ActionCalcularPrecioEspeciales : true, 
+      Longitud: Longitud.value,
+      TipoJumper: 'SM', // Tipo de jumper de acuerdo al catalogo de bd Monomodo
+      Conector_1: Conector1.value,
+      Conector_2: Conector2.value,
+      Fibra : MultimodoTipoFibra.value,
+      Pulido_1 : PulidoConector1.value,
+      Pulido_2 : PulidoConector2.value,
+      Cubierta : TipoCubierta.value,
+      NumeroHilos : NumeroHilos.value,
+      Bota_1 : Bota1.value,
+      Bota_2 : Bota2.value,
+      SubcategoriaN1Code: document.getElementById("CodeConfigurable").value,
+      Diametros : Diametro.value
+    }
+
+    await CalcularPrecio("../../models/Productos/Jumpers/Especiales/CalcularPrecioEspeciales.Route.php", data)
+    let Fibraselected = MultimodoTipoFibra.options[MultimodoTipoFibra.selectedIndex].text
+    let TipoCubiertaselected=TipoCubierta.options[TipoCubierta.selectedIndex].text
+    let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
+    let Diametroselected=Diametro.options[Diametro.selectedIndex].text
+    let Bota1selected=Bota1.options[Bota1.selectedIndex].text
+    let Bota2selected=Bota2.options[Bota2.selectedIndex].text
+
+    let DescConector1 = Conector1.options[Conector1.selectedIndex].text
+    let DescConector2 = Conector2.options[Conector2.selectedIndex].text	
+    
+    let descripcion = "Jumper "+DescConector1+"/"+PulidoConector1.value+'-'+DescConector2+"/"+PulidoConector2.value+' Monomodo G657A2 Riser Duplex de 2mm de '+Longitud.value+" metro(s) "
+    NombreProductoConfigurable(CodigoGenerado, descripcion)
+    DescPrdConf.innerHTML=descripcion
+  }else{
+    CodigoGenerado='';
+    showClave(CodigoGenerado)
+    DescPrdConf.innerHTML=''
+  }
+
+  ChangeListImgProducto('OPJUCSU',CodigoGenerado.slice(0,10))
+  ListProductoDescription('OPJUCSU')
+  ListProductoAdicional('OPJUCSU')
+  agregarFichaTecnicaConfigurable('OPJUCSU')
+  agregarCertificadoConfigurable(CodigoGenerado)
+  existJumper_(CodigoGenerado)
+}
+
+var ActualizarConector2 = function() {
+  const bota2 = $('#Bota2').val()
+  const conector2 = $('#Conector2').val()
+
+  switch (bota2) {
+    case 'C':
+      if (conector2 != 'CS') {
+        $('#Conector2').val('CS').change()
+        JumpersFibraOptica()
+      }
+      break;
+
+    case 'M':
+      if (conector2 != 'LU') {
+        $('#Conector2').val('LU').change()
+        JumpersFibraOptica()
+      }
+      break;
+
+    case '':
+      if (conector2 != 'SN') {
+        $('#Conector2').val('SN').change()
+        JumpersFibraOptica()
+      }
+      break;
+  }
+}
+
+var ActualizarBota2 = function() {
+  const bota2 = $('#Bota2').val()
+  const conector2 = $('#Conector2').val()
+
+  switch (conector2) {
+    case 'SN':
+      if (bota2 != '') {
+        $('#Bota2').val('').change()
+        JumpersFibraOptica()
+      }
+      break;
+
+    case 'CS':
+      if (bota2 != 'C') {
+        $('#Bota2').val('C').change()
+        JumpersFibraOptica()
+      }
+      break;
+
+    case 'LU':
+      if (bota2 != 'M') {
+        $('#Bota2').val('M').change()
+        JumpersFibraOptica()
+      }
+      break;
+  }
+}
 
 var JumpersFibraOptica = function() {
   switch(Jumper.value){
@@ -816,6 +1016,13 @@ var JumpersFibraOptica = function() {
     break;
     case 'JUni' : 
       JumpersUniboot()
+    break;
+    case 'JSNUPC' : 
+      JumpersSNUPC()
+    break;
+
+    case 'JSCSUPC' : 
+      JumpersCSUPC()
     break;
     default:
       templateAlert("warning", "", "No se encontro la opción solitada por favor pide ayuda, a tú ejecutivo", "topRight", "icon-slash")

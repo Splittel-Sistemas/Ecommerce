@@ -15,6 +15,10 @@
     include 'c96_cable_mtpro_lc.php';    
   }else if ($_GET['codigo'] == 'C103') {
     include 'c104_cable_uniboot.php';    
+  }else if ($_GET['codigo'] == 'C106') {
+    include 'c106_jumper_snupc.php';    
+  }else if ($_GET['codigo'] == 'C107') {
+    include 'c106_jumper_csupc.php';    
   }else{
 ?>
   <div class="row align-items-end pb-4">

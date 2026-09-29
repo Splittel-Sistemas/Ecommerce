@@ -50,4 +50,30 @@ if (!class_exists("Connection")) {
       }
     }
 
+    public function Calcular_(){
+      try {
+        if (!$this->Connection->conexion()->connect_error) {
+          $CalcularPrecioEspecialesModel = new CalcularPrecioEspeciales(); 
+          $CalcularPrecioEspecialesModel->SetParameters($this->Connection, $this->Tool);
+          $CalcularPrecioEspecialesModel->SetLongitud($_POST['Longitud']);
+          $CalcularPrecioEspecialesModel->SetTipoJumper($_POST['TipoJumper']);
+          $CalcularPrecioEspecialesModel->SetConector_1($_POST['Conector_1']);
+          $CalcularPrecioEspecialesModel->SetConector_2($_POST['Conector_2']);
+          $CalcularPrecioEspecialesModel->SetFibra($_POST['Fibra']);
+          $CalcularPrecioEspecialesModel->SetPulido_1($_POST['Pulido_1']);
+          $CalcularPrecioEspecialesModel->SetPulido_2($_POST['Pulido_2']);
+          $CalcularPrecioEspecialesModel->SetCubierta($_POST['Cubierta']);
+          $CalcularPrecioEspecialesModel->SetNumeroHilos($_POST['NumeroHilos']);
+          $CalcularPrecioEspecialesModel->SetBota_1($_POST['Bota_1']);
+          $CalcularPrecioEspecialesModel->SetBota_2($_POST['Bota_2']);
+          $CalcularPrecioEspecialesModel->SetSubcategoriaN1Code($_POST['SubcategoriaN1Code']);
+					$CalcularPrecioEspecialesModel->SetClienteId(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
+          $CalcularPrecioEspecialesModel->SetDiametro($_POST['Diametros']);
+          return $CalcularPrecioEspecialesModel->Calcular_();
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
   }
