@@ -921,7 +921,7 @@ var JumpersCSUPC = async function(){
     let DescConector1 = Conector1.options[Conector1.selectedIndex].text
     let DescConector2 = Conector2.options[Conector2.selectedIndex].text	
     
-    let descripcion = "Jumper "+DescConector1+"/"+PulidoConector1.value+'-'+DescConector2+"/"+PulidoConector2.value+' Monomodo G657A2 Riser Duplex de 2mm de '+Longitud.value+" metro(s) "
+    let descripcion = "Jumper "+DescConector1+"/"+PulidoConector1.options[PulidoConector1.selectedIndex].text+'-'+(Conector2.value == 'LU' ? DescConector2 : DescConector2+"/"+PulidoConector2.options[PulidoConector2.selectedIndex].text)+' Monomodo G657A2 Riser Duplex de 2mm de '+Longitud.value+" metro(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion)
     DescPrdConf.innerHTML=descripcion
   }else{
