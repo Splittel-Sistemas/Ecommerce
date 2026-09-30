@@ -46,7 +46,7 @@
     <div class="col-sm-4" id="Bota1Select">
         <div class="form-group mb-0">
             <label for="quantity">Bota #1</label>
-            <select class="form-control" id="Bota1" name="Bota1" onchange="JumpersFibraOptica()">
+            <select class="form-control" id="Bota1" name="Bota1" onchange="JumpersFibraOptica()" disabled>
                 <option value="" position="2">Bota Estándar</option>
             </select>
         </div>
@@ -73,7 +73,7 @@
     <div class="col-sm-4" id="Bota2Select">
         <div class="form-group mb-0">
             <label for="quantity">Bota #2</label>
-            <select class="form-control" id="Bota2" name="Bota2" onchange="ActualizarConector2()">
+            <select class="form-control" id="Bota2" name="Bota2" onchange="ActualizarConector2()" disabled>
                 <option value="">Bota Estándar</option>
                 <option value="C">Bota corta</option>
                 <option value="M">Mini Flexible</option>
