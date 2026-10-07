@@ -810,7 +810,6 @@ var JumpersSNCS = async function(){
   let TipoCubierta = document.getElementById('TipoCubierta')
   let NumeroHilos = 'D';
   let Diametro = document.getElementById('Diametro')
-  
 
   if (Longitud.value > 0 && Longitud.value <= 999.9 && validateDecimalEntero(Longitud.value)) {
     NewLongitud = NumeroConCeros(Longitud.value, 4)
@@ -830,7 +829,7 @@ var JumpersSNCS = async function(){
       Pulido_2 : PulidoConector2.value,
       Cubierta : TipoCubierta.value,
       NumeroHilos : NumeroHilos,
-      Bota_1 : '',
+      Bota_1 : Conector1.value == 'SN' ? '' : 'C',
       Bota_2 : Conector2.value == 'SN' ? '' : (Conector2.value == 'CS' ? 'C' : 'M'),
       SubcategoriaN1Code: document.getElementById("CodeConfigurable").value,
       Diametros : Diametro.value
