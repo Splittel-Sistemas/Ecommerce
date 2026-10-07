@@ -858,62 +858,6 @@ var JumpersSNCS = async function(){
   existJumper_(CodigoGenerado)
 }
 
-var ActualizarConector2 = function() {
-  const bota2 = $('#Bota2').val()
-  const conector2 = $('#Conector2').val()
-
-  switch (bota2) {
-    case 'C':
-      if (conector2 != 'CS') {
-        $('#Conector2').val('CS').change()
-        JumpersFibraOptica()
-      }
-      break;
-
-    case 'M':
-      if (conector2 != 'LU') {
-        $('#Conector2').val('LU').change()
-        JumpersFibraOptica()
-      }
-      break;
-
-    case '':
-      if (conector2 != 'SN') {
-        $('#Conector2').val('SN').change()
-        JumpersFibraOptica()
-      }
-      break;
-  }
-}
-
-var ActualizarBota2 = function() {
-  const bota2 = $('#Bota2').val()
-  const conector2 = $('#Conector2').val()
-
-  switch (conector2) {
-    case 'SN':
-      if (bota2 != '') {
-        $('#Bota2').val('').change()
-        JumpersFibraOptica()
-      }
-      break;
-
-    case 'CS':
-      if (bota2 != 'C') {
-        $('#Bota2').val('C').change()
-        JumpersFibraOptica()
-      }
-      break;
-
-    case 'LU':
-      if (bota2 != 'M') {
-        $('#Bota2').val('M').change()
-        JumpersFibraOptica()
-      }
-      break;
-  }
-}
-
 var JumpersFibraOptica = function() {
   switch(Jumper.value){
     case 'JMul' : 

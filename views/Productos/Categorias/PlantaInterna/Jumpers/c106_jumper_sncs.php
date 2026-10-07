@@ -40,7 +40,7 @@
     <div class="col-sm-6" id="Conector2Select">
         <div class="form-group mb-0">
             <label for="quantity">Conector #2</label>
-            <select class="form-control" id="Conector2" name="Conector2" onchange="ActualizarBota2()">
+            <select class="form-control" id="Conector2" name="Conector2" onchange="JumpersFibraOptica()">
                 <option value="SN" position="7">SN</option>
                 <option value="CS" position="8">CS</option>
                 <option value="LU" DescConector="LC" position="0">LC Uniboot</option>
