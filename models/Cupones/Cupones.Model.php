@@ -121,13 +121,13 @@ class CuponesModel
                 foreach ($PedidoDetalle as $indice => $item) {
                     $productovalido = false;
 
-                    $codigoProducto = $item->ProductoCodigoConfigurable != '' ? $item->ProductoCodigoConfigurable : $item->DetalleCodigo;
+                    $codigoProducto = $item->DetalleCodigoConfigurable != '' ? $item->DetalleCodigoConfigurable : $item->DetalleCodigo;
                     $codigoCategoria = '';
                     $codigoGrupo = '';
                     $codigoCliente = $item->ClienteKey;
 
                     //bucar Categoria
-                    if ($item->ProductoCodigoConfigurable != "") {
+                    if ($item->DetalleCodigoConfigurable != "") {
                         $sql_result = $mysqli->query("SELECT t0.id_subcategoria AS Categoria, t0.descuento AS Descuento FROM menu_subcategorias_n1 t0 WHERE t0.activo = 'si' AND t0.codigo = '" . $codigoProducto . "'");
                     } else {
                         $sql_result = $mysqli->query("SELECT t0.subcategoria AS Categoria, t0.descuento_producto AS Descuento FROM listar_productos_fijos t0 WHERE t0.producto_activo = 'si' AND (t0.codigo_configurable='' OR t0.configurablefijo='si') AND t0.codigo = '" . $codigoProducto . "'");
@@ -137,7 +137,7 @@ class CuponesModel
                         $fila = $sql_result->fetch_assoc();
                         $codigoCategoria = $fila['Categoria'];
 
-                        if ($item->ProductoCodigoConfigurable == "") {
+                        if ($item->DetalleCodigoConfigurable == "") {
                             if ($item->ProductoDescuento != -1) {
                                 continue;
                             }
@@ -149,7 +149,7 @@ class CuponesModel
                     }
 
                     //buscar Grupo
-                    if ($item->ProductoCodigoConfigurable != "") {
+                    if ($item->DetalleCodigoConfigurable != "") {
                         $sql_result = $mysqli->query("SELECT t0.grupo AS Grupo FROM menu_subcategorias_n1 t0 WHERE t0.activo = 'si' AND t0.codigo = '" . $codigoProducto . "'");
                     } else {
                         $sql_result = $mysqli->query("SELECT lpf.grupo AS Grupo FROM listar_productos_fijos lpf WHERE lpf.producto_activo = 'si' AND (lpf.codigo_configurable='' OR lpf.configurablefijo='si') AND lpf.codigo = '" . $codigoProducto . "'");
@@ -214,7 +214,6 @@ class CuponesModel
 
                     $clientePasaComoValido = (count($relacionesCupon['ClientesValidos']) > 0) ? in_array($codigoCliente, $relacionesCupon['ClientesValidos']) : true;
                     $clientePasaComoNoValido = (count($relacionesCupon['ClientesNoValidos']) > 0) ? in_array($codigoCliente, $relacionesCupon['ClientesNoValidos']) : false;
-
 
                     if ($clientePasaComoValido && !$clientePasaComoNoValido) {
                         if ($categoriaPasaComoValido) {
