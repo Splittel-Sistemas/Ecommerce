@@ -474,7 +474,7 @@ var existCodeSapPatchCord = function(Codigo){
  * @return {number} b - Bar
  */
 var hhh = 0 
-var existEcommerce_ = function(Codigo){
+var existEcommerce_ = function(Codigo, soloGabinete = false){
   hhh = 1
   ajax_("../../models/Productos/Producto.Route.php", "POST", "JSON", 
   { 
@@ -532,10 +532,17 @@ var existEcommerce_ = function(Codigo){
         let Precio = resultResponse.Descuento > 0 
         ? resultResponse.ProductoPrecio - (resultResponse.ProductoPrecio * (resultResponse.Descuento /100)) 
         : resultResponse.ProductoPrecio 
-        StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'block')
-        StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'block')
-        StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
-        StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'none')
+        if (soloGabinete) {
+          StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'block')
+          StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'none')
+          StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
+          StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'block')
+        } else {
+          StyleDisplayNoneOrBlock(document.getElementById('btn-fijo'), 'block')
+          StyleDisplayNoneOrBlock(document.getElementById('div-longitud'), 'block')
+          StyleDisplayNoneOrBlock(document.getElementById('btn-configurable'), 'none')
+          StyleDisplayNoneOrBlock(document.getElementById('div-quantity'), 'none')
+        }
         document.getElementById('precio-longitud').value = Precio
         $('#span-leyenda').remove()
   
