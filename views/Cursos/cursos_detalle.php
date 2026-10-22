@@ -94,7 +94,7 @@
                 $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND activo='si' AND  id_curso=".$response->id, " ORDER BY start ASC LIMIT 1 ", false)->records[0];
                 
               ?>
-                <p><b>Nuestro próximo curso es: <?php echo nl2br($responseI->fecha)?></b></p>
+                <p><b>Nuestra próxima certificación es: <?php echo nl2br($responseI->fecha)?></b></p>
                 <p>Para inscripciones en fechas futuras, favor de consultar con tu ejecutivo comercial.</p>
               <?php
               
@@ -116,7 +116,7 @@
             </a>
           </p>
           
-          <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x">&iquest;EST&Aacute;S INTERESADO EN EL CURSO? </h6>
+          <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x">&iquest;EST&Aacute;S INTERESADO EN LA CERTIFICACIÓN? </h6>
           <h6 class="text-muted text-center text-normal ">Deja tus datos y a la brevedad nos comunicaremos contigo para proporcionarte m&aacute;s informaci&oacute;n</h6>
           <hr class="margin-bottom-1x margin-top-2x">
           <form id="form-cursos">
@@ -126,7 +126,7 @@
 
             <div class="row text-center">
               <div class="col-sm-12 form-group text-center">
-              <label for="validationCustom04"><b>Curso(s)<b></label>
+              <label for="validationCustom04"><b>Certificaciones<b></label>
               <style>
                   /* Estilo CSS para el borde del contenedor de Select2 */
                   .select2-container--default .select2-selection--multiple {

@@ -73,7 +73,12 @@
           </li>
               -->
           <li class="has-children">
-            <span><a href="#">Capacitaciones</a></span>
+            <span><a href="#">Capacitaciones</a><span class="sub-menu-toggle"></span></span>
+            <ul class="slideable-submenu">
+               <li><a href="../Capacitaciones/5-redlives-webinars">RedLives Webinars</a></li>
+                <li><a href="../Capacitaciones/3-cursos-presenciales-fibra-optica">Certificaciones Técnicas</a></li>
+                <li> <a href="../Capacitaciones/4-partners">Certificación Optronics</a></li>
+            </ul>
           </li>
           <li class="has-children">
             <span><a href="../Cuenta/index.php?menu=5">Pedidos en proceso</a></span>
