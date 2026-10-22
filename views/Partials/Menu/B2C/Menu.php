@@ -163,7 +163,7 @@
                <a href="../Capacitaciones/5-redlives-webinars">RedLives Webinars</a>
              </li>
              <li>
-               <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica">Cursos Presenciales</a>
+               <a href="../Capacitaciones/3-cursos-presenciales-fibra-optica">Certificaciones Técnicas</a>
              </li>
              <li>
                <a href="../Capacitaciones/4-partners">Certificación Optronics</a>
