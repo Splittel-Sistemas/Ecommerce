@@ -34,7 +34,8 @@ function GabinetesPiso() {
                 }
                 DirectorioImgProducto = CodigoGenerado;
             } else {
-                RemoverPuertas();
+                removerPuertaFrontalC();
+                removerPuertaTraceraV();
                 CodigoGenerado = Empresa + Familia + Instalacion + 'DC042P' + Prefijo;
                 DirectorioImgProducto = CodigoGenerado;
             }
@@ -65,9 +66,11 @@ function GabinetesPiso() {
 }
 
 function DeshabilitarPropiedadesMG() {
-    MostrarPuertas();
+    MostrarPuertaTracera();
 
     agregarPuertaFrontalV();
+    agregarPuertaFrontalC();
+    agregarPuertaTraceraV();
 
     AnchoG.disabled = false;
     ProfundidadG.disabled = false;
@@ -99,7 +102,9 @@ function PropiedadesMG() {
     CodigoGenerado = Empresa + Familia + Instalacion + 'MG' + UnidadesG.value + 'O' + Prefijo;
     DirectorioImgProducto = CodigoGenerado;
 
-    RemoverPuertas();
+    RemoverPuertaTracera();
+    removerPuertaFrontalV();
+    agregarPuertaFrontalC();
 
     removerAncho800();
     removerProfundidad600();
@@ -274,17 +279,13 @@ function agregarAncho800() {
     }
 }
 
-function RemoverPuertas() {
-    PuertaFrontalG.style.display = 'none';
+function RemoverPuertaTracera() {
     PuertaTraceraG.style.display = 'none';
-    LPuertaFrontalG.style.display = 'none';
     LPuertaTraceraG.style.display = 'none';
 }
 
-function MostrarPuertas() {
-    PuertaFrontalG.style.display = 'inline';
+function MostrarPuertaTracera() {
     PuertaTraceraG.style.display = 'inline';
-    LPuertaFrontalG.style.display = 'inline';
     LPuertaTraceraG.style.display = 'inline';
 }
 
@@ -311,6 +312,58 @@ function agregarPuertaFrontalV() {
         nuevaOption.text = 'Ventilada';
         nuevaOption.value = 'V';
         PuertaFrontalG.appendChild(nuevaOption);
+    }
+}
+
+function removerPuertaFrontalC() {
+    for (let i = 0; i < PuertaFrontalG.options.length; i++) {
+        if (PuertaFrontalG.options[i].value == 'C') {
+            PuertaFrontalG.remove(i);
+            break;
+        }
+    }
+}
+
+function agregarPuertaFrontalC() {
+    let existe = false;
+    for (let i = 0; i < PuertaFrontalG.options.length; i++) {
+        if (PuertaFrontalG.options[i].value == 'C') {
+            existe = true;
+            break;
+        }
+    }
+
+    if (!existe) {
+        const nuevaOption = document.createElement("option");
+        nuevaOption.text = 'Cristal Ranurada';
+        nuevaOption.value = 'C';
+        PuertaFrontalG.appendChild(nuevaOption);
+    }
+}
+
+function removerPuertaTraceraV() {
+    for (let i = 0; i < PuertaTraceraG.options.length; i++) {
+        if (PuertaTraceraG.options[i].value == 'V') {
+            PuertaTraceraG.remove(i);
+            break;
+        }
+    }
+}
+
+function agregarPuertaTraceraV() {
+    let existe = false;
+    for (let i = 0; i < PuertaTraceraG.options.length; i++) {
+        if (PuertaTraceraG.options[i].value == 'V') {
+            existe = true;
+            break;
+        }
+    }
+
+    if (!existe) {
+        const nuevaOption = document.createElement("option");
+        nuevaOption.text = 'Ventilada';
+        nuevaOption.value = 'V';
+        PuertaTraceraG.appendChild(nuevaOption);
     }
 }
 
