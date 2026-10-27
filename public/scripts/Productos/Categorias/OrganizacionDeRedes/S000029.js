@@ -106,17 +106,17 @@ function PropiedadesMG() {
     removerPuertaFrontalV();
     agregarPuertaFrontalC();
 
-    removerAncho800();
-    removerProfundidad600();
+    removerAncho600();
+    removerProfundidad800();
     removerProfundidad1000();
     removerProfundidad1200();
 
-    agregarAncho600();
-    agregarProfundidad800();
+    agregarAncho800();
+    agregarProfundidad600();
 
-    AnchoG.value = 600;
+    AnchoG.value = 800;
     AnchoG.dispatchEvent(new Event('change'));
-    ProfundidadG.value = 800;
+    ProfundidadG.value = 600;
     ProfundidadG.dispatchEvent(new Event('change'));
 
     AnchoG.disabled = true;
