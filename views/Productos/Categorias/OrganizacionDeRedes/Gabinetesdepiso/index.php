@@ -1,7 +1,7 @@
 <div class="row align-items-end pb-4">
     <div class="col-sm-6">
         <div class="form-group mb-0">
-            <label for="CEspecial">Caracteristica Espacial</label>
+            <label for="CEspecial">Caracteristica Especial</label>
             <select class="form-control" id="CEspecial" name="CEspecial" onchange="GabinetesPiso()">
                 <option value="0" selected>Ninguna</option>
                 <option value="1">Marco Giratorio</option>
