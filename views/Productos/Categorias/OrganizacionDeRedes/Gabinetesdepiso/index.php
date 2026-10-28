@@ -52,7 +52,7 @@
     </div>
     <div class="col-sm-6">
         <div class="form-group mb-0">
-            <label for="PuertaTraceraG" id="LPuertaTraceraG">Puerta Tracera</label>
+            <label for="PuertaTraceraG" id="LPuertaTraceraG">Puerta Trasera</label>
             <select class="form-control" id="PuertaTraceraG" name="PuertaTraceraG" onchange="GabinetesPiso()">
                 <option value="V">Ventilada</option>
                 <option value="PD">Doble Sección</option>
