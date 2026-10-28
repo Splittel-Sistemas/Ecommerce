@@ -313,7 +313,7 @@
                 include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Productos/Relacionados.Controller.php';
               }
               $RelacionadosController = new RelacionadosController();
-              $RelacionadosController->filter = "WHERE tipo='conf' AND id_codigo = '".$Obj->ProductoRelacionados."' ";
+              $RelacionadosController->filter = "WHERE tipo='conf' AND id_codigo = '".$Obj->ProductosRelacionados."' ";
               $RelacionadosController->order = "";
               $ResultProductosRelacionados = $RelacionadosController->GetFijos();
               

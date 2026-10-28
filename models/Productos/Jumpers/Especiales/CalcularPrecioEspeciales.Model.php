@@ -17,6 +17,7 @@
     public $Bota_2;
     public $SubcategoriaN1Code;
 		public $ClienteId;
+    public $Diametro;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -49,6 +50,8 @@
 			$this->SubcategoriaN1Code  = $SubcategoriaN1Code;
 		}public function SetClienteId($ClienteId){
 			$this->ClienteId  = $ClienteId;
+		}public function SetDiametro($diametro){
+			$this->Diametro  = $diametro;
 		}
      /**
      * Description
@@ -73,6 +76,30 @@
           '".$this->Bota_2."',
           '".$this->SubcategoriaN1Code."',
 					'".$this->ClienteId."',
+        @Result);", "@Result");
+        return $result;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+    public function Calcular_(){
+      try {
+        $result = $this->Connection->Exec_store_procedure_json("CALL PrecioJumper_SN(
+          ".$this->Longitud.",
+          '".$this->TipoJumper."',
+          '".$this->Conector_1."',
+          '".$this->Conector_2."',
+          '".$this->Fibra."',
+          '".$this->Pulido_1."',
+          '".$this->Pulido_2."',
+          '".$this->Cubierta."',
+          '".$this->NumeroHilos."',
+          '".$this->Bota_1."',
+          '".$this->Bota_2."',
+          '".$this->SubcategoriaN1Code."',
+					'".$this->ClienteId."',
+          '".$this->Diametro."',
         @Result);", "@Result");
         return $result;
       } catch (Exception $e) {

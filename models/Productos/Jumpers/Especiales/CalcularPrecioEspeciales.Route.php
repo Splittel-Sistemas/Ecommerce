@@ -25,6 +25,13 @@
             $SeguridadController = new SeguridadController();
             echo $SeguridadController->encryptAjax(json_encode($Result, JSON_UNESCAPED_UNICODE));
           break;
+
+          case 'calcular_':
+            $CalcularPrecioEspecialesController = new CalcularPrecioEspecialesController();
+            $Result = $CalcularPrecioEspecialesController->Calcular_();
+            $SeguridadController = new SeguridadController();
+            echo $SeguridadController->encryptAjax(json_encode($Result, JSON_UNESCAPED_UNICODE));
+          break;
           default:
             throw new Exception("No se encontro la opción solicitada, por favor contactanos");
           break;
