@@ -41,7 +41,23 @@
         <div class="col-xl-9 col-lg-8 order-lg-2">
           <!-- Post Meta-->
           <ul class="post-meta mb-4">
-            <li><i class="icon-clock"></i><a href="#"><?php echo ucwords(strftime( '%B' , strtotime($response->BlogFecha))).' '.strftime(date("j, Y",strtotime($response->BlogFecha)));?></a></li>
+            <?php
+                  $fecha = new DateTime($response->BlogFecha);
+
+                  $formato = new IntlDateFormatter(
+                      'es_MX',
+                      IntlDateFormatter::NONE,
+                      IntlDateFormatter::NONE,
+                      'America/Mexico_City',
+                      IntlDateFormatter::GREGORIAN,
+                      'MMMM d, yyyy'
+                  );
+
+                  $fechaFormateada = $formato->format($fecha);
+            ?>
+            <li><i class="icon-clock"></i><a href="#">
+               <?php echo htmlspecialchars($fechaFormateada, ENT_QUOTES, 'UTF-8'); ?>
+            </a></li>
           </ul>
           <!-- Gallery-->
           <div class="gallery-wrapper">

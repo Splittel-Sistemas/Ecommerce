@@ -83,7 +83,7 @@ if (!class_exists("Email")) {
         if (!$result['error']) {
           $Email = new Email();
           $EmailTest = new EmailTest();
-            $Email->MailerSubject = utf8_decode("Nuevo comentario en blog");
+            $Email->MailerSubject = ("Nuevo comentario en blog");
             $this->Correo = ['capacitaciones@optronics.com.mx'];
             $Email->MailerBody = $EmailTest->blog($this->Descripcion,$this->BlogKey);
             $Email->MailerListTo = $this->Correo;
