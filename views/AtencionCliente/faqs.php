@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,7 +71,7 @@
                 include('Faqs/incidencias.php');
                 break;          
               default:
-                echo "No se encontro la opción solicitada";
+                echo "No se encontro la opciï¿½n solicitada";
                 break;
             }
           ?>
