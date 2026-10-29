@@ -1,10 +1,12 @@
+<?php
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- <title> Contacto </title> -->
   <?php 
-  @session_start();
   include  $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Partials/Head.php'; ?>
   <!--  -->
   <link href="../../public/fonts/Roboto/Roboto.css?family=Roboto+Mono&display=swap" rel="stylesheet">
