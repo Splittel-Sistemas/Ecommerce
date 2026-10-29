@@ -20,6 +20,12 @@ class CatalogoCursos{
   protected $conn;
   protected $Tool;
   protected $Correo = ["marketing.directo@splittel.com"];
+
+  public $Descripcion;
+  public $Informacion;
+  public $Catalogo;
+  public $Curso;
+  public $Correos;
   
   public function __construct(){
     $this->conn = new Connection();

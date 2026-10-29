@@ -86,11 +86,30 @@
                 $Blog = new Blog();
                 $response = (object)$Blog->get("WHERE activo = 'si' ", "ORDER BY fecha DESC  LIMIT 4 ", false);
                 foreach ($response->records as $key => $row) {
+                  $fecha = new DateTime($row->BlogFecha);
+
+                  $formato = new IntlDateFormatter(
+                      'es_MX',
+                      IntlDateFormatter::LONG,
+                      IntlDateFormatter::NONE,
+                      'America/Mexico_City',
+                      IntlDateFormatter::GREGORIAN,
+                      'MMMM d, yyyy'
+                  );
+
+                  $fechaBlog = $formato->format($fecha);
+
               ?>
               <div class="entry">
                 <div class="entry-thumb"><a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><img src="../../public/images/img_spl/blog/<?php echo $row->BlogImg;?>" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="../Blog/detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo $row->BlogTitulo;?></a></h4><span class="entry-meta"><?php echo ucwords(strftime( '%B' , strtotime($row->BlogFecha))).' '.strftime(date("j, Y",strtotime($row->BlogFecha)));?></span>
+                    <h4 class="entry-title">
+                        <a href="../Blog/detalle.php?id=<?php echo urlencode($row->BlogKey); ?>&amp;nom=<?php echo urlencode($row->BlogComillas); ?>">
+                            <?php echo htmlspecialchars($row->BlogTitulo, ENT_QUOTES, 'UTF-8'); ?>
+                        </a>
+                    </h4>
+                    <span class="entry-meta"><?php echo htmlspecialchars($fechaBlog, ENT_QUOTES, 'UTF-8'); ?></span>  
+
                 </div>
               </div>
               <?php } ?> 

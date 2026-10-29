@@ -40,6 +40,42 @@
 
     public $TipoPago;
     public $Msi;
+
+    public $FechaRecibido;
+    public $Recibio;
+    public $EstatusPuntos;
+    public $TipoPedido;
+
+    public $Cliente;
+    public $SubtotalMXN;
+    public $IvaMXN;
+    public $TotalMXN;
+    public $Status;
+
+    public $SubTotalMXP;
+    public $IvaMXP;
+    public $TotalMXP;
+
+    public $EstatusB2B;
+    public $Referencia;
+    public $OpenPayTransaccionKey;
+    public $Intentos;
+    public $ContactoNombre;
+    public $ContactoTelefono;
+    public $ContactoCorreo;
+
+    public $OpenPayResponse;
+
+    public $FacturaKey;
+    public $RequiereFactura;
+    public $EstatusB2C;
+
+    public $Correo;
+    public $CorreoEjecutivo;
+
+    public $PuntosTotal;
+
+
     
     public function SetParameters($conn, $Tool){
         $this->Connection = $conn;

@@ -12,6 +12,8 @@
 			protected $ProductionMode;
 			protected $Connection;
 			protected $Tool;
+			protected $conn;
+			protected $Charge;
 			
 			public function SetParameters($conn, $Tool){
 				$this->Connection = $conn;
@@ -73,7 +75,7 @@
 				try {
 					$SQLSTATEMENT = "SELECT * FROM t10_keys_librerias WHERE t10_pk01 = '$id'";
 					$result = $this->Connection->QueryReturn($SQLSTATEMENT);
-					$fila = mysql_fetch_row($resultado);
+					$fila = mysqli_fetch_row($result);
 					return $fila[2];
 				} catch (Exception $e) {
 					throw $e;

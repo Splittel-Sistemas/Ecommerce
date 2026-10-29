@@ -26,6 +26,7 @@
     public $PersonalSociedad;
     public $PersonalPasswordEcommerce;
     public $PersonalIngreso;
+    public $PersonalTerminos;
 
     public function __construct(){
       $this->conn = new Connection();

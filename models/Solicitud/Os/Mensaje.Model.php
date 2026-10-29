@@ -9,6 +9,7 @@
     public $Estatus;
     public $PreguntaKey;
     public $ConsultorKey;
+    public $Adjunto;
 
     public function SetMensaje($Mensaje){
       $this->Mensaje = $Mensaje;

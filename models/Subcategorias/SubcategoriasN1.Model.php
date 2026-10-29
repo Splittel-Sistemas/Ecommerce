@@ -10,6 +10,7 @@ class SubcategoriasN1{
     public $Activo;
     public $Configuracion;
     public $Descuento;
+    public $FolderName;
 
     protected $Connection;
     protected $Tool;

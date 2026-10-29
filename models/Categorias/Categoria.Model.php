@@ -14,9 +14,23 @@ class Categoria
   public $Menu2;
   public $DescripcionLarga;
   public $ProductosRelacionados;
+  
+  public $Pregunta;
 
+  public $CategoriaCodigoKey;
+  public $CategoriaDescripcion;
+  public $CategoriaImg;
+  public $CategoriaActivo;
+  public $CategoriaFolderName;
+  public $SubcategoriaDescripcion;
+  public $SubcategoriaFolderName;
+  public $SubcategoriaSubnivel;
+  public $SubcategoriaN1Key;
+  public $SubcategoriaN1Codigo;
+  public $SubcategoriaN1Descripcion;
 
   protected $Connection;
+  protected $conn;
   protected $Tool;
 
   private function StartObjects()

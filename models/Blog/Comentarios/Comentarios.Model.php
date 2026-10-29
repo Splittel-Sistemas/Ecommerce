@@ -16,6 +16,7 @@ if (!class_exists("Email")) {
     public $Tipo;
     public $BlogKey;
     public $ComentarioRel;
+    public $Correo;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;

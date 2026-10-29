@@ -9,6 +9,9 @@
     public $Clave;
     public $Descripcion;
 
+     protected $conn;
+     protected $Tool;
+
     public function SetParameters($conn, $Tool){
       $this->conn = $conn;
       $this->Tool = $Tool;

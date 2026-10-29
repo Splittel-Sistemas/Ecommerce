@@ -14,6 +14,16 @@
     public $UrlImg1;
     public $UrlImg2;
     public $Position;
+    public $TargetLink1;
+    public $TargetLink2;
+
+    public $Link1;
+    public $FechaInicio;
+    public $FechaFin;
+    public $HoraInicio;
+    public $HoraFin;
+    public $NuevaPestana;
+    public $Titulo;
 
     protected $Connection;
     protected $Tool;

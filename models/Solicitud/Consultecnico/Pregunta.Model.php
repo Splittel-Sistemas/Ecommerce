@@ -13,6 +13,10 @@
     public $Categoria;
     public $Pregunta;
 
+    public $Key;
+    public $Mensaje;
+    public $Total;
+
     public function SetNombre($Nombre){
       if (empty($Nombre)) {
         throw new Exception('Nombre es requerido');

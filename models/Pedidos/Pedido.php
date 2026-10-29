@@ -69,6 +69,7 @@
         // 
         public $descuento;
         public $DocumentLines;
+        public $fecha;
         // 
         public function __construct(){
             

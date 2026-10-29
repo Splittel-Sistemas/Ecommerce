@@ -21,11 +21,16 @@ if (!class_exists("TemplatePedido")) {
 }
 @header('Content-Type: charset=utf-8');
 @setlocale(LC_ALL, ''); // Lenguaje de fecha español
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+ini_set('display_errors', '0');
 
 class PedidoPDF
 {
     private $Obj_MYTCPDF;
     private $Obj_PDF;
+
+    protected $Connection;
+    protected $Tool;
 
     public function __construct()
     {

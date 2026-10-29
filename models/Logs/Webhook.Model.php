@@ -14,6 +14,10 @@
     public $Data;
     public $Metodo;
     
+    
+    protected $Connection;
+		protected $Tool;
+
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
       $this->Tool = $Tool;

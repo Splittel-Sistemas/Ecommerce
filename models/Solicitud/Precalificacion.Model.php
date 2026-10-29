@@ -8,6 +8,7 @@
     public $Key;
     public $NombreFacturacion;
     public $RFC;
+    public $Rfc;
     public $NombreComercial;
     public $DireccionFacturacion;
     public $CodigoPostal;
@@ -24,6 +25,11 @@
     public $Proyectos;
     public $SituacionFiscalKey;
 
+    public $GiroEmpresaDescripcion;
+    public $PresenciaDescripcion;
+    public $NumeroEmpleadosDescripcion;
+    public $ExperienciaMercadoDescripcion;
+
     public function SetKey($Key){
       $this->Key = $Key;
     }public function SetTerminos($Terminos){
@@ -37,7 +43,7 @@
       if(empty($RFC)){
         throw new Exception("RFC es requerido");
       }
-      $Rfc = strtoupper(trim($Rfc));
+      $Rfc = strtoupper(trim($RFC));
       $pattern = '/^[A-Z&Ñ]{3,4}[0-9]{6}[A-Z0-9]{3}$/';
       if (!preg_match($pattern, $Rfc)) {
         throw new Exception('RFC no tiene un formato correcto');

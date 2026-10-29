@@ -28,6 +28,13 @@ class SolicitudCursos
 
   public $Imagen;
 
+  public $Key;
+  public $Nombre;
+  public $Correo;
+  public $Monto;
+  public $Fecha;
+  public $Fecha_Solicitud;
+
   public function Setname($name)
   {
     if (empty($name)) {

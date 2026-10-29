@@ -15,6 +15,8 @@ class CatalogoProductos
 
   private $conn;
   private $Tool;
+
+  public $Codigo;
   
   public function __construct(){
     $this->conn = new Connection();

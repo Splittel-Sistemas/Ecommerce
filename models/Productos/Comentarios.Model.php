@@ -13,6 +13,9 @@
     public $ProductoKey;
     public $CategoriaKey;
     public $Usuario;
+
+    public $TotalComentarios;
+    public $Promedio;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;

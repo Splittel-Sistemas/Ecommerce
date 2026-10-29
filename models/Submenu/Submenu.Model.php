@@ -2,12 +2,14 @@
   class Submenu_{
     public $Key;
     public $CategoriaKey;
+    public $CategoriasKey;
     public $Descripcion;
     public $FamiliaKey;
     public $Subnivel;
     public $Activo;
     public $DescripcionLarga;
     public $Imagen;
+    public $nivel;
 
     protected $Connection;
     protected $Tool;
