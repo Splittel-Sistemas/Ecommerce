@@ -1,9 +1,11 @@
+<?php
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- <title> Contacto </title> -->
-    <?php 
-    @session_start();
+    <?php
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/views/Partials/Head.php'; ?>
   </head>
   <!-- Body-->
