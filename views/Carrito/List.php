@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <div class="table-responsive shopping-cart">
   <table class="table">
     <thead>
@@ -469,8 +472,10 @@
         <i class="icon-file"></i>&nbsp;Cotización
       </a>
     </button> 
-  <?php } ?>
-    <button class="btn btn-primary" costo="<?php echo $_SESSION['Ecommerce-CostoEnvio'] ?>" requiere="<?php echo $costo ?>" subtotal="<?php echo $pedidoSubtotal ?>" existencia="<?php echo $cont; ?>" existencia1="<?php echo $cont1; ?>" onclick="FinishPedido(this)">
+  <?php } 
+  $cenvio = $_SESSION['Ecommerce-CostoEnvio'] ?? 0;
+  ?>
+    <button class="btn btn-primary" costo="<?php echo $cenvio ?>" requiere="<?php echo $costo ?>" subtotal="<?php echo $pedidoSubtotal ?>" existencia="<?php echo $cont; ?>" existencia1="<?php echo $cont1; ?>" onclick="FinishPedido(this)">
       Terminar Pedido
     </button>
   </div>
