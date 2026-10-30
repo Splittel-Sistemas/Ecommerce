@@ -39,6 +39,7 @@ class CodigoVerificacionController{
                 $CodigoVerificacionModel->SetCodigo($this->generar_token_seguro(rand(20, 44)));
                 $CodigoVerificacionModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
                 $ResultCodigoVerificacion = $CodigoVerificacionModel->create();
+                print_r($ResultCodigoVerificacion);
                 if(!isset($ResultCodigoVerificacion['error']) && !$ResultCodigoVerificacion['error']){
                     if (!class_exists("Email")) {
                         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
