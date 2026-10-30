@@ -1,9 +1,9 @@
 <?php
 @session_start();
-if (!($_SESSION['Ecommerce-CostoEnvio'] == 0) && $_SESSION['requiereCostoEnvio'] > 0) {
+if ( (!isset($_SESSION['Ecommerce-CostoEnvio']) || $_SESSION['Ecommerce-CostoEnvio'] == 0) && $_SESSION['requiereCostoEnvio'] > 0) {
   header('Location: ../Carrito');
 }
-if ($_SESSION['Ecommerce-PedidoTotal'] <= 0) {
+if (isset($_SESSION['Ecommerce-PedidoTotal']) && $_SESSION['Ecommerce-PedidoTotal'] <= 0) {
   header('Location: ../Carrito');
 } else if (!isset($_SESSION['Ecommerce-ClienteKey'])) {
   $_SESSION['Ecommerce-PedidoPagar'] = true;
