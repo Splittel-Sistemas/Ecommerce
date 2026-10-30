@@ -20,28 +20,38 @@
 			$_SESSION['Ecommerce-CostoEnvio'] = 0;
 		}
 	}
+	
 	if (!function_exists('url_amigable')) {
+
 		function url_amigable($url_tmp) {
-			##webdebe.com
-			//Convertimos a minúsculas y UTF8
-			$url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
-		  
-			//Reemplazamos espacios por guion
-			$find = array(' ', '&', '\r\n', '\n', '+');
-			$url_utf8 = str_replace ($find, '-', $url_utf8);
-		  
-			$url_utf8 = strtr(utf8_decode($url_utf8),
-				utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
-				'-aaaaaaaceeeeiiiionoooooouuuuyy');
-		  
-			//Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
-			$find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
-			$repl = array('', '-', '');
-			$url = preg_replace ($find, $repl, $url_utf8);
-		  
-			return $url;
-		  }
+
+			// Convertir a minúsculas y UTF-8
+			$url_utf8 = mb_strtolower((string)$url_tmp, 'UTF-8');
+
+			// Reemplazar espacios y caracteres especiales
+			$url_utf8 = str_replace(
+				[' ', '&', "\r\n", "\n", '+'],
+				'-',
+				$url_utf8
+			);
+
+			// Convertir acentos y caracteres especiales a ASCII
+			$url_utf8 = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $url_utf8);
+
+			// Eliminar etiquetas HTML
+			$url_utf8 = strip_tags($url_utf8);
+
+			// Eliminar caracteres no permitidos
+			$url = preg_replace('/[^a-z0-9-]/', '', $url_utf8);
+
+			// Reemplazar guiones consecutivos
+			$url = preg_replace('/-+/', '-', $url);
+
+			// Eliminar guiones al inicio y final
+			return trim($url, '-');
 		}
+	}
+
 ?>
 
 <a href="../Carrito/">
