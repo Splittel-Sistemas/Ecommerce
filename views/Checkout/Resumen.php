@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <div class="col-md-12">
   <div class="alert alert-warning alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
     <strong>Solo se envian pedidos completos</strong>
