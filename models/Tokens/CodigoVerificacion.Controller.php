@@ -1,5 +1,4 @@
 <?php
-
 @session_start();
 if (!class_exists('Connection')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
@@ -40,7 +39,7 @@ class CodigoVerificacionController{
                 $CodigoVerificacionModel->SetCodigo($this->generar_token_seguro(rand(20, 44)));
                 $CodigoVerificacionModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
                 $ResultCodigoVerificacion = $CodigoVerificacionModel->create();
-                if(!$ResultCodigoVerificacion['error']){
+                if(!isset($ResultCodigoVerificacion['error']) && !$ResultCodigoVerificacion['error']){
                     if (!class_exists("Email")) {
                         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
                     }if (!class_exists("TemplateCodigoVerificacion")) {
