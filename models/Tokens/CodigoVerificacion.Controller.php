@@ -39,7 +39,7 @@ class CodigoVerificacionController{
                 $CodigoVerificacionModel->SetCodigo($this->generar_token_seguro(rand(20, 44)));
                 $CodigoVerificacionModel->SetPedidoKey($_SESSION['Ecommerce-PedidoKey']);
                 $ResultCodigoVerificacion = $CodigoVerificacionModel->create();
-                if(!isset($ResultCodigoVerificacion['error']) && !$ResultCodigoVerificacion['error']){
+                if(!$ResultCodigoVerificacion['error']){
                     if (!class_exists("Email")) {
                         include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
                     }if (!class_exists("TemplateCodigoVerificacion")) {
@@ -87,7 +87,6 @@ class CodigoVerificacionController{
         if ($longitud < 4) {
             $longitud = 4;
         }
-        print_r(bin2hex(openssl_random_pseudo_bytes(($longitud - ($longitud % 2)) / 2)));
         return bin2hex(openssl_random_pseudo_bytes(($longitud - ($longitud % 2)) / 2));
     }
 }
