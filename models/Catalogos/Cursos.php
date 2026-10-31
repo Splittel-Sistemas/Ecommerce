@@ -82,10 +82,10 @@ class CatalogoCursos{
           $EmailTest = new EmailTest();
           
           if($this->Descripcion == 'boletin'){ 
-            $Email->MailerSubject = utf8_decode("Boletín");
+            $Email->MailerSubject = ("Boletín");
             $Email->MailerBody = $EmailTest->registroBoletin($this->Informacion); 
           }elseif($this->Descripcion == 'catalogo'){
-            $Email->MailerSubject = utf8_decode("Descarga de catálogo");
+            $Email->MailerSubject = ("Descarga de catálogo");
             $Email->MailerBody = $EmailTest->DesCatalogo($this->Catalogo);
           }elseif($this->Descripcion == 'SolucionesTop'){
             $Email->MailerSubject = "SolucionesTop";
