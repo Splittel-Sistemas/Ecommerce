@@ -23,6 +23,8 @@
     public $Telefono;
     public $Email;
     public $Email_ItemsStockBad;
+    public $GetTransportationCode;
+    public $EstructuraPedidoB2B = [];
 
     public $TipoPago;
     public $Msi;
