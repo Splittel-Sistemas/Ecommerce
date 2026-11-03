@@ -32,6 +32,7 @@
      */ 
     public function get(){
       try {
+        @session_start();
         $Contacto = new Contacto();
         $EcommContacto_Webservice = $Contacto->show("WHERE id = 1 ",  "", false)->records[0]->ContactoWebservice;
 
