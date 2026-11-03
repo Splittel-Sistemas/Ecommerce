@@ -18,7 +18,11 @@
       $ErrorCode = -100;
     }
   }
-
+if(isset($_SESSION['Ecommerce-ClienteKey'])){
+  print_r($_SESSION['Ecommerce-ClienteKey']);
+}else{
+  echo "no existe";
+}
  ?>
 
 
