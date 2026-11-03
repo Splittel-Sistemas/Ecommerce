@@ -1,5 +1,4 @@
 <?php 
-
 /**
  * 
  */
@@ -35,6 +34,8 @@
       try {
         $Contacto = new Contacto();
         $EcommContacto_Webservice = $Contacto->show("WHERE id = 1 ",  "", false)->records[0]->ContactoWebservice;
+
+        print_r($_SESSION['Ecommerce-ClienteKey']);
 
         $Personal = new Personal();
         $PersonalCliente = (object)$Personal->get("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND activo='si' ", "", false)->records[0];
