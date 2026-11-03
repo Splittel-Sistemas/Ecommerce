@@ -1,6 +1,11 @@
 
 <?php 
   @session_start();
+  if(isset($_SESSION['Ecommerce-ClienteKey'])){
+  print_r($_SESSION['Ecommerce-ClienteKey']);
+}else{
+  echo "no existe1";
+}
   if (!class_exists("GetShipToAdressByAddressName")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetShipToAdressByAddressName.php';
   }
@@ -18,11 +23,7 @@
       $ErrorCode = -100;
     }
   }
-if(isset($_SESSION['Ecommerce-ClienteKey'])){
-  print_r($_SESSION['Ecommerce-ClienteKey']);
-}else{
-  echo "no existe1";
-}
+
  ?>
 
 
