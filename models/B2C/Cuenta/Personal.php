@@ -45,7 +45,7 @@
       try {
         if (!$this->conn->conexion()->connect_error) {
           $SQLSTATEMENT = "SELECT * FROM login_cliente ".$filter." ".$order;
-          // echo $SQLSTATEMENT;
+           echo $SQLSTATEMENT;
           $result = $this->conn->QueryReturn($SQLSTATEMENT);
           while ($row = $result->fetch_object()) {
             $Personal = new Personal();
