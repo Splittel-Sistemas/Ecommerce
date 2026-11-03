@@ -3,6 +3,15 @@
  * 
  */
   @session_start();
+
+echo '<pre>';
+echo 'Session ID: ' . session_id() . PHP_EOL;
+echo 'Cookie PHPSESSID: ' . ($_COOKIE['PHPSESSID'] ?? 'NO LLEGA') . PHP_EOL;
+echo 'Session Status: ' . session_status() . PHP_EOL;
+echo 'ClienteKey: ';
+var_dump($_SESSION['Ecommerce-ClienteKey'] ?? 'NO EXISTE');
+echo '</pre>';
+exit;
   if (!class_exists("Seguridad")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   }if (!class_exists("WebService")) {
@@ -35,12 +44,6 @@
         @session_start();
         $Contacto = new Contacto();
         $EcommContacto_Webservice = $Contacto->show("WHERE id = 1 ",  "", false)->records[0]->ContactoWebservice;
-
-        if(isset($_SESSION['Ecommerce-ClienteKey'])){
-           print_r($_SESSION['Ecommerce-ClienteKey']);
-        }else{
-          echo "no existe";
-        }
 
         $Personal = new Personal();
         $PersonalCliente = (object)$Personal->get("WHERE id_cliente = ".$_SESSION['Ecommerce-ClienteKey']." AND activo='si' ", "", false)->records[0];
