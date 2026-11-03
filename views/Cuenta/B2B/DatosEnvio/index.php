@@ -1,10 +1,5 @@
 <?php 
 @session_start();
-if(isset($_SESSION['Ecommerce-ClienteKey'])){
-  print_r($_SESSION['Ecommerce-ClienteKey']);
-}else{
-  echo "no existe2";
-}
 if(isset($_SESSION['Ecommerce-ClienteKey']))
 {
   if (!class_exists("GetShipToAdress")) {
@@ -21,7 +16,6 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
   
  
 ?>
-
 <div class="col-lg-12" id="ContenidoCuenta">
   <div class="row">
     <div class="col-lg-12">
