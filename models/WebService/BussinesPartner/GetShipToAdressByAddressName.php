@@ -2,7 +2,9 @@
 /**
  * 
  */
-  @session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 echo '<pre>';
 echo 'Session ID: ' . session_id() . PHP_EOL;
