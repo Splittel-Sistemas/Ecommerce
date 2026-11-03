@@ -1,12 +1,5 @@
 <?php 
-if (headers_sent($archivo, $linea)) {
-    die("HEADERS YA ENVIADOS DESDE: " . $archivo . " LINEA: " . $linea);
-}
-
-session_start();
-
-echo "SESSION ID: " . session_id();
-exit;
+@session_start();
   if (!class_exists("Seguridad")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   }if (!class_exists("WebService")) {
@@ -36,7 +29,6 @@ exit;
      */ 
     public function get(){
       try {
-        @session_start();
         $Contacto = new Contacto();
         $EcommContacto_Webservice = $Contacto->show("WHERE id = 1 ",  "", false)->records[0]->ContactoWebservice;
 
