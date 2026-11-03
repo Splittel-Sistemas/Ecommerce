@@ -1,6 +1,6 @@
 
 <?php 
-
+  @session_start();
   if (!class_exists("GetShipToAdressByAddressName")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/BussinesPartner/GetShipToAdressByAddressName.php';
   }
