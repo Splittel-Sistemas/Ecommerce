@@ -1,7 +1,12 @@
 <?php 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (headers_sent($archivo, $linea)) {
+    die("HEADERS YA ENVIADOS DESDE: " . $archivo . " LINEA: " . $linea);
 }
+
+session_start();
+
+echo "SESSION ID: " . session_id();
+exit;
   if (!class_exists("Seguridad")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   }if (!class_exists("WebService")) {
