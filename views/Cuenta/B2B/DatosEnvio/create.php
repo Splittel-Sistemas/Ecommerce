@@ -21,7 +21,7 @@
 if(isset($_SESSION['Ecommerce-ClienteKey'])){
   print_r($_SESSION['Ecommerce-ClienteKey']);
 }else{
-  echo "no existe";
+  echo "no existe1";
 }
  ?>
 
