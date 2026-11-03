@@ -1,8 +1,4 @@
 <?php 
-
-  /**
-   * Información personal acerca del usuario
-   */
   @session_start();
   if (!class_exists("Connection")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
