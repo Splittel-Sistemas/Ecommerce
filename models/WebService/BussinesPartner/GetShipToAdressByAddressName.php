@@ -2,32 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-echo '<pre>';
-
-echo "Antes de session_start:\n";
-var_dump(session_status());
-var_dump(session_save_path());
-var_dump(session_id());
-
-echo "\nEjecutando session_start:\n";
-$resultado = session_start();
-
-var_dump($resultado);
-var_dump(session_status());
-var_dump(session_id());
-
-echo "\nÚltimo error:\n";
-var_dump(error_get_last());
-
-echo "\nContenido de SESSION:\n";
-var_dump($_SESSION ?? null);
-
-echo '</pre>';
-
-exit;
   if (!class_exists("Seguridad")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   }if (!class_exists("WebService")) {
