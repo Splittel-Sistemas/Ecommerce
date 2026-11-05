@@ -32,7 +32,7 @@
           function url_amigable($url_tmp) {
 
             // Convertir a minúsculas y UTF-8
-            $url_utf8 = mb_strtolower((string)$url_tmp, 'UTF-8');
+            $url_utf8 = mb_strtolower((string)($url_tmp ?? ''), 'UTF-8');
 
             // Reemplazar espacios y caracteres especiales
             $url_utf8 = str_replace(

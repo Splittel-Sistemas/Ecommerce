@@ -41,7 +41,24 @@
         <div class="col-xl-9 col-lg-8 order-lg-2">
           <!-- Post Meta-->
           <ul class="post-meta mb-4">
-            <li><i class="icon-clock"></i><a href="#"><?php echo ucwords(strftime( '%B' , strtotime($response->fecha))).' '.strftime(date("j, Y",strtotime($response->fecha)));?></a></li>
+            <?php
+              $fecha = new DateTime($response->fecha);
+
+              $formatter = new IntlDateFormatter(
+                  'es_MX',
+                  IntlDateFormatter::NONE,
+                  IntlDateFormatter::NONE,
+                  'America/Mexico_City',
+                  IntlDateFormatter::GREGORIAN,
+                  'MMMM'
+              );
+
+              $mes = $formatter->format($fecha);
+              $mes = mb_convert_case($mes, MB_CASE_TITLE, 'UTF-8');
+
+              $fechaFormateada = $mes . ' ' . $fecha->format('j, Y');
+            ?>
+            <li><i class="icon-clock"></i><a href="#"><?php echo htmlspecialchars($fechaFormateada, ENT_QUOTES, 'UTF-8'); ?></a></li>
           </ul>
           <!-- Gallery-->
           <div class="gallery-wrapper">
@@ -63,13 +80,13 @@
           </div>
           <h2 class="pt-4"><?php echo $response->titulo?></h2>
           <p style="text-align: justify;"><?php
-                echo nl2br($response->texto1);
+                echo nl2br($response->texto1 ?? '');
             ?></p>
           
           <div class="row pt-3 pb-2">
             <div class="col-xl-10 offset-xl-1">
               <blockquote class="margin-top-1x margin-bottom-1x">
-                <p><?php echo nl2br($response->comillas)?></p>
+                <p><?php echo nl2br($response->comillas ?? '')?></p>
                 
               </blockquote>
             </div>
@@ -77,7 +94,7 @@
           <br />
           <br />
           <p style="text-align: justify;"><?php
-                echo nl2br($response->texto2);
+                echo nl2br($response->texto2 ?? '');
             ?></p>
           <br />
           <br />

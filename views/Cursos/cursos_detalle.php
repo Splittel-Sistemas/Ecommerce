@@ -51,7 +51,7 @@
           <!-- Post Meta-->
           <!--
           <ul class="post-meta mb-4">
-            <li><i class="icon-clock"></i><a href="#"><?php echo ucwords(strftime( '%B' , strtotime($response->fecha))).' '.strftime(date("j, Y",strtotime($response->fecha)));?></a></li>
+            <li><i class="icon-clock"></i><a href="#"><?php // echo ucwords(strftime( '%B' , strtotime($response->fecha))).' '.strftime(date("j, Y",strtotime($response->fecha)));?></a></li>
           </ul>
           -->
           <!-- Gallery-->
@@ -80,7 +80,7 @@
           </div>
           <h2 class="pt-4"><?php echo $response->titulo?></h2>
           <p style="text-align: justify;"><?php
-                echo nl2br($response->texto1);
+                echo nl2br($response->texto1 ?? '');
             ?></p>
           
           <div class="row pt-3 pb-2">
@@ -91,10 +91,9 @@
                 include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Catalogos/Capacitaciones.php';
                 }
                 $CatalogoCursos = new CatalogoCapacitaciones();
-                $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND activo='si' AND  id_curso=".$response->id, " ORDER BY start ASC LIMIT 1 ", false)->records[0];
-                
+                $responseI = $CatalogoCursos->getEvents("WHERE start >= NOW() AND activo='si' AND  id_curso=".$response->id, " ORDER BY start ASC LIMIT 1 ", false)->records[0] ?? ''; 
               ?>
-                <p><b>Nuestra próxima certificación es: <?php echo nl2br($responseI->fecha)?></b></p>
+                <p><b>Nuestra próxima certificación es: <?php echo nl2br($responseI->fecha ?? '')?></b></p>
                 <p>Para inscripciones en fechas futuras, favor de consultar con tu ejecutivo comercial.</p>
               <?php
               
@@ -105,7 +104,7 @@
           <br />
           <br />
           <p style="text-align: justify;"><?php
-                echo nl2br($response->texto2);
+                echo nl2br($response->texto2 ?? '');
             ?></p>
           <br />
           <br />
@@ -214,8 +213,8 @@
             $first_cur = $CatalogoCursos->get("", "ORDER BY id ASC LIMIT 1 ", false)->records[0];
             $first_cur = $first_cur->id;
             if($first_cur !=$_GET['id']){
-              $nombre_ficur = $CatalogoCursos->get("WHERE id=".($_GET['id'] - 1), "", false)->records[0];
-              $nombre_ficur = $nombre_ficur->titulo;
+              $nombre_ficur = $CatalogoCursos->get("WHERE id=".($_GET['id'] - 1), "", false)->records[0] ?? '';
+              $nombre_ficur = $nombre_ficur->titulo ?? '';
             }else{
               $nombre_ficur ="";
             }
@@ -225,8 +224,8 @@
             $final_cur = $CatalogoCursos->get("", "ORDER BY id DESC LIMIT 1 ", false)->records[0];
             $final_cur = $final_cur->id;
             if($final_cur !=$_GET['id']){
-            $nombre_fcur = $CatalogoCursos->get("WHERE id=".($_GET['id'] + 1), "", false)->records[0];
-            $nombre_fcur = $nombre_fcur->titulo;
+            $nombre_fcur = $CatalogoCursos->get("WHERE id=".($_GET['id'] + 1), "", false)->records[0] ?? '';
+            $nombre_fcur = $nombre_fcur->titulo ?? '';
             }else{
               $nombre_fcur ="";
             }

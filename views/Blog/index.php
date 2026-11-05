@@ -104,7 +104,25 @@
                         <ul class="post-meta">
                         <li>
                             <i class="icon-clock"></i>
-                            <a href="detalle.php?id=<?php echo $row->BlogKey;?>&nom=<?php echo $row->BlogComillas;?>"><?php echo ucwords(strftime( '%B' , strtotime($row->BlogFecha))).' '.strftime(date("j, Y",strtotime($row->BlogFecha)));?></a>
+                            <?php
+                            $fecha = new DateTime($row->BlogFecha);
+
+                            $formatter = new IntlDateFormatter(
+                                'es_MX',
+                                IntlDateFormatter::NONE,
+                                IntlDateFormatter::NONE,
+                                'America/Mexico_City',
+                                IntlDateFormatter::GREGORIAN,
+                                'MMMM'
+                            );
+
+                            $mes = $formatter->format($fecha);
+                            $mes = mb_convert_case($mes, MB_CASE_TITLE, 'UTF-8');
+                            $fechaFormateada = $mes . ' ' . $fecha->format('j, Y');
+                            ?>
+                            <a href="detalle.php?id=<?php echo urlencode($row->BlogKey); ?>&nom=<?php echo urlencode($row->BlogComillas); ?>">
+                                <?php echo htmlspecialchars($fechaFormateada, ENT_QUOTES, 'UTF-8'); ?>
+                            </a>
                         </li>
                         </ul>
                         <h1 class="post-title">

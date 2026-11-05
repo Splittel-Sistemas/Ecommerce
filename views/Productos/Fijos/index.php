@@ -222,7 +222,16 @@ $Entransito = $EnTransitoController->get();
                       $dateTime = DateTime::createFromFormat('d-m-Y', date('d-m-Y',strtotime($datas->Fecha)));
                       if ($dateTime !== false) {
                         setlocale(LC_TIME, 'es_ES.UTF-8'); // Establecer la localización en español
-                        $fechaFormateada = strftime('%d de %B de %Y', $dateTime->getTimestamp());
+                        //$fechaFormateada = strftime('%d de %B de %Y', $dateTime->getTimestamp());
+                        $formatter = new IntlDateFormatter(
+                            'es_MX',
+                            IntlDateFormatter::NONE,
+                            IntlDateFormatter::NONE,
+                            'America/Mexico_City',
+                            IntlDateFormatter::GREGORIAN,
+                            "d 'de' MMMM 'de' yyyy"
+                        );
+                        $fechaFormateada = $formatter->format($dateTime);
                       $TextTra=$TextTra.'<tr><th class=\'px-3 text-center\' scope=\'row\'>'.$datas->Cantidad.'</th><th class=\'px-3 text-center\' scope=\'row\'>'.$fechaFormateada.'</th></tr>';
                       }
                       }
