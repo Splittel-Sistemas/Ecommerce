@@ -67,18 +67,14 @@ class CatalogoCursos{
   public function sendEmail($return_json){
     try {
       if (!$this->conn->conexion()->connect_error) {
-        $cloudflare = new Cloudflare();
-        $respuestaCaptcha = $cloudflare->ValidarToken();
-
-        if ($respuestaCaptcha['respuesta']) {
-          $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
+        $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
             '".$this->Descripcion."',
             '".$this->Informacion."',
             '".$this->Correos."',
           @Result);", "@Result");
 
           if (!$result['error']) {
-            $result['cap'] = $respuestaCaptcha['mensaje'];
+            $result['cap'] = "";
             $Email = new Email();
             $EmailTest = new EmailTest();
             
@@ -102,9 +98,7 @@ class CatalogoCursos{
           }else{
             throw new Exception("No se pudo guardar la información, intenta de nuevo por favor!");
           }
-        } else {
-          throw new Exception($respuestaCaptcha['mensaje']);
-        }
+
         return $return_json ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result;
       }
     } catch (Exception $e) {
@@ -162,8 +156,15 @@ class CatalogoCursos{
           echo $CatalogoCursos->sendEmail(true);
           break;
         case 'RegistroBoletin':
-          $CatalogoCursos->Informacion =  $CatalogoCursos->Tool->validEmail('Correo', 'Correo', true);
-          echo $CatalogoCursos->sendEmail(true);
+          $cloudflare = new Cloudflare();
+          $respuestaCaptcha = $cloudflare->ValidarToken();
+
+          if ($respuestaCaptcha['respuesta']) {
+            $CatalogoCursos->Informacion =  $CatalogoCursos->Tool->validEmail('Correo', 'Correo', true);
+            echo $CatalogoCursos->sendEmail(true);
+          } else {
+            throw new Exception($respuestaCaptcha['mensaje']);
+          }
           break;
         default:
           echo $CatalogoCursos->Tool->Message_return(true,  "No se encontro la opción solicitada, por favor pide ayuda al departamento de TI...", null, true);
