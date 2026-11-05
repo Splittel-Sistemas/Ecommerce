@@ -14,6 +14,8 @@ if (!class_exists("Connection")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailTest.php';
 }if (!class_exists("Captcha")) {
   include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Captcha/Captcha.php';
+} if (!class_exists("Cloudflare")) {
+  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Captcha/Cloudflare.php';
 }
 
 class CatalogoCursos{
@@ -65,47 +67,45 @@ class CatalogoCursos{
   public function sendEmail($return_json){
     try {
       if (!$this->conn->conexion()->connect_error) {
+        $cloudflare = new Cloudflare();
+        $respuestaCaptcha = $cloudflare->ValidarToken();
 
-        $ObjCaptcha = new Captcha();
-        $retorno = $ObjCaptcha->getCaptcha($_POST['recaptcha_response']);
-        // if($retorno->success == true && $retorno->score > 0.5){
+        if ($respuestaCaptcha['respuesta']) {
+          $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
+            '".$this->Descripcion."',
+            '".$this->Informacion."',
+            '".$this->Correos."',
+          @Result);", "@Result");
 
-        $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
-          '".$this->Descripcion."',
-          '".$this->Informacion."',
-          '".$this->Correos."',
-        @Result);", "@Result");
-
-        if (!$result['error']) {
-          $result['cap'] = $retorno;
-          $Email = new Email();
-          $EmailTest = new EmailTest();
-          
-          if($this->Descripcion == 'boletin'){ 
-            $Email->MailerSubject = ("Boletín");
-            $Email->MailerBody = $EmailTest->registroBoletin($this->Informacion); 
-          }elseif($this->Descripcion == 'catalogo'){
-            $Email->MailerSubject = ("Descarga de catálogo");
-            $Email->MailerBody = $EmailTest->DesCatalogo($this->Catalogo);
-          }elseif($this->Descripcion == 'SolucionesTop'){
-            $Email->MailerSubject = "SolucionesTop";
-            $this->Correo = ['cursos@fibremex.com.mx','marketing.directo@splittel.com'];
-            $Email->MailerBody = $EmailTest->cursos($this->Curso);
+          if (!$result['error']) {
+            $result['cap'] = $respuestaCaptcha['mensaje'];
+            $Email = new Email();
+            $EmailTest = new EmailTest();
+            
+            if($this->Descripcion == 'boletin'){ 
+              $Email->MailerSubject = ("Boletín");
+              $Email->MailerBody = $EmailTest->registroBoletin($this->Informacion); 
+            }elseif($this->Descripcion == 'catalogo'){
+              $Email->MailerSubject = ("Descarga de catálogo");
+              $Email->MailerBody = $EmailTest->DesCatalogo($this->Catalogo);
+            }elseif($this->Descripcion == 'SolucionesTop'){
+              $Email->MailerSubject = "SolucionesTop";
+              $this->Correo = ['cursos@fibremex.com.mx','marketing.directo@splittel.com'];
+              $Email->MailerBody = $EmailTest->cursos($this->Curso);
+            }else{
+              $Email->MailerSubject = "Curso";
+              $this->Correo = ['cursos@fibremex.com.mx'];
+              $Email->MailerBody = $EmailTest->cursos($this->Curso);
+            }
+            $Email->MailerListTo = $this->Correo;
+            $Email->EmailSendEmail();
           }else{
-            $Email->MailerSubject = "Curso";
-            $this->Correo = ['cursos@fibremex.com.mx'];
-            $Email->MailerBody = $EmailTest->cursos($this->Curso);
+            throw new Exception("No se pudo guardar la información, intenta de nuevo por favor!");
           }
-          //$Email->MailerBody = $this->Descripcion == 'boletin' ? $EmailTest->registroBoletin($this->Informacion) : $EmailTest->cursos($this->Curso);
-          $Email->MailerListTo = $this->Correo;
-          $Email->EmailSendEmail();
-        }else{
-          throw new Exception("No se pudo guardar la información, intenta de nuevo por favor!");
+        } else {
+          throw new Exception($respuestaCaptcha['mensaje']);
         }
         return $return_json ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result;
-
-      // }
-
       }
     } catch (Exception $e) {
       throw $e;

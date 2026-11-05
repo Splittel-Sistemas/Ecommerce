@@ -85,3 +85,6 @@ src="https://www.facebook.com/tr?id=201268776126598&ev=PageView
     </script>
  
 <!--  Captcha Code V3 -->
+
+<!--Cloudflare--->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
