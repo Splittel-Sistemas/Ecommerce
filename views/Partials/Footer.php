@@ -100,6 +100,7 @@
                 <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1">
               </div>
               <p class="form-text text-sm text-white opacity-50 pt-2">&nbsp;</p>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAF1MSouzxPNdbcaZ" data-refresh-expired="manual" data-retry="never"></div>
             </div>
             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
             <div class="col-sm-3">
