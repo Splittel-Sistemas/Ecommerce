@@ -32,7 +32,7 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
     <?php
                 if (is_object($ResponseGetDocumentsPayment->Records->Document_)) {
                     $LinesDoc = [$ResponseGetDocumentsPayment->Records->Document_];
-                } elseif (is_array($$ResponseGetDocumentsPayment->Records->Document_)) {
+                } elseif (is_array($ResponseGetDocumentsPayment->Records->Document_)) {
                     $LinesDoc = $ResponseGetDocumentsPayment->Records->Document_;
                 } else {
                     $LinesDoc = [];
