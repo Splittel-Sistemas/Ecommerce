@@ -108,11 +108,10 @@
                 <div class="entry-content">
                     <h4 class="entry-title">
                         <a href="../Blog/detalle.php?id=<?php echo urlencode($row->BlogKey); ?>&amp;nom=<?php echo urlencode($row->BlogComillas); ?>">
-                            <?php echo htmlspecialchars($row->BlogTitulo, ENT_QUOTES, 'UTF-8'); ?>
+                            <?php echo strip_tags($row->BlogTitulo); ?>
                         </a>
                     </h4>
-                    <span class="entry-meta"><?php echo htmlspecialchars($fechaBlog, ENT_QUOTES, 'UTF-8'); ?></span>  
-
+                    <span class="entry-meta"><?php echo strip_tags($fechaBlog); ?></span>  
                 </div>
               </div>
               <?php } ?> 
