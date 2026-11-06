@@ -358,9 +358,9 @@ if (!class_exists("SolucionesTopController")) {
       <!--Menu movil-->
       <?php
       if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-        //include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2B/Menu-movil.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2B/Menu-movil.php';
       } else {
-        //include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2C/Menu-movil.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2C/Menu-movil.php';
       }
       ?>
     </div>
