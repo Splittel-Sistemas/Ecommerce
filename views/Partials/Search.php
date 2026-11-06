@@ -34,8 +34,11 @@ if (isset($_POST["Descripcion"])) {
       return $url;
     }
   }
+
+  $SubmenuController = new SubmenuController();
+  $descripcion = $SubmenuController->sanitizaText($_POST["Descripcion"]);
   $like = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
    
     if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" && $e[$i] != "con" && $e[$i] != "CON" ) {
@@ -44,7 +47,8 @@ if (isset($_POST["Descripcion"])) {
   }
 
   $like2 = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $descripcion = $SubmenuController->sanitizaText($_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" && $e[$i] != "con" && $e[$i] != "CON" ) {
 
@@ -54,15 +58,17 @@ if (isset($_POST["Descripcion"])) {
 
 //BUSCADOR DE CATEGORIAS
   $desc = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $descripcion = $SubmenuController->sanitizaText($_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != "" && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" && $e[$i] != "con" && $e[$i] != "CON") {
 
       $desc .= " OR descripcion LIKE '%" . $e[$i] . "%'";
     }
   }
-  $SubmenuController = new SubmenuController();
-  $SubmenuController->filter = "WHERE (descripcion LIKE '%" . $_POST["Descripcion"] . "%' $desc  ) AND activo='si'   ";
+  
+  $descripcion = $SubmenuController->sanitizaText($_POST["Descripcion"]);
+  $SubmenuController->filter = "WHERE (descripcion LIKE '%" . $descripcion . "%' $desc  ) AND activo='si'   ";
   $SubmenuController->order = "";
   $Subcategoria = $SubmenuController->get();
 
@@ -73,7 +79,7 @@ if (isset($_POST["Descripcion"])) {
 
   if ($Subcategoria->count > 0) {
     foreach ($Subcategoria->records as $key => $Subcategoria_) {
-      $contenido_resaltado = highlightWords($_POST["Descripcion"], $Subcategoria_->Descripcion);
+      $contenido_resaltado = highlightWords($descripcion, $Subcategoria_->Descripcion);
       if ($Subcategoria_->nivel == 2) {
 ?>
         <a class="list-group-item item-product item-font" href="../Productos/categorias.php?id_sbct=<?php echo $Subcategoria_->Key; ?>">
@@ -96,24 +102,27 @@ if (isset($_POST["Descripcion"])) {
 
 
   //BUSCADOR DE SUBCATEGORIAS 
-
+  $SubcategoriasN1Controller = new SubcategoriasN1Controller();
+  $descripcion = $SubcategoriasN1Controller->sanitizaText($_POST["Descripcion"]);
   $cat = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != "") {
 
       $cat .= " OR desc_subcategoria LIKE '%" . $e[$i] . "%'";
     }
   }
+  $descripcion = $SubcategoriasN1Controller->sanitizaText($_POST["Descripcion"]);
   $clave = "";
-  $div = $telefono = str_split($_POST["Descripcion"], 4);
+  $div = $telefono = str_split($descripcion, 4);
 
   foreach ($div as $value) {
     /*  echo $value."<br/>"; */
     $clave .= " OR clave LIKE '%" . $value . "%'";
   }
-  $SubcategoriasN1Controller = new SubcategoriasN1Controller();
-  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $_POST["Descripcion"] . "%' $cat  OR clave LIKE '%" . $_POST["Descripcion"] . "%' $clave ) AND activo='si'  ";
+  
+  $descripcion = $SubcategoriasN1Controller->sanitizaText($_POST["Descripcion"]);
+  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $descripcion . "%' $cat  OR clave LIKE '%" . $descripcion . "%' $clave ) AND activo='si'  ";
   $SubcategoriasN1Controller->order = "";
   
   $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
