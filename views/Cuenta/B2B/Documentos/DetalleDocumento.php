@@ -19,10 +19,10 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
   }
 
   if($ResponseGetDocumentLines->ErrorCode == 0){
-    if(sizeof($ResponseGetDocumentLines->Records->DocumentLine) == 1){
-      $LinesDoc [] = $ResponseGetDocumentLines->Records->DocumentLine;
+    if(is_array($ResponseGetDocumentLines->Records->DocumentLine)){
+      $LinesDoc = $ResponseGetDocumentLines->Records->DocumentLine;
     }else{
-        $LinesDoc = $ResponseGetDocumentLines->Records->DocumentLine;
+      $LinesDoc = [];
     }
 ?>
     <table class="table table-sm table-bordered table-hover" id="table-pedido">
