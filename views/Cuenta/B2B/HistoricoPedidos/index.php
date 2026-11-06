@@ -22,10 +22,14 @@
         if($ErrorCode == 0){
             if($ResponseGetOrdersByCustomer->Count > 0){
                 $ResponseEnProceso = $ResponseGetOrdersByCustomer->Records;
-                
-                if(is_array($ResponseEnProceso->Document_)){
-                    $DocumentsOrders = $ResponseEnProceso->Document_;
-                }else{
+
+                $DocumentLine = $ResponseEnProceso->Document_ ?? [];
+    
+                if (is_object($DocumentLine)) {
+                    $DocumentsOrders = [$DocumentLine];
+                } elseif (is_array($DocumentLine)) {
+                    $DocumentsOrders = $DocumentLine;
+                } else {
                     $DocumentsOrders = [];
                 }
 
