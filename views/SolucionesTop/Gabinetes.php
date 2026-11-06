@@ -377,27 +377,8 @@
           </div>
 
           <!-- PRODUCTOS -->
+           
           <div class="col-lg-3 col-md-3 order-md-2">
-            <a href=" <?= $row->j1_link ?>" style="color: black;text-decoration: none;" target="_blank">
-
-              <h6 class=" text-center text-normal margin-top-2x">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/gabinetes/" . $row->J1_img ?>">
-            </a>
-
-            </h6>
-            </a>
-
-          </div>
-          <div class="col-lg-3 col-md-3 order-md-2">
-            <a href=" <?= $row->j2_link ?>" style="color: black;text-decoration: none;" target="_blank">
-
-              <h6 class=" text-center text-normal margin-top-2x">
-                <img alt="" src="../../public/images/img_spl/solucionestop/<?= $row->Nombre . "/gabinetes/" . $row->J2_img ?>">
-            </a>
-
-            </h6>
-            </a>
-
           </div>
           <div class="col-lg-3 col-md-3 order-md-2">
             <a href=" <?= $row->j3_link ?>" style="color: black;text-decoration: none;" target="_blank">
@@ -420,6 +401,8 @@
             </h6>
             </a>
 
+          </div>
+          <div class="col-lg-3 col-md-3 order-md-2">
           </div>
           <!-- BOTON -->
           <div class="col-lg-12 col-md-8 order-md-2 margin-top-2x ">
