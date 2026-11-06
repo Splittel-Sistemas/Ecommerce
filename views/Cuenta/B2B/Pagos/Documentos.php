@@ -29,8 +29,15 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
                         </tr>
                     </thead>
                     <tbody>
-    <?php 
-                foreach ($ResponseGetDocumentsPayment->Records->Document_ as $obj) {
+    <?php
+                if (is_object($ResponseGetDocumentsPayment->Records->Document_)) {
+                    $LinesDoc = [$ResponseGetDocumentsPayment->Records->Document_];
+                } elseif (is_array($$ResponseGetDocumentsPayment->Records->Document_)) {
+                    $LinesDoc = $ResponseGetDocumentsPayment->Records->Document_;
+                } else {
+                    $LinesDoc = [];
+                }
+                foreach ($LinesDoc as $obj) {
                     $date1 = new DateTime($_REQUEST['DocDate']);
                     $date2 = new DateTime(date("d-m-Y",strtotime($obj->DocDate)));
                     $diff = $date1->diff($date2);
