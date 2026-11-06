@@ -23,10 +23,10 @@
             if($ResponseGetOrdersByCustomer->Count > 0){
                 $ResponseEnProceso = $ResponseGetOrdersByCustomer->Records;
                 
-                if(is_array($ResponseEnProceso->Document_) && sizeof($ResponseEnProceso->Document_) == 1){
-                    $DocumentsOrders [] = $ResponseEnProceso->Document_;
-                }else{
+                if(is_array($ResponseEnProceso->Document_)){
                     $DocumentsOrders = $ResponseEnProceso->Document_;
+                }else{
+                    $DocumentsOrders = [];
                 }
 
 ?>
