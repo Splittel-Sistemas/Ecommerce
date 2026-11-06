@@ -29,7 +29,7 @@
             <li><a href="index.php?pag=1">Blog</a>
             </li>
             <li class="separator">&nbsp;</li>
-            <li><?php echo $response->BlogTitulo;?></li>
+            <li><?php echo strip_tags($response->BlogTitulo);?></li>
           </ul>
         </div>
       </div>
@@ -63,7 +63,7 @@
           <div class="gallery-wrapper">
             <div class="">
               <a href="../../public/images/img_spl/blog/<?php echo $response->BlogImgLanding;?>" data-size="1000x353">
-                <img src="../../public/images/img_spl/blog/<?php echo $response->BlogImgLanding;?>" alt="<?php echo $response->BlogTitulo;?>">
+                <img src="../../public/images/img_spl/blog/<?php echo $response->BlogImgLanding;?>" alt="<?php echo strip_tags($response->BlogTitulo);?>">
               </a><span class="caption"><?php echo $response->BlogTitulo;?></span>
             </div>
           </div>

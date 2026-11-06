@@ -22,7 +22,8 @@
         if($ErrorCode == 0){
             if($ResponseGetOrdersByCustomer->Count > 0){
                 $ResponseEnProceso = $ResponseGetOrdersByCustomer->Records;
-                if(sizeof($ResponseEnProceso->Document_) == 1){
+                
+                if(is_array($ResponseEnProceso->Document_) && sizeof($ResponseEnProceso->Document_) == 1){
                     $DocumentsOrders [] = $ResponseEnProceso->Document_;
                 }else{
                     $DocumentsOrders = $ResponseEnProceso->Document_;
