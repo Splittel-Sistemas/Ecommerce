@@ -65,8 +65,10 @@ if (isset($_POST["Descripcion"])) {
       return $url;
     }
   }
+  $ProductoController = new ProductoController();
+  $descripcion = $ProductoController->sanitizaText($_POST["Descripcion"] ?? '');
   $like = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
    
     if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" && $e[$i] != "con" && $e[$i] != "CON" ) {
@@ -74,8 +76,9 @@ if (isset($_POST["Descripcion"])) {
     }
   }
 
+  $descripcion = $ProductoController->sanitizaText($_POST["Descripcion"] ?? '');
   $like2 = "";
-  $e = explode(" ", $_POST["Descripcion"]);
+  $e = explode(" ", $descripcion);
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != ""  && $e[$i] != "de" && $e[$i] != "DE" && $e[$i] != "O" && $e[$i] != "o" && $e[$i] != "para" && $e[$i] != "PARA" && $e[$i] != "con" && $e[$i] != "CON" ) {
 
@@ -85,8 +88,8 @@ if (isset($_POST["Descripcion"])) {
 
 
   //BUSCADOR DE PRODUCTOS FIJOS
-  $ProductoController = new ProductoController();
-  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $_POST["Descripcion"] . "%'   $like   OR codigo LIKE '%" . $_POST["Descripcion"] . "%'  $like2) AND producto_activo = 'si' AND subcategoria_activo='si') AND existencia > 0 ";
+  $descripcion = $ProductoController->sanitizaText($_POST["Descripcion"] ?? '');
+  $ProductoController->filter = "WHERE ((desc_producto LIKE '%" . $descripcion . "%'   $like   OR codigo LIKE '%" . $descripcion . "%'  $like2) AND producto_activo = 'si' AND subcategoria_activo='si') AND existencia > 0 ";
   $ProductoController->order = " ";
   $ResultProducto_ = $ProductoController->GetProductosFijos_();
 
@@ -100,9 +103,8 @@ function highlightWords($query, $word){
 }
 
 foreach ($ResultProducto_->records as $key => $Obj) {
-  
-  $contenido_resaltado = highlightWords($_POST["Descripcion"], $Obj->ProductoDescripcion);
-  $contenido_resaltado_ = highlightWords($_POST["Descripcion"], $Obj->ProductoCodigo);
+  $contenido_resaltado = highlightWords($descripcion, $Obj->ProductoDescripcion);
+  $contenido_resaltado_ = highlightWords($descripcion, $Obj->ProductoCodigo);
 
     if ($Obj->ProductoCodigoConfigurable != '' && $Obj->ConfigurableFijo == 'no') { ?>
       <a class="list-group-item item-product item-font" href="../Productos/configurables.php?codigo=<?php echo urlencode($Obj->ProductoCodigoConfigurable); ?>">

@@ -76,6 +76,8 @@ if (!class_exists("Submenu")) {
       }
     }
 
-    
+    public function sanitizaText($texto) {
+      return mysqli_real_escape_string($this->conn->conexion(), $texto);
+    }
 
   }
