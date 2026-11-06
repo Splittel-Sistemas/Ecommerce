@@ -1,4 +1,5 @@
 <?php
+@session_start();
 if (!class_exists('PedidoController')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Pedido/Pedido.Controller.php';
 }

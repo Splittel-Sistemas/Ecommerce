@@ -10,6 +10,16 @@
 		public $Evento;
 		public $Categoria;
 		public $Descripcion;
+	
+		public $Titulo;
+		public $PedidoKey;
+		public $PedidoTipo;
+		public $Estatus;
+		public $Data;
+		public $Metodo;
+
+		protected $Connection;
+		protected $Tool;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;

@@ -18,6 +18,7 @@
     public $SubcategoriaN1Code;
 		public $ClienteId;
     public $Diametro;
+    public $Diametros;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;

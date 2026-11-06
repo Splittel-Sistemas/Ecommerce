@@ -21,16 +21,26 @@
             $DataDasboard360 = $DataDasboard360->Record;
             // print_r($DataDasboard360);
             $array_colors=["bg-success","","bg-info","bg-warning","bg-danger"];
-            if(sizeof($DataDasboard360->TopItemsByPrice->DocumentLine) == 1){
-                $LinesDoc_Price [] = $DataDasboard360->TopItemsByPrice->DocumentLine;
-            }else{
-                $LinesDoc_Price = $DataDasboard360->TopItemsByPrice->DocumentLine;
+
+            $topItems = $DataDasboard360->TopItemsByPrice->DocumentLine ?? [];
+
+            if (is_object($topItems)) {
+                $LinesDoc_Price = [$topItems];
+            } elseif (is_array($topItems)) {
+                $LinesDoc_Price = $topItems;
+            } else {
+                $LinesDoc_Price = [];
             }
-            if(sizeof($DataDasboard360->TopItemsByQuantity->DocumentLine) == 1){
-                $LinesDoc_Quantity [] = $DataDasboard360->TopItemsByQuantity->DocumentLine;
-            }else{
-                $LinesDoc_Quantity = $DataDasboard360->TopItemsByQuantity->DocumentLine;
+            $topQuantity = $DataDasboard360->TopItemsByQuantity->DocumentLine ?? [];
+             if (is_object($topQuantity)) {
+                $LinesDoc_Quantity = [$topQuantity];
+            } elseif (is_array($topQuantity)) {
+                $LinesDoc_Quantity = $topQuantity;
+            } else {
+                $LinesDoc_Quantity = [];
             }
+
+           
 
             ?>
 <div class="col-lg-12">
@@ -75,7 +85,13 @@
             <div class="col-lg-4">
                 <section class="widget">
                 <h3 class="widget-title">Día favorito de compra</h3>
-                <p><?php echo $DataDasboard360->DavoriteDayPurchase?></p>
+                <p><?php
+                    echo htmlspecialchars(
+                        (string) ($DataDasboard360->DavoriteDayPurchase ?? ''),
+                        ENT_QUOTES,
+                        'UTF-8'
+                    );
+                    ?></p>
                 </section> 
             </div>
         </div>
@@ -95,7 +111,10 @@
             <div class="col-lg-4">
                 <section class="widget">
                 <h3 class="widget-title">Puntos disponibles</h3>
-                <p><?php echo $_SESSION['Ecommerce-ClientePuntosDisponibles'];?></p>
+                <p><?php 
+                    $puntosDisponibles = $_SESSION['Ecommerce-ClientePuntosDisponibles'] ?? 0;
+                    echo (int) $puntosDisponibles;
+                ?></p>
                 </section>
             </div>
         </div>

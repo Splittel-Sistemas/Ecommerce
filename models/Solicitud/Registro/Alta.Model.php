@@ -26,6 +26,13 @@ class SolicitudRegistro
   public $valoresCheck;
   public $Doc1;
 
+  public $Key;
+  public $Nombre;
+  public $Monto;
+  public $Fecha;
+  public $Fecha_Solicitud;
+  public $Mensaje;
+  public $Total;
 
   public function SetRazonSocial($RazonSocial)
   {

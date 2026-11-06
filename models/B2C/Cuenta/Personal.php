@@ -1,9 +1,5 @@
-<?php 
-
-  /**
-   * Información personal acerca del usuario
-   */
-  @session_start();
+<?php
+@session_start();
   if (!class_exists("Connection")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
   }if (!class_exists("Functions_tools")) {
@@ -26,6 +22,7 @@
     public $PersonalSociedad;
     public $PersonalPasswordEcommerce;
     public $PersonalIngreso;
+    public $PersonalTerminos;
 
     public function __construct(){
       $this->conn = new Connection();

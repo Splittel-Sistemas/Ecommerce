@@ -39,7 +39,7 @@
           $data = true;
         }
         return $data;
-      } catch (Exeption $e) {
+      } catch (Exception $e) {
         throw $e;
       }
     }
@@ -63,7 +63,7 @@
           $data[] = $Obj;
         }
         return $data;
-      } catch (Exeption $e) {
+      } catch (Exception $e) {
         throw $e;
       }
     }

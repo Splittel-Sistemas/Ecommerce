@@ -39,6 +39,7 @@ class SolucionesTop
 
 
   protected $Connection;
+  protected $conn;
   protected $Tool;
 
   public function SetParameters($conn, $Tool)

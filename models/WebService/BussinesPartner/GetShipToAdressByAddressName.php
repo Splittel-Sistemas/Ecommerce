@@ -1,9 +1,5 @@
 <?php 
-
-/**
- * 
- */
-  @session_start();
+@session_start();
   if (!class_exists("Seguridad")) {
     include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Seguridad/Seguridad.Controller.php';
   }if (!class_exists("WebService")) {

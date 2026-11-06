@@ -15,6 +15,9 @@ class MiniBannerController{
   
   protected $Connection;
   protected $Tool;
+  
+  public $filter;
+  public $order;
 
   public function __construct(){
     $this->Connection = new Connection();

@@ -29,6 +29,8 @@
   class PedidoB2BTransferenciaController{
     protected $conn;
     protected $Tool;
+
+    public $Pedido;
     
     public function __construct(){
       $this->conn = new Connection();

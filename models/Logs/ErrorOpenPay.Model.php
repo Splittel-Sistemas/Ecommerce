@@ -8,6 +8,9 @@
 		public $PedidoKey;
 		public $DescriptionGenerica;
 		
+		protected $Connection;
+		protected $Tool;
+		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;
 			$this->Tool = $Tool;

@@ -7,7 +7,13 @@ class FamiliasMSI
   public $Monto;
   public $MontoKey;
 
+  public $SegmentoKey;
+  public $EsquemaKey;
+  public $Segmento;
+  public $Esquema;
+
   protected $Connection;
+  protected $conn;
   protected $Tool;
 
   private function StartObjects()

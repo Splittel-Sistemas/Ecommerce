@@ -43,40 +43,59 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
           </tr>
         </thead>
         <tbody>
-        <?php 
-          if(sizeof($responseGetBillToAdress->BussinessPartnerAdresses) == 1){
-            $Adress = $responseGetBillToAdress->BussinessPartnerAdresses;
-?>
-          <tr>
-            <td class="align-middle">
-  			      <?php echo $Adress->CardName;?><br>
-              <span class="text-gray-dark" id="df_rsocial<?php echo $Adress->Adress;?>"><?php ?></span><br>
-              <span class="text-muted text-sm" id="df_calle<?php echo $Adress->Adress;?>"><?php echo $Adress->Street." No Ext. ".$Adress->StreetNo. ", Col. ".$Adress->Block.",";?></span>
-              <span class="text-muted text-sm" id="df_estado<?php echo $Adress->Adress;?>"><?php echo $Adress->City.", ".$Adress->State;?></span>
-            </td>
-            <td class="align-middle" id="df_cp<?php echo $Adress->ZipCode;?>"><?php echo $Adress->ZipCode?></td>
-            <td class="align-middle" id="df_rfc<?php echo $Adress->FederalTaxID;?>"><?php echo $Adress->FederalTaxID; ?></td>
-          </tr>
-<?php
-          }else{
-            foreach ($responseGetBillToAdress->BussinessPartnerAdresses as $Adress) {
-              print_r($Adress->Adress);
+       <?php
+$direcciones = $responseGetBillToAdress->BussinessPartnerAdresses ?? [];
 
-        ?>
-          <tr>
-            <td class="align-middle">
-			      <?php echo $Adress->CardName;?><br>
-              <span class="text-gray-dark" id="df_rsocial<?php echo $Adress->Adress;?>"><?php ?></span><br>
-              <span class="text-muted text-sm" id="df_calle<?php echo $Adress->Adress;?>"><?php echo $Adress->Street." No Ext. ".$Adress->StreetNo. ", Col. ".$Adress->Block.",";?></span>
-              <span class="text-muted text-sm" id="df_estado<?php echo $Adress->Adress;?>"><?php echo $Adress->City.", ".$Adress->State;?></span>
-            </td>
-            <td class="align-middle" id="df_cp<?php echo $Adress->ZipCode;?>"><?php echo $Adress->ZipCode?></td>
-            <td class="align-middle" id="df_rfc<?php echo $Adress->FederalTaxID;?>"><?php echo $Adress->FederalTaxID; ?></td>
-          </tr>
-<?php  
-            }
-          }
-?>         
+if (is_object($direcciones)) {
+    // El servicio devuelve una sola dirección
+    $direcciones = [$direcciones];
+} elseif (!is_array($direcciones)) {
+    // No hay direcciones
+    $direcciones = [];
+}
+
+foreach ($direcciones as $Adress) {
+?>
+    <tr>
+        <td class="align-middle">
+            <?php echo htmlspecialchars((string)($Adress->CardName ?? ''), ENT_QUOTES, 'UTF-8'); ?><br>
+
+            <span class="text-gray-dark" id="df_rsocial<?php echo htmlspecialchars((string)($Adress->Adress ?? ''), ENT_QUOTES, 'UTF-8'); ?>"></span><br>
+
+            <span class="text-muted text-sm" id="df_calle<?php echo htmlspecialchars((string)($Adress->Adress ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+                <?php
+                echo htmlspecialchars(
+                    ($Adress->Street ?? '') .
+                    " No Ext. " . ($Adress->StreetNo ?? '') .
+                    ", Col. " . ($Adress->Block ?? '') . ",",
+                    ENT_QUOTES,
+                    'UTF-8'
+                );
+                ?>
+            </span>
+
+            <span class="text-muted text-sm" id="df_estado<?php echo htmlspecialchars((string)($Adress->Adress ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+                <?php
+                echo htmlspecialchars(
+                    ($Adress->City ?? '') . ", " . ($Adress->State ?? ''),
+                    ENT_QUOTES,
+                    'UTF-8'
+                );
+                ?>
+            </span>
+        </td>
+
+        <td class="align-middle" id="df_cp<?php echo htmlspecialchars((string)($Adress->ZipCode ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+            <?php echo htmlspecialchars((string)($Adress->ZipCode ?? ''), ENT_QUOTES, 'UTF-8'); ?>
+        </td>
+
+        <td class="align-middle" id="df_rfc<?php echo htmlspecialchars((string)($Adress->FederalTaxID ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+            <?php echo htmlspecialchars((string)($Adress->FederalTaxID ?? ''), ENT_QUOTES, 'UTF-8'); ?>
+        </td>
+    </tr>
+<?php
+}
+?>
         </tbody>
       </table>
     </div>

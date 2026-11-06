@@ -2,6 +2,7 @@
    
 class EncrypData_{
     private $Key;
+    private $key;
     private $Salt;
     /**
      * Undocumented function

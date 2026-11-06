@@ -538,12 +538,17 @@ class OpenPayController
                                     $SalesQuatationModel->SetContactoTelefono($_POST["ContactoTelefono"]);
                                     $SalesQuatationModel->SetContactoCorreo($_POST["ContactoCorreo"]);
                                     $ResultSalesQuatation = $SalesQuatationModel->create();
-                                    if (!$ResultSalesQuatation['error']) {
-                                        unset($SalesQuatationModel);
-                                        unset($ResultSalesQuatation);
-                                    } else {
-                                        throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
-                                    }
+                                    if (
+                                        is_array($ResultSalesQuatation) &&
+                                        array_key_exists('error', $ResultSalesQuatation)
+                                        ) {
+                                        if (!$ResultSalesQuatation['error']) {
+                                            unset($SalesQuatationModel);
+                                            unset($ResultSalesQuatation);
+                                        } else {
+                                            throw new Exception("No se pudo guardar la información acerca de tu pedido Ecommerce, por favor recarga la pagina. Si el problema persiste por favor de contactar con su ejecutivo!");
+                                        }
+                                        }
                                 } else {
                                     # guardado de información pedido b2c para posteriromente generar los documentos sap
                                     $InvoiceModel = new Invoice();

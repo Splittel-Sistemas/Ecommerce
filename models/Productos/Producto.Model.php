@@ -29,6 +29,45 @@
     public $MinimoCompra;
     public $PrecioMXN;
 
+    public $ProductoCodigo;
+    public $ProductoCodigoWhitOutSlash;
+    public $ProductoDescripcion;
+    public $ProductoCeo;
+    public $ProductoDescripcionLargaKey;
+    public $ProductoCategoriaKey;
+    public $ProductoSubcategoriaKey;
+    public $ProductoMarcaKey;
+    public $ProductoPrecio;
+    public $ProductoDescuento;
+    public $ProductoExistencia;
+    public $ProductoInformacionTecnica;
+    public $ProductoPesosDimensiones;
+
+    public $ProductoInformacionAdicional;
+    public $ProductoRelacionados;
+    public $ProductoCodigoConfigurable;
+    public $ProductoActivo;
+    public $ProductoManejado;
+    public $ProductoImgPrincipal;
+    public $ProductoCostoEnvio;
+    public $CategoriaFamiliaDescripcion;
+    public $CategoriaActivo;
+    public $CategoriaMenu1;
+    public $CategoriaMenu2;
+    public $CategoriaFolderName;
+    public $CategoriaDescripcion;
+
+    public $SubcategoriaDescripcion;
+    public $SubcategoriaSubnivel;
+    public $SubcategoriaActivo;
+    public $SubcategoriaDescripcionAdicional;
+    public $MarcaDesripcion;
+    public $FichaKey;
+    public $FichaRuta;
+    public $MetaKey;
+    public $MetaDescription;
+    public $Certificado;
+
     protected $Connection;
     protected $Tool;
 

@@ -23,6 +23,7 @@
     public $Telefono;
     public $Email;
     public $Email_ItemsStockBad;
+    public $EstructuraPedidoB2B;
 
     public function SetPedidoKey($PedidoKey){
       if (is_null($PedidoKey)) {

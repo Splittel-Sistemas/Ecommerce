@@ -1,27 +1,42 @@
-<?php 
+<?php
 
 /**
  * 
  */
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Connection.php';
-}if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Tools/Functions_tools.php';
-}if (!class_exists("Email")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/Email.php';
-}if (!class_exists("EmailTest")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Email/EmailTest.php';
-}if (!class_exists("Captcha")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/Captcha/Captcha.php';
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Connection.php';
+}
+if (!class_exists("Functions_tools")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Functions_tools.php';
+}
+if (!class_exists("Email")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/Email.php';
+}
+if (!class_exists("EmailTest")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Email/EmailTest.php';
+}
+if (!class_exists("Captcha")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Captcha/Captcha.php';
+}
+if (!class_exists("Cloudflare")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Captcha/Cloudflare.php';
 }
 
-class CatalogoCursos{
+class CatalogoCursos
+{
   protected $conn;
   protected $Tool;
   protected $Correo = ["marketing.directo@splittel.com"];
-  
-  public function __construct(){
+
+  public $Descripcion;
+  public $Informacion;
+  public $Catalogo;
+  public $Curso;
+  public $Correos;
+
+  public function __construct()
+  {
     $this->conn = new Connection();
     $this->Tool = new Functions_tools();
   }
@@ -32,18 +47,18 @@ class CatalogoCursos{
    *
    * @return int $b Bar
    */
-  public function get($filter, $order, $return_json){
+  public function get($filter, $order, $return_json)
+  {
     try {
       $items = [];
       if (!$this->conn->conexion()->connect_error) {
-        $SQLSTATEMENT = "SELECT * FROM menu_cursos ".$filter." ".$order;
+        $SQLSTATEMENT = "SELECT * FROM menu_cursos " . $filter . " " . $order;
         // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         while ($row = $result->fetch_object()) {
           $items[] = $row;
         }
         return $this->Tool->Message_return(false, "", $items, $return_json);
-    
       }
     } catch (Exception $e) {
       throw $e;
@@ -56,57 +71,54 @@ class CatalogoCursos{
    *
    * @return int $b Bar
    */
-  public function sendEmail($return_json){
+  public function sendEmail($return_json)
+  {
     try {
       if (!$this->conn->conexion()->connect_error) {
-
         $ObjCaptcha = new Captcha();
         $retorno = $ObjCaptcha->getCaptcha($_POST['recaptcha_response']);
-        // if($retorno->success == true && $retorno->score > 0.5){
 
         $result = $this->conn->Exec_store_procedure_json("CALL CursosAndBoletin(
-          '".$this->Descripcion."',
-          '".$this->Informacion."',
-          '".$this->Correos."',
-        @Result);", "@Result");
+            '" . $this->Descripcion . "',
+            '" . $this->Informacion . "',
+            '" . $this->Correos . "',
+          @Result);", "@Result");
 
         if (!$result['error']) {
           $result['cap'] = $retorno;
           $Email = new Email();
           $EmailTest = new EmailTest();
-          
-          if($this->Descripcion == 'boletin'){ 
-            $Email->MailerSubject = utf8_decode("Boletín");
-            $Email->MailerBody = $EmailTest->registroBoletin($this->Informacion); 
-          }elseif($this->Descripcion == 'catalogo'){
-            $Email->MailerSubject = utf8_decode("Descarga de catálogo");
+
+          if ($this->Descripcion == 'boletin') {
+            $Email->MailerSubject = ("Boletín");
+            $Email->MailerBody = $EmailTest->registroBoletin($this->Informacion);
+          } elseif ($this->Descripcion == 'catalogo') {
+            $Email->MailerSubject = ("Descarga de catálogo");
             $Email->MailerBody = $EmailTest->DesCatalogo($this->Catalogo);
-          }elseif($this->Descripcion == 'SolucionesTop'){
+          } elseif ($this->Descripcion == 'SolucionesTop') {
             $Email->MailerSubject = "SolucionesTop";
-            $this->Correo = ['cursos@fibremex.com.mx','marketing.directo@splittel.com'];
+            $this->Correo = ['cursos@fibremex.com.mx', 'marketing.directo@splittel.com'];
             $Email->MailerBody = $EmailTest->cursos($this->Curso);
-          }else{
+          } else {
             $Email->MailerSubject = "Curso";
             $this->Correo = ['cursos@fibremex.com.mx'];
             $Email->MailerBody = $EmailTest->cursos($this->Curso);
           }
-          //$Email->MailerBody = $this->Descripcion == 'boletin' ? $EmailTest->registroBoletin($this->Informacion) : $EmailTest->cursos($this->Curso);
           $Email->MailerListTo = $this->Correo;
           $Email->EmailSendEmail();
-        }else{
+        } else {
           throw new Exception("No se pudo guardar la información, intenta de nuevo por favor!");
         }
+
         return $return_json ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result;
-
-      // }
-
       }
     } catch (Exception $e) {
       throw $e;
     }
   }
 
-  public static function controller(){
+  public static function controller()
+  {
     try {
       $CatalogoCursos = new CatalogoCursos();
       $Action = $CatalogoCursos->Tool->validate_isset_post('Action');
@@ -124,15 +136,15 @@ class CatalogoCursos{
             'Nombre'      => $Nombre,
             'Empresa'     => $Empresa,
             'Email'       => $Email,
-            'Telefono'    => $Telefono,   
-            'Giro'        => $Giro   
+            'Telefono'    => $Telefono,
+            'Giro'        => $Giro
           ];
-          
+
           $CatalogoCursos->Informacion =  json_encode($CatalogoCursos->Catalogo);
           echo $CatalogoCursos->sendEmail(true);
           break;
         case 'RegistroCursos':
-          if(!isset($_POST["NombreCurso"]) || $_POST["NombreCurso"]==''){
+          if (!isset($_POST["NombreCurso"]) || $_POST["NombreCurso"] == '') {
             throw new Exception("El campo: <strong>Nombre del curso</strong> es requerido");
           }
           //$NombreCurso  = implode(', ',$_POST["NombreCurso"]);
@@ -156,23 +168,29 @@ class CatalogoCursos{
           echo $CatalogoCursos->sendEmail(true);
           break;
         case 'RegistroBoletin':
-          $CatalogoCursos->Informacion =  $CatalogoCursos->Tool->validEmail('Correo', 'Correo', true);
-          echo $CatalogoCursos->sendEmail(true);
+          $cloudflare = new Cloudflare();
+          $respuestaCaptcha = $cloudflare->ValidarToken();
+
+          if ($respuestaCaptcha['respuesta']) {
+            $CatalogoCursos->Informacion =  $CatalogoCursos->Tool->validEmail('Correo', 'Correo', true);
+            echo $CatalogoCursos->sendEmail(true);
+          } else {
+            throw new Exception($respuestaCaptcha['mensaje']);
+          }
           break;
         default:
           echo $CatalogoCursos->Tool->Message_return(true,  "No se encontro la opción solicitada, por favor pide ayuda al departamento de TI...", null, true);
           break;
       }
     } catch (Exception $e) {
-      echo $CatalogoCursos->Tool->Message_return(true, "Error: ".$e->getMessage(), null, true);
+      echo $CatalogoCursos->Tool->Message_return(true, "Error: " . $e->getMessage(), null, true);
     }
   }
-
 }
 
-  $Tool = new Functions_tools();
-  # Comprobación Autorización Ajax    
-  if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && isset($_POST['ActionCursos'])) { 
-    CatalogoCursos::controller();
-  }
-  unset($Tool);
+$Tool = new Functions_tools();
+# Comprobación Autorización Ajax    
+if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && isset($_POST['ActionCursos'])) {
+  CatalogoCursos::controller();
+}
+unset($Tool);

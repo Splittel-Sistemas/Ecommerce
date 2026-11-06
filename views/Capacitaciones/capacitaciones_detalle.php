@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +42,7 @@
         <h2 class="pt-4"><?php echo $response->titulo1 ?></h2>
         <?php endif ?>
         <p style="text-align: justify;"><?php
-                                        echo nl2br($response->texto1);
+                                        echo nl2br($response->texto1 ?? '');
                                         ?></p>
         <?php if (!empty($response->titulo1_2)) : ?>
           <div class="text-muted opacity-75 padding-top-3x"><?php echo $response->titulo1_2; ?>
@@ -62,7 +65,7 @@
           </div>
         <?php endif ?>
         <p style="text-align: justify;"><?php
-                                        echo nl2br($response->texto1_1);
+                                        echo nl2br($response->texto1_1 ?? '');
                                         ?></p>
         <?php if (!empty($response->titulo2)) : ?>
           <div class="text-muted opacity-75 padding-top-1x"><?php echo $response->titulo2; ?>

@@ -22,6 +22,7 @@ class CablesPreconectorizados
   public $CablesPreconConB;
   public $CablesPreconCubierta;
   public $CablesPreconTipo;
+  public $CablesPreconUso;
 
   public function __construct(){
     $this->conn = new Connection();

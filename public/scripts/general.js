@@ -692,6 +692,7 @@ var EmailBoletin = function (Elem) {
     "JSON",
     $("#form-boletin").serialize(),
     function (response) {
+      turnstile.reset();
       if (!response.error) {
         $(".boletin").val("");
         templateAlert(

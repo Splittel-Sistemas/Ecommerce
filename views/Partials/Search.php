@@ -14,7 +14,7 @@ if (isset($_POST["Descripcion"])) {
     function url_amigable($url_tmp)
     {
       //Convertimos a minúsculas y UTF8
-      $url_utf8 = mb_strtolower($url_tmp, 'UTF-8');
+      $url_utf8 = mb_strtolower($url_tmp ?? '', 'UTF-8');
 
       //Reemplazamos espacios por guion
       $find = array(' ', '&', '\r\n', '\n', '+');

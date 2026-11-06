@@ -37,16 +37,16 @@ if (isset($_SESSION['Ecommerce-PedidoPagar']) && $_SESSION['Ecommerce-PedidoPaga
             <div class="row">
               <div style="display: flex; justify-content: flex-end"  class="col-lg-6 col-md-6 col-12 col-sm-6 col-xs-12 padding-bottom-2x text-md-right text-right justify-content-end">
                 <div style="display: flex; justify-content: flex-end" class="from-bottom text-md-right text-right justify-content-end">
-                  <a style="display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php echo $linkIzquierda; ?>" target="<?php echo $Slide->TargetLink1 ?>">
-                    <img style="display: flex; justify-content: flex-end" class="d-block mx-auto d-flex justify-content-end" src="<?php echo $ImgIzquierda; ?>"  alt="<?php echo $Slide->Descripcion; ?>">
+                  <a style="display: flex; justify-content: flex-end" class="justify-content-end float-right" href="<?php //echo $linkIzquierda; ?>" target="<?php //echo $Slide->TargetLink1 ?>">
+                    <img style="display: flex; justify-content: flex-end" class="d-block mx-auto d-flex justify-content-end" src="<?php //echo $ImgIzquierda; ?>"  alt="<?php //echo $Slide->Descripcion; ?>">
                     
                   </a>
                 </div>
               </div>
               <div style="display: flex; justify-content: flex-start" class="col-lg-6 col-md-6 col-12 col-sm-6 col-xs-12 padding-bottom-2x text-md-left text-left justify-content-start">
               <div style="display: flex; justify-content: flex-start" class="from-bottom text-md-left text-left justify-content-start">
-                <a style="display: flex; justify-content: flex-start" class="justify-content-start float-left" href="<?php echo $linkDerecha; ?>" target="<?php echo $Slide->TargetLink2 ?>">
-                  <img style="display: flex; justify-content: flex-start" class="d-block mx-auto float-left justify-content-start" src="<?php echo $ImgDerecha; ?>"  alt="<?php echo $Slide->Descripcion; ?>">
+                <a style="display: flex; justify-content: flex-start" class="justify-content-start float-left" href="<?php //echo $linkDerecha; ?>" target="<?php //echo $Slide->TargetLink2 ?>">
+                  <img style="display: flex; justify-content: flex-start" class="d-block mx-auto float-left justify-content-start" src="<?php //echo $ImgDerecha; ?>"  alt="<?php //echo $Slide->Descripcion; ?>">
                 </a>
               </div>
               </div>

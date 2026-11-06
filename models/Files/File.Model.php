@@ -5,6 +5,9 @@
 		protected $Url;
 		protected $Tipo;
 		protected $Relacion;
+
+		protected $Connection;
+  		protected $Tool;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;

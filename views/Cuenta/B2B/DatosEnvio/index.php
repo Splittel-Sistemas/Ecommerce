@@ -16,7 +16,6 @@ if(isset($_SESSION['Ecommerce-ClienteKey']))
   
  
 ?>
-
 <div class="col-lg-12" id="ContenidoCuenta">
   <div class="row">
     <div class="col-lg-12">

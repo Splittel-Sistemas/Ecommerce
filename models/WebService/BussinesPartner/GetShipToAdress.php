@@ -1,9 +1,5 @@
-<?php 
-
-/**
- * 
- */
-  @session_start();
+<?php
+@session_start();
   if (!class_exists("WebService")) {
     require_once $_SERVER["DOCUMENT_ROOT"].'/fibra-optica/models/WebService/WebServiceSOAP.php';
   }if (!class_exists("Contacto")) {

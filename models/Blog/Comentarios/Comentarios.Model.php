@@ -16,6 +16,7 @@ if (!class_exists("Email")) {
     public $Tipo;
     public $BlogKey;
     public $ComentarioRel;
+    public $Correo;
     
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -82,7 +83,7 @@ if (!class_exists("Email")) {
         if (!$result['error']) {
           $Email = new Email();
           $EmailTest = new EmailTest();
-            $Email->MailerSubject = utf8_decode("Nuevo comentario en blog");
+            $Email->MailerSubject = ("Nuevo comentario en blog");
             $this->Correo = ['capacitaciones@optronics.com.mx'];
             $Email->MailerBody = $EmailTest->blog($this->Descripcion,$this->BlogKey);
             $Email->MailerListTo = $this->Correo;

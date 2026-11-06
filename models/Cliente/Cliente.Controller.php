@@ -28,6 +28,7 @@ if (!class_exists("Connection")) {
     
     protected $conn;
     protected $Tool;
+    protected $Connection;
 
     public $filter;
     public $order;

@@ -9,7 +9,7 @@ class EnTransito
 
   protected $Connection;
   protected $Tool;
-
+  protected $conn;
   private function StartObjects()
   {
     $this->conn = new Connection();

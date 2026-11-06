@@ -53,8 +53,14 @@ class SolicitudC
   public $Nacionalidad;
   public $LuNaci;
   public $Ejecutivo;
-
-
+  
+  public $Key;
+  public $Nombre;
+  public $Monto;
+  public $Fecha;
+  public $Fecha_Solicitud;
+  public $Mensaje;
+  public $Total;
 
   public function SetNombreSolicitud($NombreSolicitud)
   {

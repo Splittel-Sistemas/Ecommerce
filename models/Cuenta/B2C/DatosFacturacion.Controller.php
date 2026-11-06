@@ -13,6 +13,7 @@
     private $Tool;
 
     public $filter;
+    public $order;
     public $orderBy;
     
     public function __construct(){

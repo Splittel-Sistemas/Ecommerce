@@ -1,5 +1,4 @@
 <?php
-
 @session_start();
 if (!class_exists('Connection')) {
     include $_SERVER['DOCUMENT_ROOT'].'/fibra-optica/models/Tools/Connection.php';
@@ -49,7 +48,7 @@ class CodigoVerificacionController{
                     
                     $Email = new Email();
                     $TemplateCodigoVerificacion = new TemplateCodigoVerificacion();
-                    $Email->MailerSubject = utf8_decode("Codigo verificación");
+                    $Email->MailerSubject = ("Codigo verificación");
                     $Email->MailerBody = $TemplateCodigoVerificacion->body($_SESSION['Ecommerce-PedidoKey']);
                     $Email->MailerListTo[] = $_SESSION['Ecommerce-ClienteEmail'];
                     $Email->EmailSendEmail();

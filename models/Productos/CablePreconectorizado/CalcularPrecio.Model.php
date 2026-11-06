@@ -17,6 +17,8 @@
 		public $SubcategoriaN1Code;
 		public $ClienteId;
 		public $BreakOut;
+		public $CableId;
+		public $Codigo;
 		
 		public function SetParameters($conn, $Tool){
 			$this->Connection = $conn;

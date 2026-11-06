@@ -172,7 +172,20 @@ var JumpersMultimodo = async function(){
     let Hiloselected=NumeroHilos.options[NumeroHilos.selectedIndex].text
     let Diametroselected=Diametro.options[Diametro.selectedIndex].text
 
-    let descripcion_mpo = "Jumper Multimodo "+Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
+    let conectorJumper = '';
+    if (Conector1.value == 'MT' || Conector2.value == 'MT') {
+      if ((Conector1.value == 'MT' && Conector2.value == 'MT') ) {
+        conectorJumper = Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value;
+      } else if (Conector1.value == 'MT') {
+        conectorJumper = Conector2.value+PulidoConector2.value+'-'+Conector1.value+PulidoConector1.value;
+      } else {
+        conectorJumper = Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value;
+      }
+    } else {
+      conectorJumper = Conector1.value+PulidoConector1.value+'-'+Conector2.value+PulidoConector2.value;
+    }
+
+    let descripcion_mpo = "Jumper Multimodo "+conectorJumper+" "+Fibraselected+" "+TipoCubiertaselected+" "+Hiloselected+" de "+Diametroselected+" de "+Longitud.value+" metro(s) "
     NombreProductoConfigurable(CodigoGenerado, descripcion_mpo)
     DescPrdConf.innerHTML=descripcion_mpo
   }

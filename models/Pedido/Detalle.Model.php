@@ -15,6 +15,48 @@
     public $CodigoConfigurable;
     public $Activo;
     public $MinimoCompra;
+    public $CantidadValidacion;
+    public $ClienteKey;
+    public $PedidoSubtotal;
+    public $PedidoIva;
+    public $PedidoTotal;
+    public $PedidoSubtotalMXN;
+    public $PedidoIvaMXN;
+    public $PedidoTotalMXN;
+    public $PedidoMonedaPago;
+    public $DetalleKey;
+    public $DetalleCodigo;
+    public $DetalleSubtotal;
+    public $DetalleSubtotalSinDescuento;
+    public $DetalleIva;
+    public $DetalleTotal;
+    public $DetalleSubtotalMXN;
+    public $DetalleSubtotalSinDescuentoMXN;
+    public $DetalleIvaMXN;
+    public $DetalleTotalMXN;
+    public $DetalleCantidad;
+    public $DetalleDescuento;
+    public $DetalleCodigoConfigurable;
+    public $DetalleActivo;
+
+    public $ProductoCodigo;
+    public $ProductoDescripcion;
+    public $ProductoDescuento;
+    public $ProductoExistencia;
+    public $ProductoPrecio;
+    public $ProductoCodigoConfigurable;
+    public $ProductoImgPrincipal;
+    public $ProductoWarehouseCode;
+    public $ProductoCategoriaKey;
+
+    public $ProductoConfigurableNombre;
+
+    public $DetallePrecioUnidadMXN;
+    public $DetallePrecioUnidad;
+    public $TiempoEntrega;
+    public $ProductoCostoEnvio;
+    public $TipoCambio;
+    public $ProductoPuntos;
 
     public function SetParameters($conn, $Tool){
       $this->Connection = $conn;
@@ -86,7 +128,7 @@
         $SQLSTATEMENT = "SELECT * FROM listar_detalle_pedido ".$filter." ".$orderBy;
         // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
-        $data = false;
+        $data[] = false;
         while ($row = $result->fetch_object()) {
             $this->PedidoKey                     = $row->pedidokey;
             $this->ClienteKey                    = $row->id_cliente;

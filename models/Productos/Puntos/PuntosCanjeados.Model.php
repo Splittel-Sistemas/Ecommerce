@@ -8,6 +8,7 @@
     public $Key;
     public $ClienteKey;
     public $ProductoPuntosKey;
+    public $PedidoKey;
 
     public function SetParameters($Connection, $Tool){
       $this->Connection = $Connection;
