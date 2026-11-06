@@ -120,7 +120,7 @@ if (!class_exists("SolucionesTopController")) {
                       <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
                     </a>
                   </div>
-                  <?php if ($CategoriaCont == 3 || $CategoriaCont == 7) : ?>
+                  <?php if ($CategoriaCont == 3 || $CategoriaCont == 6) : ?>
                   </div>
                 <?php endif ?>
               <?php endforeach ?>
