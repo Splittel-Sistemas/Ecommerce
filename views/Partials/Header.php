@@ -120,7 +120,7 @@ if (!class_exists("SolucionesTopController")) {
                       <span class="text-gray-dark"><?php echo $Categoria->Descripcion; ?></span>
                     </a>
                   </div>
-                  <?php if ($CategoriaCont == 3 || $CategoriaCont == 7) : ?>
+                  <?php if ($CategoriaCont == 3 || $CategoriaCont == 6) : ?>
                   </div>
                 <?php endif ?>
               <?php endforeach ?>
@@ -358,9 +358,9 @@ if (!class_exists("SolucionesTopController")) {
       <!--Menu movil-->
       <?php
       if (isset($_SESSION['Ecommerce-ClienteTipo']) && $_SESSION['Ecommerce-ClienteTipo'] == 'B2B') {
-        include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2B/Menu-movil.php';
+        //include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2B/Menu-movil.php';
       } else {
-        include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2C/Menu-movil.php';
+        //include $_SERVER['DOCUMENT_ROOT'] . '/fibra-optica/views/Partials/Menu/B2C/Menu-movil.php';
       }
       ?>
     </div>
