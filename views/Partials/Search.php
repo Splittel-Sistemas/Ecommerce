@@ -109,7 +109,7 @@ if (isset($_POST["Descripcion"])) {
   for ($i = 0; $i < count($e); $i++) {
     if ($e[$i] != "") {
 
-      $cat .= " OR desc_subcategoria LIKE '%" . $e[$i] . "%'";
+      $cat .= " OR CONVERT(desc_subcategoria USING utf8mb4) COLLATE utf8mb4_general_ci LIKE '%" . $e[$i] . "%'";
     }
   }
   $descripcion = $SubcategoriasN1Controller->sanitizaText($_POST["Descripcion"]);
@@ -118,11 +118,13 @@ if (isset($_POST["Descripcion"])) {
 
   foreach ($div as $value) {
     /*  echo $value."<br/>"; */
-    $clave .= " OR clave LIKE '%" . $value . "%'";
+    $clave .= " OR CONVERT(clave USING utf8mb4) COLLATE utf8mb4_general_ci LIKE '%" . $value . "%'";
   }
   
   $descripcion = $SubcategoriasN1Controller->sanitizaText($_POST["Descripcion"]);
-  $SubcategoriasN1Controller->filter = "WHERE (desc_subcategoria LIKE '%" . $descripcion . "%' $cat  OR clave LIKE '%" . $descripcion . "%' $clave ) AND activo='si'  ";
+  $SubcategoriasN1Controller->filter = "WHERE (
+  CONVERT(desc_subcategoria USING utf8mb4) COLLATE utf8mb4_general_ci LIKE '%" . $descripcion . "%' $cat  OR 
+  CONVERT(clave USING utf8mb4) COLLATE utf8mb4_general_ci LIKE '%" . $descripcion . "%' $clave ) AND activo='si'  ";
   $SubcategoriasN1Controller->order = "";
   
   $ResultSubcategoriasN1 = $SubcategoriasN1Controller->get();
