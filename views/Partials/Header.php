@@ -21,118 +21,118 @@ if (!class_exists("SolucionesTopController")) {
 }
 # si no existe la $_SESSION['Ecommerce-WS-CurrencyRate']
 //if (!isset($_SESSION['Ecommerce-WS-CurrencyRate']) || $_SESSION['Ecommerce-WS-CurrencyRate'] == 'N/D') {
-  if (!class_exists("GetCurrencyRateController")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Currency/GetCurrencyRate.Controller.php';
-  }
-  try {
-    # obtención tipo de cambio 
-    $GetCurrencyRateController = new GetCurrencyRateController();
-    $resultGetCurrencyRateController = $GetCurrencyRateController->get();
-    // print_r($resultGetCurrencyRateController);
-    $resultGetCurrencyRateController = $resultGetCurrencyRateController->GetCurrencyRateResult;
-    $ErrorCode = $resultGetCurrencyRateController->ErrorCode;
-    $_SESSION['Ecommerce-WS-CurrencyRate'] = $ErrorCode == 0 ? $resultGetCurrencyRateController->Record->Rate : 'N/D';
-  } catch (Exception $e) {
-    unset($_SESSION['Ecommerce-WS-CurrencyRate']);
-    $Message = "No se pudo obtener tipo de cambio";
-    $ErrorCode = -703;
-  }
+if (!class_exists("GetCurrencyRateController")) {
+  include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/WebService/Currency/GetCurrencyRate.Controller.php';
+}
+try {
+  # obtención tipo de cambio 
+  $GetCurrencyRateController = new GetCurrencyRateController();
+  $resultGetCurrencyRateController = $GetCurrencyRateController->get();
+  // print_r($resultGetCurrencyRateController);
+  $resultGetCurrencyRateController = $resultGetCurrencyRateController->GetCurrencyRateResult;
+  $ErrorCode = $resultGetCurrencyRateController->ErrorCode;
+  $_SESSION['Ecommerce-WS-CurrencyRate'] = $ErrorCode == 0 ? $resultGetCurrencyRateController->Record->Rate : 'N/D';
+} catch (Exception $e) {
+  unset($_SESSION['Ecommerce-WS-CurrencyRate']);
+  $Message = "No se pudo obtener tipo de cambio";
+  $ErrorCode = -703;
+}
 //}
 
 ?>
 <script>
-  let CurrencyRate='<?php echo $_SESSION['Ecommerce-WS-CurrencyRate']?>'
-  let CurrencySite='<?php echo $_SESSION['CurrencySite']?>'
-  
+  let CurrencyRate = '<?php echo $_SESSION['Ecommerce-WS-CurrencyRate'] ?>'
+  let CurrencySite = '<?php echo $_SESSION['CurrencySite'] ?>'
 </script>
 <!-- Header-->
 <style>
-.item-font{
-  font-size: 11px !important;
-}
-.containersearch{
+  .item-font {
+    font-size: 11px !important;
+  }
+
+  .containersearch {
     font-size: 11px !important;
     font-weight: 400;
     line-height: 1.5;
-}
+  }
+
   /* Tamaño del scroll */
-.containersearch::-webkit-scrollbar {
-  width: 4px;
-}
+  .containersearch::-webkit-scrollbar {
+    width: 4px;
+  }
 
- /* Estilos barra (thumb) de scroll */
-.containersearch::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
+  /* Estilos barra (thumb) de scroll */
+  .containersearch::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
 
-.containersearch::-webkit-scrollbar-thumb:active {
-  background-color: #999999;
-}
+  .containersearch::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
 
-.containersearch::-webkit-scrollbar-thumb:hover {
-  background: #b3b3b3;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-}
+  .containersearch::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
 
- /* Estilos track de scroll */
-.containersearch::-webkit-scrollbar-track {
-  background: #e1e1e1;
-  border-radius: 4px;
-}
+  /* Estilos track de scroll */
+  .containersearch::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
 
-.containersearch::-webkit-scrollbar-track:hover, 
-.containersearch::-webkit-scrollbar-track:active {
-  background: #d4d4d4;
-}
+  .containersearch::-webkit-scrollbar-track:hover,
+  .containersearch::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
 </style>
 
 <style>
-  
-/* PANEL PRINCIPAL */
-.live-search-panel {
+  /* PANEL PRINCIPAL */
+  .live-search-panel {
     display: none;
     width: 100%;
     background: #fff;
     border: 1px solid #dedede;
     border-radius: 7px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.13);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .13);
     overflow: hidden;
     margin-top: 5px;
     position: relative;
     z-index: 1000;
-}
+  }
 
-/* PESTAÑAS */
-.live-search-tabs {
+  /* PESTAÑAS */
+  .live-search-tabs {
     background: #f7f7f7;
     border-bottom: 1px solid #ddd;
     overflow-x: auto;
     overflow-y: hidden;
-}
+  }
 
-.live-search-tabs::-webkit-scrollbar {
+  .live-search-tabs::-webkit-scrollbar {
     height: 4px;
-}
+  }
 
-.live-search-tabs::-webkit-scrollbar-thumb {
+  .live-search-tabs::-webkit-scrollbar-thumb {
     background: #bbb;
     border-radius: 5px;
-}
+  }
 
-.live-search-tabs .nav-tabs {
+  .live-search-tabs .nav-tabs {
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
     min-width: 100%;
     border: 0;
-}
+  }
 
-.live-search-tabs .nav-item {
+  .live-search-tabs .nav-item {
     flex: 0 0 auto;
-}
+  }
 
-.live-search-tabs .nav-link {
+  .live-search-tabs .nav-link {
     white-space: nowrap;
     color: #555;
     border: 0;
@@ -141,19 +141,19 @@ if (!class_exists("SolucionesTopController")) {
     font-size: 13px;
     font-weight: 600;
     border-bottom: 3px solid transparent;
-}
+  }
 
-.live-search-tabs .nav-link i {
+  .live-search-tabs .nav-link i {
     margin-right: 5px;
-}
+  }
 
-.live-search-tabs .nav-link.active {
+  .live-search-tabs .nav-link.active {
     color: #c62828;
     background: #fff;
     border-bottom: 3px solid #c62828;
-}
+  }
 
-.live-search-tabs .nav-link span {
+  .live-search-tabs .nav-link span {
     display: inline-block;
     background: #eee;
     color: #555;
@@ -161,32 +161,32 @@ if (!class_exists("SolucionesTopController")) {
     padding: 2px 6px;
     margin-left: 4px;
     font-size: 10px;
-}
+  }
 
-/* CONTENIDO */
-.live-search-content {
+  /* CONTENIDO */
+  .live-search-content {
     height: 320px;
     overflow: hidden;
     background: #fff;
-}
+  }
 
-.live-search-content .tab-pane {
+  .live-search-content .tab-pane {
     height: 320px;
     overflow-y: auto;
     padding: 8px 14px;
-}
+  }
 
-.live-search-content .tab-pane::-webkit-scrollbar {
+  .live-search-content .tab-pane::-webkit-scrollbar {
     width: 5px;
-}
+  }
 
-.live-search-content .tab-pane::-webkit-scrollbar-thumb {
+  .live-search-content .tab-pane::-webkit-scrollbar-thumb {
     background: #bbb;
     border-radius: 5px;
-}
+  }
 
-/* RESULTADOS */
-.result-item {
+  /* RESULTADOS */
+  .result-item {
     display: flex;
     align-items: center;
     min-height: 82px;
@@ -194,14 +194,14 @@ if (!class_exists("SolucionesTopController")) {
     border-bottom: 1px solid #e1e1e1;
     cursor: pointer;
     transition: background .2s;
-}
+  }
 
-.result-item:hover {
+  .result-item:hover {
     background: #f9e7e9;
     border-radius: 7px;
-}
+  }
 
-.result-image {
+  .result-image {
     width: 110px;
     height: 65px;
     flex: 0 0 110px;
@@ -209,48 +209,48 @@ if (!class_exists("SolucionesTopController")) {
     border-radius: 10px;
     overflow: hidden;
     margin-right: 12px;
-}
+  }
 
-.result-image img {
+  .result-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
+  }
 
-.result-description {
+  .result-description {
     flex: 1;
     min-width: 0;
-}
+  }
 
-.result-description h6 {
+  .result-description h6 {
     color: #222;
     font-size: 13px;
     font-weight: 700;
     margin: 0 0 4px;
-}
+  }
 
-.result-description p {
+  .result-description p {
     color: #666;
     font-size: 12px;
     margin: 0;
-}
+  }
 
-.result-arrow {
+  .result-arrow {
     color: #c62828;
     font-size: 18px;
     margin-left: 12px;
-}
+  }
 
-/* MENSAJES */
-.result-message {
+  /* MENSAJES */
+  .result-message {
     text-align: center;
     color: #888;
     font-size: 13px;
     padding: 35px 10px;
-}
+  }
 
-/* PIE */
-.live-search-footer {
+  /* PIE */
+  .live-search-footer {
     height: 35px;
     background: #f7f7f7;
     border-top: 1px solid #eee;
@@ -260,45 +260,44 @@ if (!class_exists("SolucionesTopController")) {
     padding: 0 15px;
     color: #888;
     font-size: 11px;
-}
+  }
 
-/* MÓVILES */
-@media (max-width: 576px) {
+  /* MÓVILES */
+  @media (max-width: 576px) {
 
     .live-search-content,
     .live-search-content .tab-pane {
-        height: 350px;
+      height: 350px;
     }
 
     .live-search-tabs .nav-link {
-        padding: 11px 13px;
-        font-size: 12px;
+      padding: 11px 13px;
+      font-size: 12px;
     }
 
     .result-image {
-        width: 75px;
-        height: 60px;
-        flex-basis: 75px;
-        margin-right: 9px;
+      width: 75px;
+      height: 60px;
+      flex-basis: 75px;
+      margin-right: 9px;
     }
 
     .result-item {
-        padding: 9px 5px;
+      padding: 9px 5px;
     }
 
     .result-description h6 {
-        font-size: 12px;
+      font-size: 12px;
     }
 
     .result-description p {
-        font-size: 11px;
+      font-size: 11px;
     }
 
     .live-search-footer span:last-child {
-        display: none;
+      display: none;
     }
-}
-
+  }
 </style>
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="site-header navbar-sticky">
@@ -343,35 +342,8 @@ if (!class_exists("SolucionesTopController")) {
           <form class="input-group"><span class="input-group-btn">
               <button type="submit"><i class="icon-search"></i></button></span>
             <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off" onpaste="Buscador(this)" onkeyup="Buscador(this)">
-            
-           
             <div class="row col-12 " id="SearchResult" style="position: absolute; z-index: 100; display:none;">
-            <div class="card mb-4 w-100" >
-            <div class="card-header">
-              <div class="row col-12 ">
-                  <div class="col-6">
-                    Productos
-                  </div>
-                  <div class="col-6">
-                    Categorias
-                  </div>
-              </div>
-            </div>
-            <div class="card-body col-12">
-            <div class="row col-12">
-                <div class="col-6  containersearch" style="max-height:450px; overflow-y:auto; padding-right: 0px; padding-left: 5px;">
-                    <nav class="list-group-flush lista-productos" id="lista-productos-fijos-0">
 
-                    </nav>
-                  </div>
-                  <div class="col-6  containersearch" style="max-height:450px; overflow-y:auto; padding-right: 0px; padding-left: 5px;">
-                    <nav class="list-group-flush lista-productos" id="lista-productos-0">
-
-                    </nav>
-                  </div>
-                  </div>
-            </div>
-            </div>
             </div>
           </form>
         </div>
@@ -379,7 +351,7 @@ if (!class_exists("SolucionesTopController")) {
     </div>
     <!-- Toolbar-->
     <div class="toolbar d-flex">
-     
+
       <div class="toolbar-item  col-md-6">
         <a href="javascript:void(0);">
           <?php include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/views/Login/seguridad.php';  ?>
@@ -389,13 +361,18 @@ if (!class_exists("SolucionesTopController")) {
             </span>
             <span class="text-label">
               <form id="radioForm" action="" method="POST">
-                <input type="radio" <?php if($_SESSION['CurrencySite']=='USD'){ echo "checked"; }?> name="CurrencySite" value="USD" onchange="submitForm()"> <i class="rounded-circle fi fi-us fis"></i> 
-                <input type="radio" <?php if($_SESSION['CurrencySite']=='MXP'){ echo "checked"; }?> name="CurrencySite" value="MXP" onchange="submitForm()"> <i class="rounded-circle fi fi-mx fis"></i>
+                <input type="radio" <?php if ($_SESSION['CurrencySite'] == 'USD') {
+                                      echo "checked";
+                                    } ?> name="CurrencySite" value="USD" onchange="submitForm()"> <i class="rounded-circle fi fi-us fis"></i>
+                <input type="radio" <?php if ($_SESSION['CurrencySite'] == 'MXP') {
+                                      echo "checked";
+                                    } ?> name="CurrencySite" value="MXP" onchange="submitForm()"> <i class="rounded-circle fi fi-mx fis"></i>
               </form>
-            </span>  
+            </span>
           </div>
         </a>
-      </div> <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
+      </div>
+      <div class="toolbar-item visible-on-mobile mobile-menu-toggle"><a href="#">
           <div><i class="icon-menu"></i><span class="text-label">Menu</span></div>
         </a></div>
 
@@ -473,20 +450,6 @@ if (!class_exists("SolucionesTopController")) {
 
     <!-- Mobile Menu-->
     <div class="mobile-menu">
-      <!-- Search Box-->
-      <!-- <div class="mobile-search">
-        <form class="input-group" method="get"><span class="input-group-btn">
-            <button type="submit"><i class="icon-search"></i></button></span>
-          <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
-          <div class="row" style="position: absolute; z-index: 100">
-            <div class="col-md-12 margin-bottom-2x">
-              <nav class="list-group lista-productos" id="lista-productos-1">
-
-              </nav>
-            </div>
-          </div>
-        </form>
-      </div> -->
       <!-- Toolbar-->
       <div class="toolbar">
         <div id="ListResumenProductosCarrito" class="toolbar-item ">
@@ -586,223 +549,12 @@ if (!class_exists("SolucionesTopController")) {
 
     <div class="site-branding col-12">
       <div class="mobile-search ">
-        <form class="input-group" method="get"><span class="input-group-btn">
-            <button type="submit"><i class="icon-search"></i></button></span>
+        <form class="input-group" method="get">
+          <span class="input-group-btn">
+            <button type="submit"><i class="icon-search"></i></button>
+          </span>
           <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
-          <div class="row" style="position: absolute; z-index: 100">
-            
-<div class="col-12">
-
-        <!-- PANEL DE RESULTADOS -->
-        <div id="panelResultados" class="live-search-panel" style="display:block;">
-
-            <!-- PESTAÑAS -->
-            <div class="live-search-tabs">
-                <ul class="nav nav-tabs" id="tabsResultados" role="tablist">
-
-                    <li class="nav-item">
-                        <a class="nav-link active"
-                           data-toggle="tab"
-                           href="#resProductos" role="tab">
-                            <i class="fas fa-box"></i>
-                            Productos <span id="countProductos">5</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           data-toggle="tab"
-                           href="#resCursos" role="tab">
-                            <i class="fas fa-graduation-cap"></i>
-                            Cursos <span id="countCursos">3</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           data-toggle="tab"
-                           href="#resBlog" role="tab">
-                            <i class="fas fa-newspaper"></i>
-                            Blog <span id="countBlog">4</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <!-- CONTENIDO -->
-            <div class="tab-content live-search-content">
-
-                <!-- PRODUCTOS -->
-                <div class="tab-pane fade show active"
-                     id="resProductos" role="tabpanel">
-
-                    <div class="result-list">
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Gabinete" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Gabinete para telecomunicación de pared 9 unidades</h6>
-                                <p>OPGAPA009USHK</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Charola" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Charola fija gabinete de pared</h6>
-                                <p>OPGACH4PPA</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Contactos" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Barra de 6 contactos</h6>
-                                <p>OPGABC1906</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Fibra" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Cable de fibra óptica monomodo 12 hilos</h6>
-                                <p>OPFOM12SM</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Conector" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Conector óptico SC/APC</h6>
-                                <p>OPCONECTORSC</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- CURSOS -->
-                <div class="tab-pane fade"
-                     id="resCursos" role="tabpanel">
-
-                    <div class="result-list">
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+01" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Instalación y mantenimiento de fibra óptica</h6>
-                                <p>Capacitación técnica · Nivel básico</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+02" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Certificación de redes de fibra óptica</h6>
-                                <p>Capacitación técnica · Nivel avanzado</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+03" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Diseño de redes FTTH</h6>
-                                <p>Capacitación técnica · Nivel intermedio</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- BLOG -->
-                <div class="tab-pane fade"
-                     id="resBlog" role="tabpanel">
-
-                    <div class="result-list">
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+01" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>¿Qué es la fibra óptica y cómo funciona?</h6>
-                                <p>Conoce los fundamentos de esta tecnología.</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+02" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Tipos de cables de fibra óptica</h6>
-                                <p>Principales diferencias y aplicaciones.</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+03" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>Ventajas de las redes FTTH</h6>
-                                <p>Beneficios de implementar fibra hasta el hogar.</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-image">
-                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+04" alt="">
-                            </div>
-                            <div class="result-description">
-                                <h6>¿Cómo elegir un gabinete de telecomunicaciones?</h6>
-                                <p>Características que debes considerar.</p>
-                            </div>
-                            <div class="result-arrow">&gt;</div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- PIE -->
-            <div class="live-search-footer">
-                <span id="totalResultados">12 resultados</span>
-                <span>Selecciona un resultado para continuar</span>
-            </div>
-
-        </div>
-
-    </div>
+          <div class="row col" id="SearchResultMovil" style="position: absolute; z-index: 100">
 
           </div>
         </form>
@@ -819,11 +571,11 @@ if (!class_exists("SolucionesTopController")) {
   }
   ?>
 
-<script>
-        function submitForm() {
-            document.getElementById('radioForm').submit();
-        }
-    </script>
+  <script>
+    function submitForm() {
+      document.getElementById('radioForm').submit();
+    }
+  </script>
 </header>
 <div id="customizer-backdrop" class="customizer-backdrop"></div>
 
@@ -839,23 +591,43 @@ function url_amigable($url_tmp)
   $find = array(' ', '&', '\r\n', '\n', '+');
   $url_utf8 = str_replace($find, '-', $url_utf8);
 
-  
-$url_utf8 = strtr(
+
+  $url_utf8 = strtr(
     $url_utf8,
     [
-        '_' => '-',
-        'à' => 'a', 'á' => 'a', 'â' => 'a',
-        'ã' => 'a', 'ä' => 'a', 'å' => 'a',
-        'æ' => 'ae', 'ç' => 'c',
-        'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e',
-        'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i',
-        'ð' => 'o', 'ñ' => 'n',
-        'ò' => 'o', 'ó' => 'o', 'ô' => 'o',
-        'õ' => 'o', 'ö' => 'o', 'ø' => 'o',
-        'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u',
-        'ý' => 'y', 'ÿ' => 'y'
+      '_' => '-',
+      'à' => 'a',
+      'á' => 'a',
+      'â' => 'a',
+      'ã' => 'a',
+      'ä' => 'a',
+      'å' => 'a',
+      'æ' => 'ae',
+      'ç' => 'c',
+      'è' => 'e',
+      'é' => 'e',
+      'ê' => 'e',
+      'ë' => 'e',
+      'ì' => 'i',
+      'í' => 'i',
+      'î' => 'i',
+      'ï' => 'i',
+      'ð' => 'o',
+      'ñ' => 'n',
+      'ò' => 'o',
+      'ó' => 'o',
+      'ô' => 'o',
+      'õ' => 'o',
+      'ö' => 'o',
+      'ø' => 'o',
+      'ù' => 'u',
+      'ú' => 'u',
+      'û' => 'u',
+      'ü' => 'u',
+      'ý' => 'y',
+      'ÿ' => 'y'
     ]
-);
+  );
 
 
   //Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron
