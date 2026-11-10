@@ -47,6 +47,7 @@
             <select class="form-control" id="PuertaFrontalG" name="PuertaFrontalG" onchange="GabinetesPiso()">
                 <option value="C">Cristal Ranurada</option>
                 <option value="V">Ventilada</option>
+                <option value="PD">Doble Sección</option>
             </select>
         </div>
     </div>
@@ -54,6 +55,7 @@
         <div class="form-group mb-0">
             <label for="PuertaTraceraG" id="LPuertaTraceraG">Puerta Trasera</label>
             <select class="form-control" id="PuertaTraceraG" name="PuertaTraceraG" onchange="GabinetesPiso()">
+                <option value="C">Cristal Ranurada</option>
                 <option value="V">Ventilada</option>
                 <option value="PD">Doble Sección</option>
             </select>
