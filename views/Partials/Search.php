@@ -21,9 +21,40 @@ if (isset($_POST["Descripcion"])) {
       $url_utf8 = str_replace($find, '-', $url_utf8);
 
       $url_utf8 = strtr(
-        utf8_decode($url_utf8),
-        utf8_decode('_àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ'),
-        '-aaaaaaaceeeeiiiionoooooouuuuyy'
+        $url_utf8,
+          [
+              '_' => '-',
+              'à' => 'a',
+              'á' => 'a',
+              'â' => 'a',
+              'ã' => 'a',
+              'ä' => 'a',
+              'å' => 'a',
+              'æ' => 'a',
+              'ç' => 'c',
+              'è' => 'e',
+              'é' => 'e',
+              'ê' => 'e',
+              'ë' => 'e',
+              'ì' => 'i',
+              'í' => 'i',
+              'î' => 'i',
+              'ï' => 'i',
+              'ð' => 'o',
+              'ñ' => 'n',
+              'ò' => 'o',
+              'ó' => 'o',
+              'ô' => 'o',
+              'õ' => 'o',
+              'ö' => 'o',
+              'ø' => 'o',
+              'ù' => 'u',
+              'ú' => 'u',
+              'û' => 'u',
+              'ü' => 'u',
+              'ý' => 'y',
+              'ÿ' => 'y'
+          ]
       );
 
       //Ya que usamos TRANSLIT en el comando iconv, tenemos que limpiar los simbolos que quedaron

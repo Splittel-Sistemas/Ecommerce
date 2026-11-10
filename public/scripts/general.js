@@ -454,6 +454,7 @@ var getChecked = function (Elem) {
 };
 
 var Buscador = function (Elem) {
+  /*
   if (!(Elem.value == "")) {
     document.getElementById(
       "SearchResult"
@@ -492,6 +493,7 @@ var Buscador = function (Elem) {
       "lista-productos-fijos-" + Elem.getAttribute("movil")
     ).innerHTML = "";
   }
+    */
 };
 
 var scrollTop = function (Elem) {
@@ -573,6 +575,7 @@ $(window).keydown(function (event) {
 });
 
 var BuscarProductos = function (Elem) {
+  /*
   if (!(Elem.value == "")) {
     ajaxViews(
       "../../views/Partials/Search.php",
@@ -590,6 +593,7 @@ var BuscarProductos = function (Elem) {
       "lista-productos-" + Elem.getAttribute("movil")
     ).innerHTML = "";
   }
+    */
 };
 
 var LineaCreditoTipoCambio = function (Elem) {
