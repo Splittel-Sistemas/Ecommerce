@@ -86,6 +86,220 @@ if (!class_exists("SolucionesTopController")) {
   background: #d4d4d4;
 }
 </style>
+
+<style>
+  
+/* PANEL PRINCIPAL */
+.live-search-panel {
+    display: none;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-radius: 7px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.13);
+    overflow: hidden;
+    margin-top: 5px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* PESTAÑAS */
+.live-search-tabs {
+    background: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.live-search-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.live-search-tabs::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 5px;
+}
+
+.live-search-tabs .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    min-width: 100%;
+    border: 0;
+}
+
+.live-search-tabs .nav-item {
+    flex: 0 0 auto;
+}
+
+.live-search-tabs .nav-link {
+    white-space: nowrap;
+    color: #555;
+    border: 0;
+    border-radius: 0;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+}
+
+.live-search-tabs .nav-link i {
+    margin-right: 5px;
+}
+
+.live-search-tabs .nav-link.active {
+    color: #c62828;
+    background: #fff;
+    border-bottom: 3px solid #c62828;
+}
+
+.live-search-tabs .nav-link span {
+    display: inline-block;
+    background: #eee;
+    color: #555;
+    border-radius: 12px;
+    padding: 2px 6px;
+    margin-left: 4px;
+    font-size: 10px;
+}
+
+/* CONTENIDO */
+.live-search-content {
+    height: 320px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.live-search-content .tab-pane {
+    height: 320px;
+    overflow-y: auto;
+    padding: 8px 14px;
+}
+
+.live-search-content .tab-pane::-webkit-scrollbar {
+    width: 5px;
+}
+
+.live-search-content .tab-pane::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 5px;
+}
+
+/* RESULTADOS */
+.result-item {
+    display: flex;
+    align-items: center;
+    min-height: 82px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #e1e1e1;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.result-item:hover {
+    background: #f9e7e9;
+    border-radius: 7px;
+}
+
+.result-image {
+    width: 110px;
+    height: 65px;
+    flex: 0 0 110px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.result-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.result-description {
+    flex: 1;
+    min-width: 0;
+}
+
+.result-description h6 {
+    color: #222;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+
+.result-description p {
+    color: #666;
+    font-size: 12px;
+    margin: 0;
+}
+
+.result-arrow {
+    color: #c62828;
+    font-size: 18px;
+    margin-left: 12px;
+}
+
+/* MENSAJES */
+.result-message {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    padding: 35px 10px;
+}
+
+/* PIE */
+.live-search-footer {
+    height: 35px;
+    background: #f7f7f7;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    color: #888;
+    font-size: 11px;
+}
+
+/* MÓVILES */
+@media (max-width: 576px) {
+
+    .live-search-content,
+    .live-search-content .tab-pane {
+        height: 350px;
+    }
+
+    .live-search-tabs .nav-link {
+        padding: 11px 13px;
+        font-size: 12px;
+    }
+
+    .result-image {
+        width: 75px;
+        height: 60px;
+        flex-basis: 75px;
+        margin-right: 9px;
+    }
+
+    .result-item {
+        padding: 9px 5px;
+    }
+
+    .result-description h6 {
+        font-size: 12px;
+    }
+
+    .result-description p {
+        font-size: 11px;
+    }
+
+    .live-search-footer span:last-child {
+        display: none;
+    }
+}
+
+</style>
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="site-header navbar-sticky">
 
@@ -376,11 +590,220 @@ if (!class_exists("SolucionesTopController")) {
             <button type="submit"><i class="icon-search"></i></button></span>
           <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
           <div class="row" style="position: absolute; z-index: 100">
-            <div class="col-md-12 margin-bottom-2x">
-              <nav class="list-group lista-productos" id="lista-productos-1">
+            
+<div class="col-12">
 
-              </nav>
+        <!-- PANEL DE RESULTADOS -->
+        <div id="panelResultados" class="live-search-panel" style="display:block;">
+
+            <!-- PESTAÑAS -->
+            <div class="live-search-tabs">
+                <ul class="nav nav-tabs" id="tabsResultados" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           data-toggle="tab"
+                           href="#resProductos" role="tab">
+                            <i class="fas fa-box"></i>
+                            Productos <span id="countProductos">5</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           data-toggle="tab"
+                           href="#resCursos" role="tab">
+                            <i class="fas fa-graduation-cap"></i>
+                            Cursos <span id="countCursos">3</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           data-toggle="tab"
+                           href="#resBlog" role="tab">
+                            <i class="fas fa-newspaper"></i>
+                            Blog <span id="countBlog">4</span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
+
+            <!-- CONTENIDO -->
+            <div class="tab-content live-search-content">
+
+                <!-- PRODUCTOS -->
+                <div class="tab-pane fade show active"
+                     id="resProductos" role="tabpanel">
+
+                    <div class="result-list">
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Gabinete" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Gabinete para telecomunicación de pared 9 unidades</h6>
+                                <p>OPGAPA009USHK</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Charola" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Charola fija gabinete de pared</h6>
+                                <p>OPGACH4PPA</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Contactos" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Barra de 6 contactos</h6>
+                                <p>OPGABC1906</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Fibra" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Cable de fibra óptica monomodo 12 hilos</h6>
+                                <p>OPFOM12SM</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Conector" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Conector óptico SC/APC</h6>
+                                <p>OPCONECTORSC</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CURSOS -->
+                <div class="tab-pane fade"
+                     id="resCursos" role="tabpanel">
+
+                    <div class="result-list">
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+01" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Instalación y mantenimiento de fibra óptica</h6>
+                                <p>Capacitación técnica · Nivel básico</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+02" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Certificación de redes de fibra óptica</h6>
+                                <p>Capacitación técnica · Nivel avanzado</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Curso+03" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Diseño de redes FTTH</h6>
+                                <p>Capacitación técnica · Nivel intermedio</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- BLOG -->
+                <div class="tab-pane fade"
+                     id="resBlog" role="tabpanel">
+
+                    <div class="result-list">
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+01" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>¿Qué es la fibra óptica y cómo funciona?</h6>
+                                <p>Conoce los fundamentos de esta tecnología.</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+02" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Tipos de cables de fibra óptica</h6>
+                                <p>Principales diferencias y aplicaciones.</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+03" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>Ventajas de las redes FTTH</h6>
+                                <p>Beneficios de implementar fibra hasta el hogar.</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-image">
+                                <img src="https://placehold.co/150x100/eaeaea/333?text=Articulo+04" alt="">
+                            </div>
+                            <div class="result-description">
+                                <h6>¿Cómo elegir un gabinete de telecomunicaciones?</h6>
+                                <p>Características que debes considerar.</p>
+                            </div>
+                            <div class="result-arrow">&gt;</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PIE -->
+            <div class="live-search-footer">
+                <span id="totalResultados">12 resultados</span>
+                <span>Selecciona un resultado para continuar</span>
+            </div>
+
+        </div>
+
+    </div>
+
           </div>
         </form>
       </div>
