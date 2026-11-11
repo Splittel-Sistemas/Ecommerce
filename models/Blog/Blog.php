@@ -34,6 +34,7 @@ class Blog
 
   public function get($filter, $order, $return_json){
     try {
+      $items = [];
       if (!$this->conn->conexion()->connect_error) {
         $SQLSTATEMENT = "SELECT * FROM menu_blog ".$filter." ".$order;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);

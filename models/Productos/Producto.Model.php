@@ -199,7 +199,6 @@
     public function ListProductosFijos($filter, $order){
       try {
         $SQLSTATEMENT = "SELECT * FROM listar_productos_fijos ".$filter." ".$order;
-        // echo $SQLSTATEMENT;
         $result = $this->Connection->QueryReturn($SQLSTATEMENT);
         $data = [];
         if ($result) { 

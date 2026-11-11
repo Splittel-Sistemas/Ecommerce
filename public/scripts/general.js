@@ -21,11 +21,11 @@ var ajaxViews = function (url, method, type, data, success) {
 
 let xhr = null;
 var _ajax_ = function (url, method, type, data, success) {
- 
-  if(xhr && xhr.readyState != 4) { 
+
+  if (xhr && xhr.readyState != 4) {
     xhr.abort();
-}
-xhr =  $.ajax({
+  }
+  xhr = $.ajax({
     url: url,
     method: method,
     data: data,
@@ -35,11 +35,11 @@ xhr =  $.ajax({
       xhr.setRequestHeader(
         "Authorization",
         "Basic " +
-          btoa(
-            Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
-          )
+        btoa(
+          Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
+        )
       );
-      $("#customizer-backdrop").addClass("active");
+      //$("#customizer-backdrop").addClass("active");
     },
     success: function (response) {
       if (response != null && success != null) {
@@ -68,9 +68,9 @@ var ajax_ = function (url, method, type, data, success) {
       xhr.setRequestHeader(
         "Authorization",
         "Basic " +
-          btoa(
-            Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
-          )
+        btoa(
+          Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
+        )
       );
       $("#customizer-backdrop").addClass("active");
     },
@@ -96,15 +96,15 @@ var ajax_no_async = function (url, method, type, data, success) {
     method: method,
     data: data,
     dataType: type,
-    async:false,
+    async: false,
     beforeSend: function (xhr) {
       Elem = document.getElementById("dataInterna");
       xhr.setRequestHeader(
         "Authorization",
         "Basic " +
-          btoa(
-            Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
-          )
+        btoa(
+          Elem.getAttribute("primero") + ":" + Elem.getAttribute("segundo")
+        )
       );
       $("#customizer-backdrop").addClass("active");
     },
@@ -316,8 +316,8 @@ var GlobalInitialDatatable = function (element) {
       var title = $(this).text();
       $(this).html(
         '<input type="text" class="form-control input-sm" placeholder="Buscar en ' +
-          title +
-          '" />'
+        title +
+        '" />'
       );
 
       $("input", this).on("keyup change", function () {
@@ -453,47 +453,51 @@ var getChecked = function (Elem) {
   return value;
 };
 
+let ultimaBusqueda = 0;
+
 var Buscador = function (Elem) {
-  /*
+  document.getElementById('search-1').value = '';
   if (!(Elem.value == "")) {
-    document.getElementById(
-      "SearchResult"
-    ).style.display='block';
-    ajaxViews(
-      "../../views/Partials/Search.php",
+    document.getElementById("SearchResult").style.display = 'block';
+    document.getElementById("SearchResult").innerHTML = '';
+    document.getElementById("SearchResultMovil").style.display = 'none';
+    document.getElementById("SearchResultMovil").innerHTML = '';
+
+    ultimaBusqueda++;
+    let verificador = ultimaBusqueda;
+
+    _ajax_(
+      "../../views/Partials/SearchMenu.php",
       "POST",
       "HTML",
       { Descripcion: Elem.value },
       function (response) {
-        document.getElementById(
-          "lista-productos-" + Elem.getAttribute("movil")
-        ).innerHTML = response;
-      }
-    );
-    ajaxViews(
-      "../../views/Partials/SearchProducts.php",
-      "POST",
-      "HTML",
-      { Descripcion: Elem.value },
-      function (response) {
-        document.getElementById(
-          "lista-productos-fijos-" + Elem.getAttribute("movil")
-        ).innerHTML = response;
-        
+        if (verificador == ultimaBusqueda) {
+          document.getElementById("SearchResult").innerHTML = response;
+        }
       }
     );
   } else {
-    document.getElementById(
-      "SearchResult"
-    ).style.display='none';
-    document.getElementById(
-      "lista-productos-" + Elem.getAttribute("movil")
-    ).innerHTML = "";
-    document.getElementById(
-      "lista-productos-fijos-" + Elem.getAttribute("movil")
-    ).innerHTML = "";
+    document.getElementById("SearchResult").style.display = 'block';
+    document.getElementById("SearchResult").innerHTML = '';
+    document.getElementById("SearchResultMovil").style.display = 'none';
+    document.getElementById("SearchResultMovil").innerHTML = '';
+
+    ultimaBusqueda++;
+    let verificador = ultimaBusqueda;
+
+    _ajax_(
+      "../../views/Partials/TopSellers.php",
+      "POST",
+      "HTML",
+      { Descripcion: Elem.value },
+      function (response) {
+        if (verificador == ultimaBusqueda) {
+          document.getElementById("SearchResult").innerHTML = response;
+        }
+      }
+    );
   }
-    */
 };
 
 var scrollTop = function (Elem) {
@@ -575,25 +579,48 @@ $(window).keydown(function (event) {
 });
 
 var BuscarProductos = function (Elem) {
-  /*
+  document.getElementById('search-0').value = '';
   if (!(Elem.value == "")) {
-    ajaxViews(
-      "../../views/Partials/Search.php",
+    document.getElementById("SearchResult").style.display = 'none';
+    document.getElementById("SearchResult").innerHTML = '';
+    document.getElementById("SearchResultMovil").style.display = 'block';
+    document.getElementById("SearchResultMovil").innerHTML = '';
+
+    ultimaBusqueda++;
+    let verificador = ultimaBusqueda;
+
+    _ajax_(
+      "../../views/Partials/SearchMenu.php",
       "POST",
       "HTML",
       { Descripcion: Elem.value },
       function (response) {
-        document.getElementById(
-          "lista-productos-" + Elem.getAttribute("movil")
-        ).innerHTML = response;
+        if (verificador == ultimaBusqueda) {
+          document.getElementById("SearchResultMovil").innerHTML = response;
+        }
       }
     );
   } else {
-    document.getElementById(
-      "lista-productos-" + Elem.getAttribute("movil")
-    ).innerHTML = "";
+    document.getElementById("SearchResult").style.display = 'none';
+    document.getElementById("SearchResult").innerHTML = '';
+    document.getElementById("SearchResultMovil").style.display = 'block';
+    document.getElementById("SearchResultMovil").innerHTML = '';
+
+    ultimaBusqueda++;
+    let verificador = ultimaBusqueda;
+
+    _ajax_(
+      "../../views/Partials/TopSellers.php",
+      "POST",
+      "HTML",
+      { Descripcion: Elem.value },
+      function (response) {
+        if (verificador == ultimaBusqueda) {
+          document.getElementById("SearchResultMovil").innerHTML = response;
+        }
+      }
+    );
   }
-    */
 };
 
 var LineaCreditoTipoCambio = function (Elem) {
@@ -666,8 +693,8 @@ var EmailCursos = function (Elem) {
       if (!response.error) {
         $(".cursos").val("");
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = false;
+        checkboxes.forEach(function (checkbox) {
+          checkbox.checked = false;
         });
         templateAlert(
           response.typeError,

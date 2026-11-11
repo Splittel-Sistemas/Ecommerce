@@ -214,7 +214,7 @@ try {
   .result-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .result-description {
@@ -341,7 +341,7 @@ try {
           </div>
           <form class="input-group"><span class="input-group-btn">
               <button type="submit"><i class="icon-search"></i></button></span>
-            <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off" onpaste="Buscador(this)" onkeyup="Buscador(this)">
+            <input class="form-control search" movil="0" id="search-0" type="search" placeholder="Buscar producto..." autocomplete="off" onfocus="Buscador(this)" onpaste="Buscador(this)" onkeyup="Buscador(this)">
             <div class="row col-12 " id="SearchResult" style="position: absolute; z-index: 100; display:none;">
 
             </div>
@@ -553,8 +553,8 @@ try {
           <span class="input-group-btn">
             <button type="submit"><i class="icon-search"></i></button>
           </span>
-          <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onkeyup="BuscarProductos(this)">
-          <div class="row col" id="SearchResultMovil" style="position: absolute; z-index: 100">
+          <input class="form-control search" movil="1" name="search" id="search-1" type="search" placeholder="Buscar producto..." autocomplete="off" onfocus="BuscarProductos(this)" onkeyup="BuscarProductos(this)">
+          <div class="row col" id="SearchResultMovil" style="position: absolute; z-index: 100; display:none;">
 
           </div>
         </form>
