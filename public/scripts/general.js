@@ -453,50 +453,39 @@ var getChecked = function (Elem) {
   return value;
 };
 
-let ultimaBusqueda = 0;
+let temporizador;
 
 var Buscador = function (Elem) {
   document.getElementById('search-1').value = '';
-  if (!(Elem.value == "")) {
-    document.getElementById("SearchResult").style.display = 'block';
-    document.getElementById("SearchResult").innerHTML = '';
-    document.getElementById("SearchResultMovil").style.display = 'none';
-    document.getElementById("SearchResultMovil").innerHTML = '';
+  document.getElementById("SearchResult").style.display = 'block';
+  document.getElementById("SearchResult").innerHTML = '';
+  document.getElementById("SearchResultMovil").style.display = 'none';
+  document.getElementById("SearchResultMovil").innerHTML = '';
 
-    ultimaBusqueda++;
-    let verificador = ultimaBusqueda;
-
+  if (Elem.value == '') {
     _ajax_(
       "../../views/Partials/SearchMenu.php",
       "POST",
       "HTML",
       { Descripcion: Elem.value },
       function (response) {
-        if (verificador == ultimaBusqueda) {
-          document.getElementById("SearchResult").innerHTML = response;
-        }
+        document.getElementById("SearchResult").innerHTML = response;
       }
     );
   } else {
-    document.getElementById("SearchResult").style.display = 'block';
-    document.getElementById("SearchResult").innerHTML = '';
-    document.getElementById("SearchResultMovil").style.display = 'none';
-    document.getElementById("SearchResultMovil").innerHTML = '';
+    clearTimeout(temporizador);
 
-    ultimaBusqueda++;
-    let verificador = ultimaBusqueda;
-
-    _ajax_(
-      "../../views/Partials/TopSellers.php",
-      "POST",
-      "HTML",
-      { Descripcion: Elem.value },
-      function (response) {
-        if (verificador == ultimaBusqueda) {
+    temporizador = setTimeout(function () {
+      _ajax_(
+        "../../views/Partials/SearchMenu.php",
+        "POST",
+        "HTML",
+        { Descripcion: Elem.value },
+        function (response) {
           document.getElementById("SearchResult").innerHTML = response;
         }
-      }
-    );
+      );
+    }, 400);
   }
 };
 
@@ -580,46 +569,35 @@ $(window).keydown(function (event) {
 
 var BuscarProductos = function (Elem) {
   document.getElementById('search-0').value = '';
-  if (!(Elem.value == "")) {
-    document.getElementById("SearchResult").style.display = 'none';
-    document.getElementById("SearchResult").innerHTML = '';
-    document.getElementById("SearchResultMovil").style.display = 'block';
-    document.getElementById("SearchResultMovil").innerHTML = '';
+  document.getElementById("SearchResult").style.display = 'none';
+  document.getElementById("SearchResult").innerHTML = '';
+  document.getElementById("SearchResultMovil").style.display = 'block';
+  document.getElementById("SearchResultMovil").innerHTML = '';
 
-    ultimaBusqueda++;
-    let verificador = ultimaBusqueda;
-
+  if (Elem.value.trim() == '') {
     _ajax_(
       "../../views/Partials/SearchMenu.php",
       "POST",
       "HTML",
       { Descripcion: Elem.value },
       function (response) {
-        if (verificador == ultimaBusqueda) {
-          document.getElementById("SearchResultMovil").innerHTML = response;
-        }
+        document.getElementById("SearchResultMovil").innerHTML = response;
       }
     );
   } else {
-    document.getElementById("SearchResult").style.display = 'none';
-    document.getElementById("SearchResult").innerHTML = '';
-    document.getElementById("SearchResultMovil").style.display = 'block';
-    document.getElementById("SearchResultMovil").innerHTML = '';
+    clearTimeout(temporizador);
 
-    ultimaBusqueda++;
-    let verificador = ultimaBusqueda;
-
-    _ajax_(
-      "../../views/Partials/TopSellers.php",
-      "POST",
-      "HTML",
-      { Descripcion: Elem.value },
-      function (response) {
-        if (verificador == ultimaBusqueda) {
+    temporizador = setTimeout(function () {
+      _ajax_(
+        "../../views/Partials/SearchMenu.php",
+        "POST",
+        "HTML",
+        { Descripcion: Elem.value },
+        function (response) {
           document.getElementById("SearchResultMovil").innerHTML = response;
         }
-      }
-    );
+      );
+    }, 400);
   }
 };
 
@@ -824,3 +802,17 @@ var facturacionBb2MXP = function (Elem) {
     }
   }
 };
+
+document.addEventListener("click", function (e) {
+  const busqueda = document.getElementById("search-0");
+  const busquedamovil = document.getElementById("search-1");
+  const resultados = document.getElementById("panelResultados");
+
+  if (
+    !busqueda.contains(e.target) &&
+    !busquedamovil.contains(e.target) &&
+    !resultados.contains(e.target)
+  ) {
+    resultados.style.display = "none";
+  }
+});
