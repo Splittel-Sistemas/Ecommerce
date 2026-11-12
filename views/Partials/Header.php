@@ -298,6 +298,124 @@ try {
       display: none;
     }
   }
+
+  /* =====================================
+   MAS VENDIDOS - DISEÑO TIPO CATALOGO
+===================================== */
+
+  #resProductosTop {
+    background: #fff;
+  }
+
+  #resProductosTop .top-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  #resProductosTop .top-products-header h6 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+  }
+
+  #resProductosTop .top-products-header a {
+    color: #c62828;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  #resProductosTop .top-products-grid {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 15px 12px;
+  }
+
+  #resProductosTop .top-product-card {
+    min-width: 0;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  #resProductosTop .top-product-image {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    background: #f1f1f1;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  #resProductosTop .top-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .25s ease;
+  }
+
+  #resProductosTop .top-product-card:hover .top-product-image img {
+    transform: scale(1.05);
+  }
+
+  #resProductosTop .top-product-badge {
+    display: inline-block;
+    background: #d7f5e2;
+    color: #008b42;
+    border-radius: 15px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  #resProductosTop .top-product-name {
+    font-size: 10px;
+    color: #222;
+    line-height: 1.4;
+    margin: 0 0 3px;
+  }
+
+  #resProductosTop .top-product-price {
+    font-size: 12px;
+    color: #222;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  #resProductosTop .top-product-code {
+    font-size: 10px;
+    color: #888;
+    margin-top: 3px;
+  }
+
+  /* TABLETS */
+  @media (max-width: 768px) {
+    #resProductosTop .top-products-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
+
+  /* MOVILES */
+  @media (max-width: 576px) {
+    #resProductosTop .top-products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px 10px;
+    }
+
+    #resProductosTop .top-product-image {
+      border-radius: 12px;
+    }
+
+    #resProductosTop .top-products-header h6 {
+      font-size: 13px;
+    }
+  }
 </style>
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="site-header navbar-sticky">

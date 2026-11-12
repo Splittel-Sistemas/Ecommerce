@@ -11,12 +11,36 @@ function url_amigable($texto)
     return trim($texto, '-');
 }
 
+function resaltarCoincidencias($textoBusqueda, $textoOriginal)
+{
+    $palabras = preg_split('/\s+/u', trim($textoBusqueda));
+    $palabras = array_filter($palabras, function ($palabra) {
+        return $palabra !== '';
+    });
+
+    if (empty($palabras)) {
+        return $textoOriginal;
+    }
+
+    $palabras = array_map(function ($palabra) {
+        return preg_quote($palabra, '/');
+    }, $palabras);
+    $expresionRegular = '/(' . implode('|', $palabras) . ')/iu';
+
+    return preg_replace(
+        $expresionRegular,
+        '<span style="background-color:yellow;">$1</span>',
+        $textoOriginal
+    );
+}
+
 $arrayCategorias = [];
 $arraySubCategorias = [];
 $arrayProductos = [];
 $arrayBlog = [];
 $arrayCursos = [];
-$arrayMasVendidos = [];
+$arrayCategoriasMasVendidas = [];
+$arrayProductosMasVendidos = [];
 
 $connection = new Connection();
 $mysqli = $connection->conexion();
@@ -33,8 +57,7 @@ if (trim($descripcionBusqueda) != '') {
     $palabrasClave = explode(" ", $descripcionBusqueda);
     foreach ($palabrasClave as $palabra) {
         if ($palabra != ""  && $palabra != "de" && $palabra != "DE" && $palabra != "O" && $palabra != "o" && $palabra != "para" && $palabra != "PARA" && $palabra != "con" && $palabra != "CON") {
-            $likeFijo .= " OR desc_producto LIKE '%" . $palabra . "%'";
-            $likeFijo .= " OR codigo LIKE '%" . $palabra . "%' ";
+            $likeFijo .= $palabra . "* ";
             $likeConfigurable .= " OR desc_subcategoria LIKE '%" . $palabra . "%'";
             $likeSubCategoria .= " OR descripcion LIKE '%" . $palabra . "%' ";
             $likeCurso .= " OR mce.title1 LIKE '%" . $palabra . "%'";
@@ -51,7 +74,7 @@ if (trim($descripcionBusqueda) != '') {
         $arraySubCategorias[] = [
             'url' => "/fibra-optica/views/Productos/categorias.php?id_sbct=" . $fila['id'] . "&nom=" . url_amigable($fila['descripcion']),
             'img' => $img,
-            'descripcion' => $fila['descripcion'],
+            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['descripcion']),
             'cardcode' => $fila['id_categoria']
         ];
     }
@@ -66,12 +89,23 @@ if (trim($descripcionBusqueda) != '') {
         $arraySubCategorias[] = [
             'url' => $url,
             'img' => $img,
-            'descripcion' => $fila['desc_subcategoria'],
+            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['desc_subcategoria']),
             'cardcode' => 'Configuralo'
         ];
     }
 
-    $productosFijos = $mysqli->query("SELECT codigo,desc_producto,img_principal FROM catalogo_productos WHERE (codigo = '" . $descripcionBusqueda . "'" . $likeFijo . ") AND activo='si' AND (codigo_configurable='' OR configurablefijo='si' )");
+    $productosFijos = $mysqli->query("SELECT
+            id,
+            codigo,
+            desc_producto,
+            img_principal,
+            MATCH(desc_producto, codigo)
+            AGAINST('" . $likeFijo . "' IN BOOLEAN MODE) AS relevancia
+        FROM catalogo_productos
+        WHERE MATCH(desc_producto, codigo)
+            AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+            AND activo='si' AND (codigo_configurable='' OR configurablefijo='si' )
+        ORDER BY relevancia DESC");
     while ($fila = $productosFijos->fetch_assoc()) {
         $img = file_exists("../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal'])
             ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal']
@@ -80,8 +114,8 @@ if (trim($descripcionBusqueda) != '') {
         $arrayProductos[] = [
             'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($fila['codigo']) . '&nom=' . url_amigable($fila['desc_producto']),
             'img' => $img,
-            'descripcion' => $fila['desc_producto'],
-            'cardcode' => $fila['codigo']
+            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['desc_producto']),
+            'cardcode' => resaltarCoincidencias($descripcionBusqueda, $fila['codigo'])
         ];
     }
 
@@ -93,7 +127,7 @@ if (trim($descripcionBusqueda) != '') {
         $arrayCursos[] = [
             'url' => $fila['link'],
             'img' => $img,
-            'descripcion' => $fila['title1'],
+            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['title1']),
             'cardcode' => $fila['fecha']
         ];
     }
@@ -114,7 +148,7 @@ if (trim($descripcionBusqueda) != '') {
         $arrayBlog[] = [
             'url' => "/fibra-optica/views/Blog/detalle.php?id=" . $fila['id'] . "&nom=" . $fila['comillas'],
             'img' => $img,
-            'descripcion' => $fila['titulo'],
+            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['titulo']),
             'cardcode' => $formatter->format(new DateTime($fila['fecha']))
         ];
     }
@@ -122,29 +156,35 @@ if (trim($descripcionBusqueda) != '') {
 
 $ultimosProductosVendidos = $mysqli->query("SELECT
         CASE
-            WHEN cd.code_configurable IS NOT NULL
-                AND cd.code_configurable <> ''
-            THEN 'config'
-            ELSE 'fijo'
+            WHEN cp.codigo_configurable = ''
+                OR cp.configurablefijo = 'si'
+            THEN 'fijo'
+            ELSE 'config'
         END AS tipo,
         CASE
-            WHEN cd.code_configurable IS NOT NULL
-                AND cd.code_configurable <> ''
-            THEN cd.code_configurable
-            ELSE cd.codigo
+            WHEN cp.codigo_configurable = ''
+                OR cp.configurablefijo = 'si'
+            THEN cp.codigo
+            ELSE msn.codigo
         END AS codigo,
         CASE
-            WHEN cd.code_configurable IS NOT NULL
-                AND cd.code_configurable <> ''
-            THEN msn.desc_subcategoria
-            ELSE cp.desc_producto
+            WHEN cp.codigo_configurable = ''
+                OR cp.configurablefijo = 'si'
+            THEN cp.desc_producto
+            ELSE msn.desc_subcategoria
         END AS descripcion,
         CASE
-            WHEN cd.code_configurable IS NOT NULL
-                AND cd.code_configurable <> ''
-            THEN msn.folder_name
-            ELSE cp.img_principal
+            WHEN cp.codigo_configurable = ''
+                OR cp.configurablefijo = 'si'
+            THEN cp.img_principal
+            ELSE msn.folder_name
         END AS imagen,
+        CASE
+            WHEN cp.codigo_configurable = ''
+                OR cp.configurablefijo = 'si'
+            THEN (SELECT id_menu FROM u_menu_subcategorias WHERE id_subcategoria = cp.subcategoria LIMIT 1)
+            ELSE (SELECT id_menu FROM u_menu_subcategorias WHERE id_subcategoria = msn.id_subcategoria LIMIT 1)
+        END AS categoria,
         COUNT(*) AS cantidad
     FROM cotizacion_encabezado ce
     INNER JOIN cotizacion_detalle cd
@@ -153,10 +193,10 @@ $ultimosProductosVendidos = $mysqli->query("SELECT
     LEFT JOIN catalogo_productos cp
         ON cp.codigo = cd.codigo
     LEFT JOIN menu_subcategorias_n1 msn
-        ON msn.codigo = cd.code_configurable
+        ON msn.codigo = cp.codigo_configurable
     WHERE
         ce.estatus = 'C'
-        AND ce.fecha >= CURDATE() - INTERVAL 30 DAY
+        AND ce.fecha >= CURDATE() - INTERVAL 7 DAY
         AND ce.fecha < CURDATE() + INTERVAL 1 DAY
     GROUP BY
         codigo,
@@ -169,7 +209,7 @@ while ($fila = $ultimosProductosVendidos->fetch_assoc()) {
             ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['imagen']
             : "../../public/images/img_spl/notfound.png";
 
-        $arrayMasVendidos[] = [
+        $arrayProductosMasVendidos[] = [
             'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($fila['codigo']) . '&nom=' . url_amigable($fila['descripcion']),
             'img' => $img,
             'descripcion' => $fila['descripcion'],
@@ -181,11 +221,11 @@ while ($fila = $ultimosProductosVendidos->fetch_assoc()) {
             ? "../../public/images/img_spl/subsubcategorias/" . $fila['imagen'] . ".jpg"
             : "../../public/images/img_spl/notfound.png";
 
-        $arrayMasVendidos[] = [
+        $arrayCategoriasMasVendidas[] = [
             'url' => $url,
             'img' => $img,
             'descripcion' => $fila['descripcion'],
-            'cardcode' => 'Configuralo'
+            'cardcode' => $fila['codigo']
         ];
     }
 }
@@ -200,14 +240,14 @@ $connection->closeConnection();
             <!-- PESTAÑAS -->
             <div class="live-search-tabs">
                 <ul class="nav nav-tabs" id="tabsResultados" role="tablist">
+                    <li class="nav-item <?php echo ($descripcionBusqueda == '') ? 'active' : '' ?>">
+                        <a class="nav-link <?php echo ($descripcionBusqueda == '') ? 'active' : '' ?>" data-toggle="tab" href="#resProductosTop" role="tab">
+                            <i class="fas fa-box"></i> Mas Vendidos <span><?php echo count($arrayCategoriasMasVendidas) + count($arrayProductosMasVendidos); ?></span>
+                        </a>
+                    </li>
                     <li class="nav-item <?php echo ($descripcionBusqueda == '') ? '' : 'active' ?>">
                         <a class="nav-link <?php echo ($descripcionBusqueda == '') ? '' : 'active' ?>" data-toggle="tab" href="#resProductos" role="tab">
                             <i class="fas fa-box"></i> Productos <span><?php echo count($arrayProductos); ?></span>
-                        </a>
-                    </li>
-                    <li class="nav-item <?php echo ($descripcionBusqueda == '') ? 'active' : '' ?>">
-                        <a class="nav-link <?php echo ($descripcionBusqueda == '') ? 'active' : '' ?>" data-toggle="tab" href="#resProductosTop" role="tab">
-                            <i class="fas fa-box"></i> Mas Vendidos <span><?php echo count($arrayMasVendidos); ?></span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -229,24 +269,46 @@ $connection->closeConnection();
             </div>
 
             <!-- CONTENIDO -->
-            <div class="tab-content live-search-content">
-                <!-- PRODUCTOS -->
-                <div class="tab-pane <?php echo ($descripcionBusqueda == '') ? '' : 'fade show active' ?>" id="resProductos" role="tabpanel">
-                    <div class="result-list">
+            <div class="tab-content live-search-content" style="padding: 10px 24px;">
+                <div class="tab-pane <?php echo ($descripcionBusqueda == '') ? 'fade show active' : '' ?>" id="resProductosTop" role="tabpanel">
+                    <div class="top-products-header">
+                        <h6>Explora por Categoría</h6>
+                    </div>
+
+                    <div class="top-products-grid">
                         <?php
-                        foreach ($arrayProductos as $obj) {
+                        foreach ($arrayCategoriasMasVendidas as $obj) {
                         ?>
-                            <a href="<?php echo $obj['url']; ?>" style="text-decoration: none;">
-                                <div class="result-item">
-                                    <div class="result-image">
-                                        <img src="<?php echo $obj['img']; ?>" alt="">
-                                    </div>
-                                    <div class="result-description">
-                                        <h6><?php echo $obj['descripcion']; ?></h6>
-                                        <p><?php echo $obj['cardcode']; ?></p>
-                                    </div>
-                                    <div class="result-arrow">&gt;</div>
+                            <a href="<?php echo $obj['url']; ?>"
+                                class="top-product-card">
+                                <div class="top-product-image">
+                                    <img src="<?php echo $obj['img']; ?>" alt="<?php echo $obj['cardcode']; ?>">
                                 </div>
+                                <h6 class="top-product-name">
+                                    <?php echo $obj['descripcion']; ?>
+                                </h6>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
+                    <div class="top-products-header">
+                        <h6>Favoritos de esta semana</h6>
+                    </div>
+
+                    <div class="top-products-grid">
+                        <?php
+                        foreach ($arrayProductosMasVendidos as $obj) {
+                        ?>
+                            <a href="<?php echo $obj['url']; ?>"
+                                class="top-product-card">
+                                <div class="top-product-image">
+                                    <img src="<?php echo $obj['img']; ?>" alt="<?php echo $obj['cardcode']; ?>">
+                                </div>
+                                <h6 class="top-product-name">
+                                    <?php echo $obj['descripcion']; ?>
+                                </h6>
                             </a>
                         <?php
                         }
@@ -254,11 +316,11 @@ $connection->closeConnection();
                     </div>
                 </div>
 
-                <!-- MAS VENDIDOS -->
-                <div class="tab-pane <?php echo ($descripcionBusqueda == '') ? 'fade show active' : '' ?>" id="resProductosTop" role="tabpanel">
+                <!-- PRODUCTOS -->
+                <div class="tab-pane <?php echo ($descripcionBusqueda == '') ? '' : 'fade show active' ?>" id="resProductos" role="tabpanel">
                     <div class="result-list">
                         <?php
-                        foreach ($arrayMasVendidos as $obj) {
+                        foreach ($arrayProductos as $obj) {
                         ?>
                             <a href="<?php echo $obj['url']; ?>" style="text-decoration: none;">
                                 <div class="result-item">
@@ -353,7 +415,7 @@ $connection->closeConnection();
 
             <!-- PIE -->
             <div class="live-search-footer">
-                <span><?php echo count($arrayMasVendidos) + count($arrayCategorias) + count($arraySubCategorias) + count($arrayProductos) + count($arrayBlog) + count($arrayCursos); ?> resultados</span>
+                <span><?php echo count($arrayCategoriasMasVendidas) + count($arrayProductosMasVendidos) + count($arrayCategorias) + count($arraySubCategorias) + count($arrayProductos) + count($arrayBlog) + count($arrayCursos); ?> resultados</span>
             </div>
         </div>
     </div>
