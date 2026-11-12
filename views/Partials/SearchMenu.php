@@ -1,16 +1,4 @@
 <?php
-if (!class_exists("SubcategoriasN1Controller")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Subcategorias/SubcategoriasN1.Controller.php';
-}
-if (!class_exists("ProductoController")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Productos/Producto.Controller.php';
-}
-if (!class_exists("SubmenuController")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Submenu/Submenu.Controller.php';
-}
-if (!class_exists("Blog")) {
-    include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Blog/Blog.php';
-}
 if (!class_exists("Connection")) {
     include $_SERVER["DOCUMENT_ROOT"] . '/fibra-optica/models/Tools/Connection.php';
 }
@@ -33,13 +21,10 @@ $arrayMasVendidos = [];
 $connection = new Connection();
 $mysqli = $connection->conexion();
 
-$ProductoController = new ProductoController();
-$SubcategoriasN1Controller = new SubcategoriasN1Controller();
-$descripcionBusqueda = isset($_POST["Descripcion"]) ? $ProductoController->sanitizaText(trim($_POST["Descripcion"])) : '';
+$descripcionBusqueda = isset($_POST["Descripcion"]) ? mysqli_real_escape_string($mysqli, $_POST["Descripcion"]) : '';
 
 if (trim($descripcionBusqueda) != '') {
 
-    //Buscar Productos
     $likeFijo = "";
     $likeConfigurable = "";
     $likeSubCategoria = "";
@@ -57,60 +42,49 @@ if (trim($descripcionBusqueda) != '') {
         }
     }
 
-    $SubcategoriasN1Controller->filter = "WHERE (id_subcategoria = '" . $descripcionBusqueda . "'" . $likeConfigurable . ") AND activo='si'";
-    $SubcategoriasN1Controller->order = "";
-    $productosConfigurables = $SubcategoriasN1Controller->get();
-    foreach ($productosConfigurables->records as $Obj) {
-        $url = $Obj->Configuracion == 1 ? "/fibra-optica/views/Productos/configurables.php?codigo=" . $Obj->Codigo . "" : "#";
-        $img = file_exists("../../public/images/img_spl/subsubcategorias/" . $Obj->FolderName . ".jpg")
-            ? "../../public/images/img_spl/subsubcategorias/" . $Obj->FolderName . ".jpg"
+    $subCategoria = $mysqli->query("SELECT * FROM menu_principal WHERE (id_categoria = '" . $descripcionBusqueda . "'" . $likeSubCategoria . ") AND nivel=2 AND activo='si' ");
+    while ($fila = $subCategoria->fetch_assoc()) {
+        $img = file_exists("../../public/images/img_spl/subcategorias/" . $fila['imagen'])
+            ? "../../public/images/img_spl/subcategorias/" . $fila['imagen']
             : "../../public/images/img_spl/notfound.png";
 
-        $arrayProductos[] = [
+        $arraySubCategorias[] = [
+            'url' => "/fibra-optica/views/Productos/categorias.php?id_sbct=" . $fila['id'] . "&nom=" . url_amigable($fila['descripcion']),
+            'img' => $img,
+            'descripcion' => $fila['descripcion'],
+            'cardcode' => $fila['id_categoria']
+        ];
+    }
+
+    $productosConfigurables = $mysqli->query("SELECT codigo,folder_name,desc_subcategoria FROM menu_subcategorias_n1 WHERE (id_subcategoria = '" . $descripcionBusqueda . "'" . $likeConfigurable . ") AND activo='si'");
+    while ($fila = $productosConfigurables->fetch_assoc()) {
+        $url = "/fibra-optica/views/Productos/configurables.php?codigo=" . $fila['codigo'];
+        $img = file_exists("../../public/images/img_spl/subsubcategorias/" . $fila['folder_name'] . ".jpg")
+            ? "../../public/images/img_spl/subsubcategorias/" . $fila['folder_name'] . ".jpg"
+            : "../../public/images/img_spl/notfound.png";
+
+        $arraySubCategorias[] = [
             'url' => $url,
             'img' => $img,
-            'descripcion' => $Obj->Descripcion,
+            'descripcion' => $fila['desc_subcategoria'],
             'cardcode' => 'Configuralo'
         ];
     }
 
-    $ProductoController->filter = "WHERE ((codigo = '" . $descripcionBusqueda . "'"  . $likeFijo . ") AND producto_activo = 'si' AND subcategoria_activo='si') AND existencia > 0 ";
-    $ProductoController->order = "";
-    $productosFijos = $ProductoController->GetProductosFijos_();
-    foreach ($productosFijos->records as $Obj) {
-        $img = file_exists("../../public/images/img_spl/productos/" . $Obj->ProductoCodigo . "/thumbnail/" . $Obj->ProductoImgPrincipal)
-            ? "../../public/images/img_spl/productos/" . $Obj->ProductoCodigo . "/thumbnail/" . $Obj->ProductoImgPrincipal
+    $productosFijos = $mysqli->query("SELECT codigo,desc_producto,img_principal FROM catalogo_productos WHERE (codigo = '" . $descripcionBusqueda . "'" . $likeFijo . ") AND activo='si' AND (codigo_configurable='' OR configurablefijo='si' )");
+    while ($fila = $productosFijos->fetch_assoc()) {
+        $img = file_exists("../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal'])
+            ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal']
             : "../../public/images/img_spl/notfound.png";
 
-        if (!($Obj->ProductoCodigoConfigurable != '' && $Obj->ConfigurableFijo == 'no')) {
-            $arrayProductos[] = [
-                'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($Obj->ProductoCodigo) . '&nom=' . url_amigable($Obj->ProductoDescripcion),
-                'img' => $img,
-                'descripcion' => $Obj->ProductoDescripcion,
-                'cardcode' => $Obj->ProductoCodigo
-            ];
-        }
-    }
-
-    //Buscar SubCategorias
-    $SubmenuController = new SubmenuController();
-    $SubmenuController->filter = "WHERE (id_categoria = '" . $descripcionBusqueda . "'" . $likeSubCategoria . ") AND nivel=2 AND activo='si' ";
-    $SubmenuController->order = "";
-    $subCategorias = $SubmenuController->get();
-    foreach ($subCategorias->records as $Obj) {
-        $img = file_exists("../../public/images/img_spl/subcategorias/" . $Obj->Imagen)
-            ? "../../public/images/img_spl/subcategorias/" . $Obj->Imagen
-            : "../../public/images/img_spl/notfound.png";
-
-        $arraySubCategorias[] = [
-            'url' => "/fibra-optica/views/Productos/categorias.php?id_sbct=" . $Obj->Key . "&nom=" . url_amigable($Obj->Descripcion),
+        $arrayProductos[] = [
+            'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($fila['codigo']) . '&nom=' . url_amigable($fila['desc_producto']),
             'img' => $img,
-            'descripcion' => $Obj->Descripcion,
-            'cardcode' => $Obj->FamiliaKey
+            'descripcion' => $fila['desc_producto'],
+            'cardcode' => $fila['codigo']
         ];
     }
 
-    //Cursos
     $cursos = $mysqli->query("SELECT mce.id, mce.title, mce.title1, mce.link, mce.fecha, mc.img_general FROM menu_capacitaciones_eventos mce LEFT JOIN menu_cursos mc ON mce.id_curso = mc.id WHERE (title1 = '" . $descripcionBusqueda . "'" . $likeCurso . ") AND mce.activo = 'si' AND mce.start > CURDATE()");
     while ($fila = $cursos->fetch_assoc()) {
         $img = $fila['title'] == 'Develop' ? '../../public/images/img_spl/cursos/' . $fila['img_general'] : '../../public/images/img_spl/capacitaciones/Redlives_Banner1.jpg';
@@ -124,12 +98,10 @@ if (trim($descripcionBusqueda) != '') {
         ];
     }
 
-    //Blog
-    $Blog = new Blog();
-    $blogs = (object) $Blog->get("WHERE (titulo = '" . $descripcionBusqueda . "'" . $likeBlog . ") AND activo = 'si' AND (pagina='Fibremex' OR pagina='ambas') ", "ORDER BY fecha DESC", false);
-    foreach ($blogs->records as $Obj) {
-        $img = file_exists("../../public/images/img_spl/blog/" . $Obj->BlogImg)
-            ? "../../public/images/img_spl/blog/" . $Obj->BlogImg
+    $blogs = $mysqli->query("SELECT id,img,fecha,comillas,titulo  FROM menu_blog WHERE (titulo = '" . $descripcionBusqueda . "'" . $likeBlog . ") AND activo = 'si' AND (pagina='Fibremex' OR pagina='ambas') ORDER BY fecha DESC");
+    while ($fila = $blogs->fetch_assoc()) {
+        $img = file_exists("../../public/images/img_spl/blog/" . $fila['img'])
+            ? "../../public/images/img_spl/blog/" . $fila['img']
             : "../../public/images/img_spl/notfound.png";
 
         $formatter = new IntlDateFormatter(
@@ -140,10 +112,10 @@ if (trim($descripcionBusqueda) != '') {
         );
 
         $arrayBlog[] = [
-            'url' => "/fibra-optica/views/Blog/detalle.php?id=" . $Obj->BlogKey . "&nom=" . $Obj->BlogComillas,
+            'url' => "/fibra-optica/views/Blog/detalle.php?id=" . $fila['id'] . "&nom=" . $fila['comillas'],
             'img' => $img,
-            'descripcion' => $Obj->BlogTitulo,
-            'cardcode' => $formatter->format(new DateTime($Obj->BlogFecha))
+            'descripcion' => $fila['titulo'],
+            'cardcode' => $formatter->format(new DateTime($fila['fecha']))
         ];
     }
 }
@@ -217,6 +189,8 @@ while ($fila = $ultimosProductosVendidos->fetch_assoc()) {
         ];
     }
 }
+
+$connection->closeConnection();
 ?>
 
 <div class="row">
