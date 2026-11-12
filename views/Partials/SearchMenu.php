@@ -46,6 +46,11 @@ $connection = new Connection();
 $mysqli = $connection->conexion();
 
 $descripcionBusqueda = isset($_POST["Descripcion"]) ? mysqli_real_escape_string($mysqli, $_POST["Descripcion"]) : '';
+$descripcionBusqueda = preg_replace(
+    '/^[\s\-\+\*"\',().\/:]+|[\s\-\+\*"\',().\/:]+$/u',
+    '',
+    $descripcionBusqueda
+);
 
 if (trim($descripcionBusqueda) != '') {
 
@@ -57,6 +62,11 @@ if (trim($descripcionBusqueda) != '') {
     $palabrasClave = explode(" ", $descripcionBusqueda);
     foreach ($palabrasClave as $palabra) {
         if ($palabra != ""  && $palabra != "de" && $palabra != "DE" && $palabra != "O" && $palabra != "o" && $palabra != "para" && $palabra != "PARA" && $palabra != "con" && $palabra != "CON") {
+            $palabra = preg_replace(
+                '/^[\s\-\+\*"\',().\/:]+|[\s\-\+\*"\',().\/:]+$/u',
+                '',
+                $palabra
+            );
             $likeFijo .= $palabra . "* ";
             $likeConfigurable .= " OR desc_subcategoria LIKE '%" . $palabra . "%'";
             $likeSubCategoria .= " OR descripcion LIKE '%" . $palabra . "%' ";
@@ -102,10 +112,15 @@ if (trim($descripcionBusqueda) != '') {
             MATCH(desc_producto, codigo)
             AGAINST('" . $likeFijo . "' IN BOOLEAN MODE) AS relevancia
         FROM catalogo_productos
-        WHERE MATCH(desc_producto, codigo)
-            AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+        WHERE (
+                MATCH(desc_producto, codigo)
+                AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+                OR desc_producto LIKE '%" . $descripcionBusqueda . "%'
+                OR codigo LIKE '%" . $descripcionBusqueda . "%'
+            )
             AND activo='si' AND (codigo_configurable='' OR configurablefijo='si' )
         ORDER BY relevancia DESC");
+
     while ($fila = $productosFijos->fetch_assoc()) {
         $img = file_exists("../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal'])
             ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal']
