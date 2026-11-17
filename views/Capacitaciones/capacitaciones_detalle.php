@@ -22,7 +22,7 @@
   }
   $CatalogoCursos = new CatalogoCapacitaciones();
   $response = $CatalogoCursos->get("WHERE activo = 'si' AND id = '" . $_GET['id'] . "' ", "", false)->records[0];
- 
+
   ?>
 
   <!-- Page Content-->
@@ -39,7 +39,7 @@
           </div>
         </div>
         <?php if (!empty($response->titulo1)) : ?>
-        <h2 class="pt-4"><?php echo $response->titulo1 ?></h2>
+          <h2 class="pt-4"><?php echo $response->titulo1 ?></h2>
         <?php endif ?>
         <p style="text-align: justify;"><?php
                                         echo nl2br($response->texto1 ?? '');
@@ -102,62 +102,17 @@
         </div>
           -->
 
-  <p class="text-muted text-center text-normal margin-top-3x">
-    Seguimos con nuestra oferta de actividades y eventos para darte a conocer mejor las soluciones que ofrecemos y mantenerte
-    actualizado con la información relevante y actual a todo lo relacionado con la fibra óptica y las telecomunicaciones.
-  </p>
 
-  <p class="text-muted text-center text-normal  margin-top-3x">
-    <b>Mantenemos la comunicación abierta para resolver tus dudas</b>
-
-  </p>
-
-  <h6 class="text-muted text-center text-normal margin-top-1x">
-    <a target="_blank" href="<?php echo $response->link_whatsapp ?>">
-      <img style="width:35%" src="../../public/images/img_spl/capacitaciones/whatsapp-fibremex.png">
-    </a>
-  </h6>
 
   <?php
-      if($response->id != 3){
+  if ($response->id != 3) {
   ?>
 
-  <h6 class="text-muted text-center text-normal text-uppercase margin-top-3x"><?php echo $response->text_form; ?> </h6>
-  <h6 class="text-muted text-center text-normal ">Deja tus datos y a la brevedad nos comunicaremos contigo para porporcionarte m&aacute;s informaci&oacute;n</h6>
-  <hr class="margin-bottom-1x margin-top-2x">
-  <form id="form-cursos">
-    <input class="form-control" type="hidden" name="ActionCursos" id="ActionCursos" value="true">
-    <input class="form-control" type="hidden" name="Action" id="Action" value="RegistroCursos">
-    <input class="form-control" type="hidden" name="Descripcion" id="Descripcion" value="capacitacion">
-    <input class="form-control" type="hidden" name="NombreCurso" id="NombreCurso" value="<?php echo $response->nombre; ?>">
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label for="validationCustom04">Nombre</label>
-        <input class="form-control cursos" type="text" name="Nombre" id="Nombre" required>
-      </div>
-      <div class="col-sm-6 form-group">
-        <label for="validationCustom05">Empresa</label>
-        <input class="form-control cursos" type="text" name="Empresa" id="Empresa" required>
 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Email</label>
-        <input class="form-control cursos" type="email" name="Email" id="Email" required>
-      </div>
-      <div class="col-sm-6 form-group">
-        <label>Telefono</label>
-        <input class="form-control cursos" type="text" name="Telefono" id="Telefono" required>
-      </div>
-    </div>
-    <button type="button" class="btn btn-primary" onclick="EmailCursos(this)">Enviar</button>
-    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-  </form>
 
-    <?php
-      }
-    ?>
+  <?php
+  }
+  ?>
   <!-- Post Tags + Share-->
   <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-4">
     <div class="pb-2"></div>
