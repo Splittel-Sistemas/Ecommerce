@@ -45,7 +45,7 @@ function GabinetesPiso() {
             let combinacionPuertas = PuertaFrontalG.value + PuertaTraceraG.value;
             switch (combinacionPuertas) {
                 case 'CC':
-                    if (ProfundidadG.value == 600) {
+                    if (ProfundidadG.value == 600 && UnidadesG.value == '022') {
                         combinacionPuertas = 'PCPC';
                     } else {
                         combinacionPuertas = 'CC';
