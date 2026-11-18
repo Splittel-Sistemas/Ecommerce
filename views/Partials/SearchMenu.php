@@ -37,6 +37,7 @@ function resaltarCoincidencias($textoBusqueda, $textoOriginal)
 $arrayCategorias = [];
 $arraySubCategorias = [];
 $arrayProductos = [];
+$arrayConfigurables = [];
 $arrayBlog = [];
 $arrayCursos = [];
 $arrayCategoriasMasVendidas = [];
@@ -85,7 +86,7 @@ if (trim($descripcionBusqueda) != '') {
             'url' => "/fibra-optica/views/Productos/categorias.php?id_sbct=" . $fila['id'] . "&nom=" . url_amigable($fila['descripcion']),
             'img' => $img,
             'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['descripcion']),
-            'cardcode' => $fila['id_categoria']
+            'cardcode' => 'Mirar Categoria'
         ];
     }
 
@@ -96,7 +97,7 @@ if (trim($descripcionBusqueda) != '') {
             ? "../../public/images/img_spl/subsubcategorias/" . $fila['folder_name'] . ".jpg"
             : "../../public/images/img_spl/notfound.png";
 
-        $arraySubCategorias[] = [
+        $arrayConfigurables[] = [
             'url' => $url,
             'img' => $img,
             'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['desc_subcategoria']),
@@ -266,6 +267,11 @@ $connection->closeConnection();
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#resConfigurables" role="tab">
+                            <i class="fas fa-box"></i> Configuralos <span><?php echo count($arrayConfigurables); ?></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#resSubCategorias" role="tab">
                             <i class="fas fa-box"></i> Categorias <span><?php echo count($arraySubCategorias); ?></span>
                         </a>
@@ -336,6 +342,30 @@ $connection->closeConnection();
                     <div class="result-list">
                         <?php
                         foreach ($arrayProductos as $obj) {
+                        ?>
+                            <a href="<?php echo $obj['url']; ?>" style="text-decoration: none;">
+                                <div class="result-item">
+                                    <div class="result-image">
+                                        <img src="<?php echo $obj['img']; ?>" alt="">
+                                    </div>
+                                    <div class="result-description">
+                                        <h6><?php echo $obj['descripcion']; ?></h6>
+                                        <p><?php echo $obj['cardcode']; ?></p>
+                                    </div>
+                                    <div class="result-arrow">&gt;</div>
+                                </div>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <!-- CONFIGURABLES -->
+                <div class="tab-pane" id="resConfigurables" role="tabpanel">
+                    <div class="result-list">
+                        <?php
+                        foreach ($arrayConfigurables as $obj) {
                         ?>
                             <a href="<?php echo $obj['url']; ?>" style="text-decoration: none;">
                                 <div class="result-item">
