@@ -208,10 +208,10 @@ $ultimosProductosVendidos = $mysqli->query("SELECT
     LEFT JOIN catalogo_productos cp
         ON cp.codigo = cd.codigo
     LEFT JOIN menu_subcategorias_n1 msn
-        ON msn.codigo = cp.codigo_configurable
+        ON (msn.codigo = cp.codigo_configurable || msn.codigo = cd.code_configurable)
     WHERE
         ce.estatus = 'C'
-        AND ce.fecha >= CURDATE() - INTERVAL 7 DAY
+        AND ce.fecha >= CURDATE() - INTERVAL 15 DAY
         AND ce.fecha < CURDATE() + INTERVAL 1 DAY
     GROUP BY
         codigo,
