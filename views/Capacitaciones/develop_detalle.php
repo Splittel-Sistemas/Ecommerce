@@ -43,7 +43,7 @@
       <hr class="padding-top-1x">
     
          <p class="text-muted text-center text-normal  margin-top-2x padding-bottom-2x">
-           <b> Ciclo de Cursos <?php echo date('Y')?> Finalizado</b><br><br>
+           <b> Ciclo de Cursos <?php echo date('Y')?> Finalizado </b><br><br>
             Agradecemos a todos los profesionales que participaron en nuestras capacitaciones durante este año. <br><br>
             Por el momento, <b>ya no contamos con fechas disponibles para <?php echo date('Y')?></b>, 
               pero <b>estamos preparando el nuevo calendario de cursos y temas <?php echo date('Y')+1?></b>, 
