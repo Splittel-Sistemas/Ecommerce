@@ -50,7 +50,7 @@ function GabinetesPiso() {
                     } else {
                         combinacionPuertas = 'CC';
                     }
-                    
+
                     break;
                 case 'CV':
                     combinacionPuertas = 'C';
@@ -481,6 +481,26 @@ async function CargarProductosRelacionados(codigo) {
             `);
         }
     });
+}
+
+function BusquedaConfigurable(unidades, ancho, profundidad) {
+    console.info('aiaiai');
+    UnidadesG.value = unidades;
+    UnidadesG.dispatchEvent(new Event('change'));
+
+    AnchoG.value = ancho;
+    AnchoG.dispatchEvent(new Event('change'));
+
+    ProfundidadG.value = profundidad;
+    ProfundidadG.dispatchEvent(new Event('change'));
+
+    const url = new URL(window.location.href);
+
+    url.searchParams.delete('unidades');
+    url.searchParams.delete('ancho');
+    url.searchParams.delete('profundidad');
+
+    history.replaceState(null, '', url);
 }
 
 GabinetesPiso();

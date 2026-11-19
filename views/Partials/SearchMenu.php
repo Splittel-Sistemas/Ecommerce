@@ -106,33 +106,93 @@ if (trim($descripcionBusqueda) != '') {
     }
 
     $productosFijos = $mysqli->query("SELECT
-            id,
-            codigo,
-            desc_producto,
-            img_principal,
-            MATCH(desc_producto, codigo)
-            AGAINST('" . $likeFijo . "' IN BOOLEAN MODE) AS relevancia
-        FROM catalogo_productos
+            'fijo' AS tipo,
+            cp.codigo AS codigo,
+            cp.desc_producto AS descripcion,
+            cp.img_principal AS imagen,
+            '' AS parametros,
+            CASE
+                WHEN cp.desc_producto LIKE '%" . $descripcionBusqueda . "%'
+                    THEN 100
+
+                WHEN cp.codigo LIKE '%" . $descripcionBusqueda . "%'
+                    THEN 90
+
+                WHEN MATCH(cp.desc_producto)
+                    AGAINST('" . $likeFijo . "' IN BOOLEAN MODE) > 0
+                    THEN 50 + MATCH(cp.desc_producto)
+                        AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+
+                ELSE 10
+            END AS relevancia
+        FROM catalogo_productos cp
         WHERE (
-                MATCH(desc_producto, codigo)
+                MATCH(cp.desc_producto)
                 AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
-                OR desc_producto LIKE '%" . $descripcionBusqueda . "%'
-                OR codigo LIKE '%" . $descripcionBusqueda . "%'
+                OR cp.desc_producto LIKE '%" . $descripcionBusqueda . "%'
+                OR cp.codigo LIKE '%" . $descripcionBusqueda . "%'
             )
-            AND activo='si' AND (codigo_configurable='' OR configurablefijo='si' )
-        ORDER BY relevancia DESC");
+            AND cp.activo='si' AND (cp.codigo_configurable='' OR cp.configurablefijo='si' )
+        
+        UNION ALL
+        
+        SELECT
+            'configurable' AS tipo,
+            bc.codigo_configurable AS codigo,
+            bc.descripcion AS descripcion,
+            msn.folder_name AS imagen,
+            bc.parametros AS parametros,
+            CASE
+                WHEN bc.descripcion LIKE '%" . $descripcionBusqueda . "%'
+                    THEN 100
+
+                WHEN bc.codigo_configurable LIKE '%" . $descripcionBusqueda . "%'
+                    THEN 90
+
+                WHEN MATCH(bc.descripcion)
+                    AGAINST('" . $likeFijo . "' IN BOOLEAN MODE) > 0
+                    THEN 50 + MATCH(bc.descripcion)
+                        AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+
+                ELSE 10
+            END AS relevancia
+        FROM busqueda_configurables bc
+        INNER JOIN menu_subcategorias_n1 msn ON bc.codigo_configurable = msn.codigo AND msn.activo = 'si'
+        WHERE (
+                MATCH(descripcion)
+                AGAINST('" . $likeFijo . "' IN BOOLEAN MODE)
+                OR descripcion LIKE '%" . $descripcionBusqueda . "%'
+            )
+
+        ORDER BY relevancia DESC
+        ");
 
     while ($fila = $productosFijos->fetch_assoc()) {
-        $img = file_exists("../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal'])
-            ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['img_principal']
-            : "../../public/images/img_spl/notfound.png";
 
-        $arrayProductos[] = [
-            'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($fila['codigo']) . '&nom=' . url_amigable($fila['desc_producto']),
-            'img' => $img,
-            'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['desc_producto']),
-            'cardcode' => resaltarCoincidencias($descripcionBusqueda, $fila['codigo'])
-        ];
+        if ($fila['tipo'] == 'fijo') {
+            $img = file_exists("../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['imagen'])
+                ? "../../public/images/img_spl/productos/" . $fila['codigo'] . "/thumbnail/" . $fila['imagen']
+                : "../../public/images/img_spl/notfound.png";
+
+            $arrayProductos[] = [
+                'url' => '/fibra-optica/views/Productos/fijos.php?id_prd=' . urlencode($fila['codigo']) . '&nom=' . url_amigable($fila['descripcion']),
+                'img' => $img,
+                'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['descripcion']),
+                'cardcode' => resaltarCoincidencias($descripcionBusqueda, $fila['codigo'])
+            ];
+        } else {
+            $url = "/fibra-optica/views/Productos/configurables.php?codigo=" . $fila['codigo'] . $fila['parametros'];
+            $img = file_exists("../../public/images/img_spl/subsubcategorias/" . $fila['imagen'] . ".jpg")
+                ? "../../public/images/img_spl/subsubcategorias/" . $fila['imagen'] . ".jpg"
+                : "../../public/images/img_spl/notfound.png";
+
+            $arrayProductos[] = [
+                'url' => $url,
+                'img' => $img,
+                'descripcion' => resaltarCoincidencias($descripcionBusqueda, $fila['descripcion']),
+                'cardcode' => 'Configuralo'
+            ];
+        }
     }
 
     $cursos = $mysqli->query("SELECT mce.id, mce.title, mce.title1, mce.link, mce.fecha, mc.img_general FROM menu_capacitaciones_eventos mce LEFT JOIN menu_cursos mc ON mce.id_curso = mc.id WHERE (title1 = '" . $descripcionBusqueda . "'" . $likeCurso . ") AND mce.activo = 'si' AND mce.start > CURDATE()");

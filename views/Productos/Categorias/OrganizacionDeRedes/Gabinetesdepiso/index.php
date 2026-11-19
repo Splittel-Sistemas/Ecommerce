@@ -62,3 +62,19 @@
         </div>
     </div>
 </div>
+
+<?php
+$unidades = isset($_GET['unidades']) ? $_GET['unidades'] : null;
+$ancho = isset($_GET['ancho']) ? $_GET['ancho'] : null;
+$profundidad = isset($_GET['profundidad']) ? $_GET['profundidad'] : null;
+
+if (!is_null($unidades) && !is_null($ancho) && !is_null($profundidad)) {
+?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            BusquedaConfigurable('<?php echo $unidades ?>', <?php echo $ancho ?>, <?php echo $profundidad ?>);
+        });
+    </script>
+<?php
+}
+?>
