@@ -109,6 +109,7 @@ try {
     border-bottom: 1px solid #ddd;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 5px 0px 0px 0px;
   }
 
   .live-search-tabs::-webkit-scrollbar {
@@ -130,6 +131,7 @@ try {
 
   .live-search-tabs .nav-item {
     flex: 0 0 auto;
+    margin: 5px;
   }
 
   .live-search-tabs .nav-link {
@@ -150,7 +152,8 @@ try {
   .live-search-tabs .nav-link.active {
     color: #c62828;
     background: #fff;
-    border-bottom: 3px solid #c62828;
+    border: 1px solid #c62828;
+    border-radius: 5px 5px 5px 5px;
   }
 
   .live-search-tabs .nav-link span {
@@ -414,6 +417,34 @@ try {
 
     #resProductosTop .top-products-header h6 {
       font-size: 13px;
+    }
+  }
+
+  .BusquedaConfigurables {
+    color: #c62828 !important;
+    font-weight: bold;
+    border-radius: 5px 5px 5px 5px;
+    animation: destacarBusqueda 1.5s ease-in-out infinite;
+    transition: all 0.3s ease;
+  }
+
+  .BusquedaConfigurables.active {
+    color: #555 !important;
+    background-color: #fff;
+    border-color: #ddd;
+    animation: none;
+    transition: none;
+  }
+
+  @keyframes destacarBusqueda {
+
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.15);
+    }
+
+    50% {
+      box-shadow: 0 0 8px 3px rgba(198, 40, 40, 0.35);
     }
   }
 </style>
