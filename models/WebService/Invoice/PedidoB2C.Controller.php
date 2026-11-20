@@ -33,6 +33,8 @@
   class PedidoB2CController{
     protected $conn;
     protected $Tool;
+    protected $PedidoB2C;
+    protected $Pedido;
     
     public function __construct(){
       $this->conn = new Connection();
